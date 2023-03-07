@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\krzys\\Desktop\\Management_of_medical_clinic\\Console_Management_of_medical_clinic\\Console_Management_of_medical_clinic.csproj",
+      "projectUniqueName": "C:\\Users\\krzys\\Desktop\\Repository\\GitHubRepository\\Medical-Clinic-Management-System\\Management_of_medical_clinic\\Console_Management_of_medical_clinic\\Console_Management_of_medical_clinic.csproj",
       "projectName": "Console_Management_of_medical_clinic",
-      "projectPath": "C:\\Users\\krzys\\Desktop\\Management_of_medical_clinic\\Console_Management_of_medical_clinic\\Console_Management_of_medical_clinic.csproj",
+      "projectPath": "C:\\Users\\krzys\\Desktop\\Repository\\GitHubRepository\\Medical-Clinic-Management-System\\Management_of_medical_clinic\\Console_Management_of_medical_clinic\\Console_Management_of_medical_clinic.csproj",
       "packagesPath": "C:\\Users\\krzys\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\krzys\\Desktop\\Management_of_medical_clinic\\Console_Management_of_medical_clinic\\obj\\",
+      "outputPath": "C:\\Users\\krzys\\Desktop\\Repository\\GitHubRepository\\Medical-Clinic-Management-System\\Management_of_medical_clinic\\Console_Management_of_medical_clinic\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
