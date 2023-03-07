@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Console_Management_of_medical_clinic/1.0.0": {
+        "runtime": {
+          "Console_Management_of_medical_clinic.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Console_Management_of_medical_clinic/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
