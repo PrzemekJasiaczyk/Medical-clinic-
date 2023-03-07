@@ -403,3 +403,10 @@ FodyWeavers.xsd
 # Additional files built by Visual Studio
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudio
+
+
+
+Management_of_medical_clinic/.vs/Management_of_medical_clinic/DesignTimeBuild/.dtbcache.v2
+Management_of_medical_clinic/.vs/Management_of_medical_clinic/v17/.suo
+Management_of_medical_clinic/.vs/ProjectEvaluation/management_of_medical_clinic.metadata.v5.2
+Management_of_medical_clinic/.vs/ProjectEvaluation/management_of_medical_clinic.projects.v5.2
