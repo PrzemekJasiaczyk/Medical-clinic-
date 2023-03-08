@@ -43,11 +43,12 @@
             // 
             // dataGridViewEmployees
             // 
+            this.dataGridViewEmployees.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewEmployees.Location = new System.Drawing.Point(12, 12);
             this.dataGridViewEmployees.Name = "dataGridViewEmployees";
             this.dataGridViewEmployees.RowTemplate.Height = 25;
-            this.dataGridViewEmployees.Size = new System.Drawing.Size(776, 283);
+            this.dataGridViewEmployees.Size = new System.Drawing.Size(776, 273);
             this.dataGridViewEmployees.TabIndex = 0;
             this.dataGridViewEmployees.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEmployees_CellClick);
             this.dataGridViewEmployees.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEmployees_CellContentClick);
@@ -107,6 +108,7 @@
             this.buttonReviewEmployee.TabIndex = 6;
             this.buttonReviewEmployee.Text = "Review employee";
             this.buttonReviewEmployee.UseVisualStyleBackColor = true;
+            this.buttonReviewEmployee.Click += new System.EventHandler(this.buttonReviewEmployee_Click);
             // 
             // buttonDeactivateEmployee
             // 

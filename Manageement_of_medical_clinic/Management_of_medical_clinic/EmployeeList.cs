@@ -51,7 +51,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonDeactivateEmployee_Click(object sender, EventArgs e)
         {
-            if (dataGridViewEmployees.SelectedRows.Count != 1)
+            if (dataGridViewEmployees.SelectedRows.Count != 1) 
             {
                 MessageBox.Show("Select one employee from list!");
                 
@@ -109,6 +109,14 @@ namespace GUI_Management_of_medical_clinic
         private void dataGridViewEmployees_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             
+        }
+
+        private void buttonReviewEmployee_Click(object sender, EventArgs e)
+        {
+            int index = dataGridViewEmployees.CurrentRow.Index;
+            employee = service.GetEmployeeList()[index];
+            EmployeeDetailsView employeeDetailsView = new EmployeeDetailsView();
+
         }
     }
 }
