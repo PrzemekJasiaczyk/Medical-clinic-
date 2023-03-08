@@ -43,6 +43,7 @@
             // 
             // dataGridViewEmployees
             // 
+            this.dataGridViewEmployees.AllowUserToAddRows = false;
             this.dataGridViewEmployees.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewEmployees.Location = new System.Drawing.Point(12, 12);
