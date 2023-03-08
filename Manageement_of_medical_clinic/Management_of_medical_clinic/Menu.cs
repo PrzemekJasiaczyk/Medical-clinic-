@@ -22,5 +22,10 @@ namespace Management_of_medical_clinic
             employeeList.ShowDialog();
             Show();
         }
+
+        private void Menu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

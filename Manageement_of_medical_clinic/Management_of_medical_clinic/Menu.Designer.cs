@@ -28,30 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            buttonOpenEmployeeList = new Button();
-            SuspendLayout();
+            this.buttonOpenEmployeeList = new System.Windows.Forms.Button();
+            this.SuspendLayout();
             // 
             // buttonOpenEmployeeList
             // 
-            buttonOpenEmployeeList.Location = new Point(242, 96);
-            buttonOpenEmployeeList.Name = "buttonOpenEmployeeList";
-            buttonOpenEmployeeList.Size = new Size(240, 102);
-            buttonOpenEmployeeList.TabIndex = 0;
-            buttonOpenEmployeeList.Text = "Zacznij";
-            buttonOpenEmployeeList.UseVisualStyleBackColor = true;
-            buttonOpenEmployeeList.Click += buttonOpenEmployeeList_Click;
+            this.buttonOpenEmployeeList.Location = new System.Drawing.Point(242, 96);
+            this.buttonOpenEmployeeList.Name = "buttonOpenEmployeeList";
+            this.buttonOpenEmployeeList.Size = new System.Drawing.Size(240, 102);
+            this.buttonOpenEmployeeList.TabIndex = 0;
+            this.buttonOpenEmployeeList.Text = "Zacznij";
+            this.buttonOpenEmployeeList.UseVisualStyleBackColor = true;
+            this.buttonOpenEmployeeList.Click += new System.EventHandler(this.buttonOpenEmployeeList_Click);
             // 
             // Menu
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(708, 332);
-            Controls.Add(buttonOpenEmployeeList);
-            Margin = new Padding(2);
-            Name = "Menu";
-            Text = "Form1";
-            Load += Form1_Load;
-            ResumeLayout(false);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(708, 332);
+            this.Controls.Add(this.buttonOpenEmployeeList);
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Name = "Menu";
+            this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Menu_Load);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
