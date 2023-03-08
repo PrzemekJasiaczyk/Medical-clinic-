@@ -22,13 +22,13 @@ namespace Console_Management_of_medical_clinic.Logic
 
             tableEmployees.Columns.Add("First name", typeof(string));
             tableEmployees.Columns.Add("Last name", typeof(string));
-            tableEmployees.Columns.Add("PESEL", typeof(string));
-            tableEmployees.Columns.Add("Date of birth", typeof(DateTime));
+            //tableEmployees.Columns.Add("PESEL", typeof(string));
+            //tableEmployees.Columns.Add("Date of birth", typeof(DateTime));
             tableEmployees.Columns.Add("Role", typeof(string));
-            tableEmployees.Columns.Add("Correspondence address", typeof(string));
-            tableEmployees.Columns.Add("E-mail address", typeof(string));
-            tableEmployees.Columns.Add("Phone number", typeof(string));
-            tableEmployees.Columns.Add("Sex", typeof(char));
+            //tableEmployees.Columns.Add("Correspondence address", typeof(string));
+            //tableEmployees.Columns.Add("E-mail address", typeof(string));
+            //tableEmployees.Columns.Add("Phone number", typeof(string));
+            //tableEmployees.Columns.Add("Sex", typeof(char));
             tableEmployees.Columns.Add("Is active", typeof(string));
         }
 
@@ -49,6 +49,16 @@ namespace Console_Management_of_medical_clinic.Logic
         {
 
             tableEmployees.Rows.Clear();
+
+            // Changing data in tableEmployees
+            /*foreach (Employee emp in employees)
+            {
+                tableEmployees.Rows.Add(emp.FirstName, emp.LastName, emp.PESEL, emp.DateOfBirth, emp.Role, emp.CorrespondenceAddress, emp.Email, emp.PhoneNumber, emp.Sex, emp.IsActive ? "Active" : "Deactive");
+            }
+            return tableEmployees;*/
+
+
+
             foreach (Employee emp in employees)
             {
                 tableEmployees.Rows.Add(emp.FirstName, emp.LastName, emp.PESEL, emp.DateOfBirth, emp.Role, emp.CorrespondenceAddress, emp.Email, emp.PhoneNumber, emp.Sex, emp.IsActive ? "Active" : "Deactive");
