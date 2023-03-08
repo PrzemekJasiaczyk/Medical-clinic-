@@ -32,14 +32,30 @@ namespace Console_Management_of_medical_clinic.Logic
             tableEmployees.Columns.Add("Is active", typeof(string));
         }
 
+        public void UpdateEmployeeList()
+        {
+
+            // Here data should be taken from database
+            // Temporarily we create data in constructor
+
+            employees.Clear();
+            tableEmployees.Clear();
+
+            
+        }
+
+
         public DataTable GetEmployeeTable()
         {
+
             tableEmployees.Rows.Clear();
             foreach (Employee emp in employees)
             {
                 tableEmployees.Rows.Add(emp.FirstName, emp.LastName, emp.PESEL, emp.DateOfBirth, emp.Role, emp.CorrespondenceAddress, emp.Email, emp.PhoneNumber, emp.Sex, emp.IsActive ? "Active" : "Deactive");
             }
             return tableEmployees;
+
+
         } 
 
         public List<Employee> GetEmployeeList()

@@ -23,5 +23,9 @@ namespace Management_of_medical_clinic
             Show();
         }
 
+        private void Menu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
