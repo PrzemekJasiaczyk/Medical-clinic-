@@ -99,6 +99,7 @@
             this.buttonAddEmployee.TabIndex = 5;
             this.buttonAddEmployee.Text = "Add new employee";
             this.buttonAddEmployee.UseVisualStyleBackColor = true;
+            this.buttonAddEmployee.Click += new System.EventHandler(this.buttonAddEmployee_Click);
             // 
             // buttonReviewEmployee
             // 

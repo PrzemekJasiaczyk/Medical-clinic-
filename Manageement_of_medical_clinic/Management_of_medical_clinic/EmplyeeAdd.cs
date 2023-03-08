@@ -16,5 +16,93 @@ namespace GUI_Management_of_medical_clinic
         {
             InitializeComponent();
         }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            EmployeeList employeeList = new EmployeeList();
+            Hide();
+            employeeList.ShowDialog();
+            Show();
+        }
+
+        private void buttonNext_Click(object sender, EventArgs e)
+        {
+            if (!validatePESEL())
+            {
+                MessageBox.Show("PESEL is incorrect");
+            }
+            else
+            {
+                MessageBox.Show("Success!");
+            }
+        }
+
+      
+
+
+        private void EmplyeeAdd_Load(object sender, EventArgs e)
+        {
+
+        }
+
+
+        //Check if all required data is filled
+
+        public void checkIfRequiredFilled()
+        {
+            if (textBoxFirstName.Text.Length > 0 && textBoxLastName.Text.Length > 0 && textBoxPESEL.Text.Length > 0 && comboBoxRole.Text.Length > 0)
+            {
+                buttonNext.Enabled = true;
+            }
+            else
+            {
+                buttonNext.Enabled = false;
+            }
+        }
+
+        private void textBoxFirstName_TextChanged(object sender, EventArgs e)
+        {
+            checkIfRequiredFilled();
+        }
+
+        private void textBoxLastName_TextChanged(object sender, EventArgs e)
+        {
+            checkIfRequiredFilled();
+        }
+
+        private void textBoxPESEL_TextChanged(object sender, EventArgs e)
+        {
+            checkIfRequiredFilled();
+        }
+
+        private void comboBoxRole_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            checkIfRequiredFilled();
+        }
+
+
+        //Validate input
+        public bool validatePESEL()
+        {
+            string input = textBoxPESEL.Text;
+
+            DateTime selectedDate = dateTimePickerDate.Value;
+            string formatedDate = selectedDate.ToString("MM/dd/yyyy");
+
+            if (input.Length != 11)
+            { 
+                return false;
+            }
+
+            if (!long.TryParse(input, out long result))
+            {
+                return false;
+            }
+
+
+            MessageBox.Show(input + " " + formatedDate);
+
+            return true;
+        }
     }
 }

@@ -118,5 +118,13 @@ namespace GUI_Management_of_medical_clinic
             EmployeeDetailsView employeeDetailsView = new EmployeeDetailsView();
 
         }
+
+        private void buttonAddEmployee_Click(object sender, EventArgs e)
+        {
+            EmplyeeAdd employeeAdd = new EmplyeeAdd();
+            Hide();
+            employeeAdd.ShowDialog();
+            Show();
+        }
     }
 }
