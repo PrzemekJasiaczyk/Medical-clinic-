@@ -29,6 +29,7 @@ namespace Console_Management_of_medical_clinic.Logic
             tableEmployees.Columns.Add("E-mail address", typeof(string));
             tableEmployees.Columns.Add("Phone number", typeof(string));
             tableEmployees.Columns.Add("Sex", typeof(char));
+            tableEmployees.Columns.Add("Is active", typeof(string));
         }
 
         public DataTable GetEmployeeTable()
@@ -36,10 +37,20 @@ namespace Console_Management_of_medical_clinic.Logic
             tableEmployees.Rows.Clear();
             foreach (Employee emp in employees)
             {
-                tableEmployees.Rows.Add(emp.FirstName, emp.LastName, emp.PESEL, emp.DateOfBirth, emp.Role, emp.CorrespondenceAddress, emp.Email, emp.PhoneNumber, emp.Sex);
+                tableEmployees.Rows.Add(emp.FirstName, emp.LastName, emp.PESEL, emp.DateOfBirth, emp.Role, emp.CorrespondenceAddress, emp.Email, emp.PhoneNumber, emp.Sex, emp.IsActive ? "Active" : "Deactive");
             }
             return tableEmployees;
         } 
+
+        public List<Employee> GetEmployeeList()
+        {
+            return employees;
+        }
+
+        public int EmployeeListCount()
+        {
+            return employees.Count;
+        }
 
         public DataTable FilterEmployee(string role, bool isActive)
         {
@@ -49,16 +60,23 @@ namespace Console_Management_of_medical_clinic.Logic
                 if (role != "none")
                 {
                     if (emp.Role == role && emp.IsActive == isActive)
-                        tableEmployees.Rows.Add(emp.FirstName, emp.LastName, emp.PESEL, emp.DateOfBirth, emp.Role, emp.CorrespondenceAddress, emp.Email, emp.PhoneNumber, emp.Sex);
+                        tableEmployees.Rows.Add(emp.FirstName, emp.LastName, emp.PESEL, emp.DateOfBirth, emp.Role, emp.CorrespondenceAddress, emp.Email, emp.PhoneNumber, emp.Sex, emp.IsActive ? "Active" : "Deactive");
                 }
                 else
                 {
                     if (emp.IsActive == isActive)
-                        tableEmployees.Rows.Add(emp.FirstName, emp.LastName, emp.PESEL, emp.DateOfBirth, emp.Role, emp.CorrespondenceAddress, emp.Email, emp.PhoneNumber, emp.Sex);
+                        tableEmployees.Rows.Add(emp.FirstName, emp.LastName, emp.PESEL, emp.DateOfBirth, emp.Role, emp.CorrespondenceAddress, emp.Email, emp.PhoneNumber, emp.Sex, emp.IsActive ? "Active" : "Deactive");
                 }
             }
 
             return tableEmployees;
         }
+
+        public void ActivateEmployee(Employee emp)
+        {
+            emp.IsActive = true;
+        }
+
+        public void DeactivateEmployee(Employee emp) { emp.IsActive = false; }
     }
 }

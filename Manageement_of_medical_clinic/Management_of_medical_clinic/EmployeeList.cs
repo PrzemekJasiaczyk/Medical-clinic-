@@ -15,6 +15,7 @@ namespace GUI_Management_of_medical_clinic
     public partial class EmployeeList : Form
     {
         EmployeeService service = new EmployeeService();
+        Employee employee;
         string[] roles = { "Employee", "Doctor", "none" };
 
         public EmployeeList()
@@ -24,6 +25,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void EmployeeList_Load(object sender, EventArgs e)
         {
+            comboBoxRole.Items.Clear();
             dataGridViewEmployees.DataSource = service.GetEmployeeTable();
             comboBoxRole.Items.AddRange(roles);
         }
@@ -36,13 +38,77 @@ namespace GUI_Management_of_medical_clinic
             }
             catch
             {
-                MessageBox.Show("Wybierz warianty filtrowania!");
+                MessageBox.Show("Select variant of filter!");
             }
         }
 
         private void buttonClearFilter_Click(object sender, EventArgs e)
         {
             dataGridViewEmployees.DataSource = service.GetEmployeeTable();
+            comboBoxRole.SelectedItem = null;
+            checkBoxIsActive.Checked = false;
+        }
+
+        private void buttonDeactivateEmployee_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewEmployees.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("Select one employee from list!");
+                
+            }
+            else if (!employee.IsActive)
+            {
+                MessageBox.Show("Employee is deactive!");
+            }
+            else
+            {
+                ChangeStatusOfEmployee deactivate = new ChangeStatusOfEmployee(service, employee, "deact");
+                Hide();
+                deactivate.ShowDialog();
+                EmployeeList_Load(sender, e);
+                Show();
+            }
+            
+        }
+
+        private void dataGridViewEmployees_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+
+            int index = service.EmployeeListCount();
+            if (dataGridViewEmployees.CurrentCell.RowIndex < index)
+            {
+                employee = service.GetEmployeeList()[e.RowIndex];
+            }
+
+        }
+
+        private void buttonReactivate_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewEmployees.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("Select one employee from list!");
+            }else if (employee.IsActive)
+            {
+                MessageBox.Show("Employee is active!");
+            }
+            else
+            {
+                ChangeStatusOfEmployee reactivate = new ChangeStatusOfEmployee(service, employee, "act");
+                Hide();
+                reactivate.ShowDialog();
+                EmployeeList_Load(sender, e);
+                Show();
+            }
+        }
+
+        private void dataGridViewEmployees_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridViewEmployees_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
         }
     }
 }
