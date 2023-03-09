@@ -1,4 +1,5 @@
-﻿using Console_Management_of_medical_clinic.Model;
+﻿using Console_Management_of_medical_clinic.Logic;
+using Console_Management_of_medical_clinic.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,16 +37,8 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
-            /*if (!(EmplyeeAdd.validatePESEL(textBoxPESEL, textBoxDateOfBirth)))
-            {
-                MessageBox.Show("PESEL is incorrect!");
-            }
-            else
-            {
-                MessageBox.Show("Employee’s data changed.");
-            }*/
+            
         }
-
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             EmployeeList employeeList = new EmployeeList();
@@ -80,5 +73,12 @@ namespace GUI_Management_of_medical_clinic
         {
             checkForms();
         }
+
+        private void EmployeeEdit_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }
