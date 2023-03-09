@@ -38,7 +38,7 @@ namespace GUI_Management_of_medical_clinic
             validatePhone();
         }
 
-      
+
 
 
 
@@ -78,7 +78,6 @@ namespace GUI_Management_of_medical_clinic
             checkIfRequiredFilled();
         }
 
-
         //Validate PESEL input
         public bool validatePESEL()
         {
@@ -95,6 +94,7 @@ namespace GUI_Management_of_medical_clinic
             {
                 MessageBox.Show("PESEL should be 11 digits long");
                 return false;                
+
             }
 
             if (!long.TryParse(input, out long result))
@@ -120,6 +120,7 @@ namespace GUI_Management_of_medical_clinic
                 MessageBox.Show("PESEL doesn't fit the sex");
                 return false;
             }
+
 
             return true;
         }
@@ -186,7 +187,6 @@ namespace GUI_Management_of_medical_clinic
                     return false;
                 }
             }
-
             return true;
         }
     }

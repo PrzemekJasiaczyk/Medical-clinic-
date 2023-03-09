@@ -28,133 +28,143 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBoxFirstName = new System.Windows.Forms.TextBox();
-            this.textBoxLastName = new System.Windows.Forms.TextBox();
-            this.textBoxPESEL = new System.Windows.Forms.TextBox();
-            this.textBoxDateOfBirth = new System.Windows.Forms.TextBox();
-            this.textBoxRole = new System.Windows.Forms.TextBox();
-            this.textBoxCorrespondenceAddress = new System.Windows.Forms.TextBox();
-            this.textBoxSex = new System.Windows.Forms.TextBox();
-            this.textBoxEmail = new System.Windows.Forms.TextBox();
-            this.textBoxPhoneNumber = new System.Windows.Forms.TextBox();
-            this.textBoxIsActive = new System.Windows.Forms.TextBox();
-            this.Edit_Employee = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            textBoxFirstName = new TextBox();
+            textBoxLastName = new TextBox();
+            textBoxPESEL = new TextBox();
+            textBoxDateOfBirth = new TextBox();
+            textBoxRole = new TextBox();
+            textBoxCorrespondenceAddress = new TextBox();
+            textBoxSex = new TextBox();
+            textBoxEmail = new TextBox();
+            textBoxPhoneNumber = new TextBox();
+            textBoxIsActive = new TextBox();
+            Edit_Employee = new Button();
+            button2 = new Button();
+            SuspendLayout();
             // 
             // textBoxFirstName
             // 
-            this.textBoxFirstName.Location = new System.Drawing.Point(78, 66);
-            this.textBoxFirstName.Name = "textBoxFirstName";
-            this.textBoxFirstName.Size = new System.Drawing.Size(187, 23);
-            this.textBoxFirstName.TabIndex = 0;
+            textBoxFirstName.Location = new Point(78, 66);
+            textBoxFirstName.Name = "textBoxFirstName";
+            textBoxFirstName.ReadOnly = true;
+            textBoxFirstName.Size = new Size(187, 23);
+            textBoxFirstName.TabIndex = 0;
             // 
             // textBoxLastName
             // 
-            this.textBoxLastName.Location = new System.Drawing.Point(78, 121);
-            this.textBoxLastName.Name = "textBoxLastName";
-            this.textBoxLastName.Size = new System.Drawing.Size(187, 23);
-            this.textBoxLastName.TabIndex = 1;
+            textBoxLastName.Location = new Point(78, 121);
+            textBoxLastName.Name = "textBoxLastName";
+            textBoxLastName.ReadOnly = true;
+            textBoxLastName.Size = new Size(187, 23);
+            textBoxLastName.TabIndex = 1;
             // 
             // textBoxPESEL
             // 
-            this.textBoxPESEL.Location = new System.Drawing.Point(78, 171);
-            this.textBoxPESEL.Name = "textBoxPESEL";
-            this.textBoxPESEL.Size = new System.Drawing.Size(187, 23);
-            this.textBoxPESEL.TabIndex = 2;
+            textBoxPESEL.Location = new Point(78, 171);
+            textBoxPESEL.Name = "textBoxPESEL";
+            textBoxPESEL.ReadOnly = true;
+            textBoxPESEL.Size = new Size(187, 23);
+            textBoxPESEL.TabIndex = 2;
             // 
             // textBoxDateOfBirth
             // 
-            this.textBoxDateOfBirth.Location = new System.Drawing.Point(78, 223);
-            this.textBoxDateOfBirth.Name = "textBoxDateOfBirth";
-            this.textBoxDateOfBirth.Size = new System.Drawing.Size(187, 23);
-            this.textBoxDateOfBirth.TabIndex = 3;
+            textBoxDateOfBirth.Location = new Point(78, 223);
+            textBoxDateOfBirth.Name = "textBoxDateOfBirth";
+            textBoxDateOfBirth.ReadOnly = true;
+            textBoxDateOfBirth.Size = new Size(187, 23);
+            textBoxDateOfBirth.TabIndex = 3;
             // 
             // textBoxRole
             // 
-            this.textBoxRole.Location = new System.Drawing.Point(78, 282);
-            this.textBoxRole.Name = "textBoxRole";
-            this.textBoxRole.Size = new System.Drawing.Size(187, 23);
-            this.textBoxRole.TabIndex = 4;
+            textBoxRole.Location = new Point(78, 282);
+            textBoxRole.Name = "textBoxRole";
+            textBoxRole.ReadOnly = true;
+            textBoxRole.Size = new Size(187, 23);
+            textBoxRole.TabIndex = 4;
             // 
             // textBoxCorrespondenceAddress
             // 
-            this.textBoxCorrespondenceAddress.Location = new System.Drawing.Point(549, 66);
-            this.textBoxCorrespondenceAddress.Name = "textBoxCorrespondenceAddress";
-            this.textBoxCorrespondenceAddress.Size = new System.Drawing.Size(187, 23);
-            this.textBoxCorrespondenceAddress.TabIndex = 5;
+            textBoxCorrespondenceAddress.Location = new Point(549, 66);
+            textBoxCorrespondenceAddress.Name = "textBoxCorrespondenceAddress";
+            textBoxCorrespondenceAddress.ReadOnly = true;
+            textBoxCorrespondenceAddress.Size = new Size(187, 23);
+            textBoxCorrespondenceAddress.TabIndex = 5;
             // 
             // textBoxSex
             // 
-            this.textBoxSex.Location = new System.Drawing.Point(549, 223);
-            this.textBoxSex.Name = "textBoxSex";
-            this.textBoxSex.Size = new System.Drawing.Size(187, 23);
-            this.textBoxSex.TabIndex = 6;
+            textBoxSex.Location = new Point(549, 223);
+            textBoxSex.Name = "textBoxSex";
+            textBoxSex.ReadOnly = true;
+            textBoxSex.Size = new Size(187, 23);
+            textBoxSex.TabIndex = 6;
             // 
             // textBoxEmail
             // 
-            this.textBoxEmail.Location = new System.Drawing.Point(549, 112);
-            this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(187, 23);
-            this.textBoxEmail.TabIndex = 7;
+            textBoxEmail.Location = new Point(549, 112);
+            textBoxEmail.Name = "textBoxEmail";
+            textBoxEmail.ReadOnly = true;
+            textBoxEmail.Size = new Size(187, 23);
+            textBoxEmail.TabIndex = 7;
             // 
             // textBoxPhoneNumber
             // 
-            this.textBoxPhoneNumber.Location = new System.Drawing.Point(549, 171);
-            this.textBoxPhoneNumber.Name = "textBoxPhoneNumber";
-            this.textBoxPhoneNumber.Size = new System.Drawing.Size(187, 23);
-            this.textBoxPhoneNumber.TabIndex = 8;
+            textBoxPhoneNumber.Location = new Point(549, 171);
+            textBoxPhoneNumber.Name = "textBoxPhoneNumber";
+            textBoxPhoneNumber.ReadOnly = true;
+            textBoxPhoneNumber.Size = new Size(187, 23);
+            textBoxPhoneNumber.TabIndex = 8;
             // 
             // textBoxIsActive
             // 
-            this.textBoxIsActive.Location = new System.Drawing.Point(549, 282);
-            this.textBoxIsActive.Name = "textBoxIsActive";
-            this.textBoxIsActive.Size = new System.Drawing.Size(187, 23);
-            this.textBoxIsActive.TabIndex = 9;
+            textBoxIsActive.Location = new Point(549, 282);
+            textBoxIsActive.Name = "textBoxIsActive";
+            textBoxIsActive.ReadOnly = true;
+            textBoxIsActive.Size = new Size(187, 23);
+            textBoxIsActive.TabIndex = 9;
             // 
             // Edit_Employee
             // 
-            this.Edit_Employee.Location = new System.Drawing.Point(405, 361);
-            this.Edit_Employee.Name = "Edit_Employee";
-            this.Edit_Employee.Size = new System.Drawing.Size(147, 38);
-            this.Edit_Employee.TabIndex = 10;
-            this.Edit_Employee.Text = "Edit employee";
-            this.Edit_Employee.UseVisualStyleBackColor = true;
+            Edit_Employee.Location = new Point(405, 361);
+            Edit_Employee.Name = "Edit_Employee";
+            Edit_Employee.Size = new Size(147, 38);
+            Edit_Employee.TabIndex = 10;
+            Edit_Employee.Text = "Edit employee";
+            Edit_Employee.UseVisualStyleBackColor = true;
+            Edit_Employee.Click += Edit_Employee_Click;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(259, 361);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(140, 38);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "Cancel";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            button2.Location = new Point(259, 361);
+            button2.Name = "button2";
+            button2.Size = new Size(140, 38);
+            button2.TabIndex = 11;
+            button2.Text = "Cancel";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // EmployeeDetailsView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.Edit_Employee);
-            this.Controls.Add(this.textBoxIsActive);
-            this.Controls.Add(this.textBoxPhoneNumber);
-            this.Controls.Add(this.textBoxEmail);
-            this.Controls.Add(this.textBoxSex);
-            this.Controls.Add(this.textBoxCorrespondenceAddress);
-            this.Controls.Add(this.textBoxRole);
-            this.Controls.Add(this.textBoxDateOfBirth);
-            this.Controls.Add(this.textBoxPESEL);
-            this.Controls.Add(this.textBoxLastName);
-            this.Controls.Add(this.textBoxFirstName);
-            this.Name = "EmployeeDetailsView";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "EmployeeDetailsView";
-            this.Load += new System.EventHandler(this.EmployeeDetailsView_Load_1);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(button2);
+            Controls.Add(Edit_Employee);
+            Controls.Add(textBoxIsActive);
+            Controls.Add(textBoxPhoneNumber);
+            Controls.Add(textBoxEmail);
+            Controls.Add(textBoxSex);
+            Controls.Add(textBoxCorrespondenceAddress);
+            Controls.Add(textBoxRole);
+            Controls.Add(textBoxDateOfBirth);
+            Controls.Add(textBoxPESEL);
+            Controls.Add(textBoxLastName);
+            Controls.Add(textBoxFirstName);
+            Name = "EmployeeDetailsView";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "EmployeeDetailsView";
+            Load += EmployeeDetailsView_Load_1;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
