@@ -212,6 +212,7 @@
             this.buttonCancel.TabIndex = 30;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
+
             // 
             // buttonConfirm
             // 
