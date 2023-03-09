@@ -55,5 +55,13 @@ namespace GUI_Management_of_medical_clinic
             employeeList.ShowDialog();
             this.Close();
         }
+
+        private void Edit_Employee_Click(object sender, EventArgs e)
+        {
+            EmployeeEdit employeeEdit = new EmployeeEdit(employee);
+            this.Hide();
+            employeeEdit.ShowDialog();
+            this.Close();
+        }
     }
 }

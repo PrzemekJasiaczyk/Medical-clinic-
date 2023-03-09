@@ -27,7 +27,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonNext_Click(object sender, EventArgs e)
         {
-            if (!validatePESEL())
+            if (!validatePESEL(textBoxPESEL, dateTimePickerDate))
             {
                 MessageBox.Show("PESEL is incorrect");
             }
@@ -37,7 +37,7 @@ namespace GUI_Management_of_medical_clinic
             }
         }
 
-      
+
 
 
         private void EmplyeeAdd_Load(object sender, EventArgs e)
@@ -82,15 +82,15 @@ namespace GUI_Management_of_medical_clinic
 
 
         //Validate input
-        public bool validatePESEL()
+        public static bool validatePESEL(TextBox textBox, DateTimePicker dateTimePicker)
         {
-            string input = textBoxPESEL.Text;
+            string input = textBox.Text;
 
-            DateTime selectedDate = dateTimePickerDate.Value;
+            DateTime selectedDate = dateTimePicker.Value;
             string formatedDate = selectedDate.ToString("MM/dd/yyyy");
 
             if (input.Length != 11)
-            { 
+            {
                 return false;
             }
 
@@ -100,7 +100,7 @@ namespace GUI_Management_of_medical_clinic
             }
 
 
-            MessageBox.Show(input + " " + formatedDate);
+            //MessageBox.Show(input + " " + formatedDate);
 
             return true;
         }
