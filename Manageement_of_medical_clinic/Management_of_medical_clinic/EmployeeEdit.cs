@@ -74,10 +74,6 @@ namespace GUI_Management_of_medical_clinic
             checkForms();
         }
 
-        private void EmployeeEdit_Load_1(object sender, EventArgs e)
-        {
-
-        }
 
 
 
