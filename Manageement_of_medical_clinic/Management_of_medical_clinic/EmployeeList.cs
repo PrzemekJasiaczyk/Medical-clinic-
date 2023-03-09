@@ -29,6 +29,24 @@ namespace GUI_Management_of_medical_clinic
             comboBoxRole.Items.Clear();
             dataGridViewEmployees.DataSource = service.GetEmployeeTable();
             comboBoxRole.Items.AddRange(roles);
+            addEditBtnColumn();
+
+            foreach (DataGridViewColumn dgvc in dataGridViewEmployees.Columns)
+            {
+                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+        }
+
+        private void addEditBtnColumn()
+        {
+            DataGridViewButtonColumn editButton = new DataGridViewButtonColumn();
+            editButton.UseColumnTextForButtonValue = true;
+            editButton.Name = "edit_column";
+            editButton.HeaderText = "";
+            editButton.Text = "Edit";
+            int columnIndex = dataGridViewEmployees.Columns.Count;
+            if (dataGridViewEmployees.Columns["edit_column"] == null)
+                dataGridViewEmployees.Columns.Insert(columnIndex, editButton);
         }
 
         private void buttonFilterEmployee_Click(object sender, EventArgs e)
@@ -52,10 +70,10 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonDeactivateEmployee_Click(object sender, EventArgs e)
         {
-            if (dataGridViewEmployees.SelectedRows.Count != 1) 
+            if (dataGridViewEmployees.SelectedRows.Count != 1)
             {
                 MessageBox.Show("Select one employee from list!");
-                
+
             }
             else if (!employee.IsActive)
             {
@@ -64,12 +82,11 @@ namespace GUI_Management_of_medical_clinic
             else
             {
                 ChangeStatusOfEmployee deactivate = new ChangeStatusOfEmployee(service, employee, "deact");
-                Hide();
                 deactivate.ShowDialog();
                 EmployeeList_Load(sender, e);
                 Show();
             }
-            
+
         }
 
         private void dataGridViewEmployees_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -88,14 +105,14 @@ namespace GUI_Management_of_medical_clinic
             if (dataGridViewEmployees.SelectedRows.Count != 1)
             {
                 MessageBox.Show("Select one employee from list!");
-            }else if (employee.IsActive)
+            }
+            else if (employee.IsActive)
             {
                 MessageBox.Show("Employee is active!");
             }
             else
             {
                 ChangeStatusOfEmployee reactivate = new ChangeStatusOfEmployee(service, employee, "act");
-                Hide();
                 reactivate.ShowDialog();
                 EmployeeList_Load(sender, e);
                 Show();
@@ -104,12 +121,25 @@ namespace GUI_Management_of_medical_clinic
 
         private void dataGridViewEmployees_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            var senderGrid = (DataGridView)sender;
 
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            {
+                int employeeIndex = dataGridViewEmployees.CurrentCell.RowIndex;
+
+                if (service.EmployeeListCount() <= employeeIndex)
+                    return;
+
+                EmployeeEdit employeeEdit = new EmployeeEdit(service.GetEmployeeList()[employeeIndex]);
+                this.Hide();
+                employeeEdit.ShowDialog();
+                this.Close();
+            }
         }
 
         private void dataGridViewEmployees_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
         }
 
         private void buttonReviewEmployee_Click(object sender, EventArgs e)
@@ -125,15 +155,24 @@ namespace GUI_Management_of_medical_clinic
                 employee = service.ReturnCorrectEmployee(firstName, lastName, role);
                 //MessageBox.Show(employee.FirstName.ToString());
                 EmployeeDetailsView employeeDetailsView = new EmployeeDetailsView(employee);
-                Hide();
+                this.Hide();
                 employeeDetailsView.ShowDialog();
-                Show();
+                this.Close();
             }
             else
             {
                 MessageBox.Show("Select one employee from list!");
             }
 
+        }
+
+        private void buttonAddEmployee_Click(object sender, EventArgs e)
+        {
+
+            EmplyeeAdd employeeAdd = new EmplyeeAdd();
+            this.Hide();
+            employeeAdd.ShowDialog();
+            this.Close();
         }
     }
 }

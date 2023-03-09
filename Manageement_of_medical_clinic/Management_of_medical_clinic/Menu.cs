@@ -12,15 +12,15 @@ namespace Management_of_medical_clinic
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            panel2.BackColor = Color.FromArgb(200, 10, 10, 0);
         }
 
         private void buttonOpenEmployeeList_Click(object sender, EventArgs e)
         {
             EmployeeList employeeList = new EmployeeList();
-            Hide();
+            this.Hide();
             employeeList.ShowDialog();
-            Show();
+            this.Close();
         }
 
         private void Menu_Load(object sender, EventArgs e)
