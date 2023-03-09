@@ -48,8 +48,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.textBoxAddress = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBoxSex = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.comboBoxSex = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // buttonNext
@@ -95,6 +95,7 @@
             // textBoxFirstName
             // 
             this.textBoxFirstName.Location = new System.Drawing.Point(305, 73);
+            this.textBoxFirstName.MaxLength = 100;
             this.textBoxFirstName.Name = "textBoxFirstName";
             this.textBoxFirstName.Size = new System.Drawing.Size(199, 23);
             this.textBoxFirstName.TabIndex = 10;
@@ -122,6 +123,7 @@
             // textBoxLastName
             // 
             this.textBoxLastName.Location = new System.Drawing.Point(305, 102);
+            this.textBoxLastName.MaxLength = 100;
             this.textBoxLastName.Name = "textBoxLastName";
             this.textBoxLastName.Size = new System.Drawing.Size(199, 23);
             this.textBoxLastName.TabIndex = 13;
@@ -131,10 +133,11 @@
             // textBoxPESEL
             // 
             this.textBoxPESEL.Location = new System.Drawing.Point(305, 131);
+            this.textBoxPESEL.MaxLength = 11;
             this.textBoxPESEL.Name = "textBoxPESEL";
             this.textBoxPESEL.Size = new System.Drawing.Size(199, 23);
             this.textBoxPESEL.TabIndex = 14;
-            this.textBoxPESEL.Text = "11111111111";
+            this.textBoxPESEL.Text = "01010011111";
             this.textBoxPESEL.TextChanged += new System.EventHandler(this.textBoxPESEL_TextChanged);
             // 
             // label4
@@ -192,6 +195,7 @@
             // textBoxPhone
             // 
             this.textBoxPhone.Location = new System.Drawing.Point(305, 304);
+            this.textBoxPhone.MaxLength = 9;
             this.textBoxPhone.Name = "textBoxPhone";
             this.textBoxPhone.Size = new System.Drawing.Size(199, 23);
             this.textBoxPhone.TabIndex = 26;
@@ -199,6 +203,7 @@
             // textBoxEmail
             // 
             this.textBoxEmail.Location = new System.Drawing.Point(305, 275);
+            this.textBoxEmail.MaxLength = 200;
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(199, 23);
             this.textBoxEmail.TabIndex = 25;
@@ -224,6 +229,7 @@
             // textBoxAddress
             // 
             this.textBoxAddress.Location = new System.Drawing.Point(305, 246);
+            this.textBoxAddress.MaxLength = 500;
             this.textBoxAddress.Name = "textBoxAddress";
             this.textBoxAddress.Size = new System.Drawing.Size(199, 23);
             this.textBoxAddress.TabIndex = 22;
@@ -237,19 +243,25 @@
             this.label10.TabIndex = 21;
             this.label10.Text = "Corr. Address";
             // 
-            // textBoxSex
+            // comboBoxSex
             // 
-            this.textBoxSex.Location = new System.Drawing.Point(305, 333);
-            this.textBoxSex.Name = "textBoxSex";
-            this.textBoxSex.Size = new System.Drawing.Size(199, 23);
-            this.textBoxSex.TabIndex = 28;
+            this.comboBoxSex.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxSex.FormattingEnabled = true;
+            this.comboBoxSex.Items.AddRange(new object[] {
+            "Not Specified",
+            "Male",
+            "Female"});
+            this.comboBoxSex.Location = new System.Drawing.Point(305, 333);
+            this.comboBoxSex.Name = "comboBoxSex";
+            this.comboBoxSex.Size = new System.Drawing.Size(199, 23);
+            this.comboBoxSex.TabIndex = 28;
             // 
             // EmplyeeAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBoxSex);
+            this.Controls.Add(this.comboBoxSex);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textBoxPhone);
             this.Controls.Add(this.textBoxEmail);
@@ -300,7 +312,7 @@
         private Label label9;
         private TextBox textBoxAddress;
         private Label label10;
-        private TextBox textBoxSex;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private ComboBox comboBoxSex;
     }
 }
