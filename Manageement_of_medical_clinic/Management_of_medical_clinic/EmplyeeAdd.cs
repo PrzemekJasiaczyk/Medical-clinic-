@@ -38,23 +38,31 @@ namespace GUI_Management_of_medical_clinic
             if (!booleanPESEL)
             {
                 MessageBox.Show(stringPESEL);
+                return;
             }
 
             (string stringEmail, bool booleanEmail) = EmployeeService.validateEmail(textBoxEmail.Text, textBoxFirstName.Text);
             if (!booleanEmail)
             {
                 MessageBox.Show(stringEmail);
+                return;
             }
 
             (string stringPhone, bool booleanPhone) = EmployeeService.validatePhone(textBoxPhone.Text);
             if (!booleanPhone)
             {
                 MessageBox.Show(stringPhone);
+                return;
             }
-            if (booleanPESEL && booleanEmail && booleanPhone)
+
+            if (comboBoxRole.Text == "Medical Doctor" && checkedListBoxSpecialization.CheckedItems.Count == 0)
             {
-                MessageBox.Show("Success");
+                MessageBox.Show("A specialization needs to be selected");
+                return;
             }
+
+            MessageBox.Show("Success");
+            
         }
 
 
@@ -69,7 +77,33 @@ namespace GUI_Management_of_medical_clinic
             else
             {
                 buttonNext.Enabled = false;
+            }            
+        }
+
+        public void checkIfMedicalDoctor()
+        {
+            if (comboBoxRole.Text == "Medical Doctor")
+            {
+                checkedListBoxSpecialization.Visible = true;
+                labelSpecialization.Visible = true;
             }
+
+            else
+            {
+                checkedListBoxSpecialization.Visible = false;
+                labelSpecialization.Visible = false;
+            }
+        }
+
+        //Allow only one item to be checked
+        private void checkedListBoxSpecialization_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedIndex = checkedListBoxSpecialization.SelectedIndex;
+            foreach(int i in checkedListBoxSpecialization.CheckedIndices)
+            {
+                checkedListBoxSpecialization.SetItemCheckState(i, CheckState.Unchecked);
+            }
+            checkedListBoxSpecialization.SetItemCheckState(selectedIndex, CheckState.Checked);
         }
 
         private void textBoxFirstName_TextChanged(object sender, EventArgs e)
@@ -90,7 +124,7 @@ namespace GUI_Management_of_medical_clinic
         private void comboBoxRole_SelectedIndexChanged(object sender, EventArgs e)
         {
             checkIfRequiredFilled();
+            checkIfMedicalDoctor();
         }
-
     }
 }

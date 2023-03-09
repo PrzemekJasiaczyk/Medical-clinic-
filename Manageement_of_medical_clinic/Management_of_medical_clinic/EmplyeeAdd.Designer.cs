@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-
             this.buttonNext = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.labelTitle = new System.Windows.Forms.Label();
@@ -51,52 +50,52 @@
             this.label10 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.comboBoxSex = new System.Windows.Forms.ComboBox();
+            this.checkedListBoxSpecialization = new System.Windows.Forms.CheckedListBox();
+            this.labelSpecialization = new System.Windows.Forms.Label();
             this.SuspendLayout();
-
             // 
             // buttonNext
             // 
-            buttonNext.Enabled = false;
-            buttonNext.Location = new Point(646, 393);
-            buttonNext.Name = "buttonNext";
-            buttonNext.Size = new Size(142, 45);
-            buttonNext.TabIndex = 6;
-            buttonNext.Text = "Next";
-            buttonNext.UseVisualStyleBackColor = true;
-            buttonNext.Click += buttonNext_Click;
+            this.buttonNext.Enabled = false;
+            this.buttonNext.Location = new System.Drawing.Point(646, 393);
+            this.buttonNext.Name = "buttonNext";
+            this.buttonNext.Size = new System.Drawing.Size(142, 45);
+            this.buttonNext.TabIndex = 6;
+            this.buttonNext.Text = "Next";
+            this.buttonNext.UseVisualStyleBackColor = true;
+            this.buttonNext.Click += new System.EventHandler(this.buttonNext_Click);
             // 
             // buttonCancel
             // 
-            buttonCancel.Location = new Point(12, 393);
-            buttonCancel.Name = "buttonCancel";
-            buttonCancel.Size = new Size(142, 45);
-            buttonCancel.TabIndex = 7;
-            buttonCancel.Text = "Cancel";
-            buttonCancel.UseVisualStyleBackColor = true;
-            buttonCancel.Click += buttonCancel_Click;
+            this.buttonCancel.Location = new System.Drawing.Point(12, 393);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(142, 45);
+            this.buttonCancel.TabIndex = 7;
+            this.buttonCancel.Text = "Cancel";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // labelTitle
             // 
-            labelTitle.AutoSize = true;
-            labelTitle.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            labelTitle.Location = new Point(299, 19);
-            labelTitle.Name = "labelTitle";
-            labelTitle.Size = new Size(212, 30);
-            labelTitle.TabIndex = 8;
-            labelTitle.Text = "Add Employee Form";
+            this.labelTitle.AutoSize = true;
+            this.labelTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelTitle.Location = new System.Drawing.Point(299, 19);
+            this.labelTitle.Name = "labelTitle";
+            this.labelTitle.Size = new System.Drawing.Size(212, 30);
+            this.labelTitle.TabIndex = 8;
+            this.labelTitle.Text = "Add Employee Form";
             // 
             // label2
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(209, 81);
-            label2.Name = "label2";
-            label2.Size = new Size(69, 15);
-            label2.TabIndex = 9;
-            label2.Text = "First Name*";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(209, 81);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(69, 15);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "First Name*";
             // 
             // textBoxFirstName
             // 
-
             this.textBoxFirstName.Location = new System.Drawing.Point(305, 73);
             this.textBoxFirstName.MaxLength = 100;
             this.textBoxFirstName.Name = "textBoxFirstName";
@@ -104,29 +103,27 @@
             this.textBoxFirstName.TabIndex = 10;
             this.textBoxFirstName.Text = "a";
             this.textBoxFirstName.TextChanged += new System.EventHandler(this.textBoxFirstName_TextChanged);
-
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(209, 110);
-            label1.Name = "label1";
-            label1.Size = new Size(68, 15);
-            label1.TabIndex = 11;
-            label1.Text = "Last Name*";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(209, 110);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(68, 15);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Last Name*";
             // 
             // label3
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(209, 139);
-            label3.Name = "label3";
-            label3.Size = new Size(43, 15);
-            label3.TabIndex = 12;
-            label3.Text = "PESEL*";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(209, 139);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(43, 15);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "PESEL*";
             // 
             // textBoxLastName
             // 
-
             this.textBoxLastName.Location = new System.Drawing.Point(305, 102);
             this.textBoxLastName.MaxLength = 100;
             this.textBoxLastName.Name = "textBoxLastName";
@@ -144,58 +141,61 @@
             this.textBoxPESEL.TabIndex = 14;
             this.textBoxPESEL.Text = "01010011111";
             this.textBoxPESEL.TextChanged += new System.EventHandler(this.textBoxPESEL_TextChanged);
-
             // 
             // label4
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(209, 168);
-            label4.Name = "label4";
-            label4.Size = new Size(78, 15);
-            label4.TabIndex = 16;
-            label4.Text = "Date of Birth*";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(209, 168);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(78, 15);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "Date of Birth*";
             // 
             // dateTimePickerDate
             // 
-            dateTimePickerDate.Format = DateTimePickerFormat.Short;
-            dateTimePickerDate.Location = new Point(305, 160);
-            dateTimePickerDate.Name = "dateTimePickerDate";
-            dateTimePickerDate.Size = new Size(199, 23);
-            dateTimePickerDate.TabIndex = 17;
-            dateTimePickerDate.Value = new DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.dateTimePickerDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerDate.Location = new System.Drawing.Point(305, 160);
+            this.dateTimePickerDate.Name = "dateTimePickerDate";
+            this.dateTimePickerDate.Size = new System.Drawing.Size(199, 23);
+            this.dateTimePickerDate.TabIndex = 17;
+            this.dateTimePickerDate.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             // 
             // label5
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(209, 197);
-            label5.Name = "label5";
-            label5.Size = new Size(35, 15);
-            label5.TabIndex = 19;
-            label5.Text = "Role*";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(209, 197);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 15);
+            this.label5.TabIndex = 19;
+            this.label5.Text = "Role*";
             // 
             // comboBoxRole
             // 
-            comboBoxRole.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxRole.FormattingEnabled = true;
-            comboBoxRole.Items.AddRange(new object[] { "Medical Doctor", "Nurse", "Paramedic", "Janitor", "Technitian" });
-            comboBoxRole.Location = new Point(305, 189);
-            comboBoxRole.Name = "comboBoxRole";
-            comboBoxRole.Size = new Size(199, 23);
-            comboBoxRole.TabIndex = 20;
-            comboBoxRole.SelectedIndexChanged += comboBoxRole_SelectedIndexChanged;
+            this.comboBoxRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxRole.FormattingEnabled = true;
+            this.comboBoxRole.Items.AddRange(new object[] {
+            "Medical Doctor",
+            "Nurse",
+            "Paramedic",
+            "Janitor",
+            "Technitian"});
+            this.comboBoxRole.Location = new System.Drawing.Point(305, 189);
+            this.comboBoxRole.Name = "comboBoxRole";
+            this.comboBoxRole.Size = new System.Drawing.Size(199, 23);
+            this.comboBoxRole.TabIndex = 20;
+            this.comboBoxRole.SelectedIndexChanged += new System.EventHandler(this.comboBoxRole_SelectedIndexChanged);
             // 
             // label7
             // 
-            label7.AutoSize = true;
-            label7.Location = new Point(209, 341);
-            label7.Name = "label7";
-            label7.Size = new Size(25, 15);
-            label7.TabIndex = 27;
-            label7.Text = "Sex";
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(209, 341);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(25, 15);
+            this.label7.TabIndex = 27;
+            this.label7.Text = "Sex";
             // 
             // textBoxPhone
             // 
-
             this.textBoxPhone.Location = new System.Drawing.Point(305, 304);
             this.textBoxPhone.MaxLength = 9;
             this.textBoxPhone.Name = "textBoxPhone";
@@ -209,48 +209,44 @@
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(199, 23);
             this.textBoxEmail.TabIndex = 25;
-
             // 
             // label8
             // 
-            label8.AutoSize = true;
-            label8.Location = new Point(209, 312);
-            label8.Name = "label8";
-            label8.Size = new Size(86, 15);
-            label8.TabIndex = 24;
-            label8.Text = "Phone number";
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(209, 312);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(86, 15);
+            this.label8.TabIndex = 24;
+            this.label8.Text = "Phone number";
             // 
             // label9
             // 
-            label9.AutoSize = true;
-            label9.Location = new Point(209, 283);
-            label9.Name = "label9";
-            label9.Size = new Size(41, 15);
-            label9.TabIndex = 23;
-            label9.Text = "E-mail";
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(209, 283);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(41, 15);
+            this.label9.TabIndex = 23;
+            this.label9.Text = "E-mail";
             // 
             // textBoxAddress
             // 
-
             this.textBoxAddress.Location = new System.Drawing.Point(305, 246);
             this.textBoxAddress.MaxLength = 500;
             this.textBoxAddress.Name = "textBoxAddress";
             this.textBoxAddress.Size = new System.Drawing.Size(199, 23);
             this.textBoxAddress.TabIndex = 22;
-
             // 
             // label10
             // 
-            label10.AutoSize = true;
-            label10.Location = new Point(209, 249);
-            label10.Name = "label10";
-            label10.Size = new Size(78, 15);
-            label10.TabIndex = 21;
-            label10.Text = "Corr. Address";
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(209, 249);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(78, 15);
+            this.label10.TabIndex = 21;
+            this.label10.Text = "Corr. Address";
             // 
             // comboBoxSex
             // 
-
             this.comboBoxSex.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSex.FormattingEnabled = true;
             this.comboBoxSex.Items.AddRange(new object[] {
@@ -262,11 +258,43 @@
             this.comboBoxSex.Size = new System.Drawing.Size(199, 23);
             this.comboBoxSex.TabIndex = 28;
             // 
+            // checkedListBoxSpecialization
+            // 
+            this.checkedListBoxSpecialization.CheckOnClick = true;
+            this.checkedListBoxSpecialization.FormattingEnabled = true;
+            this.checkedListBoxSpecialization.Items.AddRange(new object[] {
+            "Anesthesiology",
+            "Dermatology",
+            "Family Medicine",
+            "Neurology",
+            "Radiation Oncology",
+            "Surgery",
+            "Urology"});
+            this.checkedListBoxSpecialization.Location = new System.Drawing.Point(548, 82);
+            this.checkedListBoxSpecialization.Name = "checkedListBoxSpecialization";
+            this.checkedListBoxSpecialization.Size = new System.Drawing.Size(209, 130);
+            this.checkedListBoxSpecialization.TabIndex = 30;
+            this.checkedListBoxSpecialization.Visible = false;
+            this.checkedListBoxSpecialization.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxSpecialization_SelectedIndexChanged);
+            // 
+            // labelSpecialization
+            // 
+            this.labelSpecialization.AutoSize = true;
+            this.labelSpecialization.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelSpecialization.Location = new System.Drawing.Point(591, 64);
+            this.labelSpecialization.Name = "labelSpecialization";
+            this.labelSpecialization.Size = new System.Drawing.Size(133, 15);
+            this.labelSpecialization.TabIndex = 31;
+            this.labelSpecialization.Text = "Doctor\'s Specialization";
+            this.labelSpecialization.Visible = false;
+            // 
             // EmplyeeAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.labelSpecialization);
+            this.Controls.Add(this.checkedListBoxSpecialization);
             this.Controls.Add(this.comboBoxSex);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textBoxPhone);
@@ -320,5 +348,7 @@
         private Label label10;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private ComboBox comboBoxSex;
+        private CheckedListBox checkedListBoxSpecialization;
+        private Label labelSpecialization;
     }
 }
