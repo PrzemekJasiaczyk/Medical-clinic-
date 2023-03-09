@@ -131,8 +131,9 @@ namespace GUI_Management_of_medical_clinic
                     return;
 
                 EmployeeEdit employeeEdit = new EmployeeEdit(service.GetEmployeeList()[employeeIndex]);
+                this.Hide();
                 employeeEdit.ShowDialog();
-                Show();
+                this.Close();
             }
         }
 

@@ -48,9 +48,9 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            EmployeeDetailsView employeeDetailsView = new EmployeeDetailsView(employee);
+            EmployeeList employeeList = new EmployeeList();
             this.Hide();
-            employeeDetailsView.ShowDialog();
+            employeeList.ShowDialog();
             this.Close();
         }
 
