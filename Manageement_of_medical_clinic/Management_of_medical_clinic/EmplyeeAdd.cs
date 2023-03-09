@@ -20,9 +20,9 @@ namespace GUI_Management_of_medical_clinic
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             EmployeeList employeeList = new EmployeeList();
-            Hide();
+            this.Hide();
             employeeList.ShowDialog();
-            Show();
+            this.Close();
         }
 
         private void buttonNext_Click(object sender, EventArgs e)

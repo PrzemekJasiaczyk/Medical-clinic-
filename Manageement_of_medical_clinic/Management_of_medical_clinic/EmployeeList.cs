@@ -64,7 +64,6 @@ namespace GUI_Management_of_medical_clinic
             else
             {
                 ChangeStatusOfEmployee deactivate = new ChangeStatusOfEmployee(service, employee, "deact");
-                Hide();
                 deactivate.ShowDialog();
                 EmployeeList_Load(sender, e);
                 Show();
@@ -95,7 +94,6 @@ namespace GUI_Management_of_medical_clinic
             else
             {
                 ChangeStatusOfEmployee reactivate = new ChangeStatusOfEmployee(service, employee, "act");
-                Hide();
                 reactivate.ShowDialog();
                 EmployeeList_Load(sender, e);
                 Show();
@@ -125,9 +123,9 @@ namespace GUI_Management_of_medical_clinic
                 employee = service.ReturnCorrectEmployee(firstName, lastName, role);
                 //MessageBox.Show(employee.FirstName.ToString());
                 EmployeeDetailsView employeeDetailsView = new EmployeeDetailsView(employee);
-                Hide();
+                this.Hide();
                 employeeDetailsView.ShowDialog();
-                Show();
+                this.Close();
             }
             else
             {
@@ -138,10 +136,11 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonAddEmployee_Click(object sender, EventArgs e)
         {
+            
             EmplyeeAdd employeeAdd = new EmplyeeAdd();
-            Hide();
+            this.Hide();
             employeeAdd.ShowDialog();
-            Show();
+            this.Close();
         }
     }
 }

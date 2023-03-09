@@ -50,8 +50,10 @@ namespace GUI_Management_of_medical_clinic
 
         private void button2_Click(object sender, EventArgs e)
         {
+            EmployeeList employeeList = new EmployeeList();
             this.Hide();
-            
+            employeeList.ShowDialog();
+            this.Close();
         }
     }
 }

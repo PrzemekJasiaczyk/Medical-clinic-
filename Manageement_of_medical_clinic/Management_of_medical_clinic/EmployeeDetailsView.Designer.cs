@@ -114,7 +114,7 @@
             // 
             // Edit_Employee
             // 
-            this.Edit_Employee.Location = new System.Drawing.Point(245, 360);
+            this.Edit_Employee.Location = new System.Drawing.Point(405, 361);
             this.Edit_Employee.Name = "Edit_Employee";
             this.Edit_Employee.Size = new System.Drawing.Size(147, 38);
             this.Edit_Employee.TabIndex = 10;
@@ -123,7 +123,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(414, 360);
+            this.button2.Location = new System.Drawing.Point(259, 361);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(140, 38);
             this.button2.TabIndex = 11;
@@ -151,10 +151,7 @@
             this.Name = "EmployeeDetailsView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "EmployeeDetailsView";
-
-
             this.Load += new System.EventHandler(this.EmployeeDetailsView_Load_1);
-
             this.ResumeLayout(false);
             this.PerformLayout();
 
