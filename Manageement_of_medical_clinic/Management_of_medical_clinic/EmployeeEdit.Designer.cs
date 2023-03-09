@@ -212,7 +212,9 @@
             this.buttonCancel.TabIndex = 30;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
+
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+
             // 
             // buttonConfirm
             // 
@@ -222,7 +224,9 @@
             this.buttonConfirm.TabIndex = 50;
             this.buttonConfirm.Text = "Confirm";
             this.buttonConfirm.UseVisualStyleBackColor = true;
+
             this.buttonConfirm.Click += new System.EventHandler(this.buttonConfirm_Click);
+
             // 
             // comboBoxRole
             // 
@@ -265,7 +269,9 @@
             this.Controls.Add(this.buttonCancel);
             this.Name = "EmployeeEdit";
             this.Text = "Employee Edit";
+
             this.Load += new System.EventHandler(this.EmployeeEdit_Load);
+
             this.ResumeLayout(false);
             this.PerformLayout();
 
