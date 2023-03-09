@@ -50,7 +50,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void ChangeStatusOfEmployee_Load(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

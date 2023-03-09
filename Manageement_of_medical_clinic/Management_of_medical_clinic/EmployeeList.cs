@@ -1,5 +1,6 @@
 ﻿using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -113,9 +114,25 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonReviewEmployee_Click(object sender, EventArgs e)
         {
-            int index = dataGridViewEmployees.CurrentRow.Index;
-            employee = service.GetEmployeeList()[index];
-            EmployeeDetailsView employeeDetailsView = new EmployeeDetailsView();
+            int row = dataGridViewEmployees.CurrentRow.Index;
+
+            if (row >= 0 && row < service.EmployeeListCount() && dataGridViewEmployees.SelectedCells.Count < dataGridViewEmployees.ColumnCount + 1)
+            {
+                string? firstName = dataGridViewEmployees.Rows[row].Cells[0].Value.ToString();
+                string? lastName = dataGridViewEmployees.Rows[row].Cells[1].Value.ToString();
+                string? role = dataGridViewEmployees.Rows[row].Cells[2].Value.ToString();
+
+                employee = service.ReturnCorrectEmployee(firstName, lastName, role);
+                //MessageBox.Show(employee.FirstName.ToString());
+                EmployeeDetailsView employeeDetailsView = new EmployeeDetailsView(employee);
+                Hide();
+                employeeDetailsView.ShowDialog();
+                Show();
+            }
+            else
+            {
+                MessageBox.Show("Select one employee from list!");
+            }
 
         }
 

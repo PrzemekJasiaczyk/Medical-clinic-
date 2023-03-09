@@ -45,6 +45,19 @@ namespace Console_Management_of_medical_clinic.Logic
         }
 
 
+       public Employee ReturnCorrectEmployee(string? firstname, string? lastName, string? role)
+        {
+            foreach(Employee emp in employees)
+            {
+                if(emp.FirstName == firstname && emp.LastName == lastName && emp.Role == role)
+                {
+                    return emp;
+                }
+            }
+            return null;
+        }
+
+
         public DataTable GetEmployeeTable()
         {
 

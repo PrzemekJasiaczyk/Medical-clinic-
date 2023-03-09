@@ -151,10 +151,10 @@
             this.Name = "EmployeeDetailsView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "EmployeeDetailsView";
-
-
+<<<<<<< HEAD
+=======
             this.Load += new System.EventHandler(this.EmployeeDetailsView_Load_1);
-
+>>>>>>> 3d051f40c871cbb8b6d858e3d41da0475befd06c
             this.ResumeLayout(false);
             this.PerformLayout();
 
