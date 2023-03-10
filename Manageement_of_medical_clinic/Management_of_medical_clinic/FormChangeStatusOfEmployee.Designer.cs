@@ -1,6 +1,6 @@
 ﻿namespace GUI_Management_of_medical_clinic
 {
-    partial class ChangeStatusOfEmployee
+    partial class FormChangeStatusOfEmployee
     {
         /// <summary>
         /// Required designer variable.

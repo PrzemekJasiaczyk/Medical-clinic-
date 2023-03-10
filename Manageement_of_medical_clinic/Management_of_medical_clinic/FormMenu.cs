@@ -3,9 +3,9 @@ using GUI_Management_of_medical_clinic;
 
 namespace Management_of_medical_clinic
 {
-    public partial class Menu : Form
+    public partial class FormMenu : Form
     {
-        public Menu()
+        public FormMenu()
         {
             InitializeComponent();
         }
@@ -17,7 +17,7 @@ namespace Management_of_medical_clinic
 
         private void buttonOpenEmployeeList_Click(object sender, EventArgs e)
         {
-            EmployeeList employeeList = new EmployeeList();
+            FormEmployeeList employeeList = new FormEmployeeList();
             this.Hide();
             employeeList.ShowDialog();
             this.Close();

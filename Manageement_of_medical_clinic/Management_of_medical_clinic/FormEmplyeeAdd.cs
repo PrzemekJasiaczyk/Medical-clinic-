@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace GUI_Management_of_medical_clinic
 {
-    public partial class EmplyeeAdd : Form
+    public partial class FormEmplyeeAdd : Form
     {
-        public EmplyeeAdd()
+        public FormEmplyeeAdd()
         {
             InitializeComponent();
 
@@ -26,7 +26,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            EmployeeList employeeList = new EmployeeList();
+            FormEmployeeList employeeList = new FormEmployeeList();
             this.Hide();
             employeeList.ShowDialog();
             this.Close();

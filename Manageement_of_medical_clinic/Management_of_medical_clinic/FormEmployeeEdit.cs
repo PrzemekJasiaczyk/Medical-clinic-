@@ -12,10 +12,10 @@ using System.Windows.Forms;
 
 namespace GUI_Management_of_medical_clinic
 {
-    public partial class EmployeeEdit : Form
+    public partial class FormEmployeeEdit : Form
     {
         Employee employee;
-        public EmployeeEdit(Employee emp)
+        public FormEmployeeEdit(Employee emp)
         {
             InitializeComponent();
             this.employee = emp;
@@ -41,7 +41,7 @@ namespace GUI_Management_of_medical_clinic
         }
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            EmployeeList employeeList = new EmployeeList();
+            FormEmployeeList employeeList = new FormEmployeeList();
             this.Hide();
             employeeList.ShowDialog();
             this.Close();

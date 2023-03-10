@@ -13,6 +13,18 @@ namespace Console_Management_of_medical_clinic.Logic
         List<Employee> employees = new List<Employee>();
         DataTable tableEmployees = new DataTable();
 
+        public List<Employee> Employees
+        {
+            get
+            {
+                return employees;
+            }
+            set
+            {
+                employees = value;
+            }
+        }
+
         public EmployeeService() 
         {
             employees.Add(new Employee("Tom", "Raweg", "14556985625", new DateTime(1973, 5, 16), "Employee", "tom.raweg@gmail.com", "tom.raweg@gmail.com", "+48 526 458 526", 'M'));
@@ -83,12 +95,12 @@ namespace Console_Management_of_medical_clinic.Logic
 
         } 
 
-        public List<Employee> GetEmployeeList()
+        public List<Employee> GetEmployeeList()      // for remove
         {
             return employees;
         }
 
-        public int EmployeeListCount()
+        public int EmployeeListCount()      // for remove 
         {
             return employees.Count;
         }
