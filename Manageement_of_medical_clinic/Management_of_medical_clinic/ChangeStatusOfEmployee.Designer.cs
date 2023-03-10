@@ -28,63 +28,63 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.labelPassword = new System.Windows.Forms.Label();
-            this.textBoxPassword = new System.Windows.Forms.TextBox();
-            this.buttonCancel = new System.Windows.Forms.Button();
-            this.buttonConfirm = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            labelPassword = new Label();
+            textBoxPassword = new TextBox();
+            buttonCancel = new Button();
+            buttonConfirm = new Button();
+            SuspendLayout();
             // 
             // labelPassword
             // 
-            this.labelPassword.AutoSize = true;
-            this.labelPassword.Location = new System.Drawing.Point(23, 15);
-            this.labelPassword.Name = "labelPassword";
-            this.labelPassword.Size = new System.Drawing.Size(97, 15);
-            this.labelPassword.TabIndex = 0;
-            this.labelPassword.Text = "Wprowadź hasło:";
+            labelPassword.AutoSize = true;
+            labelPassword.Location = new Point(23, 15);
+            labelPassword.Name = "labelPassword";
+            labelPassword.Size = new Size(97, 15);
+            labelPassword.TabIndex = 0;
+            labelPassword.Text = "Wprowadź hasło:";
             // 
             // textBoxPassword
             // 
-            this.textBoxPassword.Location = new System.Drawing.Point(126, 12);
-            this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.Size = new System.Drawing.Size(190, 23);
-            this.textBoxPassword.TabIndex = 1;
+            textBoxPassword.Location = new Point(126, 12);
+            textBoxPassword.Name = "textBoxPassword";
+            textBoxPassword.Size = new Size(190, 23);
+            textBoxPassword.TabIndex = 1;
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(23, 53);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(126, 33);
-            this.buttonCancel.TabIndex = 2;
-            this.buttonCancel.Text = "Cancel";
-            this.buttonCancel.UseVisualStyleBackColor = true;
-            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            buttonCancel.Location = new Point(23, 53);
+            buttonCancel.Name = "buttonCancel";
+            buttonCancel.Size = new Size(126, 33);
+            buttonCancel.TabIndex = 2;
+            buttonCancel.Text = "Cancel";
+            buttonCancel.UseVisualStyleBackColor = true;
+            buttonCancel.Click += buttonCancel_Click;
             // 
             // buttonConfirm
             // 
-            this.buttonConfirm.Location = new System.Drawing.Point(190, 53);
-            this.buttonConfirm.Name = "buttonConfirm";
-            this.buttonConfirm.Size = new System.Drawing.Size(126, 33);
-            this.buttonConfirm.TabIndex = 3;
-            this.buttonConfirm.Text = "Confirm";
-            this.buttonConfirm.UseVisualStyleBackColor = true;
-            this.buttonConfirm.Click += new System.EventHandler(this.buttonConfirm_Click);
+            buttonConfirm.Location = new Point(190, 53);
+            buttonConfirm.Name = "buttonConfirm";
+            buttonConfirm.Size = new Size(126, 33);
+            buttonConfirm.TabIndex = 3;
+            buttonConfirm.Text = "Confirm";
+            buttonConfirm.UseVisualStyleBackColor = true;
+            buttonConfirm.Click += buttonConfirm_Click;
             // 
             // ChangeStatusOfEmployee
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(350, 110);
-            this.Controls.Add(this.buttonConfirm);
-            this.Controls.Add(this.buttonCancel);
-            this.Controls.Add(this.textBoxPassword);
-            this.Controls.Add(this.labelPassword);
-            this.Name = "ChangeStatusOfEmployee";
-            this.Text = "DeactivateEmployee";
-            this.Load += new System.EventHandler(this.ChangeStatusOfEmployee_Load);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(350, 110);
+            Controls.Add(buttonConfirm);
+            Controls.Add(buttonCancel);
+            Controls.Add(textBoxPassword);
+            Controls.Add(labelPassword);
+            Name = "ChangeStatusOfEmployee";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "DeactivateEmployee";
+            Load += ChangeStatusOfEmployee_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

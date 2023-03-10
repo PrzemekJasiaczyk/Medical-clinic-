@@ -16,7 +16,7 @@ namespace GUI_Management_of_medical_clinic
         public EmplyeeAdd()
         {
             InitializeComponent();
-            
+
         }
 
         private void EmplyeeAdd_Load(object sender, EventArgs e)
@@ -62,7 +62,7 @@ namespace GUI_Management_of_medical_clinic
             }
 
             MessageBox.Show("Success");
-            
+
         }
 
 
@@ -77,7 +77,7 @@ namespace GUI_Management_of_medical_clinic
             else
             {
                 buttonNext.Enabled = false;
-            }            
+            }
         }
 
         public void checkIfMedicalDoctor()
@@ -99,7 +99,7 @@ namespace GUI_Management_of_medical_clinic
         private void checkedListBoxSpecialization_SelectedIndexChanged(object sender, EventArgs e)
         {
             int selectedIndex = checkedListBoxSpecialization.SelectedIndex;
-            foreach(int i in checkedListBoxSpecialization.CheckedIndices)
+            foreach (int i in checkedListBoxSpecialization.CheckedIndices)
             {
                 checkedListBoxSpecialization.SetItemCheckState(i, CheckState.Unchecked);
             }

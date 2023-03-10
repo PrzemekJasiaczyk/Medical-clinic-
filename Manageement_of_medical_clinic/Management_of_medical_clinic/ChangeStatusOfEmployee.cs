@@ -41,7 +41,8 @@ namespace GUI_Management_of_medical_clinic
             {
                 employeeService.DeactivateEmployee(employee);
                 Close();
-            } else if (eventChange == "act")
+            }
+            else if (eventChange == "act")
             {
                 employeeService.ActivateEmployee(employee);
                 Close();
@@ -50,7 +51,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void ChangeStatusOfEmployee_Load(object sender, EventArgs e)
         {
-            
+
         }
     }
 }

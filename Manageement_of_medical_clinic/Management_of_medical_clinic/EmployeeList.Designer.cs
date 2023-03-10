@@ -160,6 +160,7 @@
             Controls.Add(labelFilter);
             Controls.Add(dataGridViewEmployees);
             Name = "EmployeeList";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "EmployeeList";
             Load += EmployeeList_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewEmployees).EndInit();
