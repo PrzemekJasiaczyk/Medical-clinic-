@@ -12,13 +12,13 @@ using System.Windows.Forms;
 
 namespace GUI_Management_of_medical_clinic
 {
-    public partial class ChangeStatusOfEmployee : Form
+    public partial class FormChangeStatusOfEmployee : Form
     {
         EmployeeService employeeService;
         Employee employee;
         string eventChange;
         string password = "1234";
-        public ChangeStatusOfEmployee(EmployeeService service, Employee emp, string eventChange)
+        public FormChangeStatusOfEmployee(EmployeeService service, Employee emp, string eventChange)
         {
             InitializeComponent();
             employeeService = service;

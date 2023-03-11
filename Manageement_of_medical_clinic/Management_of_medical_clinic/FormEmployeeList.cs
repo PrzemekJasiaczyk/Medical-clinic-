@@ -13,13 +13,13 @@ using System.Windows.Forms;
 
 namespace GUI_Management_of_medical_clinic
 {
-    public partial class EmployeeList : Form
+    public partial class FormEmployeeList : Form
     {
         EmployeeService service = new EmployeeService();
         Employee employee;
         string[] roles = { "Employee", "Doctor", "none" };
 
-        public EmployeeList()
+        public FormEmployeeList()
         {
             InitializeComponent();
         }
@@ -81,7 +81,7 @@ namespace GUI_Management_of_medical_clinic
             }
             else
             {
-                ChangeStatusOfEmployee deactivate = new ChangeStatusOfEmployee(service, employee, "deact");
+                FormChangeStatusOfEmployee deactivate = new FormChangeStatusOfEmployee(service, employee, "deact");
                 deactivate.ShowDialog();
                 EmployeeList_Load(sender, e);
                 Show();
@@ -95,7 +95,7 @@ namespace GUI_Management_of_medical_clinic
             int index = service.EmployeeListCount();
             if (dataGridViewEmployees.CurrentCell.RowIndex < index)
             {
-                employee = service.GetEmployeeList()[e.RowIndex];
+                employee = service.Employees[e.RowIndex];
             }
 
         }
@@ -112,7 +112,7 @@ namespace GUI_Management_of_medical_clinic
             }
             else
             {
-                ChangeStatusOfEmployee reactivate = new ChangeStatusOfEmployee(service, employee, "act");
+                FormChangeStatusOfEmployee reactivate = new FormChangeStatusOfEmployee(service, employee, "act");
                 reactivate.ShowDialog();
                 EmployeeList_Load(sender, e);
                 Show();
@@ -130,7 +130,7 @@ namespace GUI_Management_of_medical_clinic
                 if (service.EmployeeListCount() <= employeeIndex)
                     return;
 
-                EmployeeEdit employeeEdit = new EmployeeEdit(service.GetEmployeeList()[employeeIndex]);
+                FormEmployeeEdit employeeEdit = new FormEmployeeEdit(service.Employees[employeeIndex]);
                 this.Hide();
                 employeeEdit.ShowDialog();
                 this.Close();
@@ -154,7 +154,7 @@ namespace GUI_Management_of_medical_clinic
 
                 employee = service.ReturnCorrectEmployee(firstName, lastName, role);
                 //MessageBox.Show(employee.FirstName.ToString());
-                EmployeeDetailsView employeeDetailsView = new EmployeeDetailsView(employee);
+                FormEmployeeDetailsView employeeDetailsView = new FormEmployeeDetailsView(employee);
                 this.Hide();
                 employeeDetailsView.ShowDialog();
                 this.Close();
@@ -169,7 +169,7 @@ namespace GUI_Management_of_medical_clinic
         private void buttonAddEmployee_Click(object sender, EventArgs e)
         {
 
-            EmplyeeAdd employeeAdd = new EmplyeeAdd();
+            FormEmplyeeAdd employeeAdd = new FormEmplyeeAdd();
             this.Hide();
             employeeAdd.ShowDialog();
             this.Close();

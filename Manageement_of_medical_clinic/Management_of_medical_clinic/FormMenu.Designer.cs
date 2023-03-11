@@ -1,6 +1,6 @@
 ﻿namespace Management_of_medical_clinic
 {
-    partial class Menu
+    partial class FormMenu
     {
         /// <summary>
         ///  Required designer variable.

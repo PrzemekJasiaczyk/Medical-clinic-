@@ -11,10 +11,10 @@ using System.Windows.Forms;
 
 namespace GUI_Management_of_medical_clinic
 {
-    public partial class EmployeeDetailsView : Form
+    public partial class FormEmployeeDetailsView : Form
     {
         Employee employee;
-        public EmployeeDetailsView(Employee emp)
+        public FormEmployeeDetailsView(Employee emp)
         {
             InitializeComponent();
             employee = emp;
@@ -50,7 +50,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void button2_Click(object sender, EventArgs e)
         {
-            EmployeeList employeeList = new EmployeeList();
+            FormEmployeeList employeeList = new FormEmployeeList();
             this.Hide();
             employeeList.ShowDialog();
             this.Close();
@@ -58,7 +58,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void Edit_Employee_Click(object sender, EventArgs e)
         {
-            EmployeeEdit employeeEdit = new EmployeeEdit(employee);
+            FormEmployeeEdit employeeEdit = new FormEmployeeEdit(employee);
             this.Hide();
             employeeEdit.ShowDialog();
             this.Close();

@@ -1,6 +1,6 @@
 ﻿namespace GUI_Management_of_medical_clinic
 {
-    partial class EmployeeList
+    partial class FormEmployeeList
     {
         /// <summary>
         /// Required designer variable.
