@@ -112,6 +112,8 @@
             // checkBoxIsActive
             // 
             this.checkBoxIsActive.AutoSize = true;
+            this.checkBoxIsActive.Checked = true;
+            this.checkBoxIsActive.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxIsActive.Location = new System.Drawing.Point(12, 326);
             this.checkBoxIsActive.Name = "checkBoxIsActive";
             this.checkBoxIsActive.Size = new System.Drawing.Size(123, 19);
