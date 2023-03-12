@@ -44,6 +44,24 @@ namespace Console_Management_of_medical_clinic.Model
             Password = password;
             IdSpecialization = idSpecialization;
             IsActive = isActive;
-        }        
+        }
+
+        public EmployeeModel(string firstName, string lastName, string pesel, DateTime dateOfBirth, string role, string correspondenceAddress, string email, string phoneNumber,
+            EnumSex sex, string username, string password, SpecializationModel idSpecialization, bool isActive)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            PESEL = pesel;
+            DateOfBirth = dateOfBirth;
+            Role = role;
+            CorrespondenceAddress = correspondenceAddress;
+            Email = email;
+            PhoneNumber = phoneNumber;
+            Sex = sex;
+            Username = username;
+            Password = password;
+            IdSpecialization = idSpecialization;
+            IsActive = isActive;
+        }
     }
 }

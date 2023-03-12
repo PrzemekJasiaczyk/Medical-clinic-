@@ -24,9 +24,23 @@ namespace GUI_Management_of_medical_clinic
 
         private void FormEmployeeList_Load(object sender, EventArgs e)
         {
+            dataGridViewEmployees.Rows.Clear();
             comboBoxRole.Items.Clear();
-            dataGridViewEmployees.DataSource = service.GetEmployeeTable();
             comboBoxRole.Items.AddRange(roles);
+            dataGridViewEmployees.Columns.Add("IdEmployee", "Id of Employee");
+            dataGridViewEmployees.Columns.Add("FirstName", "First Name");
+            dataGridViewEmployees.Columns.Add("LastName", "Last Name");
+            dataGridViewEmployees.Columns.Add("Role", "Role");
+
+            foreach(EmployeeModel employee in EmployeeService.GetEmployeesData())
+            {
+                dataGridViewEmployees.Rows.Add(employee.IdEmployee, employee.FirstName, employee.LastName, employee.Role);
+            }
+
+
+
+
+            //dataGridViewEmployees.DataSource = service.GetEmployeeTable();
             /* addEditBtnColumn();
             
             foreach (DataGridViewColumn dgvc in dataGridViewEmployees.Columns)
@@ -59,7 +73,7 @@ namespace GUI_Management_of_medical_clinic
         }
         private void buttonClearFilter_Click(object sender, EventArgs e)
         {
-            dataGridViewEmployees.DataSource = service.GetEmployeeTable();
+            //dataGridViewEmployees.DataSource = service.GetEmployeeTable();
             comboBoxRole.SelectedItem = null;
             checkBoxIsActive.Checked = false;
         }
@@ -89,7 +103,7 @@ namespace GUI_Management_of_medical_clinic
             int index = service.EmployeeListCount();
             if (dataGridViewEmployees.CurrentCell.RowIndex < index)
             {
-                employee = service.Employees[e.RowIndex];
+                //employee = service.Employees[e.RowIndex];
             }
 
         }

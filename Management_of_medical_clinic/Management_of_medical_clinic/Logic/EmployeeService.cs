@@ -1,4 +1,6 @@
-﻿using Console_Management_of_medical_clinic.Model;
+﻿using Console_Management_of_medical_clinic.Data;
+using Console_Management_of_medical_clinic.Data.Enums;
+using Console_Management_of_medical_clinic.Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,19 +12,31 @@ namespace Console_Management_of_medical_clinic.Logic
 {
     public class EmployeeService
     {
-        List<EmployeeModel> employees = new List<EmployeeModel>();
-        DataTable tableEmployees = new DataTable();
+        List<EmployeeModel> employees = new List<EmployeeModel>();  // for remove
+        DataTable tableEmployees = new DataTable();   // for remove
 
-        public List<EmployeeModel> Employees
+        public static void AddEmployee(string firstName, string lastName, string pesel, DateTime dateOfBirth, string role, string correspondenceAddress, string email, string phoneNumber,
+            EnumSex sex, string username, string password, SpecializationModel idSpecialization, bool isActive)
         {
-            get
+
+            EmployeeModel employee = new EmployeeModel(firstName, lastName, pesel, dateOfBirth, role, correspondenceAddress, email, phoneNumber,
+            sex, username, password, idSpecialization, isActive);
+
+            using AppDbContext context = new AppDbContext();
+
+            context.DbEmployees.Add(employee);
+            context.SaveChanges();
+        }
+
+        public static List<EmployeeModel> GetEmployeesData()
+        {
+            List<EmployeeModel> employees = new List<EmployeeModel>();
+            using (var db = new AppDbContext())
             {
-                return employees;
+                employees = db.DbEmployees.ToList();
             }
-            set
-            {
-                employees = value;
-            }
+
+            return employees;
         }
 
         public EmployeeService() 
@@ -32,29 +46,19 @@ namespace Console_Management_of_medical_clinic.Logic
             //employees.Add(new Employee(3,"John", "Long", "75333345624", new DateTime(1988, 1, 20), "Employee", "john.long@gmail.com", "john.long@gmail.com", "+48 778 863 322", Data.Enums.EnumSex.Male, "", "", 1, true)); 
             //employees.Add(new Employee(4,"Mark", "Tompson", "25757133412", new DateTime(1979, 10, 11), "Doctor", "mark.tompson@gmail.com", "mark.tompson@gmail.com", "+48 775 552 122", Data.Enums.EnumSex.Undefined, "", "", 1, true));
 
-            tableEmployees.Columns.Add("First name", typeof(string));
-            tableEmployees.Columns.Add("Last name", typeof(string));
+            //tableEmployees.Columns.Add("First name", typeof(string));
+            //tableEmployees.Columns.Add("Last name", typeof(string));
             //tableEmployees.Columns.Add("PESEL", typeof(string));
             //tableEmployees.Columns.Add("Date of birth", typeof(DateTime));
-            tableEmployees.Columns.Add("Role", typeof(string));
+            //tableEmployees.Columns.Add("Role", typeof(string));
             //tableEmployees.Columns.Add("Correspondence address", typeof(string));
             //tableEmployees.Columns.Add("E-mail address", typeof(string));
             //tableEmployees.Columns.Add("Phone number", typeof(string));
             //tableEmployees.Columns.Add("Sex", typeof(char));
-            tableEmployees.Columns.Add("Is active", typeof(string));
+            //tableEmployees.Columns.Add("Is active", typeof(string));
         }
 
-        public void UpdateEmployeeList()
-        {
-
-            // Here data should be taken from database
-            // Temporarily we create data in constructor
-
-            employees.Clear();
-            tableEmployees.Clear();
-
-            
-        }
+       
 
 
        public EmployeeModel ReturnCorrectEmployee(string? firstname, string? lastName, string? role)
@@ -70,7 +74,9 @@ namespace Console_Management_of_medical_clinic.Logic
         }
 
 
-        public DataTable GetEmployeeTable()
+
+        /* 
+        public DataTable GetEmployeeTable()   // for remove
         {
 
             tableEmployees.Rows.Clear();
@@ -81,7 +87,7 @@ namespace Console_Management_of_medical_clinic.Logic
             {
                 tableEmployees.Rows.Add(emp.FirstName, emp.LastName, emp.PESEL, emp.DateOfBirth, emp.Role, emp.CorrespondenceAddress, emp.Email, emp.PhoneNumber, emp.Sex, emp.IsActive ? "Active" : "Deactive");
             }
-            return tableEmployees;*/
+            return tableEmployees;
 
 
 
@@ -93,19 +99,22 @@ namespace Console_Management_of_medical_clinic.Logic
             return tableEmployees;
 
 
-        } 
+        }
+        */
 
+        /*
         public List<EmployeeModel> GetEmployeeList()      // for remove
         {
             return employees;
         }
+        */
 
         public int EmployeeListCount()      // for remove 
         {
             return employees.Count;
         }
 
-        public DataTable FilterEmployee(string role, bool isActive)
+        public DataTable FilterEmployee(string role, bool isActive)   // for remove
         {
             tableEmployees.Rows.Clear();
             foreach (EmployeeModel emp in employees)
