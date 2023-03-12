@@ -10,10 +10,10 @@ namespace Console_Management_of_medical_clinic.Logic
 {
     public class EmployeeService
     {
-        List<Employee> employees = new List<Employee>();
+        List<EmployeeModel> employees = new List<EmployeeModel>();
         DataTable tableEmployees = new DataTable();
 
-        public List<Employee> Employees
+        public List<EmployeeModel> Employees
         {
             get
             {
@@ -27,10 +27,10 @@ namespace Console_Management_of_medical_clinic.Logic
 
         public EmployeeService() 
         {
-            employees.Add(new Employee("Tom", "Raweg", "14556985625", new DateTime(1973, 5, 16), "Employee", "tom.raweg@gmail.com", "tom.raweg@gmail.com", "+48 526 458 526", 'M'));
-            employees.Add(new Employee("Anna", "Kotras", "75695485698", new DateTime(1981, 7, 4), "Employee", "anna.kotras@gmail.com", "anna.kotras@gmail.com", "+48 458 889 112", 'K'));
-            employees.Add(new Employee("John", "Long", "75333345624", new DateTime(1988, 1, 20), "Employee", "john.long@gmail.com", "john.long@gmail.com", "+48 778 863 322", 'M'));
-            employees.Add(new Employee("Mark", "Tompson", "25757133412", new DateTime(1979, 10, 11), "Doctor", "mark.tompson@gmail.com", "mark.tompson@gmail.com", "+48 775 552 122", 'M'));
+            //employees.Add(new Employee(1,"Tom", "Raweg", "14556985625", new DateTime(1973, 5, 16), "Employee", "tom.raweg@gmail.com", "tom.raweg@gmail.com", "+48 526 458 526", Data.Enums.EnumSex.Male, "", "", 1, true));
+            //employees.Add(new Employee(2,"Anna", "Kotras", "75695485698", new DateTime(1981, 7, 4), "Employee", "anna.kotras@gmail.com", "anna.kotras@gmail.com", "+48 458 889 112", Data.Enums.EnumSex.Female, "", "", 1, false));
+            //employees.Add(new Employee(3,"John", "Long", "75333345624", new DateTime(1988, 1, 20), "Employee", "john.long@gmail.com", "john.long@gmail.com", "+48 778 863 322", Data.Enums.EnumSex.Male, "", "", 1, true)); 
+            //employees.Add(new Employee(4,"Mark", "Tompson", "25757133412", new DateTime(1979, 10, 11), "Doctor", "mark.tompson@gmail.com", "mark.tompson@gmail.com", "+48 775 552 122", Data.Enums.EnumSex.Undefined, "", "", 1, true));
 
             tableEmployees.Columns.Add("First name", typeof(string));
             tableEmployees.Columns.Add("Last name", typeof(string));
@@ -57,9 +57,9 @@ namespace Console_Management_of_medical_clinic.Logic
         }
 
 
-       public Employee ReturnCorrectEmployee(string? firstname, string? lastName, string? role)
+       public EmployeeModel ReturnCorrectEmployee(string? firstname, string? lastName, string? role)
         {
-            foreach(Employee emp in employees)
+            foreach(EmployeeModel emp in employees)
             {
                 if(emp.FirstName == firstname && emp.LastName == lastName && emp.Role == role)
                 {
@@ -85,7 +85,7 @@ namespace Console_Management_of_medical_clinic.Logic
 
 
 
-            foreach (Employee emp in employees)
+            foreach (EmployeeModel emp in employees)
             {
                 tableEmployees.Rows.Add(emp.FirstName, emp.LastName, emp.Role, emp.IsActive ? "Active" : "Deactive");
 
@@ -95,7 +95,7 @@ namespace Console_Management_of_medical_clinic.Logic
 
         } 
 
-        public List<Employee> GetEmployeeList()      // for remove
+        public List<EmployeeModel> GetEmployeeList()      // for remove
         {
             return employees;
         }
@@ -108,7 +108,7 @@ namespace Console_Management_of_medical_clinic.Logic
         public DataTable FilterEmployee(string role, bool isActive)
         {
             tableEmployees.Rows.Clear();
-            foreach (Employee emp in employees)
+            foreach (EmployeeModel emp in employees)
             {
                 if (role != "none")
                 {
@@ -127,12 +127,12 @@ namespace Console_Management_of_medical_clinic.Logic
             return tableEmployees;
         }
 
-        public void ActivateEmployee(Employee emp)
+        public void ActivateEmployee(EmployeeModel emp)
         {
             emp.IsActive = true;
         }
 
-        public void DeactivateEmployee(Employee emp) { emp.IsActive = false; }
+        public void DeactivateEmployee(EmployeeModel emp) { emp.IsActive = false; }
 
 
         //Validation upon addit Employee

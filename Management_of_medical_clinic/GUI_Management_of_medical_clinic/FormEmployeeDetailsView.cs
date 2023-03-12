@@ -13,8 +13,8 @@ namespace GUI_Management_of_medical_clinic
 {
     public partial class FormEmployeeDetailsView : Form
     {
-        Employee employee;
-        public FormEmployeeDetailsView(Employee emp)
+        EmployeeModel employee;
+        public FormEmployeeDetailsView(EmployeeModel emp)
         {
             InitializeComponent();
             employee = emp;

@@ -15,7 +15,7 @@ namespace GUI_Management_of_medical_clinic
     public partial class FormEmployeeList : Form
     {
         EmployeeService service = new EmployeeService();
-        Employee employee;
+        EmployeeModel employee;
         string[] roles = { "Employee", "Doctor", "none" };
         public FormEmployeeList()
         {
@@ -157,6 +157,14 @@ namespace GUI_Management_of_medical_clinic
             FormEmployeeAdd employeeAdd = new FormEmployeeAdd();
             this.Hide();
             employeeAdd.ShowDialog();
+            this.Close();
+        }
+
+        private void buttonSpecializations_Click(object sender, EventArgs e)
+        {
+            FormSpecializationAdd specializationAdd = new FormSpecializationAdd();
+            this.Hide();
+            specializationAdd.ShowDialog();
             this.Close();
         }
     }

@@ -13,8 +13,8 @@ namespace GUI_Management_of_medical_clinic
 {
     public partial class FormEmployeeEdit : Form
     {
-        Employee employee;
-        public FormEmployeeEdit(Employee emp)
+        EmployeeModel employee;
+        public FormEmployeeEdit(EmployeeModel emp)
         {
             InitializeComponent();
             this.employee = emp;

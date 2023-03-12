@@ -15,10 +15,10 @@ namespace GUI_Management_of_medical_clinic
     public partial class FormChangeStatusOfEmployee : Form
     {
         EmployeeService employeeService;
-        Employee employee;
+        EmployeeModel employee;
         string eventChange;
         string password = "1234";
-        public FormChangeStatusOfEmployee(EmployeeService service, Employee emp, string eventChange)
+        public FormChangeStatusOfEmployee(EmployeeService service, EmployeeModel emp, string eventChange)
         {
             InitializeComponent();
             employeeService = service;
