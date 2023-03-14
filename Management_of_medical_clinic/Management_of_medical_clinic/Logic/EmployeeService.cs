@@ -15,7 +15,7 @@ namespace Console_Management_of_medical_clinic.Logic
         List<EmployeeModel> employees = new List<EmployeeModel>();  // for remove
         DataTable tableEmployees = new DataTable();   // for remove
 
-        public static void AddEmployee(string firstName, string lastName, string pesel, DateTime dateOfBirth, string role, string correspondenceAddress, string email, string phoneNumber,
+        public static void AddEmployee(string firstName, string lastName, string pesel, string dateOfBirth, string role, string correspondenceAddress, string email, string phoneNumber,
             EnumSex sex, string username, string password, SpecializationModel idSpecialization, bool isActive)
         {
 

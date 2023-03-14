@@ -14,7 +14,7 @@ namespace Console_Management_of_medical_clinic.Model
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string PESEL { get; set; }
-        public DateTime DateOfBirth { get; set; }
+        public string DateOfBirth { get; set; }
         public string Role { get; set; }
         public string CorrespondenceAddress { get; set; }
         public string Email { get; set; }
@@ -27,7 +27,7 @@ namespace Console_Management_of_medical_clinic.Model
 
         public EmployeeModel() { }
 
-        public EmployeeModel(int idEmployee, string firstName, string lastName, string pesel, DateTime dateOfBirth, string role, string correspondenceAddress, string email, string phoneNumber, 
+        public EmployeeModel(int idEmployee, string firstName, string lastName, string pesel, string dateOfBirth, string role, string correspondenceAddress, string email, string phoneNumber, 
             EnumSex sex, string username, string password, SpecializationModel idSpecialization, bool isActive)
         {
             IdEmployee = idEmployee;
@@ -46,7 +46,7 @@ namespace Console_Management_of_medical_clinic.Model
             IsActive = isActive;
         }
 
-        public EmployeeModel(string firstName, string lastName, string pesel, DateTime dateOfBirth, string role, string correspondenceAddress, string email, string phoneNumber,
+        public EmployeeModel(string firstName, string lastName, string pesel, string dateOfBirth, string role, string correspondenceAddress, string email, string phoneNumber,
             EnumSex sex, string username, string password, SpecializationModel idSpecialization, bool isActive)
         {
             FirstName = firstName;
