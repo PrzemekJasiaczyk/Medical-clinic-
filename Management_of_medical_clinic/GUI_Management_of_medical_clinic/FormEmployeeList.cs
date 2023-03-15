@@ -102,9 +102,11 @@ namespace GUI_Management_of_medical_clinic
             if (dataGridViewEmployees.SelectedRows.Count != 1)
             {
                 MessageBox.Show("Select one employee from list!");
+                return;
 
             }
-            else if (!employee.IsActive)
+            int rowIndex = dataGridViewEmployees.CurrentCell.RowIndex;
+            if (dataGridViewEmployees.Rows[rowIndex].Cells["IsActive"].Value.ToString() == "Not Active")
             {
                 MessageBox.Show("Employee is deactive!");
             }

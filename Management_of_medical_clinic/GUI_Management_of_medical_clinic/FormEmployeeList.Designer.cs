@@ -141,6 +141,7 @@
             this.dataGridViewEmployees.Name = "dataGridViewEmployees";
             this.dataGridViewEmployees.ReadOnly = true;
             this.dataGridViewEmployees.RowTemplate.Height = 25;
+            this.dataGridViewEmployees.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewEmployees.Size = new System.Drawing.Size(776, 273);
             this.dataGridViewEmployees.TabIndex = 10;
             this.dataGridViewEmployees.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewEmployees_RowHeaderMouseClick);
