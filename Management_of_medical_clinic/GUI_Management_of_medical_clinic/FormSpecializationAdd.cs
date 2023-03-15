@@ -34,9 +34,9 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            FormEmployeeList employeeList = new FormEmployeeList();
+            //FormEmployeeList employeeList = new FormEmployeeList();
             this.Hide();
-            employeeList.ShowDialog();
+            //employeeList.ShowDialog();
             this.Close();
         }
 

@@ -1,4 +1,6 @@
-﻿using Console_Management_of_medical_clinic.Data.Enums;
+﻿using Console_Management_of_medical_clinic.Data;
+using Console_Management_of_medical_clinic.Data.Enums;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -62,6 +64,28 @@ namespace Console_Management_of_medical_clinic.Model
             Password = password;
             IdSpecialization = idSpecialization;
             IsActive = isActive;
+        }
+
+        public void ChangeEmployeeStatus(EmployeeModel employee)
+        {
+            if (employee.IsActive == true)
+            {
+                var context = new AppDbContext();
+                var emp = context.DbEmployees.Find(employee.IdEmployee);
+                emp.IsActive = false;
+                context.SaveChanges();
+            }
+
+            if (employee.IsActive == false)
+            {
+                var context = new AppDbContext();
+                var emp = context.DbEmployees.Find(employee.IdEmployee);
+                emp.IsActive = true;
+                context.SaveChanges();
+            }
+
+
+
         }
     }
 }

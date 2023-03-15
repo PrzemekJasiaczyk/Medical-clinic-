@@ -26,7 +26,7 @@ namespace GUI_Management_of_medical_clinic
             {
                 if(emp.Username==login && emp.Password == password)
                 {
-                    FormEmployeeList employeeList = new FormEmployeeList();
+                    FormEmployeeList employeeList = new FormEmployeeList(emp);
                     this.Hide();
                     employeeList.ShowDialog();
                     this.Close();
@@ -36,10 +36,7 @@ namespace GUI_Management_of_medical_clinic
 
             MessageBox.Show("Incorrect login or password");
 
-            //FormEmployeeList employeeList = new FormEmployeeList();
-            //this.Hide();
-            //employeeList.ShowDialog();
-            //this.Close();
+            
         }
     }
 }

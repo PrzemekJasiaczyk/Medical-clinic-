@@ -14,8 +14,8 @@ namespace GUI_Management_of_medical_clinic
 {
     public partial class FormEmployeeList : Form
     {
-        EmployeeService service = new EmployeeService();
-        EmployeeModel employee;
+        EmployeeService service = new EmployeeService();    //for remove
+        EmployeeModel employee;     // from now 'employee object' which is moving beetween forms is person logged to system
         string[] roles = { "Employee", "Doctor", "none" };
 
         void LoadEmployeeData()
@@ -34,8 +34,9 @@ namespace GUI_Management_of_medical_clinic
             
         }
 
-        public FormEmployeeList()
+        public FormEmployeeList(EmployeeModel emp)
         {
+            employee = emp;
             InitializeComponent();
         }
 
@@ -109,24 +110,23 @@ namespace GUI_Management_of_medical_clinic
             if (dataGridViewEmployees.Rows[rowIndex].Cells["IsActive"].Value.ToString() == "Not Active")
             {
                 MessageBox.Show("Employee is deactive!");
+                return;
             }
-            else
-            {
-                FormChangeStatusOfEmployee deactivate = new FormChangeStatusOfEmployee(service, employee, "deact");
-                deactivate.ShowDialog();
-                FormEmployeeList_Load(sender, e);
-                Show();
-            }
+            
+            FormChangeStatusOfEmployee deactivate = new FormChangeStatusOfEmployee(employee);
+            deactivate.ShowDialog();
+            Show();
+         
 
         }
         private void dataGridViewEmployees_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
 
-            int index = service.EmployeeListCount();
-            if (dataGridViewEmployees.CurrentCell.RowIndex < index)
-            {
+            //int index = service.EmployeeListCount();
+            //if (dataGridViewEmployees.CurrentCell.RowIndex < index)
+            //{
                 //employee = service.Employees[e.RowIndex];
-            }
+            //}
 
         }
         private void buttonReactivate_Click(object sender, EventArgs e)
@@ -134,18 +134,20 @@ namespace GUI_Management_of_medical_clinic
             if (dataGridViewEmployees.SelectedRows.Count != 1)
             {
                 MessageBox.Show("Select one employee from list!");
+                return;
+
             }
-            else if (employee.IsActive)
+            int rowIndex = dataGridViewEmployees.CurrentCell.RowIndex;
+            if (dataGridViewEmployees.Rows[rowIndex].Cells["IsActive"].Value.ToString() == "Active")
             {
                 MessageBox.Show("Employee is active!");
+                return;
             }
-            else
-            {
-                FormChangeStatusOfEmployee reactivate = new FormChangeStatusOfEmployee(service, employee, "act");
-                reactivate.ShowDialog();
-                FormEmployeeList_Load(sender, e);
-                Show();
-            }
+
+            FormChangeStatusOfEmployee deactivate = new FormChangeStatusOfEmployee(employee);
+            this.Hide();
+            deactivate.ShowDialog();
+            this.Close();
         }
         private void dataGridViewEmployees_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -166,7 +168,7 @@ namespace GUI_Management_of_medical_clinic
         }
         private void buttonReviewEmployee_Click(object sender, EventArgs e)
         {
-            int row = dataGridViewEmployees.CurrentRow.Index;
+            /* int row = dataGridViewEmployees.CurrentRow.Index;
 
             if (row >= 0 && row < service.EmployeeListCount() && dataGridViewEmployees.SelectedCells.Count < dataGridViewEmployees.ColumnCount + 1)
             {
@@ -184,7 +186,7 @@ namespace GUI_Management_of_medical_clinic
             else
             {
                 MessageBox.Show("Select one employee from list!");
-            }
+            } */
 
         }
         private void buttonAddEmployee_Click(object sender, EventArgs e)

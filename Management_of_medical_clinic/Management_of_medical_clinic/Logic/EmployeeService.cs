@@ -109,10 +109,7 @@ namespace Console_Management_of_medical_clinic.Logic
         }
         */
 
-        public int EmployeeListCount()      // for remove 
-        {
-            return employees.Count;
-        }
+        
 
         public DataTable FilterEmployee(string role, bool isActive)   // for remove
         {
@@ -136,12 +133,12 @@ namespace Console_Management_of_medical_clinic.Logic
             return tableEmployees;
         }
 
-        public void ActivateEmployee(EmployeeModel emp)
-        {
-            emp.IsActive = true;
-        }
+        //public void ActivateEmployee(EmployeeModel emp)
+        //{
+            //emp.IsActive = true;
+        //}
 
-        public void DeactivateEmployee(EmployeeModel emp) { emp.IsActive = false; }
+        //public void DeactivateEmployee(EmployeeModel emp) { emp.IsActive = false; }
 
 
         //Validation upon addit Employee

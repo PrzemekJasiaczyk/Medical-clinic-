@@ -66,9 +66,9 @@
             this.labelPassword.AutoSize = true;
             this.labelPassword.Location = new System.Drawing.Point(29, 21);
             this.labelPassword.Name = "labelPassword";
-            this.labelPassword.Size = new System.Drawing.Size(97, 15);
+            this.labelPassword.Size = new System.Drawing.Size(91, 15);
             this.labelPassword.TabIndex = 4;
-            this.labelPassword.Text = "Wprowadź hasło:";
+            this.labelPassword.Text = "Input password:";
             // 
             // FormChangeStatusOfEmployee
             // 

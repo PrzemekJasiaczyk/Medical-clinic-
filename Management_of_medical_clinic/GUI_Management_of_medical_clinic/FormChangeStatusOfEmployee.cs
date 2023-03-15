@@ -14,16 +14,13 @@ namespace GUI_Management_of_medical_clinic
 {
     public partial class FormChangeStatusOfEmployee : Form
     {
-        EmployeeService employeeService;
+        
         EmployeeModel employee;
-        string eventChange;
-        string password = "1234";
-        public FormChangeStatusOfEmployee(EmployeeService service, EmployeeModel emp, string eventChange)
+        
+        public FormChangeStatusOfEmployee(EmployeeModel emp)
         {
             InitializeComponent();
-            employeeService = service;
             employee = emp;
-            this.eventChange = eventChange;
         }
 
         private void FormChangeStatusOfEmployee_Load(object sender, EventArgs e)
@@ -33,25 +30,25 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            Close();
+            FormEmployeeList formEmployeeList = new FormEmployeeList(employee);
+            this.Hide();
+            formEmployeeList.ShowDialog();
+            this.Close();
         }
 
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
-            if (textBoxPassword.Text != password)
+            if (textBoxPassword.Text != employee.Password)
             {
                 MessageBox.Show("Invalid password!");
+                return;
             }
-            else if (eventChange == "deact")
-            {
-                employeeService.DeactivateEmployee(employee);
-                Close();
-            }
-            else if (eventChange == "act")
-            {
-                employeeService.ActivateEmployee(employee);
-                Close();
-            }
+
+            employee.ChangeEmployeeStatus(employee);
+            FormEmployeeList formEmployeeList = new FormEmployeeList(employee);
+            this.Hide();
+            formEmployeeList.ShowDialog();
+            this.Close();
         }
     }
 }
