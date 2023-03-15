@@ -15,7 +15,7 @@ namespace GUI_Management_of_medical_clinic
     public partial class FormEmployeeList : Form
     {
         EmployeeService service = new EmployeeService();    //for remove
-        EmployeeModel employee;     // from now 'employee object' which is moving beetween forms is person logged to system
+        EmployeeModel currentUser;     // from now 'employee object' which is moving beetween forms is person logged to system
         string[] roles = { "Employee", "Doctor", "none" };
 
         void LoadEmployeeData()
@@ -30,13 +30,15 @@ namespace GUI_Management_of_medical_clinic
             foreach (EmployeeModel employee in EmployeeService.GetEmployeesData())
             {
                 dataGridViewEmployees.Rows.Add(employee.IdEmployee, employee.FirstName, employee.LastName, employee.Role, (employee.IsActive == true) ? "Active" : "Not Active");
+
+                if (currentUser.IdEmployee == currentUser.IdEmployee) { currentUser = employee; }     // it makes user always refreshed
             }
             
         }
 
         public FormEmployeeList(EmployeeModel emp)
         {
-            employee = emp;
+            currentUser = emp;
             InitializeComponent();
         }
 
@@ -113,20 +115,14 @@ namespace GUI_Management_of_medical_clinic
                 return;
             }
             
-            FormChangeStatusOfEmployee deactivate = new FormChangeStatusOfEmployee(employee);
+            FormChangeStatusOfEmployee deactivate = new FormChangeStatusOfEmployee(currentUser);
+            this.Hide();
             deactivate.ShowDialog();
-            Show();
-         
+            
 
         }
         private void dataGridViewEmployees_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-
-            //int index = service.EmployeeListCount();
-            //if (dataGridViewEmployees.CurrentCell.RowIndex < index)
-            //{
-                //employee = service.Employees[e.RowIndex];
-            //}
 
         }
         private void buttonReactivate_Click(object sender, EventArgs e)
@@ -144,10 +140,12 @@ namespace GUI_Management_of_medical_clinic
                 return;
             }
 
-            FormChangeStatusOfEmployee deactivate = new FormChangeStatusOfEmployee(employee);
+            FormChangeStatusOfEmployee deactivate = new FormChangeStatusOfEmployee(currentUser);
             this.Hide();
             deactivate.ShowDialog();
-            this.Close();
+            
+            
+      
         }
         private void dataGridViewEmployees_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
