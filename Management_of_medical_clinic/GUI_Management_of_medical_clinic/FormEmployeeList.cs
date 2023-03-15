@@ -17,6 +17,23 @@ namespace GUI_Management_of_medical_clinic
         EmployeeService service = new EmployeeService();
         EmployeeModel employee;
         string[] roles = { "Employee", "Doctor", "none" };
+
+        void LoadEmployeeData()
+        {
+            dataGridViewEmployees.DataSource = null;
+
+            if (dataGridViewEmployees.Rows.Count > 0)
+            {
+                dataGridViewEmployees.Rows.Clear();
+            }
+
+            foreach (EmployeeModel employee in EmployeeService.GetEmployeesData())
+            {
+                dataGridViewEmployees.Rows.Add(employee.IdEmployee, employee.FirstName, employee.LastName, employee.Role, (employee.IsActive == true) ? "Active" : "Not Active");
+            }
+            
+        }
+
         public FormEmployeeList()
         {
             InitializeComponent();
@@ -31,11 +48,10 @@ namespace GUI_Management_of_medical_clinic
             dataGridViewEmployees.Columns.Add("FirstName", "First Name");
             dataGridViewEmployees.Columns.Add("LastName", "Last Name");
             dataGridViewEmployees.Columns.Add("Role", "Role");
+            dataGridViewEmployees.Columns.Add("IsActive", "Is active?");
+            
 
-            foreach(EmployeeModel employee in EmployeeService.GetEmployeesData())
-            {
-                dataGridViewEmployees.Rows.Add(employee.IdEmployee, employee.FirstName, employee.LastName, employee.Role);
-            }
+            LoadEmployeeData();
 
 
 
@@ -49,6 +65,9 @@ namespace GUI_Management_of_medical_clinic
             }
             */
         }
+
+        
+
         /*private void addEditBtnColumn()
         {
             DataGridViewButtonColumn editButton = new DataGridViewButtonColumn();
@@ -73,7 +92,8 @@ namespace GUI_Management_of_medical_clinic
         }
         private void buttonClearFilter_Click(object sender, EventArgs e)
         {
-            //dataGridViewEmployees.DataSource = service.GetEmployeeTable();
+            
+            LoadEmployeeData();
             comboBoxRole.SelectedItem = null;
             checkBoxIsActive.Checked = false;
         }
