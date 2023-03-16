@@ -64,14 +64,8 @@ namespace GUI_Management_of_medical_clinic
         {
             string specializationToRemove = textBoxRemove.Text;
 
-            if (SpecializationService.RemoveSpecialization(specializationToRemove))
-            {
-                MessageBox.Show("Specialization removed successfully");
-                loadDataGridView();
-                return;
-            }
-            MessageBox.Show("Specialization doesn't exist");
-            return;
+            MessageBox.Show(SpecializationService.RemoveSpecialization(specializationToRemove));
+            loadDataGridView();
         }
 
         private void textBoxAdd_TextChanged(object sender, EventArgs e)
@@ -120,6 +114,11 @@ namespace GUI_Management_of_medical_clinic
             {
                 buttonReplace.Enabled = false;
             }
+        }
+
+        private void buttonReplace_Click_1(object sender, EventArgs e)
+        {
+            MessageBox.Show("<<THIS BUTTON DOESN'T WORK YET>>");
         }
     }
 }

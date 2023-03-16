@@ -45,7 +45,7 @@ namespace Console_Management_of_medical_clinic.Logic
             context.SaveChanges();
         }
 
-        public static bool RemoveSpecialization(string specializationToRemove)
+        public static string RemoveSpecialization(string specializationToRemove)
         {
             List<SpecializationModel> specializations = GetSpecializationsData();
             using AppDbContext context = new AppDbContext();
@@ -54,12 +54,20 @@ namespace Console_Management_of_medical_clinic.Logic
             {
                 if (specialization.Name == specializationToRemove)
                 {
-                    context.DbSpecializations.Remove(specialization);
-                    context.SaveChanges();
-                    return true;
+                    try 
+                    {
+                        context.DbSpecializations.Remove(specialization);
+                        context.SaveChanges();
+                        return "Specialization removed successfully";
+                    }
+                    catch (Exception ex)
+                    {
+                        return "Specialization is linked to an employee in the database\nIt can not be removed";
+                    }
+                    
                 }
             }    
-            return false;
+            return "Specialization doesn't exist";
         }
 
        
