@@ -181,7 +181,7 @@ namespace GUI_Management_of_medical_clinic
         private void buttonAddEmployee_Click(object sender, EventArgs e)
         {
 
-            FormEmployeeAdd employeeAdd = new FormEmployeeAdd();
+            FormEmployeeAdd employeeAdd = new FormEmployeeAdd(currentUser);
             this.Hide();
             employeeAdd.ShowDialog();
             this.Close();
@@ -189,7 +189,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonSpecializations_Click(object sender, EventArgs e)
         {
-            FormSpecializationAdd specializationAdd = new FormSpecializationAdd();
+            FormSpecializationAdd specializationAdd = new FormSpecializationAdd(currentUser);
             this.Hide();
             specializationAdd.ShowDialog();
             this.Close();

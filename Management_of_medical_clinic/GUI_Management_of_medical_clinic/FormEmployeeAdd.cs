@@ -1,4 +1,5 @@
 ﻿using Console_Management_of_medical_clinic.Logic;
+using Console_Management_of_medical_clinic.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,9 +14,11 @@ namespace GUI_Management_of_medical_clinic
 {
     public partial class FormEmployeeAdd : Form
     {
-        public FormEmployeeAdd()
+        EmployeeModel currentUser;
+        public FormEmployeeAdd(EmployeeModel currentU)
         {
             InitializeComponent();
+            currentUser = currentU;
         }
 
         private void FormEmployeeAdd_Load(object sender, EventArgs e)
@@ -25,9 +28,9 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            //FormEmployeeList employeeList = new FormEmployeeList();
+            FormEmployeeList employeeList = new FormEmployeeList(currentUser);
             this.Hide();
-            //employeeList.ShowDialog();
+            employeeList.ShowDialog();
             this.Close();
         }
 

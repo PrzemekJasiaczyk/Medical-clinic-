@@ -14,9 +14,11 @@ namespace GUI_Management_of_medical_clinic
 {
     public partial class FormSpecializationAdd : Form
     {
-        public FormSpecializationAdd()
+        EmployeeModel currentUser;
+        public FormSpecializationAdd(EmployeeModel currentU)
         {
             InitializeComponent();
+            currentUser = currentU;
         }
 
         
@@ -34,9 +36,9 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            //FormEmployeeList employeeList = new FormEmployeeList();
+            FormEmployeeList employeeList = new FormEmployeeList(currentUser);
             this.Hide();
-            //employeeList.ShowDialog();
+            employeeList.ShowDialog();
             this.Close();
         }
 
