@@ -47,53 +47,7 @@ namespace Console_Management_of_medical_clinic.Logic
        
 
 
-       public EmployeeModel ReturnCorrectEmployee(string? firstname, string? lastName, string? role)
-        {
-            foreach(EmployeeModel emp in employees)
-            {
-                if(emp.FirstName == firstname && emp.LastName == lastName && emp.Role == role)
-                {
-                    return emp;
-                }
-            }
-            return null;
-        }
-
-
-
-        /* 
-        public DataTable GetEmployeeTable()   // for remove
-        {
-
-            tableEmployees.Rows.Clear();
-
-            // Changing data in tableEmployees
-
-            /*foreach (Employee emp in employees)
-            {
-                tableEmployees.Rows.Add(emp.FirstName, emp.LastName, emp.PESEL, emp.DateOfBirth, emp.Role, emp.CorrespondenceAddress, emp.Email, emp.PhoneNumber, emp.Sex, emp.IsActive ? "Active" : "Deactive");
-            }
-            return tableEmployees;
-
-
-
-            foreach (EmployeeModel emp in employees)
-            {
-                tableEmployees.Rows.Add(emp.FirstName, emp.LastName, emp.Role, emp.IsActive ? "Active" : "Deactive");
-
-            }
-            return tableEmployees;
-
-
-        }
-        */
-
-        /*
-        public List<EmployeeModel> GetEmployeeList()      // for remove
-        {
-            return employees;
-        }
-        */
+       
 
         
 

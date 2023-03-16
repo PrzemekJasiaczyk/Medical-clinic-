@@ -1,5 +1,6 @@
 ﻿using Console_Management_of_medical_clinic.Data;
 using Console_Management_of_medical_clinic.Data.Enums;
+using Console_Management_of_medical_clinic.Logic;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -95,6 +96,20 @@ namespace Console_Management_of_medical_clinic.Model
             emp = context.DbEmployees.Find(IdEmployee);
 
             return emp;
+        }
+
+        public static List<EmployeeModel> FilterEmployees(string role, bool isActive)
+        {
+            List<EmployeeModel> employees = new List<EmployeeModel>();
+            foreach (EmployeeModel employee in EmployeeService.GetEmployeesData())
+            {
+                if(employee.Role==role && employee.IsActive == isActive)
+                {
+                    employees.Add(employee);
+                }
+            }
+
+            return employees;
         }
     }
 }

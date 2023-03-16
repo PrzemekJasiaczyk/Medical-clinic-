@@ -16,7 +16,7 @@ namespace GUI_Management_of_medical_clinic
     {
         EmployeeService service = new EmployeeService();    //for remove
         EmployeeModel currentUser;     // from now 'employee object' which is moving beetween forms is person logged to system
-        string[] roles = { "Employee", "Doctor", "none" };
+        string[] roles = { "Employee", "Doctor", "Manager", "None" };
 
         void LoadEmployeeData()
         {
@@ -59,29 +59,26 @@ namespace GUI_Management_of_medical_clinic
 
         }
 
-        
 
-        /*private void addEditBtnColumn()
-        {
-            DataGridViewButtonColumn editButton = new DataGridViewButtonColumn();
-            editButton.UseColumnTextForButtonValue = true;
-            editButton.Name = "edit_column";
-            editButton.HeaderText = "";
-            editButton.Text = "Edit";
-            int columnIndex = dataGridViewEmployees.Columns.Count;
-            if (dataGridViewEmployees.Columns["edit_column"] == null)
-                dataGridViewEmployees.Columns.Insert(columnIndex, editButton);
-        }*/
         private void buttonFilterEmployee_Click(object sender, EventArgs e)
         {
-            try
-            {
-                dataGridViewEmployees.DataSource = service.FilterEmployee(Convert.ToString(comboBoxRole.SelectedItem), checkBoxIsActive.Checked);
-            }
-            catch
+            if (comboBoxRole.SelectedItem == null)
             {
                 MessageBox.Show("Select variant of filter!");
+                return;
             }
+
+            string role = comboBoxRole.SelectedItem.ToString();
+            bool isActive = checkBoxIsActive.Checked;
+
+            List<EmployeeModel> employees = EmployeeModel.FilterEmployees(role, isActive);
+
+            dataGridViewEmployees.Rows.Clear();
+            foreach(EmployeeModel employee in employees)
+            {
+                dataGridViewEmployees.Rows.Add(employee.IdEmployee, employee.FirstName, employee.LastName, employee.Role, (employee.IsActive == true) ? "Active" : "Not Active");
+            }
+
         }
         private void buttonClearFilter_Click(object sender, EventArgs e)
         {
