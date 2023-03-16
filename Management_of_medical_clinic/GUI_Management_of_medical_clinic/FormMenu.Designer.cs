@@ -31,6 +31,8 @@
             this.buttonOpenEmployeeList = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.textBoxLogin = new System.Windows.Forms.TextBox();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -72,6 +74,32 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // textBoxLogin
+            // 
+            this.textBoxLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxLogin.BackColor = System.Drawing.Color.MintCream;
+            this.textBoxLogin.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.textBoxLogin.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.textBoxLogin.Location = new System.Drawing.Point(219, 167);
+            this.textBoxLogin.Multiline = true;
+            this.textBoxLogin.Name = "textBoxLogin";
+            this.textBoxLogin.PlaceholderText = "Login";
+            this.textBoxLogin.Size = new System.Drawing.Size(333, 38);
+            this.textBoxLogin.TabIndex = 4;
+            // 
+            // textBoxPassword
+            // 
+            this.textBoxPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxPassword.BackColor = System.Drawing.Color.MintCream;
+            this.textBoxPassword.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.textBoxPassword.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.textBoxPassword.Location = new System.Drawing.Point(219, 234);
+            this.textBoxPassword.Multiline = true;
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.PlaceholderText = "Password";
+            this.textBoxPassword.Size = new System.Drawing.Size(333, 38);
+            this.textBoxPassword.TabIndex = 5;
+            // 
             // FormMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -79,6 +107,8 @@
             this.BackgroundImage = global::GUI_Management_of_medical_clinic.Properties.Resources.Website_Headers_5;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textBoxPassword);
+            this.Controls.Add(this.textBoxLogin);
             this.Controls.Add(this.buttonOpenEmployeeList);
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
@@ -89,6 +119,7 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -97,5 +128,7 @@
         private Button buttonOpenEmployeeList;
         private Panel panel1;
         private PictureBox pictureBox1;
+        private TextBox textBoxLogin;
+        private TextBox textBoxPassword;
     }
 }

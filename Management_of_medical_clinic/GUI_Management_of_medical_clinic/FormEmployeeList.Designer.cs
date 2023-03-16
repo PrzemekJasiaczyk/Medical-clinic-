@@ -38,12 +38,13 @@
             this.checkBoxIsActive = new System.Windows.Forms.CheckBox();
             this.labelFilter = new System.Windows.Forms.Label();
             this.dataGridViewEmployees = new System.Windows.Forms.DataGridView();
+            this.buttonSpecializations = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployees)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonReactivate
             // 
-            this.buttonReactivate.Location = new System.Drawing.Point(648, 363);
+            this.buttonReactivate.Location = new System.Drawing.Point(648, 380);
             this.buttonReactivate.Name = "buttonReactivate";
             this.buttonReactivate.Size = new System.Drawing.Size(140, 45);
             this.buttonReactivate.TabIndex = 19;
@@ -63,7 +64,7 @@
             // 
             // buttonDeactivateEmployee
             // 
-            this.buttonDeactivateEmployee.Location = new System.Drawing.Point(648, 312);
+            this.buttonDeactivateEmployee.Location = new System.Drawing.Point(648, 329);
             this.buttonDeactivateEmployee.Name = "buttonDeactivateEmployee";
             this.buttonDeactivateEmployee.Size = new System.Drawing.Size(140, 45);
             this.buttonDeactivateEmployee.TabIndex = 17;
@@ -73,9 +74,9 @@
             // 
             // buttonReviewEmployee
             // 
-            this.buttonReviewEmployee.Location = new System.Drawing.Point(528, 312);
+            this.buttonReviewEmployee.Location = new System.Drawing.Point(399, 329);
             this.buttonReviewEmployee.Name = "buttonReviewEmployee";
-            this.buttonReviewEmployee.Size = new System.Drawing.Size(114, 45);
+            this.buttonReviewEmployee.Size = new System.Drawing.Size(145, 45);
             this.buttonReviewEmployee.TabIndex = 16;
             this.buttonReviewEmployee.Text = "Review employee";
             this.buttonReviewEmployee.UseVisualStyleBackColor = true;
@@ -83,7 +84,7 @@
             // 
             // buttonAddEmployee
             // 
-            this.buttonAddEmployee.Location = new System.Drawing.Point(380, 312);
+            this.buttonAddEmployee.Location = new System.Drawing.Point(251, 329);
             this.buttonAddEmployee.Name = "buttonAddEmployee";
             this.buttonAddEmployee.Size = new System.Drawing.Size(142, 45);
             this.buttonAddEmployee.TabIndex = 15;
@@ -112,6 +113,8 @@
             // checkBoxIsActive
             // 
             this.checkBoxIsActive.AutoSize = true;
+            this.checkBoxIsActive.Checked = true;
+            this.checkBoxIsActive.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxIsActive.Location = new System.Drawing.Point(12, 326);
             this.checkBoxIsActive.Name = "checkBoxIsActive";
             this.checkBoxIsActive.Size = new System.Drawing.Size(123, 19);
@@ -138,15 +141,27 @@
             this.dataGridViewEmployees.Name = "dataGridViewEmployees";
             this.dataGridViewEmployees.ReadOnly = true;
             this.dataGridViewEmployees.RowTemplate.Height = 25;
+            this.dataGridViewEmployees.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewEmployees.Size = new System.Drawing.Size(776, 273);
             this.dataGridViewEmployees.TabIndex = 10;
             this.dataGridViewEmployees.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewEmployees_RowHeaderMouseClick);
+            // 
+            // buttonSpecializations
+            // 
+            this.buttonSpecializations.Location = new System.Drawing.Point(251, 380);
+            this.buttonSpecializations.Name = "buttonSpecializations";
+            this.buttonSpecializations.Size = new System.Drawing.Size(142, 45);
+            this.buttonSpecializations.TabIndex = 20;
+            this.buttonSpecializations.Text = "Edit Specializations";
+            this.buttonSpecializations.UseVisualStyleBackColor = true;
+            this.buttonSpecializations.Click += new System.EventHandler(this.buttonSpecializations_Click);
             // 
             // FormEmployeeList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonSpecializations);
             this.Controls.Add(this.buttonReactivate);
             this.Controls.Add(this.buttonClearFilter);
             this.Controls.Add(this.buttonDeactivateEmployee);
@@ -179,5 +194,6 @@
         private CheckBox checkBoxIsActive;
         private Label labelFilter;
         private DataGridView dataGridViewEmployees;
+        private Button buttonSpecializations;
     }
 }

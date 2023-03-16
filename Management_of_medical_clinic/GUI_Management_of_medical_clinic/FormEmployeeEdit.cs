@@ -13,8 +13,8 @@ namespace GUI_Management_of_medical_clinic
 {
     public partial class FormEmployeeEdit : Form
     {
-        Employee employee;
-        public FormEmployeeEdit(Employee emp)
+        EmployeeModel employee;
+        public FormEmployeeEdit(EmployeeModel emp)
         {
             InitializeComponent();
             this.employee = emp;
@@ -70,9 +70,9 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            FormEmployeeList employeeList = new FormEmployeeList();
+            //FormEmployeeList employeeList = new FormEmployeeList();
             this.Hide();
-            employeeList.ShowDialog();
+            //employeeList.ShowDialog();
             this.Close();
         }
     }
