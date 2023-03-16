@@ -75,5 +75,10 @@ namespace GUI_Management_of_medical_clinic
             //employeeList.ShowDialog();
             this.Close();
         }
+
+        private void correspAddressTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

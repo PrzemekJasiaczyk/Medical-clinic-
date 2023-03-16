@@ -63,6 +63,7 @@
             this.comboBoxRole.Name = "comboBoxRole";
             this.comboBoxRole.Size = new System.Drawing.Size(199, 23);
             this.comboBoxRole.TabIndex = 72;
+            this.comboBoxRole.SelectedIndexChanged += new System.EventHandler(this.comboBoxRole_SelectedIndexChanged);
             // 
             // buttonConfirm
             // 
@@ -128,6 +129,7 @@
             this.correspAddressTextBox.Name = "correspAddressTextBox";
             this.correspAddressTextBox.Size = new System.Drawing.Size(199, 23);
             this.correspAddressTextBox.TabIndex = 64;
+            this.correspAddressTextBox.TextChanged += new System.EventHandler(this.correspAddressTextBox_TextChanged);
             // 
             // label10
             // 
@@ -172,6 +174,7 @@
             this.textBoxPESEL.Size = new System.Drawing.Size(199, 23);
             this.textBoxPESEL.TabIndex = 59;
             this.textBoxPESEL.Text = "11111111111";
+            this.textBoxPESEL.TextChanged += new System.EventHandler(this.textBoxPESEL_TextChanged);
             // 
             // textBoxLastName
             // 
@@ -180,6 +183,7 @@
             this.textBoxLastName.Size = new System.Drawing.Size(199, 23);
             this.textBoxLastName.TabIndex = 58;
             this.textBoxLastName.Text = "a";
+            this.textBoxLastName.TextChanged += new System.EventHandler(this.textBoxLastName_TextChanged);
             // 
             // label3
             // 
@@ -206,6 +210,7 @@
             this.textBoxFirstName.Size = new System.Drawing.Size(199, 23);
             this.textBoxFirstName.TabIndex = 55;
             this.textBoxFirstName.Text = "a";
+            this.textBoxFirstName.TextChanged += new System.EventHandler(this.textBoxFirstName_TextChanged);
             // 
             // label2
             // 

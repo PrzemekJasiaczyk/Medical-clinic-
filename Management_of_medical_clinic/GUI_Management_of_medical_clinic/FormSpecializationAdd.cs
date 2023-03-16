@@ -42,22 +42,81 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            string specializationName = textBoxName.Text;
-            SpecializationService.AddSpecialization(specializationName);
+            string specializationToAdd = textBoxAdd.Text;
+
+            if (SpecializationService.CheckIfSpecializationExists(specializationToAdd))
+            {
+                MessageBox.Show("Specialization already exists");
+                return;
+            }
+
+            SpecializationService.AddSpecialization(specializationToAdd);
 
             MessageBox.Show("New Specialization Added");
             loadDataGridView();
         }
 
-        private void textBoxName_TextChanged(object sender, EventArgs e)
+
+
+        private void buttonReplace_Click(object sender, EventArgs e)
         {
-            if (textBoxName.Text.Length > 0)
+            string specializationToRemove = textBoxRemove.Text;
+
+            if (SpecializationService.RemoveSpecialization(specializationToRemove))
+            {
+                MessageBox.Show("Specialization removed successfully");
+                loadDataGridView();
+                return;
+            }
+            MessageBox.Show("Specialization doesn't exist");
+            return;
+        }
+
+        private void textBoxAdd_TextChanged(object sender, EventArgs e)
+        {
+            if (textBoxAdd.Text.Length > 0)
             {
                 buttonAdd.Enabled = true;
             }
             else
             {
                 buttonAdd.Enabled = false;
+            }
+        }
+
+        private void textBoxRemove_TextChanged(object sender, EventArgs e)
+        {
+            if (textBoxRemove.Text.Length > 0)
+            {
+                buttonRemove.Enabled= true;
+            }
+            else
+            {
+                buttonRemove.Enabled = false;
+            }
+        }
+
+        private void textBoxEditPrevious_TextChanged(object sender, EventArgs e)
+        {
+            if (textBoxEditPrevious.Text.Length > 0 && textBoxEditNew.Text.Length > 0)
+            {
+                buttonReplace.Enabled= true;
+            }
+            else
+            {
+                buttonReplace.Enabled = false;
+            }
+        }
+
+        private void textBoxEditNew_TextChanged(object sender, EventArgs e)
+        {
+            if (textBoxEditPrevious.Text.Length > 0 && textBoxEditNew.Text.Length > 0)
+            {
+                buttonReplace.Enabled = true;
+            }
+            else
+            {
+                buttonReplace.Enabled = false;
             }
         }
     }
