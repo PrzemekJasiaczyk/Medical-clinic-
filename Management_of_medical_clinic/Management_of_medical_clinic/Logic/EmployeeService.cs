@@ -41,21 +41,7 @@ namespace Console_Management_of_medical_clinic.Logic
 
         public EmployeeService() 
         {
-            //employees.Add(new Employee(1,"Tom", "Raweg", "14556985625", new DateTime(1973, 5, 16), "Employee", "tom.raweg@gmail.com", "tom.raweg@gmail.com", "+48 526 458 526", Data.Enums.EnumSex.Male, "", "", 1, true));
-            //employees.Add(new Employee(2,"Anna", "Kotras", "75695485698", new DateTime(1981, 7, 4), "Employee", "anna.kotras@gmail.com", "anna.kotras@gmail.com", "+48 458 889 112", Data.Enums.EnumSex.Female, "", "", 1, false));
-            //employees.Add(new Employee(3,"John", "Long", "75333345624", new DateTime(1988, 1, 20), "Employee", "john.long@gmail.com", "john.long@gmail.com", "+48 778 863 322", Data.Enums.EnumSex.Male, "", "", 1, true)); 
-            //employees.Add(new Employee(4,"Mark", "Tompson", "25757133412", new DateTime(1979, 10, 11), "Doctor", "mark.tompson@gmail.com", "mark.tompson@gmail.com", "+48 775 552 122", Data.Enums.EnumSex.Undefined, "", "", 1, true));
-
-            //tableEmployees.Columns.Add("First name", typeof(string));
-            //tableEmployees.Columns.Add("Last name", typeof(string));
-            //tableEmployees.Columns.Add("PESEL", typeof(string));
-            //tableEmployees.Columns.Add("Date of birth", typeof(DateTime));
-            //tableEmployees.Columns.Add("Role", typeof(string));
-            //tableEmployees.Columns.Add("Correspondence address", typeof(string));
-            //tableEmployees.Columns.Add("E-mail address", typeof(string));
-            //tableEmployees.Columns.Add("Phone number", typeof(string));
-            //tableEmployees.Columns.Add("Sex", typeof(char));
-            //tableEmployees.Columns.Add("Is active", typeof(string));
+            
         }
 
        

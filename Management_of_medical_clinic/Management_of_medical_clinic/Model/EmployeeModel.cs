@@ -66,7 +66,7 @@ namespace Console_Management_of_medical_clinic.Model
             IsActive = isActive;
         }
 
-        public void ChangeEmployeeStatus(EmployeeModel employee)
+        public static void ChangeEmployeeStatus(EmployeeModel employee)
         {
             if (employee.IsActive == true)
             {
@@ -86,6 +86,15 @@ namespace Console_Management_of_medical_clinic.Model
 
 
 
+        }
+
+        public static EmployeeModel FindEmployee(int IdEmployee)
+        {
+            EmployeeModel emp = new EmployeeModel();
+            var context = new AppDbContext();
+            emp = context.DbEmployees.Find(IdEmployee);
+
+            return emp;
         }
     }
 }
