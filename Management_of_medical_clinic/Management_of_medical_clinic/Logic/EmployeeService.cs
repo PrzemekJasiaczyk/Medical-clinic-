@@ -12,9 +12,6 @@ namespace Console_Management_of_medical_clinic.Logic
 {
     public class EmployeeService
     {
-        List<EmployeeModel> employees = new List<EmployeeModel>();  // for remove
-        DataTable tableEmployees = new DataTable();   // for remove
-
         public static void AddEmployee(string firstName, string lastName, string pesel, string dateOfBirth, string role, string correspondenceAddress, string email, string phoneNumber,
             EnumSex sex, string username, string password, SpecializationModel idSpecialization, bool isActive)
         {
@@ -44,41 +41,6 @@ namespace Console_Management_of_medical_clinic.Logic
             
         }
 
-       
-
-
-       
-
-        
-
-        public DataTable FilterEmployee(string role, bool isActive)   // for remove
-        {
-            tableEmployees.Rows.Clear();
-            foreach (EmployeeModel emp in employees)
-            {
-                if (role != "none")
-                {
-                    if (emp.Role == role && emp.IsActive == isActive)
-                        //tableEmployees.Rows.Add(emp.FirstName, emp.LastName, emp.PESEL, emp.DateOfBirth, emp.Role, emp.CorrespondenceAddress, emp.Email, emp.PhoneNumber, emp.Sex, emp.IsActive ? "Active" : "Deactive");
-                        tableEmployees.Rows.Add(emp.FirstName, emp.LastName, emp.Role, emp.IsActive ? "Active" : "Deactive");
-                }
-                else
-                {
-                    if (emp.IsActive == isActive)
-                        //tableEmployees.Rows.Add(emp.FirstName, emp.LastName, emp.PESEL, emp.DateOfBirth, emp.Role, emp.CorrespondenceAddress, emp.Email, emp.PhoneNumber, emp.Sex, emp.IsActive ? "Active" : "Deactive");
-                        tableEmployees.Rows.Add(emp.FirstName, emp.LastName, emp.Role, emp.IsActive ? "Active" : "Deactive");
-                }
-            }
-
-            return tableEmployees;
-        }
-
-        //public void ActivateEmployee(EmployeeModel emp)
-        //{
-            //emp.IsActive = true;
-        //}
-
-        //public void DeactivateEmployee(EmployeeModel emp) { emp.IsActive = false; }
 
 
         //Validation upon addit Employee

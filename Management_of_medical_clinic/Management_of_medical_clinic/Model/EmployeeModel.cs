@@ -111,5 +111,20 @@ namespace Console_Management_of_medical_clinic.Model
 
             return employees;
         }
+
+        public static void EditEmployee(int IdEmployee, string firstName, string lastName, string pesel, string dateOfBirth, string role, string correspondenceAddress, string email, string phoneNumber,
+            EnumSex sex)
+        {
+            var context = new AppDbContext();
+            var emp = context.DbEmployees.Find(IdEmployee);
+            emp.FirstName = firstName;
+            emp.LastName = lastName;
+            emp.PESEL = pesel;
+            emp.DateOfBirth = dateOfBirth;
+            emp.Role = role;
+            emp.CorrespondenceAddress = correspondenceAddress;
+            emp.Sex = sex;
+            context.SaveChanges();
+        }
     }
 }

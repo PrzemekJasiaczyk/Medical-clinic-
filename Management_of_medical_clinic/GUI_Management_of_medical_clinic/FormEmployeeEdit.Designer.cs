@@ -30,7 +30,6 @@
         {
             this.comboBoxRole = new System.Windows.Forms.ComboBox();
             this.buttonConfirm = new System.Windows.Forms.Button();
-            this.textBoxSex = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.phoneNumberTextBox = new System.Windows.Forms.TextBox();
             this.textBoxEmail = new System.Windows.Forms.TextBox();
@@ -49,6 +48,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.labelTitle = new System.Windows.Forms.Label();
             this.buttonCancel = new System.Windows.Forms.Button();
+            this.comboBoxSex = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // comboBoxRole
@@ -56,9 +56,11 @@
             this.comboBoxRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxRole.FormattingEnabled = true;
             this.comboBoxRole.Items.AddRange(new object[] {
-            "Employee",
-            "Doctor",
-            "none"});
+            "Medical Doctor",
+            "Nurse",
+            "Paramedic",
+            "Janitor",
+            "Technitian"});
             this.comboBoxRole.Location = new System.Drawing.Point(305, 188);
             this.comboBoxRole.Name = "comboBoxRole";
             this.comboBoxRole.Size = new System.Drawing.Size(199, 23);
@@ -74,13 +76,6 @@
             this.buttonConfirm.Text = "Confirm";
             this.buttonConfirm.UseVisualStyleBackColor = true;
             this.buttonConfirm.Click += new System.EventHandler(this.buttonConfirm_Click);
-            // 
-            // textBoxSex
-            // 
-            this.textBoxSex.Location = new System.Drawing.Point(305, 332);
-            this.textBoxSex.Name = "textBoxSex";
-            this.textBoxSex.Size = new System.Drawing.Size(199, 23);
-            this.textBoxSex.TabIndex = 70;
             // 
             // label7
             // 
@@ -241,14 +236,27 @@
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
+            // comboBoxSex
+            // 
+            this.comboBoxSex.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxSex.FormattingEnabled = true;
+            this.comboBoxSex.Items.AddRange(new object[] {
+            "Not Specified",
+            "Male",
+            "Female"});
+            this.comboBoxSex.Location = new System.Drawing.Point(305, 340);
+            this.comboBoxSex.Name = "comboBoxSex";
+            this.comboBoxSex.Size = new System.Drawing.Size(199, 23);
+            this.comboBoxSex.TabIndex = 73;
+            // 
             // FormEmployeeEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.comboBoxSex);
             this.Controls.Add(this.comboBoxRole);
             this.Controls.Add(this.buttonConfirm);
-            this.Controls.Add(this.textBoxSex);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.phoneNumberTextBox);
             this.Controls.Add(this.textBoxEmail);
@@ -280,7 +288,6 @@
 
         private ComboBox comboBoxRole;
         private Button buttonConfirm;
-        private TextBox textBoxSex;
         private Label label7;
         private TextBox phoneNumberTextBox;
         private TextBox textBoxEmail;
@@ -299,5 +306,6 @@
         private Label label2;
         private Label labelTitle;
         private Button buttonCancel;
+        private ComboBox comboBoxSex;
     }
 }

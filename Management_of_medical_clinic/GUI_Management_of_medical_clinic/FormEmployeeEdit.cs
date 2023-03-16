@@ -1,4 +1,5 @@
-﻿using Console_Management_of_medical_clinic.Model;
+﻿using Console_Management_of_medical_clinic.Logic;
+using Console_Management_of_medical_clinic.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,10 +15,12 @@ namespace GUI_Management_of_medical_clinic
     public partial class FormEmployeeEdit : Form
     {
         EmployeeModel employee;
-        public FormEmployeeEdit(EmployeeModel emp)
+        EmployeeModel currentUser;
+        public FormEmployeeEdit(EmployeeModel emp, EmployeeModel currentU)
         {
             InitializeComponent();
             this.employee = emp;
+            currentUser = currentU;
         }
 
         private void FormEmployeeEdit_Load(object sender, EventArgs e)
@@ -30,7 +33,7 @@ namespace GUI_Management_of_medical_clinic
             correspAddressTextBox.Text = employee.CorrespondenceAddress;
             textBoxEmail.Text = employee.Email;
             phoneNumberTextBox.Text = employee.PhoneNumber;
-            textBoxSex.Text = employee.Sex.ToString();
+            comboBoxSex.SelectedItem = "Not Specified";
         }
         private void checkForms()
         {
@@ -41,6 +44,28 @@ namespace GUI_Management_of_medical_clinic
         }
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
+            (string stringPESEL, bool booleanPESEL) = EmployeeService.validatePESEL(textBoxPESEL.Text, textBoxDateOfBirth.Value, comboBoxSex.SelectedIndex);
+            if (!booleanPESEL)
+            {
+                MessageBox.Show(stringPESEL);
+                return;
+            }
+
+            (string stringEmail, bool booleanEmail) = EmployeeService.validateEmail(textBoxEmail.Text, textBoxFirstName.Text);
+            if (!booleanEmail)
+            {
+                MessageBox.Show(stringEmail);
+                return;
+            }
+
+            (string stringPhone, bool booleanPhone) = EmployeeService.validatePhone(phoneNumberTextBox.Text);
+            if (!booleanPhone)
+            {
+                MessageBox.Show(stringPhone);
+                return;
+            }
+
+            //EmployeeModel.EditEmployee(employee.IdEmployee, textBoxFirstName.Text, textBoxLastName.Text, textBoxPESEL.Text, textBoxDateOfBirth.Text, comboBoxRole.Text, correspAddressTextBox.Text, textBoxEmail.Text, phoneNumberTextBox.Text, comboBoxSex.Text);
 
         }
         private void textBoxFirstName_TextChanged(object sender, EventArgs e)
@@ -70,9 +95,9 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            //FormEmployeeList employeeList = new FormEmployeeList();
+            FormEmployeeList employeeList = new FormEmployeeList(currentUser);
             this.Hide();
-            //employeeList.ShowDialog();
+            employeeList.ShowDialog();
             this.Close();
         }
 

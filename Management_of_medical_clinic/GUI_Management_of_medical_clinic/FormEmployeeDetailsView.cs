@@ -46,7 +46,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void Edit_Employee_Click(object sender, EventArgs e)
         {
-            FormEmployeeEdit employeeEdit = new FormEmployeeEdit(employee);
+            FormEmployeeEdit employeeEdit = new FormEmployeeEdit(employee, currentUser);
             this.Hide();
             employeeEdit.ShowDialog();
             this.Close();

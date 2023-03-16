@@ -14,9 +14,8 @@ namespace GUI_Management_of_medical_clinic
 {
     public partial class FormEmployeeList : Form
     {
-        EmployeeService service = new EmployeeService();    //for remove
         EmployeeModel currentUser;     // from now 'employee object' which is moving beetween forms is person logged to system
-        string[] roles = { "Employee", "Doctor", "Manager", "None" };
+        string[] roles = { "Employee", "Medical Doctor", "Manager", "None" };
 
         void LoadEmployeeData()
         {
@@ -138,22 +137,9 @@ namespace GUI_Management_of_medical_clinic
 
 
         }
-        private void dataGridViewEmployees_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewEmployees_CellContentClick(object sender)
         {
-            /* var senderGrid = (DataGridView)sender;
-
-            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
-            {
-                int employeeIndex = dataGridViewEmployees.CurrentCell.RowIndex;
-
-                if (service.EmployeeListCount() <= employeeIndex)
-                    return;
-
-                FormEmployeeEdit employeeEdit = new FormEmployeeEdit(service.Employees[employeeIndex]);
-                this.Hide();
-                employeeEdit.ShowDialog();
-                this.Close(); 
-            }*/
+            
         }
         private void buttonReviewEmployee_Click(object sender, EventArgs e)
         {
