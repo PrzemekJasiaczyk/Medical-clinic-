@@ -40,6 +40,24 @@ namespace Console_Management_of_medical_clinic.Logic
         {
             
         }
+        public static bool CheckIfUsernameExists(string username)
+        {
+            List<EmployeeModel> employees = EmployeeService.GetEmployeesData();
+
+
+            foreach (EmployeeModel employee in employees)
+            {
+                if (employee.Username == username)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        
+
+        
 
 
 
@@ -50,7 +68,8 @@ namespace Console_Management_of_medical_clinic.Logic
             string firstSix = input.Substring(0, 6);
 
             string formatedDate = selectedDate.ToString("dd/MM/yy");
-            string rawDate = formatedDate.Replace("/", "");
+            string rawDate = formatedDate.Replace(".", "");
+            rawDate = rawDate.Replace("/", "");
 
             if (input.Length != 11)
             {

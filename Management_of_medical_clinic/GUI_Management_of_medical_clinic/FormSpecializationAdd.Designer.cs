@@ -159,6 +159,7 @@
             this.buttonReplace.TabIndex = 83;
             this.buttonReplace.Text = "Replace";
             this.buttonReplace.UseVisualStyleBackColor = true;
+            this.buttonReplace.Click += new System.EventHandler(this.buttonReplace_Click_1);
             // 
             // labelPrevious
             // 
