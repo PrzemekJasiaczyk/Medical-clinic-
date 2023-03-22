@@ -15,7 +15,7 @@ namespace GUI_Management_of_medical_clinic
     public partial class FormEmployeeList : Form
     {
         EmployeeModel currentUser;     // from now 'employee object' which is moving beetween forms is person logged to system
-        string[] roles = { "Employee", "Medical Doctor", "Manager", "None" };
+        //string[] roles = { "Employee", "Medical Doctor", "Manager", "None" };
 
         void LoadEmployeeData()
         {
@@ -44,8 +44,8 @@ namespace GUI_Management_of_medical_clinic
         private void FormEmployeeList_Load(object sender, EventArgs e)
         {
             dataGridViewEmployees.Rows.Clear();
-            comboBoxRole.Items.Clear();
-            comboBoxRole.Items.AddRange(roles);
+            //comboBoxRole.Items.Clear();
+            //comboBoxRole.Items.AddRange(roles);
             dataGridViewEmployees.Columns.Add("IdEmployee", "Id of Employee");
             dataGridViewEmployees.Columns.Add("FirstName", "First Name");
             dataGridViewEmployees.Columns.Add("LastName", "Last Name");
@@ -178,6 +178,25 @@ namespace GUI_Management_of_medical_clinic
             FormSpecializationAdd specializationAdd = new FormSpecializationAdd(currentUser);
             this.Hide();
             specializationAdd.ShowDialog();
+            this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int rowIndex = dataGridViewEmployees.CurrentRow.Index;
+
+            if (rowIndex < 0)
+            {
+                MessageBox.Show("Select one employee from list!");
+                return;
+            }
+
+            int IdEmployee = (int)dataGridViewEmployees.Rows[rowIndex].Cells[0].Value;
+            EmployeeModel employee = EmployeeModel.FindEmployee(IdEmployee);
+
+            FormEmployeeEdit employeeEdit = new FormEmployeeEdit(employee, currentUser);
+            this.Hide();
+            employeeEdit.ShowDialog();
             this.Close();
         }
     }

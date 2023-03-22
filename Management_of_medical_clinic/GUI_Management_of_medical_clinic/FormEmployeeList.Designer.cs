@@ -39,6 +39,7 @@
             this.labelFilter = new System.Windows.Forms.Label();
             this.dataGridViewEmployees = new System.Windows.Forms.DataGridView();
             this.buttonSpecializations = new System.Windows.Forms.Button();
+            this.buttonEditEmployee = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployees)).BeginInit();
             this.SuspendLayout();
             // 
@@ -105,6 +106,12 @@
             // comboBoxRole
             // 
             this.comboBoxRole.FormattingEnabled = true;
+            this.comboBoxRole.Items.AddRange(new object[] {
+            "Medical Doctor",
+            "Nurse",
+            "Paramedic",
+            "Janitor",
+            "Technitian"});
             this.comboBoxRole.Location = new System.Drawing.Point(12, 351);
             this.comboBoxRole.Name = "comboBoxRole";
             this.comboBoxRole.Size = new System.Drawing.Size(121, 23);
@@ -156,11 +163,22 @@
             this.buttonSpecializations.UseVisualStyleBackColor = true;
             this.buttonSpecializations.Click += new System.EventHandler(this.buttonSpecializations_Click);
             // 
+            // buttonEditEmployee
+            // 
+            this.buttonEditEmployee.Location = new System.Drawing.Point(402, 380);
+            this.buttonEditEmployee.Name = "buttonEditEmployee";
+            this.buttonEditEmployee.Size = new System.Drawing.Size(142, 45);
+            this.buttonEditEmployee.TabIndex = 21;
+            this.buttonEditEmployee.Text = "Edit Employee";
+            this.buttonEditEmployee.UseVisualStyleBackColor = true;
+            this.buttonEditEmployee.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FormEmployeeList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonEditEmployee);
             this.Controls.Add(this.buttonSpecializations);
             this.Controls.Add(this.buttonReactivate);
             this.Controls.Add(this.buttonClearFilter);
@@ -195,5 +213,6 @@
         private Label labelFilter;
         private DataGridView dataGridViewEmployees;
         private Button buttonSpecializations;
+        private Button buttonEditEmployee;
     }
 }

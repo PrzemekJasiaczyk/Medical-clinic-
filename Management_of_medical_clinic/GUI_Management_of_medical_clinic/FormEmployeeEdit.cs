@@ -1,4 +1,5 @@
-﻿using Console_Management_of_medical_clinic.Logic;
+﻿using Console_Management_of_medical_clinic.Data.Enums;
+using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace GUI_Management_of_medical_clinic
 {
@@ -33,18 +35,18 @@ namespace GUI_Management_of_medical_clinic
             correspAddressTextBox.Text = employee.CorrespondenceAddress;
             textBoxEmail.Text = employee.Email;
             phoneNumberTextBox.Text = employee.PhoneNumber;
-            comboBoxSex.SelectedItem = "Not Specified";
+            
         }
         private void checkForms()
         {
-            if (textBoxFirstName.Text.Length > 0 && textBoxLastName.Text.Length > 0 && textBoxPESEL.Text.Length > 0 && comboBoxRole.Text.Length > 0)
+            if (textBoxFirstName.Text.Length > 0 && textBoxLastName.Text.Length > 0 && textBoxPESEL.Text.Length > 0 && comboBoxRole.Text.Length > 0 && comboBoxSex.SelectedItem!=null)
                 buttonConfirm.Enabled = true;
             else
                 buttonConfirm.Enabled = false;
         }
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
-            (string stringPESEL, bool booleanPESEL) = EmployeeService.validatePESEL(textBoxPESEL.Text, textBoxDateOfBirth.Value, comboBoxSex.SelectedIndex);
+            /*(string stringPESEL, bool booleanPESEL) = EmployeeService.validatePESEL(textBoxPESEL.Text, textBoxDateOfBirth.Value, comboBoxSex.SelectedIndex);
             if (!booleanPESEL)
             {
                 MessageBox.Show(stringPESEL);
@@ -63,9 +65,16 @@ namespace GUI_Management_of_medical_clinic
             {
                 MessageBox.Show(stringPhone);
                 return;
-            }
+            }*/
 
-            //EmployeeModel.EditEmployee(employee.IdEmployee, textBoxFirstName.Text, textBoxLastName.Text, textBoxPESEL.Text, textBoxDateOfBirth.Text, comboBoxRole.Text, correspAddressTextBox.Text, textBoxEmail.Text, phoneNumberTextBox.Text, comboBoxSex.Text);
+            
+            EnumSex enumSex = (EnumSex)Enum.Parse(typeof(EnumSex), comboBoxSex.SelectedItem.ToString());
+            EmployeeModel.EditEmployee(employee.IdEmployee, textBoxFirstName.Text, textBoxLastName.Text, textBoxPESEL.Text, textBoxDateOfBirth.Text, comboBoxRole.Text, correspAddressTextBox.Text, textBoxEmail.Text, phoneNumberTextBox.Text, enumSex);
+
+            FormEmployeeList employeeList = new FormEmployeeList(currentUser);
+            this.Hide();
+            employeeList.ShowDialog();
+            this.Close();
 
         }
         private void textBoxFirstName_TextChanged(object sender, EventArgs e)
@@ -104,6 +113,11 @@ namespace GUI_Management_of_medical_clinic
         private void correspAddressTextBox_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void comboBoxSex_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            checkForms();
         }
     }
 }
