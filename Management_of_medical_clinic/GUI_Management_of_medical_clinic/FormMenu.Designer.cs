@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             this.buttonOpenEmployeeList = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBoxLogin = new System.Windows.Forms.TextBox();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
-            this.panel1.SuspendLayout();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.buttonExit = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,33 +47,13 @@
             this.buttonOpenEmployeeList.FlatAppearance.BorderSize = 5;
             this.buttonOpenEmployeeList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonOpenEmployeeList.Font = new System.Drawing.Font("Tw Cen MT Condensed Extra Bold", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonOpenEmployeeList.Location = new System.Drawing.Point(272, 326);
+            this.buttonOpenEmployeeList.Location = new System.Drawing.Point(912, 640);
             this.buttonOpenEmployeeList.Name = "buttonOpenEmployeeList";
-            this.buttonOpenEmployeeList.Size = new System.Drawing.Size(235, 91);
+            this.buttonOpenEmployeeList.Size = new System.Drawing.Size(325, 125);
             this.buttonOpenEmployeeList.TabIndex = 2;
             this.buttonOpenEmployeeList.Text = "START";
             this.buttonOpenEmployeeList.UseVisualStyleBackColor = false;
             this.buttonOpenEmployeeList.Click += new System.EventHandler(this.buttonOpenEmployeeList_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.SteelBlue;
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 82);
-            this.panel1.TabIndex = 3;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::GUI_Management_of_medical_clinic.Properties.Resources.MC_Logo;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(99, 92);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // textBoxLogin
             // 
@@ -80,11 +61,11 @@
             this.textBoxLogin.BackColor = System.Drawing.Color.MintCream;
             this.textBoxLogin.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.textBoxLogin.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.textBoxLogin.Location = new System.Drawing.Point(219, 167);
+            this.textBoxLogin.Location = new System.Drawing.Point(799, 424);
             this.textBoxLogin.Multiline = true;
             this.textBoxLogin.Name = "textBoxLogin";
             this.textBoxLogin.PlaceholderText = "Login";
-            this.textBoxLogin.Size = new System.Drawing.Size(333, 38);
+            this.textBoxLogin.Size = new System.Drawing.Size(531, 42);
             this.textBoxLogin.TabIndex = 4;
             // 
             // textBoxPassword
@@ -93,12 +74,48 @@
             this.textBoxPassword.BackColor = System.Drawing.Color.MintCream;
             this.textBoxPassword.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.textBoxPassword.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.textBoxPassword.Location = new System.Drawing.Point(219, 234);
+            this.textBoxPassword.Location = new System.Drawing.Point(799, 517);
             this.textBoxPassword.Multiline = true;
             this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.PasswordChar = '*';
             this.textBoxPassword.PlaceholderText = "Password";
-            this.textBoxPassword.Size = new System.Drawing.Size(333, 38);
+            this.textBoxPassword.Size = new System.Drawing.Size(531, 43);
             this.textBoxPassword.TabIndex = 5;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel2.Controls.Add(this.buttonExit);
+            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Location = new System.Drawing.Point(0, -2);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(312, 1081);
+            this.panel2.TabIndex = 7;
+            // 
+            // buttonExit
+            // 
+            this.buttonExit.BackColor = System.Drawing.Color.Gainsboro;
+            this.buttonExit.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonExit.FlatAppearance.BorderSize = 2;
+            this.buttonExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonExit.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonExit.Location = new System.Drawing.Point(29, 982);
+            this.buttonExit.Name = "buttonExit";
+            this.buttonExit.Size = new System.Drawing.Size(252, 66);
+            this.buttonExit.TabIndex = 3;
+            this.buttonExit.Text = "EXIT";
+            this.buttonExit.UseVisualStyleBackColor = false;
+            this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::GUI_Management_of_medical_clinic.Properties.Resources.MC_Logo;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(61, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(176, 168);
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
             // 
             // FormMenu
             // 
@@ -106,17 +123,19 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::GUI_Management_of_medical_clinic.Properties.Resources.Website_Headers_5;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.textBoxLogin);
             this.Controls.Add(this.buttonOpenEmployeeList);
-            this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormMenu_Load);
-            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -126,9 +145,10 @@
         #endregion
 
         private Button buttonOpenEmployeeList;
-        private Panel panel1;
-        private PictureBox pictureBox1;
         private TextBox textBoxLogin;
         private TextBox textBoxPassword;
+        private Panel panel2;
+        private PictureBox pictureBox1;
+        private Button buttonExit;
     }
 }

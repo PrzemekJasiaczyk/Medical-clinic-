@@ -77,17 +77,14 @@ namespace Console_Management_of_medical_clinic.Model
                 context.SaveChanges();
                 return;
             }
-
-            if (employee.IsActive == false)
+            else if (employee.IsActive == false)
             {
                 var context = new AppDbContext();
-                var emp = context.DbEmployees.Find(employee.IdEmployee); // ffor remove
+                EmployeeModel emp = context.DbEmployees.Find(employee.IdEmployee); // for remove
                 emp.IsActive = true;
                 context.SaveChanges();
+                return;
             }
-
-
-
         }
 
         public static EmployeeModel FindEmployee(int IdEmployee)
@@ -117,7 +114,7 @@ namespace Console_Management_of_medical_clinic.Model
             EnumSex sex)
         {
             var context = new AppDbContext();
-            var emp = context.DbEmployees.Find(IdEmployee);
+            EmployeeModel emp = context.DbEmployees.Find(IdEmployee);
             emp.FirstName = firstName;
             emp.LastName = lastName;
             emp.PESEL = pesel;

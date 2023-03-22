@@ -199,5 +199,13 @@ namespace GUI_Management_of_medical_clinic
             employeeEdit.ShowDialog();
             this.Close();
         }
+
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            FormMenu formMenu = new FormMenu();
+            //this.Hide();
+            formMenu.ShowDialog();
+            this.Close();
+        }
     }
 }
