@@ -220,7 +220,7 @@
             this.buttonBack.TabIndex = 22;
             this.buttonBack.Text = "LOG OUT";
             this.buttonBack.UseVisualStyleBackColor = false;
-
+            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
             // pictureBox1
             // 

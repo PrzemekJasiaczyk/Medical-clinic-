@@ -201,18 +201,12 @@ namespace GUI_Management_of_medical_clinic
             this.Close();
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            FormMenu formMenu = new FormMenu();
+            //this.Hide();
+            formMenu.ShowDialog();
+            this.Close();
+        }
     }
 }
