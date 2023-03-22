@@ -12,9 +12,6 @@ namespace Console_Management_of_medical_clinic.Logic
 {
     public class EmployeeService
     {
-        List<EmployeeModel> employees = new List<EmployeeModel>();  // for remove
-        DataTable tableEmployees = new DataTable();   // for remove
-
         public static void AddEmployee(string firstName, string lastName, string pesel, string dateOfBirth, string role, string correspondenceAddress, string email, string phoneNumber,
             EnumSex sex, string username, string password, SpecializationModel idSpecialization, bool isActive)
         {
@@ -41,104 +38,27 @@ namespace Console_Management_of_medical_clinic.Logic
 
         public EmployeeService() 
         {
-            //employees.Add(new Employee(1,"Tom", "Raweg", "14556985625", new DateTime(1973, 5, 16), "Employee", "tom.raweg@gmail.com", "tom.raweg@gmail.com", "+48 526 458 526", Data.Enums.EnumSex.Male, "", "", 1, true));
-            //employees.Add(new Employee(2,"Anna", "Kotras", "75695485698", new DateTime(1981, 7, 4), "Employee", "anna.kotras@gmail.com", "anna.kotras@gmail.com", "+48 458 889 112", Data.Enums.EnumSex.Female, "", "", 1, false));
-            //employees.Add(new Employee(3,"John", "Long", "75333345624", new DateTime(1988, 1, 20), "Employee", "john.long@gmail.com", "john.long@gmail.com", "+48 778 863 322", Data.Enums.EnumSex.Male, "", "", 1, true)); 
-            //employees.Add(new Employee(4,"Mark", "Tompson", "25757133412", new DateTime(1979, 10, 11), "Doctor", "mark.tompson@gmail.com", "mark.tompson@gmail.com", "+48 775 552 122", Data.Enums.EnumSex.Undefined, "", "", 1, true));
-
-            //tableEmployees.Columns.Add("First name", typeof(string));
-            //tableEmployees.Columns.Add("Last name", typeof(string));
-            //tableEmployees.Columns.Add("PESEL", typeof(string));
-            //tableEmployees.Columns.Add("Date of birth", typeof(DateTime));
-            //tableEmployees.Columns.Add("Role", typeof(string));
-            //tableEmployees.Columns.Add("Correspondence address", typeof(string));
-            //tableEmployees.Columns.Add("E-mail address", typeof(string));
-            //tableEmployees.Columns.Add("Phone number", typeof(string));
-            //tableEmployees.Columns.Add("Sex", typeof(char));
-            //tableEmployees.Columns.Add("Is active", typeof(string));
+            
         }
-
-       
-
-
-       public EmployeeModel ReturnCorrectEmployee(string? firstname, string? lastName, string? role)
+        public static bool CheckIfUsernameExists(string username)
         {
-            foreach(EmployeeModel emp in employees)
+            List<EmployeeModel> employees = EmployeeService.GetEmployeesData();
+
+
+            foreach (EmployeeModel employee in employees)
             {
-                if(emp.FirstName == firstname && emp.LastName == lastName && emp.Role == role)
+                if (employee.Username == username)
                 {
-                    return emp;
+                    return true;
                 }
             }
-            return null;
+            return false;
         }
-
-
-
-        /* 
-        public DataTable GetEmployeeTable()   // for remove
-        {
-
-            tableEmployees.Rows.Clear();
-
-            // Changing data in tableEmployees
-
-            /*foreach (Employee emp in employees)
-            {
-                tableEmployees.Rows.Add(emp.FirstName, emp.LastName, emp.PESEL, emp.DateOfBirth, emp.Role, emp.CorrespondenceAddress, emp.Email, emp.PhoneNumber, emp.Sex, emp.IsActive ? "Active" : "Deactive");
-            }
-            return tableEmployees;
-
-
-
-            foreach (EmployeeModel emp in employees)
-            {
-                tableEmployees.Rows.Add(emp.FirstName, emp.LastName, emp.Role, emp.IsActive ? "Active" : "Deactive");
-
-            }
-            return tableEmployees;
-
-
-        }
-        */
-
-        /*
-        public List<EmployeeModel> GetEmployeeList()      // for remove
-        {
-            return employees;
-        }
-        */
 
         
 
-        public DataTable FilterEmployee(string role, bool isActive)   // for remove
-        {
-            tableEmployees.Rows.Clear();
-            foreach (EmployeeModel emp in employees)
-            {
-                if (role != "none")
-                {
-                    if (emp.Role == role && emp.IsActive == isActive)
-                        //tableEmployees.Rows.Add(emp.FirstName, emp.LastName, emp.PESEL, emp.DateOfBirth, emp.Role, emp.CorrespondenceAddress, emp.Email, emp.PhoneNumber, emp.Sex, emp.IsActive ? "Active" : "Deactive");
-                        tableEmployees.Rows.Add(emp.FirstName, emp.LastName, emp.Role, emp.IsActive ? "Active" : "Deactive");
-                }
-                else
-                {
-                    if (emp.IsActive == isActive)
-                        //tableEmployees.Rows.Add(emp.FirstName, emp.LastName, emp.PESEL, emp.DateOfBirth, emp.Role, emp.CorrespondenceAddress, emp.Email, emp.PhoneNumber, emp.Sex, emp.IsActive ? "Active" : "Deactive");
-                        tableEmployees.Rows.Add(emp.FirstName, emp.LastName, emp.Role, emp.IsActive ? "Active" : "Deactive");
-                }
-            }
+        
 
-            return tableEmployees;
-        }
-
-        //public void ActivateEmployee(EmployeeModel emp)
-        //{
-            //emp.IsActive = true;
-        //}
-
-        //public void DeactivateEmployee(EmployeeModel emp) { emp.IsActive = false; }
 
 
         //Validation upon addit Employee
@@ -148,7 +68,8 @@ namespace Console_Management_of_medical_clinic.Logic
             string firstSix = input.Substring(0, 6);
 
             string formatedDate = selectedDate.ToString("dd/MM/yy");
-            string rawDate = formatedDate.Replace("/", "");
+            string rawDate = formatedDate.Replace(".", "");
+            rawDate = rawDate.Replace("/", "");
 
             if (input.Length != 11)
             {

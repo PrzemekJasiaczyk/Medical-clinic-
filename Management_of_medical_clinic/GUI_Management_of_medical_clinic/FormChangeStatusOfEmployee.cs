@@ -16,11 +16,13 @@ namespace GUI_Management_of_medical_clinic
     {
         
         EmployeeModel employee;
+        EmployeeModel currentUser;
         
-        public FormChangeStatusOfEmployee(EmployeeModel emp)
+        public FormChangeStatusOfEmployee(EmployeeModel emp, EmployeeModel currentU)
         {
             InitializeComponent();
             employee = emp;
+            currentUser = currentU;
         }
 
         private void FormChangeStatusOfEmployee_Load(object sender, EventArgs e)
@@ -30,7 +32,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            FormEmployeeList formEmployeeList = new FormEmployeeList(employee);
+            FormEmployeeList formEmployeeList = new FormEmployeeList(currentUser);
             this.Hide();
             formEmployeeList.ShowDialog();
             this.Close();
@@ -38,14 +40,14 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
-            if (textBoxPassword.Text != employee.Password)
+            if (textBoxPassword.Text != currentUser.Password)
             {
                 MessageBox.Show("Invalid password!");
                 return;
             }
 
-            employee.ChangeEmployeeStatus(employee);
-            FormEmployeeList formEmployeeList = new FormEmployeeList(employee);
+            EmployeeModel.ChangeEmployeeStatus(employee);
+            FormEmployeeList formEmployeeList = new FormEmployeeList(currentUser);
             this.Hide();
             formEmployeeList.ShowDialog();
             this.Close();

@@ -14,10 +14,12 @@ namespace GUI_Management_of_medical_clinic
     public partial class FormEmployeeDetailsView : Form
     {
         EmployeeModel employee;
-        public FormEmployeeDetailsView(EmployeeModel emp)
+        EmployeeModel currentUser;
+        public FormEmployeeDetailsView(EmployeeModel emp, EmployeeModel currentU)
         {
             InitializeComponent();
             employee = emp;
+            currentUser = currentU;
         }
 
         private void FormEmployeeDetailsView_Load(object sender, EventArgs e)
@@ -36,15 +38,15 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            //FormEmployeeList employeeList = new FormEmployeeList();
+            FormEmployeeList employeeList = new FormEmployeeList(currentUser);
             this.Hide();
-            //employeeList.ShowDialog();
+            employeeList.ShowDialog();
             this.Close();
         }
 
         private void Edit_Employee_Click(object sender, EventArgs e)
         {
-            FormEmployeeEdit employeeEdit = new FormEmployeeEdit(employee);
+            FormEmployeeEdit employeeEdit = new FormEmployeeEdit(employee, currentUser);
             this.Hide();
             employeeEdit.ShowDialog();
             this.Close();

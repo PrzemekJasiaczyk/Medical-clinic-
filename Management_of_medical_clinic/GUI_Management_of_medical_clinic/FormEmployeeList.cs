@@ -14,9 +14,8 @@ namespace GUI_Management_of_medical_clinic
 {
     public partial class FormEmployeeList : Form
     {
-        EmployeeService service = new EmployeeService();    //for remove
         EmployeeModel currentUser;     // from now 'employee object' which is moving beetween forms is person logged to system
-        string[] roles = { "Employee", "Doctor", "none" };
+        //string[] roles = { "Employee", "Medical Doctor", "Manager", "None" };
 
         void LoadEmployeeData()
         {
@@ -31,7 +30,7 @@ namespace GUI_Management_of_medical_clinic
             {
                 dataGridViewEmployees.Rows.Add(employee.IdEmployee, employee.FirstName, employee.LastName, employee.Role, (employee.IsActive == true) ? "Active" : "Not Active");
 
-                if (currentUser.IdEmployee == currentUser.IdEmployee) { currentUser = employee; }     // it makes user always refreshed
+                if (employee.IdEmployee == currentUser.IdEmployee) { currentUser = employee; }     // it makes user always refreshed
             }
             
         }
@@ -45,8 +44,8 @@ namespace GUI_Management_of_medical_clinic
         private void FormEmployeeList_Load(object sender, EventArgs e)
         {
             dataGridViewEmployees.Rows.Clear();
-            comboBoxRole.Items.Clear();
-            comboBoxRole.Items.AddRange(roles);
+            //comboBoxRole.Items.Clear();
+            //comboBoxRole.Items.AddRange(roles);
             dataGridViewEmployees.Columns.Add("IdEmployee", "Id of Employee");
             dataGridViewEmployees.Columns.Add("FirstName", "First Name");
             dataGridViewEmployees.Columns.Add("LastName", "Last Name");
@@ -57,41 +56,28 @@ namespace GUI_Management_of_medical_clinic
             LoadEmployeeData();
 
 
-
-
-            //dataGridViewEmployees.DataSource = service.GetEmployeeTable();
-            /* addEditBtnColumn();
-            
-            foreach (DataGridViewColumn dgvc in dataGridViewEmployees.Columns)
-            {
-                dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
-            }
-            */
         }
 
-        
 
-        /*private void addEditBtnColumn()
-        {
-            DataGridViewButtonColumn editButton = new DataGridViewButtonColumn();
-            editButton.UseColumnTextForButtonValue = true;
-            editButton.Name = "edit_column";
-            editButton.HeaderText = "";
-            editButton.Text = "Edit";
-            int columnIndex = dataGridViewEmployees.Columns.Count;
-            if (dataGridViewEmployees.Columns["edit_column"] == null)
-                dataGridViewEmployees.Columns.Insert(columnIndex, editButton);
-        }*/
         private void buttonFilterEmployee_Click(object sender, EventArgs e)
         {
-            try
-            {
-                dataGridViewEmployees.DataSource = service.FilterEmployee(Convert.ToString(comboBoxRole.SelectedItem), checkBoxIsActive.Checked);
-            }
-            catch
+            if (comboBoxRole.SelectedItem == null)
             {
                 MessageBox.Show("Select variant of filter!");
+                return;
             }
+
+            string role = comboBoxRole.SelectedItem.ToString();
+            bool isActive = checkBoxIsActive.Checked;
+
+            List<EmployeeModel> employees = EmployeeModel.FilterEmployees(role, isActive);
+
+            dataGridViewEmployees.Rows.Clear();
+            foreach(EmployeeModel employee in employees)
+            {
+                dataGridViewEmployees.Rows.Add(employee.IdEmployee, employee.FirstName, employee.LastName, employee.Role, (employee.IsActive == true) ? "Active" : "Not Active");
+            }
+
         }
         private void buttonClearFilter_Click(object sender, EventArgs e)
         {
@@ -114,8 +100,10 @@ namespace GUI_Management_of_medical_clinic
                 MessageBox.Show("Employee is deactive!");
                 return;
             }
-            
-            FormChangeStatusOfEmployee deactivate = new FormChangeStatusOfEmployee(currentUser);
+
+            int IdEmployee = (int)dataGridViewEmployees.Rows[rowIndex].Cells[0].Value;
+            EmployeeModel employee = EmployeeModel.FindEmployee(IdEmployee);
+            FormChangeStatusOfEmployee deactivate = new FormChangeStatusOfEmployee(employee, currentUser);
             this.Hide();
             deactivate.ShowDialog();
             
@@ -140,57 +128,46 @@ namespace GUI_Management_of_medical_clinic
                 return;
             }
 
-            FormChangeStatusOfEmployee deactivate = new FormChangeStatusOfEmployee(currentUser);
+            int IdEmployee = (int)dataGridViewEmployees.Rows[rowIndex].Cells[0].Value;
+            EmployeeModel employee = EmployeeModel.FindEmployee(IdEmployee);
+            FormChangeStatusOfEmployee deactivate = new FormChangeStatusOfEmployee(employee, currentUser);
             this.Hide();
             deactivate.ShowDialog();
-            
-            
-      
+
+
+
         }
-        private void dataGridViewEmployees_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewEmployees_CellContentClick(object sender)
         {
-            /* var senderGrid = (DataGridView)sender;
-
-            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
-            {
-                int employeeIndex = dataGridViewEmployees.CurrentCell.RowIndex;
-
-                if (service.EmployeeListCount() <= employeeIndex)
-                    return;
-
-                FormEmployeeEdit employeeEdit = new FormEmployeeEdit(service.Employees[employeeIndex]);
-                this.Hide();
-                employeeEdit.ShowDialog();
-                this.Close(); 
-            }*/
+            
         }
         private void buttonReviewEmployee_Click(object sender, EventArgs e)
         {
-            /* int row = dataGridViewEmployees.CurrentRow.Index;
+            int rowIndex = dataGridViewEmployees.CurrentRow.Index;
 
-            if (row >= 0 && row < service.EmployeeListCount() && dataGridViewEmployees.SelectedCells.Count < dataGridViewEmployees.ColumnCount + 1)
-            {
-                string? firstName = dataGridViewEmployees.Rows[row].Cells[0].Value.ToString();
-                string? lastName = dataGridViewEmployees.Rows[row].Cells[1].Value.ToString();
-                string? role = dataGridViewEmployees.Rows[row].Cells[2].Value.ToString();
-
-                employee = service.ReturnCorrectEmployee(firstName, lastName, role);
-                //MessageBox.Show(employee.FirstName.ToString());
-                FormEmployeeDetailsView employeeDetailsView = new FormEmployeeDetailsView(employee);
-                this.Hide();
-                employeeDetailsView.ShowDialog();
-                this.Close();
-            }
-            else
+            if (rowIndex < 0)
             {
                 MessageBox.Show("Select one employee from list!");
-            } */
+                return;
+            }
+
+            int IdEmployee = (int)dataGridViewEmployees.Rows[rowIndex].Cells[0].Value;
+            EmployeeModel employee = EmployeeModel.FindEmployee(IdEmployee);
+
+            
+            
+            FormEmployeeDetailsView employeeDetailsView = new FormEmployeeDetailsView(employee, currentUser);
+            this.Hide();
+            employeeDetailsView.ShowDialog();
+            this.Close();
+
+
 
         }
         private void buttonAddEmployee_Click(object sender, EventArgs e)
         {
 
-            FormEmployeeAdd employeeAdd = new FormEmployeeAdd();
+            FormEmployeeAdd employeeAdd = new FormEmployeeAdd(currentUser);
             this.Hide();
             employeeAdd.ShowDialog();
             this.Close();
@@ -198,9 +175,36 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonSpecializations_Click(object sender, EventArgs e)
         {
-            FormSpecializationAdd specializationAdd = new FormSpecializationAdd();
+            FormSpecializationAdd specializationAdd = new FormSpecializationAdd(currentUser);
             this.Hide();
             specializationAdd.ShowDialog();
+            this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int rowIndex = dataGridViewEmployees.CurrentRow.Index;
+
+            if (rowIndex < 0)
+            {
+                MessageBox.Show("Select one employee from list!");
+                return;
+            }
+
+            int IdEmployee = (int)dataGridViewEmployees.Rows[rowIndex].Cells[0].Value;
+            EmployeeModel employee = EmployeeModel.FindEmployee(IdEmployee);
+
+            FormEmployeeEdit employeeEdit = new FormEmployeeEdit(employee, currentUser);
+            this.Hide();
+            employeeEdit.ShowDialog();
+            this.Close();
+        }
+
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            FormMenu formMenu = new FormMenu();
+            //this.Hide();
+            formMenu.ShowDialog();
             this.Close();
         }
     }

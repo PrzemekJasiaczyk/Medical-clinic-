@@ -68,17 +68,9 @@
             // 
             this.checkedListBoxSpecialization.CheckOnClick = true;
             this.checkedListBoxSpecialization.FormattingEnabled = true;
-            this.checkedListBoxSpecialization.Items.AddRange(new object[] {
-            "Anesthesiology",
-            "Dermatology",
-            "Family Medicine",
-            "Neurology",
-            "Radiation Oncology",
-            "Surgery",
-            "Urology"});
             this.checkedListBoxSpecialization.Location = new System.Drawing.Point(548, 79);
             this.checkedListBoxSpecialization.Name = "checkedListBoxSpecialization";
-            this.checkedListBoxSpecialization.Size = new System.Drawing.Size(209, 130);
+            this.checkedListBoxSpecialization.Size = new System.Drawing.Size(209, 274);
             this.checkedListBoxSpecialization.TabIndex = 53;
             this.checkedListBoxSpecialization.Visible = false;
             this.checkedListBoxSpecialization.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxSpecialization_SelectedIndexChanged);
@@ -260,11 +252,11 @@
             // 
             this.labelTitle.AutoSize = true;
             this.labelTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelTitle.Location = new System.Drawing.Point(299, 16);
+            this.labelTitle.Location = new System.Drawing.Point(329, 9);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(212, 30);
+            this.labelTitle.Size = new System.Drawing.Size(155, 30);
             this.labelTitle.TabIndex = 34;
-            this.labelTitle.Text = "Add Employee Form";
+            this.labelTitle.Text = "Add Employee";
             // 
             // buttonCancel
             // 

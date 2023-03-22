@@ -1,4 +1,6 @@
-﻿using Console_Management_of_medical_clinic.Logic;
+﻿using Console_Management_of_medical_clinic.Data;
+using Console_Management_of_medical_clinic.Logic;
+using Console_Management_of_medical_clinic.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,21 +15,31 @@ namespace GUI_Management_of_medical_clinic
 {
     public partial class FormEmployeeAdd : Form
     {
-        public FormEmployeeAdd()
+        EmployeeModel currentUser;
+        public FormEmployeeAdd(EmployeeModel currentU)
         {
             InitializeComponent();
+            currentUser = currentU;
         }
 
         private void FormEmployeeAdd_Load(object sender, EventArgs e)
         {
             comboBoxSex.SelectedIndex = 0;
+
+            List<SpecializationModel> specializations = SpecializationService.GetSpecializationsData();
+            using AppDbContext context = new AppDbContext();
+
+            foreach (SpecializationModel specialization in specializations)
+            {
+                checkedListBoxSpecialization.Items.Add(specialization.Name);
+            }
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            //FormEmployeeList employeeList = new FormEmployeeList();
+            FormEmployeeList employeeList = new FormEmployeeList(currentUser);
             this.Hide();
-            //employeeList.ShowDialog();
+            employeeList.ShowDialog();
             this.Close();
         }
 
@@ -60,7 +72,10 @@ namespace GUI_Management_of_medical_clinic
                 return;
             }
 
-            MessageBox.Show("Success");
+            FormEmployeeSetPassword employeeSetPassword = new FormEmployeeSetPassword(currentUser);
+            this.Hide();
+            employeeSetPassword.ShowDialog();
+            this.Close();
         }
 
         //Check if all required data is filled
