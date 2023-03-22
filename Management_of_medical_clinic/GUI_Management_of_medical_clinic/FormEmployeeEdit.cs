@@ -65,11 +65,12 @@ namespace GUI_Management_of_medical_clinic
             {
                 MessageBox.Show(stringPhone);
                 return;
-            }*/
+            }
 
             
             EnumSex enumSex = (EnumSex)Enum.Parse(typeof(EnumSex), comboBoxSex.SelectedItem.ToString());
             EmployeeModel.EditEmployee(employee.IdEmployee, textBoxFirstName.Text, textBoxLastName.Text, textBoxPESEL.Text, textBoxDateOfBirth.Text, comboBoxRole.Text, correspAddressTextBox.Text, textBoxEmail.Text, phoneNumberTextBox.Text, enumSex);
+            */
 
             FormEmployeeList employeeList = new FormEmployeeList(currentUser);
             this.Hide();

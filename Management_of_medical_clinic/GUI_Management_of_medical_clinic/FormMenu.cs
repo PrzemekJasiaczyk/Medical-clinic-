@@ -24,6 +24,11 @@ namespace GUI_Management_of_medical_clinic
 
             foreach(EmployeeModel emp in employees)
             {
+                FormEmployeeList employeeList = new FormEmployeeList(emp);
+                this.Hide();
+                employeeList.ShowDialog();
+                this.Close();
+                /*
                 if(emp.Username==login && emp.Password == password)
                 {
                     FormEmployeeList employeeList = new FormEmployeeList(emp);
@@ -31,12 +36,12 @@ namespace GUI_Management_of_medical_clinic
                     employeeList.ShowDialog();
                     this.Close();
                 }
+                */
 
             }
 
             MessageBox.Show("Incorrect login or password");
-
-            
+ 
         }
     }
 }

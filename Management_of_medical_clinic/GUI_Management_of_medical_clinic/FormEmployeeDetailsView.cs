@@ -28,7 +28,7 @@ namespace GUI_Management_of_medical_clinic
             textBoxLastName.Text = employee.LastName;
             textBoxPESEL.Text = employee.PESEL;
             textBoxDateOfBirth.Text = employee.DateOfBirth.ToString();
-            textBoxRole.Text = employee.Role;
+            textBoxRole.Text = employee.Role.ToString();
             textBoxCorrespondenceAddress.Text = employee.CorrespondenceAddress;
             textBoxEmail.Text = employee.Email;
             textBoxPhoneNumber.Text = employee.PhoneNumber;

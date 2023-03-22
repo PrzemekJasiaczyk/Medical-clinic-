@@ -40,11 +40,13 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
+            /*
             if (textBoxPassword.Text != currentUser.Password)
             {
                 MessageBox.Show("Invalid password!");
                 return;
             }
+            */
 
             EmployeeModel.ChangeEmployeeStatus(employee);
             FormEmployeeList formEmployeeList = new FormEmployeeList(currentUser);

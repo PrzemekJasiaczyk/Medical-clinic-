@@ -1,4 +1,5 @@
 ﻿using Console_Management_of_medical_clinic.Data;
+using Console_Management_of_medical_clinic.Data.Enums;
 using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
 using System;
@@ -20,6 +21,7 @@ namespace GUI_Management_of_medical_clinic
         {
             InitializeComponent();
             currentUser = currentU;
+            comboBoxRole.DataSource = Enum.GetValues(typeof(EnumEmployeeRoles));
         }
 
         private void FormEmployeeAdd_Load(object sender, EventArgs e)

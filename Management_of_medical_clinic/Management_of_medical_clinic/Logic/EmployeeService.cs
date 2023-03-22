@@ -12,12 +12,12 @@ namespace Console_Management_of_medical_clinic.Logic
 {
     public class EmployeeService
     {
-        public static void AddEmployee(string firstName, string lastName, string pesel, string dateOfBirth, string role, string correspondenceAddress, string email, string phoneNumber,
-            EnumSex sex, string username, string password, SpecializationModel idSpecialization, bool isActive)
+        public static void AddEmployee(UserModel idUser, string firstName, string lastName, string pesel, string dateOfBirth,  string correspondenceAddress, string email, string phoneNumber,
+            EnumSex sex, string username, string password, EnumEmployeeRoles role, SpecializationModel idSpecialization, bool isActive)
         {
 
-            EmployeeModel employee = new EmployeeModel(firstName, lastName, pesel, dateOfBirth, role, correspondenceAddress, email, phoneNumber,
-            sex, username, password, idSpecialization, isActive);
+            EmployeeModel employee = new EmployeeModel(idUser, firstName, lastName, pesel, dateOfBirth, correspondenceAddress, email, phoneNumber,
+            sex, role, idSpecialization, isActive);
 
             using AppDbContext context = new AppDbContext();
 
@@ -36,6 +36,7 @@ namespace Console_Management_of_medical_clinic.Logic
             return employees;
         }
 
+        /*
         public EmployeeService() 
         {
             
@@ -55,7 +56,7 @@ namespace Console_Management_of_medical_clinic.Logic
             return false;
         }
 
-        
+        */
 
         
 

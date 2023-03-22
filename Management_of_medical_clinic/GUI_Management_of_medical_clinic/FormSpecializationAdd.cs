@@ -62,58 +62,27 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonReplace_Click(object sender, EventArgs e)
         {
-            string specializationToRemove = textBoxRemove.Text;
 
-            MessageBox.Show(SpecializationService.RemoveSpecialization(specializationToRemove));
-            loadDataGridView();
         }
 
         private void textBoxAdd_TextChanged(object sender, EventArgs e)
         {
-            if (textBoxAdd.Text.Length > 0)
-            {
-                buttonAdd.Enabled = true;
-            }
-            else
-            {
-                buttonAdd.Enabled = false;
-            }
+
         }
 
         private void textBoxRemove_TextChanged(object sender, EventArgs e)
         {
-            if (textBoxRemove.Text.Length > 0)
-            {
-                buttonRemove.Enabled= true;
-            }
-            else
-            {
-                buttonRemove.Enabled = false;
-            }
+
         }
 
         private void textBoxEditPrevious_TextChanged(object sender, EventArgs e)
         {
-            if (textBoxEditPrevious.Text.Length > 0 && textBoxEditNew.Text.Length > 0)
-            {
-                buttonReplace.Enabled= true;
-            }
-            else
-            {
-                buttonReplace.Enabled = false;
-            }
+
         }
 
         private void textBoxEditNew_TextChanged(object sender, EventArgs e)
         {
-            if (textBoxEditPrevious.Text.Length > 0 && textBoxEditNew.Text.Length > 0)
-            {
-                buttonReplace.Enabled = true;
-            }
-            else
-            {
-                buttonReplace.Enabled = false;
-            }
+
         }
 
         private void buttonReplace_Click_1(object sender, EventArgs e)

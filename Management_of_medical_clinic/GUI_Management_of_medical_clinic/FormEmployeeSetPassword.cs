@@ -31,6 +31,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonNext_Click(object sender, EventArgs e)
         {
+            /*
             string username = textBoxUsername.Text;
             if (EmployeeService.CheckIfUsernameExists(username))
             {
@@ -42,7 +43,7 @@ namespace GUI_Management_of_medical_clinic
                 MessageBox.Show("Passwords don't match");
                 return;
             }
-
+            */
             MessageBox.Show("<<Success, but button doesn't work yet>>");
 
             FormEmployeeList employeeList = new FormEmployeeList(currentUser);
