@@ -64,7 +64,7 @@ namespace GUI_Management_of_medical_clinic
 
                 if (!string.IsNullOrEmpty(role))
                 {
-                    filteredUsers = filteredUsers.Where(u => u.Role == role).ToList();
+                    //filteredUsers = filteredUsers.Where(u => u.Role == role).ToList();
                 }
 
                 dataGridViewUsers.Rows.Clear();

@@ -99,12 +99,8 @@ namespace Console_Management_of_medical_clinic.Model
             EnumSex sex)
         {
             var context = new AppDbContext();
-
             var emp = context.DbEmployees.Find(IdEmployee);
             emp.IdUser = idUser;
-
-            EmployeeModel emp = context.DbEmployees.Find(IdEmployee);
-
             emp.FirstName = firstName;
             emp.LastName = lastName;
             emp.PESEL = pesel;
