@@ -201,18 +201,9 @@ namespace GUI_Management_of_medical_clinic
             this.Close();
         }
 
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
-
-
-
-
-
-
-
-
-
-
-
-
+        }
     }
 }

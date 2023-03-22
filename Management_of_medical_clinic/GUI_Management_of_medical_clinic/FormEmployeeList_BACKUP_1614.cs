@@ -201,18 +201,18 @@ namespace GUI_Management_of_medical_clinic
             this.Close();
         }
 
+<<<<<<< HEAD
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
-
-
-
-
-
-
-
-
-
-
-
-
+=======
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            FormMenu formMenu = new FormMenu();
+            //this.Hide();
+            formMenu.ShowDialog();
+            this.Close();
+>>>>>>> 031ebc01d1ca502c76f533b8908d4fbc57959a55
+        }
     }
 }

@@ -1,5 +1,4 @@
-﻿using Console_Management_of_medical_clinic.Data.Enums;
-using Console_Management_of_medical_clinic.Logic;
+﻿using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
 using System;
 using System.Collections.Generic;
@@ -67,8 +66,8 @@ namespace GUI_Management_of_medical_clinic
                 MessageBox.Show("Select variant of filter!");
                 return;
             }
-            /*
-            EnumEmployeeRoles role = (role)Enum.Parse(typeof(role), comboBoxRole.SelectedValue);
+
+            string role = comboBoxRole.SelectedItem.ToString();
             bool isActive = checkBoxIsActive.Checked;
 
             List<EmployeeModel> employees = EmployeeModel.FilterEmployees(role, isActive);
@@ -78,7 +77,7 @@ namespace GUI_Management_of_medical_clinic
             {
                 dataGridViewEmployees.Rows.Add(employee.IdEmployee, employee.FirstName, employee.LastName, employee.Role, (employee.IsActive == true) ? "Active" : "Not Active");
             }
-            */
+
         }
         private void buttonClearFilter_Click(object sender, EventArgs e)
         {
@@ -201,18 +200,12 @@ namespace GUI_Management_of_medical_clinic
             this.Close();
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            FormMenu formMenu = new FormMenu();
+            //this.Hide();
+            formMenu.ShowDialog();
+            this.Close();
+        }
     }
 }
