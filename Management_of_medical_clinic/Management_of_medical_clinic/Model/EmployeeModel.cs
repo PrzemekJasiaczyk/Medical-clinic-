@@ -81,7 +81,7 @@ namespace Console_Management_of_medical_clinic.Model
             if (employee.IsActive == false)
             {
                 var context = new AppDbContext();
-                var emp = context.DbEmployees.Find(employee.IdEmployee); // for remove
+                var emp = context.DbEmployees.Find(employee.IdEmployee); // ffor remove
                 emp.IsActive = true;
                 context.SaveChanges();
             }
