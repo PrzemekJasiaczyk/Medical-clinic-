@@ -54,12 +54,12 @@ namespace GUI_Management_of_medical_clinic
 
                 if (!string.IsNullOrEmpty(textBoxFirstname.Text))
                 {
-                    filteredUsers = filteredUsers.Where(u => u.FirstName.Contains(textBoxFirstname.Text)).ToList();
+                    //filteredUsers = filteredUsers.Where(u => u.FirstName.Contains(textBoxFirstname.Text)).ToList();
                 }
 
                 if (!string.IsNullOrEmpty(textBoxLastname.Text))
                 {
-                    filteredUsers = filteredUsers.Where(u => u.LastName.Contains(textBoxLastname.Text)).ToList();
+                    //filteredUsers = filteredUsers.Where(u => u.LastName.Contains(textBoxLastname.Text)).ToList();
                 }
 
                 if (!string.IsNullOrEmpty(role))
@@ -70,7 +70,7 @@ namespace GUI_Management_of_medical_clinic
                 dataGridViewUsers.Rows.Clear();
                 foreach (UserModel user in filteredUsers)
                 {
-                    dataGridViewUsers.Rows.Add(user.IdUser, user.Username, user.FirstName, user.LastName, user.Role, (user.IsActive == true) ? "Active" : "Not Active");
+                    //dataGridViewUsers.Rows.Add(user.IdUser, user.Username, user.FirstName, user.LastName, user.Role, (user.IsActive == true) ? "Active" : "Not Active");
                 }
             }
         }
