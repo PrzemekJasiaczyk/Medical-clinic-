@@ -283,7 +283,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1920, 1080);
             this.Controls.Add(this.labelSpecialization);
             this.Controls.Add(this.checkedListBoxSpecialization);
             this.Controls.Add(this.comboBoxSex);
@@ -307,9 +307,11 @@
             this.Controls.Add(this.labelTitle);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonNext);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormEmployeeAdd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormEmployeeAdd";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormEmployeeAdd_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

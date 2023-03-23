@@ -36,24 +36,27 @@
             this.buttonFilterEmployee = new System.Windows.Forms.Button();
             this.comboBoxRole = new System.Windows.Forms.ComboBox();
             this.checkBoxIsActive = new System.Windows.Forms.CheckBox();
-            this.labelFilter = new System.Windows.Forms.Label();
             this.dataGridViewEmployees = new System.Windows.Forms.DataGridView();
             this.buttonSpecializations = new System.Windows.Forms.Button();
             this.buttonEditEmployee = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonBack = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployees)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonReactivate
             // 
             this.buttonReactivate.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonReactivate.Location = new System.Drawing.Point(27, 630);
+            this.buttonReactivate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonReactivate.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonReactivate.Location = new System.Drawing.Point(-7, 630);
             this.buttonReactivate.Name = "buttonReactivate";
-            this.buttonReactivate.Size = new System.Drawing.Size(140, 45);
+            this.buttonReactivate.Size = new System.Drawing.Size(329, 87);
             this.buttonReactivate.TabIndex = 19;
             this.buttonReactivate.Text = "Reactivate employee";
             this.buttonReactivate.UseVisualStyleBackColor = false;
@@ -61,9 +64,10 @@
             // 
             // buttonClearFilter
             // 
-            this.buttonClearFilter.Location = new System.Drawing.Point(422, 983);
+            this.buttonClearFilter.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonClearFilter.Location = new System.Drawing.Point(610, 200);
             this.buttonClearFilter.Name = "buttonClearFilter";
-            this.buttonClearFilter.Size = new System.Drawing.Size(121, 23);
+            this.buttonClearFilter.Size = new System.Drawing.Size(329, 87);
             this.buttonClearFilter.TabIndex = 18;
             this.buttonClearFilter.Text = "Clear filter";
             this.buttonClearFilter.UseVisualStyleBackColor = true;
@@ -72,9 +76,11 @@
             // buttonDeactivateEmployee
             // 
             this.buttonDeactivateEmployee.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonDeactivateEmployee.Location = new System.Drawing.Point(27, 546);
+            this.buttonDeactivateEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDeactivateEmployee.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonDeactivateEmployee.Location = new System.Drawing.Point(-7, 537);
             this.buttonDeactivateEmployee.Name = "buttonDeactivateEmployee";
-            this.buttonDeactivateEmployee.Size = new System.Drawing.Size(254, 57);
+            this.buttonDeactivateEmployee.Size = new System.Drawing.Size(329, 87);
             this.buttonDeactivateEmployee.TabIndex = 17;
             this.buttonDeactivateEmployee.Text = "Deactivate employee";
             this.buttonDeactivateEmployee.UseVisualStyleBackColor = false;
@@ -83,9 +89,11 @@
             // buttonReviewEmployee
             // 
             this.buttonReviewEmployee.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonReviewEmployee.Location = new System.Drawing.Point(27, 467);
+            this.buttonReviewEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonReviewEmployee.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonReviewEmployee.Location = new System.Drawing.Point(-7, 440);
             this.buttonReviewEmployee.Name = "buttonReviewEmployee";
-            this.buttonReviewEmployee.Size = new System.Drawing.Size(254, 57);
+            this.buttonReviewEmployee.Size = new System.Drawing.Size(329, 87);
             this.buttonReviewEmployee.TabIndex = 16;
             this.buttonReviewEmployee.Text = "Review employee";
             this.buttonReviewEmployee.UseVisualStyleBackColor = false;
@@ -108,9 +116,10 @@
             // 
             // buttonFilterEmployee
             // 
-            this.buttonFilterEmployee.Location = new System.Drawing.Point(422, 958);
+            this.buttonFilterEmployee.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonFilterEmployee.Location = new System.Drawing.Point(124, 200);
             this.buttonFilterEmployee.Name = "buttonFilterEmployee";
-            this.buttonFilterEmployee.Size = new System.Drawing.Size(121, 23);
+            this.buttonFilterEmployee.Size = new System.Drawing.Size(329, 87);
             this.buttonFilterEmployee.TabIndex = 14;
             this.buttonFilterEmployee.Text = "Filtruj";
             this.buttonFilterEmployee.UseVisualStyleBackColor = true;
@@ -118,6 +127,9 @@
             // 
             // comboBoxRole
             // 
+            this.comboBoxRole.BackColor = System.Drawing.Color.Gainsboro;
+            this.comboBoxRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxRole.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comboBoxRole.FormattingEnabled = true;
             this.comboBoxRole.Items.AddRange(new object[] {
             "Medical Doctor",
@@ -125,41 +137,40 @@
             "Paramedic",
             "Janitor",
             "Technitian"});
-            this.comboBoxRole.Location = new System.Drawing.Point(422, 929);
+            this.comboBoxRole.Location = new System.Drawing.Point(636, 17);
             this.comboBoxRole.Name = "comboBoxRole";
-            this.comboBoxRole.Size = new System.Drawing.Size(121, 23);
+            this.comboBoxRole.Size = new System.Drawing.Size(271, 36);
             this.comboBoxRole.TabIndex = 13;
             // 
             // checkBoxIsActive
             // 
             this.checkBoxIsActive.AutoSize = true;
+            this.checkBoxIsActive.BackColor = System.Drawing.Color.SteelBlue;
             this.checkBoxIsActive.Checked = true;
             this.checkBoxIsActive.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxIsActive.Location = new System.Drawing.Point(422, 904);
+            this.checkBoxIsActive.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.checkBoxIsActive.FlatAppearance.BorderSize = 4;
+            this.checkBoxIsActive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkBoxIsActive.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.checkBoxIsActive.Location = new System.Drawing.Point(146, 17);
             this.checkBoxIsActive.Name = "checkBoxIsActive";
-            this.checkBoxIsActive.Size = new System.Drawing.Size(123, 19);
+            this.checkBoxIsActive.Size = new System.Drawing.Size(271, 41);
             this.checkBoxIsActive.TabIndex = 12;
             this.checkBoxIsActive.Text = "Is Employee active";
-            this.checkBoxIsActive.UseVisualStyleBackColor = true;
-            // 
-            // labelFilter
-            // 
-            this.labelFilter.AutoSize = true;
-            this.labelFilter.Location = new System.Drawing.Point(422, 886);
-            this.labelFilter.Name = "labelFilter";
-            this.labelFilter.Size = new System.Drawing.Size(51, 15);
-            this.labelFilter.TabIndex = 11;
-            this.labelFilter.Text = "Filter list";
+            this.checkBoxIsActive.UseVisualStyleBackColor = false;
             // 
             // dataGridViewEmployees
             // 
             this.dataGridViewEmployees.AllowUserToAddRows = false;
             this.dataGridViewEmployees.AllowUserToDeleteRows = false;
             this.dataGridViewEmployees.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewEmployees.BackgroundColor = System.Drawing.SystemColors.Info;
             this.dataGridViewEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewEmployees.GridColor = System.Drawing.SystemColors.Info;
             this.dataGridViewEmployees.Location = new System.Drawing.Point(562, 65);
             this.dataGridViewEmployees.Name = "dataGridViewEmployees";
             this.dataGridViewEmployees.ReadOnly = true;
+            this.dataGridViewEmployees.RowHeadersVisible = false;
             this.dataGridViewEmployees.RowTemplate.Height = 25;
             this.dataGridViewEmployees.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewEmployees.Size = new System.Drawing.Size(1077, 680);
@@ -169,9 +180,11 @@
             // buttonSpecializations
             // 
             this.buttonSpecializations.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonSpecializations.Location = new System.Drawing.Point(27, 698);
+            this.buttonSpecializations.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSpecializations.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonSpecializations.Location = new System.Drawing.Point(-7, 723);
             this.buttonSpecializations.Name = "buttonSpecializations";
-            this.buttonSpecializations.Size = new System.Drawing.Size(142, 45);
+            this.buttonSpecializations.Size = new System.Drawing.Size(329, 87);
             this.buttonSpecializations.TabIndex = 20;
             this.buttonSpecializations.Text = "Edit Specializations";
             this.buttonSpecializations.UseVisualStyleBackColor = false;
@@ -232,18 +245,28 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel2.Controls.Add(this.checkBoxIsActive);
+            this.panel2.Controls.Add(this.buttonClearFilter);
+            this.panel2.Controls.Add(this.comboBoxRole);
+            this.panel2.Controls.Add(this.buttonFilterEmployee);
+            this.panel2.Location = new System.Drawing.Point(562, 762);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1077, 306);
+            this.panel2.TabIndex = 23;
+            // 
             // FormEmployeeList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.buttonClearFilter);
-            this.Controls.Add(this.buttonFilterEmployee);
-            this.Controls.Add(this.comboBoxRole);
-            this.Controls.Add(this.checkBoxIsActive);
-            this.Controls.Add(this.labelFilter);
             this.Controls.Add(this.dataGridViewEmployees);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormEmployeeList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -253,8 +276,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployees)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -268,12 +292,12 @@
         private Button buttonFilterEmployee;
         private ComboBox comboBoxRole;
         private CheckBox checkBoxIsActive;
-        private Label labelFilter;
         private DataGridView dataGridViewEmployees;
         private Button buttonSpecializations;
         private Button buttonEditEmployee;
         private Panel panel1;
         private PictureBox pictureBox1;
         private Button buttonBack;
+        private Panel panel2;
     }
 }

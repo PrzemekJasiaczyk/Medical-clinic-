@@ -105,7 +105,7 @@ namespace GUI_Management_of_medical_clinic
             int IdEmployee = (int)dataGridViewEmployees.Rows[rowIndex].Cells[0].Value;
             EmployeeModel employee = EmployeeModel.FindEmployee(IdEmployee);
             FormChangeStatusOfEmployee deactivate = new FormChangeStatusOfEmployee(employee, currentUser);
-            this.Hide();
+            this.InitializeComponent();
             deactivate.ShowDialog();
             
 
@@ -132,7 +132,7 @@ namespace GUI_Management_of_medical_clinic
             int IdEmployee = (int)dataGridViewEmployees.Rows[rowIndex].Cells[0].Value;
             EmployeeModel employee = EmployeeModel.FindEmployee(IdEmployee);
             FormChangeStatusOfEmployee deactivate = new FormChangeStatusOfEmployee(employee, currentUser);
-            this.Hide();
+            this.InitializeComponent();
             deactivate.ShowDialog();
 
 
@@ -158,7 +158,7 @@ namespace GUI_Management_of_medical_clinic
             
             
             FormEmployeeDetailsView employeeDetailsView = new FormEmployeeDetailsView(employee, currentUser);
-            this.Hide();
+            //this.Hide();
             employeeDetailsView.ShowDialog();
             this.Close();
 
@@ -169,7 +169,7 @@ namespace GUI_Management_of_medical_clinic
         {
 
             FormEmployeeAdd employeeAdd = new FormEmployeeAdd(currentUser);
-            this.Hide();
+            //this.Hide();
             employeeAdd.ShowDialog();
             this.Close();
         }
@@ -177,7 +177,7 @@ namespace GUI_Management_of_medical_clinic
         private void buttonSpecializations_Click(object sender, EventArgs e)
         {
             FormSpecializationAdd specializationAdd = new FormSpecializationAdd(currentUser);
-            this.Hide();
+            //this.Hide();
             specializationAdd.ShowDialog();
             this.Close();
         }
@@ -196,7 +196,7 @@ namespace GUI_Management_of_medical_clinic
             EmployeeModel employee = EmployeeModel.FindEmployee(IdEmployee);
 
             FormEmployeeEdit employeeEdit = new FormEmployeeEdit(employee, currentUser);
-            this.Hide();
+            //this.Hide();
             employeeEdit.ShowDialog();
             this.Close();
         }

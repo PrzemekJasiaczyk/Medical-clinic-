@@ -24,9 +24,9 @@ namespace GUI_Management_of_medical_clinic
 
             foreach (UserModel user in users)
             {
-
                 
                 if(user.Username==login && user.Password == password)
+
                 {
                     EmployeeModel employee = EmployeeService.GetEmployeeByUserId(user);
                     if (employee != null)
