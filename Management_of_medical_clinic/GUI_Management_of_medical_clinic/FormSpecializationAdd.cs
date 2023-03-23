@@ -44,7 +44,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            string specializationToAdd = textBoxAdd.Text;
+            string specializationToAdd = textBoxName.Text;
 
             if (SpecializationService.CheckIfSpecializationExists(specializationToAdd))
             {
@@ -62,32 +62,29 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonReplace_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("<<THIS BUTTON DOESN'T WORK YET>>");
         }
 
-        private void textBoxAdd_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxRemove_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxEditPrevious_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxEditNew_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void buttonReplace_Click_1(object sender, EventArgs e)
         {
             MessageBox.Show("<<THIS BUTTON DOESN'T WORK YET>>");
+        }
+
+        private void textBoxName_TextChanged(object sender, EventArgs e)
+        {
+            if (textBoxName.Text.Length > 0)
+            {
+                buttonAdd.Enabled = true;
+                buttonRemove.Enabled = true;
+                buttonReplace.Enabled = true;
+            }
+            else
+            {
+                buttonAdd.Enabled = false;
+                buttonRemove.Enabled = false;
+                buttonReplace.Enabled= false;
+            }
         }
     }
 }

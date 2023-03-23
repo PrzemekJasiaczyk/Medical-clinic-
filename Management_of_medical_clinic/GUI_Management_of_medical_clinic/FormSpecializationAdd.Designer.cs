@@ -31,13 +31,11 @@
             this.labelTitle = new System.Windows.Forms.Label();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
-            this.textBoxAdd = new System.Windows.Forms.TextBox();
+            this.textBoxName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewSpecializations = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
             this.buttonRemove = new System.Windows.Forms.Button();
             this.buttonReplace = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSpecializations)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,7 +62,7 @@
             // buttonAdd
             // 
             this.buttonAdd.Enabled = false;
-            this.buttonAdd.Location = new System.Drawing.Point(562, 342);
+            this.buttonAdd.Location = new System.Drawing.Point(595, 98);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(142, 45);
             this.buttonAdd.TabIndex = 76;
@@ -72,22 +70,22 @@
             this.buttonAdd.UseVisualStyleBackColor = true;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
-            // textBoxAdd
+            // textBoxName
             // 
-            this.textBoxAdd.Location = new System.Drawing.Point(562, 113);
-            this.textBoxAdd.Name = "textBoxAdd";
-            this.textBoxAdd.Size = new System.Drawing.Size(204, 23);
-            this.textBoxAdd.TabIndex = 77;
-            this.textBoxAdd.TextChanged += new System.EventHandler(this.textBoxAdd_TextChanged);
+            this.textBoxName.Location = new System.Drawing.Point(562, 69);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(204, 23);
+            this.textBoxName.TabIndex = 77;
+            this.textBoxName.TextChanged += new System.EventHandler(this.textBoxName_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(562, 95);
+            this.label1.Location = new System.Drawing.Point(562, 51);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(153, 15);
+            this.label1.Size = new System.Drawing.Size(165, 15);
             this.label1.TabIndex = 78;
-            this.label1.Text = "Name of new Specialization";
+            this.label1.Text = "Name of Specialization to edit";
             // 
             // dataGridViewSpecializations
             // 
@@ -98,19 +96,10 @@
             this.dataGridViewSpecializations.Size = new System.Drawing.Size(506, 387);
             this.dataGridViewSpecializations.TabIndex = 79;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(562, 260);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(188, 15);
-            this.label2.TabIndex = 82;
-            this.label2.Text = "Name of Specialization to Remove";
-            // 
             // buttonRemove
             // 
             this.buttonRemove.Enabled = false;
-            this.buttonRemove.Location = new System.Drawing.Point(562, 291);
+            this.buttonRemove.Location = new System.Drawing.Point(595, 149);
             this.buttonRemove.Name = "buttonRemove";
             this.buttonRemove.Size = new System.Drawing.Size(142, 45);
             this.buttonRemove.TabIndex = 80;
@@ -121,7 +110,7 @@
             // buttonReplace
             // 
             this.buttonReplace.Enabled = false;
-            this.buttonReplace.Location = new System.Drawing.Point(562, 393);
+            this.buttonReplace.Location = new System.Drawing.Point(595, 200);
             this.buttonReplace.Name = "buttonReplace";
             this.buttonReplace.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.buttonReplace.Size = new System.Drawing.Size(142, 45);
@@ -130,27 +119,16 @@
             this.buttonReplace.UseVisualStyleBackColor = true;
             this.buttonReplace.Click += new System.EventHandler(this.buttonReplace_Click_1);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(562, 51);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(153, 15);
-            this.label3.TabIndex = 84;
-            this.label3.Text = "Name of new Specialization";
-            // 
             // FormSpecializationAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.buttonReplace);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.buttonRemove);
             this.Controls.Add(this.dataGridViewSpecializations);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBoxAdd);
+            this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.labelTitle);
             this.Controls.Add(this.buttonCancel);
@@ -170,12 +148,10 @@
         private Label labelTitle;
         private Button buttonCancel;
         private Button buttonAdd;
-        private TextBox textBoxAdd;
+        private TextBox textBoxName;
         private Label label1;
         private DataGridView dataGridViewSpecializations;
-        private Label label2;
         private Button buttonRemove;
         private Button buttonReplace;
-        private Label label3;
     }
 }

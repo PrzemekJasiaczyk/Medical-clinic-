@@ -22,6 +22,7 @@ namespace GUI_Management_of_medical_clinic
             InitializeComponent();
             currentUser = currentU;
             comboBoxRole.DataSource = Enum.GetValues(typeof(EnumEmployeeRoles));
+            checkIfMedicalDoctor();
         }
 
         private void FormEmployeeAdd_Load(object sender, EventArgs e)
@@ -68,7 +69,7 @@ namespace GUI_Management_of_medical_clinic
                 return;
             }
 
-            if (comboBoxRole.Text == "Medical Doctor" && checkedListBoxSpecialization.CheckedItems.Count == 0)
+            if (comboBoxRole.Text == "MedicalDoctor" && checkedListBoxSpecialization.CheckedItems.Count == 0)
             {
                 MessageBox.Show("A specialization needs to be selected");
                 return;
@@ -95,7 +96,7 @@ namespace GUI_Management_of_medical_clinic
         }
         public void checkIfMedicalDoctor()
         {
-            if (comboBoxRole.Text == "Medical Doctor")
+            if (comboBoxRole.Text == "MedicalDoctor")
             {
                 checkedListBoxSpecialization.Visible = true;
                 labelSpecialization.Visible = true;
