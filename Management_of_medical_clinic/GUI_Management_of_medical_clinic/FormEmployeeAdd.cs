@@ -74,9 +74,9 @@ namespace GUI_Management_of_medical_clinic
                 return;
             }
 
-            FormEmployeeSetPassword employeeSetPassword = new FormEmployeeSetPassword(currentUser);
+            FormEmployeeAddUser employeeAddUser = new FormEmployeeAddUser(currentUser);
             //this.Hide();
-            employeeSetPassword.ShowDialog();
+            employeeAddUser.ShowDialog();
             this.Close();
         }
 

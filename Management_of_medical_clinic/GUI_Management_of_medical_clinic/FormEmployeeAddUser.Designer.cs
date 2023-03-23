@@ -1,6 +1,6 @@
 ﻿namespace GUI_Management_of_medical_clinic
 {
-    partial class FormEmployeeSetPassword
+    partial class FormEmployeeAddUser
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,14 @@
         {
             this.labelTitle = new System.Windows.Forms.Label();
             this.buttonCancel = new System.Windows.Forms.Button();
-            this.buttonNext = new System.Windows.Forms.Button();
+            this.buttonSkip = new System.Windows.Forms.Button();
             this.textBoxPasswordConfirm = new System.Windows.Forms.TextBox();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxUsername = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.buttonCreate = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelTitle
@@ -45,9 +46,9 @@
             this.labelTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelTitle.Location = new System.Drawing.Point(176, 9);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(459, 30);
+            this.labelTitle.Size = new System.Drawing.Size(472, 30);
             this.labelTitle.TabIndex = 37;
-            this.labelTitle.Text = "Set Username and Password for New Emplyee";
+            this.labelTitle.Text = "Set Username and Password for New Employee";
             // 
             // buttonCancel
             // 
@@ -59,22 +60,23 @@
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
-            // buttonNext
+            // buttonSkip
             // 
-            this.buttonNext.Enabled = false;
-            this.buttonNext.Location = new System.Drawing.Point(646, 390);
-            this.buttonNext.Name = "buttonNext";
-            this.buttonNext.Size = new System.Drawing.Size(142, 45);
-            this.buttonNext.TabIndex = 35;
-            this.buttonNext.Text = "Next";
-            this.buttonNext.UseVisualStyleBackColor = true;
-            this.buttonNext.Click += new System.EventHandler(this.buttonNext_Click);
+            this.buttonSkip.Enabled = false;
+            this.buttonSkip.Location = new System.Drawing.Point(646, 393);
+            this.buttonSkip.Name = "buttonSkip";
+            this.buttonSkip.Size = new System.Drawing.Size(142, 45);
+            this.buttonSkip.TabIndex = 35;
+            this.buttonSkip.Text = "Skip";
+            this.buttonSkip.UseVisualStyleBackColor = true;
+            this.buttonSkip.Click += new System.EventHandler(this.buttonSkip_Click);
             // 
             // textBoxPasswordConfirm
             // 
             this.textBoxPasswordConfirm.Location = new System.Drawing.Point(343, 149);
             this.textBoxPasswordConfirm.MaxLength = 11;
             this.textBoxPasswordConfirm.Name = "textBoxPasswordConfirm";
+            this.textBoxPasswordConfirm.PasswordChar = '*';
             this.textBoxPasswordConfirm.Size = new System.Drawing.Size(199, 23);
             this.textBoxPasswordConfirm.TabIndex = 46;
             this.textBoxPasswordConfirm.TextChanged += new System.EventHandler(this.textBoxPasswordConfirm_TextChanged);
@@ -84,6 +86,7 @@
             this.textBoxPassword.Location = new System.Drawing.Point(343, 120);
             this.textBoxPassword.MaxLength = 100;
             this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.PasswordChar = '*';
             this.textBoxPassword.Size = new System.Drawing.Size(199, 23);
             this.textBoxPassword.TabIndex = 45;
             this.textBoxPassword.TextChanged += new System.EventHandler(this.textBoxPassword_TextChanged);
@@ -124,11 +127,23 @@
             this.label2.TabIndex = 41;
             this.label2.Text = "Username";
             // 
-            // FormEmployeeSetPassword
+            // buttonCreate
+            // 
+            this.buttonCreate.Enabled = false;
+            this.buttonCreate.Location = new System.Drawing.Point(343, 390);
+            this.buttonCreate.Name = "buttonCreate";
+            this.buttonCreate.Size = new System.Drawing.Size(142, 45);
+            this.buttonCreate.TabIndex = 47;
+            this.buttonCreate.Text = "Create";
+            this.buttonCreate.UseVisualStyleBackColor = true;
+            this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
+            // 
+            // FormEmployeeAddUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonCreate);
             this.Controls.Add(this.textBoxPasswordConfirm);
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.label3);
@@ -137,8 +152,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.labelTitle);
             this.Controls.Add(this.buttonCancel);
-            this.Controls.Add(this.buttonNext);
-            this.Name = "FormEmployeeSetPassword";
+            this.Controls.Add(this.buttonSkip);
+            this.Name = "FormEmployeeAddUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormEmployeeSetPassword";
             this.ResumeLayout(false);
@@ -150,12 +165,13 @@
 
         private Label labelTitle;
         private Button buttonCancel;
-        private Button buttonNext;
+        private Button buttonSkip;
         private TextBox textBoxPasswordConfirm;
         private TextBox textBoxPassword;
         private Label label3;
         private Label label1;
         private TextBox textBoxUsername;
         private Label label2;
+        private Button buttonCreate;
     }
 }

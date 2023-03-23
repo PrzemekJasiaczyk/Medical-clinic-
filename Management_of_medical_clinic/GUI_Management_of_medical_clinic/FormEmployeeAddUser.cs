@@ -12,10 +12,10 @@ using System.Windows.Forms;
 
 namespace GUI_Management_of_medical_clinic
 {
-    public partial class FormEmployeeSetPassword : Form
+    public partial class FormEmployeeAddUser : Form
     {
         EmployeeModel currentUser;
-        public FormEmployeeSetPassword(EmployeeModel currentU)
+        public FormEmployeeAddUser(EmployeeModel currentU)
         {
             InitializeComponent();
             currentUser = currentU;
@@ -29,11 +29,10 @@ namespace GUI_Management_of_medical_clinic
             this.Close();
         }
 
-        private void buttonNext_Click(object sender, EventArgs e)
+        private void buttonCreate_Click(object sender, EventArgs e)
         {
-            /*
             string username = textBoxUsername.Text;
-            if (EmployeeService.CheckIfUsernameExists(username))
+            if (UserService.CheckIfUsernameExists(username))
             {
                 MessageBox.Show("Username is already taken");
                 return;
@@ -43,7 +42,17 @@ namespace GUI_Management_of_medical_clinic
                 MessageBox.Show("Passwords don't match");
                 return;
             }
-            */
+
+            MessageBox.Show("<<Success, but button doesn't work yet>>");
+
+            FormEmployeeList employeeList = new FormEmployeeList(currentUser);
+            this.Hide();
+            employeeList.ShowDialog();
+            this.Close();
+        }
+
+        private void buttonSkip_Click(object sender, EventArgs e)
+        {
             MessageBox.Show("<<Success, but button doesn't work yet>>");
 
             FormEmployeeList employeeList = new FormEmployeeList(currentUser);
@@ -56,11 +65,11 @@ namespace GUI_Management_of_medical_clinic
         {
             if (textBoxUsername.Text.Length > 0 && textBoxPassword.Text.Length > 0 && textBoxPasswordConfirm.Text.Length > 0)
             {
-                buttonNext.Enabled = true;
+                buttonCreate.Enabled = true;
             }
             else
             {
-                buttonNext.Enabled = false;
+                buttonCreate.Enabled = false;
             }
         }
 
@@ -78,5 +87,6 @@ namespace GUI_Management_of_medical_clinic
         {
             checkIfRequiredFilled();
         }
+
     }
 }

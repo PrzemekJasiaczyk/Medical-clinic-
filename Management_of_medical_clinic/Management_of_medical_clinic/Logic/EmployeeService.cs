@@ -58,28 +58,6 @@ namespace Console_Management_of_medical_clinic.Logic
         }
 
 
-        /*    
-        
-        public static bool CheckIfUsernameExists(string username)
-        {
-            List<EmployeeModel> employees = EmployeeService.GetEmployeesData();
-
-
-            foreach (EmployeeModel employee in employees)
-            {
-                if (employee.Username == username)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        */
-
-        
-
-
 
         //Validation upon addit Employee
         //Validate PESEL input
