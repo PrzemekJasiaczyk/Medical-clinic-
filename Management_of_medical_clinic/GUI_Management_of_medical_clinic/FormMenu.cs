@@ -20,23 +20,28 @@ namespace GUI_Management_of_medical_clinic
             string login = textBoxLogin.Text;
             string password = textBoxPassword.Text;
 
-            List<EmployeeModel> employees = EmployeeService.GetEmployeesData();
+            List<UserModel> users = UserService.GetUsersData();
 
-            foreach(EmployeeModel emp in employees)
+            foreach (UserModel user in users)
             {
-                FormEmployeeList employeeList = new FormEmployeeList(emp);
-                this.Hide();
-                employeeList.ShowDialog();
-                this.Close();
-                /*
-                if(emp.Username==login && emp.Password == password)
+
+                
+                if(user.Username==login && user.Password == password)
                 {
-                    FormEmployeeList employeeList = new FormEmployeeList(emp);
-                    //this.Hide();
-                    employeeList.ShowDialog();
-                    this.Close();
-                }
-                */
+                    EmployeeModel employee = EmployeeService.GetEmployeeByUserId(user);
+                    if (employee != null)
+                    {
+                        FormEmployeeList employeeList = new FormEmployeeList(employee);
+                        //this.Hide();
+                        employeeList.ShowDialog();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("User isn't linked to an employee account\nLog in unsuccessful");
+                    }
+                    
+                }             
 
             }
 

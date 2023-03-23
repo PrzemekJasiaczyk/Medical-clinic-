@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,8 @@ namespace Console_Management_of_medical_clinic.Model
     public class EmployeeModel
     {
         [Key] public int IdEmployee { get; set; }
-        public UserModel IdUser { get; set; }
+        [ForeignKey("UserModel")]public int IdUser { get; set; }
+        public virtual UserModel UserModel { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string PESEL { get; set; }
@@ -24,12 +26,13 @@ namespace Console_Management_of_medical_clinic.Model
         public string PhoneNumber { get; set; }
         public EnumSex Sex { get; set; }
         public EnumEmployeeRoles Role { get; set; }
-        public SpecializationModel IdSpecialization { get; set; }
+        public virtual SpecializationModel IdSpecialization { get; set; }
         public bool IsActive { get; set; }
+
 
         public EmployeeModel() { }
 
-        public EmployeeModel(UserModel idUser, string firstName, string lastName, string pesel, string dateOfBirth, string correspondenceAddress, 
+        public EmployeeModel(int idUser, string firstName, string lastName, string pesel, string dateOfBirth, string correspondenceAddress, 
             string email, string phoneNumber, EnumSex sex, EnumEmployeeRoles role, SpecializationModel idSpecialization, bool isActive)
         {
             IdUser = idUser;
@@ -95,7 +98,7 @@ namespace Console_Management_of_medical_clinic.Model
         }
         
 
-        public static void EditEmployee(int IdEmployee, UserModel idUser,string firstName, string lastName, string pesel, string dateOfBirth, string correspondenceAddress, string email, string phoneNumber,
+        public static void EditEmployee(int IdEmployee, int idUser,string firstName, string lastName, string pesel, string dateOfBirth, string correspondenceAddress, string email, string phoneNumber,
             EnumSex sex)
         {
             var context = new AppDbContext();

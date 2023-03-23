@@ -12,7 +12,7 @@ namespace Console_Management_of_medical_clinic.Logic
 {
     public class EmployeeService
     {
-        public static void AddEmployee(UserModel idUser, string firstName, string lastName, string pesel, string dateOfBirth,  string correspondenceAddress, string email, string phoneNumber,
+        public static void AddEmployee(int idUser, string firstName, string lastName, string pesel, string dateOfBirth,  string correspondenceAddress, string email, string phoneNumber,
             EnumSex sex, string username, string password, EnumEmployeeRoles role, SpecializationModel idSpecialization, bool isActive)
         {
 
@@ -33,14 +33,33 @@ namespace Console_Management_of_medical_clinic.Logic
                 employees = db.DbEmployees.ToList();
             }
 
+
+            foreach (var employee in employees)
+            {
+                string test2 = employee.LastName;
+                int test = employee.IdUser;
+            }
+
             return employees;
         }
 
-        /*
-        public EmployeeService() 
+        public static EmployeeModel GetEmployeeByUserId(UserModel user)
         {
-            
+            List<EmployeeModel> employees = GetEmployeesData();
+
+            foreach(EmployeeModel employee in employees)
+            {
+                if (employee.IdUser == user.IdUser)
+                {
+                    return employee;
+                }
+            }
+            return null;
         }
+
+
+        /*    
+        
         public static bool CheckIfUsernameExists(string username)
         {
             List<EmployeeModel> employees = EmployeeService.GetEmployeesData();

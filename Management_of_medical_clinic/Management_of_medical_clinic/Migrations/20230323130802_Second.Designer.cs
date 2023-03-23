@@ -3,14 +3,16 @@ using System;
 using Console_Management_of_medical_clinic.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Console_Management_of_medical_clinic.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230323130802_Second")]
+    partial class Second
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,7 +43,7 @@ namespace Console_Management_of_medical_clinic.Migrations
                     b.Property<int?>("IdSpecialization1")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("IdUser")
+                    b.Property<int?>("IdUser1")
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsActive")
@@ -69,8 +71,7 @@ namespace Console_Management_of_medical_clinic.Migrations
 
                     b.HasIndex("IdSpecialization1");
 
-                    b.HasIndex("IdUser")
-                        .IsUnique();
+                    b.HasIndex("IdUser1");
 
                     b.ToTable("DbEmployees");
                 });
@@ -121,21 +122,13 @@ namespace Console_Management_of_medical_clinic.Migrations
                         .WithMany()
                         .HasForeignKey("IdSpecialization1");
 
-                    b.HasOne("Console_Management_of_medical_clinic.Model.UserModel", "UserModel")
-                        .WithOne("EmployeeModle")
-                        .HasForeignKey("Console_Management_of_medical_clinic.Model.EmployeeModel", "IdUser")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("Console_Management_of_medical_clinic.Model.UserModel", "IdUser")
+                        .WithMany()
+                        .HasForeignKey("IdUser1");
 
                     b.Navigation("IdSpecialization");
 
-                    b.Navigation("UserModel");
-                });
-
-            modelBuilder.Entity("Console_Management_of_medical_clinic.Model.UserModel", b =>
-                {
-                    b.Navigation("EmployeeModle")
-                        .IsRequired();
+                    b.Navigation("IdUser");
                 });
 #pragma warning restore 612, 618
         }
