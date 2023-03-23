@@ -33,7 +33,7 @@ namespace GUI_Management_of_medical_clinic
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             FormEmployeeList formEmployeeList = new FormEmployeeList(currentUser);
-            this.Hide();
+            //this.Hide();
             formEmployeeList.ShowDialog();
             this.Close();
         }
@@ -50,7 +50,7 @@ namespace GUI_Management_of_medical_clinic
 
             EmployeeModel.ChangeEmployeeStatus(employee);
             FormEmployeeList formEmployeeList = new FormEmployeeList(currentUser);
-            this.Hide();
+            //this.Hide();
             formEmployeeList.ShowDialog();
             this.Close();
         }

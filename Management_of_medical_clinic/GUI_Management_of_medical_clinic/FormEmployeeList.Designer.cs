@@ -128,6 +128,7 @@
             // comboBoxRole
             // 
             this.comboBoxRole.BackColor = System.Drawing.Color.Gainsboro;
+            this.comboBoxRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxRole.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comboBoxRole.FormattingEnabled = true;
             this.comboBoxRole.Items.AddRange(new object[] {
@@ -181,7 +182,7 @@
             this.buttonSpecializations.BackColor = System.Drawing.Color.SteelBlue;
             this.buttonSpecializations.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSpecializations.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonSpecializations.Location = new System.Drawing.Point(-7, 734);
+            this.buttonSpecializations.Location = new System.Drawing.Point(-7, 723);
             this.buttonSpecializations.Name = "buttonSpecializations";
             this.buttonSpecializations.Size = new System.Drawing.Size(329, 87);
             this.buttonSpecializations.TabIndex = 20;
