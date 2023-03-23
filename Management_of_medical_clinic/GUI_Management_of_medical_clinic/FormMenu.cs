@@ -25,7 +25,7 @@ namespace GUI_Management_of_medical_clinic
             foreach(EmployeeModel emp in employees)
             {
                 FormEmployeeList employeeList = new FormEmployeeList(emp);
-                this.Hide();
+                //this.Hide();
                 employeeList.ShowDialog();
                 this.Close();
                 /*
