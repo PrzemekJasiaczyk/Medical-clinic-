@@ -132,9 +132,8 @@
             this.comboBoxRole.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comboBoxRole.FormattingEnabled = true;
             this.comboBoxRole.Items.AddRange(new object[] {
-            "Medical Doctor",
+            "MedicalDoctor",
             "Nurse",
-            "Paramedic",
             "Janitor",
             "Technitian"});
             this.comboBoxRole.Location = new System.Drawing.Point(636, 17);

@@ -67,8 +67,8 @@ namespace GUI_Management_of_medical_clinic
                 MessageBox.Show("Select variant of filter!");
                 return;
             }
-            /*
-            EnumEmployeeRoles role = (role)Enum.Parse(typeof(role), comboBoxRole.SelectedValue);
+
+            EnumEmployeeRoles role = (EnumEmployeeRoles)Enum.Parse(typeof(EnumEmployeeRoles), comboBoxRole.SelectedItem.ToString());
             bool isActive = checkBoxIsActive.Checked;
 
             List<EmployeeModel> employees = EmployeeModel.FilterEmployees(role, isActive);
@@ -78,7 +78,7 @@ namespace GUI_Management_of_medical_clinic
             {
                 dataGridViewEmployees.Rows.Add(employee.IdEmployee, employee.FirstName, employee.LastName, employee.Role, (employee.IsActive == true) ? "Active" : "Not Active");
             }
-            */
+            
         }
         private void buttonClearFilter_Click(object sender, EventArgs e)
         {
@@ -144,25 +144,25 @@ namespace GUI_Management_of_medical_clinic
         }
         private void buttonReviewEmployee_Click(object sender, EventArgs e)
         {
-            int rowIndex = dataGridViewEmployees.CurrentRow.Index;
+            //int rowIndex = dataGridViewEmployees.CurrentRow.Index;
 
-            if (rowIndex < 0)
+            if (dataGridViewEmployees.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Select one employee from list!");
                 return;
             }
 
+            int rowIndex = dataGridViewEmployees.CurrentRow.Index;
+
             int IdEmployee = (int)dataGridViewEmployees.Rows[rowIndex].Cells[0].Value;
             EmployeeModel employee = EmployeeModel.FindEmployee(IdEmployee);
 
-            
-            
+
+
             FormEmployeeDetailsView employeeDetailsView = new FormEmployeeDetailsView(employee, currentUser);
             //this.Hide();
             employeeDetailsView.ShowDialog();
             this.Close();
-
-
 
         }
         private void buttonAddEmployee_Click(object sender, EventArgs e)
