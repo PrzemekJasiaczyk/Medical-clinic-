@@ -13,7 +13,7 @@ namespace Console_Management_of_medical_clinic.Logic
     public class EmployeeService
     {
         public static void AddEmployee(int idUser, string firstName, string lastName, string pesel, string dateOfBirth,  string correspondenceAddress, string email, string phoneNumber,
-            EnumSex sex, string username, string password, EnumEmployeeRoles role, SpecializationModel idSpecialization, bool isActive)
+            EnumSex sex, string username, string password, EnumEmployeeRoles role, int idSpecialization, bool isActive)
         {
 
             EmployeeModel employee = new EmployeeModel(idUser, firstName, lastName, pesel, dateOfBirth, correspondenceAddress, email, phoneNumber,

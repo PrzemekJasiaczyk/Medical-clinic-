@@ -2,7 +2,7 @@
 
 namespace Console_Management_of_medical_clinic.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class initialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -41,7 +41,6 @@ namespace Console_Management_of_medical_clinic.Migrations
                 {
                     IdEmployee = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    IdUser1 = table.Column<int>(type: "INTEGER", nullable: true),
                     FirstName = table.Column<string>(type: "TEXT", nullable: false),
                     LastName = table.Column<string>(type: "TEXT", nullable: false),
                     PESEL = table.Column<string>(type: "TEXT", nullable: false),
@@ -51,35 +50,38 @@ namespace Console_Management_of_medical_clinic.Migrations
                     PhoneNumber = table.Column<string>(type: "TEXT", nullable: false),
                     Sex = table.Column<int>(type: "INTEGER", nullable: false),
                     Role = table.Column<int>(type: "INTEGER", nullable: false),
-                    IdSpecialization1 = table.Column<int>(type: "INTEGER", nullable: true),
-                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false)
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false),
+                    IdUser = table.Column<int>(type: "INTEGER", nullable: false),
+                    IdSpecialization = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_DbEmployees", x => x.IdEmployee);
                     table.ForeignKey(
-                        name: "FK_DbEmployees_DbSpecializations_IdSpecialization1",
-                        column: x => x.IdSpecialization1,
+                        name: "FK_DbEmployees_DbSpecializations_IdSpecialization",
+                        column: x => x.IdSpecialization,
                         principalTable: "DbSpecializations",
                         principalColumn: "IdSpecialization",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_DbEmployees_DbUsers_IdUser1",
-                        column: x => x.IdUser1,
+                        name: "FK_DbEmployees_DbUsers_IdUser",
+                        column: x => x.IdUser,
                         principalTable: "DbUsers",
                         principalColumn: "IdUser",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_DbEmployees_IdSpecialization1",
+                name: "IX_DbEmployees_IdSpecialization",
                 table: "DbEmployees",
-                column: "IdSpecialization1");
+                column: "IdSpecialization",
+                unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_DbEmployees_IdUser1",
+                name: "IX_DbEmployees_IdUser",
                 table: "DbEmployees",
-                column: "IdUser1");
+                column: "IdUser",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

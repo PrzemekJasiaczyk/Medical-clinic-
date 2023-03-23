@@ -39,10 +39,9 @@ namespace GUI_Management_of_medical_clinic
                     else
                     {
                         MessageBox.Show("User isn't linked to an employee account\nLog in unsuccessful");
-                    }
-                    
-                }             
-
+                        return;
+                    }                    
+                }     
             }
 
             MessageBox.Show("Incorrect login or password");

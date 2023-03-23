@@ -12,12 +12,12 @@ namespace Console_Management_of_medical_clinic.Model
 {
     public class UserModel
     {
-        [Key] public int IdUser { get; set; }
-        public virtual EmployeeModel EmployeeModle { get; set; }
+        [Key] public int IdUser { get; set; }        
         public string Username { get; set; }
         public string Password { get; set; }
-
         public EnumUserRoles Role { get; set; }
+
+        public virtual EmployeeModel EmployeeModle { get; set; }
 
 
 

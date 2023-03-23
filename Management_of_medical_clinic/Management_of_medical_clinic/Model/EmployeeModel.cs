@@ -15,25 +15,29 @@ namespace Console_Management_of_medical_clinic.Model
     public class EmployeeModel
     {
         [Key] public int IdEmployee { get; set; }
-        [ForeignKey("UserModel")]public int IdUser { get; set; }
-        public virtual UserModel UserModel { get; set; }
+        
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string PESEL { get; set; }
         public string DateOfBirth { get; set; }
-        public string CorrespondenceAddress { get; set; }
-        public string Email { get; set; }
-        public string PhoneNumber { get; set; }
-        public EnumSex Sex { get; set; }
+        public string? CorrespondenceAddress { get; set; }
+        public string? Email { get; set; }
+        public string? PhoneNumber { get; set; }
+        public EnumSex? Sex { get; set; }
         public EnumEmployeeRoles Role { get; set; }
-        public virtual SpecializationModel IdSpecialization { get; set; }
+        
         public bool IsActive { get; set; }
+
+        [ForeignKey("UserModel")] public int IdUser { get; set; }
+        public virtual UserModel UserModel { get; set; }
+        [ForeignKey("SpecializationModel")] public int IdSpecialization { get; set; }
+        public virtual SpecializationModel SpecializationModel { get; set; }
 
 
         public EmployeeModel() { }
 
         public EmployeeModel(int idUser, string firstName, string lastName, string pesel, string dateOfBirth, string correspondenceAddress, 
-            string email, string phoneNumber, EnumSex sex, EnumEmployeeRoles role, SpecializationModel idSpecialization, bool isActive)
+            string email, string phoneNumber, EnumSex sex, EnumEmployeeRoles role, int idSpecialization, bool isActive)
         {
             IdUser = idUser;
             FirstName = firstName;
