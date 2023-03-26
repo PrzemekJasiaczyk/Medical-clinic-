@@ -13,9 +13,9 @@ namespace Console_Management_of_medical_clinic.Model
         public string LastName { get; set;}
         public string PESEL { get; set; }
         public EnumSex Sex { get; set; }
-        public DateOnly BirthDate { get; set; }
+        public DateTime BirthDate { get; set; }
         public bool IsActive { get; set; }
-        public DateOnly? LastVistiDate; // TODO: Last visit date should be calculated based on Visits list
+        public DateTime? LastVistiDate;
 
         public List<Visit> Visits { get; set; } = new List<Visit>();
     }

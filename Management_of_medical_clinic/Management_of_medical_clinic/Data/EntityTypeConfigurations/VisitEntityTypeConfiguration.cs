@@ -71,8 +71,8 @@ namespace Console_Management_of_medical_clinic.Data.EntityTypeConfigurations
                     new Visit
                     {
                         VisitId = 1,
-                        VisitDate = new DateOnly(2022, 4, 27),
-                        VisitHour = new TimeOnly(9, 0, 0),
+                        VisitDate = new DateTime(2022, 4, 27).Date,
+                        VisitHour = new DateTime(1, 1, 1, 9, 0, 0),
                         Cost = 100.0m,
                         EmployeeId = 1,
                         PatientId = 1
@@ -81,8 +81,8 @@ namespace Console_Management_of_medical_clinic.Data.EntityTypeConfigurations
                     new Visit
                     {
                         VisitId = 2,
-                        VisitDate = new DateOnly(2022, 4, 28),
-                        VisitHour = new TimeOnly(14, 0, 0),
+                        VisitDate = new DateTime(2022, 4, 28).Date,
+                        VisitHour = new DateTime(1, 1, 1, 14, 0, 0),
                         Cost = 150.0m,
                         EmployeeId = 2,
                         PatientId = 2

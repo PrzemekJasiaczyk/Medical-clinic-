@@ -6,8 +6,14 @@
     public class Visit
     {
         public int VisitId { get; set; }
-        public DateOnly VisitDate { get; set; }
-        public TimeOnly VisitHour { get; set; }
+
+        // TODO: Discuss if we really need separate fields for Date and Hour of the visit
+        /*
+         * We cannot use DateOnly and TimeOnly database, SQLite doesn't support it natively
+         * DateTime can easly store just a date, but hardly just a time
+         */
+        public DateTime VisitDate { get; set; }
+        public DateTime VisitHour { get; set; }
         public decimal Cost { get; set; }
 
         public int? EmployeeId { get; set; }

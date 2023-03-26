@@ -88,7 +88,7 @@ namespace Console_Management_of_medical_clinic.Data.EntityTypeConfigurations
                         LastName = "Doe",
                         PESEL = "12345678901",
                         Sex = EnumSex.Male,
-                        BirthDate = new DateOnly(1990, 1, 1),
+                        BirthDate = new DateTime(1990, 1, 1).Date,
                         IsActive = true
                     },
                     new Patient
@@ -98,7 +98,7 @@ namespace Console_Management_of_medical_clinic.Data.EntityTypeConfigurations
                         LastName = "Doe",
                         PESEL = "23456789012",
                         Sex = EnumSex.Female,
-                        BirthDate = new DateOnly(1995, 2, 2),
+                        BirthDate = new DateTime(1995, 2, 2).Date,
                         IsActive = true
                     }
 
