@@ -3,7 +3,6 @@ using Console_Management_of_medical_clinic.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using System.ComponentModel;
 
 namespace Console_Management_of_medical_clinic.Data.EntityTypeConfigurations
 {
