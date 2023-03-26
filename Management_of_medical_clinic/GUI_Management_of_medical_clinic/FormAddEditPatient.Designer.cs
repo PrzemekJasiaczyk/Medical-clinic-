@@ -33,8 +33,6 @@
             buttonAddPatient = new Button();
             buttonBack = new Button();
             pictureBox1 = new PictureBox();
-            buttonEditEmployee = new Button();
-            buttonAddEmployee = new Button();
             comboBoxSex = new ComboBox();
             labelAddEditNewPatient = new Label();
             maskedTextBoxDateLastVisit = new MaskedTextBox();
@@ -63,8 +61,6 @@
             panel1.Controls.Add(buttonAddPatient);
             panel1.Controls.Add(buttonBack);
             panel1.Controls.Add(pictureBox1);
-            panel1.Controls.Add(buttonEditEmployee);
-            panel1.Controls.Add(buttonAddEmployee);
             panel1.Location = new Point(-3, 0);
             panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
@@ -74,10 +70,10 @@
             // buttonEditPatient
             // 
             buttonEditPatient.BackColor = Color.SteelBlue;
-            buttonEditPatient.Location = new Point(70, 697);
+            buttonEditPatient.Location = new Point(15, 383);
             buttonEditPatient.Margin = new Padding(3, 4, 3, 4);
             buttonEditPatient.Name = "buttonEditPatient";
-            buttonEditPatient.Size = new Size(162, 60);
+            buttonEditPatient.Size = new Size(325, 60);
             buttonEditPatient.TabIndex = 24;
             buttonEditPatient.Text = "Edit patient";
             buttonEditPatient.UseVisualStyleBackColor = false;
@@ -86,10 +82,10 @@
             // buttonAddPatient
             // 
             buttonAddPatient.BackColor = Color.SteelBlue;
-            buttonAddPatient.Location = new Point(70, 622);
+            buttonAddPatient.Location = new Point(15, 298);
             buttonAddPatient.Margin = new Padding(3, 4, 3, 4);
             buttonAddPatient.Name = "buttonAddPatient";
-            buttonAddPatient.Size = new Size(162, 60);
+            buttonAddPatient.Size = new Size(325, 60);
             buttonAddPatient.TabIndex = 23;
             buttonAddPatient.Text = "Add patient";
             buttonAddPatient.UseVisualStyleBackColor = false;
@@ -120,35 +116,6 @@
             pictureBox1.Size = new Size(201, 224);
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
-            // 
-            // buttonEditEmployee
-            // 
-            buttonEditEmployee.BackColor = Color.SteelBlue;
-            buttonEditEmployee.FlatAppearance.BorderColor = Color.Black;
-            buttonEditEmployee.FlatStyle = FlatStyle.Flat;
-            buttonEditEmployee.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonEditEmployee.Location = new Point(-8, 463);
-            buttonEditEmployee.Margin = new Padding(3, 4, 3, 4);
-            buttonEditEmployee.Name = "buttonEditEmployee";
-            buttonEditEmployee.Size = new Size(376, 116);
-            buttonEditEmployee.TabIndex = 21;
-            buttonEditEmployee.Text = "Edit Employee";
-            buttonEditEmployee.UseVisualStyleBackColor = false;
-            // 
-            // buttonAddEmployee
-            // 
-            buttonAddEmployee.BackColor = Color.SteelBlue;
-            buttonAddEmployee.FlatAppearance.BorderColor = Color.Black;
-            buttonAddEmployee.FlatStyle = FlatStyle.Flat;
-            buttonAddEmployee.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonAddEmployee.ForeColor = SystemColors.ActiveCaptionText;
-            buttonAddEmployee.Location = new Point(-8, 339);
-            buttonAddEmployee.Margin = new Padding(3, 4, 3, 4);
-            buttonAddEmployee.Name = "buttonAddEmployee";
-            buttonAddEmployee.Size = new Size(365, 116);
-            buttonAddEmployee.TabIndex = 15;
-            buttonAddEmployee.Text = "Add new employee";
-            buttonAddEmployee.UseVisualStyleBackColor = false;
             // 
             // comboBoxSex
             // 
@@ -359,8 +326,6 @@
         private Button buttonAddPatient;
         private Button buttonBack;
         private PictureBox pictureBox1;
-        private Button buttonEditEmployee;
-        private Button buttonAddEmployee;
         private ComboBox comboBoxSex;
         private Label labelAddEditNewPatient;
         private MaskedTextBox maskedTextBoxDateLastVisit;
