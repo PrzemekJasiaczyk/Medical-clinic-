@@ -1,5 +1,4 @@
-﻿using Console_Management_of_medical_clinic.Data.EntityTypeConfigurations;
-using Console_Management_of_medical_clinic.Model;
+﻿using Console_Management_of_medical_clinic.Model;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -13,8 +12,6 @@ namespace Console_Management_of_medical_clinic.Data
     {
         public DbSet<EmployeeModel> DbEmployees { get; set; }
         public DbSet<SpecializationModel> DbSpecializations { get; set; }
-        public DbSet<Patient> Patients { get; set; }
-        public DbSet<Visit> Visits { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -27,15 +24,6 @@ namespace Console_Management_of_medical_clinic.Data
             optionsBuilder.UseSqlite(@"Data Source = " + CustomPath);
 
 
-        }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            new PatientEntityTypeConfiguration().Configure(modelBuilder.Entity<Patient>());
-            new VisitEntityTypeConfiguration().Configure(modelBuilder.Entity<Visit>());
-
-            new PatientEntityTypeConfiguration().Seed(modelBuilder.Entity<Patient>());
-            base.OnModelCreating(modelBuilder);
         }
     }    
 }
