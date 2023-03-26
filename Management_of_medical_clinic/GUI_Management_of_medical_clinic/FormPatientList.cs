@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace GUI_Management_of_medical_clinic
 {
@@ -57,17 +58,21 @@ namespace GUI_Management_of_medical_clinic
 
         private void checkBoxDate_CheckedChanged(object sender, EventArgs e)
         {
+            label3.Visible = checkBoxDate.Checked;
+            label4.Visible=checkBoxDate.Checked;
+            dateTimePicker1.Visible = checkBoxDate.Checked;
+            dateTimePicker2.Visible = checkBoxDate.Checked;
 
         }
 
         private void checkBoxPesel_CheckedChanged(object sender, EventArgs e)
         {
-
+            maskedTextBox1.Visible = checkBoxPesel.Checked;
         }
 
         private void checkBoxName_CheckedChanged(object sender, EventArgs e)
         {
-
+            textBox1.Visible = checkBoxName.Checked;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -81,6 +86,11 @@ namespace GUI_Management_of_medical_clinic
         }
 
         private void dataGridViewPatientList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
