@@ -70,11 +70,39 @@ namespace Console_Management_of_medical_clinic.Data.EntityTypeConfigurations
                 .IsRequired(false)
                 .HasColumnName("DateLastVisit")
                 .HasComputedColumnSql("(SELECT MAX(Date) FROM Visits WHERE PatientId = Id AND Date <= DATE('now'))");
-                // Alternative solution:
-                // Visits?.Where(v => v.Date <= DateTime.Today).OrderByDescending(v => v.Date).FirstOrDefault()?.Date;
+            // Alternative solution:
+            // Visits?.Where(v => v.Date <= DateTime.Today).OrderByDescending(v => v.Date).FirstOrDefault()?.Date;
 
 
             #endregion
+        }
+
+        public void Seed(EntityTypeBuilder<Patient> builder)
+        {
+            builder
+                .HasData(
+                    new Patient
+                    {
+                        PatientId = 1,
+                        FirstName = "John",
+                        LastName = "Doe",
+                        PESEL = "12345678901",
+                        Sex = EnumSex.Male,
+                        BirthDate = new DateOnly(1990, 1, 1),
+                        IsActive = true
+                    },
+                    new Patient
+                    {
+                        PatientId = 2,
+                        FirstName = "Jane",
+                        LastName = "Doe",
+                        PESEL = "23456789012",
+                        Sex = EnumSex.Female,
+                        BirthDate = new DateOnly(1995, 2, 2),
+                        IsActive = true
+                    }
+
+                );
         }
     }
 }
