@@ -59,12 +59,9 @@ namespace Console_Management_of_medical_clinic.Data.EntityTypeConfigurations
                 .HasConversion(new EnumToNumberConverter<EnumSex, int>());
 
             builder
-                .Property(p => p.LastVistiDate)
+                .Property(p => p.LastVisitDate)
                 .IsRequired(false)
-                .HasColumnName("DateLastVisit")
-                .HasComputedColumnSql("(SELECT MAX(Date) FROM Visits WHERE PatientId = Id AND Date <= DATE('now'))");
-            // Alternative solution:
-            // Visits?.Where(v => v.Date <= DateTime.Today).OrderByDescending(v => v.Date).FirstOrDefault()?.Date;
+                .HasColumnName("DateLastVisit");
 
 
             #endregion
