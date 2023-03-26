@@ -35,7 +35,6 @@ namespace Console_Management_of_medical_clinic.Data
             new VisitEntityTypeConfiguration().Configure(modelBuilder.Entity<Visit>());
 
             new PatientEntityTypeConfiguration().Seed(modelBuilder.Entity<Patient>());
-            new VisitEntityTypeConfiguration().Seed(modelBuilder.Entity<Visit>());
             base.OnModelCreating(modelBuilder);
         }
     }    

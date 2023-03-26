@@ -19,8 +19,11 @@ namespace Console_Management_of_medical_clinic.Data.EntityTypeConfigurations
                 .WithMany(p => p.Visits)
                 .HasForeignKey(v => v.PatientId);
 
-            // TODO: Relationships for EmployeeModel with Visits
-            
+            builder
+                .HasOne(v => v.Employee)
+                .WithMany(p => p.Visits)
+                .HasForeignKey(v => v.PatientId);
+
 
             #region Visit Properties Configuration
 
@@ -32,12 +35,10 @@ namespace Console_Management_of_medical_clinic.Data.EntityTypeConfigurations
 
             builder
                 .Property(v => v.PatientId)
-                .IsRequired(false)
                 .HasColumnName("IdPatient");
 
             builder
                 .Property(v => v.EmployeeId)
-                .IsRequired(false)
                 .HasColumnName("IdEmployee");
 
             // Office class will be created in the future
@@ -62,33 +63,6 @@ namespace Console_Management_of_medical_clinic.Data.EntityTypeConfigurations
                 .HasColumnName("CostVisit");
 
             #endregion
-        }
-
-        public void Seed(EntityTypeBuilder<Visit> builder) 
-        {
-            builder
-                .HasData(
-                    new Visit
-                    {
-                        VisitId = 1,
-                        VisitDate = new DateTime(2022, 4, 27).Date,
-                        VisitHour = new DateTime(1, 1, 1, 9, 0, 0),
-                        Cost = 100.0m,
-                        EmployeeId = 1,
-                        PatientId = 1
-                    },
-
-                    new Visit
-                    {
-                        VisitId = 2,
-                        VisitDate = new DateTime(2022, 4, 28).Date,
-                        VisitHour = new DateTime(1, 1, 1, 14, 0, 0),
-                        Cost = 150.0m,
-                        EmployeeId = 2,
-                        PatientId = 2
-                    }
-
-                );
         }
     }
 }
