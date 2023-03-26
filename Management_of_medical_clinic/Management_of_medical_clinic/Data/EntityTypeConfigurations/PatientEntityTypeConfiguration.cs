@@ -16,13 +16,6 @@ namespace Console_Management_of_medical_clinic.Data.EntityTypeConfigurations
             builder
                 .HasKey(p => p.PatientId);
 
-            builder
-                .HasCheckConstraint("CK_Person_BirthDate", "DateOfBirth <= date('now')");
-
-            builder
-                .HasCheckConstraint("CK_PESEL", "PESEL REGEXP '^[0-9]{11}$'");
-
-
             #region Patient Properties Configuration
 
             builder
