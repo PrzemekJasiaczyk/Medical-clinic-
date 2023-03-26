@@ -37,6 +37,12 @@
             this.labelFilter = new System.Windows.Forms.Label();
             this.buttonEditPatient = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.radioButton2Descending = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.button1 = new System.Windows.Forms.Button();
@@ -151,6 +157,12 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.dateTimePicker2);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.dateTimePicker1);
+            this.panel1.Controls.Add(this.maskedTextBox1);
+            this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.radioButton2Descending);
             this.panel1.Controls.Add(this.radioButton1);
             this.panel1.Controls.Add(this.button1);
@@ -171,13 +183,74 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(357, 1441);
             this.panel1.TabIndex = 29;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(198, 783);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(25, 20);
+            this.label4.TabIndex = 42;
+            this.label4.Text = "To";
+            this.label4.Visible = false;
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker2.Location = new System.Drawing.Point(229, 783);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(98, 27);
+            this.dateTimePicker2.TabIndex = 41;
+            this.dateTimePicker2.Visible = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(19, 783);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(45, 20);
+            this.label3.TabIndex = 40;
+            this.label3.Text = "From";
+            this.label3.Visible = false;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(70, 783);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(98, 27);
+            this.dateTimePicker1.TabIndex = 39;
+            this.dateTimePicker1.Visible = false;
+            // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.Location = new System.Drawing.Point(198, 709);
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(125, 27);
+            this.maskedTextBox1.TabIndex = 38;
+            this.maskedTextBox1.Visible = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(198, 661);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(125, 27);
+            this.textBox1.TabIndex = 37;
+            this.textBox1.Visible = false;
             // 
             // radioButton2Descending
             // 
             this.radioButton2Descending.AutoSize = true;
             this.radioButton2Descending.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton2Descending.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.radioButton2Descending.Location = new System.Drawing.Point(195, 943);
+            this.radioButton2Descending.Location = new System.Drawing.Point(152, 930);
             this.radioButton2Descending.Name = "radioButton2Descending";
             this.radioButton2Descending.Size = new System.Drawing.Size(109, 24);
             this.radioButton2Descending.TabIndex = 36;
@@ -190,7 +263,7 @@
             this.radioButton1.AutoSize = true;
             this.radioButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.radioButton1.Location = new System.Drawing.Point(68, 943);
+            this.radioButton1.Location = new System.Drawing.Point(25, 930);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(100, 24);
             this.radioButton1.TabIndex = 35;
@@ -204,7 +277,7 @@
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(195, 987);
+            this.button1.Location = new System.Drawing.Point(198, 961);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(98, 33);
@@ -219,7 +292,7 @@
             this.buttonSort.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.buttonSort.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSort.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonSort.Location = new System.Drawing.Point(70, 987);
+            this.buttonSort.Location = new System.Drawing.Point(49, 961);
             this.buttonSort.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonSort.Name = "buttonSort";
             this.buttonSort.Size = new System.Drawing.Size(98, 33);
@@ -232,7 +305,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(70, 893);
+            this.label2.Location = new System.Drawing.Point(9, 880);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(130, 35);
             this.label2.TabIndex = 30;
@@ -245,7 +318,7 @@
             this.buttonClear.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.buttonClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClear.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonClear.Location = new System.Drawing.Point(195, 809);
+            this.buttonClear.Location = new System.Drawing.Point(201, 817);
             this.buttonClear.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(98, 33);
@@ -260,7 +333,7 @@
             this.buttonShow.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.buttonShow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonShow.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonShow.Location = new System.Drawing.Point(70, 809);
+            this.buttonShow.Location = new System.Drawing.Point(49, 817);
             this.buttonShow.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonShow.Name = "buttonShow";
             this.buttonShow.Size = new System.Drawing.Size(98, 33);
@@ -274,7 +347,7 @@
             this.checkBoxDate.AutoSize = true;
             this.checkBoxDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkBoxDate.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.checkBoxDate.Location = new System.Drawing.Point(81, 753);
+            this.checkBoxDate.Location = new System.Drawing.Point(22, 753);
             this.checkBoxDate.Name = "checkBoxDate";
             this.checkBoxDate.Size = new System.Drawing.Size(174, 24);
             this.checkBoxDate.TabIndex = 27;
@@ -287,7 +360,7 @@
             this.checkBoxPesel.AutoSize = true;
             this.checkBoxPesel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkBoxPesel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.checkBoxPesel.Location = new System.Drawing.Point(81, 710);
+            this.checkBoxPesel.Location = new System.Drawing.Point(22, 710);
             this.checkBoxPesel.Name = "checkBoxPesel";
             this.checkBoxPesel.Size = new System.Drawing.Size(125, 24);
             this.checkBoxPesel.TabIndex = 26;
@@ -300,7 +373,7 @@
             this.checkBoxName.AutoSize = true;
             this.checkBoxName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkBoxName.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.checkBoxName.Location = new System.Drawing.Point(81, 664);
+            this.checkBoxName.Location = new System.Drawing.Point(22, 664);
             this.checkBoxName.Name = "checkBoxName";
             this.checkBoxName.Size = new System.Drawing.Size(161, 24);
             this.checkBoxName.TabIndex = 25;
@@ -312,7 +385,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(70, 605);
+            this.label1.Location = new System.Drawing.Point(11, 605);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(223, 35);
             this.label1.TabIndex = 23;
@@ -373,6 +446,7 @@
             this.dataGridViewPatientList.RowTemplate.Height = 29;
             this.dataGridViewPatientList.Size = new System.Drawing.Size(1570, 1155);
             this.dataGridViewPatientList.TabIndex = 30;
+            this.dataGridViewPatientList.Visible = false;
             this.dataGridViewPatientList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPatientList_CellContentClick);
             // 
             // Column1
@@ -470,5 +544,11 @@
         private DataGridViewTextBoxColumn Column4;
         private DataGridViewTextBoxColumn Column5;
         private DataGridViewTextBoxColumn Column6;
+        private Label label4;
+        private DateTimePicker dateTimePicker2;
+        private Label label3;
+        private DateTimePicker dateTimePicker1;
+        private MaskedTextBox maskedTextBox1;
+        private TextBox textBox1;
     }
 }
