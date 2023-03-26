@@ -28,6 +28,8 @@ namespace Console_Management_of_medical_clinic.Model
         public SpecializationModel IdSpecialization { get; set; }
         public bool IsActive { get; set; }
 
+        public List<Visit> Visits { get; set; } = new List<Visit>();
+
         public EmployeeModel() { }
 
         public EmployeeModel(int idEmployee, string firstName, string lastName, string pesel, string dateOfBirth, string role, string correspondenceAddress, string email, string phoneNumber, 
