@@ -3,6 +3,7 @@ using Console_Management_of_medical_clinic.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using System.ComponentModel;
 
 namespace Console_Management_of_medical_clinic.Data.EntityTypeConfigurations
 {
@@ -15,6 +16,12 @@ namespace Console_Management_of_medical_clinic.Data.EntityTypeConfigurations
 
             builder
                 .HasKey(p => p.PatientId);
+
+            builder
+                .HasCheckConstraint("CK_Person_BirthDate", "DateOfBirth <= date('now')");
+
+            builder
+                .HasCheckConstraint("CK_PESEL", "PESEL REGEXP '^[0-9]{11}$'");
 
 
             #region Patient Properties Configuration
@@ -40,18 +47,13 @@ namespace Console_Management_of_medical_clinic.Data.EntityTypeConfigurations
             builder
                 .Property(p => p.BirthDate)
                 .IsRequired()
-                .HasColumnName("DateOfBirth")
-                // TODO: Not later than today
-                ;
+                .HasColumnName("DateOfBirth");
 
             builder
                 .Property(p => p.PESEL)
                 .IsRequired()
                 .HasColumnName("PESEL")
-                .HasMaxLength(11)
-                // TODO: PESEL Regex pattern - ^\d{11}$
-                // Not sure if it should be checked in Fluent API
-                ;
+                .HasMaxLength(11);
 
             builder
                 .Property(p => p.IsActive)
@@ -67,8 +69,11 @@ namespace Console_Management_of_medical_clinic.Data.EntityTypeConfigurations
             builder
                 .Property(p => p.LastVistiDate)
                 .IsRequired(false)
-                .HasColumnName("DateLastVisit");
-            // TODO: Add HasComputedColumnSql("Query") do Patient.LastVisitDate
+                .HasColumnName("DateLastVisit")
+                .HasComputedColumnSql("(SELECT MAX(Date) FROM Visits WHERE PatientId = Id AND Date <= DATE('now'))");
+                // Alternative solution:
+                // Visits?.Where(v => v.Date <= DateTime.Today).OrderByDescending(v => v.Date).FirstOrDefault()?.Date;
+
 
             #endregion
         }
