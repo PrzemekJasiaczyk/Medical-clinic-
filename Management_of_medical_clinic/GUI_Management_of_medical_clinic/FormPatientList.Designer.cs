@@ -554,6 +554,7 @@
             Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormPatientList";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FormPatientList";
             WindowState = FormWindowState.Maximized;
             Load += FormPatientList_Load;
