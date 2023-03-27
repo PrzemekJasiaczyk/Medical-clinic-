@@ -48,11 +48,10 @@
             buttonOpenEmployeeList.FlatAppearance.BorderColor = Color.AntiqueWhite;
             buttonOpenEmployeeList.FlatAppearance.BorderSize = 5;
             buttonOpenEmployeeList.FlatStyle = FlatStyle.Flat;
-            buttonOpenEmployeeList.Font = new Font("Microsoft Sans Serif", 19F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonOpenEmployeeList.Location = new Point(1042, 853);
-            buttonOpenEmployeeList.Margin = new Padding(3, 4, 3, 4);
+            buttonOpenEmployeeList.Font = new Font("Tw Cen MT Condensed Extra Bold", 19F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonOpenEmployeeList.Location = new Point(912, 640);
             buttonOpenEmployeeList.Name = "buttonOpenEmployeeList";
-            buttonOpenEmployeeList.Size = new Size(371, 167);
+            buttonOpenEmployeeList.Size = new Size(325, 125);
             buttonOpenEmployeeList.TabIndex = 2;
             buttonOpenEmployeeList.Text = "START";
             buttonOpenEmployeeList.UseVisualStyleBackColor = false;
@@ -64,12 +63,11 @@
             textBoxLogin.BackColor = Color.MintCream;
             textBoxLogin.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
             textBoxLogin.ForeColor = SystemColors.MenuText;
-            textBoxLogin.Location = new Point(913, 565);
-            textBoxLogin.Margin = new Padding(3, 4, 3, 4);
+            textBoxLogin.Location = new Point(799, 424);
             textBoxLogin.Multiline = true;
             textBoxLogin.Name = "textBoxLogin";
             textBoxLogin.PlaceholderText = "Login";
-            textBoxLogin.Size = new Size(606, 55);
+            textBoxLogin.Size = new Size(531, 42);
             textBoxLogin.TabIndex = 4;
             // 
             // textBoxPassword
@@ -78,13 +76,12 @@
             textBoxPassword.BackColor = Color.MintCream;
             textBoxPassword.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
             textBoxPassword.ForeColor = SystemColors.MenuText;
-            textBoxPassword.Location = new Point(913, 689);
-            textBoxPassword.Margin = new Padding(3, 4, 3, 4);
+            textBoxPassword.Location = new Point(799, 517);
             textBoxPassword.Multiline = true;
             textBoxPassword.Name = "textBoxPassword";
             textBoxPassword.PasswordChar = '*';
             textBoxPassword.PlaceholderText = "Password";
-            textBoxPassword.Size = new Size(606, 56);
+            textBoxPassword.Size = new Size(531, 42);
             textBoxPassword.TabIndex = 5;
             // 
             // panel2
@@ -92,10 +89,9 @@
             panel2.BackColor = Color.SteelBlue;
             panel2.Controls.Add(buttonExit);
             panel2.Controls.Add(pictureBox1);
-            panel2.Location = new Point(0, -3);
-            panel2.Margin = new Padding(3, 4, 3, 4);
+            panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(357, 1441);
+            panel2.Size = new Size(315, 1080);
             panel2.TabIndex = 7;
             // 
             // buttonExit
@@ -105,10 +101,9 @@
             buttonExit.FlatAppearance.BorderSize = 2;
             buttonExit.FlatStyle = FlatStyle.Flat;
             buttonExit.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonExit.Location = new Point(33, 1309);
-            buttonExit.Margin = new Padding(3, 4, 3, 4);
+            buttonExit.Location = new Point(29, 982);
             buttonExit.Name = "buttonExit";
-            buttonExit.Size = new Size(288, 88);
+            buttonExit.Size = new Size(252, 66);
             buttonExit.TabIndex = 3;
             buttonExit.Text = "EXIT";
             buttonExit.UseVisualStyleBackColor = false;
@@ -118,10 +113,9 @@
             // 
             pictureBox1.BackgroundImage = Properties.Resources.MC_Logo;
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.Location = new Point(70, 16);
-            pictureBox1.Margin = new Padding(3, 4, 3, 4);
+            pictureBox1.Location = new Point(61, 12);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(201, 224);
+            pictureBox1.Size = new Size(176, 168);
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
             // 
@@ -132,18 +126,17 @@
             // 
             // FormMenu
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.Website_Headers_5;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1942, 1102);
+            ClientSize = new Size(1920, 1080);
             Controls.Add(panel2);
             Controls.Add(textBoxPassword);
             Controls.Add(textBoxLogin);
             Controls.Add(buttonOpenEmployeeList);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(3, 4, 3, 4);
             Name = "FormMenu";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";

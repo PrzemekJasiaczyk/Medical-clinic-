@@ -89,7 +89,7 @@
             buttonAddPatient.FlatStyle = FlatStyle.Flat;
             buttonAddPatient.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
             buttonAddPatient.ForeColor = SystemColors.ActiveCaptionText;
-            buttonAddPatient.Location = new Point(-1, 245);
+            buttonAddPatient.Location = new Point(-1, 225);
             buttonAddPatient.Margin = new Padding(3, 4, 3, 4);
             buttonAddPatient.Name = "buttonAddPatient";
             buttonAddPatient.Size = new Size(355, 65);
@@ -145,7 +145,7 @@
             buttonEditPatient.FlatAppearance.BorderColor = Color.Black;
             buttonEditPatient.FlatStyle = FlatStyle.Flat;
             buttonEditPatient.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonEditPatient.Location = new Point(-1, 315);
+            buttonEditPatient.Location = new Point(-1, 295);
             buttonEditPatient.Margin = new Padding(3, 4, 3, 4);
             buttonEditPatient.Name = "buttonEditPatient";
             buttonEditPatient.Size = new Size(355, 65);
@@ -184,7 +184,7 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(357, 1441);
+            panel1.Size = new Size(357, 1080);
             panel1.TabIndex = 29;
             panel1.Paint += panel1_Paint;
             // 
@@ -195,7 +195,7 @@
             button2.FlatAppearance.BorderSize = 2;
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
-            button2.Location = new Point(50, 983);
+            button2.Location = new Point(50, 990);
             button2.Name = "button2";
             button2.Size = new Size(248, 60);
             button2.TabIndex = 31;
@@ -208,7 +208,7 @@
             buttonDeactivatePatinet.FlatAppearance.BorderColor = Color.Black;
             buttonDeactivatePatinet.FlatStyle = FlatStyle.Flat;
             buttonDeactivatePatinet.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonDeactivatePatinet.Location = new Point(-1, 525);
+            buttonDeactivatePatinet.Location = new Point(-1, 505);
             buttonDeactivatePatinet.Margin = new Padding(3, 4, 3, 4);
             buttonDeactivatePatinet.Name = "buttonDeactivatePatinet";
             buttonDeactivatePatinet.Size = new Size(355, 65);
@@ -222,7 +222,7 @@
             buttonActivatePatient.FlatAppearance.BorderColor = Color.Black;
             buttonActivatePatient.FlatStyle = FlatStyle.Flat;
             buttonActivatePatient.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonActivatePatient.Location = new Point(-1, 455);
+            buttonActivatePatient.Location = new Point(-1, 435);
             buttonActivatePatient.Margin = new Padding(3, 4, 3, 4);
             buttonActivatePatient.Name = "buttonActivatePatient";
             buttonActivatePatient.Size = new Size(355, 65);
@@ -236,7 +236,7 @@
             buttonRemovePatient.FlatAppearance.BorderColor = Color.Black;
             buttonRemovePatient.FlatStyle = FlatStyle.Flat;
             buttonRemovePatient.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonRemovePatient.Location = new Point(-1, 385);
+            buttonRemovePatient.Location = new Point(-1, 365);
             buttonRemovePatient.Margin = new Padding(3, 4, 3, 4);
             buttonRemovePatient.Name = "buttonRemovePatient";
             buttonRemovePatient.Size = new Size(355, 65);
@@ -249,7 +249,7 @@
             label4.AutoSize = true;
             label4.FlatStyle = FlatStyle.Flat;
             label4.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(198, 766);
+            label4.Location = new Point(198, 755);
             label4.Name = "label4";
             label4.Size = new Size(20, 15);
             label4.TabIndex = 42;
@@ -260,7 +260,7 @@
             // 
             dateTimePicker2.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             dateTimePicker2.Format = DateTimePickerFormat.Short;
-            dateTimePicker2.Location = new Point(229, 764);
+            dateTimePicker2.Location = new Point(229, 753);
             dateTimePicker2.Name = "dateTimePicker2";
             dateTimePicker2.Size = new Size(98, 23);
             dateTimePicker2.TabIndex = 41;
@@ -271,7 +271,7 @@
             label3.AutoSize = true;
             label3.FlatStyle = FlatStyle.Flat;
             label3.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(19, 766);
+            label3.Location = new Point(19, 755);
             label3.Name = "label3";
             label3.Size = new Size(35, 15);
             label3.TabIndex = 40;
@@ -282,7 +282,7 @@
             // 
             dateTimePicker1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(70, 764);
+            dateTimePicker1.Location = new Point(70, 753);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(98, 23);
             dateTimePicker1.TabIndex = 39;
@@ -290,17 +290,17 @@
             // 
             // maskedTextBox1
             // 
-            maskedTextBox1.Location = new Point(198, 690);
+            maskedTextBox1.Location = new Point(198, 679);
             maskedTextBox1.Name = "maskedTextBox1";
-            maskedTextBox1.Size = new Size(125, 23);
+            maskedTextBox1.Size = new Size(129, 23);
             maskedTextBox1.TabIndex = 38;
             maskedTextBox1.Visible = false;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(198, 649);
+            textBox1.Location = new Point(198, 638);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(125, 23);
+            textBox1.Size = new Size(129, 23);
             textBox1.TabIndex = 37;
             textBox1.Visible = false;
             // 
@@ -309,7 +309,7 @@
             radioButton2Descending.AutoSize = true;
             radioButton2Descending.FlatStyle = FlatStyle.Flat;
             radioButton2Descending.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            radioButton2Descending.Location = new Point(152, 894);
+            radioButton2Descending.Location = new Point(152, 889);
             radioButton2Descending.Name = "radioButton2Descending";
             radioButton2Descending.Size = new Size(87, 19);
             radioButton2Descending.TabIndex = 36;
@@ -322,7 +322,7 @@
             radioButton1.AutoSize = true;
             radioButton1.FlatStyle = FlatStyle.Flat;
             radioButton1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            radioButton1.Location = new Point(25, 894);
+            radioButton1.Location = new Point(25, 889);
             radioButton1.Name = "radioButton1";
             radioButton1.Size = new Size(80, 19);
             radioButton1.TabIndex = 35;
@@ -336,7 +336,7 @@
             button1.FlatAppearance.BorderColor = Color.Black;
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.Location = new Point(200, 926);
+            button1.Location = new Point(200, 921);
             button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
             button1.Size = new Size(98, 33);
@@ -351,7 +351,7 @@
             buttonSort.FlatAppearance.BorderColor = Color.Black;
             buttonSort.FlatStyle = FlatStyle.Flat;
             buttonSort.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonSort.Location = new Point(50, 926);
+            buttonSort.Location = new Point(50, 921);
             buttonSort.Margin = new Padding(3, 4, 3, 4);
             buttonSort.Name = "buttonSort";
             buttonSort.Size = new Size(98, 33);
@@ -364,7 +364,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(10, 854);
+            label2.Location = new Point(10, 849);
             label2.Name = "label2";
             label2.Size = new Size(105, 28);
             label2.TabIndex = 30;
@@ -377,7 +377,7 @@
             buttonClear.FlatAppearance.BorderColor = Color.Black;
             buttonClear.FlatStyle = FlatStyle.Flat;
             buttonClear.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonClear.Location = new Point(200, 803);
+            buttonClear.Location = new Point(200, 792);
             buttonClear.Margin = new Padding(3, 4, 3, 4);
             buttonClear.Name = "buttonClear";
             buttonClear.Size = new Size(98, 33);
@@ -392,7 +392,7 @@
             buttonShow.FlatAppearance.BorderColor = Color.Black;
             buttonShow.FlatStyle = FlatStyle.Flat;
             buttonShow.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonShow.Location = new Point(50, 803);
+            buttonShow.Location = new Point(50, 792);
             buttonShow.Margin = new Padding(3, 4, 3, 4);
             buttonShow.Name = "buttonShow";
             buttonShow.Size = new Size(98, 33);
@@ -406,7 +406,7 @@
             checkBoxDate.AutoSize = true;
             checkBoxDate.FlatStyle = FlatStyle.Flat;
             checkBoxDate.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            checkBoxDate.Location = new Point(22, 730);
+            checkBoxDate.Location = new Point(22, 719);
             checkBoxDate.Name = "checkBoxDate";
             checkBoxDate.Size = new Size(137, 19);
             checkBoxDate.TabIndex = 27;
@@ -419,7 +419,7 @@
             checkBoxPesel.AutoSize = true;
             checkBoxPesel.FlatStyle = FlatStyle.Flat;
             checkBoxPesel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            checkBoxPesel.Location = new Point(22, 690);
+            checkBoxPesel.Location = new Point(22, 679);
             checkBoxPesel.Name = "checkBoxPesel";
             checkBoxPesel.Size = new Size(100, 19);
             checkBoxPesel.TabIndex = 26;
@@ -432,7 +432,7 @@
             checkBoxName.AutoSize = true;
             checkBoxName.FlatStyle = FlatStyle.Flat;
             checkBoxName.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            checkBoxName.Location = new Point(22, 649);
+            checkBoxName.Location = new Point(22, 638);
             checkBoxName.Name = "checkBoxName";
             checkBoxName.Size = new Size(127, 19);
             checkBoxName.TabIndex = 25;
@@ -444,7 +444,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(10, 606);
+            label1.Location = new Point(10, 594);
             label1.Name = "label1";
             label1.Size = new Size(179, 28);
             label1.TabIndex = 23;
@@ -470,10 +470,10 @@
             // 
             pictureBox1.BackgroundImage = Properties.Resources.MC_Logo;
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.Location = new Point(70, 0);
+            pictureBox1.Location = new Point(90, 12);
             pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(201, 224);
+            pictureBox1.Size = new Size(176, 168);
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
             // 
@@ -484,7 +484,7 @@
             dataGridViewPatientList.BackgroundColor = SystemColors.ButtonHighlight;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = Color.SteelBlue;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = Color.SteelBlue;
@@ -497,7 +497,7 @@
             dataGridViewPatientList.RowHeadersVisible = false;
             dataGridViewPatientList.RowHeadersWidth = 51;
             dataGridViewPatientList.RowTemplate.Height = 29;
-            dataGridViewPatientList.Size = new Size(1567, 1155);
+            dataGridViewPatientList.Size = new Size(1567, 1080);
             dataGridViewPatientList.TabIndex = 30;
             dataGridViewPatientList.CellContentClick += dataGridViewPatientList_CellContentClick;
             // 
@@ -543,7 +543,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1920, 1061);
+            ClientSize = new Size(1920, 1080);
             Controls.Add(dataGridViewPatientList);
             Controls.Add(buttonClearFilter);
             Controls.Add(buttonFilterEmployee);
