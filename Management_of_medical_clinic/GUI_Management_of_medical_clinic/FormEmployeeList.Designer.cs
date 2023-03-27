@@ -43,7 +43,6 @@
             panel1 = new Panel();
             buttonBack = new Button();
             pictureBox1 = new PictureBox();
-            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewEmployees).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -202,7 +201,6 @@
             // panel1
             // 
             panel1.BackColor = Color.SteelBlue;
-            panel1.Controls.Add(button1);
             panel1.Controls.Add(buttonBack);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(buttonSpecializations);
@@ -243,18 +241,6 @@
             pictureBox1.Size = new Size(201, 224);
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
-            // 
-            // button1
-            // 
-            button1.BackColor = Color.SteelBlue;
-            button1.Location = new Point(31, 1015);
-            button1.Margin = new Padding(3, 4, 3, 4);
-            button1.Name = "button1";
-            button1.Size = new Size(162, 60);
-            button1.TabIndex = 23;
-            button1.Text = "Patient";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click_2;
             // 
             // FormEmployeeList
             // 
@@ -299,6 +285,5 @@
         private Panel panel1;
         private PictureBox pictureBox1;
         private Button buttonBack;
-        private Button button1;
     }
 }
