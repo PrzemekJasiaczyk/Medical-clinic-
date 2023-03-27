@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Console_Management_of_medical_clinic.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
