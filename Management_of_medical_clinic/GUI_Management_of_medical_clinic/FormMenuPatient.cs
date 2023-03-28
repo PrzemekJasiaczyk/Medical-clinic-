@@ -16,5 +16,30 @@ namespace GUI_Management_of_medical_clinic
         {
             InitializeComponent();
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void FormMenuPatient_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonConfirm_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonListPatient_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
