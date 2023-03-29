@@ -32,11 +32,11 @@
             buttonExit = new Button();
             pictureBox1 = new PictureBox();
             panel1 = new Panel();
+            buttonListEmployee = new Button();
+            buttonListPatient = new Button();
+            labelTitle = new Label();
             buttonAddEdit = new Button();
             button3 = new Button();
-            labelTitle = new Label();
-            buttonListPatient = new Button();
-            buttonListEmployee = new Button();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
@@ -94,6 +94,52 @@
             panel1.TabIndex = 27;
             panel1.Paint += panel1_Paint;
             // 
+            // buttonListEmployee
+            // 
+            buttonListEmployee.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            buttonListEmployee.BackColor = Color.SteelBlue;
+            buttonListEmployee.FlatAppearance.BorderColor = SystemColors.Control;
+            buttonListEmployee.FlatAppearance.BorderSize = 5;
+            buttonListEmployee.FlatStyle = FlatStyle.Flat;
+            buttonListEmployee.Font = new Font("Tw Cen MT Condensed Extra Bold", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonListEmployee.ForeColor = SystemColors.Control;
+            buttonListEmployee.Location = new Point(703, 182);
+            buttonListEmployee.Name = "buttonListEmployee";
+            buttonListEmployee.Size = new Size(244, 131);
+            buttonListEmployee.TabIndex = 22;
+            buttonListEmployee.Text = "Registration";
+            buttonListEmployee.UseVisualStyleBackColor = false;
+            // 
+            // buttonListPatient
+            // 
+            buttonListPatient.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            buttonListPatient.BackColor = Color.SteelBlue;
+            buttonListPatient.FlatAppearance.BorderColor = SystemColors.Control;
+            buttonListPatient.FlatAppearance.BorderSize = 5;
+            buttonListPatient.FlatStyle = FlatStyle.Flat;
+            buttonListPatient.Font = new Font("Tw Cen MT Condensed Extra Bold", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonListPatient.ForeColor = SystemColors.Control;
+            buttonListPatient.Location = new Point(404, 182);
+            buttonListPatient.Name = "buttonListPatient";
+            buttonListPatient.Size = new Size(244, 131);
+            buttonListPatient.TabIndex = 21;
+            buttonListPatient.Text = "Patient";
+            buttonListPatient.UseVisualStyleBackColor = false;
+            buttonListPatient.Click += buttonListPatient_Click;
+            // 
+            // labelTitle
+            // 
+            labelTitle.AutoSize = true;
+            labelTitle.Font = new Font("Tw Cen MT Condensed", 48F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
+            labelTitle.ForeColor = Color.White;
+            labelTitle.Location = new Point(449, 27);
+            labelTitle.Name = "labelTitle";
+            labelTitle.Size = new Size(155, 74);
+            labelTitle.TabIndex = 20;
+            labelTitle.Text = "Menu";
+            labelTitle.TextAlign = ContentAlignment.TopCenter;
+            labelTitle.Click += label1_Click;
+            // 
             // buttonAddEdit
             // 
             buttonAddEdit.AutoSizeMode = AutoSizeMode.GrowAndShrink;
@@ -107,7 +153,7 @@
             buttonAddEdit.Name = "buttonAddEdit";
             buttonAddEdit.Size = new Size(244, 131);
             buttonAddEdit.TabIndex = 19;
-            buttonAddEdit.Text = "Add and Edit";
+            buttonAddEdit.Text = "Employee";
             buttonAddEdit.UseVisualStyleBackColor = false;
             buttonAddEdit.Click += buttonConfirm_Click;
             // 
@@ -124,52 +170,6 @@
             button3.TabIndex = 3;
             button3.Text = "EXIT";
             button3.UseVisualStyleBackColor = false;
-            // 
-            // labelTitle
-            // 
-            labelTitle.AutoSize = true;
-            labelTitle.Font = new Font("Tw Cen MT Condensed", 48F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
-            labelTitle.ForeColor = Color.White;
-            labelTitle.Location = new Point(369, 12);
-            labelTitle.Name = "labelTitle";
-            labelTitle.Size = new Size(334, 74);
-            labelTitle.TabIndex = 20;
-            labelTitle.Text = "Patient Menu";
-            labelTitle.TextAlign = ContentAlignment.TopCenter;
-            labelTitle.Click += label1_Click;
-            // 
-            // buttonListPatient
-            // 
-            buttonListPatient.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            buttonListPatient.BackColor = Color.SteelBlue;
-            buttonListPatient.FlatAppearance.BorderColor = SystemColors.Control;
-            buttonListPatient.FlatAppearance.BorderSize = 5;
-            buttonListPatient.FlatStyle = FlatStyle.Flat;
-            buttonListPatient.Font = new Font("Tw Cen MT Condensed Extra Bold", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonListPatient.ForeColor = SystemColors.Control;
-            buttonListPatient.Location = new Point(404, 182);
-            buttonListPatient.Name = "buttonListPatient";
-            buttonListPatient.Size = new Size(244, 131);
-            buttonListPatient.TabIndex = 21;
-            buttonListPatient.Text = "List of Patients";
-            buttonListPatient.UseVisualStyleBackColor = false;
-            buttonListPatient.Click += buttonListPatient_Click;
-            // 
-            // buttonListEmployee
-            // 
-            buttonListEmployee.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            buttonListEmployee.BackColor = Color.SteelBlue;
-            buttonListEmployee.FlatAppearance.BorderColor = SystemColors.Control;
-            buttonListEmployee.FlatAppearance.BorderSize = 5;
-            buttonListEmployee.FlatStyle = FlatStyle.Flat;
-            buttonListEmployee.Font = new Font("Tw Cen MT Condensed Extra Bold", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonListEmployee.ForeColor = SystemColors.Control;
-            buttonListEmployee.Location = new Point(703, 182);
-            buttonListEmployee.Name = "buttonListEmployee";
-            buttonListEmployee.Size = new Size(244, 131);
-            buttonListEmployee.TabIndex = 22;
-            buttonListEmployee.Text = "List of Employee";
-            buttonListEmployee.UseVisualStyleBackColor = false;
             // 
             // FormMenuPatient
             // 
