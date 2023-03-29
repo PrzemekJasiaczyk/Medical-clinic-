@@ -83,5 +83,10 @@ namespace GUI_Management_of_medical_clinic
             ChangeVisibleDataGridView(false);
             ChangeTitle("Edit patient");
         }
+
+        private void FormAddEditPatient_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
