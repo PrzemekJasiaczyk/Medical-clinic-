@@ -20,14 +20,12 @@ namespace GUI_Management_of_medical_clinic
             string login = textBoxLogin.Text;
             string password = textBoxPassword.Text;
 
-
             List<EmployeeModel> employees = EmployeeService.GetEmployeesData();
 
-            foreach (EmployeeModel emp in employees)
+            foreach(EmployeeModel emp in employees)
             {
-                if (emp.Username == login && emp.Password == password)
+                if(emp.Username==login && emp.Password == password)
                 {
-
                     FormEmployeeList employeeList = new FormEmployeeList(emp);
                     //this.Hide();
                     employeeList.ShowDialog();
@@ -38,6 +36,7 @@ namespace GUI_Management_of_medical_clinic
 
             MessageBox.Show("Incorrect login or password");
 
+            
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
