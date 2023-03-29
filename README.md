@@ -13,7 +13,6 @@
   - [ ] Add patient form
   - [ ] Edit patient form
   - [ ] Remove patient form
-  - [ ] Activation of a patient 
 - [x] More...
 
 ## About
