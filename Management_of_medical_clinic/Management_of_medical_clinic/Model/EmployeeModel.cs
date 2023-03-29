@@ -53,6 +53,7 @@ namespace Console_Management_of_medical_clinic.Model
             IsActive = isActive;
         }
 
+
         
         public static void ChangeEmployeeStatus(EmployeeModel employee)
         {
@@ -118,5 +119,6 @@ namespace Console_Management_of_medical_clinic.Model
             emp.Sex = sex;
             context.SaveChanges();
         }
+
     }
 }
