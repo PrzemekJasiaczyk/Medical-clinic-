@@ -32,6 +32,7 @@ namespace GUI_Management_of_medical_clinic
         {
             List<SpecializationModel> specializations = SpecializationService.GetSpecializationsData();
             dataGridViewSpecializations.DataSource = specializations;
+
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -84,6 +85,15 @@ namespace GUI_Management_of_medical_clinic
                 buttonAdd.Enabled = false;
                 buttonRemove.Enabled = false;
                 buttonReplace.Enabled= false;
+            }
+        }
+
+        private void dataGridViewSpecializations_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                string nameValue = dataGridViewSpecializations.Rows[e.RowIndex].Cells[1].Value.ToString();
+                labelTest.Text = nameValue;
             }
         }
     }
