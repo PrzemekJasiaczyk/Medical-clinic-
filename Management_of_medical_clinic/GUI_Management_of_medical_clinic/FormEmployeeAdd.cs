@@ -23,6 +23,7 @@ namespace GUI_Management_of_medical_clinic
             InitializeComponent();
             currentEmployee = currentE;
             comboBoxRole.DataSource = Enum.GetValues(typeof(EnumEmployeeRoles));
+            comboBoxSex.DataSource = Enum.GetValues(typeof(EnumSex));
             checkIfMedicalDoctor();
         }
 
@@ -76,8 +77,11 @@ namespace GUI_Management_of_medical_clinic
                 return;
             }
 
+            EnumSex enumSex = (EnumSex)Enum.Parse(typeof(EnumSex), comboBoxSex.SelectedItem.ToString());
+            EnumEmployeeRoles enumRole = (EnumEmployeeRoles)Enum.Parse(typeof(EnumEmployeeRoles), comboBoxRole.SelectedItem.ToString());
+
             EmployeeModel newEmployee = new EmployeeModel(textBoxFirstName.Text, textBoxLastName.Text, textBoxPESEL.Text, "2000-01-01", 
-                textBoxAddress.Text, textBoxEmail.Text, textBoxPhone.Text, EnumSex.Female, EnumEmployeeRoles.MedicalDoctor, 3, true);
+                textBoxAddress.Text, textBoxEmail.Text, textBoxPhone.Text, enumSex, enumRole, 3, true);
             FormEmployeeAddUser employeeAddUser = new FormEmployeeAddUser(currentEmployee, newEmployee);
             //this.Hide();
             employeeAddUser.ShowDialog();
