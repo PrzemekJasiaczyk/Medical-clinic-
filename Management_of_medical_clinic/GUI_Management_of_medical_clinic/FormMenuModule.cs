@@ -39,7 +39,9 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonListPatient_Click(object sender, EventArgs e)
         {
-
+            FormPatientList formPatientList = new FormPatientList();
+            formPatientList.ShowDialog();
+            Hide();
         }
     }
 }

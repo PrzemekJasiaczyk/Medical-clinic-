@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Console_Management_of_medical_clinic.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -59,7 +60,7 @@ namespace GUI_Management_of_medical_clinic
         private void checkBoxDate_CheckedChanged(object sender, EventArgs e)
         {
             label3.Visible = checkBoxDate.Checked;
-            label4.Visible=checkBoxDate.Checked;
+            label4.Visible = checkBoxDate.Checked;
             dateTimePicker1.Visible = checkBoxDate.Checked;
             dateTimePicker2.Visible = checkBoxDate.Checked;
 

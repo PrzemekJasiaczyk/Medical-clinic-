@@ -28,490 +28,542 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.buttonClearFilter = new System.Windows.Forms.Button();
-            this.buttonAddPatient = new System.Windows.Forms.Button();
-            this.buttonFilterEmployee = new System.Windows.Forms.Button();
-            this.comboBoxRole = new System.Windows.Forms.ComboBox();
-            this.checkBoxIsActive = new System.Windows.Forms.CheckBox();
-            this.labelFilter = new System.Windows.Forms.Label();
-            this.buttonEditPatient = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.radioButton2Descending = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.button1 = new System.Windows.Forms.Button();
-            this.buttonSort = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.buttonClear = new System.Windows.Forms.Button();
-            this.buttonShow = new System.Windows.Forms.Button();
-            this.checkBoxDate = new System.Windows.Forms.CheckBox();
-            this.checkBoxPesel = new System.Windows.Forms.CheckBox();
-            this.checkBoxName = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.buttonBack = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.dataGridViewPatientList = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPatientList)).BeginInit();
-            this.SuspendLayout();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            buttonClearFilter = new Button();
+            buttonAddPatient = new Button();
+            buttonFilterEmployee = new Button();
+            comboBoxRole = new ComboBox();
+            checkBoxIsActive = new CheckBox();
+            labelFilter = new Label();
+            buttonEditPatient = new Button();
+            panel1 = new Panel();
+            button2 = new Button();
+            buttonDeactivatePatinet = new Button();
+            buttonActivatePatient = new Button();
+            buttonRemovePatient = new Button();
+            label4 = new Label();
+            dateTimePicker2 = new DateTimePicker();
+            label3 = new Label();
+            dateTimePicker1 = new DateTimePicker();
+            maskedTextBox1 = new MaskedTextBox();
+            textBox1 = new TextBox();
+            radioButton2Descending = new RadioButton();
+            radioButton1 = new RadioButton();
+            button1 = new Button();
+            buttonSort = new Button();
+            label2 = new Label();
+            buttonClear = new Button();
+            buttonShow = new Button();
+            checkBoxDate = new CheckBox();
+            checkBoxPesel = new CheckBox();
+            checkBoxName = new CheckBox();
+            label1 = new Label();
+            buttonBack = new Button();
+            pictureBox1 = new PictureBox();
+            dataGridViewPatientList = new DataGridView();
+            Column1 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
+            Column4 = new DataGridViewTextBoxColumn();
+            Column5 = new DataGridViewTextBoxColumn();
+            Column6 = new DataGridViewTextBoxColumn();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewPatientList).BeginInit();
+            SuspendLayout();
             // 
             // buttonClearFilter
             // 
-            this.buttonClearFilter.Location = new System.Drawing.Point(482, 1311);
-            this.buttonClearFilter.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.buttonClearFilter.Name = "buttonClearFilter";
-            this.buttonClearFilter.Size = new System.Drawing.Size(138, 31);
-            this.buttonClearFilter.TabIndex = 28;
-            this.buttonClearFilter.Text = "Clear filter";
-            this.buttonClearFilter.UseVisualStyleBackColor = true;
+            buttonClearFilter.Location = new Point(482, 1311);
+            buttonClearFilter.Margin = new Padding(3, 4, 3, 4);
+            buttonClearFilter.Name = "buttonClearFilter";
+            buttonClearFilter.Size = new Size(138, 31);
+            buttonClearFilter.TabIndex = 28;
+            buttonClearFilter.Text = "Clear filter";
+            buttonClearFilter.UseVisualStyleBackColor = true;
             // 
             // buttonAddPatient
             // 
-            this.buttonAddPatient.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonAddPatient.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.buttonAddPatient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAddPatient.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonAddPatient.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonAddPatient.Location = new System.Drawing.Point(-8, 339);
-            this.buttonAddPatient.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.buttonAddPatient.Name = "buttonAddPatient";
-            this.buttonAddPatient.Size = new System.Drawing.Size(365, 116);
-            this.buttonAddPatient.TabIndex = 15;
-            this.buttonAddPatient.Text = "Add new patient";
-            this.buttonAddPatient.UseVisualStyleBackColor = false;
+            buttonAddPatient.BackColor = Color.SteelBlue;
+            buttonAddPatient.FlatAppearance.BorderColor = Color.Black;
+            buttonAddPatient.FlatStyle = FlatStyle.Flat;
+            buttonAddPatient.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonAddPatient.ForeColor = SystemColors.ActiveCaptionText;
+            buttonAddPatient.Location = new Point(-1, 225);
+            buttonAddPatient.Margin = new Padding(3, 4, 3, 4);
+            buttonAddPatient.Name = "buttonAddPatient";
+            buttonAddPatient.Size = new Size(355, 65);
+            buttonAddPatient.TabIndex = 15;
+            buttonAddPatient.Text = "Add new patient";
+            buttonAddPatient.UseVisualStyleBackColor = false;
             // 
             // buttonFilterEmployee
             // 
-            this.buttonFilterEmployee.Location = new System.Drawing.Point(482, 1277);
-            this.buttonFilterEmployee.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.buttonFilterEmployee.Name = "buttonFilterEmployee";
-            this.buttonFilterEmployee.Size = new System.Drawing.Size(138, 31);
-            this.buttonFilterEmployee.TabIndex = 27;
-            this.buttonFilterEmployee.Text = "Filtruj";
-            this.buttonFilterEmployee.UseVisualStyleBackColor = true;
+            buttonFilterEmployee.Location = new Point(482, 1277);
+            buttonFilterEmployee.Margin = new Padding(3, 4, 3, 4);
+            buttonFilterEmployee.Name = "buttonFilterEmployee";
+            buttonFilterEmployee.Size = new Size(138, 31);
+            buttonFilterEmployee.TabIndex = 27;
+            buttonFilterEmployee.Text = "Filtruj";
+            buttonFilterEmployee.UseVisualStyleBackColor = true;
             // 
             // comboBoxRole
             // 
-            this.comboBoxRole.FormattingEnabled = true;
-            this.comboBoxRole.Items.AddRange(new object[] {
-            "Medical Doctor",
-            "Nurse",
-            "Paramedic",
-            "Janitor",
-            "Technitian"});
-            this.comboBoxRole.Location = new System.Drawing.Point(482, 1239);
-            this.comboBoxRole.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.comboBoxRole.Name = "comboBoxRole";
-            this.comboBoxRole.Size = new System.Drawing.Size(138, 28);
-            this.comboBoxRole.TabIndex = 26;
+            comboBoxRole.FormattingEnabled = true;
+            comboBoxRole.Items.AddRange(new object[] { "Medical Doctor", "Nurse", "Paramedic", "Janitor", "Technitian" });
+            comboBoxRole.Location = new Point(482, 1239);
+            comboBoxRole.Margin = new Padding(3, 4, 3, 4);
+            comboBoxRole.Name = "comboBoxRole";
+            comboBoxRole.Size = new Size(138, 23);
+            comboBoxRole.TabIndex = 26;
             // 
             // checkBoxIsActive
             // 
-            this.checkBoxIsActive.AutoSize = true;
-            this.checkBoxIsActive.Checked = true;
-            this.checkBoxIsActive.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxIsActive.Location = new System.Drawing.Point(482, 1205);
-            this.checkBoxIsActive.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.checkBoxIsActive.Name = "checkBoxIsActive";
-            this.checkBoxIsActive.Size = new System.Drawing.Size(154, 24);
-            this.checkBoxIsActive.TabIndex = 25;
-            this.checkBoxIsActive.Text = "Is Employee active";
-            this.checkBoxIsActive.UseVisualStyleBackColor = true;
+            checkBoxIsActive.AutoSize = true;
+            checkBoxIsActive.Checked = true;
+            checkBoxIsActive.CheckState = CheckState.Checked;
+            checkBoxIsActive.Location = new Point(482, 1205);
+            checkBoxIsActive.Margin = new Padding(3, 4, 3, 4);
+            checkBoxIsActive.Name = "checkBoxIsActive";
+            checkBoxIsActive.Size = new Size(123, 19);
+            checkBoxIsActive.TabIndex = 25;
+            checkBoxIsActive.Text = "Is Employee active";
+            checkBoxIsActive.UseVisualStyleBackColor = true;
             // 
             // labelFilter
             // 
-            this.labelFilter.AutoSize = true;
-            this.labelFilter.Location = new System.Drawing.Point(482, 1181);
-            this.labelFilter.Name = "labelFilter";
-            this.labelFilter.Size = new System.Drawing.Size(65, 20);
-            this.labelFilter.TabIndex = 24;
-            this.labelFilter.Text = "Filter list";
+            labelFilter.AutoSize = true;
+            labelFilter.Location = new Point(482, 1181);
+            labelFilter.Name = "labelFilter";
+            labelFilter.Size = new Size(51, 15);
+            labelFilter.TabIndex = 24;
+            labelFilter.Text = "Filter list";
             // 
             // buttonEditPatient
             // 
-            this.buttonEditPatient.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonEditPatient.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.buttonEditPatient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonEditPatient.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonEditPatient.Location = new System.Drawing.Point(-8, 463);
-            this.buttonEditPatient.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.buttonEditPatient.Name = "buttonEditPatient";
-            this.buttonEditPatient.Size = new System.Drawing.Size(376, 116);
-            this.buttonEditPatient.TabIndex = 21;
-            this.buttonEditPatient.Text = "Edit patient";
-            this.buttonEditPatient.UseVisualStyleBackColor = false;
+            buttonEditPatient.BackColor = Color.SteelBlue;
+            buttonEditPatient.FlatAppearance.BorderColor = Color.Black;
+            buttonEditPatient.FlatStyle = FlatStyle.Flat;
+            buttonEditPatient.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonEditPatient.Location = new Point(-1, 295);
+            buttonEditPatient.Margin = new Padding(3, 4, 3, 4);
+            buttonEditPatient.Name = "buttonEditPatient";
+            buttonEditPatient.Size = new Size(355, 65);
+            buttonEditPatient.TabIndex = 21;
+            buttonEditPatient.Text = "Edit patient";
+            buttonEditPatient.UseVisualStyleBackColor = false;
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.SteelBlue;
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.dateTimePicker2);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.dateTimePicker1);
-            this.panel1.Controls.Add(this.maskedTextBox1);
-            this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Controls.Add(this.radioButton2Descending);
-            this.panel1.Controls.Add(this.radioButton1);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.buttonSort);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.buttonClear);
-            this.panel1.Controls.Add(this.buttonShow);
-            this.panel1.Controls.Add(this.checkBoxDate);
-            this.panel1.Controls.Add(this.checkBoxPesel);
-            this.panel1.Controls.Add(this.checkBoxName);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.buttonBack);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.buttonEditPatient);
-            this.panel1.Controls.Add(this.buttonAddPatient);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(357, 1441);
-            this.panel1.TabIndex = 29;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            panel1.BackColor = Color.SteelBlue;
+            panel1.Controls.Add(button2);
+            panel1.Controls.Add(buttonDeactivatePatinet);
+            panel1.Controls.Add(buttonActivatePatient);
+            panel1.Controls.Add(buttonRemovePatient);
+            panel1.Controls.Add(label4);
+            panel1.Controls.Add(dateTimePicker2);
+            panel1.Controls.Add(label3);
+            panel1.Controls.Add(dateTimePicker1);
+            panel1.Controls.Add(maskedTextBox1);
+            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(radioButton2Descending);
+            panel1.Controls.Add(radioButton1);
+            panel1.Controls.Add(button1);
+            panel1.Controls.Add(buttonSort);
+            panel1.Controls.Add(label2);
+            panel1.Controls.Add(buttonClear);
+            panel1.Controls.Add(buttonShow);
+            panel1.Controls.Add(checkBoxDate);
+            panel1.Controls.Add(checkBoxPesel);
+            panel1.Controls.Add(checkBoxName);
+            panel1.Controls.Add(label1);
+            panel1.Controls.Add(buttonBack);
+            panel1.Controls.Add(pictureBox1);
+            panel1.Controls.Add(buttonEditPatient);
+            panel1.Controls.Add(buttonAddPatient);
+            panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(3, 4, 3, 4);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(357, 1080);
+            panel1.TabIndex = 29;
+            panel1.Paint += panel1_Paint;
+            // 
+            // button2
+            // 
+            button2.BackColor = Color.Gainsboro;
+            button2.FlatAppearance.BorderColor = Color.White;
+            button2.FlatAppearance.BorderSize = 2;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
+            button2.Location = new Point(50, 990);
+            button2.Name = "button2";
+            button2.Size = new Size(248, 60);
+            button2.TabIndex = 31;
+            button2.Text = "LOG OUT";
+            button2.UseVisualStyleBackColor = false;
+            // 
+            // buttonDeactivatePatinet
+            // 
+            buttonDeactivatePatinet.BackColor = Color.SteelBlue;
+            buttonDeactivatePatinet.FlatAppearance.BorderColor = Color.Black;
+            buttonDeactivatePatinet.FlatStyle = FlatStyle.Flat;
+            buttonDeactivatePatinet.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonDeactivatePatinet.Location = new Point(-1, 505);
+            buttonDeactivatePatinet.Margin = new Padding(3, 4, 3, 4);
+            buttonDeactivatePatinet.Name = "buttonDeactivatePatinet";
+            buttonDeactivatePatinet.Size = new Size(355, 65);
+            buttonDeactivatePatinet.TabIndex = 45;
+            buttonDeactivatePatinet.Text = "Deactivate patient";
+            buttonDeactivatePatinet.UseVisualStyleBackColor = false;
+            // 
+            // buttonActivatePatient
+            // 
+            buttonActivatePatient.BackColor = Color.SteelBlue;
+            buttonActivatePatient.FlatAppearance.BorderColor = Color.Black;
+            buttonActivatePatient.FlatStyle = FlatStyle.Flat;
+            buttonActivatePatient.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonActivatePatient.Location = new Point(-1, 435);
+            buttonActivatePatient.Margin = new Padding(3, 4, 3, 4);
+            buttonActivatePatient.Name = "buttonActivatePatient";
+            buttonActivatePatient.Size = new Size(355, 65);
+            buttonActivatePatient.TabIndex = 44;
+            buttonActivatePatient.Text = "Activate patient";
+            buttonActivatePatient.UseVisualStyleBackColor = false;
+            // 
+            // buttonRemovePatient
+            // 
+            buttonRemovePatient.BackColor = Color.SteelBlue;
+            buttonRemovePatient.FlatAppearance.BorderColor = Color.Black;
+            buttonRemovePatient.FlatStyle = FlatStyle.Flat;
+            buttonRemovePatient.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonRemovePatient.Location = new Point(-1, 365);
+            buttonRemovePatient.Margin = new Padding(3, 4, 3, 4);
+            buttonRemovePatient.Name = "buttonRemovePatient";
+            buttonRemovePatient.Size = new Size(355, 65);
+            buttonRemovePatient.TabIndex = 43;
+            buttonRemovePatient.Text = "Remove patient";
+            buttonRemovePatient.UseVisualStyleBackColor = false;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(198, 783);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(25, 20);
-            this.label4.TabIndex = 42;
-            this.label4.Text = "To";
-            this.label4.Visible = false;
+            label4.AutoSize = true;
+            label4.FlatStyle = FlatStyle.Flat;
+            label4.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.Location = new Point(198, 755);
+            label4.Name = "label4";
+            label4.Size = new Size(20, 15);
+            label4.TabIndex = 42;
+            label4.Text = "To";
+            label4.Visible = false;
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(229, 783);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(98, 27);
-            this.dateTimePicker2.TabIndex = 41;
-            this.dateTimePicker2.Visible = false;
+            dateTimePicker2.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dateTimePicker2.Format = DateTimePickerFormat.Short;
+            dateTimePicker2.Location = new Point(229, 753);
+            dateTimePicker2.Name = "dateTimePicker2";
+            dateTimePicker2.Size = new Size(98, 23);
+            dateTimePicker2.TabIndex = 41;
+            dateTimePicker2.Visible = false;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(19, 783);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 20);
-            this.label3.TabIndex = 40;
-            this.label3.Text = "From";
-            this.label3.Visible = false;
+            label3.AutoSize = true;
+            label3.FlatStyle = FlatStyle.Flat;
+            label3.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Location = new Point(19, 755);
+            label3.Name = "label3";
+            label3.Size = new Size(35, 15);
+            label3.TabIndex = 40;
+            label3.Text = "From";
+            label3.Visible = false;
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(70, 783);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(98, 27);
-            this.dateTimePicker1.TabIndex = 39;
-            this.dateTimePicker1.Visible = false;
+            dateTimePicker1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dateTimePicker1.Format = DateTimePickerFormat.Short;
+            dateTimePicker1.Location = new Point(70, 753);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(98, 23);
+            dateTimePicker1.TabIndex = 39;
+            dateTimePicker1.Visible = false;
             // 
             // maskedTextBox1
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(198, 709);
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(125, 27);
-            this.maskedTextBox1.TabIndex = 38;
-            this.maskedTextBox1.Visible = false;
+            maskedTextBox1.Location = new Point(198, 679);
+            maskedTextBox1.Name = "maskedTextBox1";
+            maskedTextBox1.Size = new Size(129, 23);
+            maskedTextBox1.TabIndex = 38;
+            maskedTextBox1.Visible = false;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(198, 661);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(125, 27);
-            this.textBox1.TabIndex = 37;
-            this.textBox1.Visible = false;
+            textBox1.Location = new Point(198, 638);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(129, 23);
+            textBox1.TabIndex = 37;
+            textBox1.Visible = false;
             // 
             // radioButton2Descending
             // 
-            this.radioButton2Descending.AutoSize = true;
-            this.radioButton2Descending.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.radioButton2Descending.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.radioButton2Descending.Location = new System.Drawing.Point(152, 930);
-            this.radioButton2Descending.Name = "radioButton2Descending";
-            this.radioButton2Descending.Size = new System.Drawing.Size(109, 24);
-            this.radioButton2Descending.TabIndex = 36;
-            this.radioButton2Descending.TabStop = true;
-            this.radioButton2Descending.Text = "Descending";
-            this.radioButton2Descending.UseVisualStyleBackColor = true;
+            radioButton2Descending.AutoSize = true;
+            radioButton2Descending.FlatStyle = FlatStyle.Flat;
+            radioButton2Descending.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            radioButton2Descending.Location = new Point(152, 889);
+            radioButton2Descending.Name = "radioButton2Descending";
+            radioButton2Descending.Size = new Size(87, 19);
+            radioButton2Descending.TabIndex = 36;
+            radioButton2Descending.TabStop = true;
+            radioButton2Descending.Text = "Descending";
+            radioButton2Descending.UseVisualStyleBackColor = true;
             // 
             // radioButton1
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.radioButton1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.radioButton1.Location = new System.Drawing.Point(25, 930);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(100, 24);
-            this.radioButton1.TabIndex = 35;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Ascending";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            radioButton1.AutoSize = true;
+            radioButton1.FlatStyle = FlatStyle.Flat;
+            radioButton1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            radioButton1.Location = new Point(25, 889);
+            radioButton1.Name = "radioButton1";
+            radioButton1.Size = new Size(80, 19);
+            radioButton1.TabIndex = 35;
+            radioButton1.TabStop = true;
+            radioButton1.Text = "Ascending";
+            radioButton1.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.SteelBlue;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(198, 961);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(98, 33);
-            this.button1.TabIndex = 34;
-            this.button1.Text = "Clear";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            button1.BackColor = Color.SteelBlue;
+            button1.FlatAppearance.BorderColor = Color.Black;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.Location = new Point(200, 921);
+            button1.Margin = new Padding(3, 4, 3, 4);
+            button1.Name = "button1";
+            button1.Size = new Size(98, 33);
+            button1.TabIndex = 34;
+            button1.Text = "Clear";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // buttonSort
             // 
-            this.buttonSort.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonSort.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.buttonSort.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSort.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonSort.Location = new System.Drawing.Point(49, 961);
-            this.buttonSort.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.buttonSort.Name = "buttonSort";
-            this.buttonSort.Size = new System.Drawing.Size(98, 33);
-            this.buttonSort.TabIndex = 33;
-            this.buttonSort.Text = "Sort";
-            this.buttonSort.UseVisualStyleBackColor = false;
-            this.buttonSort.Click += new System.EventHandler(this.buttonSort_Click);
+            buttonSort.BackColor = Color.SteelBlue;
+            buttonSort.FlatAppearance.BorderColor = Color.Black;
+            buttonSort.FlatStyle = FlatStyle.Flat;
+            buttonSort.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonSort.Location = new Point(50, 921);
+            buttonSort.Margin = new Padding(3, 4, 3, 4);
+            buttonSort.Name = "buttonSort";
+            buttonSort.Size = new Size(98, 33);
+            buttonSort.TabIndex = 33;
+            buttonSort.Text = "Sort";
+            buttonSort.UseVisualStyleBackColor = false;
+            buttonSort.Click += buttonSort_Click;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(9, 880);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(130, 35);
-            this.label2.TabIndex = 30;
-            this.label2.Text = "Sort data:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(10, 849);
+            label2.Name = "label2";
+            label2.Size = new Size(105, 28);
+            label2.TabIndex = 30;
+            label2.Text = "Sort data:";
+            label2.Click += label2_Click;
             // 
             // buttonClear
             // 
-            this.buttonClear.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonClear.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.buttonClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonClear.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonClear.Location = new System.Drawing.Point(201, 817);
-            this.buttonClear.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.buttonClear.Name = "buttonClear";
-            this.buttonClear.Size = new System.Drawing.Size(98, 33);
-            this.buttonClear.TabIndex = 29;
-            this.buttonClear.Text = "Clear";
-            this.buttonClear.UseVisualStyleBackColor = false;
-            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
+            buttonClear.BackColor = Color.SteelBlue;
+            buttonClear.FlatAppearance.BorderColor = Color.Black;
+            buttonClear.FlatStyle = FlatStyle.Flat;
+            buttonClear.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonClear.Location = new Point(200, 792);
+            buttonClear.Margin = new Padding(3, 4, 3, 4);
+            buttonClear.Name = "buttonClear";
+            buttonClear.Size = new Size(98, 33);
+            buttonClear.TabIndex = 29;
+            buttonClear.Text = "Clear";
+            buttonClear.UseVisualStyleBackColor = false;
+            buttonClear.Click += buttonClear_Click;
             // 
             // buttonShow
             // 
-            this.buttonShow.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonShow.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.buttonShow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonShow.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonShow.Location = new System.Drawing.Point(49, 817);
-            this.buttonShow.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.buttonShow.Name = "buttonShow";
-            this.buttonShow.Size = new System.Drawing.Size(98, 33);
-            this.buttonShow.TabIndex = 28;
-            this.buttonShow.Text = "Show";
-            this.buttonShow.UseVisualStyleBackColor = false;
-            this.buttonShow.Click += new System.EventHandler(this.buttonShow_Click);
+            buttonShow.BackColor = Color.SteelBlue;
+            buttonShow.FlatAppearance.BorderColor = Color.Black;
+            buttonShow.FlatStyle = FlatStyle.Flat;
+            buttonShow.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonShow.Location = new Point(50, 792);
+            buttonShow.Margin = new Padding(3, 4, 3, 4);
+            buttonShow.Name = "buttonShow";
+            buttonShow.Size = new Size(98, 33);
+            buttonShow.TabIndex = 28;
+            buttonShow.Text = "Show";
+            buttonShow.UseVisualStyleBackColor = false;
+            buttonShow.Click += buttonShow_Click;
             // 
             // checkBoxDate
             // 
-            this.checkBoxDate.AutoSize = true;
-            this.checkBoxDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkBoxDate.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.checkBoxDate.Location = new System.Drawing.Point(22, 753);
-            this.checkBoxDate.Name = "checkBoxDate";
-            this.checkBoxDate.Size = new System.Drawing.Size(174, 24);
-            this.checkBoxDate.TabIndex = 27;
-            this.checkBoxDate.Text = "Date of the latest visit";
-            this.checkBoxDate.UseVisualStyleBackColor = true;
-            this.checkBoxDate.CheckedChanged += new System.EventHandler(this.checkBoxDate_CheckedChanged);
+            checkBoxDate.AutoSize = true;
+            checkBoxDate.FlatStyle = FlatStyle.Flat;
+            checkBoxDate.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            checkBoxDate.Location = new Point(22, 719);
+            checkBoxDate.Name = "checkBoxDate";
+            checkBoxDate.Size = new Size(137, 19);
+            checkBoxDate.TabIndex = 27;
+            checkBoxDate.Text = "Date of the latest visit";
+            checkBoxDate.UseVisualStyleBackColor = true;
+            checkBoxDate.CheckedChanged += checkBoxDate_CheckedChanged;
             // 
             // checkBoxPesel
             // 
-            this.checkBoxPesel.AutoSize = true;
-            this.checkBoxPesel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkBoxPesel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.checkBoxPesel.Location = new System.Drawing.Point(22, 710);
-            this.checkBoxPesel.Name = "checkBoxPesel";
-            this.checkBoxPesel.Size = new System.Drawing.Size(125, 24);
-            this.checkBoxPesel.TabIndex = 26;
-            this.checkBoxPesel.Text = "PESEL number";
-            this.checkBoxPesel.UseVisualStyleBackColor = true;
-            this.checkBoxPesel.CheckedChanged += new System.EventHandler(this.checkBoxPesel_CheckedChanged);
+            checkBoxPesel.AutoSize = true;
+            checkBoxPesel.FlatStyle = FlatStyle.Flat;
+            checkBoxPesel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            checkBoxPesel.Location = new Point(22, 679);
+            checkBoxPesel.Name = "checkBoxPesel";
+            checkBoxPesel.Size = new Size(100, 19);
+            checkBoxPesel.TabIndex = 26;
+            checkBoxPesel.Text = "PESEL number";
+            checkBoxPesel.UseVisualStyleBackColor = true;
+            checkBoxPesel.CheckedChanged += checkBoxPesel_CheckedChanged;
             // 
             // checkBoxName
             // 
-            this.checkBoxName.AutoSize = true;
-            this.checkBoxName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkBoxName.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.checkBoxName.Location = new System.Drawing.Point(22, 664);
-            this.checkBoxName.Name = "checkBoxName";
-            this.checkBoxName.Size = new System.Drawing.Size(161, 24);
-            this.checkBoxName.TabIndex = 25;
-            this.checkBoxName.Text = "Name and surname";
-            this.checkBoxName.UseVisualStyleBackColor = true;
-            this.checkBoxName.CheckedChanged += new System.EventHandler(this.checkBoxName_CheckedChanged);
+            checkBoxName.AutoSize = true;
+            checkBoxName.FlatStyle = FlatStyle.Flat;
+            checkBoxName.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            checkBoxName.Location = new Point(22, 638);
+            checkBoxName.Name = "checkBoxName";
+            checkBoxName.Size = new Size(127, 19);
+            checkBoxName.TabIndex = 25;
+            checkBoxName.Text = "Name and surname";
+            checkBoxName.UseVisualStyleBackColor = true;
+            checkBoxName.CheckedChanged += checkBoxName_CheckedChanged;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(11, 605);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(223, 35);
-            this.label1.TabIndex = 23;
-            this.label1.Text = "Filter patients on:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(10, 594);
+            label1.Name = "label1";
+            label1.Size = new Size(179, 28);
+            label1.TabIndex = 23;
+            label1.Text = "Filter patients on:";
+            label1.Click += label1_Click;
             // 
             // buttonBack
             // 
-            this.buttonBack.BackColor = System.Drawing.Color.Gainsboro;
-            this.buttonBack.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.buttonBack.FlatAppearance.BorderSize = 2;
-            this.buttonBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonBack.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonBack.Location = new System.Drawing.Point(33, 1293);
-            this.buttonBack.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.buttonBack.Name = "buttonBack";
-            this.buttonBack.Size = new System.Drawing.Size(288, 88);
-            this.buttonBack.TabIndex = 22;
-            this.buttonBack.Text = "LOG OUT";
-            this.buttonBack.UseVisualStyleBackColor = false;
+            buttonBack.BackColor = Color.Gainsboro;
+            buttonBack.FlatAppearance.BorderColor = Color.White;
+            buttonBack.FlatAppearance.BorderSize = 2;
+            buttonBack.FlatStyle = FlatStyle.Flat;
+            buttonBack.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonBack.Location = new Point(33, 1293);
+            buttonBack.Margin = new Padding(3, 4, 3, 4);
+            buttonBack.Name = "buttonBack";
+            buttonBack.Size = new Size(288, 88);
+            buttonBack.TabIndex = 22;
+            buttonBack.Text = "LOG OUT";
+            buttonBack.UseVisualStyleBackColor = false;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackgroundImage = global::GUI_Management_of_medical_clinic.Properties.Resources.MC_Logo;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(70, 16);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(201, 224);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            pictureBox1.BackgroundImage = Properties.Resources.MC_Logo;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox1.Location = new Point(90, 12);
+            pictureBox1.Margin = new Padding(3, 4, 3, 4);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(176, 168);
+            pictureBox1.TabIndex = 1;
+            pictureBox1.TabStop = false;
             // 
             // dataGridViewPatientList
             // 
-            this.dataGridViewPatientList.AllowUserToAddRows = false;
-            this.dataGridViewPatientList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewPatientList.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewPatientList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewPatientList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewPatientList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6});
-            this.dataGridViewPatientList.Location = new System.Drawing.Point(353, 0);
-            this.dataGridViewPatientList.Name = "dataGridViewPatientList";
-            this.dataGridViewPatientList.RowHeadersVisible = false;
-            this.dataGridViewPatientList.RowHeadersWidth = 51;
-            this.dataGridViewPatientList.RowTemplate.Height = 29;
-            this.dataGridViewPatientList.Size = new System.Drawing.Size(1570, 1155);
-            this.dataGridViewPatientList.TabIndex = 30;
-            this.dataGridViewPatientList.Visible = false;
-            this.dataGridViewPatientList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPatientList_CellContentClick);
+            dataGridViewPatientList.AllowUserToAddRows = false;
+            dataGridViewPatientList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewPatientList.BackgroundColor = SystemColors.ButtonHighlight;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.SteelBlue;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = Color.SteelBlue;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewPatientList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewPatientList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewPatientList.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6 });
+            dataGridViewPatientList.Location = new Point(353, 0);
+            dataGridViewPatientList.Name = "dataGridViewPatientList";
+            dataGridViewPatientList.RowHeadersVisible = false;
+            dataGridViewPatientList.RowHeadersWidth = 51;
+            dataGridViewPatientList.RowTemplate.Height = 29;
+            dataGridViewPatientList.Size = new Size(1567, 1080);
+            dataGridViewPatientList.TabIndex = 30;
+            dataGridViewPatientList.CellContentClick += dataGridViewPatientList_CellContentClick;
             // 
             // Column1
             // 
-            this.Column1.HeaderText = "Name";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
+            Column1.HeaderText = "Name";
+            Column1.MinimumWidth = 6;
+            Column1.Name = "Column1";
             // 
             // Column2
             // 
-            this.Column2.HeaderText = "Surname";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
+            Column2.HeaderText = "Surname";
+            Column2.MinimumWidth = 6;
+            Column2.Name = "Column2";
             // 
             // Column3
             // 
-            this.Column3.HeaderText = "PESEL";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            Column3.HeaderText = "PESEL";
+            Column3.MinimumWidth = 6;
+            Column3.Name = "Column3";
+            Column3.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
             // Column4
             // 
-            this.Column4.HeaderText = "Date of birth";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
+            Column4.HeaderText = "Date of birth";
+            Column4.MinimumWidth = 6;
+            Column4.Name = "Column4";
             // 
             // Column5
             // 
-            this.Column5.HeaderText = "Active";
-            this.Column5.MinimumWidth = 6;
-            this.Column5.Name = "Column5";
-            this.Column5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            Column5.HeaderText = "Active";
+            Column5.MinimumWidth = 6;
+            Column5.Name = "Column5";
+            Column5.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
             // Column6
             // 
-            this.Column6.HeaderText = "Date last visit";
-            this.Column6.MinimumWidth = 6;
-            this.Column6.Name = "Column6";
+            Column6.HeaderText = "Date last visit";
+            Column6.MinimumWidth = 6;
+            Column6.Name = "Column6";
             // 
             // FormPatientList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1726, 1055);
-            this.Controls.Add(this.dataGridViewPatientList);
-            this.Controls.Add(this.buttonClearFilter);
-            this.Controls.Add(this.buttonFilterEmployee);
-            this.Controls.Add(this.comboBoxRole);
-            this.Controls.Add(this.checkBoxIsActive);
-            this.Controls.Add(this.labelFilter);
-            this.Controls.Add(this.panel1);
-            this.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FormPatientList";
-            this.Text = "FormPatientList";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.FormPatientList_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPatientList)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1920, 1080);
+            Controls.Add(dataGridViewPatientList);
+            Controls.Add(buttonClearFilter);
+            Controls.Add(buttonFilterEmployee);
+            Controls.Add(comboBoxRole);
+            Controls.Add(checkBoxIsActive);
+            Controls.Add(labelFilter);
+            Controls.Add(panel1);
+            Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "FormPatientList";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "FormPatientList";
+            WindowState = FormWindowState.Maximized;
+            Load += FormPatientList_Load;
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewPatientList).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -550,5 +602,9 @@
         private DateTimePicker dateTimePicker1;
         private MaskedTextBox maskedTextBox1;
         private TextBox textBox1;
+        private Button buttonDeactivatePatinet;
+        private Button buttonActivatePatient;
+        private Button buttonRemovePatient;
+        private Button button2;
     }
 }
