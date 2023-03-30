@@ -36,6 +36,22 @@ namespace Console_Management_of_medical_clinic.Model
 
         public EmployeeModel() { }
 
+        public EmployeeModel(string firstName, string lastName, string pesel, string dateOfBirth, string correspondenceAddress,
+            string email, string phoneNumber, EnumSex sex, EnumEmployeeRoles role, int idSpecialization, bool isActive)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            PESEL = pesel;
+            DateOfBirth = dateOfBirth;
+            CorrespondenceAddress = correspondenceAddress;
+            Email = email;
+            PhoneNumber = phoneNumber;
+            Sex = sex;
+            Role = role;
+            IdSpecialization = idSpecialization;
+            IsActive = isActive;
+        }
+
         public EmployeeModel(int idUser, string firstName, string lastName, string pesel, string dateOfBirth, string correspondenceAddress, 
             string email, string phoneNumber, EnumSex sex, EnumEmployeeRoles role, int idSpecialization, bool isActive)
         {

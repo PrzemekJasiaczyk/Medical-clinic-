@@ -37,18 +37,18 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxUsername = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.buttonCreate = new System.Windows.Forms.Button();
+            this.buttonAssign = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelTitle
             // 
             this.labelTitle.AutoSize = true;
             this.labelTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelTitle.Location = new System.Drawing.Point(176, 9);
+            this.labelTitle.Location = new System.Drawing.Point(237, 9);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(472, 30);
+            this.labelTitle.Size = new System.Drawing.Size(305, 30);
             this.labelTitle.TabIndex = 37;
-            this.labelTitle.Text = "Set Username and Password for New Employee";
+            this.labelTitle.Text = "User Setup for New Employee";
             // 
             // buttonCancel
             // 
@@ -62,12 +62,11 @@
             // 
             // buttonSkip
             // 
-            this.buttonSkip.Enabled = false;
             this.buttonSkip.Location = new System.Drawing.Point(646, 393);
             this.buttonSkip.Name = "buttonSkip";
             this.buttonSkip.Size = new System.Drawing.Size(142, 45);
             this.buttonSkip.TabIndex = 35;
-            this.buttonSkip.Text = "Skip";
+            this.buttonSkip.Text = "Skip (No User)";
             this.buttonSkip.UseVisualStyleBackColor = true;
             this.buttonSkip.Click += new System.EventHandler(this.buttonSkip_Click);
             // 
@@ -127,23 +126,23 @@
             this.label2.TabIndex = 41;
             this.label2.Text = "Username";
             // 
-            // buttonCreate
+            // buttonAssign
             // 
-            this.buttonCreate.Enabled = false;
-            this.buttonCreate.Location = new System.Drawing.Point(343, 390);
-            this.buttonCreate.Name = "buttonCreate";
-            this.buttonCreate.Size = new System.Drawing.Size(142, 45);
-            this.buttonCreate.TabIndex = 47;
-            this.buttonCreate.Text = "Create";
-            this.buttonCreate.UseVisualStyleBackColor = true;
-            this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
+            this.buttonAssign.Enabled = false;
+            this.buttonAssign.Location = new System.Drawing.Point(343, 390);
+            this.buttonAssign.Name = "buttonAssign";
+            this.buttonAssign.Size = new System.Drawing.Size(142, 45);
+            this.buttonAssign.TabIndex = 47;
+            this.buttonAssign.Text = "Assign User";
+            this.buttonAssign.UseVisualStyleBackColor = true;
+            this.buttonAssign.Click += new System.EventHandler(this.buttonCreate_Click);
             // 
             // FormEmployeeAddUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.buttonCreate);
+            this.Controls.Add(this.buttonAssign);
             this.Controls.Add(this.textBoxPasswordConfirm);
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.label3);
@@ -172,6 +171,6 @@
         private Label label1;
         private TextBox textBoxUsername;
         private Label label2;
-        private Button buttonCreate;
+        private Button buttonAssign;
     }
 }

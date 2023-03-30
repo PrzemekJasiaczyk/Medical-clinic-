@@ -63,7 +63,23 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonReplace_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("<<THIS BUTTON DOESN'T WORK YET>>");
+            string nameSpecialization = textBoxName.Text;
+            int idSpecialization = SpecializationService.getSpecializationIdByName(nameSpecialization);
+
+            if (idSpecialization == 0)
+            {
+                MessageBox.Show("There in no such specialization in the database");
+                return;
+            }
+
+            if (SpecializationService.checkIfSpecializationIsAssigned(EmployeeService.GetEmployeesData(), SpecializationService.getSpecializationIdByName(nameSpecialization)))
+            {
+                MessageBox.Show("Specialization can not be removed, it is being used by employees");
+                return;
+            }
+
+            SpecializationService.RemoveSpecialization(nameSpecialization);
+            loadDataGridView();
         }
 
 
@@ -93,7 +109,7 @@ namespace GUI_Management_of_medical_clinic
             if (e.RowIndex > -1)
             {
                 string nameValue = dataGridViewSpecializations.Rows[e.RowIndex].Cells[1].Value.ToString();
-                labelTest.Text = nameValue;
+                textBoxName.Text = nameValue;
             }
         }
     }

@@ -25,6 +25,26 @@ namespace Console_Management_of_medical_clinic.Logic
             context.SaveChanges();
         }
 
+        public static bool AddEmployee(EmployeeModel newEmployee)
+        {
+            //using AppDbContext context = new AppDbContext();
+            //context.DbEmployees.Add(newEmployee);
+            //context.SaveChanges();
+            //return true;
+            
+            try
+            {
+                using AppDbContext context = new AppDbContext();
+                context.DbEmployees.Add(newEmployee);
+                context.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }  
+        }
+
         public static List<EmployeeModel> GetEmployeesData()
         {
             List<EmployeeModel> employees = new List<EmployeeModel>();

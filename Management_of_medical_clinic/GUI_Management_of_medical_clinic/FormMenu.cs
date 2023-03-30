@@ -7,12 +7,12 @@ namespace GUI_Management_of_medical_clinic
     {
         public FormMenu()
         {
-            InitializeComponent();
+            InitializeComponent();         
         }
 
         private void FormMenu_Load(object sender, EventArgs e)
         {
-
+            panelLogIn.BackColor = Color.FromArgb(150, Color.Gray);
         }
 
         private void buttonOpenEmployeeList_Click(object sender, EventArgs e)
@@ -83,6 +83,35 @@ namespace GUI_Management_of_medical_clinic
             }
 
             MessageBox.Show("Incorrect login or password");
+        }
+
+        private void textBoxLogin_TextChanged(object sender, EventArgs e)
+        {
+            checkIfDataFilled();
+        }
+
+        private void textBoxPassword_TextChanged(object sender, EventArgs e)
+        {
+            checkIfDataFilled();
+        }
+
+        public void checkIfDataFilled()
+        {
+            if (textBoxLogin.Text.Length>0 && textBoxPassword.Text.Length > 0)
+            {
+                buttonOpenEmployeeList.Enabled = true;
+                buttonOpenUserList.Enabled = true;
+                buttonOpenEmployeeList.BackColor = Color.SteelBlue;
+                buttonOpenUserList.BackColor = Color.SteelBlue;
+
+            }
+            else
+            {
+                buttonOpenEmployeeList.Enabled = false;
+                buttonOpenUserList.Enabled = false;
+                buttonOpenEmployeeList.BackColor = Color.Gray;
+                buttonOpenUserList.BackColor = Color.Gray;
+            }
         }
     }
 }

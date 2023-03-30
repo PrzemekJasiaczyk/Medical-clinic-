@@ -12,7 +12,7 @@ namespace Console_Management_of_medical_clinic.Model
         [Key] public int IdSpecialization { get; set; }
         public string Name { get; set; }
 
-        //public virtual EmployeeModel EmployeeModle { get; set; }
+        public List<EmployeeModel> EmployeeModels { get; set; }
 
 
 

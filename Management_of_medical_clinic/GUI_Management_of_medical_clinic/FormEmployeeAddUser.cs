@@ -14,16 +14,18 @@ namespace GUI_Management_of_medical_clinic
 {
     public partial class FormEmployeeAddUser : Form
     {
-        EmployeeModel currentUser;
-        public FormEmployeeAddUser(EmployeeModel currentU)
+        EmployeeModel currentEmployee;
+        EmployeeModel newEmployee;
+        public FormEmployeeAddUser(EmployeeModel currentE, EmployeeModel newE)
         {
             InitializeComponent();
-            currentUser = currentU;
+            currentEmployee = currentE;
+            newEmployee = newE;
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            FormEmployeeList employeeList = new FormEmployeeList(currentUser);
+            FormEmployeeList employeeList = new FormEmployeeList(currentEmployee);
             this.Hide();
             employeeList.ShowDialog();
             this.Close();
@@ -45,17 +47,25 @@ namespace GUI_Management_of_medical_clinic
 
             MessageBox.Show("<<Success, but button doesn't work yet>>");
 
-            FormEmployeeList employeeList = new FormEmployeeList(currentUser);
+            FormEmployeeList employeeList = new FormEmployeeList(currentEmployee);
             this.Hide();
             employeeList.ShowDialog();
             this.Close();
         }
 
-        private void buttonSkip_Click(object sender, EventArgs e)
+        public void buttonSkip_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("<<Success, but button doesn't work yet>>");
 
-            FormEmployeeList employeeList = new FormEmployeeList(currentUser);
+            if (EmployeeService.AddEmployee(newEmployee))
+            {
+                MessageBox.Show("Employee without user added successfully");
+            }
+            else
+            {
+                MessageBox.Show("Employee not added. Error");
+            }
+
+            FormEmployeeList employeeList = new FormEmployeeList(currentEmployee);
             this.Hide();
             employeeList.ShowDialog();
             this.Close();
@@ -65,11 +75,11 @@ namespace GUI_Management_of_medical_clinic
         {
             if (textBoxUsername.Text.Length > 0 && textBoxPassword.Text.Length > 0 && textBoxPasswordConfirm.Text.Length > 0)
             {
-                buttonCreate.Enabled = true;
+                buttonAssign.Enabled = true;
             }
             else
             {
-                buttonCreate.Enabled = false;
+                buttonAssign.Enabled = false;
             }
         }
 
