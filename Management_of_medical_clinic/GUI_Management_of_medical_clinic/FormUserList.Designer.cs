@@ -108,6 +108,7 @@
             buttonAddUser.TabIndex = 27;
             buttonAddUser.Text = "Add new user";
             buttonAddUser.UseVisualStyleBackColor = true;
+            buttonAddUser.Click += buttonAddUser_Click;
             // 
             // buttonFilterUser
             // 

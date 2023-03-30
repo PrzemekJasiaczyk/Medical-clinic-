@@ -22,6 +22,17 @@ namespace Console_Management_of_medical_clinic.Logic
             return users;
         }
 
+        public static void AddUser(int userID, string username, string password, EnumUserRoles role, bool isActive, int employeeId)
+        {
+            //a method to add new User and to change the value of IdUser pole of the selected Employee 
+            using(AppDbContext db = new AppDbContext())
+            {
+                db.DbUsers.Add(new UserModel(username, password, role, isActive));
+                db.SaveChanges();
+            }
+            //not ready
+        } 
+
         public static List<UserModel> FilterUsers(string username, string firstname, string lastname, string role)
         {
 

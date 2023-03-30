@@ -73,5 +73,12 @@ namespace GUI_Management_of_medical_clinic
             currentUser = user;
             InitializeComponent();
         }
+
+        private void buttonAddUser_Click(object sender, EventArgs e)
+        {
+            FormUserAdd userAdd = new FormUserAdd(currentUser);
+            userAdd.ShowDialog();
+            this.Close();
+        }
     }
 }
