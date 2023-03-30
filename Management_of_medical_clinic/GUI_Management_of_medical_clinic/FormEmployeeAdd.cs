@@ -88,7 +88,7 @@ namespace GUI_Management_of_medical_clinic
 
         public void checkIfRequiredFilled()
         {
-            if (textBoxFirstName.Text.Length > 0 && textBoxLastName.Text.Length > 0 && textBoxPESEL.Text.Length > 0 && comboBoxRole.Text.Length > 0)
+            if (textBoxFirstName.Text.Length > 0 && textBoxLastName.Text.Length > 0 && textBoxPESEL.Text.Length == 11 && comboBoxRole.Text.Length > 0)
             {
                 buttonNext.Enabled = true;
             }
