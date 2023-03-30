@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            buttonEditPatient = new Button();
-            buttonAddPatient = new Button();
             buttonBack = new Button();
             pictureBox1 = new PictureBox();
             comboBoxSex = new ComboBox();
@@ -57,8 +55,6 @@
             // panel1
             // 
             panel1.BackColor = Color.SteelBlue;
-            panel1.Controls.Add(buttonEditPatient);
-            panel1.Controls.Add(buttonAddPatient);
             panel1.Controls.Add(buttonBack);
             panel1.Controls.Add(pictureBox1);
             panel1.Location = new Point(-3, 0);
@@ -66,30 +62,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(357, 1441);
             panel1.TabIndex = 23;
-            // 
-            // buttonEditPatient
-            // 
-            buttonEditPatient.BackColor = Color.SteelBlue;
-            buttonEditPatient.Location = new Point(15, 383);
-            buttonEditPatient.Margin = new Padding(3, 4, 3, 4);
-            buttonEditPatient.Name = "buttonEditPatient";
-            buttonEditPatient.Size = new Size(325, 60);
-            buttonEditPatient.TabIndex = 24;
-            buttonEditPatient.Text = "Edit patient";
-            buttonEditPatient.UseVisualStyleBackColor = false;
-            buttonEditPatient.Click += buttonEditPatient_Click;
-            // 
-            // buttonAddPatient
-            // 
-            buttonAddPatient.BackColor = Color.SteelBlue;
-            buttonAddPatient.Location = new Point(15, 298);
-            buttonAddPatient.Margin = new Padding(3, 4, 3, 4);
-            buttonAddPatient.Name = "buttonAddPatient";
-            buttonAddPatient.Size = new Size(325, 60);
-            buttonAddPatient.TabIndex = 23;
-            buttonAddPatient.Text = "Add patient";
-            buttonAddPatient.UseVisualStyleBackColor = false;
-            buttonAddPatient.Click += buttonAddPatient_Click;
             // 
             // buttonBack
             // 
@@ -323,7 +295,6 @@
         #endregion
 
         private Panel panel1;
-        private Button buttonAddPatient;
         private Button buttonBack;
         private PictureBox pictureBox1;
         private ComboBox comboBoxSex;
@@ -341,7 +312,6 @@
         private TextBox textBoxLastName;
         private Label labelName;
         private TextBox textBoxName;
-        private Button buttonEditPatient;
         private Button buttonCancel;
         private Button buttonAddEditPatient;
     }
