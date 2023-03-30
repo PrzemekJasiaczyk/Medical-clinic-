@@ -16,11 +16,12 @@ namespace GUI_Management_of_medical_clinic
 {
     public partial class FormEmployeeAdd : Form
     {
-        EmployeeModel currentUser;
-        public FormEmployeeAdd(EmployeeModel currentU)
+        EmployeeModel currentEmployee;
+        EmployeeModel newEmployee;
+        public FormEmployeeAdd(EmployeeModel currentE)
         {
             InitializeComponent();
-            currentUser = currentU;
+            currentEmployee = currentE;
             comboBoxRole.DataSource = Enum.GetValues(typeof(EnumEmployeeRoles));
             checkIfMedicalDoctor();
         }
@@ -40,7 +41,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            FormEmployeeList employeeList = new FormEmployeeList(currentUser);
+            FormEmployeeList employeeList = new FormEmployeeList(currentEmployee);
             //this.Hide();
             employeeList.ShowDialog();
             this.Close();
@@ -75,7 +76,9 @@ namespace GUI_Management_of_medical_clinic
                 return;
             }
 
-            FormEmployeeAddUser employeeAddUser = new FormEmployeeAddUser(currentUser);
+            EmployeeModel newEmployee = new EmployeeModel(textBoxFirstName.Text, textBoxLastName.Text, textBoxPESEL.Text, "2000-01-01", 
+                textBoxAddress.Text, textBoxEmail.Text, textBoxPhone.Text, EnumSex.Female, EnumEmployeeRoles.MedicalDoctor, 3, true);
+            FormEmployeeAddUser employeeAddUser = new FormEmployeeAddUser(currentEmployee, newEmployee);
             //this.Hide();
             employeeAddUser.ShowDialog();
             this.Close();
@@ -85,7 +88,7 @@ namespace GUI_Management_of_medical_clinic
 
         public void checkIfRequiredFilled()
         {
-            if (textBoxFirstName.Text.Length > 0 && textBoxLastName.Text.Length > 0 && textBoxPESEL.Text.Length > 0 && comboBoxRole.Text.Length > 0)
+            if (textBoxFirstName.Text.Length > 0 && textBoxLastName.Text.Length > 0 && textBoxPESEL.Text.Length == 11 && comboBoxRole.Text.Length > 0)
             {
                 buttonNext.Enabled = true;
             }

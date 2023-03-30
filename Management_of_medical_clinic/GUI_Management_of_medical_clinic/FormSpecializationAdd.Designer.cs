@@ -36,7 +36,6 @@
             this.dataGridViewSpecializations = new System.Windows.Forms.DataGridView();
             this.buttonRemove = new System.Windows.Forms.Button();
             this.buttonReplace = new System.Windows.Forms.Button();
-            this.labelTest = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSpecializations)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,9 +45,9 @@
             this.labelTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelTitle.Location = new System.Drawing.Point(328, 11);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(190, 30);
+            this.labelTitle.Size = new System.Drawing.Size(195, 30);
             this.labelTitle.TabIndex = 73;
-            this.labelTitle.Text = "Edit Specializatons";
+            this.labelTitle.Text = "Edit Specializations";
             // 
             // buttonCancel
             // 
@@ -121,22 +120,11 @@
             this.buttonReplace.UseVisualStyleBackColor = true;
             this.buttonReplace.Click += new System.EventHandler(this.buttonReplace_Click_1);
             // 
-            // labelTest
-            // 
-            this.labelTest.AutoSize = true;
-            this.labelTest.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelTest.Location = new System.Drawing.Point(576, 310);
-            this.labelTest.Name = "labelTest";
-            this.labelTest.Size = new System.Drawing.Size(190, 30);
-            this.labelTest.TabIndex = 84;
-            this.labelTest.Text = "Edit Specializatons";
-            // 
             // FormSpecializationAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
-            this.Controls.Add(this.labelTest);
             this.Controls.Add(this.buttonReplace);
             this.Controls.Add(this.buttonRemove);
             this.Controls.Add(this.dataGridViewSpecializations);
@@ -166,6 +154,5 @@
         private DataGridView dataGridViewSpecializations;
         private Button buttonRemove;
         private Button buttonReplace;
-        private Label labelTest;
     }
 }

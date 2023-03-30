@@ -45,7 +45,7 @@ namespace Console_Management_of_medical_clinic.Logic
             context.SaveChanges();
         }
 
-        public static string RemoveSpecialization(string specializationToRemove)
+        public static void RemoveSpecialization(string specializationToRemove)
         {
             List<SpecializationModel> specializations = GetSpecializationsData();
             using AppDbContext context = new AppDbContext();
@@ -58,20 +58,39 @@ namespace Console_Management_of_medical_clinic.Logic
                     {
                         context.DbSpecializations.Remove(specialization);
                         context.SaveChanges();
-                        return "Specialization removed successfully";
+                        return;
                     }
                     catch (Exception ex)
                     {
-                        return "Specialization is linked to an employee in the database\nIt can not be removed";
-                    }
-                    
+                        return;
+                    }                    
                 }
             }    
-            return "Specialization doesn't exist";
+        }
+        
+        public static int getSpecializationIdByName(string name)
+        {
+            List<SpecializationModel> specializations = GetSpecializationsData();
+            foreach(SpecializationModel specialization in specializations)
+            {
+                if (specialization.Name == name)
+                {
+                    return specialization.IdSpecialization;
+                }
+            }
+            return 0;
         }
 
-       
-
-        
+        public static bool checkIfSpecializationIsAssigned(List<EmployeeModel> Employees, int idSpecialization)
+        {
+            foreach(EmployeeModel employee in Employees)
+            {
+                if (employee.IdSpecialization == idSpecialization)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

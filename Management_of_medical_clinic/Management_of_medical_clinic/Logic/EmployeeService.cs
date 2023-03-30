@@ -25,6 +25,26 @@ namespace Console_Management_of_medical_clinic.Logic
             context.SaveChanges();
         }
 
+        public static bool AddEmployee(EmployeeModel newEmployee)
+        {
+            //using AppDbContext context = new AppDbContext();
+            //context.DbEmployees.Add(newEmployee);
+            //context.SaveChanges();
+            //return true;
+            
+            try
+            {
+                using AppDbContext context = new AppDbContext();
+                context.DbEmployees.Add(newEmployee);
+                context.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }  
+        }
+
         public static List<EmployeeModel> GetEmployeesData()
         {
             List<EmployeeModel> employees = new List<EmployeeModel>();
@@ -65,7 +85,8 @@ namespace Console_Management_of_medical_clinic.Logic
         {
             string firstSix = input.Substring(0, 6);
 
-            string formatedDate = selectedDate.ToString("dd/MM/yy");
+            //string formatedDate = selectedDate.ToString("dd/MM/yy");
+            string formatedDate = selectedDate.ToString("yy/MM/dd");
             string rawDate = formatedDate.Replace(".", "");
             rawDate = rawDate.Replace("/", "");
 
@@ -131,7 +152,7 @@ namespace Console_Management_of_medical_clinic.Logic
                     return ("The last '.' sign has to have characters behind and after it,\nand it has to be after the '@' sign", false);
                 }
 
-                if (!input.Contains(name))
+                if (!input.Contains(name.ToLower()))
                 {
                     return ("E-mail needs to contain the recipient's name", false);
                 }
