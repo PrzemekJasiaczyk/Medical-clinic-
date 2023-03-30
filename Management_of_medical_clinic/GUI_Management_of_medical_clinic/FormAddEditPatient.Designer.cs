@@ -96,7 +96,6 @@
             comboBoxSex.Name = "comboBoxSex";
             comboBoxSex.Size = new Size(348, 28);
             comboBoxSex.TabIndex = 56;
-            comboBoxSex.Visible = false;
             // 
             // labelAddEditNewPatient
             // 
@@ -108,7 +107,6 @@
             labelAddEditNewPatient.Size = new Size(284, 46);
             labelAddEditNewPatient.TabIndex = 55;
             labelAddEditNewPatient.Text = "Add new patient";
-            labelAddEditNewPatient.Visible = false;
             // 
             // maskedTextBoxDateLastVisit
             // 
@@ -118,7 +116,6 @@
             maskedTextBoxDateLastVisit.Size = new Size(348, 27);
             maskedTextBoxDateLastVisit.TabIndex = 54;
             maskedTextBoxDateLastVisit.ValidatingType = typeof(DateTime);
-            maskedTextBoxDateLastVisit.Visible = false;
             // 
             // labelDateLastVisit
             // 
@@ -128,7 +125,6 @@
             labelDateLastVisit.Size = new Size(101, 20);
             labelDateLastVisit.TabIndex = 53;
             labelDateLastVisit.Text = "Date last visit:";
-            labelDateLastVisit.Visible = false;
             // 
             // comboBoxStatus
             // 
@@ -137,7 +133,6 @@
             comboBoxStatus.Name = "comboBoxStatus";
             comboBoxStatus.Size = new Size(348, 28);
             comboBoxStatus.TabIndex = 52;
-            comboBoxStatus.Visible = false;
             // 
             // labelStatus
             // 
@@ -147,7 +142,6 @@
             labelStatus.Size = new Size(52, 20);
             labelStatus.TabIndex = 51;
             labelStatus.Text = "Status:";
-            labelStatus.Visible = false;
             // 
             // labelSex
             // 
@@ -157,7 +151,6 @@
             labelSex.Size = new Size(35, 20);
             labelSex.TabIndex = 50;
             labelSex.Text = "Sex:";
-            labelSex.Visible = false;
             // 
             // maskedTextBoxDateOfBirth
             // 
@@ -167,7 +160,6 @@
             maskedTextBoxDateOfBirth.Size = new Size(348, 27);
             maskedTextBoxDateOfBirth.TabIndex = 49;
             maskedTextBoxDateOfBirth.ValidatingType = typeof(DateTime);
-            maskedTextBoxDateOfBirth.Visible = false;
             // 
             // labelDateOfBirth
             // 
@@ -177,7 +169,6 @@
             labelDateOfBirth.Size = new Size(97, 20);
             labelDateOfBirth.TabIndex = 48;
             labelDateOfBirth.Text = "Date of birth:";
-            labelDateOfBirth.Visible = false;
             // 
             // maskedTextBoxPESEL
             // 
@@ -186,7 +177,6 @@
             maskedTextBoxPESEL.Name = "maskedTextBoxPESEL";
             maskedTextBoxPESEL.Size = new Size(348, 27);
             maskedTextBoxPESEL.TabIndex = 47;
-            maskedTextBoxPESEL.Visible = false;
             // 
             // labelPESEL
             // 
@@ -196,7 +186,6 @@
             labelPESEL.Size = new Size(51, 20);
             labelPESEL.TabIndex = 46;
             labelPESEL.Text = "PESEL:";
-            labelPESEL.Visible = false;
             // 
             // labelLastName
             // 
@@ -206,7 +195,6 @@
             labelLastName.Size = new Size(79, 20);
             labelLastName.TabIndex = 45;
             labelLastName.Text = "Last name:";
-            labelLastName.Visible = false;
             // 
             // textBoxLastName
             // 
@@ -214,7 +202,6 @@
             textBoxLastName.Name = "textBoxLastName";
             textBoxLastName.Size = new Size(348, 27);
             textBoxLastName.TabIndex = 44;
-            textBoxLastName.Visible = false;
             // 
             // labelName
             // 
@@ -224,7 +211,6 @@
             labelName.Size = new Size(52, 20);
             labelName.TabIndex = 43;
             labelName.Text = "Name:";
-            labelName.Visible = false;
             // 
             // textBoxName
             // 
@@ -232,7 +218,6 @@
             textBoxName.Name = "textBoxName";
             textBoxName.Size = new Size(348, 27);
             textBoxName.TabIndex = 42;
-            textBoxName.Visible = false;
             // 
             // buttonCancel
             // 
@@ -244,7 +229,6 @@
             buttonCancel.TabIndex = 60;
             buttonCancel.Text = "Cancel";
             buttonCancel.UseVisualStyleBackColor = false;
-            buttonCancel.Visible = false;
             // 
             // buttonAddEditPatient
             // 
@@ -256,7 +240,6 @@
             buttonAddEditPatient.TabIndex = 59;
             buttonAddEditPatient.Text = "Add patient";
             buttonAddEditPatient.UseVisualStyleBackColor = false;
-            buttonAddEditPatient.Visible = false;
             // 
             // FormAddEditPatient
             // 
