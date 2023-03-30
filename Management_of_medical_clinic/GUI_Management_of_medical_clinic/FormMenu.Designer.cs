@@ -28,118 +28,136 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonOpenEmployeeList = new System.Windows.Forms.Button();
-            this.textBoxLogin = new System.Windows.Forms.TextBox();
-            this.textBoxPassword = new System.Windows.Forms.TextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.buttonExit = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.SuspendLayout();
+            buttonOpenEmployeeList = new Button();
+            textBoxLogin = new TextBox();
+            textBoxPassword = new TextBox();
+            panel2 = new Panel();
+            buttonExit = new Button();
+            pictureBox1 = new PictureBox();
+            buttonOpenUserList = new Button();
+            panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            SuspendLayout();
             // 
             // buttonOpenEmployeeList
             // 
-            this.buttonOpenEmployeeList.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonOpenEmployeeList.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonOpenEmployeeList.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonOpenEmployeeList.FlatAppearance.BorderColor = System.Drawing.Color.AntiqueWhite;
-            this.buttonOpenEmployeeList.FlatAppearance.BorderSize = 5;
-            this.buttonOpenEmployeeList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonOpenEmployeeList.Font = new System.Drawing.Font("Tw Cen MT Condensed Extra Bold", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonOpenEmployeeList.Location = new System.Drawing.Point(912, 640);
-            this.buttonOpenEmployeeList.Name = "buttonOpenEmployeeList";
-            this.buttonOpenEmployeeList.Size = new System.Drawing.Size(325, 125);
-            this.buttonOpenEmployeeList.TabIndex = 2;
-            this.buttonOpenEmployeeList.Text = "START";
-            this.buttonOpenEmployeeList.UseVisualStyleBackColor = false;
-            this.buttonOpenEmployeeList.Click += new System.EventHandler(this.buttonOpenEmployeeList_Click);
+            buttonOpenEmployeeList.Anchor = AnchorStyles.None;
+            buttonOpenEmployeeList.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            buttonOpenEmployeeList.BackColor = Color.SteelBlue;
+            buttonOpenEmployeeList.FlatAppearance.BorderColor = Color.AntiqueWhite;
+            buttonOpenEmployeeList.FlatAppearance.BorderSize = 5;
+            buttonOpenEmployeeList.FlatStyle = FlatStyle.Flat;
+            buttonOpenEmployeeList.Font = new Font("Tw Cen MT Condensed Extra Bold", 19F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonOpenEmployeeList.Location = new Point(912, 640);
+            buttonOpenEmployeeList.Name = "buttonOpenEmployeeList";
+            buttonOpenEmployeeList.Size = new Size(325, 125);
+            buttonOpenEmployeeList.TabIndex = 2;
+            buttonOpenEmployeeList.Text = "START";
+            buttonOpenEmployeeList.UseVisualStyleBackColor = false;
+            buttonOpenEmployeeList.Click += buttonOpenEmployeeList_Click;
             // 
             // textBoxLogin
             // 
-            this.textBoxLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxLogin.BackColor = System.Drawing.Color.MintCream;
-            this.textBoxLogin.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.textBoxLogin.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.textBoxLogin.Location = new System.Drawing.Point(799, 424);
-            this.textBoxLogin.Multiline = true;
-            this.textBoxLogin.Name = "textBoxLogin";
-            this.textBoxLogin.PlaceholderText = "Login";
-            this.textBoxLogin.Size = new System.Drawing.Size(531, 42);
-            this.textBoxLogin.TabIndex = 4;
+            textBoxLogin.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBoxLogin.BackColor = Color.MintCream;
+            textBoxLogin.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            textBoxLogin.ForeColor = SystemColors.MenuText;
+            textBoxLogin.Location = new Point(799, 424);
+            textBoxLogin.Multiline = true;
+            textBoxLogin.Name = "textBoxLogin";
+            textBoxLogin.PlaceholderText = "Login";
+            textBoxLogin.Size = new Size(531, 42);
+            textBoxLogin.TabIndex = 4;
             // 
             // textBoxPassword
             // 
-            this.textBoxPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxPassword.BackColor = System.Drawing.Color.MintCream;
-            this.textBoxPassword.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.textBoxPassword.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.textBoxPassword.Location = new System.Drawing.Point(799, 517);
-            this.textBoxPassword.Multiline = true;
-            this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.PasswordChar = '*';
-            this.textBoxPassword.PlaceholderText = "Password";
-            this.textBoxPassword.Size = new System.Drawing.Size(531, 43);
-            this.textBoxPassword.TabIndex = 5;
+            textBoxPassword.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBoxPassword.BackColor = Color.MintCream;
+            textBoxPassword.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            textBoxPassword.ForeColor = SystemColors.MenuText;
+            textBoxPassword.Location = new Point(799, 517);
+            textBoxPassword.Multiline = true;
+            textBoxPassword.Name = "textBoxPassword";
+            textBoxPassword.PasswordChar = '*';
+            textBoxPassword.PlaceholderText = "Password";
+            textBoxPassword.Size = new Size(531, 43);
+            textBoxPassword.TabIndex = 5;
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.SteelBlue;
-            this.panel2.Controls.Add(this.buttonExit);
-            this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Location = new System.Drawing.Point(0, -2);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(312, 1081);
-            this.panel2.TabIndex = 7;
+            panel2.BackColor = Color.SteelBlue;
+            panel2.Controls.Add(buttonExit);
+            panel2.Controls.Add(pictureBox1);
+            panel2.Location = new Point(0, -2);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(312, 1081);
+            panel2.TabIndex = 7;
             // 
             // buttonExit
             // 
-            this.buttonExit.BackColor = System.Drawing.Color.Gainsboro;
-            this.buttonExit.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.buttonExit.FlatAppearance.BorderSize = 2;
-            this.buttonExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonExit.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonExit.Location = new System.Drawing.Point(29, 982);
-            this.buttonExit.Name = "buttonExit";
-            this.buttonExit.Size = new System.Drawing.Size(252, 66);
-            this.buttonExit.TabIndex = 3;
-            this.buttonExit.Text = "EXIT";
-            this.buttonExit.UseVisualStyleBackColor = false;
-            this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
+            buttonExit.BackColor = Color.Gainsboro;
+            buttonExit.FlatAppearance.BorderColor = Color.White;
+            buttonExit.FlatAppearance.BorderSize = 2;
+            buttonExit.FlatStyle = FlatStyle.Flat;
+            buttonExit.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonExit.Location = new Point(29, 982);
+            buttonExit.Name = "buttonExit";
+            buttonExit.Size = new Size(252, 66);
+            buttonExit.TabIndex = 3;
+            buttonExit.Text = "EXIT";
+            buttonExit.UseVisualStyleBackColor = false;
+            buttonExit.Click += buttonExit_Click;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackgroundImage = global::GUI_Management_of_medical_clinic.Properties.Resources.MC_Logo;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(61, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(176, 168);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
+            pictureBox1.BackgroundImage = Properties.Resources.MC_Logo;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox1.Location = new Point(61, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(176, 168);
+            pictureBox1.TabIndex = 2;
+            pictureBox1.TabStop = false;
+            // 
+            // buttonOpenUserList
+            // 
+            buttonOpenUserList.Anchor = AnchorStyles.None;
+            buttonOpenUserList.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            buttonOpenUserList.BackColor = Color.SteelBlue;
+            buttonOpenUserList.FlatAppearance.BorderColor = Color.AntiqueWhite;
+            buttonOpenUserList.FlatAppearance.BorderSize = 5;
+            buttonOpenUserList.FlatStyle = FlatStyle.Flat;
+            buttonOpenUserList.Font = new Font("Tw Cen MT Condensed Extra Bold", 19F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonOpenUserList.Location = new Point(912, 780);
+            buttonOpenUserList.Name = "buttonOpenUserList";
+            buttonOpenUserList.Size = new Size(325, 125);
+            buttonOpenUserList.TabIndex = 8;
+            buttonOpenUserList.Text = "USER LIST";
+            buttonOpenUserList.UseVisualStyleBackColor = false;
+            buttonOpenUserList.Click += buttonOpenUserList_Click;
             // 
             // FormMenu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::GUI_Management_of_medical_clinic.Properties.Resources.Website_Headers_5;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1920, 1080);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.textBoxPassword);
-            this.Controls.Add(this.textBoxLogin);
-            this.Controls.Add(this.buttonOpenEmployeeList);
-            this.DoubleBuffered = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FormMenu";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.FormMenu_Load);
-            this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources.Website_Headers_5;
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(1920, 1080);
+            Controls.Add(buttonOpenUserList);
+            Controls.Add(panel2);
+            Controls.Add(textBoxPassword);
+            Controls.Add(textBoxLogin);
+            Controls.Add(buttonOpenEmployeeList);
+            DoubleBuffered = true;
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "FormMenu";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Form1";
+            WindowState = FormWindowState.Maximized;
+            Load += FormMenu_Load;
+            panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -150,5 +168,6 @@
         private Panel panel2;
         private PictureBox pictureBox1;
         private Button buttonExit;
+        private Button buttonOpenUserList;
     }
 }
