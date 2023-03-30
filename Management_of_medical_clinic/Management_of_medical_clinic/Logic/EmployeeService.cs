@@ -65,7 +65,8 @@ namespace Console_Management_of_medical_clinic.Logic
         {
             string firstSix = input.Substring(0, 6);
 
-            string formatedDate = selectedDate.ToString("dd/MM/yy");
+            //string formatedDate = selectedDate.ToString("dd/MM/yy");
+            string formatedDate = selectedDate.ToString("yy/MM/dd");
             string rawDate = formatedDate.Replace(".", "");
             rawDate = rawDate.Replace("/", "");
 
@@ -131,7 +132,7 @@ namespace Console_Management_of_medical_clinic.Logic
                     return ("The last '.' sign has to have characters behind and after it,\nand it has to be after the '@' sign", false);
                 }
 
-                if (!input.Contains(name))
+                if (!input.Contains(name.ToLower()))
                 {
                     return ("E-mail needs to contain the recipient's name", false);
                 }

@@ -12,7 +12,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void FormMenu_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void buttonOpenEmployeeList_Click(object sender, EventArgs e)
