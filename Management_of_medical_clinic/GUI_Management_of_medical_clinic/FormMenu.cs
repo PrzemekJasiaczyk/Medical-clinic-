@@ -12,11 +12,9 @@ namespace GUI_Management_of_medical_clinic
 
         private void FormMenu_Load(object sender, EventArgs e)
         {
-<<<<<<< HEAD
+
             panelLogIn.BackColor = Color.FromArgb(150, Color.Gray);
-=======
-            
->>>>>>> 79bc2b19a41f8393cc9ace82755bcd2af8981403
+
         }
 
         private void buttonOpenEmployeeList_Click(object sender, EventArgs e)
