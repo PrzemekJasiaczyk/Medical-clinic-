@@ -138,10 +138,7 @@ namespace GUI_Management_of_medical_clinic
 
 
         }
-        private void dataGridViewEmployees_CellContentClick(object sender)
-        {
-            
-        }
+       
         private void buttonReviewEmployee_Click(object sender, EventArgs e)
         {
             //int rowIndex = dataGridViewEmployees.CurrentRow.Index;

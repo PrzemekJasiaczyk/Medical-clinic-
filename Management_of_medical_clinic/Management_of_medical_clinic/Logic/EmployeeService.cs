@@ -86,7 +86,7 @@ namespace Console_Management_of_medical_clinic.Logic
             string firstSix = input.Substring(0, 6);
 
             //string formatedDate = selectedDate.ToString("dd/MM/yy");
-            string formatedDate = selectedDate.ToString("yy/MM/dd");
+            string formatedDate = selectedDate.ToString("dd/MM/yy");
             string rawDate = formatedDate.Replace(".", "");
             rawDate = rawDate.Replace("/", "");
 
@@ -106,12 +106,12 @@ namespace Console_Management_of_medical_clinic.Logic
                 return ("PESEL doesn't fit the date of birth", false);
             }
 
-            if (currentIndex == 1 && input.Substring(input.Length - 2, 1)[0] % 2 == 0)
+            if (currentIndex == 0 && input.Substring(input.Length - 2, 1)[0] % 2 == 0)
             {
                 return ("PESEL doesn't fit the sex", false);
             }
 
-            if (currentIndex == 2 && input.Substring(input.Length - 2, 1)[0] % 2 == 1)
+            if (currentIndex == 1 && input.Substring(input.Length - 2, 1)[0] % 2 == 1)
             {
                 return ("PESEL doesn't fit the sex", false);
             }

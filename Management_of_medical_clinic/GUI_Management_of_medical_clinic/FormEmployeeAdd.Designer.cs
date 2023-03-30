@@ -79,10 +79,6 @@
             // 
             this.comboBoxSex.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSex.FormattingEnabled = true;
-            this.comboBoxSex.Items.AddRange(new object[] {
-            "Not Specified",
-            "Male",
-            "Female"});
             this.comboBoxSex.Location = new System.Drawing.Point(305, 330);
             this.comboBoxSex.Name = "comboBoxSex";
             this.comboBoxSex.Size = new System.Drawing.Size(199, 23);
