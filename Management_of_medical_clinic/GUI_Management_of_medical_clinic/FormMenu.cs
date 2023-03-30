@@ -31,8 +31,8 @@ namespace GUI_Management_of_medical_clinic
                     EmployeeModel employee = EmployeeService.GetEmployeeByUserId(user);
                     if (employee != null)
                     {
-                        FormUserList employeeList = new FormUserList();
-                        //this.Hide();
+                        FormEmployeeList employeeList = new FormEmployeeList(employee);
+                        this.Hide();
                         employeeList.ShowDialog();
                         this.Close();
                     }
