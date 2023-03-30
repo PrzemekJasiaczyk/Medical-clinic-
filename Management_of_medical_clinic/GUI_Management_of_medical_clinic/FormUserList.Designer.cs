@@ -122,7 +122,7 @@
             // comboBoxRole
             // 
             comboBoxRole.FormattingEnabled = true;
-            comboBoxRole.Items.AddRange(new object[] { "Medical Doctor", "Nurse", "Paramedic", "Janitor", "Technitian" });
+            comboBoxRole.Items.AddRange(new object[] { "Administrator", "Employee" });
             comboBoxRole.Location = new Point(8, 361);
             comboBoxRole.Name = "comboBoxRole";
             comboBoxRole.Size = new Size(100, 23);
