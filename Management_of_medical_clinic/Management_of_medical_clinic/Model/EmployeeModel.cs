@@ -25,13 +25,11 @@ namespace Console_Management_of_medical_clinic.Model
         public string? PhoneNumber { get; set; }
         public EnumSex? Sex { get; set; }
         public EnumEmployeeRoles Role { get; set; }
-        
         public bool IsActive { get; set; }
-
-        [ForeignKey("UserModel")] public int IdUser { get; set; }
-        public virtual UserModel UserModel { get; set; }
-        [ForeignKey("SpecializationModel")] public int IdSpecialization { get; set; }
-        public virtual SpecializationModel SpecializationModel { get; set; }
+        //Relationships
+        public UserModel? UserModel { get; set; }
+        [ForeignKey("SpecializationModel")] public int? IdSpecialization { get; set; }
+        public SpecializationModel? SpecializationModel { get; set; }
 
 
         public EmployeeModel() { }
@@ -52,10 +50,10 @@ namespace Console_Management_of_medical_clinic.Model
             IsActive = isActive;
         }
 
-        public EmployeeModel(int idUser, string firstName, string lastName, string pesel, string dateOfBirth, string correspondenceAddress, 
+        public EmployeeModel(int idEmployee, string firstName, string lastName, string pesel, string dateOfBirth, string correspondenceAddress,
             string email, string phoneNumber, EnumSex sex, EnumEmployeeRoles role, int idSpecialization, bool isActive)
         {
-            IdUser = idUser;
+            IdEmployee = idEmployee;
             FirstName = firstName;
             LastName = lastName;
             PESEL = pesel;
@@ -70,7 +68,6 @@ namespace Console_Management_of_medical_clinic.Model
         }
 
 
-        
         public static void ChangeEmployeeStatus(EmployeeModel employee)
         {
             if (employee.IsActive == true)

@@ -29,7 +29,7 @@ namespace GUI_Management_of_medical_clinic
             foreach (UserModel user in UserService.GetUsersData())
             {
                 dataGridViewUsers.Rows.Add(user.IdUser, user.Username, user.Role, (user.IsActive == true) ? "Active" : "Not active");
-                if (user.IdUser == currentUser.IdUser) { currentUser = EmployeeService.GetEmployeeByUserId(user); }     // it makes user always refreshed
+                if (user.IdEmployee == currentUser.IdEmployee) { currentUser = EmployeeService.GetEmployeeByUserId(user); }     // it makes user always refreshed
             }
 
         }

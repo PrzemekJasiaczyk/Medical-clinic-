@@ -76,11 +76,6 @@ namespace GUI_Management_of_medical_clinic
                         userList.ShowDialog();
                         this.Close();
                     }
-                    else
-                    {
-                        MessageBox.Show("User isn't linked to an employee account\nLog in unsuccessful");
-                        return;
-                    }
                 }
             }
 

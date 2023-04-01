@@ -22,13 +22,14 @@ namespace GUI_Management_of_medical_clinic
             InitializeComponent();
         }
 
+        
         private void FormUserAdd_Load(object sender, EventArgs e)
         {
-            foreach (EmployeeModel employee in EmployeeService.GetEmployeesData())
+            /*foreach (EmployeeModel employee in EmployeeService.GetEmployeesData())
             {
                 // in database we have, that Emplyee always have IDUser as an NOT NULL, but there can be situations where an Employee doesn't have an user 
                 if (employee.IdUser == null) { listBoxEmployeesWithout.Items.Add(employee); }
-            }
+            }*/
             if (listBoxEmployeesWithout.Items.Count == 0) listBoxEmployeesWithout.Items.Add("There are no employees without an user account.");
             checkIfRequiredFilled();
         }

@@ -12,11 +12,11 @@ namespace Console_Management_of_medical_clinic.Logic
 {
     public class EmployeeService
     {
-        public static void AddEmployee(int idUser, string firstName, string lastName, string pesel, string dateOfBirth,  string correspondenceAddress, string email, string phoneNumber,
+        public static void AddEmployee(string firstName, string lastName, string pesel, string dateOfBirth,  string correspondenceAddress, string email, string phoneNumber,
             EnumSex sex, string username, string password, EnumEmployeeRoles role, int idSpecialization, bool isActive)
         {
 
-            EmployeeModel employee = new EmployeeModel(idUser, firstName, lastName, pesel, dateOfBirth, correspondenceAddress, email, phoneNumber,
+            EmployeeModel employee = new EmployeeModel(firstName, lastName, pesel, dateOfBirth, correspondenceAddress, email, phoneNumber,
             sex, role, idSpecialization, isActive);
 
             using AppDbContext context = new AppDbContext();
@@ -27,10 +27,6 @@ namespace Console_Management_of_medical_clinic.Logic
 
         public static bool AddEmployee(EmployeeModel newEmployee)
         {
-            //using AppDbContext context = new AppDbContext();
-            //context.DbEmployees.Add(newEmployee);
-            //context.SaveChanges();
-            //return true;
             
             try
             {
@@ -54,22 +50,17 @@ namespace Console_Management_of_medical_clinic.Logic
             }
 
 
-            foreach (var employee in employees)
-            {
-                string test2 = employee.LastName;
-                int test = employee.IdUser;
-            }
 
             return employees;
         }
-
+        
         public static EmployeeModel GetEmployeeByUserId(UserModel user)
         {
             List<EmployeeModel> employees = GetEmployeesData();
 
             foreach(EmployeeModel employee in employees)
             {
-                if (employee.IdUser == user.IdUser)
+                if (employee.IdEmployee == user.IdEmployee)
                 {
                     return employee;
                 }
@@ -85,7 +76,6 @@ namespace Console_Management_of_medical_clinic.Logic
         {
             string firstSix = input.Substring(0, 6);
 
-            //string formatedDate = selectedDate.ToString("dd/MM/yy");
             string formatedDate = selectedDate.ToString("dd/MM/yy");
             string rawDate = formatedDate.Replace(".", "");
             rawDate = rawDate.Replace("/", "");

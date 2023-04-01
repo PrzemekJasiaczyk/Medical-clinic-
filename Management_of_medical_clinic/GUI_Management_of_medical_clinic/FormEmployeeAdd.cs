@@ -81,7 +81,7 @@ namespace GUI_Management_of_medical_clinic
             EnumEmployeeRoles enumRole = (EnumEmployeeRoles)Enum.Parse(typeof(EnumEmployeeRoles), comboBoxRole.SelectedItem.ToString());
 
             EmployeeModel newEmployee = new EmployeeModel(textBoxFirstName.Text, textBoxLastName.Text, textBoxPESEL.Text, "2000-01-01", 
-                textBoxAddress.Text, textBoxEmail.Text, textBoxPhone.Text, enumSex, enumRole, 3, true);
+                textBoxAddress.Text, textBoxEmail.Text, textBoxPhone.Text, enumSex, enumRole, 1, true);
             FormEmployeeAddUser employeeAddUser = new FormEmployeeAddUser(currentEmployee, newEmployee);
             //this.Hide();
             employeeAddUser.ShowDialog();
