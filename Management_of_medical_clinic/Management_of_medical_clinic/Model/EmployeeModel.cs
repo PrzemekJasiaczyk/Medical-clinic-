@@ -1,13 +1,7 @@
 ﻿using Console_Management_of_medical_clinic.Data;
 using Console_Management_of_medical_clinic.Data.Enums;
 using Console_Management_of_medical_clinic.Logic;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Console_Management_of_medical_clinic.Model
 {
@@ -28,9 +22,11 @@ namespace Console_Management_of_medical_clinic.Model
         public SpecializationModel IdSpecialization { get; set; }
         public bool IsActive { get; set; }
 
+        public List<Visit> Visits { get; set; } = new List<Visit>();
+
         public EmployeeModel() { }
 
-        public EmployeeModel(int idEmployee, string firstName, string lastName, string pesel, string dateOfBirth, string role, string correspondenceAddress, string email, string phoneNumber, 
+        public EmployeeModel(int idEmployee, string firstName, string lastName, string pesel, string dateOfBirth, string role, string correspondenceAddress, string email, string phoneNumber,
             EnumSex sex, string username, string password, SpecializationModel idSpecialization, bool isActive)
         {
             IdEmployee = idEmployee;
@@ -103,7 +99,7 @@ namespace Console_Management_of_medical_clinic.Model
             List<EmployeeModel> employees = new List<EmployeeModel>();
             foreach (EmployeeModel employee in EmployeeService.GetEmployeesData())
             {
-                if(employee.Role==role && employee.IsActive == isActive)
+                if (employee.Role == role && employee.IsActive == isActive)
                 {
                     employees.Add(employee);
                 }

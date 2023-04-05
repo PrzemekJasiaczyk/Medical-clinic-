@@ -36,7 +36,8 @@ namespace GUI_Management_of_medical_clinic
 
         private void FormAddEditPatient_Load(object sender, EventArgs e)
         {
-
+            // sprawdzenie którą opcje wybrał user
+            // czy dodać czy edytować
         }
     }
 }
