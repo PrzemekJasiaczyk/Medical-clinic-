@@ -50,12 +50,6 @@
             maskedTextBox1 = new MaskedTextBox();
             textBox1 = new TextBox();
             dataGridViewPatientList = new DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
-            Column5 = new DataGridViewTextBoxColumn();
-            Column6 = new DataGridViewTextBoxColumn();
             panel2 = new Panel();
             pictureBox5 = new PictureBox();
             pictureBox4 = new PictureBox();
@@ -116,7 +110,7 @@
             comboBoxRole.Location = new Point(482, 1239);
             comboBoxRole.Margin = new Padding(3, 4, 3, 4);
             comboBoxRole.Name = "comboBoxRole";
-            comboBoxRole.Size = new Size(138, 23);
+            comboBoxRole.Size = new Size(138, 28);
             comboBoxRole.TabIndex = 26;
             // 
             // checkBoxIsActive
@@ -127,7 +121,7 @@
             checkBoxIsActive.Location = new Point(482, 1205);
             checkBoxIsActive.Margin = new Padding(3, 4, 3, 4);
             checkBoxIsActive.Name = "checkBoxIsActive";
-            checkBoxIsActive.Size = new Size(123, 19);
+            checkBoxIsActive.Size = new Size(154, 24);
             checkBoxIsActive.TabIndex = 25;
             checkBoxIsActive.Text = "Is Employee active";
             checkBoxIsActive.UseVisualStyleBackColor = true;
@@ -137,7 +131,7 @@
             labelFilter.AutoSize = true;
             labelFilter.Location = new Point(482, 1181);
             labelFilter.Name = "labelFilter";
-            labelFilter.Size = new Size(51, 15);
+            labelFilter.Size = new Size(65, 20);
             labelFilter.TabIndex = 24;
             labelFilter.Text = "Filter list";
             // 
@@ -262,7 +256,7 @@
             label4.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label4.Location = new Point(935, 30);
             label4.Name = "label4";
-            label4.Size = new Size(20, 15);
+            label4.Size = new Size(25, 20);
             label4.TabIndex = 42;
             label4.Text = "To";
             // 
@@ -273,7 +267,7 @@
             dateTimePicker2.Format = DateTimePickerFormat.Short;
             dateTimePicker2.Location = new Point(959, 25);
             dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(98, 23);
+            dateTimePicker2.Size = new Size(98, 27);
             dateTimePicker2.TabIndex = 41;
             // 
             // label3
@@ -283,7 +277,7 @@
             label3.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label3.Location = new Point(766, 30);
             label3.Name = "label3";
-            label3.Size = new Size(35, 15);
+            label3.Size = new Size(45, 20);
             label3.TabIndex = 40;
             label3.Text = "From";
             // 
@@ -294,7 +288,7 @@
             dateTimePicker1.Format = DateTimePickerFormat.Short;
             dateTimePicker1.Location = new Point(805, 25);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(98, 23);
+            dateTimePicker1.Size = new Size(98, 27);
             dateTimePicker1.TabIndex = 39;
             // 
             // maskedTextBox1
@@ -303,7 +297,7 @@
             maskedTextBox1.Font = new Font("Segoe UI Symbol", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             maskedTextBox1.Location = new Point(437, 24);
             maskedTextBox1.Name = "maskedTextBox1";
-            maskedTextBox1.Size = new Size(129, 25);
+            maskedTextBox1.Size = new Size(129, 29);
             maskedTextBox1.TabIndex = 38;
             // 
             // textBox1
@@ -312,12 +306,13 @@
             textBox1.Font = new Font("Segoe UI Symbol", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             textBox1.Location = new Point(165, 24);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(129, 25);
+            textBox1.Size = new Size(129, 29);
             textBox1.TabIndex = 37;
             // 
             // dataGridViewPatientList
             // 
             dataGridViewPatientList.AllowUserToAddRows = false;
+            dataGridViewPatientList.AllowUserToDeleteRows = false;
             dataGridViewPatientList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewPatientList.BackgroundColor = SystemColors.ButtonHighlight;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -329,53 +324,16 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridViewPatientList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewPatientList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewPatientList.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6 });
             dataGridViewPatientList.Location = new Point(357, 77);
             dataGridViewPatientList.Name = "dataGridViewPatientList";
             dataGridViewPatientList.RowHeadersVisible = false;
             dataGridViewPatientList.RowHeadersWidth = 51;
             dataGridViewPatientList.RowTemplate.Height = 29;
+            dataGridViewPatientList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewPatientList.Size = new Size(1567, 1060);
             dataGridViewPatientList.TabIndex = 30;
             dataGridViewPatientList.CellContentClick += dataGridViewPatientList_CellContentClick;
-            // 
-            // Column1
-            // 
-            Column1.HeaderText = "Name";
-            Column1.MinimumWidth = 6;
-            Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            Column2.HeaderText = "Surname";
-            Column2.MinimumWidth = 6;
-            Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            Column3.HeaderText = "PESEL";
-            Column3.MinimumWidth = 6;
-            Column3.Name = "Column3";
-            Column3.SortMode = DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Column4
-            // 
-            Column4.HeaderText = "Date of birth";
-            Column4.MinimumWidth = 6;
-            Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            Column5.HeaderText = "Active";
-            Column5.MinimumWidth = 6;
-            Column5.Name = "Column5";
-            Column5.SortMode = DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Column6
-            // 
-            Column6.HeaderText = "Date last visit";
-            Column6.MinimumWidth = 6;
-            Column6.Name = "Column6";
+            dataGridViewPatientList.CellContentDoubleClick += dataGridViewPatientList_CellContentClick;
             // 
             // panel2
             // 
@@ -408,6 +366,7 @@
             pictureBox5.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox5.TabIndex = 46;
             pictureBox5.TabStop = false;
+            pictureBox5.Click += pictureBox5_Click;
             // 
             // pictureBox4
             // 
@@ -418,6 +377,7 @@
             pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox4.TabIndex = 45;
             pictureBox4.TabStop = false;
+            pictureBox4.Click += pictureBox4_Click;
             // 
             // pictureBox3
             // 
@@ -445,7 +405,7 @@
             label7.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             label7.Location = new Point(605, 29);
             label7.Name = "label7";
-            label7.Size = new Size(146, 17);
+            label7.Size = new Size(188, 23);
             label7.TabIndex = 2;
             label7.Text = "Date of the latest visit";
             // 
@@ -455,7 +415,7 @@
             label6.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             label6.Location = new Point(335, 29);
             label6.Name = "label6";
-            label6.Size = new Size(96, 17);
+            label6.Size = new Size(125, 23);
             label6.TabIndex = 1;
             label6.Text = "PESEL number";
             // 
@@ -465,15 +425,15 @@
             label5.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             label5.Location = new Point(31, 30);
             label5.Name = "label5";
-            label5.Size = new Size(128, 17);
+            label5.Size = new Size(165, 23);
             label5.TabIndex = 0;
             label5.Text = "Name and surname";
             // 
             // FormPatientList
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1920, 1061);
+            ClientSize = new Size(1920, 1055);
             Controls.Add(panel2);
             Controls.Add(dataGridViewPatientList);
             Controls.Add(buttonClearFilter);
@@ -515,12 +475,6 @@
         private Button buttonBack;
         private PictureBox pictureBox1;
         private DataGridView dataGridViewPatientList;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column4;
-        private DataGridViewTextBoxColumn Column5;
-        private DataGridViewTextBoxColumn Column6;
         private Label label4;
         private DateTimePicker dateTimePicker2;
         private Label label3;

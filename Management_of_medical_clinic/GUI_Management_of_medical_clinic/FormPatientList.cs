@@ -1,5 +1,8 @@
-﻿using Console_Management_of_medical_clinic.Model;
+﻿using Console_Management_of_medical_clinic.Data;
+using Console_Management_of_medical_clinic.Model;
+using Console_Management_of_medical_clinic.Logic;
 using System;
+using System.Windows.Forms;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,15 +12,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
+using System.Net;
+using System.Xml.Linq;
 
 namespace GUI_Management_of_medical_clinic
 {
     public partial class FormPatientList : Form
     {
+        private PatientService patientService;
+
         public FormPatientList()
         {
             InitializeComponent();
-            dataGridViewPatientList.AllowUserToAddRows = false;
+            patientService = new PatientService();
+            DisplayPatientsList();
+           
+
 
         }
 
@@ -83,8 +93,10 @@ namespace GUI_Management_of_medical_clinic
 
         private void dataGridViewPatientList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+         
         }
+
+
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -100,5 +112,52 @@ namespace GUI_Management_of_medical_clinic
         {
 
         }
+
+        public void DisplayPatientsList()
+        {
+            dataGridViewPatientList.DataSource = patientService.GetPatientData();
+
+
+        }
+
+        public List<Patient> GetSortedPatientData()
+        {
+            using (AppDbContext db = new AppDbContext())
+            {
+                return db.Patients.OrderBy(p => p.LastName).ToList();
+            }
+        }
+
+        private void DisplaySortedPatientData()
+        {
+            List<Patient> sortedPatientList = GetSortedPatientData();
+            dataGridViewPatientList.DataSource = sortedPatientList;
+        }
+
+        public List<Patient> GetSortedPatientDataDSC()
+        {
+            using (AppDbContext db = new AppDbContext())
+            {
+                return db.Patients.OrderByDescending(p => p.LastName).ToList();
+            }
+        }
+
+        private void DisplaySortedPatientDataDSC()
+        {
+            List<Patient> sortedPatientList = GetSortedPatientDataDSC();
+            dataGridViewPatientList.DataSource = sortedPatientList;
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            DisplaySortedPatientData();
+        }
+
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+            DisplaySortedPatientDataDSC();
+
+        }
+
     }
 }

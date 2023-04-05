@@ -233,5 +233,10 @@ namespace GUI_Management_of_medical_clinic
             FormAddEditPatient formAddEditPatient = new FormAddEditPatient();
             formAddEditPatient.ShowDialog();
         }
+
+        private void dataGridViewEmployees_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
