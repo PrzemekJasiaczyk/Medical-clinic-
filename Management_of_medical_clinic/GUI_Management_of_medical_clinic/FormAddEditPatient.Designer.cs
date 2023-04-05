@@ -35,8 +35,6 @@
             labelAddEditNewPatient = new Label();
             maskedTextBoxDateLastVisit = new MaskedTextBox();
             labelDateLastVisit = new Label();
-            comboBoxStatus = new ComboBox();
-            labelStatus = new Label();
             labelSex = new Label();
             maskedTextBoxDateOfBirth = new MaskedTextBox();
             labelDateOfBirth = new Label();
@@ -127,23 +125,6 @@
             labelDateLastVisit.TabIndex = 53;
             labelDateLastVisit.Text = "Date last visit:";
             labelDateLastVisit.Visible = false;
-            // 
-            // comboBoxStatus
-            // 
-            comboBoxStatus.FormattingEnabled = true;
-            comboBoxStatus.Location = new Point(892, 278);
-            comboBoxStatus.Name = "comboBoxStatus";
-            comboBoxStatus.Size = new Size(348, 28);
-            comboBoxStatus.TabIndex = 52;
-            // 
-            // labelStatus
-            // 
-            labelStatus.AutoSize = true;
-            labelStatus.Location = new Point(892, 244);
-            labelStatus.Name = "labelStatus";
-            labelStatus.Size = new Size(52, 20);
-            labelStatus.TabIndex = 51;
-            labelStatus.Text = "Status:";
             // 
             // labelSex
             // 
@@ -255,8 +236,6 @@
             Controls.Add(labelAddEditNewPatient);
             Controls.Add(maskedTextBoxDateLastVisit);
             Controls.Add(labelDateLastVisit);
-            Controls.Add(comboBoxStatus);
-            Controls.Add(labelStatus);
             Controls.Add(labelSex);
             Controls.Add(maskedTextBoxDateOfBirth);
             Controls.Add(labelDateOfBirth);
@@ -289,8 +268,6 @@
         private Label labelAddEditNewPatient;
         private MaskedTextBox maskedTextBoxDateLastVisit;
         private Label labelDateLastVisit;
-        private ComboBox comboBoxStatus;
-        private Label labelStatus;
         private Label labelSex;
         private MaskedTextBox maskedTextBoxDateOfBirth;
         private Label labelDateOfBirth;
