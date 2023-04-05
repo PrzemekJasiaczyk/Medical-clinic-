@@ -167,5 +167,10 @@ namespace GUI_Management_of_medical_clinic
         {
 
         }
+
+        private void buttonActivatePatient_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

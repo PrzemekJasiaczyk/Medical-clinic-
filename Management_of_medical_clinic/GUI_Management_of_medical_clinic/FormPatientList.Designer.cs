@@ -210,6 +210,7 @@
             buttonActivatePatient.TabIndex = 44;
             buttonActivatePatient.Text = "Activate patient";
             buttonActivatePatient.UseVisualStyleBackColor = false;
+            buttonActivatePatient.Click += buttonActivatePatient_Click;
             // 
             // buttonRemovePatient
             // 
