@@ -116,6 +116,7 @@
             maskedTextBoxDateLastVisit.Size = new Size(348, 27);
             maskedTextBoxDateLastVisit.TabIndex = 54;
             maskedTextBoxDateLastVisit.ValidatingType = typeof(DateTime);
+            maskedTextBoxDateLastVisit.Visible = false;
             // 
             // labelDateLastVisit
             // 
@@ -125,6 +126,7 @@
             labelDateLastVisit.Size = new Size(101, 20);
             labelDateLastVisit.TabIndex = 53;
             labelDateLastVisit.Text = "Date last visit:";
+            labelDateLastVisit.Visible = false;
             // 
             // comboBoxStatus
             // 
@@ -269,6 +271,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormAddEditPatient";
             WindowState = FormWindowState.Maximized;
+            Load += FormAddEditPatient_Load;
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
