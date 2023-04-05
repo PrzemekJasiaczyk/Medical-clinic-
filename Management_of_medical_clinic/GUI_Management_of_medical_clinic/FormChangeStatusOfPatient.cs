@@ -13,9 +13,14 @@ namespace GUI_Management_of_medical_clinic
 {
     public partial class FormChangeStatusOfPatient : Form
     {
-        public FormChangeStatusOfPatient()
+        Patient patient;
+        EmployeeModel currentUser;
+
+        public FormChangeStatusOfPatient(Patient patient2, EmployeeModel currentU)
         {
             InitializeComponent();
+            patient = patient2;
+            currentUser = currentU;
         }
 
         private void button1_Click(object sender, EventArgs e)

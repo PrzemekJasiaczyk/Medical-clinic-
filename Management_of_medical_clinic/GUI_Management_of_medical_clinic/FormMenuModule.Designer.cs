@@ -64,8 +64,9 @@
             buttonExit.Name = "buttonExit";
             buttonExit.Size = new Size(252, 66);
             buttonExit.TabIndex = 3;
-            buttonExit.Text = "EXIT";
+            buttonExit.Text = "Log out";
             buttonExit.UseVisualStyleBackColor = false;
+            buttonExit.Click += buttonExit_Click;
             // 
             // pictureBox1
             // 

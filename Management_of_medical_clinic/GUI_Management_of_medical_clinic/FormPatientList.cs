@@ -20,17 +20,15 @@ namespace GUI_Management_of_medical_clinic
     public partial class FormPatientList : Form
     {
         private PatientService patientService;
+        EmployeeModel currentUser;
 
-        public FormPatientList()
+        public FormPatientList(EmployeeModel employee)
         {
             InitializeComponent();
             patientService = new PatientService();
             DisplayPatientsList();
-           
-
-
+            currentUser = employee;
         }
-
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -93,10 +91,8 @@ namespace GUI_Management_of_medical_clinic
 
         private void dataGridViewPatientList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-         
+
         }
-
-
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -159,5 +155,17 @@ namespace GUI_Management_of_medical_clinic
 
         }
 
+        private void buttonExit_Click(object sender, EventArgs e)
+        {
+            FormMenuPatient formMenuPatient = new FormMenuPatient(currentUser);
+            this.Hide();
+            formMenuPatient.ShowDialog();
+            this.Close();
+        }
+
+        private void buttonAddPatient_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

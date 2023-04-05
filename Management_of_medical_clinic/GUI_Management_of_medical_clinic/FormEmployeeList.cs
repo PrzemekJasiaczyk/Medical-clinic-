@@ -202,10 +202,9 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonBack_Click(object sender, EventArgs e)
         {
-            FormMenu formMenu = new FormMenu();
-            //this.Hide();
-            formMenu.ShowDialog();
-            this.Close();
+            FormMenuPatient formMenuPatient = new FormMenuPatient(currentUser);
+            formMenuPatient.ShowDialog();
+            this.Hide();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
