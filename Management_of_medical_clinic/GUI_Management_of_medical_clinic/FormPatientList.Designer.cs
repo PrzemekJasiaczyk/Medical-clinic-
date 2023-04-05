@@ -330,6 +330,7 @@
             dataGridViewPatientList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewPatientList.Location = new Point(357, 77);
             dataGridViewPatientList.Name = "dataGridViewPatientList";
+            dataGridViewPatientList.ReadOnly = true;
             dataGridViewPatientList.RowHeadersVisible = false;
             dataGridViewPatientList.RowHeadersWidth = 51;
             dataGridViewPatientList.RowTemplate.Height = 29;
