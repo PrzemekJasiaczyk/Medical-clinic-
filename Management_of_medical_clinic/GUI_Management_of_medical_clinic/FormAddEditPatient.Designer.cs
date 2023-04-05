@@ -33,8 +33,6 @@
             pictureBox1 = new PictureBox();
             comboBoxSex = new ComboBox();
             labelAddEditNewPatient = new Label();
-            maskedTextBoxDateLastVisit = new MaskedTextBox();
-            labelDateLastVisit = new Label();
             labelSex = new Label();
             maskedTextBoxDateOfBirth = new MaskedTextBox();
             labelDateOfBirth = new Label();
@@ -105,26 +103,6 @@
             labelAddEditNewPatient.Size = new Size(284, 46);
             labelAddEditNewPatient.TabIndex = 55;
             labelAddEditNewPatient.Text = "Add new patient";
-            // 
-            // maskedTextBoxDateLastVisit
-            // 
-            maskedTextBoxDateLastVisit.Location = new Point(892, 418);
-            maskedTextBoxDateLastVisit.Mask = "00/00/0000";
-            maskedTextBoxDateLastVisit.Name = "maskedTextBoxDateLastVisit";
-            maskedTextBoxDateLastVisit.Size = new Size(348, 27);
-            maskedTextBoxDateLastVisit.TabIndex = 54;
-            maskedTextBoxDateLastVisit.ValidatingType = typeof(DateTime);
-            maskedTextBoxDateLastVisit.Visible = false;
-            // 
-            // labelDateLastVisit
-            // 
-            labelDateLastVisit.AutoSize = true;
-            labelDateLastVisit.Location = new Point(892, 367);
-            labelDateLastVisit.Name = "labelDateLastVisit";
-            labelDateLastVisit.Size = new Size(101, 20);
-            labelDateLastVisit.TabIndex = 53;
-            labelDateLastVisit.Text = "Date last visit:";
-            labelDateLastVisit.Visible = false;
             // 
             // labelSex
             // 
@@ -234,8 +212,6 @@
             Controls.Add(buttonAddEditPatient);
             Controls.Add(comboBoxSex);
             Controls.Add(labelAddEditNewPatient);
-            Controls.Add(maskedTextBoxDateLastVisit);
-            Controls.Add(labelDateLastVisit);
             Controls.Add(labelSex);
             Controls.Add(maskedTextBoxDateOfBirth);
             Controls.Add(labelDateOfBirth);
@@ -266,8 +242,6 @@
         private PictureBox pictureBox1;
         private ComboBox comboBoxSex;
         private Label labelAddEditNewPatient;
-        private MaskedTextBox maskedTextBoxDateLastVisit;
-        private Label labelDateLastVisit;
         private Label labelSex;
         private MaskedTextBox maskedTextBoxDateOfBirth;
         private Label labelDateOfBirth;
