@@ -1,13 +1,7 @@
 ﻿using Console_Management_of_medical_clinic.Data;
 using Console_Management_of_medical_clinic.Data.Enums;
 using Console_Management_of_medical_clinic.Logic;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Console_Management_of_medical_clinic.Model
 {
@@ -27,6 +21,8 @@ namespace Console_Management_of_medical_clinic.Model
         public string Password { get; set; }
         public SpecializationModel IdSpecialization { get; set; }
         public bool IsActive { get; set; }
+
+        public List<Visit> Visits { get; set; } = new List<Visit>();
 
         public EmployeeModel() { }
 

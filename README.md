@@ -4,8 +4,8 @@
 - [ ] Analysis
   - [ ] Diagrams
   - [ ] Use Case descriptions
-- [ ] Patient class
-- [ ] Modification of EF Core Model
+- [x] Patient class
+- [x] Modification of EF Core Model
 - [ ] Forms
   - [ ] View patients' list form
     - [ ] Filter
@@ -13,7 +13,6 @@
   - [ ] Add patient form
   - [ ] Edit patient form
   - [ ] Remove patient form
-  - [ ] Activation of a patient 
 - [x] More...
 
 ## About
