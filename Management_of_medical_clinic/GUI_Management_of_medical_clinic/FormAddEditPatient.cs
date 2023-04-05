@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Console_Management_of_medical_clinic.Data.Enums;
+using Console_Management_of_medical_clinic.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace GUI_Management_of_medical_clinic
 {
@@ -36,8 +39,28 @@ namespace GUI_Management_of_medical_clinic
 
         private void FormAddEditPatient_Load(object sender, EventArgs e)
         {
+            CompleteComboBox();
             // sprawdzenie którą opcje wybrał user
             // czy dodać czy edytować
+        }
+
+
+        void CompleteComboBox()
+        {
+            comboBoxSex.DataSource = Enum.GetValues(typeof(EnumSex));
+            //comboBoxStatus.DataSource = Patient.
+
+        }
+
+        private void FormAddEditPatient_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+        }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            // temp
+            FormAddEditPatient.ActiveForm.Close();
         }
     }
 }

@@ -231,6 +231,7 @@
             buttonCancel.TabIndex = 60;
             buttonCancel.Text = "Cancel";
             buttonCancel.UseVisualStyleBackColor = false;
+            buttonCancel.Click += buttonCancel_Click;
             // 
             // buttonAddEditPatient
             // 
@@ -271,6 +272,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormAddEditPatient";
             WindowState = FormWindowState.Maximized;
+            FormClosing += FormAddEditPatient_FormClosing;
             Load += FormAddEditPatient_Load;
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
