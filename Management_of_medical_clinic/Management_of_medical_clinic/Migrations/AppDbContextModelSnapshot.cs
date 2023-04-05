@@ -26,7 +26,8 @@ namespace Console_Management_of_medical_clinic.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("DateOfBirth")
+                    b.Property<string>("DateOfBirth")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
@@ -77,6 +78,73 @@ namespace Console_Management_of_medical_clinic.Migrations
                     b.ToTable("DbEmployees");
                 });
 
+            modelBuilder.Entity("Console_Management_of_medical_clinic.Model.Patient", b =>
+                {
+                    b.Property<int>("PatientId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("IdPatient");
+
+                    b.Property<DateTime>("BirthDate")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("DateOfBirth");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(60)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("FirstName");
+
+                    b.Property<short>("IsActive")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("IsActive");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(60)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("LastName");
+
+                    b.Property<DateTime?>("LastVisitDate")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("DateLastVisit");
+
+                    b.Property<string>("PESEL")
+                        .IsRequired()
+                        .HasMaxLength(11)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("PESEL");
+
+                    b.Property<int>("Sex")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("PatientId");
+
+                    b.ToTable("Patient");
+
+                    b.HasData(
+                        new
+                        {
+                            PatientId = 1,
+                            BirthDate = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "John",
+                            IsActive = (short)1,
+                            LastName = "Doe",
+                            PESEL = "12345678901",
+                            Sex = 1
+                        },
+                        new
+                        {
+                            PatientId = 2,
+                            BirthDate = new DateTime(1995, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Jane",
+                            IsActive = (short)1,
+                            LastName = "Doe",
+                            PESEL = "23456789012",
+                            Sex = 2
+                        });
+                });
+
             modelBuilder.Entity("Console_Management_of_medical_clinic.Model.SpecializationModel", b =>
                 {
                     b.Property<int>("IdSpecialization")
@@ -92,6 +160,40 @@ namespace Console_Management_of_medical_clinic.Migrations
                     b.ToTable("DbSpecializations");
                 });
 
+            modelBuilder.Entity("Console_Management_of_medical_clinic.Model.Visit", b =>
+                {
+                    b.Property<int>("VisitId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("IdVisit");
+
+                    b.Property<decimal>("Cost")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("CostVisit");
+
+                    b.Property<int?>("EmployeeId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("IdEmployee");
+
+                    b.Property<int?>("PatientId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("IdPatient");
+
+                    b.Property<DateTime>("VisitDate")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("DateVisit");
+
+                    b.Property<DateTime>("VisitHour")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("HourVisit");
+
+                    b.HasKey("VisitId");
+
+                    b.HasIndex("PatientId");
+
+                    b.ToTable("Visit");
+                });
+
             modelBuilder.Entity("Console_Management_of_medical_clinic.Model.EmployeeModel", b =>
                 {
                     b.HasOne("Console_Management_of_medical_clinic.Model.SpecializationModel", "IdSpecialization")
@@ -99,6 +201,31 @@ namespace Console_Management_of_medical_clinic.Migrations
                         .HasForeignKey("IdSpecialization1");
 
                     b.Navigation("IdSpecialization");
+                });
+
+            modelBuilder.Entity("Console_Management_of_medical_clinic.Model.Visit", b =>
+                {
+                    b.HasOne("Console_Management_of_medical_clinic.Model.EmployeeModel", "Employee")
+                        .WithMany("Visits")
+                        .HasForeignKey("PatientId");
+
+                    b.HasOne("Console_Management_of_medical_clinic.Model.Patient", "Patient")
+                        .WithMany("Visits")
+                        .HasForeignKey("PatientId");
+
+                    b.Navigation("Employee");
+
+                    b.Navigation("Patient");
+                });
+
+            modelBuilder.Entity("Console_Management_of_medical_clinic.Model.EmployeeModel", b =>
+                {
+                    b.Navigation("Visits");
+                });
+
+            modelBuilder.Entity("Console_Management_of_medical_clinic.Model.Patient", b =>
+                {
+                    b.Navigation("Visits");
                 });
 #pragma warning restore 612, 618
         }
