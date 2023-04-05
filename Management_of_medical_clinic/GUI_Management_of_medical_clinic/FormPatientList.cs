@@ -14,11 +14,14 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 using System.Net;
 using System.Xml.Linq;
+using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 
 namespace GUI_Management_of_medical_clinic
 {
     public partial class FormPatientList : Form
     {
+        AppDbContext _context;
         private PatientService patientService;
         EmployeeModel currentUser;
 
@@ -170,7 +173,18 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonActivatePatient_Click(object sender, EventArgs e)
         {
+            _context = new AppDbContext();
+            Patient patient = Patient.FindPatient((int)dataGridViewPatientList.SelectedRows[0].Cells[0].Value);
+            FormChangeStatusOfPatient activate = new FormChangeStatusOfPatient(patient, currentUser);
+            activate.ShowDialog();
+        }
 
+        private void buttonDeactivatePatinet_Click(object sender, EventArgs e)
+        {
+            _context = new AppDbContext();
+            Patient patient = Patient.FindPatient((int)dataGridViewPatientList.SelectedRows[0].Cells[0].Value);
+            FormChangeStatusOfPatient deactivate = new FormChangeStatusOfPatient(patient, currentUser);
+            deactivate.ShowDialog();
         }
     }
 }

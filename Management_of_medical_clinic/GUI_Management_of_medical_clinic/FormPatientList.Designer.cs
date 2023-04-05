@@ -196,6 +196,7 @@
             buttonDeactivatePatinet.TabIndex = 45;
             buttonDeactivatePatinet.Text = "Deactivate patient";
             buttonDeactivatePatinet.UseVisualStyleBackColor = false;
+            buttonDeactivatePatinet.Click += buttonDeactivatePatinet_Click;
             // 
             // buttonActivatePatient
             // 
