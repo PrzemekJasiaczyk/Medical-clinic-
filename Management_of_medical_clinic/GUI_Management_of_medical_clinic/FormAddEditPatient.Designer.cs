@@ -115,7 +115,7 @@
             // 
             // maskedTextBoxDateOfBirth
             // 
-            maskedTextBoxDateOfBirth.Location = new Point(417, 561);
+            maskedTextBoxDateOfBirth.Location = new Point(892, 278);
             maskedTextBoxDateOfBirth.Mask = "00/00/0000";
             maskedTextBoxDateOfBirth.Name = "maskedTextBoxDateOfBirth";
             maskedTextBoxDateOfBirth.Size = new Size(348, 27);
@@ -125,7 +125,7 @@
             // labelDateOfBirth
             // 
             labelDateOfBirth.AutoSize = true;
-            labelDateOfBirth.Location = new Point(417, 510);
+            labelDateOfBirth.Location = new Point(892, 227);
             labelDateOfBirth.Name = "labelDateOfBirth";
             labelDateOfBirth.Size = new Size(97, 20);
             labelDateOfBirth.TabIndex = 48;
