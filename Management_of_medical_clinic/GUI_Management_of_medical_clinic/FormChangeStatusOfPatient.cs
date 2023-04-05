@@ -25,7 +25,17 @@ namespace GUI_Management_of_medical_clinic
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (textBoxPassword.Text != currentUser.Password)
+            {
+                MessageBox.Show("Invalid password!");
+                return;
+            }
 
+            Patient.ChangePatientStatus(patient);
+            FormPatientList formPatientList = new FormPatientList(currentUser);
+            this.Hide();
+            formPatientList.ShowDialog();
+            this.Close();
         }
 
         private void FormChangeStatusOfPatient_Load(object sender, EventArgs e)
@@ -35,7 +45,10 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-
+            FormPatientList formPatientList = new FormPatientList(currentUser);
+            this.Hide();
+            formPatientList.ShowDialog();
+            this.Close();
         }
     }
 }
