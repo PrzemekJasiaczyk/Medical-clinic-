@@ -27,8 +27,8 @@ namespace GUI_Management_of_medical_clinic
                 if (emp.Username == login && emp.Password == password)
                 {
                     FormMenuPatient formMenuPatient = new FormMenuPatient(emp);
+                    Hide();
                     formMenuPatient.ShowDialog();
-                    Close();
                 }
             }
 

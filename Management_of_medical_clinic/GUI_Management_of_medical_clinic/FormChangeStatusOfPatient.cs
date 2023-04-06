@@ -44,12 +44,16 @@ namespace GUI_Management_of_medical_clinic
             {
                 Patient.RemovePatient(patient);
             }
-                
+
+            List<Form> otwarteOkna = new List<Form>(Application.OpenForms.Cast<Form>());
+
+            foreach (Form otwarteOkno in otwarteOkna)
+            {
+                otwarteOkno.Hide();
+            }
+
             FormPatientList formPatientList = new FormPatientList(currentUser);
-            Close();
             formPatientList.ShowDialog();
-            
-            
         }
 
         private void FormChangeStatusOfPatient_Load(object sender, EventArgs e)
@@ -60,9 +64,8 @@ namespace GUI_Management_of_medical_clinic
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             FormPatientList formPatientList = new FormPatientList(currentUser);
-            Close();
+            Hide();
             formPatientList.ShowDialog();
-            
         }
     }
 }
