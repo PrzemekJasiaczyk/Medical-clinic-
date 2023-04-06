@@ -222,6 +222,10 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonEditPatient_Click(object sender, EventArgs e)
         {
+            if(dataGridViewPatientList.SelectedRows.Count == 0)
+            {
+                return;
+            }
             Patient patient = new Patient();
             patient = Patient.FindPatient((int)dataGridViewPatientList.SelectedRows[0].Cells[0].Value);
 

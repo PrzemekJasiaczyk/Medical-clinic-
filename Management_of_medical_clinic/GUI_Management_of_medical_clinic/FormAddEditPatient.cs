@@ -25,28 +25,33 @@ namespace GUI_Management_of_medical_clinic
             this.patient = patient;
         }
 
-        private void buttonAddPatient_Click(object sender, EventArgs e)
-        {
-            //buttonAddPatient
-            ChangeTitle("Add new patient");
-        }
+        //private void buttonAddPatient_Click(object sender, EventArgs e)
+        //{
+        //}
 
         private void ChangeTitle(string title)
         {
             labelAddEditNewPatient.Text = title;
         }
 
-        private void buttonEditPatient_Click(object sender, EventArgs e)
-        {
-            //EDIT PATIENT
-            ChangeTitle("Edit patient");
-        }
+        //private void buttonEditPatient_Click(object sender, EventArgs e)
+        //{
+        //}
 
         private void FormAddEditPatient_Load(object sender, EventArgs e)
         {
             CompleteComboBox();
+
             // sprawdzenie którą opcje wybrał user
             // czy dodać czy edytować
+            if (patient.LastName == string.Empty)
+            {
+                return;
+            }
+
+            CompleteControls();
+
+
         }
 
 
@@ -54,12 +59,16 @@ namespace GUI_Management_of_medical_clinic
         {
             comboBoxSex.DataSource = Enum.GetValues(typeof(EnumSex));
         }
-        void AddOrEditPatient()
+        void CompleteControls()
         {
-            //if(patient.PatientId == )
-            //{
+            textBoxLastName.Text = patient.LastName;
+            textBoxName.Text = patient.FirstName;
 
-            //}
+            maskedTextBoxDateOfBirth.Text = patient.BirthDate.ToString();
+            maskedTextBoxPESEL.Text = patient.PESEL;
+
+            //foreach()
+            
         }
 
         private void FormAddEditPatient_FormClosing(object sender, FormClosingEventArgs e)
