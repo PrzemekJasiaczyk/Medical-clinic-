@@ -34,8 +34,9 @@ namespace GUI_Management_of_medical_clinic
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
             FormEmployeeList employeeList = new FormEmployeeList(currentUser);
+            Hide();
             employeeList.ShowDialog();
-            Close();
+            
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -46,15 +47,17 @@ namespace GUI_Management_of_medical_clinic
         private void buttonListPatient_Click(object sender, EventArgs e)
         {
             FormPatientList formPatientList = new FormPatientList(currentUser);
+            Hide();
             formPatientList.ShowDialog();
-            Close();
+            
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
         {
             FormMenu formMenu = new FormMenu();
+            Hide();
             formMenu.ShowDialog();
-            Close();
+            
         }
     }
 }

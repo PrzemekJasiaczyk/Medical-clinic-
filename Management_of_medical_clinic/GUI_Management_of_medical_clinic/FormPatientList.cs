@@ -161,15 +161,14 @@ namespace GUI_Management_of_medical_clinic
         private void buttonExit_Click(object sender, EventArgs e)
         {
             FormMenuPatient formMenuPatient = new FormMenuPatient(currentUser);
+            Hide();
             formMenuPatient.ShowDialog();
-            Close();
         }
 
         private void buttonAddPatient_Click(object sender, EventArgs e)
         {
             FormAddEditPatient formAddEditPatient = new FormAddEditPatient(currentUser, null);
             formAddEditPatient.ShowDialog();
-            Close();
         }
 
         private void buttonActivatePatient_Click(object sender, EventArgs e)
@@ -186,7 +185,6 @@ namespace GUI_Management_of_medical_clinic
 
             FormChangeStatusOfPatient activate = new FormChangeStatusOfPatient("activate", patient, currentUser);
             activate.ShowDialog();
-            Close();
         }
 
         private void buttonDeactivatePatinet_Click(object sender, EventArgs e)
@@ -203,7 +201,6 @@ namespace GUI_Management_of_medical_clinic
 
             FormChangeStatusOfPatient deactivate = new FormChangeStatusOfPatient("deactivate", patient, currentUser);
             deactivate.ShowDialog();
-            Close();
         }
 
         private void buttonRemovePatient_Click(object sender, EventArgs e)
@@ -216,7 +213,6 @@ namespace GUI_Management_of_medical_clinic
 
             FormChangeStatusOfPatient remove = new FormChangeStatusOfPatient("remove", patient, currentUser);
             remove.ShowDialog();
-            Close();
         }
 
         private void buttonEditPatient_Click(object sender, EventArgs e)
@@ -229,8 +225,8 @@ namespace GUI_Management_of_medical_clinic
             patient = Patient.FindPatient((int)dataGridViewPatientList.SelectedRows[0].Cells[0].Value);
 
             FormAddEditPatient formAddEditPatient = new FormAddEditPatient(currentUser, patient);
+            Hide();
             formAddEditPatient.ShowDialog();
-            Close();
         }
     }
 }
