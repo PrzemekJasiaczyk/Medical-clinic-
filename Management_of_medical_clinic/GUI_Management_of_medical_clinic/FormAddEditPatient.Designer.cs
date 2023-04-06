@@ -69,7 +69,7 @@
             buttonBack.Name = "buttonBack";
             buttonBack.Size = new Size(252, 66);
             buttonBack.TabIndex = 22;
-            buttonBack.Text = "LOG OUT";
+            buttonBack.Text = "Back";
             buttonBack.UseVisualStyleBackColor = false;
             // 
             // pictureBox1
@@ -208,7 +208,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1698, 825);
+            ClientSize = new Size(1920, 1080);
             Controls.Add(buttonCancel);
             Controls.Add(buttonAddEditPatient);
             Controls.Add(comboBoxSex);
