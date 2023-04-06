@@ -167,7 +167,8 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonAddPatient_Click(object sender, EventArgs e)
         {
-            FormAddEditPatient formAddEditPatient = new FormAddEditPatient(currentUser);
+            Patient patient = new Patient();
+            FormAddEditPatient formAddEditPatient = new FormAddEditPatient(currentUser, patient);
             formAddEditPatient.ShowDialog();
             Close();
         }

@@ -16,11 +16,13 @@ namespace GUI_Management_of_medical_clinic
     public partial class FormAddEditPatient : Form
     {
         EmployeeModel currentUser;
+        Patient patient;
 
-        public FormAddEditPatient(EmployeeModel currentUser)
+        public FormAddEditPatient(EmployeeModel currentUser, Patient patient)
         {
             InitializeComponent();
             this.currentUser = currentUser;
+            this.patient = patient;
         }
 
         private void buttonAddPatient_Click(object sender, EventArgs e)
@@ -51,8 +53,6 @@ namespace GUI_Management_of_medical_clinic
         void CompleteComboBox()
         {
             comboBoxSex.DataSource = Enum.GetValues(typeof(EnumSex));
-            //comboBoxStatus.DataSource = Patient.
-
         }
 
         private void FormAddEditPatient_FormClosing(object sender, FormClosingEventArgs e)
