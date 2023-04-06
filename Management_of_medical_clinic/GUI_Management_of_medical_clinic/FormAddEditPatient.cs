@@ -15,9 +15,12 @@ namespace GUI_Management_of_medical_clinic
 {
     public partial class FormAddEditPatient : Form
     {
-        public FormAddEditPatient()
+        EmployeeModel currentUser;
+
+        public FormAddEditPatient(EmployeeModel currentUser)
         {
             InitializeComponent();
+            this.currentUser = currentUser;
         }
 
         private void buttonAddPatient_Click(object sender, EventArgs e)
@@ -61,6 +64,15 @@ namespace GUI_Management_of_medical_clinic
         {
             // temp
             FormAddEditPatient.ActiveForm.Close();
+
+            FormPatientList formPatientList = new FormPatientList(currentUser);
+            Close();
+            formPatientList.ShowDialog();
+        }
+
+        private void buttonAddEditPatient_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

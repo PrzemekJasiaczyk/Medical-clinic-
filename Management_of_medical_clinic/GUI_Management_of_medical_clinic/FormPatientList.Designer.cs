@@ -149,6 +149,7 @@
             buttonEditPatient.TabIndex = 21;
             buttonEditPatient.Text = "Edit patient";
             buttonEditPatient.UseVisualStyleBackColor = false;
+            buttonEditPatient.Click += buttonEditPatient_Click;
             // 
             // panel1
             // 

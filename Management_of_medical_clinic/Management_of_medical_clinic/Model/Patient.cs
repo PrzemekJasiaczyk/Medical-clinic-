@@ -39,7 +39,7 @@ namespace Console_Management_of_medical_clinic.Model
             }
             else if (patient.IsActive == false)
             {
-                patient = _context.Patients.Find(patient.PatientId); // for remove
+                patient = _context.Patients.Find(patient.PatientId);
                 patient.IsActive = true;
                 _context.SaveChanges();
                 return;

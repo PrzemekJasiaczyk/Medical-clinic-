@@ -167,13 +167,15 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonAddPatient_Click(object sender, EventArgs e)
         {
-
+            FormAddEditPatient formAddEditPatient = new FormAddEditPatient(currentUser);
+            formAddEditPatient.ShowDialog();
+            Close();
         }
 
         private void buttonActivatePatient_Click(object sender, EventArgs e)
         {
             Patient patient = Patient.FindPatient((int)dataGridViewPatientList.SelectedRows[0].Cells[0].Value);
-            
+
             if (patient.IsActive == true)
             {
                 string msg = "Patient is active!";
@@ -188,9 +190,9 @@ namespace GUI_Management_of_medical_clinic
         }
 
         private void buttonDeactivatePatinet_Click(object sender, EventArgs e)
-        { 
+        {
             Patient patient = Patient.FindPatient((int)dataGridViewPatientList.SelectedRows[0].Cells[0].Value);
-            
+
             if (patient.IsActive == false)
             {
                 string msg = "Patient is deactive!";
@@ -207,13 +209,20 @@ namespace GUI_Management_of_medical_clinic
         private void buttonRemovePatient_Click(object sender, EventArgs e)
         {
             Patient patient = Patient.FindPatient((int)dataGridViewPatientList.SelectedRows[0].Cells[0].Value);
-            
+
             string msg = "A deleted patient cannot be restored!";
             FormMessage FormMessage = new FormMessage(msg);
             FormMessage.ShowDialog();
 
             FormChangeStatusOfPatient remove = new FormChangeStatusOfPatient("remove", patient, currentUser);
             remove.ShowDialog();
+            Close();
+        }
+
+        private void buttonEditPatient_Click(object sender, EventArgs e)
+        {
+            FormAddEditPatient formAddEditPatient = new FormAddEditPatient(currentUser);
+            formAddEditPatient.ShowDialog();
             Close();
         }
     }
