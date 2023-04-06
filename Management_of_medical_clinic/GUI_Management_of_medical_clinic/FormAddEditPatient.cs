@@ -18,7 +18,7 @@ namespace GUI_Management_of_medical_clinic
         EmployeeModel currentUser;
         Patient patient;
 
-        public FormAddEditPatient(EmployeeModel currentUser, Patient patient)
+        public FormAddEditPatient(EmployeeModel currentUser, Patient? patient)
         {
             InitializeComponent();
             this.currentUser = currentUser;
@@ -28,9 +28,11 @@ namespace GUI_Management_of_medical_clinic
         private void FormAddEditPatient_Load(object sender, EventArgs e)
         {
             CompleteComboBox();
+            SetPropertiesDateTimePicker();
 
-            if (patient.LastName == string.Empty)
+            if (patient == null)
             {
+                dateTimePickerBirthDate.Value = DateTime.Now;
                 return;
             }
 
@@ -55,7 +57,7 @@ namespace GUI_Management_of_medical_clinic
             //patient.PESEL = maskedTextBoxPESEL.Text;
             //patient.Sex = (EnumSex)comboBoxSex.SelectedItem;  // pewnie źle
 
-            ////patient.BirthDate = (DateTime)maskedTextBoxDateOfBirth.Text;
+            patient.BirthDate = dateTimePickerBirthDate.Value;
 
             //patient.FirstName = textBoxName.Text;
             //patient.LastName = textBoxLastName.Text;
@@ -72,26 +74,32 @@ namespace GUI_Management_of_medical_clinic
 
         // FUNCTIONS
 
-        void CompleteComboBox()
+        private void CompleteComboBox()
         {
             comboBoxSex.DataSource = Enum.GetValues(typeof(EnumSex));
         }
-        void CompleteControls()
+        private void CompleteControls()
         {
             textBoxLastName.Text = patient.LastName;
             textBoxName.Text = patient.FirstName;
 
-            //maskedTextBoxDateOfBirth.Text = patient.BirthDate.ToString();
+            dateTimePickerBirthDate.Value = patient.BirthDate;
             maskedTextBoxPESEL.Text = patient.PESEL;
 
             //wybieranie w combo płci
-
         }
 
         private void ChangeTitle(string title)
         {
             labelAddEditNewPatient.Text = title;
             buttonAddEditPatient.Text = title;
+        }
+
+        private void SetPropertiesDateTimePicker()
+        {
+            dateTimePickerBirthDate.MaxDate = DateTime.Today.AddHours(+1);
+            dateTimePickerBirthDate.MinDate = DateTime.Today.AddYears(-100);
+
         }
     }
 }
