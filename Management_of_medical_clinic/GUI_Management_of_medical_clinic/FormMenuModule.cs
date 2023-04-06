@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Console_Management_of_medical_clinic.Logic;
+using Console_Management_of_medical_clinic.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,11 @@ namespace GUI_Management_of_medical_clinic
 {
     public partial class FormMenuPatient : Form
     {
-        public FormMenuPatient()
+        EmployeeModel currentUser;
+        public FormMenuPatient(EmployeeModel employee)
         {
             InitializeComponent();
+            currentUser = employee;
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -29,7 +33,9 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
-
+            FormEmployeeList employeeList = new FormEmployeeList(currentUser);
+            employeeList.ShowDialog();
+            Close();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -39,9 +45,16 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonListPatient_Click(object sender, EventArgs e)
         {
-            FormPatientList formPatientList = new FormPatientList();
+            FormPatientList formPatientList = new FormPatientList(currentUser);
             formPatientList.ShowDialog();
-            Hide();
+            Close();
+        }
+
+        private void buttonExit_Click(object sender, EventArgs e)
+        {
+            FormMenu formMenu = new FormMenu();
+            formMenu.ShowDialog();
+            Close();
         }
     }
 }

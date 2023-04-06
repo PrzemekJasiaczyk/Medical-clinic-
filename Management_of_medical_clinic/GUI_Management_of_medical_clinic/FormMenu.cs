@@ -15,11 +15,10 @@ namespace GUI_Management_of_medical_clinic
 
         }
 
-        private void buttonOpenEmployeeList_Click(object sender, EventArgs e)
+        private void buttonStart_Click(object sender, EventArgs e)
         {
             string login = textBoxLogin.Text;
             string password = textBoxPassword.Text;
-
 
             List<EmployeeModel> employees = EmployeeService.GetEmployeesData();
 
@@ -27,17 +26,13 @@ namespace GUI_Management_of_medical_clinic
             {
                 if (emp.Username == login && emp.Password == password)
                 {
-
-                    FormEmployeeList employeeList = new FormEmployeeList(emp);
-                    //this.Hide();
-                    employeeList.ShowDialog();
-                    this.Close();
+                    FormMenuPatient formMenuPatient = new FormMenuPatient(emp);
+                    formMenuPatient.ShowDialog();
+                    Close();
                 }
-
             }
 
             MessageBox.Show("Incorrect login or password");
-
         }
 
         private void buttonExit_Click(object sender, EventArgs e)

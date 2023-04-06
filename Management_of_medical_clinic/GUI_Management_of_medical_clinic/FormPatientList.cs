@@ -14,23 +14,24 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 using System.Net;
 using System.Xml.Linq;
+using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace GUI_Management_of_medical_clinic
 {
     public partial class FormPatientList : Form
     {
         private PatientService patientService;
+        EmployeeModel currentUser;
 
-        public FormPatientList()
+        public FormPatientList(EmployeeModel employee)
         {
             InitializeComponent();
             patientService = new PatientService();
             DisplayPatientsList();
-           
-
-
+            currentUser = employee;
         }
-
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -93,10 +94,8 @@ namespace GUI_Management_of_medical_clinic
 
         private void dataGridViewPatientList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-         
+
         }
-
-
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -159,5 +158,63 @@ namespace GUI_Management_of_medical_clinic
 
         }
 
+        private void buttonExit_Click(object sender, EventArgs e)
+        {
+            FormMenuPatient formMenuPatient = new FormMenuPatient(currentUser);
+            formMenuPatient.ShowDialog();
+            Close();
+        }
+
+        private void buttonAddPatient_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonActivatePatient_Click(object sender, EventArgs e)
+        {
+            Patient patient = Patient.FindPatient((int)dataGridViewPatientList.SelectedRows[0].Cells[0].Value);
+            
+            if (patient.IsActive == true)
+            {
+                string msg = "Patient is active!";
+                FormMessage FormMessage = new FormMessage(msg);
+                FormMessage.ShowDialog();
+                return;
+            }
+
+            FormChangeStatusOfPatient activate = new FormChangeStatusOfPatient("activate", patient, currentUser);
+            activate.ShowDialog();
+            Close();
+        }
+
+        private void buttonDeactivatePatinet_Click(object sender, EventArgs e)
+        { 
+            Patient patient = Patient.FindPatient((int)dataGridViewPatientList.SelectedRows[0].Cells[0].Value);
+            
+            if (patient.IsActive == false)
+            {
+                string msg = "Patient is deactive!";
+                FormMessage FormMessage = new FormMessage(msg);
+                FormMessage.ShowDialog();
+                return;
+            }
+
+            FormChangeStatusOfPatient deactivate = new FormChangeStatusOfPatient("deactivate", patient, currentUser);
+            deactivate.ShowDialog();
+            Close();
+        }
+
+        private void buttonRemovePatient_Click(object sender, EventArgs e)
+        {
+            Patient patient = Patient.FindPatient((int)dataGridViewPatientList.SelectedRows[0].Cells[0].Value);
+            
+            string msg = "A deleted patient cannot be restored!";
+            FormMessage FormMessage = new FormMessage(msg);
+            FormMessage.ShowDialog();
+
+            FormChangeStatusOfPatient remove = new FormChangeStatusOfPatient("remove", patient, currentUser);
+            remove.ShowDialog();
+            Close();
+        }
     }
 }

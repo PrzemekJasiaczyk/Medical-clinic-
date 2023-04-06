@@ -1,4 +1,5 @@
-﻿using Console_Management_of_medical_clinic.Data.Enums;
+﻿using Console_Management_of_medical_clinic.Data;
+using Console_Management_of_medical_clinic.Data.Enums;
 using System.ComponentModel.DataAnnotations;
 
 namespace Console_Management_of_medical_clinic.Model
@@ -24,5 +25,43 @@ namespace Console_Management_of_medical_clinic.Model
         // Visits?.Where(v => v.Date <= DateTime.Today).OrderByDescending(v => v.Date).FirstOrDefault()?.Date;
 
         public List<Visit> Visits { get; set; } = new List<Visit>();
+
+        public static void ChangePatientStatus(Patient patient)
+        {
+            AppDbContext _context = new AppDbContext();
+            
+            if (patient.IsActive == true)
+            {
+                patient = _context.Patients.Find(patient.PatientId);
+                patient.IsActive = false;
+                _context.SaveChanges();
+                return;
+            }
+            else if (patient.IsActive == false)
+            {
+                patient = _context.Patients.Find(patient.PatientId); // for remove
+                patient.IsActive = true;
+                _context.SaveChanges();
+                return;
+            }
+        }
+
+        public static Patient FindPatient(int PatientId)
+        {
+            AppDbContext _context = new AppDbContext();
+            
+            Patient patient = new Patient();
+            patient = _context.Patients.Find(PatientId);
+            return patient;
+        }
+
+        public static void RemovePatient(Patient patient)
+        {
+            AppDbContext _context = new AppDbContext();
+
+            _context.Patients.Remove(patient);
+            _context.SaveChanges();
+            return;
+        }
     }
 }

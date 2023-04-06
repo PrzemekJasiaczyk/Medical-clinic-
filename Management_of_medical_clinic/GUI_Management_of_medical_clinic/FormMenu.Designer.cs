@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            buttonOpenEmployeeList = new Button();
+            buttonStart = new Button();
             textBoxLogin = new TextBox();
             textBoxPassword = new TextBox();
             panel2 = new Panel();
@@ -40,22 +40,22 @@
             ((System.ComponentModel.ISupportInitialize)fileSystemWatcher1).BeginInit();
             SuspendLayout();
             // 
-            // buttonOpenEmployeeList
+            // buttonStart
             // 
-            buttonOpenEmployeeList.Anchor = AnchorStyles.None;
-            buttonOpenEmployeeList.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            buttonOpenEmployeeList.BackColor = Color.SteelBlue;
-            buttonOpenEmployeeList.FlatAppearance.BorderColor = Color.AntiqueWhite;
-            buttonOpenEmployeeList.FlatAppearance.BorderSize = 5;
-            buttonOpenEmployeeList.FlatStyle = FlatStyle.Flat;
-            buttonOpenEmployeeList.Font = new Font("Tw Cen MT Condensed Extra Bold", 19F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonOpenEmployeeList.Location = new Point(912, 640);
-            buttonOpenEmployeeList.Name = "buttonOpenEmployeeList";
-            buttonOpenEmployeeList.Size = new Size(325, 125);
-            buttonOpenEmployeeList.TabIndex = 2;
-            buttonOpenEmployeeList.Text = "START";
-            buttonOpenEmployeeList.UseVisualStyleBackColor = false;
-            buttonOpenEmployeeList.Click += buttonOpenEmployeeList_Click;
+            buttonStart.Anchor = AnchorStyles.None;
+            buttonStart.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            buttonStart.BackColor = Color.SteelBlue;
+            buttonStart.FlatAppearance.BorderColor = Color.AntiqueWhite;
+            buttonStart.FlatAppearance.BorderSize = 5;
+            buttonStart.FlatStyle = FlatStyle.Flat;
+            buttonStart.Font = new Font("Tw Cen MT Condensed Extra Bold", 19F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonStart.Location = new Point(912, 640);
+            buttonStart.Name = "buttonStart";
+            buttonStart.Size = new Size(325, 125);
+            buttonStart.TabIndex = 2;
+            buttonStart.Text = "START";
+            buttonStart.UseVisualStyleBackColor = false;
+            buttonStart.Click += buttonStart_Click;
             // 
             // textBoxLogin
             // 
@@ -134,7 +134,7 @@
             Controls.Add(panel2);
             Controls.Add(textBoxPassword);
             Controls.Add(textBoxLogin);
-            Controls.Add(buttonOpenEmployeeList);
+            Controls.Add(buttonStart);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormMenu";
@@ -151,7 +151,7 @@
 
         #endregion
 
-        private Button buttonOpenEmployeeList;
+        private Button buttonStart;
         private TextBox textBoxLogin;
         private TextBox textBoxPassword;
         private Panel panel2;
