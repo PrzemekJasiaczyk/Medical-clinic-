@@ -226,6 +226,7 @@
             buttonRemovePatient.TabIndex = 43;
             buttonRemovePatient.Text = "Remove patient";
             buttonRemovePatient.UseVisualStyleBackColor = false;
+            buttonRemovePatient.Click += buttonRemovePatient_Click;
             // 
             // buttonBack
             // 

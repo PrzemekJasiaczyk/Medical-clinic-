@@ -186,5 +186,13 @@ namespace GUI_Management_of_medical_clinic
             FormChangeStatusOfPatient deactivate = new FormChangeStatusOfPatient(patient, currentUser);
             deactivate.ShowDialog();
         }
+
+        private void buttonRemovePatient_Click(object sender, EventArgs e)
+        {
+            _context = new AppDbContext();
+            Patient patient = Patient.FindPatient((int)dataGridViewPatientList.SelectedRows[0].Cells[0].Value);
+            FormChangeStatusOfPatient remove = new FormChangeStatusOfPatient(patient, currentUser);
+            remove.ShowDialog();
+        }
     }
 }
