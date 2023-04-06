@@ -35,7 +35,6 @@
             comboBoxSex = new ComboBox();
             labelAddEditNewPatient = new Label();
             labelSex = new Label();
-            maskedTextBoxDateOfBirth = new MaskedTextBox();
             labelDateOfBirth = new Label();
             maskedTextBoxPESEL = new MaskedTextBox();
             labelPESEL = new Label();
@@ -43,6 +42,7 @@
             textBoxLastName = new TextBox();
             labelName = new Label();
             textBoxName = new TextBox();
+            dateTimePickerBirthDate = new DateTimePicker();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -126,16 +126,6 @@
             labelSex.TabIndex = 50;
             labelSex.Text = "Sex:";
             // 
-            // maskedTextBoxDateOfBirth
-            // 
-            maskedTextBoxDateOfBirth.Location = new Point(780, 208);
-            maskedTextBoxDateOfBirth.Margin = new Padding(3, 2, 3, 2);
-            maskedTextBoxDateOfBirth.Mask = "00/00/0000";
-            maskedTextBoxDateOfBirth.Name = "maskedTextBoxDateOfBirth";
-            maskedTextBoxDateOfBirth.Size = new Size(305, 23);
-            maskedTextBoxDateOfBirth.TabIndex = 49;
-            maskedTextBoxDateOfBirth.ValidatingType = typeof(DateTime);
-            // 
             // labelDateOfBirth
             // 
             labelDateOfBirth.AutoSize = true;
@@ -197,15 +187,24 @@
             textBoxName.Size = new Size(305, 23);
             textBoxName.TabIndex = 42;
             // 
+            // dateTimePickerBirthDate
+            // 
+            dateTimePickerBirthDate.Location = new Point(780, 208);
+            dateTimePickerBirthDate.MaxDate = new DateTime(2023, 4, 6, 0, 0, 0, 0);
+            dateTimePickerBirthDate.Name = "dateTimePickerBirthDate";
+            dateTimePickerBirthDate.Size = new Size(306, 23);
+            dateTimePickerBirthDate.TabIndex = 57;
+            dateTimePickerBirthDate.Value = new DateTime(2023, 4, 6, 0, 0, 0, 0);
+            // 
             // FormAddEditPatient
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1920, 1080);
+            Controls.Add(dateTimePickerBirthDate);
             Controls.Add(comboBoxSex);
             Controls.Add(labelAddEditNewPatient);
             Controls.Add(labelSex);
-            Controls.Add(maskedTextBoxDateOfBirth);
             Controls.Add(labelDateOfBirth);
             Controls.Add(maskedTextBoxPESEL);
             Controls.Add(labelPESEL);
@@ -235,7 +234,6 @@
         private ComboBox comboBoxSex;
         private Label labelAddEditNewPatient;
         private Label labelSex;
-        private MaskedTextBox maskedTextBoxDateOfBirth;
         private Label labelDateOfBirth;
         private MaskedTextBox maskedTextBoxPESEL;
         private Label labelPESEL;
@@ -244,5 +242,6 @@
         private Label labelName;
         private TextBox textBoxName;
         private Button buttonAddEditPatient;
+        private DateTimePicker dateTimePickerBirthDate;
     }
 }

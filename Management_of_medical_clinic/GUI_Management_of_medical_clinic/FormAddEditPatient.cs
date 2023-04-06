@@ -81,7 +81,7 @@ namespace GUI_Management_of_medical_clinic
             textBoxLastName.Text = patient.LastName;
             textBoxName.Text = patient.FirstName;
 
-            maskedTextBoxDateOfBirth.Text = patient.BirthDate.ToString();
+            //maskedTextBoxDateOfBirth.Text = patient.BirthDate.ToString();
             maskedTextBoxPESEL.Text = patient.PESEL;
 
             //wybieranie w combo płci
