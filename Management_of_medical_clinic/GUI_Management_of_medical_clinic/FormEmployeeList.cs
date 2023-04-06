@@ -222,17 +222,6 @@ namespace GUI_Management_of_medical_clinic
         {
         }
 
-        private void buttonEditPatient_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click_2(object sender, EventArgs e)
-        {
-            FormAddEditPatient formAddEditPatient = new FormAddEditPatient();
-            formAddEditPatient.ShowDialog();
-        }
-
         private void dataGridViewEmployees_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
