@@ -68,7 +68,7 @@ namespace GUI_Management_of_medical_clinic
             maskedTextBoxPESEL.Text = patient.PESEL;
 
             //foreach()
-            
+
         }
 
         private void FormAddEditPatient_FormClosing(object sender, FormClosingEventArgs e)

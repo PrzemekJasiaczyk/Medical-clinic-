@@ -42,7 +42,6 @@
             textBoxLastName = new TextBox();
             labelName = new Label();
             textBoxName = new TextBox();
-            buttonCancel = new Button();
             buttonAddEditPatient = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -52,6 +51,7 @@
             // 
             panel1.BackColor = Color.SteelBlue;
             panel1.Controls.Add(buttonBack);
+            panel1.Controls.Add(buttonAddEditPatient);
             panel1.Controls.Add(pictureBox1);
             panel1.Location = new Point(-3, 0);
             panel1.Name = "panel1";
@@ -182,21 +182,10 @@
             textBoxName.Size = new Size(305, 23);
             textBoxName.TabIndex = 42;
             // 
-            // buttonCancel
-            // 
-            buttonCancel.BackColor = Color.SteelBlue;
-            buttonCancel.Location = new Point(634, 670);
-            buttonCancel.Name = "buttonCancel";
-            buttonCancel.Size = new Size(254, 57);
-            buttonCancel.TabIndex = 60;
-            buttonCancel.Text = "Cancel";
-            buttonCancel.UseVisualStyleBackColor = false;
-            buttonCancel.Click += buttonCancel_Click;
-            // 
             // buttonAddEditPatient
             // 
             buttonAddEditPatient.BackColor = Color.SteelBlue;
-            buttonAddEditPatient.Location = new Point(366, 670);
+            buttonAddEditPatient.Location = new Point(27, 907);
             buttonAddEditPatient.Name = "buttonAddEditPatient";
             buttonAddEditPatient.Size = new Size(254, 57);
             buttonAddEditPatient.TabIndex = 59;
@@ -208,9 +197,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            CancelButton = buttonBack;
             ClientSize = new Size(1920, 1080);
-            Controls.Add(buttonCancel);
-            Controls.Add(buttonAddEditPatient);
             Controls.Add(comboBoxSex);
             Controls.Add(labelAddEditNewPatient);
             Controls.Add(labelSex);
@@ -253,7 +241,6 @@
         private TextBox textBoxLastName;
         private Label labelName;
         private TextBox textBoxName;
-        private Button buttonCancel;
         private Button buttonAddEditPatient;
     }
 }
