@@ -79,7 +79,7 @@
             // labelMessage
             // 
             labelMessage.AutoSize = true;
-            labelMessage.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            labelMessage.Font = new Font("Segoe UI", 17F, FontStyle.Regular, GraphicsUnit.Point);
             labelMessage.Location = new Point(75, 38);
             labelMessage.MaximumSize = new Size(450, 80);
             labelMessage.MinimumSize = new Size(450, 80);
@@ -98,7 +98,9 @@
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormMessage";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FormMessage";
+            Load += FormMessage_Load;
             panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();

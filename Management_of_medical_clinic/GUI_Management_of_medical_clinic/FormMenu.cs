@@ -15,7 +15,7 @@ namespace GUI_Management_of_medical_clinic
 
         }
 
-        private void buttonOpenEmployeeList_Click(object sender, EventArgs e)
+        private void buttonStart_Click(object sender, EventArgs e)
         {
             string login = textBoxLogin.Text;
             string password = textBoxPassword.Text;
@@ -27,9 +27,8 @@ namespace GUI_Management_of_medical_clinic
                 if (emp.Username == login && emp.Password == password)
                 {
                     FormMenuPatient formMenuPatient = new FormMenuPatient(emp);
-                    this.Hide();
                     formMenuPatient.ShowDialog();
-                    this.Close();
+                    Close();
                 }
             }
 
