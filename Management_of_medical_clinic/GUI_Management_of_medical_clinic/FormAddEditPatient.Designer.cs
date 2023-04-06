@@ -71,6 +71,7 @@
             buttonBack.TabIndex = 22;
             buttonBack.Text = "Back";
             buttonBack.UseVisualStyleBackColor = false;
+            buttonBack.Click += buttonBack_Click;
             // 
             // buttonAddEditPatient
             // 
@@ -219,7 +220,6 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormAddEditPatient";
             WindowState = FormWindowState.Maximized;
-            FormClosing += FormAddEditPatient_FormClosing;
             Load += FormAddEditPatient_Load;
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

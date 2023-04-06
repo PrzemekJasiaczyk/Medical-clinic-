@@ -32,6 +32,7 @@ namespace GUI_Management_of_medical_clinic
         private void ChangeTitle(string title)
         {
             labelAddEditNewPatient.Text = title;
+            buttonAddEditPatient.Text = title;
         }
 
         //private void buttonEditPatient_Click(object sender, EventArgs e)
@@ -49,8 +50,8 @@ namespace GUI_Management_of_medical_clinic
                 return;
             }
 
+            ChangeTitle("Edit patient");
             CompleteControls();
-
 
         }
 
@@ -67,28 +68,35 @@ namespace GUI_Management_of_medical_clinic
             maskedTextBoxDateOfBirth.Text = patient.BirthDate.ToString();
             maskedTextBoxPESEL.Text = patient.PESEL;
 
-            //foreach()
+            //wybieranie w combo płci
 
         }
 
-        private void FormAddEditPatient_FormClosing(object sender, FormClosingEventArgs e)
-        {
+        //private void FormAddEditPatient_FormClosing(object sender, FormClosingEventArgs e)
+        //{
 
-        }
+        //}
 
-        private void buttonCancel_Click(object sender, EventArgs e)
-        {
-            // temp
-            FormAddEditPatient.ActiveForm.Close();
+        //private void buttonCancel_Click(object sender, EventArgs e)
+        //{
+        //    // temp
+        //    FormAddEditPatient.ActiveForm.Close();
 
-            FormPatientList formPatientList = new FormPatientList(currentUser);
-            Close();
-            formPatientList.ShowDialog();
-        }
+        //    FormPatientList formPatientList = new FormPatientList(currentUser);
+        //    Close();
+        //    formPatientList.ShowDialog();
+        //}
 
         private void buttonAddEditPatient_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            FormAddEditPatient.ActiveForm.Close();
+            FormPatientList formPatientList = new FormPatientList(currentUser);
+            formPatientList.ShowDialog();
         }
     }
 }
