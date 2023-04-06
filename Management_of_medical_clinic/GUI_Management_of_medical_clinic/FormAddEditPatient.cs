@@ -25,26 +25,10 @@ namespace GUI_Management_of_medical_clinic
             this.patient = patient;
         }
 
-        //private void buttonAddPatient_Click(object sender, EventArgs e)
-        //{
-        //}
-
-        private void ChangeTitle(string title)
-        {
-            labelAddEditNewPatient.Text = title;
-            buttonAddEditPatient.Text = title;
-        }
-
-        //private void buttonEditPatient_Click(object sender, EventArgs e)
-        //{
-        //}
-
         private void FormAddEditPatient_Load(object sender, EventArgs e)
         {
             CompleteComboBox();
 
-            // sprawdzenie którą opcje wybrał user
-            // czy dodać czy edytować
             if (patient.LastName == string.Empty)
             {
                 return;
@@ -55,6 +39,38 @@ namespace GUI_Management_of_medical_clinic
 
         }
 
+        //private void buttonCancel_Click(object sender, EventArgs e)
+        //{
+        //    FormAddEditPatient.ActiveForm.Close();
+
+        //    FormPatientList formPatientList = new FormPatientList(currentUser);
+        //    Close();
+        //    formPatientList.ShowDialog();
+        //}
+
+        private void buttonAddEditPatient_Click(object sender, EventArgs e)
+        {
+            // zmiana lub dodanie pacjenta +++ dodanie walidacji
+
+            //patient.PESEL = maskedTextBoxPESEL.Text;
+            //patient.Sex = (EnumSex)comboBoxSex.SelectedItem;  // pewnie źle
+
+            ////patient.BirthDate = (DateTime)maskedTextBoxDateOfBirth.Text;
+
+            //patient.FirstName = textBoxName.Text;
+            //patient.LastName = textBoxLastName.Text;
+        }
+
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            // temp
+            FormAddEditPatient.ActiveForm.Close();
+            FormPatientList formPatientList = new FormPatientList(currentUser);
+            formPatientList.ShowDialog();
+        }
+
+
+        // FUNCTIONS
 
         void CompleteComboBox()
         {
@@ -72,31 +88,10 @@ namespace GUI_Management_of_medical_clinic
 
         }
 
-        //private void FormAddEditPatient_FormClosing(object sender, FormClosingEventArgs e)
-        //{
-
-        //}
-
-        //private void buttonCancel_Click(object sender, EventArgs e)
-        //{
-        //    // temp
-        //    FormAddEditPatient.ActiveForm.Close();
-
-        //    FormPatientList formPatientList = new FormPatientList(currentUser);
-        //    Close();
-        //    formPatientList.ShowDialog();
-        //}
-
-        private void buttonAddEditPatient_Click(object sender, EventArgs e)
+        private void ChangeTitle(string title)
         {
-
-        }
-
-        private void buttonBack_Click(object sender, EventArgs e)
-        {
-            FormAddEditPatient.ActiveForm.Close();
-            FormPatientList formPatientList = new FormPatientList(currentUser);
-            formPatientList.ShowDialog();
+            labelAddEditNewPatient.Text = title;
+            buttonAddEditPatient.Text = title;
         }
     }
 }
