@@ -30,6 +30,7 @@
         {
             panel1 = new Panel();
             buttonBack = new Button();
+            buttonAddEditPatient = new Button();
             pictureBox1 = new PictureBox();
             comboBoxSex = new ComboBox();
             labelAddEditNewPatient = new Label();
@@ -42,8 +43,6 @@
             textBoxLastName = new TextBox();
             labelName = new Label();
             textBoxName = new TextBox();
-            buttonCancel = new Button();
-            buttonAddEditPatient = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -52,6 +51,7 @@
             // 
             panel1.BackColor = Color.SteelBlue;
             panel1.Controls.Add(buttonBack);
+            panel1.Controls.Add(buttonAddEditPatient);
             panel1.Controls.Add(pictureBox1);
             panel1.Location = new Point(-3, 0);
             panel1.Name = "panel1";
@@ -71,6 +71,20 @@
             buttonBack.TabIndex = 22;
             buttonBack.Text = "Back";
             buttonBack.UseVisualStyleBackColor = false;
+            // 
+            // buttonAddEditPatient
+            // 
+            buttonAddEditPatient.BackColor = Color.SteelBlue;
+            buttonAddEditPatient.FlatStyle = FlatStyle.Flat;
+            buttonAddEditPatient.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonAddEditPatient.ForeColor = SystemColors.ActiveCaptionText;
+            buttonAddEditPatient.Location = new Point(-29, 208);
+            buttonAddEditPatient.Name = "buttonAddEditPatient";
+            buttonAddEditPatient.Size = new Size(360, 65);
+            buttonAddEditPatient.TabIndex = 59;
+            buttonAddEditPatient.Text = "Add patient";
+            buttonAddEditPatient.UseVisualStyleBackColor = false;
+            buttonAddEditPatient.Click += buttonAddEditPatient_Click;
             // 
             // pictureBox1
             // 
@@ -182,35 +196,11 @@
             textBoxName.Size = new Size(305, 23);
             textBoxName.TabIndex = 42;
             // 
-            // buttonCancel
-            // 
-            buttonCancel.BackColor = Color.SteelBlue;
-            buttonCancel.Location = new Point(634, 670);
-            buttonCancel.Name = "buttonCancel";
-            buttonCancel.Size = new Size(254, 57);
-            buttonCancel.TabIndex = 60;
-            buttonCancel.Text = "Cancel";
-            buttonCancel.UseVisualStyleBackColor = false;
-            buttonCancel.Click += buttonCancel_Click;
-            // 
-            // buttonAddEditPatient
-            // 
-            buttonAddEditPatient.BackColor = Color.SteelBlue;
-            buttonAddEditPatient.Location = new Point(366, 670);
-            buttonAddEditPatient.Name = "buttonAddEditPatient";
-            buttonAddEditPatient.Size = new Size(254, 57);
-            buttonAddEditPatient.TabIndex = 59;
-            buttonAddEditPatient.Text = "Add patient";
-            buttonAddEditPatient.UseVisualStyleBackColor = false;
-            buttonAddEditPatient.Click += buttonAddEditPatient_Click;
-            // 
             // FormAddEditPatient
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1920, 1080);
-            Controls.Add(buttonCancel);
-            Controls.Add(buttonAddEditPatient);
             Controls.Add(comboBoxSex);
             Controls.Add(labelAddEditNewPatient);
             Controls.Add(labelSex);
@@ -253,7 +243,6 @@
         private TextBox textBoxLastName;
         private Label labelName;
         private TextBox textBoxName;
-        private Button buttonCancel;
         private Button buttonAddEditPatient;
     }
 }
