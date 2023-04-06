@@ -66,7 +66,7 @@ namespace GUI_Management_of_medical_clinic
             FormAddEditPatient.ActiveForm.Close();
 
             FormPatientList formPatientList = new FormPatientList(currentUser);
-            Close();
+            Hide();
             formPatientList.ShowDialog();
         }
 
