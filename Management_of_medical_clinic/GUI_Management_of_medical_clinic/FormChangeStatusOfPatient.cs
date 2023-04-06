@@ -15,27 +15,41 @@ namespace GUI_Management_of_medical_clinic
     {
         Patient patient;
         EmployeeModel currentUser;
+        private string source;
 
-        public FormChangeStatusOfPatient(Patient patient2, EmployeeModel currentU)
+        public FormChangeStatusOfPatient(string source, Patient patient, EmployeeModel currentUser)
         {
             InitializeComponent();
-            patient = patient2;
-            currentUser = currentU;
+            this.patient = patient;
+            this.currentUser = currentUser;
+            this.source = source;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             if (textBoxPassword.Text != currentUser.Password)
             {
-                MessageBox.Show("Invalid password!");
+                string msg = "Invalid password!";
+                FormMessage FormMessage = new FormMessage(msg);
+                FormMessage.ShowDialog();
                 return;
             }
 
-            Patient.ChangePatientStatus(patient);
+            if (source == "activate" || source == "deactivate")
+            {
+                Patient.ChangePatientStatus(patient);
+
+            }
+            else if (source == "remove")
+            {
+                Patient.RemovePatient(patient);
+            }
+                
             FormPatientList formPatientList = new FormPatientList(currentUser);
-            this.Hide();
+            Close();
             formPatientList.ShowDialog();
-            this.Close();
+            
+            
         }
 
         private void FormChangeStatusOfPatient_Load(object sender, EventArgs e)
@@ -46,9 +60,9 @@ namespace GUI_Management_of_medical_clinic
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             FormPatientList formPatientList = new FormPatientList(currentUser);
-            this.Hide();
+            Close();
             formPatientList.ShowDialog();
-            this.Close();
+            
         }
     }
 }
