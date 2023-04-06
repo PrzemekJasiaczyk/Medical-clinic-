@@ -161,16 +161,16 @@ namespace GUI_Management_of_medical_clinic
         private void buttonExit_Click(object sender, EventArgs e)
         {
             FormMenuPatient formMenuPatient = new FormMenuPatient(currentUser);
+            Hide();
             formMenuPatient.ShowDialog();
-            Close();
         }
 
         private void buttonAddPatient_Click(object sender, EventArgs e)
         {
             Patient patient = new Patient();
             FormAddEditPatient formAddEditPatient = new FormAddEditPatient(currentUser, patient);
+            Hide();
             formAddEditPatient.ShowDialog();
-            Close();
         }
 
         private void buttonActivatePatient_Click(object sender, EventArgs e)
