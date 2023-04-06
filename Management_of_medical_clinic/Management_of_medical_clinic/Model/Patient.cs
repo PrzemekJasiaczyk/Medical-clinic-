@@ -48,10 +48,20 @@ namespace Console_Management_of_medical_clinic.Model
 
         public static Patient FindPatient(int PatientId)
         {
-            Patient patient = new Patient();
             AppDbContext _context = new AppDbContext();
+            
+            Patient patient = new Patient();
             patient = _context.Patients.Find(PatientId);
             return patient;
+        }
+
+        public static void RemovePatient(Patient patient)
+        {
+            AppDbContext _context = new AppDbContext();
+
+            _context.Patients.Remove(patient);
+            _context.SaveChanges();
+            return;
         }
     }
 }
