@@ -222,7 +222,10 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonEditPatient_Click(object sender, EventArgs e)
         {
-            FormAddEditPatient formAddEditPatient = new FormAddEditPatient(currentUser);
+            Patient patient = new Patient();
+            patient = Patient.FindPatient((int)dataGridViewPatientList.SelectedRows[0].Cells[0].Value);
+
+            FormAddEditPatient formAddEditPatient = new FormAddEditPatient(currentUser, patient);
             formAddEditPatient.ShowDialog();
             Close();
         }

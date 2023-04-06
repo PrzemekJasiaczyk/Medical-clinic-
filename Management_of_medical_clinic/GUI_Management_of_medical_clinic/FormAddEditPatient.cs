@@ -54,6 +54,13 @@ namespace GUI_Management_of_medical_clinic
         {
             comboBoxSex.DataSource = Enum.GetValues(typeof(EnumSex));
         }
+        void AddOrEditPatient()
+        {
+            //if(patient.PatientId == )
+            //{
+
+            //}
+        }
 
         private void FormAddEditPatient_FormClosing(object sender, FormClosingEventArgs e)
         {
