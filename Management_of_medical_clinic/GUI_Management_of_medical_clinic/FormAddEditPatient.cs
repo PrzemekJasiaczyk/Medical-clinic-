@@ -41,15 +41,6 @@ namespace GUI_Management_of_medical_clinic
 
         }
 
-        //private void buttonCancel_Click(object sender, EventArgs e)
-        //{
-        //    FormAddEditPatient.ActiveForm.Close();
-
-        //    FormPatientList formPatientList = new FormPatientList(currentUser);
-        //    Close();
-        //    formPatientList.ShowDialog();
-        //}
-
         private void buttonAddEditPatient_Click(object sender, EventArgs e)
         {
             // zmiana lub dodanie pacjenta +++ dodanie walidacji
