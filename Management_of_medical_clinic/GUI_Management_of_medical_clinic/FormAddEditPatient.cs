@@ -94,6 +94,8 @@ namespace GUI_Management_of_medical_clinic
             dateTimePickerBirthDate.Value = patient.BirthDate;
             maskedTextBoxPESEL.Text = patient.PESEL;
 
+            comboBoxSex.SelectedItem = patient.Sex;
+
             //wybieranie w combo płci
         }
 
@@ -112,6 +114,8 @@ namespace GUI_Management_of_medical_clinic
         private void FindEditPatientInDataBase()
         {
             // szukanie w bazie pacjenta edytowanego, zmienienie mu pól i zapisanie zmian
+            // można to zrobić w klasie Patient ale trzeba by było przekazać wszystkie pola do tego więc nie wiem czy by
+            // to było dobre rozwiązanie
 
             AppDbContext _context = new AppDbContext();
             patient = _context.Patients.Find(patient.PatientId);
@@ -125,7 +129,7 @@ namespace GUI_Management_of_medical_clinic
             // zmiana lub dodanie pacjenta +++ dodanie walidacji
 
             patient.PESEL = maskedTextBoxPESEL.Text;
-            patient.Sex = (EnumSex)comboBoxSex.SelectedItem;  // pewnie źle
+            patient.Sex = (EnumSex)comboBoxSex.SelectedItem;
 
             patient.BirthDate = dateTimePickerBirthDate.Value;
 
