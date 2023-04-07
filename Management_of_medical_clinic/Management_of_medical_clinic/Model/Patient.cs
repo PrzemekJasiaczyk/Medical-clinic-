@@ -71,5 +71,14 @@ namespace Console_Management_of_medical_clinic.Model
             _context.Patients.Add(patient);
             _context.SaveChanges();
         }
+
+        public static void EditPatient(Patient patient)
+        {
+            AppDbContext _context = new AppDbContext();
+
+            patient = _context.Patients.Find(patient.PatientId);
+
+
+        }
     }
 }

@@ -50,10 +50,7 @@ namespace GUI_Management_of_medical_clinic
             if (newPatinet == true) 
             {
                 patient = new Patient();
-                //AddNewPatientToDataBase();
-                // dodawanie działa
 
-                //v2
                 ChangeOrAddPatientData();
                 Patient.AddPatient(patient);
 
@@ -62,7 +59,9 @@ namespace GUI_Management_of_medical_clinic
             {
                 FindEditPatientInDataBase();
             }
+            
             ComeToPatientList();
+
         }
 
         private void buttonBack_Click(object sender, EventArgs e)
@@ -108,40 +107,22 @@ namespace GUI_Management_of_medical_clinic
         {
             dateTimePickerBirthDate.MaxDate = DateTime.Today.AddHours(+1);
             dateTimePickerBirthDate.MinDate = DateTime.Today.AddYears(-100);
-
         }
 
         private void FindEditPatientInDataBase()
         {
             // szukanie w bazie pacjenta edytowanego, zmienienie mu pól i zapisanie zmian
 
-            using (AppDbContext db = new AppDbContext())
-            {
-                Patient editPatient = Patient.FindPatient((int)patient.PatientId);
-
-               if (editPatient != null)
-               {
-                    ChangeOrAddPatientData();
-                    db.SaveChanges();
-               }
-            }
-        }
-
-        private void AddNewPatientToDataBase()
-        {
-            using (AppDbContext db = new AppDbContext())
-            {
-                ChangeOrAddPatientData();
-                db.Patients.Add(patient);
-                db.SaveChanges();
-            }
+            AppDbContext _context = new AppDbContext();
+            patient = _context.Patients.Find(patient.PatientId);
+            ChangeOrAddPatientData();
+            _context.SaveChanges();
         }
 
 
         private void ChangeOrAddPatientData()
         {
             // zmiana lub dodanie pacjenta +++ dodanie walidacji
-            // jesli newPatient = true -- dodaje nowy obiekt, inaczej zamieniam stary
 
             patient.PESEL = maskedTextBoxPESEL.Text;
             patient.Sex = (EnumSex)comboBoxSex.SelectedItem;  // pewnie źle
