@@ -63,5 +63,13 @@ namespace Console_Management_of_medical_clinic.Model
             _context.SaveChanges();
             return;
         }
+
+
+        public static void AddPatient(Patient patient)
+        {
+            AppDbContext _context = new AppDbContext();
+            _context.Patients.Add(patient);
+            _context.SaveChanges();
+        }
     }
 }

@@ -1,5 +1,7 @@
-﻿using Console_Management_of_medical_clinic.Data.Enums;
+﻿using Console_Management_of_medical_clinic.Data;
+using Console_Management_of_medical_clinic.Data.Enums;
 using Console_Management_of_medical_clinic.Model;
+using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +19,7 @@ namespace GUI_Management_of_medical_clinic
     {
         EmployeeModel currentUser;
         Patient patient;
+        bool newPatinet = false;
 
         public FormAddEditPatient(EmployeeModel currentUser, Patient? patient)
         {
@@ -32,7 +35,8 @@ namespace GUI_Management_of_medical_clinic
 
             if (patient == null)
             {
-                dateTimePickerBirthDate.Value = DateTime.Now;
+                //dateTimePickerBirthDate.Value = DateTime.Now;
+                newPatinet = true;
                 return;
             }
 
@@ -43,27 +47,41 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonAddEditPatient_Click(object sender, EventArgs e)
         {
-            // zmiana lub dodanie pacjenta +++ dodanie walidacji
+            if (newPatinet == true) 
+            {
+                patient = new Patient();
+                //AddNewPatientToDataBase();
+                // dodawanie działa
 
-            //patient.PESEL = maskedTextBoxPESEL.Text;
-            //patient.Sex = (EnumSex)comboBoxSex.SelectedItem;  // pewnie źle
+                //v2
+                ChangeOrAddPatientData();
+                Patient.AddPatient(patient);
 
-            patient.BirthDate = dateTimePickerBirthDate.Value;
-
-            //patient.FirstName = textBoxName.Text;
-            //patient.LastName = textBoxLastName.Text;
+            }
+            else
+            {
+                FindEditPatientInDataBase();
+            }
+            ComeToPatientList();
         }
 
         private void buttonBack_Click(object sender, EventArgs e)
         {
             // temp
+            ComeToPatientList();
+        }
+
+
+        // ----------------------------------------------------------- FUNCTIONS ----------------------------------------------------------------- //
+
+
+        private void ComeToPatientList()
+        {
             FormAddEditPatient.ActiveForm.Close();
             FormPatientList formPatientList = new FormPatientList(currentUser);
             formPatientList.ShowDialog();
         }
 
-
-        // FUNCTIONS
 
         private void CompleteComboBox()
         {
@@ -91,6 +109,48 @@ namespace GUI_Management_of_medical_clinic
             dateTimePickerBirthDate.MaxDate = DateTime.Today.AddHours(+1);
             dateTimePickerBirthDate.MinDate = DateTime.Today.AddYears(-100);
 
+        }
+
+        private void FindEditPatientInDataBase()
+        {
+            // szukanie w bazie pacjenta edytowanego, zmienienie mu pól i zapisanie zmian
+
+            using (AppDbContext db = new AppDbContext())
+            {
+                Patient editPatient = Patient.FindPatient((int)patient.PatientId);
+
+               if (editPatient != null)
+               {
+                    ChangeOrAddPatientData();
+                    db.SaveChanges();
+               }
+            }
+        }
+
+        private void AddNewPatientToDataBase()
+        {
+            using (AppDbContext db = new AppDbContext())
+            {
+                ChangeOrAddPatientData();
+                db.Patients.Add(patient);
+                db.SaveChanges();
+            }
+        }
+
+
+        private void ChangeOrAddPatientData()
+        {
+            // zmiana lub dodanie pacjenta +++ dodanie walidacji
+            // jesli newPatient = true -- dodaje nowy obiekt, inaczej zamieniam stary
+
+            patient.PESEL = maskedTextBoxPESEL.Text;
+            patient.Sex = (EnumSex)comboBoxSex.SelectedItem;  // pewnie źle
+
+            patient.BirthDate = dateTimePickerBirthDate.Value;
+
+            patient.FirstName = textBoxName.Text;
+            patient.LastName = textBoxLastName.Text;
+            patient.IsActive = true;
         }
     }
 }
