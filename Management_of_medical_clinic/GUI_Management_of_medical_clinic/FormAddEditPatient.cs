@@ -95,8 +95,6 @@ namespace GUI_Management_of_medical_clinic
             maskedTextBoxPESEL.Text = patient.PESEL;
 
             comboBoxSex.SelectedItem = patient.Sex;
-
-            //wybieranie w combo płci
         }
 
         private void ChangeTitle(string title)
