@@ -6,17 +6,33 @@ namespace Console_Management_of_medical_clinic.Logic
 {
     public class EmployeeService
     {
-        public static void AddEmployee(string firstName, string lastName, string pesel, string dateOfBirth, string role, string correspondenceAddress, string email, string phoneNumber,
-            EnumSex sex, string username, string password, SpecializationModel idSpecialization, bool isActive)
+        public static void AddEmployee(string firstName, string lastName, string pesel, string dateOfBirth,  string correspondenceAddress, string email, string phoneNumber,
+            EnumSex sex, string username, string password, EnumEmployeeRoles role, int idSpecialization, bool isActive)
         {
 
-            EmployeeModel employee = new EmployeeModel(firstName, lastName, pesel, dateOfBirth, role, correspondenceAddress, email, phoneNumber,
-            sex, username, password, idSpecialization, isActive);
+            EmployeeModel employee = new EmployeeModel(firstName, lastName, pesel, dateOfBirth, correspondenceAddress, email, phoneNumber,
+            sex, role, idSpecialization, isActive);
 
             using AppDbContext context = new AppDbContext();
 
             context.DbEmployees.Add(employee);
             context.SaveChanges();
+        }
+
+        public static bool AddEmployee(EmployeeModel newEmployee)
+        {
+            
+            try
+            {
+                using AppDbContext context = new AppDbContext();
+                context.DbEmployees.Add(newEmployee);
+                context.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }  
         }
 
         public static List<EmployeeModel> GetEmployeesData()
@@ -27,31 +43,24 @@ namespace Console_Management_of_medical_clinic.Logic
                 employees = db.DbEmployees.ToList();
             }
 
+
+
             return employees;
         }
-
-        public EmployeeService() 
+        
+        public static EmployeeModel GetEmployeeByUserId(UserModel user)
         {
-            
-        }
-        public static bool CheckIfUsernameExists(string username)
-        {
-            List<EmployeeModel> employees = EmployeeService.GetEmployeesData();
+            List<EmployeeModel> employees = GetEmployeesData();
 
-
-            foreach (EmployeeModel employee in employees)
+            foreach(EmployeeModel employee in employees)
             {
-                if (employee.Username == username)
+                if (employee.IdEmployee == user.IdEmployee)
                 {
-                    return true;
+                    return employee;
                 }
             }
-            return false;
+            return null;
         }
-
-        
-
-        
 
 
 
@@ -81,12 +90,12 @@ namespace Console_Management_of_medical_clinic.Logic
                 return ("PESEL doesn't fit the date of birth", false);
             }
 
-            if (currentIndex == 1 && input.Substring(input.Length - 2, 1)[0] % 2 == 0)
+            if (currentIndex == 0 && input.Substring(input.Length - 2, 1)[0] % 2 == 0)
             {
                 return ("PESEL doesn't fit the sex", false);
             }
 
-            if (currentIndex == 2 && input.Substring(input.Length - 2, 1)[0] % 2 == 1)
+            if (currentIndex == 1 && input.Substring(input.Length - 2, 1)[0] % 2 == 1)
             {
                 return ("PESEL doesn't fit the sex", false);
             }
@@ -127,7 +136,7 @@ namespace Console_Management_of_medical_clinic.Logic
                     return ("The last '.' sign has to have characters behind and after it,\nand it has to be after the '@' sign", false);
                 }
 
-                if (!input.Contains(name))
+                if (!input.Contains(name.ToLower()))
                 {
                     return ("E-mail needs to contain the recipient's name", false);
                 }

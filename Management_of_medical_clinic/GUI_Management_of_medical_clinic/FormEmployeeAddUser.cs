@@ -12,27 +12,29 @@ using System.Windows.Forms;
 
 namespace GUI_Management_of_medical_clinic
 {
-    public partial class FormEmployeeSetPassword : Form
+    public partial class FormEmployeeAddUser : Form
     {
-        EmployeeModel currentUser;
-        public FormEmployeeSetPassword(EmployeeModel currentU)
+        EmployeeModel currentEmployee;
+        EmployeeModel newEmployee;
+        public FormEmployeeAddUser(EmployeeModel currentE, EmployeeModel newE)
         {
             InitializeComponent();
-            currentUser = currentU;
+            currentEmployee = currentE;
+            newEmployee = newE;
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            FormEmployeeList employeeList = new FormEmployeeList(currentUser);
+            FormEmployeeList employeeList = new FormEmployeeList(currentEmployee);
             this.Hide();
             employeeList.ShowDialog();
             this.Close();
         }
 
-        private void buttonNext_Click(object sender, EventArgs e)
+        private void buttonCreate_Click(object sender, EventArgs e)
         {
             string username = textBoxUsername.Text;
-            if (EmployeeService.CheckIfUsernameExists(username))
+            if (UserService.CheckIfUsernameExists(username))
             {
                 MessageBox.Show("Username is already taken");
                 return;
@@ -45,7 +47,25 @@ namespace GUI_Management_of_medical_clinic
 
             MessageBox.Show("<<Success, but button doesn't work yet>>");
 
-            FormEmployeeList employeeList = new FormEmployeeList(currentUser);
+            FormEmployeeList employeeList = new FormEmployeeList(currentEmployee);
+            this.Hide();
+            employeeList.ShowDialog();
+            this.Close();
+        }
+
+        public void buttonSkip_Click(object sender, EventArgs e)
+        {
+
+            if (EmployeeService.AddEmployee(newEmployee))
+            {
+                MessageBox.Show("Employee without user added successfully");
+            }
+            else
+            {
+                MessageBox.Show("Employee not added. Error");
+            }
+
+            FormEmployeeList employeeList = new FormEmployeeList(currentEmployee);
             this.Hide();
             employeeList.ShowDialog();
             this.Close();
@@ -55,11 +75,11 @@ namespace GUI_Management_of_medical_clinic
         {
             if (textBoxUsername.Text.Length > 0 && textBoxPassword.Text.Length > 0 && textBoxPasswordConfirm.Text.Length > 0)
             {
-                buttonNext.Enabled = true;
+                buttonAssign.Enabled = true;
             }
             else
             {
-                buttonNext.Enabled = false;
+                buttonAssign.Enabled = false;
             }
         }
 
@@ -77,5 +97,6 @@ namespace GUI_Management_of_medical_clinic
         {
             checkIfRequiredFilled();
         }
+
     }
 }

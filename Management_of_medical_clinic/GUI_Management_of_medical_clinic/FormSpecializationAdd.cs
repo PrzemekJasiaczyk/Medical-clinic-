@@ -32,19 +32,20 @@ namespace GUI_Management_of_medical_clinic
         {
             List<SpecializationModel> specializations = SpecializationService.GetSpecializationsData();
             dataGridViewSpecializations.DataSource = specializations;
+
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             FormEmployeeList employeeList = new FormEmployeeList(currentUser);
-            this.Hide();
+            //this.Hide();
             employeeList.ShowDialog();
             this.Close();
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            string specializationToAdd = textBoxAdd.Text;
+            string specializationToAdd = textBoxName.Text;
 
             if (SpecializationService.CheckIfSpecializationExists(specializationToAdd))
             {
@@ -62,63 +63,54 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonReplace_Click(object sender, EventArgs e)
         {
-            string specializationToRemove = textBoxRemove.Text;
+            string nameSpecialization = textBoxName.Text;
+            int idSpecialization = SpecializationService.getSpecializationIdByName(nameSpecialization);
 
-            MessageBox.Show(SpecializationService.RemoveSpecialization(specializationToRemove));
+            if (idSpecialization == 0)
+            {
+                MessageBox.Show("There in no such specialization in the database");
+                return;
+            }
+
+            if (SpecializationService.checkIfSpecializationIsAssigned(EmployeeService.GetEmployeesData(), SpecializationService.getSpecializationIdByName(nameSpecialization)))
+            {
+                MessageBox.Show("Specialization can not be removed, it is being used by employees");
+                return;
+            }
+
+            SpecializationService.RemoveSpecialization(nameSpecialization);
             loadDataGridView();
         }
 
-        private void textBoxAdd_TextChanged(object sender, EventArgs e)
-        {
-            if (textBoxAdd.Text.Length > 0)
-            {
-                buttonAdd.Enabled = true;
-            }
-            else
-            {
-                buttonAdd.Enabled = false;
-            }
-        }
-
-        private void textBoxRemove_TextChanged(object sender, EventArgs e)
-        {
-            if (textBoxRemove.Text.Length > 0)
-            {
-                buttonRemove.Enabled= true;
-            }
-            else
-            {
-                buttonRemove.Enabled = false;
-            }
-        }
-
-        private void textBoxEditPrevious_TextChanged(object sender, EventArgs e)
-        {
-            if (textBoxEditPrevious.Text.Length > 0 && textBoxEditNew.Text.Length > 0)
-            {
-                buttonReplace.Enabled= true;
-            }
-            else
-            {
-                buttonReplace.Enabled = false;
-            }
-        }
-
-        private void textBoxEditNew_TextChanged(object sender, EventArgs e)
-        {
-            if (textBoxEditPrevious.Text.Length > 0 && textBoxEditNew.Text.Length > 0)
-            {
-                buttonReplace.Enabled = true;
-            }
-            else
-            {
-                buttonReplace.Enabled = false;
-            }
-        }
 
         private void buttonReplace_Click_1(object sender, EventArgs e)
         {
             MessageBox.Show("<<THIS BUTTON DOESN'T WORK YET>>");
+        }
+
+        private void textBoxName_TextChanged(object sender, EventArgs e)
+        {
+            if (textBoxName.Text.Length > 0)
+            {
+                buttonAdd.Enabled = true;
+                buttonRemove.Enabled = true;
+                buttonReplace.Enabled = true;
+            }
+            else
+            {
+                buttonAdd.Enabled = false;
+                buttonRemove.Enabled = false;
+                buttonReplace.Enabled= false;
+            }
+        }
+
+        private void dataGridViewSpecializations_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                string nameValue = dataGridViewSpecializations.Rows[e.RowIndex].Cells[1].Value.ToString();
+                textBoxName.Text = nameValue;
+            }
         }
     }
 }

@@ -23,7 +23,6 @@ namespace Console_Management_of_medical_clinic.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("CorrespondenceAddress")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("DateOfBirth")
@@ -31,14 +30,13 @@ namespace Console_Management_of_medical_clinic.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("IdSpecialization1")
+                    b.Property<int?>("IdSpecialization")
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsActive")
@@ -52,28 +50,18 @@ namespace Console_Management_of_medical_clinic.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("PhoneNumber")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Role")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("Sex")
+                    b.Property<int>("Role")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Username")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int?>("Sex")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("IdEmployee");
 
-                    b.HasIndex("IdSpecialization1");
+                    b.HasIndex("IdSpecialization");
 
                     b.ToTable("DbEmployees");
                 });
@@ -194,13 +182,65 @@ namespace Console_Management_of_medical_clinic.Migrations
                     b.ToTable("Visit");
                 });
 
+            modelBuilder.Entity("Console_Management_of_medical_clinic.Model.UserModel", b =>
+                {
+                    b.Property<int>("IdUser")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("IdEmployee")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Role")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("IdUser");
+
+                    b.HasIndex("IdEmployee")
+                        .IsUnique();
+
+                    b.ToTable("DbUsers");
+                });
+
             modelBuilder.Entity("Console_Management_of_medical_clinic.Model.EmployeeModel", b =>
                 {
-                    b.HasOne("Console_Management_of_medical_clinic.Model.SpecializationModel", "IdSpecialization")
-                        .WithMany()
-                        .HasForeignKey("IdSpecialization1");
+                    b.HasOne("Console_Management_of_medical_clinic.Model.SpecializationModel", "SpecializationModel")
+                        .WithMany("EmployeeModels")
+                        .HasForeignKey("IdSpecialization");
 
-                    b.Navigation("IdSpecialization");
+                    b.Navigation("SpecializationModel");
+                });
+
+            modelBuilder.Entity("Console_Management_of_medical_clinic.Model.UserModel", b =>
+                {
+                    b.HasOne("Console_Management_of_medical_clinic.Model.EmployeeModel", "EmployeeModel")
+                        .WithOne("UserModel")
+                        .HasForeignKey("Console_Management_of_medical_clinic.Model.UserModel", "IdEmployee")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("EmployeeModel");
+                });
+
+            modelBuilder.Entity("Console_Management_of_medical_clinic.Model.EmployeeModel", b =>
+                {
+                    b.Navigation("UserModel");
+                });
+
+            modelBuilder.Entity("Console_Management_of_medical_clinic.Model.SpecializationModel", b =>
+                {
+                    b.Navigation("EmployeeModels");
                 });
 
             modelBuilder.Entity("Console_Management_of_medical_clinic.Model.Visit", b =>

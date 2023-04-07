@@ -2,66 +2,69 @@
 using Console_Management_of_medical_clinic.Data.Enums;
 using Console_Management_of_medical_clinic.Logic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Console_Management_of_medical_clinic.Model
 {
     public class EmployeeModel
     {
         [Key] public int IdEmployee { get; set; }
+        
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string PESEL { get; set; }
         public string DateOfBirth { get; set; }
-        public string Role { get; set; }
-        public string CorrespondenceAddress { get; set; }
-        public string Email { get; set; }
-        public string PhoneNumber { get; set; }
-        public EnumSex Sex { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public SpecializationModel IdSpecialization { get; set; }
+        public string? CorrespondenceAddress { get; set; }
+        public string? Email { get; set; }
+        public string? PhoneNumber { get; set; }
+        public EnumSex? Sex { get; set; }
+        public EnumEmployeeRoles Role { get; set; }
         public bool IsActive { get; set; }
+        //Relationships
+        public UserModel? UserModel { get; set; }
+        [ForeignKey("SpecializationModel")] public int? IdSpecialization { get; set; }
+        public SpecializationModel? SpecializationModel { get; set; }
 
         public List<Visit> Visits { get; set; } = new List<Visit>();
 
         public EmployeeModel() { }
 
-        public EmployeeModel(int idEmployee, string firstName, string lastName, string pesel, string dateOfBirth, string role, string correspondenceAddress, string email, string phoneNumber,
-            EnumSex sex, string username, string password, SpecializationModel idSpecialization, bool isActive)
+        public EmployeeModel(string firstName, string lastName, string pesel, string dateOfBirth, string correspondenceAddress,
+            string email, string phoneNumber, EnumSex sex, EnumEmployeeRoles role, int idSpecialization, bool isActive)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            PESEL = pesel;
+            DateOfBirth = dateOfBirth;
+            CorrespondenceAddress = correspondenceAddress;
+            Email = email;
+            PhoneNumber = phoneNumber;
+            Sex = sex;
+            Role = role;
+            IdSpecialization = idSpecialization;
+            IsActive = isActive;
+        }
+
+        public EmployeeModel(int idEmployee, string firstName, string lastName, string pesel, string dateOfBirth, string correspondenceAddress,
+            string email, string phoneNumber, EnumSex sex, EnumEmployeeRoles role, int idSpecialization, bool isActive)
         {
             IdEmployee = idEmployee;
             FirstName = firstName;
             LastName = lastName;
             PESEL = pesel;
             DateOfBirth = dateOfBirth;
-            Role = role;
             CorrespondenceAddress = correspondenceAddress;
             Email = email;
             PhoneNumber = phoneNumber;
             Sex = sex;
-            Username = username;
-            Password = password;
+            Role = role;
             IdSpecialization = idSpecialization;
             IsActive = isActive;
         }
 
-        public EmployeeModel(string firstName, string lastName, string pesel, string dateOfBirth, string role, string correspondenceAddress, string email, string phoneNumber,
-            EnumSex sex, string username, string password, SpecializationModel idSpecialization, bool isActive)
-        {
-            FirstName = firstName;
-            LastName = lastName;
-            PESEL = pesel;
-            DateOfBirth = dateOfBirth;
-            Role = role;
-            CorrespondenceAddress = correspondenceAddress;
-            Email = email;
-            PhoneNumber = phoneNumber;
-            Sex = sex;
-            Username = username;
-            Password = password;
-            IdSpecialization = idSpecialization;
-            IsActive = isActive;
-        }
 
         public static void ChangeEmployeeStatus(EmployeeModel employee)
         {
@@ -84,7 +87,9 @@ namespace Console_Management_of_medical_clinic.Model
                 return;
             }
         }
+        
 
+        
         public static EmployeeModel FindEmployee(int IdEmployee)
         {
             EmployeeModel emp = new EmployeeModel();
@@ -94,7 +99,7 @@ namespace Console_Management_of_medical_clinic.Model
             return emp;
         }
 
-        public static List<EmployeeModel> FilterEmployees(string role, bool isActive)
+        public static List<EmployeeModel> FilterEmployees(EnumEmployeeRoles role, bool isActive)
         {
             List<EmployeeModel> employees = new List<EmployeeModel>();
             foreach (EmployeeModel employee in EmployeeService.GetEmployeesData())
@@ -107,20 +112,24 @@ namespace Console_Management_of_medical_clinic.Model
 
             return employees;
         }
+        
 
-        public static void EditEmployee(int IdEmployee, string firstName, string lastName, string pesel, string dateOfBirth, string role, string correspondenceAddress, string email, string phoneNumber,
+        public static void EditEmployee(int IdEmployee, /*int idUser*/ string firstName, string lastName, string pesel, string dateOfBirth, EnumEmployeeRoles rolem, string correspondenceAddress, string email, string phoneNumber,
             EnumSex sex)
         {
             var context = new AppDbContext();
-            EmployeeModel emp = context.DbEmployees.Find(IdEmployee);
+            var emp = context.DbEmployees.Find(IdEmployee);
+            //emp.IdUser = idUser;
             emp.FirstName = firstName;
             emp.LastName = lastName;
             emp.PESEL = pesel;
             emp.DateOfBirth = dateOfBirth;
-            emp.Role = role;
             emp.CorrespondenceAddress = correspondenceAddress;
+            emp.Email = email;
+            emp.PhoneNumber = phoneNumber;
             emp.Sex = sex;
             context.SaveChanges();
         }
+
     }
 }

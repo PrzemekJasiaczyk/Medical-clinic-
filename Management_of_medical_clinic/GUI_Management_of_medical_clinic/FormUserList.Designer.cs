@@ -108,6 +108,7 @@
             buttonAddUser.TabIndex = 27;
             buttonAddUser.Text = "Add new user";
             buttonAddUser.UseVisualStyleBackColor = true;
+            buttonAddUser.Click += buttonAddUser_Click;
             // 
             // buttonFilterUser
             // 
@@ -122,7 +123,7 @@
             // comboBoxRole
             // 
             comboBoxRole.FormattingEnabled = true;
-            comboBoxRole.Items.AddRange(new object[] { "Medical Doctor", "Nurse", "Paramedic", "Janitor", "Technitian" });
+            comboBoxRole.Items.AddRange(new object[] { "Administrator", "Employee" });
             comboBoxRole.Location = new Point(8, 361);
             comboBoxRole.Name = "comboBoxRole";
             comboBoxRole.Size = new Size(100, 23);
