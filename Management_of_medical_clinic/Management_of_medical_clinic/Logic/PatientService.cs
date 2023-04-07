@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using Console_Management_of_medical_clinic.Data;
+﻿using Console_Management_of_medical_clinic.Data;
 using Console_Management_of_medical_clinic.Data.Enums;
 using Console_Management_of_medical_clinic.Model;
+using System.Text.RegularExpressions;
 
 namespace Console_Management_of_medical_clinic.Logic
 {
-    public class PatientService
+	public class PatientService
     {
         public List<Patient> GetPatientData()
         {
@@ -20,7 +15,6 @@ namespace Console_Management_of_medical_clinic.Logic
             }
         }
 
-        // TODO: Digits and special characters
         public bool IsValidName(string patientName, out string errorMessage)
         {
             // White space checking
@@ -38,6 +32,7 @@ namespace Console_Management_of_medical_clinic.Logic
             }
 
             // Characters checking
+            // Only letters, spaces and dashes
             bool onlyLetters = Regex.IsMatch(patientName, @"^[A-ZĄĆĘŁŃÓŚŹŻa-ząćęłńóśźż -]+$");
 
             if (!onlyLetters) 
@@ -64,10 +59,10 @@ namespace Console_Management_of_medical_clinic.Logic
             return true;
         }
 
-        public bool IsValidPESEL(Patient patient, out string errorMessage)
+        public bool IsValidPESEL(string pesel, DateTime birthdate, EnumSex sex, out string errorMessage)
         {
 			// Length checking
-			int length = patient.PESEL.Length;
+			int length = pesel.Length;
 
 			if (length != 11)
 			{
@@ -88,7 +83,8 @@ namespace Console_Management_of_medical_clinic.Logic
 			}
 
             // Characters checking
-            bool onlyDigits = Regex.IsMatch(patient.PESEL, @"^\d+$");
+            // Only digits
+            bool onlyDigits = Regex.IsMatch(pesel, @"^\d+$");
 
             if (!onlyDigits ) 
             {
@@ -97,11 +93,11 @@ namespace Console_Management_of_medical_clinic.Logic
             }
 
 			// Birth date checking
-			string dateOfBirth = patient.BirthDate.ToString("yy/MM/dd");
-            dateOfBirth = dateOfBirth.Replace("/", "");
+			string dateOfBirth = birthdate.ToString("yy/MM/dd");
+            dateOfBirth = dateOfBirth.Replace(".", "");
 
             string pattern = $@"^{dateOfBirth}\d*";
-            bool isMatch = Regex.IsMatch(patient.PESEL, pattern);
+            bool isMatch = Regex.IsMatch(pesel, pattern);
 
             if (!isMatch) 
             {
@@ -110,14 +106,16 @@ namespace Console_Management_of_medical_clinic.Logic
             }
 
             // Gender checking
-            int genderNumber = (int)patient.PESEL[9];
+            // Male: only odd numbers
+            // Female: 0 or even numbers
+            int genderNumber = (int)pesel[9];
 
-            if (patient.Sex == EnumSex.Male && genderNumber % 3 != 0 || genderNumber == 0) 
+            if (sex == EnumSex.Male && genderNumber % 2 == 0) 
             {
                 errorMessage = "PESEL has incorrect gender. For men it's an odd number.";
                 return false;
             }
-            else if (patient.Sex == EnumSex.Female && genderNumber % 2 != 0) 
+            else if (sex == EnumSex.Female && genderNumber % 2 != 0 || genderNumber == 0) 
             {
 				errorMessage = "PESEL has incorrect gender. For women it's 0 or even number";
 				return false;
@@ -126,7 +124,7 @@ namespace Console_Management_of_medical_clinic.Logic
             // Uniqueness checking
             using (AppDbContext context = new())
             {
-                bool patientExist = context.Patients.Any(p => p.PESEL == patient.PESEL);
+                bool patientExist = context.Patients.Any(p => p.PESEL == pesel);
 
                 if (patientExist) 
                 {
