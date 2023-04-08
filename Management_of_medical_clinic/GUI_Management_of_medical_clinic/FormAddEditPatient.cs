@@ -28,6 +28,11 @@ namespace GUI_Management_of_medical_clinic
 			CompleteComboBox();
 			this.currentUser = currentUser;
 			this.patient = patient;
+		}
+
+		private void FormAddEditPatient_Load(object sender, EventArgs e)
+		{
+			SetPropertiesDateTimePicker();
 
 			if (patient == null)
 			{
@@ -35,11 +40,6 @@ namespace GUI_Management_of_medical_clinic
 				isNewPatient = true;
 				return;
 			}
-		}
-
-		private void FormAddEditPatient_Load(object sender, EventArgs e)
-		{
-			SetPropertiesDateTimePicker();
 
 			ChangeTitle("Edit patient");
 			CompleteControls();
