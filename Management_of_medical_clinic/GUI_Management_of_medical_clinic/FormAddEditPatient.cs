@@ -20,55 +20,55 @@ namespace GUI_Management_of_medical_clinic
 	{
 		EmployeeModel currentUser;
 		Patient patient;
-		bool newPatinet = false;
+		bool isNewPatient = false;
 
 		public FormAddEditPatient(EmployeeModel currentUser, Patient? patient)
 		{
 			InitializeComponent();
+			CompleteComboBox();
 			this.currentUser = currentUser;
 			this.patient = patient;
-		}
-
-		private void FormAddEditPatient_Load(object sender, EventArgs e)
-		{
-			CompleteComboBox();
-			SetPropertiesDateTimePicker();
 
 			if (patient == null)
 			{
 				//dateTimePickerBirthDate.Value = DateTime.Now;
-				newPatinet = true;
+				isNewPatient = true;
 				return;
 			}
+		}
+
+		private void FormAddEditPatient_Load(object sender, EventArgs e)
+		{
+			SetPropertiesDateTimePicker();
 
 			ChangeTitle("Edit patient");
 			CompleteControls();
-
 		}
 
 		private void buttonAddEditPatient_Click(object sender, EventArgs e)
 		{
-			if (newPatinet == true)
+			if (isCompletedForm())
 			{
-				patient = new Patient();
+				if (isNewPatient == true)
+				{
+					patient = new Patient();
 
-				ChangeOrAddPatientData();
+					ChangeOrAddPatientData();
 
-				Patient.AddPatient(patient);
+					Patient.AddPatient(patient);
+				}
+				else
+				{
+					FindEditPatientInDataBase();
+				}
 
+				ComeToPatientList();
 			}
-			else
-			{
-				FindEditPatientInDataBase();
-			}
-
-			ComeToPatientList();
-
 		}
 
 		private void buttonBack_Click(object sender, EventArgs e)
 		{
-			// temp
+			// temps
 			ComeToPatientList();
 		}
 
@@ -87,6 +87,7 @@ namespace GUI_Management_of_medical_clinic
 		private void CompleteComboBox()
 		{
 			comboBoxSex.DataSource = Enum.GetValues(typeof(EnumSex));
+
 		}
 		private void CompleteControls()
 		{
@@ -148,7 +149,7 @@ namespace GUI_Management_of_medical_clinic
 
 			if (!_patientValidator.IsValidName(textBoxName.Text, out errorMessage))
 			{
-				e.Cancel = true;
+				e.Cancel = false;
 				ErrorProviderFirstName.SetError(textBoxName, errorMessage);
 				textBoxName.BackColor = Color.LightPink;
 			}
@@ -156,8 +157,13 @@ namespace GUI_Management_of_medical_clinic
 
 		private void textBoxName_Validated(object sender, EventArgs e)
 		{
-			ErrorProviderFirstName.SetError(textBoxName, "");
-			textBoxName.BackColor = SystemColors.Window;
+			string errorMessage;
+
+			if (_patientValidator.IsValidName(textBoxName.Text, out errorMessage))
+			{
+				ErrorProviderFirstName.SetError(textBoxName, "");
+				textBoxName.BackColor = SystemColors.Window;
+			}
 		}
 
 		private void textBoxLastName_Validating(object sender, CancelEventArgs e)
@@ -166,7 +172,7 @@ namespace GUI_Management_of_medical_clinic
 
 			if (!_patientValidator.IsValidName(textBoxLastName.Text, out errorMessage))
 			{
-				e.Cancel = true;
+				e.Cancel = false;
 				ErrorProviderLastName.SetError(textBoxLastName, errorMessage);
 				textBoxLastName.BackColor = Color.LightPink;
 			}
@@ -174,8 +180,13 @@ namespace GUI_Management_of_medical_clinic
 
 		private void textBoxLastName_Validated(object sender, EventArgs e)
 		{
-			ErrorProviderLastName.SetError(textBoxLastName, "");
-			textBoxLastName.BackColor = SystemColors.Window;
+			string errorMessage;
+
+			if (_patientValidator.IsValidName(textBoxLastName.Text, out errorMessage))
+			{
+				ErrorProviderLastName.SetError(textBoxLastName, "");
+				textBoxLastName.BackColor = SystemColors.Window;
+			}
 		}
 
 		private void maskedTextBoxPESEL_Validating(object sender, CancelEventArgs e)
@@ -184,7 +195,7 @@ namespace GUI_Management_of_medical_clinic
 
 			if (!_patientValidator.IsValidPESEL(maskedTextBoxPESEL.Text, dateTimePickerBirthDate.Value, (EnumSex)comboBoxSex.SelectedItem, out errorMessage))
 			{
-				e.Cancel = true;
+				e.Cancel = false;
 				ErrorProviderPESEL.SetError(maskedTextBoxPESEL, errorMessage);
 				maskedTextBoxPESEL.BackColor = Color.LightPink;
 			}
@@ -192,11 +203,14 @@ namespace GUI_Management_of_medical_clinic
 
 		private void maskedTextBoxPESEL_Validated(object sender, EventArgs e)
 		{
-			ErrorProviderPESEL.SetError(maskedTextBoxPESEL, "");
-			maskedTextBoxPESEL.BackColor = SystemColors.Window;
-		}
+			string errorMessage;
 
-		#endregion
+			if (_patientValidator.IsValidPESEL(maskedTextBoxPESEL.Text, dateTimePickerBirthDate.Value, (EnumSex)comboBoxSex.SelectedItem, out errorMessage))
+			{
+				ErrorProviderPESEL.SetError(maskedTextBoxPESEL, "");
+				maskedTextBoxPESEL.BackColor = SystemColors.Window;
+			}
+		}
 
 		private void dateTimePickerBirthDate_Validating(object sender, CancelEventArgs e)
 		{
@@ -204,7 +218,7 @@ namespace GUI_Management_of_medical_clinic
 
 			if (!_patientValidator.IsValidDate(dateTimePickerBirthDate.Value, out errorMessage))
 			{
-				e.Cancel = true;
+				e.Cancel = false;
 				ErrorProviderBirthDate.SetError(dateTimePickerBirthDate, errorMessage);
 				dateTimePickerBirthDate.CalendarMonthBackground = Color.LightPink;
 			}
@@ -213,8 +227,51 @@ namespace GUI_Management_of_medical_clinic
 
 		private void dateTimePickerBirthDate_Validated(object sender, EventArgs e)
 		{
-			ErrorProviderBirthDate.SetError(dateTimePickerBirthDate, "");
-			dateTimePickerBirthDate.CalendarMonthBackground = SystemColors.Window;
+			string errorMessage;
+
+			if (_patientValidator.IsValidDate(dateTimePickerBirthDate.Value, out errorMessage))
+			{
+				ErrorProviderBirthDate.SetError(dateTimePickerBirthDate, "");
+				dateTimePickerBirthDate.CalendarMonthBackground = SystemColors.Window;
+			}
+		}
+
+
+		private bool isCompletedForm()
+		{
+			List<bool> conditions = new()
+			{
+				string.IsNullOrEmpty(textBoxName.Text),
+				string.IsNullOrEmpty(textBoxLastName.Text),
+				string.IsNullOrEmpty(maskedTextBoxPESEL.Text),
+				!string.IsNullOrEmpty(ErrorProviderFirstName.GetError(textBoxName)),
+				!string.IsNullOrEmpty(ErrorProviderLastName.GetError(textBoxLastName)),
+				!string.IsNullOrEmpty(ErrorProviderPESEL.GetError(maskedTextBoxPESEL)),
+				!string.IsNullOrEmpty(ErrorProviderBirthDate.GetError(dateTimePickerBirthDate)),
+			};
+
+			if (conditions.Contains(true))
+			{
+				return false;
+			}
+
+			//if (
+			//	(maskedTextBoxPESEL.Text == String.Empty || textBoxLastName.Text == String.Empty || textBoxName.Text == String.Empty)
+			//	||
+			//	((!string.IsNullOrEmpty(ErrorProviderFirstName.GetError(textBoxName)) || (!string.IsNullOrEmpty(ErrorProviderFirstName.GetError(textBoxName)) || (!string.IsNullOrEmpty(ErrorProviderFirstName.GetError(textBoxName)) || (!string.IsNullOrEmpty(ErrorProviderFirstName.GetError(textBoxName)))))))
+			//	)
+			//{
+			//	return false;
+			//}
+
+			return true;
+		}
+
+		#endregion
+
+		private void FormAddEditPatient_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			e.Cancel = false;
 		}
 	}
 }

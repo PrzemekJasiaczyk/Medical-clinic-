@@ -71,6 +71,7 @@
 			// buttonBack
 			// 
 			buttonBack.BackColor = Color.Gainsboro;
+			buttonBack.CausesValidation = false;
 			buttonBack.FlatAppearance.BorderColor = Color.White;
 			buttonBack.FlatAppearance.BorderSize = 2;
 			buttonBack.FlatStyle = FlatStyle.Flat;
@@ -242,7 +243,7 @@
 			// 
 			AutoScaleDimensions = new SizeF(8F, 20F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(1942, 1102);
+			ClientSize = new Size(1557, 884);
 			Controls.Add(dateTimePickerBirthDate);
 			Controls.Add(comboBoxSex);
 			Controls.Add(labelAddEditNewPatient);
@@ -260,7 +261,7 @@
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "FormAddEditPatient";
 			WindowState = FormWindowState.Maximized;
-			Load += FormAddEditPatient_Load;
+			FormClosing += FormAddEditPatient_FormClosing;
 			panel1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
 			((System.ComponentModel.ISupportInitialize)ErrorProviderFirstName).EndInit();
