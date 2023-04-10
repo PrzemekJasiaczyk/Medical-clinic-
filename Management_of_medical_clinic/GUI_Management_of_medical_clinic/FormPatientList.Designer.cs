@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             buttonClearFilter = new Button();
             buttonAddPatient = new Button();
             buttonFilterEmployee = new Button();
@@ -58,6 +58,7 @@
             label7 = new Label();
             label6 = new Label();
             label5 = new Label();
+            button_ShowDetails = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewPatientList).BeginInit();
@@ -154,6 +155,7 @@
             // panel1
             // 
             panel1.BackColor = Color.SteelBlue;
+            panel1.Controls.Add(button_ShowDetails);
             panel1.Controls.Add(buttonExit);
             panel1.Controls.Add(buttonDeactivatePatinet);
             panel1.Controls.Add(buttonActivatePatient);
@@ -321,14 +323,14 @@
             dataGridViewPatientList.AllowUserToDeleteRows = false;
             dataGridViewPatientList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewPatientList.BackgroundColor = SystemColors.ButtonHighlight;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.SteelBlue;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = Color.SteelBlue;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridViewPatientList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.SteelBlue;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = Color.SteelBlue;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridViewPatientList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewPatientList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewPatientList.Location = new Point(357, 77);
             dataGridViewPatientList.Name = "dataGridViewPatientList";
@@ -436,6 +438,21 @@
             label5.TabIndex = 0;
             label5.Text = "Name and surname";
             // 
+            // button_ShowDetails
+            // 
+            button_ShowDetails.BackColor = Color.SteelBlue;
+            button_ShowDetails.FlatAppearance.BorderColor = Color.Black;
+            button_ShowDetails.FlatStyle = FlatStyle.Flat;
+            button_ShowDetails.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            button_ShowDetails.Location = new Point(-2, 639);
+            button_ShowDetails.Margin = new Padding(3, 4, 3, 4);
+            button_ShowDetails.Name = "button_ShowDetails";
+            button_ShowDetails.Size = new Size(360, 65);
+            button_ShowDetails.TabIndex = 47;
+            button_ShowDetails.Text = "Show details";
+            button_ShowDetails.UseVisualStyleBackColor = false;
+            button_ShowDetails.Click += button_ShowDetails_Click;
+            // 
             // FormPatientList
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -500,5 +517,6 @@
         private Label label6;
         private Label label5;
         private Button buttonExit;
+        private Button button_ShowDetails;
     }
 }
