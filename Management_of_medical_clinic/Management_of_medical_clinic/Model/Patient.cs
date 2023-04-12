@@ -35,23 +35,20 @@ namespace Console_Management_of_medical_clinic.Model
                 patient = _context.Patients.Find(patient.PatientId);
                 patient.IsActive = false;
                 _context.SaveChanges();
-                return;
             }
             else if (patient.IsActive == false)
             {
                 patient = _context.Patients.Find(patient.PatientId);
                 patient.IsActive = true;
                 _context.SaveChanges();
-                return;
             }
         }
 
         public static Patient FindPatient(int PatientId)
         {
             AppDbContext _context = new AppDbContext();
-            
-            Patient patient = new Patient();
-            patient = _context.Patients.Find(PatientId);
+
+            Patient patient = _context.Patients.Find(PatientId);
             return patient;
         }
 
@@ -61,16 +58,14 @@ namespace Console_Management_of_medical_clinic.Model
 
             _context.Patients.Remove(patient);
             _context.SaveChanges();
-            return;
         }
-
 
         public static void AddPatient(Patient patient)
         {
             AppDbContext _context = new AppDbContext();
+
             _context.Patients.Add(patient);
             _context.SaveChanges();
         }
-
     }
 }
