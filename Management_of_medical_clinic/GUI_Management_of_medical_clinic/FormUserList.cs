@@ -84,7 +84,7 @@ namespace GUI_Management_of_medical_clinic
         private void buttonReviewUser_Click(object sender, EventArgs e)
         {
             FormUserDetailsView userDetailsView = new FormUserDetailsView(UserService.GetUserById((int)dataGridViewUsers.CurrentRow.Cells[0].Value), currentUser);
-            Hide();
+            //Hide();
             userDetailsView.ShowDialog();
             Show();
         }
