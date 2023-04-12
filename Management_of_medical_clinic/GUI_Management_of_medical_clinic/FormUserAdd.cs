@@ -30,7 +30,7 @@ namespace GUI_Management_of_medical_clinic
             {
                 if (!UserService.CheckIfIdIsAlreadyUsed(employee.IdEmployee))
                 {
-                    listBoxEmployees.Items.Add(employee.IdEmployee + " " + employee.FirstName + ' ' + employee.LastName);
+                    listBoxEmployees.Items.Add(employee.IdEmployee + " " + employee.FirstName + " " + employee.LastName);
                 }
             }
             if (listBoxEmployees.Items.Count == 0) listBoxEmployees.Items.Add("There are no employees without a user.");
@@ -64,7 +64,7 @@ namespace GUI_Management_of_medical_clinic
             if (UserService.CheckIfUsernameExists(textBoxUsername.Text)) { MessageBox.Show("Username is already taken"); return; }
             else if (!textBoxPassword.Text.Equals(textBoxPasswordConfirm.Text)) { MessageBox.Show("Passwords don't match"); return; }
 
-            UserService.AddUser(/*UserService.GetUsersData().Count,*/ textBoxUsername.Text, textBoxPassword.Text, (EnumUserRoles)Enum.Parse(typeof(EnumUserRoles), comboBoxRole.SelectedItem.ToString()), true, int.Parse(Regex.Match(listBoxEmployees.SelectedItem.ToString(), @"^\d+").Value));
+            UserService.AddUser(textBoxUsername.Text, textBoxPassword.Text, (EnumUserRoles)Enum.Parse(typeof(EnumUserRoles), comboBoxRole.SelectedItem.ToString()), true, int.Parse(Regex.Match(listBoxEmployees.SelectedItem.ToString(), @"^\d+").Value));
 
             //FormUserList userList = new FormUserList(currentUser);
             //this.Hide();

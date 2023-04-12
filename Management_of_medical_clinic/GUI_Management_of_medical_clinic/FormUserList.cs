@@ -78,7 +78,8 @@ namespace GUI_Management_of_medical_clinic
         {
             FormUserAdd userAdd = new FormUserAdd(currentUser);
             userAdd.ShowDialog();
-            this.Close();
+            LoadUserData();
+            Show();
         }
 
         private void buttonReviewUser_Click(object sender, EventArgs e)
@@ -86,6 +87,14 @@ namespace GUI_Management_of_medical_clinic
             FormUserDetailsView userDetailsView = new FormUserDetailsView(UserService.GetUserById((int)dataGridViewUsers.CurrentRow.Cells[0].Value), currentUser);
             //Hide();
             userDetailsView.ShowDialog();
+            Show();
+        }
+
+        private void buttonEditUser_Click(object sender, EventArgs e)
+        {
+            FormUserEdit formUser = new FormUserEdit(UserService.GetUserById((int)dataGridViewUsers.CurrentRow.Cells[0].Value), currentUser);
+            formUser.ShowDialog();
+            LoadUserData();
             Show();
         }
     }

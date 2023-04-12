@@ -85,6 +85,18 @@ namespace Console_Management_of_medical_clinic.Logic
         {
             return GetUsersData().Any(u => u.IdEmployee == id);
         }
+
+        public static void EditUser(int idUser, string username, EnumUserRoles userRoles, bool isActive, int idEmployee)
+        {
+            using (AppDbContext db = new AppDbContext()) {
+                UserModel user = db.DbUsers.Find(idUser);
+                user.Username = username;
+                user.Role = userRoles;
+                user.IsActive = isActive;
+                user.IdEmployee = idEmployee;
+                db.SaveChanges();
+            }
+        }
     }
         
 }
