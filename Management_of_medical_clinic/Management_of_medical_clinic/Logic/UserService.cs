@@ -22,15 +22,14 @@ namespace Console_Management_of_medical_clinic.Logic
             return users;
         }
 
-        public static void AddUser(int userID, string username, string password, EnumUserRoles role, bool isActive, int employeeId)
+        public static void AddUser(string username, string password, EnumUserRoles role, bool isActive, int employeeId)
         {
-            //a method to add new User and to change the value of IdUser pole of the selected Employee 
+            //a method to add new User to Database
             using(AppDbContext db = new AppDbContext())
             {
-                db.DbUsers.Add(new UserModel(username, password, role, isActive));
+                db.DbUsers.Add(new UserModel(username, password, role, isActive, employeeId));
                 db.SaveChanges();
             }
-            //not ready
         } 
 
         public static List<UserModel> FilterUsers(string username, string firstname, string lastname, string role)
@@ -80,6 +79,11 @@ namespace Console_Management_of_medical_clinic.Logic
                 }
             }
             return false;
+        }
+
+        public static bool CheckIfIdIsAlreadyUsed(int id)
+        {
+            return GetUsersData().Any(u => u.IdEmployee == id);
         }
     }
         
