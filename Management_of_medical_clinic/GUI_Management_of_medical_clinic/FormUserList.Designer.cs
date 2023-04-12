@@ -99,6 +99,7 @@
             buttonReviewUser.TabIndex = 28;
             buttonReviewUser.Text = "Review user";
             buttonReviewUser.UseVisualStyleBackColor = true;
+            buttonReviewUser.Click += buttonReviewUser_Click;
             // 
             // buttonAddUser
             // 

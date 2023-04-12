@@ -62,6 +62,11 @@ namespace Console_Management_of_medical_clinic.Logic
             return filteredUsers;
         }
 
+        public static UserModel GetUserById(int id)
+        {
+            return GetUsersData().FirstOrDefault(u => u.IdUser == id);
+        }
+
         public static bool CheckIfUsernameExists(string username)
         {
             List<UserModel> users = UserService.GetUsersData();
