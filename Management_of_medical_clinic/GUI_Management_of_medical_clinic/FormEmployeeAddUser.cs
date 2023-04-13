@@ -1,4 +1,5 @@
-﻿using Console_Management_of_medical_clinic.Logic;
+﻿using Console_Management_of_medical_clinic.Data.Enums;
+using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,7 @@ namespace GUI_Management_of_medical_clinic
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             FormEmployeeList employeeList = new FormEmployeeList(currentEmployee);
-            this.Hide();
+            //this.Hide();
             employeeList.ShowDialog();
             this.Close();
         }
@@ -45,10 +46,13 @@ namespace GUI_Management_of_medical_clinic
                 return;
             }
 
-            MessageBox.Show("<<Success, but button doesn't work yet>>");
+            EmployeeService.AddEmployee(newEmployee);
+            UserService.AddUser(textBoxUsername.Text, textBoxPassword.Text, EnumUserRoles.Employee, true, newEmployee.IdEmployee);
+   
+            //MessageBox.Show("<<Success, but button doesn't work yet>>");
 
             FormEmployeeList employeeList = new FormEmployeeList(currentEmployee);
-            this.Hide();
+            //this.Hide();
             employeeList.ShowDialog();
             this.Close();
         }
@@ -98,5 +102,9 @@ namespace GUI_Management_of_medical_clinic
             checkIfRequiredFilled();
         }
 
+        private void FormEmployeeAddUser_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
