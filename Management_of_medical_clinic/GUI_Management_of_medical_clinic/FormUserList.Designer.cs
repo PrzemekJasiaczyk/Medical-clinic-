@@ -28,191 +28,285 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonEditUser = new System.Windows.Forms.Button();
-            this.buttonReactivateUser = new System.Windows.Forms.Button();
-            this.buttonClearFilter = new System.Windows.Forms.Button();
-            this.buttonDeactivateUser = new System.Windows.Forms.Button();
-            this.buttonReviewUser = new System.Windows.Forms.Button();
-            this.buttonAddUser = new System.Windows.Forms.Button();
-            this.buttonFilterUser = new System.Windows.Forms.Button();
-            this.comboBoxRole = new System.Windows.Forms.ComboBox();
-            this.labelFilter = new System.Windows.Forms.Label();
-            this.dataGridViewUsers = new System.Windows.Forms.DataGridView();
-            this.textBoxUsername = new System.Windows.Forms.TextBox();
-            this.textBoxLastname = new System.Windows.Forms.TextBox();
-            this.textBoxFirstname = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).BeginInit();
-            this.SuspendLayout();
+            buttonEditUser = new Button();
+            buttonReviewUser = new Button();
+            buttonAddUser = new Button();
+            comboBoxRole = new ComboBox();
+            labelFilter = new Label();
+            dataGridViewUsers = new DataGridView();
+            textBoxUsername = new TextBox();
+            textBoxLastname = new TextBox();
+            textBoxFirstname = new TextBox();
+            pictureBox1 = new PictureBox();
+            panel1 = new Panel();
+            buttonReactivateUser = new Button();
+            buttonDeactivateUser = new Button();
+            buttonLogOut = new Button();
+            panel2 = new Panel();
+            buttonFilterUser = new Button();
+            buttonFilterClear = new Button();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewUsers).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel1.SuspendLayout();
+            panel2.SuspendLayout();
+            SuspendLayout();
             // 
             // buttonEditUser
             // 
-            this.buttonEditUser.Location = new System.Drawing.Point(402, 380);
-            this.buttonEditUser.Name = "buttonEditUser";
-            this.buttonEditUser.Size = new System.Drawing.Size(142, 45);
-            this.buttonEditUser.TabIndex = 33;
-            this.buttonEditUser.Text = "Edit user";
-            this.buttonEditUser.UseVisualStyleBackColor = true;
-            this.buttonEditUser.Click += new System.EventHandler(this.buttonEditUser_Click);
-            // 
-            // buttonReactivateUser
-            // 
-            this.buttonReactivateUser.Location = new System.Drawing.Point(648, 380);
-            this.buttonReactivateUser.Name = "buttonReactivateUser";
-            this.buttonReactivateUser.Size = new System.Drawing.Size(140, 45);
-            this.buttonReactivateUser.TabIndex = 31;
-            this.buttonReactivateUser.Text = "Reactivate user";
-            this.buttonReactivateUser.UseVisualStyleBackColor = true;
-            this.buttonReactivateUser.Click += new System.EventHandler(this.buttonReactivateUser_Click);
-            // 
-            // buttonClearFilter
-            // 
-            this.buttonClearFilter.Location = new System.Drawing.Point(8, 390);
-            this.buttonClearFilter.Name = "buttonClearFilter";
-            this.buttonClearFilter.Size = new System.Drawing.Size(100, 24);
-            this.buttonClearFilter.TabIndex = 30;
-            this.buttonClearFilter.Text = "Clear filter";
-            this.buttonClearFilter.UseVisualStyleBackColor = true;
-            this.buttonClearFilter.Click += new System.EventHandler(this.buttonClearFilter_Click);
-            // 
-            // buttonDeactivateUser
-            // 
-            this.buttonDeactivateUser.Location = new System.Drawing.Point(648, 329);
-            this.buttonDeactivateUser.Name = "buttonDeactivateUser";
-            this.buttonDeactivateUser.Size = new System.Drawing.Size(140, 45);
-            this.buttonDeactivateUser.TabIndex = 29;
-            this.buttonDeactivateUser.Text = "Deactivate user";
-            this.buttonDeactivateUser.UseVisualStyleBackColor = true;
-            this.buttonDeactivateUser.Click += new System.EventHandler(this.buttonDeactivateUser_Click);
+            buttonEditUser.BackColor = Color.SteelBlue;
+            buttonEditUser.FlatStyle = FlatStyle.Flat;
+            buttonEditUser.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonEditUser.ForeColor = SystemColors.ActiveCaptionText;
+            buttonEditUser.Location = new Point(-7, 352);
+            buttonEditUser.Name = "buttonEditUser";
+            buttonEditUser.Size = new Size(329, 87);
+            buttonEditUser.TabIndex = 33;
+            buttonEditUser.Text = "Edit user";
+            buttonEditUser.UseVisualStyleBackColor = false;
+            buttonEditUser.Click += buttonEditUser_Click;
             // 
             // buttonReviewUser
             // 
-            this.buttonReviewUser.Location = new System.Drawing.Point(399, 329);
-            this.buttonReviewUser.Name = "buttonReviewUser";
-            this.buttonReviewUser.Size = new System.Drawing.Size(145, 45);
-            this.buttonReviewUser.TabIndex = 28;
-            this.buttonReviewUser.Text = "Review user";
-            this.buttonReviewUser.UseVisualStyleBackColor = true;
-            this.buttonReviewUser.Click += new System.EventHandler(this.buttonReviewUser_Click);
+            buttonReviewUser.BackColor = Color.SteelBlue;
+            buttonReviewUser.FlatStyle = FlatStyle.Flat;
+            buttonReviewUser.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonReviewUser.Location = new Point(-7, 445);
+            buttonReviewUser.Name = "buttonReviewUser";
+            buttonReviewUser.Size = new Size(329, 87);
+            buttonReviewUser.TabIndex = 28;
+            buttonReviewUser.Text = "Review user";
+            buttonReviewUser.UseVisualStyleBackColor = false;
+            buttonReviewUser.Click += buttonReviewUser_Click;
             // 
             // buttonAddUser
             // 
-            this.buttonAddUser.Location = new System.Drawing.Point(251, 329);
-            this.buttonAddUser.Name = "buttonAddUser";
-            this.buttonAddUser.Size = new System.Drawing.Size(142, 45);
-            this.buttonAddUser.TabIndex = 27;
-            this.buttonAddUser.Text = "Add new user";
-            this.buttonAddUser.UseVisualStyleBackColor = true;
-            this.buttonAddUser.Click += new System.EventHandler(this.buttonAddUser_Click);
-            // 
-            // buttonFilterUser
-            // 
-            this.buttonFilterUser.Location = new System.Drawing.Point(118, 390);
-            this.buttonFilterUser.Name = "buttonFilterUser";
-            this.buttonFilterUser.Size = new System.Drawing.Size(100, 24);
-            this.buttonFilterUser.TabIndex = 26;
-            this.buttonFilterUser.Text = "Filtr";
-            this.buttonFilterUser.UseVisualStyleBackColor = true;
-            this.buttonFilterUser.Click += new System.EventHandler(this.buttonFilterUser_Click);
+            buttonAddUser.BackColor = Color.SteelBlue;
+            buttonAddUser.FlatStyle = FlatStyle.Flat;
+            buttonAddUser.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonAddUser.ForeColor = SystemColors.ActiveCaptionText;
+            buttonAddUser.Location = new Point(-7, 259);
+            buttonAddUser.Name = "buttonAddUser";
+            buttonAddUser.Size = new Size(329, 87);
+            buttonAddUser.TabIndex = 27;
+            buttonAddUser.Text = "Add new user";
+            buttonAddUser.UseVisualStyleBackColor = false;
+            buttonAddUser.Click += buttonAddUser_Click;
             // 
             // comboBoxRole
             // 
-            this.comboBoxRole.FormattingEnabled = true;
-            this.comboBoxRole.Items.AddRange(new object[] {
-            "Administrator",
-            "Employee"});
-            this.comboBoxRole.Location = new System.Drawing.Point(8, 361);
-            this.comboBoxRole.Name = "comboBoxRole";
-            this.comboBoxRole.Size = new System.Drawing.Size(100, 23);
-            this.comboBoxRole.TabIndex = 25;
+            comboBoxRole.BackColor = Color.Gainsboro;
+            comboBoxRole.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxRole.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            comboBoxRole.FormattingEnabled = true;
+            comboBoxRole.Items.AddRange(new object[] { "Administrator", "Employee" });
+            comboBoxRole.Location = new Point(147, 142);
+            comboBoxRole.Name = "comboBoxRole";
+            comboBoxRole.Size = new Size(271, 36);
+            comboBoxRole.TabIndex = 25;
             // 
             // labelFilter
             // 
-            this.labelFilter.AutoSize = true;
-            this.labelFilter.Location = new System.Drawing.Point(12, 308);
-            this.labelFilter.Name = "labelFilter";
-            this.labelFilter.Size = new System.Drawing.Size(51, 15);
-            this.labelFilter.TabIndex = 23;
-            this.labelFilter.Text = "Filter list";
+            labelFilter.AutoSize = true;
+            labelFilter.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            labelFilter.Location = new Point(124, 17);
+            labelFilter.Name = "labelFilter";
+            labelFilter.Size = new Size(130, 37);
+            labelFilter.TabIndex = 23;
+            labelFilter.Text = "Filter list";
             // 
             // dataGridViewUsers
             // 
-            this.dataGridViewUsers.AllowUserToAddRows = false;
-            this.dataGridViewUsers.AllowUserToDeleteRows = false;
-            this.dataGridViewUsers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewUsers.Location = new System.Drawing.Point(12, 22);
-            this.dataGridViewUsers.Name = "dataGridViewUsers";
-            this.dataGridViewUsers.ReadOnly = true;
-            this.dataGridViewUsers.RowTemplate.Height = 25;
-            this.dataGridViewUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewUsers.Size = new System.Drawing.Size(776, 273);
-            this.dataGridViewUsers.TabIndex = 22;
+            dataGridViewUsers.AllowUserToAddRows = false;
+            dataGridViewUsers.AllowUserToDeleteRows = false;
+            dataGridViewUsers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewUsers.BackgroundColor = SystemColors.Info;
+            dataGridViewUsers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewUsers.GridColor = SystemColors.Info;
+            dataGridViewUsers.Location = new Point(562, 65);
+            dataGridViewUsers.Name = "dataGridViewUsers";
+            dataGridViewUsers.ReadOnly = true;
+            dataGridViewUsers.RowHeadersVisible = false;
+            dataGridViewUsers.RowTemplate.Height = 25;
+            dataGridViewUsers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewUsers.Size = new Size(1077, 680);
+            dataGridViewUsers.TabIndex = 22;
             // 
             // textBoxUsername
             // 
-            this.textBoxUsername.Location = new System.Drawing.Point(118, 361);
-            this.textBoxUsername.Name = "textBoxUsername";
-            this.textBoxUsername.PlaceholderText = "Username";
-            this.textBoxUsername.Size = new System.Drawing.Size(100, 23);
-            this.textBoxUsername.TabIndex = 34;
+            textBoxUsername.BackColor = Color.Gainsboro;
+            textBoxUsername.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxUsername.Location = new Point(634, 142);
+            textBoxUsername.Name = "textBoxUsername";
+            textBoxUsername.PlaceholderText = "Username";
+            textBoxUsername.Size = new Size(271, 34);
+            textBoxUsername.TabIndex = 34;
             // 
             // textBoxLastname
             // 
-            this.textBoxLastname.Location = new System.Drawing.Point(118, 332);
-            this.textBoxLastname.Name = "textBoxLastname";
-            this.textBoxLastname.PlaceholderText = "Last name";
-            this.textBoxLastname.Size = new System.Drawing.Size(100, 23);
-            this.textBoxLastname.TabIndex = 35;
+            textBoxLastname.BackColor = Color.Gainsboro;
+            textBoxLastname.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxLastname.Location = new Point(634, 86);
+            textBoxLastname.Name = "textBoxLastname";
+            textBoxLastname.PlaceholderText = "Last name";
+            textBoxLastname.Size = new Size(271, 34);
+            textBoxLastname.TabIndex = 35;
             // 
             // textBoxFirstname
             // 
-            this.textBoxFirstname.Location = new System.Drawing.Point(8, 332);
-            this.textBoxFirstname.Name = "textBoxFirstname";
-            this.textBoxFirstname.PlaceholderText = "First name";
-            this.textBoxFirstname.Size = new System.Drawing.Size(100, 23);
-            this.textBoxFirstname.TabIndex = 36;
+            textBoxFirstname.BackColor = Color.Gainsboro;
+            textBoxFirstname.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxFirstname.Location = new Point(147, 86);
+            textBoxFirstname.Name = "textBoxFirstname";
+            textBoxFirstname.PlaceholderText = "First name";
+            textBoxFirstname.Size = new Size(271, 34);
+            textBoxFirstname.TabIndex = 36;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackgroundImage = Properties.Resources.MC_Logo;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox1.Location = new Point(61, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(176, 168);
+            pictureBox1.TabIndex = 1;
+            pictureBox1.TabStop = false;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.SteelBlue;
+            panel1.Controls.Add(buttonReactivateUser);
+            panel1.Controls.Add(buttonDeactivateUser);
+            panel1.Controls.Add(pictureBox1);
+            panel1.Controls.Add(buttonAddUser);
+            panel1.Controls.Add(buttonEditUser);
+            panel1.Controls.Add(buttonReviewUser);
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(312, 1081);
+            panel1.TabIndex = 37;
+            // 
+            // buttonReactivateUser
+            // 
+            buttonReactivateUser.BackColor = Color.SteelBlue;
+            buttonReactivateUser.FlatStyle = FlatStyle.Flat;
+            buttonReactivateUser.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonReactivateUser.Location = new Point(-7, 631);
+            buttonReactivateUser.Name = "buttonReactivateUser";
+            buttonReactivateUser.Size = new Size(329, 87);
+            buttonReactivateUser.TabIndex = 35;
+            buttonReactivateUser.Text = "Reactivate user";
+            buttonReactivateUser.UseVisualStyleBackColor = false;
+            // 
+            // buttonDeactivateUser
+            // 
+            buttonDeactivateUser.BackColor = Color.SteelBlue;
+            buttonDeactivateUser.FlatStyle = FlatStyle.Flat;
+            buttonDeactivateUser.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonDeactivateUser.Location = new Point(-7, 538);
+            buttonDeactivateUser.Name = "buttonDeactivateUser";
+            buttonDeactivateUser.Size = new Size(329, 87);
+            buttonDeactivateUser.TabIndex = 34;
+            buttonDeactivateUser.Text = "Deactivate user";
+            buttonDeactivateUser.UseVisualStyleBackColor = false;
+            // 
+            // buttonLogOut
+            // 
+            buttonLogOut.BackColor = Color.Gainsboro;
+            buttonLogOut.FlatAppearance.BorderColor = Color.White;
+            buttonLogOut.FlatAppearance.BorderSize = 2;
+            buttonLogOut.FlatStyle = FlatStyle.Flat;
+            buttonLogOut.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonLogOut.Location = new Point(29, 970);
+            buttonLogOut.Name = "buttonLogOut";
+            buttonLogOut.Size = new Size(252, 66);
+            buttonLogOut.TabIndex = 38;
+            buttonLogOut.Text = "LOG OUT";
+            buttonLogOut.UseVisualStyleBackColor = false;
+            buttonLogOut.Click += buttonLogOut_Click;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.SteelBlue;
+            panel2.Controls.Add(buttonFilterClear);
+            panel2.Controls.Add(buttonFilterUser);
+            panel2.Controls.Add(textBoxFirstname);
+            panel2.Controls.Add(textBoxLastname);
+            panel2.Controls.Add(textBoxUsername);
+            panel2.Controls.Add(labelFilter);
+            panel2.Controls.Add(comboBoxRole);
+            panel2.Location = new Point(562, 762);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(1077, 306);
+            panel2.TabIndex = 39;
+            // 
+            // buttonFilterUser
+            // 
+            buttonFilterUser.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonFilterUser.Location = new Point(124, 200);
+            buttonFilterUser.Name = "buttonFilterUser";
+            buttonFilterUser.Size = new Size(329, 87);
+            buttonFilterUser.TabIndex = 14;
+            buttonFilterUser.Text = "Filter";
+            buttonFilterUser.UseVisualStyleBackColor = true;
+            buttonFilterUser.Click += buttonFilterUser_Click;
+            // 
+            // buttonFilterClear
+            // 
+            buttonFilterClear.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonFilterClear.Location = new Point(602, 200);
+            buttonFilterClear.Name = "buttonFilterClear";
+            buttonFilterClear.Size = new Size(329, 87);
+            buttonFilterClear.TabIndex = 37;
+            buttonFilterClear.Text = "Clear filter";
+            buttonFilterClear.UseVisualStyleBackColor = true;
+            buttonFilterClear.Click += buttonFilterClear_Click;
             // 
             // FormUserList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBoxFirstname);
-            this.Controls.Add(this.textBoxLastname);
-            this.Controls.Add(this.textBoxUsername);
-            this.Controls.Add(this.buttonEditUser);
-            this.Controls.Add(this.buttonReactivateUser);
-            this.Controls.Add(this.buttonClearFilter);
-            this.Controls.Add(this.buttonDeactivateUser);
-            this.Controls.Add(this.buttonReviewUser);
-            this.Controls.Add(this.buttonAddUser);
-            this.Controls.Add(this.buttonFilterUser);
-            this.Controls.Add(this.comboBoxRole);
-            this.Controls.Add(this.labelFilter);
-            this.Controls.Add(this.dataGridViewUsers);
-            this.Name = "FormUserList";
-            this.Text = "FormUserList";
-            this.Load += new System.EventHandler(this.FormUserList_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(1920, 1080);
+            Controls.Add(panel2);
+            Controls.Add(buttonLogOut);
+            Controls.Add(panel1);
+            Controls.Add(dataGridViewUsers);
+            DoubleBuffered = true;
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "FormUserList";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "FormUserList";
+            WindowState = FormWindowState.Maximized;
+            Load += FormUserList_Load;
+            ((System.ComponentModel.ISupportInitialize)dataGridViewUsers).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel1.ResumeLayout(false);
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion
 
         private Button buttonEditUser;
-        private Button buttonReactivateUser;
         private Button buttonClearFilter;
-        private Button buttonDeactivateUser;
         private Button buttonReviewUser;
         private Button buttonAddUser;
-        private Button buttonFilterUser;
         private ComboBox comboBoxRole;
         private Label labelFilter;
         private DataGridView dataGridViewUsers;
         private TextBox textBoxUsername;
         private TextBox textBoxLastname;
         private TextBox textBoxFirstname;
+        private PictureBox pictureBox1;
+        private Panel panel1;
+        private Button buttonBack;
+        private Button buttonDeactivateUser;
+        private Button buttonReactivateUser;
+        private Button buttonLogOut;
+        private Panel panel2;
+        //private Button buttonClearFilter;
+        private Button buttonFilterUser;
+        private Button buttonFilterClear;
     }
 }
