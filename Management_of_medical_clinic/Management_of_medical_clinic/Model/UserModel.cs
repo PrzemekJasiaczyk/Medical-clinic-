@@ -23,7 +23,13 @@ namespace Console_Management_of_medical_clinic.Model
         public EmployeeModel EmployeeModel { get; set; }
 
 
-        public UserModel() { }
+        public UserModel(string username, string password, EnumUserRoles role, bool isActive, int idEmployee) {
+            Username = username;
+            Password = password;
+            Role = role;
+            IsActive = isActive;
+            IdEmployee = idEmployee;
+        }
 
         public UserModel(string username, string password, EnumUserRoles role, bool isActive)
 

@@ -35,7 +35,7 @@
             textBoxUsername = new TextBox();
             label2 = new Label();
             labelTitle = new Label();
-            listBoxEmployeesWithout = new ListBox();
+            listBoxEmployees = new ListBox();
             label4 = new Label();
             buttonAddNewUser = new Button();
             buttonCancel = new Button();
@@ -109,15 +109,15 @@
             labelTitle.TabIndex = 47;
             labelTitle.Text = "Set Username and Password for Employee";
             // 
-            // listBoxEmployeesWithout
+            // listBoxEmployees
             // 
-            listBoxEmployeesWithout.FormattingEnabled = true;
-            listBoxEmployeesWithout.ItemHeight = 15;
-            listBoxEmployeesWithout.Location = new Point(420, 91);
-            listBoxEmployeesWithout.Name = "listBoxEmployeesWithout";
-            listBoxEmployeesWithout.Size = new Size(296, 229);
-            listBoxEmployeesWithout.TabIndex = 54;
-            listBoxEmployeesWithout.SelectedIndexChanged += listBoxEmployeesWithout_SelectedIndexChanged;
+            listBoxEmployees.FormattingEnabled = true;
+            listBoxEmployees.ItemHeight = 15;
+            listBoxEmployees.Location = new Point(420, 91);
+            listBoxEmployees.Name = "listBoxEmployees";
+            listBoxEmployees.Size = new Size(296, 229);
+            listBoxEmployees.TabIndex = 54;
+            listBoxEmployees.SelectedIndexChanged += listBoxEmployeesWithout_SelectedIndexChanged;
             // 
             // label4
             // 
@@ -130,7 +130,7 @@
             // 
             // buttonAddNewUser
             // 
-            buttonAddNewUser.Location = new Point(648, 350);
+            buttonAddNewUser.Location = new Point(648, 351);
             buttonAddNewUser.Name = "buttonAddNewUser";
             buttonAddNewUser.Size = new Size(140, 45);
             buttonAddNewUser.TabIndex = 56;
@@ -177,7 +177,7 @@
             Controls.Add(buttonCancel);
             Controls.Add(buttonAddNewUser);
             Controls.Add(label4);
-            Controls.Add(listBoxEmployeesWithout);
+            Controls.Add(listBoxEmployees);
             Controls.Add(textBoxPasswordConfirm);
             Controls.Add(textBoxPassword);
             Controls.Add(label3);
@@ -201,7 +201,7 @@
         private TextBox textBoxUsername;
         private Label label2;
         private Label labelTitle;
-        private ListBox listBoxEmployeesWithout;
+        private ListBox listBoxEmployees;
         private Label label4;
         private Button buttonAddNewUser;
         private Button buttonCancel;

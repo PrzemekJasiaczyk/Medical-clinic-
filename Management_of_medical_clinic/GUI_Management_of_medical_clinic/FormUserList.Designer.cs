@@ -53,6 +53,7 @@
             buttonEditUser.TabIndex = 33;
             buttonEditUser.Text = "Edit user";
             buttonEditUser.UseVisualStyleBackColor = true;
+            buttonEditUser.Click += buttonEditUser_Click;
             // 
             // buttonSpecializations
             // 
@@ -99,6 +100,7 @@
             buttonReviewUser.TabIndex = 28;
             buttonReviewUser.Text = "Review user";
             buttonReviewUser.UseVisualStyleBackColor = true;
+            buttonReviewUser.Click += buttonReviewUser_Click;
             // 
             // buttonAddUser
             // 
