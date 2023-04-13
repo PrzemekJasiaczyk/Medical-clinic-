@@ -28,167 +28,198 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.buttonClose = new System.Windows.Forms.Button();
-            this.buttonEditUser = new System.Windows.Forms.Button();
-            this.textBoxActive = new System.Windows.Forms.TextBox();
-            this.textBoxRole = new System.Windows.Forms.TextBox();
-            this.textBoxUsername = new System.Windows.Forms.TextBox();
-            this.labelTitle = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBoxUserId = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBoxEmployeeId = new System.Windows.Forms.TextBox();
-            this.SuspendLayout();
+            label3 = new Label();
+            label2 = new Label();
+            label1 = new Label();
+            buttonEditUser = new Button();
+            textBoxActive = new TextBox();
+            textBoxRole = new TextBox();
+            textBoxUsername = new TextBox();
+            labelTitle = new Label();
+            label4 = new Label();
+            textBoxUserId = new TextBox();
+            label5 = new Label();
+            textBoxEmployeeId = new TextBox();
+            panel2 = new Panel();
+            pictureBox1 = new PictureBox();
+            buttonCancel = new Button();
+            panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            SuspendLayout();
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 184);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(61, 15);
-            this.label3.TabIndex = 48;
-            this.label3.Text = "Is it Active";
+            label3.AutoSize = true;
+            label3.Location = new Point(882, 499);
+            label3.Name = "label3";
+            label3.Size = new Size(61, 15);
+            label3.TabIndex = 48;
+            label3.Text = "Is it Active";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 155);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(30, 15);
-            this.label2.TabIndex = 47;
-            this.label2.Text = "Role";
+            label2.AutoSize = true;
+            label2.Location = new Point(882, 470);
+            label2.Name = "label2";
+            label2.Size = new Size(30, 15);
+            label2.TabIndex = 47;
+            label2.Text = "Role";
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 126);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 15);
-            this.label1.TabIndex = 46;
-            this.label1.Text = "Username";
-            // 
-            // buttonClose
-            // 
-            this.buttonClose.Location = new System.Drawing.Point(12, 224);
-            this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(140, 38);
-            this.buttonClose.TabIndex = 45;
-            this.buttonClose.Text = "Close";
-            this.buttonClose.UseVisualStyleBackColor = true;
-            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
+            label1.AutoSize = true;
+            label1.Location = new Point(882, 441);
+            label1.Name = "label1";
+            label1.Size = new Size(60, 15);
+            label1.TabIndex = 46;
+            label1.Text = "Username";
             // 
             // buttonEditUser
             // 
-            this.buttonEditUser.Location = new System.Drawing.Point(160, 224);
-            this.buttonEditUser.Name = "buttonEditUser";
-            this.buttonEditUser.Size = new System.Drawing.Size(147, 38);
-            this.buttonEditUser.TabIndex = 44;
-            this.buttonEditUser.Text = "Edit";
-            this.buttonEditUser.UseVisualStyleBackColor = true;
-            this.buttonEditUser.Click += new System.EventHandler(this.buttonEditUser_Click);
+            buttonEditUser.Location = new Point(957, 560);
+            buttonEditUser.Name = "buttonEditUser";
+            buttonEditUser.Size = new Size(147, 38);
+            buttonEditUser.TabIndex = 44;
+            buttonEditUser.Text = "Edit";
+            buttonEditUser.UseVisualStyleBackColor = true;
+            buttonEditUser.Click += buttonEditUser_Click;
             // 
             // textBoxActive
             // 
-            this.textBoxActive.Location = new System.Drawing.Point(92, 181);
-            this.textBoxActive.Name = "textBoxActive";
-            this.textBoxActive.ReadOnly = true;
-            this.textBoxActive.Size = new System.Drawing.Size(187, 23);
-            this.textBoxActive.TabIndex = 36;
+            textBoxActive.Location = new Point(962, 496);
+            textBoxActive.Name = "textBoxActive";
+            textBoxActive.ReadOnly = true;
+            textBoxActive.Size = new Size(187, 23);
+            textBoxActive.TabIndex = 36;
             // 
             // textBoxRole
             // 
-            this.textBoxRole.Location = new System.Drawing.Point(92, 152);
-            this.textBoxRole.Name = "textBoxRole";
-            this.textBoxRole.ReadOnly = true;
-            this.textBoxRole.Size = new System.Drawing.Size(187, 23);
-            this.textBoxRole.TabIndex = 35;
+            textBoxRole.Location = new Point(962, 467);
+            textBoxRole.Name = "textBoxRole";
+            textBoxRole.ReadOnly = true;
+            textBoxRole.Size = new Size(187, 23);
+            textBoxRole.TabIndex = 35;
             // 
             // textBoxUsername
             // 
-            this.textBoxUsername.Location = new System.Drawing.Point(92, 123);
-            this.textBoxUsername.Name = "textBoxUsername";
-            this.textBoxUsername.ReadOnly = true;
-            this.textBoxUsername.Size = new System.Drawing.Size(187, 23);
-            this.textBoxUsername.TabIndex = 34;
+            textBoxUsername.Location = new Point(962, 438);
+            textBoxUsername.Name = "textBoxUsername";
+            textBoxUsername.ReadOnly = true;
+            textBoxUsername.Size = new Size(187, 23);
+            textBoxUsername.TabIndex = 34;
             // 
             // labelTitle
             // 
-            this.labelTitle.AutoSize = true;
-            this.labelTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelTitle.Location = new System.Drawing.Point(12, 9);
-            this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(107, 30);
-            this.labelTitle.TabIndex = 49;
-            this.labelTitle.Text = "User view";
+            labelTitle.AutoSize = true;
+            labelTitle.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            labelTitle.Location = new Point(985, 307);
+            labelTitle.Name = "labelTitle";
+            labelTitle.Size = new Size(107, 30);
+            labelTitle.TabIndex = 49;
+            labelTitle.Text = "User view";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 63);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(57, 15);
-            this.label4.TabIndex = 51;
-            this.label4.Text = "Id of User";
+            label4.AutoSize = true;
+            label4.Location = new Point(882, 378);
+            label4.Name = "label4";
+            label4.Size = new Size(57, 15);
+            label4.TabIndex = 51;
+            label4.Text = "Id of User";
             // 
             // textBoxUserId
             // 
-            this.textBoxUserId.Location = new System.Drawing.Point(75, 60);
-            this.textBoxUserId.Name = "textBoxUserId";
-            this.textBoxUserId.ReadOnly = true;
-            this.textBoxUserId.Size = new System.Drawing.Size(59, 23);
-            this.textBoxUserId.TabIndex = 50;
+            textBoxUserId.Location = new Point(945, 375);
+            textBoxUserId.Name = "textBoxUserId";
+            textBoxUserId.ReadOnly = true;
+            textBoxUserId.Size = new Size(59, 23);
+            textBoxUserId.TabIndex = 50;
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(156, 63);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(86, 15);
-            this.label5.TabIndex = 53;
-            this.label5.Text = "Id of Employee";
+            label5.AutoSize = true;
+            label5.Location = new Point(1026, 378);
+            label5.Name = "label5";
+            label5.Size = new Size(86, 15);
+            label5.TabIndex = 53;
+            label5.Text = "Id of Employee";
             // 
             // textBoxEmployeeId
             // 
-            this.textBoxEmployeeId.Location = new System.Drawing.Point(248, 60);
-            this.textBoxEmployeeId.Name = "textBoxEmployeeId";
-            this.textBoxEmployeeId.ReadOnly = true;
-            this.textBoxEmployeeId.Size = new System.Drawing.Size(59, 23);
-            this.textBoxEmployeeId.TabIndex = 54;
+            textBoxEmployeeId.Location = new Point(1118, 375);
+            textBoxEmployeeId.Name = "textBoxEmployeeId";
+            textBoxEmployeeId.ReadOnly = true;
+            textBoxEmployeeId.Size = new Size(59, 23);
+            textBoxEmployeeId.TabIndex = 54;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.SteelBlue;
+            panel2.Controls.Add(pictureBox1);
+            panel2.Controls.Add(buttonCancel);
+            panel2.Location = new Point(0, 0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(312, 1081);
+            panel2.TabIndex = 61;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackgroundImage = Properties.Resources.MC_Logo;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox1.Location = new Point(61, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(176, 168);
+            pictureBox1.TabIndex = 2;
+            pictureBox1.TabStop = false;
+            // 
+            // buttonCancel
+            // 
+            buttonCancel.BackColor = Color.Gainsboro;
+            buttonCancel.FlatAppearance.BorderColor = Color.White;
+            buttonCancel.FlatAppearance.BorderSize = 2;
+            buttonCancel.FlatStyle = FlatStyle.Flat;
+            buttonCancel.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonCancel.Location = new Point(24, 985);
+            buttonCancel.Name = "buttonCancel";
+            buttonCancel.Size = new Size(252, 66);
+            buttonCancel.TabIndex = 33;
+            buttonCancel.Text = "Cancel";
+            buttonCancel.UseVisualStyleBackColor = false;
+            buttonCancel.Click += buttonClose_Click;
             // 
             // FormUserDetailsView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(319, 283);
-            this.Controls.Add(this.textBoxEmployeeId);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBoxUserId);
-            this.Controls.Add(this.labelTitle);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.buttonClose);
-            this.Controls.Add(this.buttonEditUser);
-            this.Controls.Add(this.textBoxActive);
-            this.Controls.Add(this.textBoxRole);
-            this.Controls.Add(this.textBoxUsername);
-            this.Name = "FormUserDetailsView";
-            this.Text = "FormUserDetailsView";
-            this.Load += new System.EventHandler(this.FormUserDetailsView_Load);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.Info;
+            ClientSize = new Size(1920, 1080);
+            Controls.Add(panel2);
+            Controls.Add(textBoxEmployeeId);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(textBoxUserId);
+            Controls.Add(labelTitle);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(buttonEditUser);
+            Controls.Add(textBoxActive);
+            Controls.Add(textBoxRole);
+            Controls.Add(textBoxUsername);
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "FormUserDetailsView";
+            Text = "FormUserDetailsView";
+            Load += FormUserDetailsView_Load;
+            panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
         private Label label3;
         private Label label2;
         private Label label1;
-        private Button buttonClose;
         private Button buttonEditUser;
         private TextBox textBoxActive;
         private TextBox textBoxRole;
@@ -198,5 +229,8 @@
         private TextBox textBoxUserId;
         private Label label5;
         private TextBox textBoxEmployeeId;
+        private Panel panel2;
+        private PictureBox pictureBox1;
+        private Button buttonCancel;
     }
 }

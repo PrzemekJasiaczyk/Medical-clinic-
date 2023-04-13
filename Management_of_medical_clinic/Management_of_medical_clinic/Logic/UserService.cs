@@ -104,7 +104,6 @@ namespace Console_Management_of_medical_clinic.Logic
 
         public static bool ValidatePassword(string password)
         {
-            Regex regex = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[-_!#$*]).{8,15}$");
             return Regex.Match(password, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[-_!#$*]).{8,15}$").Success;
         }
 

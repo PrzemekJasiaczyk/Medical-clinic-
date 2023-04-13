@@ -45,17 +45,15 @@ namespace GUI_Management_of_medical_clinic
                 if (result == DialogResult.Yes)
                 {
                     FormUserList userList = new FormUserList(currentUser);
-                    this.Hide();
                     userList.ShowDialog();
-                    this.Close();
+                    Close();
                 }
             }
             else
             {
                 FormUserList userList = new FormUserList(currentUser);
-                this.Hide();
                 userList.ShowDialog();
-                this.Close();
+                Close();
             }
         }
 
@@ -66,12 +64,9 @@ namespace GUI_Management_of_medical_clinic
 
             UserService.AddUser(textBoxUsername.Text, textBoxPassword.Text, (EnumUserRoles)Enum.Parse(typeof(EnumUserRoles), comboBoxRole.SelectedItem.ToString()), true, int.Parse(Regex.Match(listBoxEmployees.SelectedItem.ToString(), @"^\d+").Value));
 
-            //FormUserList userList = new FormUserList(currentUser);
-            //this.Hide();
-            //userList.ShowDialog();
-            //this.Close();
-
-            Hide();
+            FormUserList userList = new FormUserList(currentUser);
+            userList.ShowDialog();
+            Close();
         }
 
         public void checkIfRequiredFilled()

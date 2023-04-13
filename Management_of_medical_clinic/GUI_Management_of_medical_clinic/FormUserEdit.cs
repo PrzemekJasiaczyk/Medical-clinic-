@@ -69,12 +69,15 @@ namespace GUI_Management_of_medical_clinic
             UserService.EditUser(int.Parse(textBoxUserId.Text), textBoxUsername.Text, (EnumUserRoles)Enum.Parse(typeof(EnumUserRoles), comboBoxRole.SelectedItem.ToString()), comboBoxActive.SelectedItem == "Active" ? true : false, int.Parse(Regex.Match(listBoxEmployees.SelectedItem.ToString(), @"^\d+").Value));
 
             MessageBox.Show("Success, data is saved.");
-            Hide();
+
+            FormUserList userList = new FormUserList(currentUser);
+            userList.ShowDialog();
+            Close();
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
         {
-            if (user.IdEmployee != int.Parse(Regex.Match(listBoxEmployees.SelectedItem.ToString(), @"^\d+").Value) || comboBoxRole.SelectedItem.ToString().Equals(user.Role.ToString()) || comboBoxActive.SelectedItem.Equals(user.IsActive ? "Active" : "Disactive"))
+            if (user.IdEmployee != int.Parse(Regex.Match(listBoxEmployees.SelectedItem.ToString(), @"^\d+").Value) || !comboBoxRole.SelectedItem.ToString().Equals(user.Role.ToString()) || !comboBoxActive.SelectedItem.Equals(user.IsActive ? "Active" : "Disactive"))
             {
                 DialogResult result = MessageBox.Show("Are you sure you want to cancel the operation? ", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.No)
@@ -82,7 +85,10 @@ namespace GUI_Management_of_medical_clinic
                     return;
                 }
             }
-            Hide();
+
+            FormUserList userList = new FormUserList(currentUser);
+            userList.ShowDialog();
+            Close();
         }
 
         private void textBoxUsername_TextChanged(object sender, EventArgs e)
