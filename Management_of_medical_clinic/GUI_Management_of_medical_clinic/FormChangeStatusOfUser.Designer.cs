@@ -28,61 +28,63 @@
         /// </summary>
         private void InitializeComponent()
         {
-            buttonConfirm = new Button();
-            buttonCancel = new Button();
-            textBoxPassword = new TextBox();
-            labelPassword = new Label();
-            SuspendLayout();
+            this.buttonConfirm = new System.Windows.Forms.Button();
+            this.buttonCancel = new System.Windows.Forms.Button();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
+            this.labelPassword = new System.Windows.Forms.Label();
+            this.SuspendLayout();
             // 
             // buttonConfirm
             // 
-            buttonConfirm.Location = new Point(192, 47);
-            buttonConfirm.Name = "buttonConfirm";
-            buttonConfirm.Size = new Size(126, 33);
-            buttonConfirm.TabIndex = 15;
-            buttonConfirm.Text = "Confirm";
-            buttonConfirm.UseVisualStyleBackColor = true;
-            buttonConfirm.Click += buttonConfirm_Click;
+            this.buttonConfirm.Location = new System.Drawing.Point(196, 59);
+            this.buttonConfirm.Name = "buttonConfirm";
+            this.buttonConfirm.Size = new System.Drawing.Size(126, 33);
+            this.buttonConfirm.TabIndex = 11;
+            this.buttonConfirm.Text = "Confirm";
+            this.buttonConfirm.UseVisualStyleBackColor = true;
+            this.buttonConfirm.Click += new System.EventHandler(this.buttonConfirm_Click);
             // 
             // buttonCancel
             // 
-            buttonCancel.Location = new Point(25, 47);
-            buttonCancel.Name = "buttonCancel";
-            buttonCancel.Size = new Size(126, 33);
-            buttonCancel.TabIndex = 14;
-            buttonCancel.Text = "Cancel";
-            buttonCancel.UseVisualStyleBackColor = true;
-            buttonCancel.Click += buttonCancel_Click;
+            this.buttonCancel.Location = new System.Drawing.Point(29, 59);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(126, 33);
+            this.buttonCancel.TabIndex = 10;
+            this.buttonCancel.Text = "Cancel";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // textBoxPassword
             // 
-            textBoxPassword.Location = new Point(128, 6);
-            textBoxPassword.Name = "textBoxPassword";
-            textBoxPassword.Size = new Size(190, 23);
-            textBoxPassword.TabIndex = 13;
+            this.textBoxPassword.Location = new System.Drawing.Point(132, 18);
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.Size = new System.Drawing.Size(190, 23);
+            this.textBoxPassword.TabIndex = 9;
             // 
             // labelPassword
             // 
-            labelPassword.AutoSize = true;
-            labelPassword.Location = new Point(25, 9);
-            labelPassword.Name = "labelPassword";
-            labelPassword.Size = new Size(91, 15);
-            labelPassword.TabIndex = 12;
-            labelPassword.Text = "Input password:";
+            this.labelPassword.AutoSize = true;
+            this.labelPassword.Location = new System.Drawing.Point(29, 21);
+            this.labelPassword.Name = "labelPassword";
+            this.labelPassword.Size = new System.Drawing.Size(91, 15);
+            this.labelPassword.TabIndex = 8;
+            this.labelPassword.Text = "Input password:";
             // 
             // FormChangeStatusOfUser
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(342, 87);
-            Controls.Add(buttonConfirm);
-            Controls.Add(buttonCancel);
-            Controls.Add(textBoxPassword);
-            Controls.Add(labelPassword);
-            Name = "FormChangeStatusOfUser";
-            Text = "FormChangeStatusOfUser";
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(350, 110);
+            this.Controls.Add(this.buttonConfirm);
+            this.Controls.Add(this.buttonCancel);
+            this.Controls.Add(this.textBoxPassword);
+            this.Controls.Add(this.labelPassword);
+            this.Name = "FormChangeStatusOfUser";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "FormChangeStatusOfUser";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion

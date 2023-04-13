@@ -17,34 +17,37 @@ namespace GUI_Management_of_medical_clinic
         UserModel user;
         EmployeeModel currentUser;
 
-        public FormChangeStatusOfUser()
+        public FormChangeStatusOfUser(UserModel usr, EmployeeModel currentU)
         {
             InitializeComponent();
-        }
-
-        public FormChangeStatusOfUser(UserModel user, EmployeeModel currentUser)
-        {
-            this.user = user;
-            this.currentUser = currentUser;
-            InitializeComponent();
-        }
-
-        private void buttonCancel_Click(object sender, EventArgs e)
-        {
-            FormUserList formUserList = new FormUserList(currentUser);
-            formUserList.ShowDialog();
-            Close();
+            user = usr;
+            currentUser = currentU;
         }
 
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
-            if (textBoxPassword.Text == UserService.GetUserByEmployeeId(currentUser).Password)
+            UserModel userFromCurrentUser = UserService.GetUserByEmployeeId(currentUser);   // pobieram id usera od currentUsera(EmployeeModel)
+            if (textBoxPassword.Text != userFromCurrentUser.Password)
             {
-                UserModel.ChangeUserStatus(user);
-                FormUserList userList = new FormUserList(currentUser);
-                userList.ShowDialog();
-                Close();
+                MessageBox.Show("Invalid password!");
+                return;
             }
+
+            UserModel.ChangeUserStatus(user);
+            FormUserList formUserList = new FormUserList(currentUser);
+            formUserList.ShowDialog();
+            this.Close();
+
+        }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+
+            FormUserList formEmployeeList = new FormUserList(currentUser);
+            //this.Hide();
+            formEmployeeList.ShowDialog();
+            this.Close();
+
         }
     }
 }

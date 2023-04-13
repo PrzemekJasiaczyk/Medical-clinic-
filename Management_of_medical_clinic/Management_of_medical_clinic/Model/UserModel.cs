@@ -53,11 +53,25 @@ namespace Console_Management_of_medical_clinic.Model
 
         public static void ChangeUserStatus(UserModel user)
         {
-            using (AppDbContext context = new AppDbContext())
+
+            if (user.IsActive == true)
             {
+                var context = new AppDbContext();
                 user = context.DbUsers.Find(user.IdUser);
-                user.IsActive = !user.IsActive;
+                user.IsActive = false;
                 context.SaveChanges();
+                return;
+            }
+            else if (user.IsActive == false)
+            {
+                var context = new AppDbContext();
+
+                UserModel usr = context.DbUsers.Find(user.IdUser);
+
+                usr.IsActive = true;
+                context.SaveChanges();
+                return;
+
             }
         }
     }
