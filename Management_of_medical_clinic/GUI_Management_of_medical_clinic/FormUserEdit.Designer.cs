@@ -28,177 +28,182 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label4 = new Label();
-            textBoxUserId = new TextBox();
-            labelTitle = new Label();
-            label3 = new Label();
-            label2 = new Label();
-            label1 = new Label();
-            buttonClose = new Button();
-            buttonSaveUser = new Button();
-            textBoxUsername = new TextBox();
-            buttonChangePassword = new Button();
-            comboBoxRole = new ComboBox();
-            comboBoxActive = new ComboBox();
-            label6 = new Label();
-            listBoxEmployees = new ListBox();
-            SuspendLayout();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBoxUserId = new System.Windows.Forms.TextBox();
+            this.labelTitle = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.buttonClose = new System.Windows.Forms.Button();
+            this.buttonSaveUser = new System.Windows.Forms.Button();
+            this.textBoxUsername = new System.Windows.Forms.TextBox();
+            this.buttonChangePassword = new System.Windows.Forms.Button();
+            this.comboBoxRole = new System.Windows.Forms.ComboBox();
+            this.comboBoxActive = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.listBoxEmployees = new System.Windows.Forms.ListBox();
+            this.SuspendLayout();
             // 
             // label4
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(12, 63);
-            label4.Name = "label4";
-            label4.Size = new Size(57, 15);
-            label4.TabIndex = 65;
-            label4.Text = "Id of User";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 63);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(57, 15);
+            this.label4.TabIndex = 65;
+            this.label4.Text = "Id of User";
             // 
             // textBoxUserId
             // 
-            textBoxUserId.Location = new Point(75, 60);
-            textBoxUserId.Name = "textBoxUserId";
-            textBoxUserId.ReadOnly = true;
-            textBoxUserId.Size = new Size(59, 23);
-            textBoxUserId.TabIndex = 64;
+            this.textBoxUserId.Location = new System.Drawing.Point(75, 60);
+            this.textBoxUserId.Name = "textBoxUserId";
+            this.textBoxUserId.ReadOnly = true;
+            this.textBoxUserId.Size = new System.Drawing.Size(59, 23);
+            this.textBoxUserId.TabIndex = 64;
             // 
             // labelTitle
             // 
-            labelTitle.AutoSize = true;
-            labelTitle.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            labelTitle.Location = new Point(12, 9);
-            labelTitle.Name = "labelTitle";
-            labelTitle.Size = new Size(130, 30);
-            labelTitle.TabIndex = 63;
-            labelTitle.Text = "User edition";
+            this.labelTitle.AutoSize = true;
+            this.labelTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelTitle.Location = new System.Drawing.Point(12, 9);
+            this.labelTitle.Name = "labelTitle";
+            this.labelTitle.Size = new System.Drawing.Size(130, 30);
+            this.labelTitle.TabIndex = 63;
+            this.labelTitle.Text = "User edition";
             // 
             // label3
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(82, 168);
-            label3.Name = "label3";
-            label3.Size = new Size(61, 15);
-            label3.TabIndex = 62;
-            label3.Text = "Is it Active";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(82, 168);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(61, 15);
+            this.label3.TabIndex = 62;
+            this.label3.Text = "Is it Active";
             // 
             // label2
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(82, 139);
-            label2.Name = "label2";
-            label2.Size = new Size(30, 15);
-            label2.TabIndex = 61;
-            label2.Text = "Role";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(82, 139);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(30, 15);
+            this.label2.TabIndex = 61;
+            this.label2.Text = "Role";
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(82, 110);
-            label1.Name = "label1";
-            label1.Size = new Size(60, 15);
-            label1.TabIndex = 60;
-            label1.Text = "Username";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(82, 110);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(60, 15);
+            this.label1.TabIndex = 60;
+            this.label1.Text = "Username";
             // 
             // buttonClose
             // 
-            buttonClose.Location = new Point(12, 224);
-            buttonClose.Name = "buttonClose";
-            buttonClose.Size = new Size(140, 38);
-            buttonClose.TabIndex = 59;
-            buttonClose.Text = "Cancel";
-            buttonClose.UseVisualStyleBackColor = true;
-            buttonClose.Click += buttonClose_Click;
+            this.buttonClose.Location = new System.Drawing.Point(12, 224);
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(140, 38);
+            this.buttonClose.TabIndex = 59;
+            this.buttonClose.Text = "Cancel";
+            this.buttonClose.UseVisualStyleBackColor = true;
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
             // buttonSaveUser
             // 
-            buttonSaveUser.Location = new Point(464, 224);
-            buttonSaveUser.Name = "buttonSaveUser";
-            buttonSaveUser.Size = new Size(147, 38);
-            buttonSaveUser.TabIndex = 58;
-            buttonSaveUser.Text = "Save";
-            buttonSaveUser.UseVisualStyleBackColor = true;
-            buttonSaveUser.Click += buttonSaveUser_Click;
+            this.buttonSaveUser.Location = new System.Drawing.Point(464, 224);
+            this.buttonSaveUser.Name = "buttonSaveUser";
+            this.buttonSaveUser.Size = new System.Drawing.Size(147, 38);
+            this.buttonSaveUser.TabIndex = 58;
+            this.buttonSaveUser.Text = "Save";
+            this.buttonSaveUser.UseVisualStyleBackColor = true;
+            this.buttonSaveUser.Click += new System.EventHandler(this.buttonSaveUser_Click);
             // 
             // textBoxUsername
             // 
-            textBoxUsername.Location = new Point(162, 107);
-            textBoxUsername.Name = "textBoxUsername";
-            textBoxUsername.Size = new Size(187, 23);
-            textBoxUsername.TabIndex = 55;
-            textBoxUsername.TextChanged += textBoxUsername_TextChanged;
+            this.textBoxUsername.Location = new System.Drawing.Point(162, 107);
+            this.textBoxUsername.Name = "textBoxUsername";
+            this.textBoxUsername.Size = new System.Drawing.Size(187, 23);
+            this.textBoxUsername.TabIndex = 55;
+            this.textBoxUsername.TextChanged += new System.EventHandler(this.textBoxUsername_TextChanged);
             // 
             // buttonChangePassword
             // 
-            buttonChangePassword.Location = new Point(288, 224);
-            buttonChangePassword.Name = "buttonChangePassword";
-            buttonChangePassword.Size = new Size(170, 38);
-            buttonChangePassword.TabIndex = 68;
-            buttonChangePassword.Text = "Change password";
-            buttonChangePassword.UseVisualStyleBackColor = true;
-            buttonChangePassword.Click += buttonChangePassword_Click;
+            this.buttonChangePassword.Location = new System.Drawing.Point(288, 224);
+            this.buttonChangePassword.Name = "buttonChangePassword";
+            this.buttonChangePassword.Size = new System.Drawing.Size(170, 38);
+            this.buttonChangePassword.TabIndex = 68;
+            this.buttonChangePassword.Text = "Change password";
+            this.buttonChangePassword.UseVisualStyleBackColor = true;
+            this.buttonChangePassword.Click += new System.EventHandler(this.buttonChangePassword_Click);
             // 
             // comboBoxRole
             // 
-            comboBoxRole.FormattingEnabled = true;
-            comboBoxRole.Items.AddRange(new object[] { "Administrator", "Employee" });
-            comboBoxRole.Location = new Point(162, 136);
-            comboBoxRole.Name = "comboBoxRole";
-            comboBoxRole.Size = new Size(187, 23);
-            comboBoxRole.TabIndex = 69;
-            comboBoxRole.SelectedIndexChanged += comboBoxRole_SelectedIndexChanged;
+            this.comboBoxRole.FormattingEnabled = true;
+            this.comboBoxRole.Items.AddRange(new object[] {
+            "Administrator",
+            "Employee"});
+            this.comboBoxRole.Location = new System.Drawing.Point(162, 136);
+            this.comboBoxRole.Name = "comboBoxRole";
+            this.comboBoxRole.Size = new System.Drawing.Size(187, 23);
+            this.comboBoxRole.TabIndex = 69;
+            this.comboBoxRole.SelectedIndexChanged += new System.EventHandler(this.comboBoxRole_SelectedIndexChanged);
             // 
             // comboBoxActive
             // 
-            comboBoxActive.FormattingEnabled = true;
-            comboBoxActive.Items.AddRange(new object[] { "Active", "Disactive" });
-            comboBoxActive.Location = new Point(162, 165);
-            comboBoxActive.Name = "comboBoxActive";
-            comboBoxActive.Size = new Size(187, 23);
-            comboBoxActive.TabIndex = 70;
-            comboBoxActive.SelectedIndexChanged += comboBoxActive_SelectedIndexChanged;
+            this.comboBoxActive.FormattingEnabled = true;
+            this.comboBoxActive.Items.AddRange(new object[] {
+            "Active",
+            "Disactive"});
+            this.comboBoxActive.Location = new System.Drawing.Point(162, 165);
+            this.comboBoxActive.Name = "comboBoxActive";
+            this.comboBoxActive.Size = new System.Drawing.Size(187, 23);
+            this.comboBoxActive.TabIndex = 70;
+            this.comboBoxActive.SelectedIndexChanged += new System.EventHandler(this.comboBoxActive_SelectedIndexChanged);
             // 
             // label6
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(400, 61);
-            label6.Name = "label6";
-            label6.Size = new Size(211, 15);
-            label6.TabIndex = 72;
-            label6.Text = "Choose an employee to create an user:";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(400, 61);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(211, 15);
+            this.label6.TabIndex = 72;
+            this.label6.Text = "Choose an employee to create an user:";
             // 
             // listBoxEmployees
             // 
-            listBoxEmployees.FormattingEnabled = true;
-            listBoxEmployees.ItemHeight = 15;
-            listBoxEmployees.Location = new Point(400, 79);
-            listBoxEmployees.Name = "listBoxEmployees";
-            listBoxEmployees.Size = new Size(211, 109);
-            listBoxEmployees.TabIndex = 71;
-            listBoxEmployees.SelectedIndexChanged += listBoxEmployees_SelectedIndexChanged;
+            this.listBoxEmployees.FormattingEnabled = true;
+            this.listBoxEmployees.ItemHeight = 15;
+            this.listBoxEmployees.Location = new System.Drawing.Point(400, 79);
+            this.listBoxEmployees.Name = "listBoxEmployees";
+            this.listBoxEmployees.Size = new System.Drawing.Size(211, 109);
+            this.listBoxEmployees.TabIndex = 71;
+            this.listBoxEmployees.SelectedIndexChanged += new System.EventHandler(this.listBoxEmployees_SelectedIndexChanged);
             // 
             // FormUserEdit
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(623, 283);
-            Controls.Add(label6);
-            Controls.Add(listBoxEmployees);
-            Controls.Add(comboBoxActive);
-            Controls.Add(comboBoxRole);
-            Controls.Add(buttonChangePassword);
-            Controls.Add(label4);
-            Controls.Add(textBoxUserId);
-            Controls.Add(labelTitle);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(buttonClose);
-            Controls.Add(buttonSaveUser);
-            Controls.Add(textBoxUsername);
-            Name = "FormUserEdit";
-            Text = "FormUserEdit";
-            Load += FormUserEdit_Load;
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(623, 283);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.listBoxEmployees);
+            this.Controls.Add(this.comboBoxActive);
+            this.Controls.Add(this.comboBoxRole);
+            this.Controls.Add(this.buttonChangePassword);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.textBoxUserId);
+            this.Controls.Add(this.labelTitle);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.buttonClose);
+            this.Controls.Add(this.buttonSaveUser);
+            this.Controls.Add(this.textBoxUsername);
+            this.Name = "FormUserEdit";
+            this.Text = "FormUserEdit";
+            this.Load += new System.EventHandler(this.FormUserEdit_Load);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion

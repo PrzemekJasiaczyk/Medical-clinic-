@@ -51,13 +51,17 @@
             this.labelTitle = new System.Windows.Forms.Label();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonNext = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // labelSpecialization
             // 
             this.labelSpecialization.AutoSize = true;
             this.labelSpecialization.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelSpecialization.Location = new System.Drawing.Point(591, 61);
+            this.labelSpecialization.Location = new System.Drawing.Point(1132, 188);
             this.labelSpecialization.Name = "labelSpecialization";
             this.labelSpecialization.Size = new System.Drawing.Size(133, 15);
             this.labelSpecialization.TabIndex = 54;
@@ -68,7 +72,7 @@
             // 
             this.checkedListBoxSpecialization.CheckOnClick = true;
             this.checkedListBoxSpecialization.FormattingEnabled = true;
-            this.checkedListBoxSpecialization.Location = new System.Drawing.Point(548, 79);
+            this.checkedListBoxSpecialization.Location = new System.Drawing.Point(1089, 206);
             this.checkedListBoxSpecialization.Name = "checkedListBoxSpecialization";
             this.checkedListBoxSpecialization.Size = new System.Drawing.Size(209, 274);
             this.checkedListBoxSpecialization.TabIndex = 53;
@@ -79,7 +83,7 @@
             // 
             this.comboBoxSex.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSex.FormattingEnabled = true;
-            this.comboBoxSex.Location = new System.Drawing.Point(305, 330);
+            this.comboBoxSex.Location = new System.Drawing.Point(846, 457);
             this.comboBoxSex.Name = "comboBoxSex";
             this.comboBoxSex.Size = new System.Drawing.Size(199, 23);
             this.comboBoxSex.TabIndex = 52;
@@ -87,7 +91,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(209, 338);
+            this.label7.Location = new System.Drawing.Point(750, 465);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(25, 15);
             this.label7.TabIndex = 51;
@@ -95,7 +99,7 @@
             // 
             // textBoxPhone
             // 
-            this.textBoxPhone.Location = new System.Drawing.Point(305, 301);
+            this.textBoxPhone.Location = new System.Drawing.Point(846, 428);
             this.textBoxPhone.MaxLength = 9;
             this.textBoxPhone.Name = "textBoxPhone";
             this.textBoxPhone.Size = new System.Drawing.Size(199, 23);
@@ -103,7 +107,7 @@
             // 
             // textBoxEmail
             // 
-            this.textBoxEmail.Location = new System.Drawing.Point(305, 272);
+            this.textBoxEmail.Location = new System.Drawing.Point(846, 399);
             this.textBoxEmail.MaxLength = 200;
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(199, 23);
@@ -112,7 +116,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(209, 309);
+            this.label8.Location = new System.Drawing.Point(750, 436);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(86, 15);
             this.label8.TabIndex = 48;
@@ -121,7 +125,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(209, 280);
+            this.label9.Location = new System.Drawing.Point(750, 407);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(41, 15);
             this.label9.TabIndex = 47;
@@ -129,7 +133,7 @@
             // 
             // textBoxAddress
             // 
-            this.textBoxAddress.Location = new System.Drawing.Point(305, 243);
+            this.textBoxAddress.Location = new System.Drawing.Point(846, 370);
             this.textBoxAddress.MaxLength = 500;
             this.textBoxAddress.Name = "textBoxAddress";
             this.textBoxAddress.Size = new System.Drawing.Size(199, 23);
@@ -138,7 +142,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(209, 246);
+            this.label10.Location = new System.Drawing.Point(750, 373);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(78, 15);
             this.label10.TabIndex = 45;
@@ -154,7 +158,7 @@
             "Paramedic",
             "Janitor",
             "Technitian"});
-            this.comboBoxRole.Location = new System.Drawing.Point(305, 186);
+            this.comboBoxRole.Location = new System.Drawing.Point(846, 313);
             this.comboBoxRole.Name = "comboBoxRole";
             this.comboBoxRole.Size = new System.Drawing.Size(199, 23);
             this.comboBoxRole.TabIndex = 44;
@@ -163,7 +167,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(209, 194);
+            this.label5.Location = new System.Drawing.Point(750, 321);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(35, 15);
             this.label5.TabIndex = 43;
@@ -172,7 +176,7 @@
             // dateTimePickerDate
             // 
             this.dateTimePickerDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerDate.Location = new System.Drawing.Point(305, 157);
+            this.dateTimePickerDate.Location = new System.Drawing.Point(846, 284);
             this.dateTimePickerDate.Name = "dateTimePickerDate";
             this.dateTimePickerDate.Size = new System.Drawing.Size(199, 23);
             this.dateTimePickerDate.TabIndex = 42;
@@ -181,7 +185,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(209, 165);
+            this.label4.Location = new System.Drawing.Point(750, 292);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(78, 15);
             this.label4.TabIndex = 41;
@@ -189,7 +193,7 @@
             // 
             // textBoxPESEL
             // 
-            this.textBoxPESEL.Location = new System.Drawing.Point(305, 128);
+            this.textBoxPESEL.Location = new System.Drawing.Point(846, 255);
             this.textBoxPESEL.MaxLength = 11;
             this.textBoxPESEL.Name = "textBoxPESEL";
             this.textBoxPESEL.Size = new System.Drawing.Size(199, 23);
@@ -199,7 +203,7 @@
             // 
             // textBoxLastName
             // 
-            this.textBoxLastName.Location = new System.Drawing.Point(305, 99);
+            this.textBoxLastName.Location = new System.Drawing.Point(846, 226);
             this.textBoxLastName.MaxLength = 100;
             this.textBoxLastName.Name = "textBoxLastName";
             this.textBoxLastName.Size = new System.Drawing.Size(199, 23);
@@ -210,7 +214,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(209, 136);
+            this.label3.Location = new System.Drawing.Point(750, 263);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(43, 15);
             this.label3.TabIndex = 38;
@@ -219,7 +223,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(209, 107);
+            this.label1.Location = new System.Drawing.Point(750, 234);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 15);
             this.label1.TabIndex = 37;
@@ -227,7 +231,7 @@
             // 
             // textBoxFirstName
             // 
-            this.textBoxFirstName.Location = new System.Drawing.Point(305, 70);
+            this.textBoxFirstName.Location = new System.Drawing.Point(846, 197);
             this.textBoxFirstName.MaxLength = 100;
             this.textBoxFirstName.Name = "textBoxFirstName";
             this.textBoxFirstName.Size = new System.Drawing.Size(199, 23);
@@ -238,7 +242,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(209, 78);
+            this.label2.Location = new System.Drawing.Point(750, 205);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 15);
             this.label2.TabIndex = 35;
@@ -248,7 +252,7 @@
             // 
             this.labelTitle.AutoSize = true;
             this.labelTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelTitle.Location = new System.Drawing.Point(329, 9);
+            this.labelTitle.Location = new System.Drawing.Point(870, 136);
             this.labelTitle.Name = "labelTitle";
             this.labelTitle.Size = new System.Drawing.Size(155, 30);
             this.labelTitle.TabIndex = 34;
@@ -256,18 +260,23 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(12, 390);
+            this.buttonCancel.BackColor = System.Drawing.Color.Gainsboro;
+            this.buttonCancel.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonCancel.FlatAppearance.BorderSize = 2;
+            this.buttonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonCancel.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonCancel.Location = new System.Drawing.Point(24, 985);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(142, 45);
+            this.buttonCancel.Size = new System.Drawing.Size(252, 66);
             this.buttonCancel.TabIndex = 33;
             this.buttonCancel.Text = "Cancel";
-            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.UseVisualStyleBackColor = false;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // buttonNext
             // 
             this.buttonNext.Enabled = false;
-            this.buttonNext.Location = new System.Drawing.Point(646, 390);
+            this.buttonNext.Location = new System.Drawing.Point(1187, 517);
             this.buttonNext.Name = "buttonNext";
             this.buttonNext.Size = new System.Drawing.Size(142, 45);
             this.buttonNext.TabIndex = 32;
@@ -275,11 +284,33 @@
             this.buttonNext.UseVisualStyleBackColor = true;
             this.buttonNext.Click += new System.EventHandler(this.buttonNext_Click);
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Controls.Add(this.buttonCancel);
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(312, 1081);
+            this.panel2.TabIndex = 55;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::GUI_Management_of_medical_clinic.Properties.Resources.MC_Logo;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(61, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(176, 168);
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
             // FormEmployeeAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.labelSpecialization);
             this.Controls.Add(this.checkedListBoxSpecialization);
             this.Controls.Add(this.comboBoxSex);
@@ -301,7 +332,6 @@
             this.Controls.Add(this.textBoxFirstName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.labelTitle);
-            this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonNext);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormEmployeeAdd";
@@ -309,6 +339,8 @@
             this.Text = "FormEmployeeAdd";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormEmployeeAdd_Load);
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -339,5 +371,7 @@
         private Label labelTitle;
         private Button buttonCancel;
         private Button buttonNext;
+        private Panel panel2;
+        private PictureBox pictureBox1;
     }
 }

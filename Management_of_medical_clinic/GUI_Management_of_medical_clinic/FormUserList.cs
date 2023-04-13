@@ -97,5 +97,20 @@ namespace GUI_Management_of_medical_clinic
             LoadUserData();
             Show();
         }
+
+        private void buttonSpecializations_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonDeactivateUser_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonReactivateUser_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
