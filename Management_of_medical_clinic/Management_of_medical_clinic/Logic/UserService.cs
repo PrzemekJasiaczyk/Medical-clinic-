@@ -120,6 +120,19 @@ namespace Console_Management_of_medical_clinic.Logic
                 }
             }
         }
+
+        public static UserModel GetUserByEmployeeId(EmployeeModel employee)
+        {
+            List<UserModel> users = GetUsersData();
+            foreach(UserModel user in users)
+            {
+                if(employee.IdEmployee == user.IdEmployee)
+                {
+                    return user;
+                }
+            }
+            return null;
+        }
     }
         
 }
