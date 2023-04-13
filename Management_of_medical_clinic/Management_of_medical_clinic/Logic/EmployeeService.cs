@@ -31,6 +31,7 @@ namespace Console_Management_of_medical_clinic.Logic
             try
             {
                 using AppDbContext context = new AppDbContext();
+                
                 context.DbEmployees.Add(newEmployee);
                 context.SaveChanges();
                 return true;
@@ -69,22 +70,24 @@ namespace Console_Management_of_medical_clinic.Logic
         }
 
 
-
         //Validation upon addit Employee
         //Validate PESEL input
         public static (string, bool) validatePESEL(string input, DateTime selectedDate, int currentIndex)
         {
-            string firstSix = input.Substring(0, 6);
-
-            string formatedDate = selectedDate.ToString("dd/MM/yy");
-            string rawDate = formatedDate.Replace(".", "");
-            rawDate = rawDate.Replace("/", "");
-
             if (input.Length != 11)
             {
                 return ("PESEL should be 11 digits long", false);
 
             }
+
+            string firstSix = input.Substring(0, 6);
+            string lastChar = input[input.Length - 1].ToString();
+
+
+            string formatedDate = selectedDate.ToString("dd/MM/yy");
+            string rawDate = formatedDate.Replace(".", "");
+            rawDate = rawDate.Replace("/", "");
+            
 
             if (!long.TryParse(input, out long result))
             {
@@ -96,12 +99,12 @@ namespace Console_Management_of_medical_clinic.Logic
                 return ("PESEL doesn't fit the date of birth", false);
             }
 
-            if (currentIndex == 0 && input.Substring(input.Length - 2, 1)[0] % 2 == 0)
+            if (currentIndex == 0 &&  int.Parse(lastChar)% 2 == 0)
             {
                 return ("PESEL doesn't fit the sex", false);
             }
 
-            if (currentIndex == 1 && input.Substring(input.Length - 2, 1)[0] % 2 == 1)
+            if (currentIndex == 1 && int.Parse(lastChar) % 2 == 1)
             {
                 return ("PESEL doesn't fit the sex", false);
             }

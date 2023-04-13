@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.buttonEditUser = new System.Windows.Forms.Button();
-            this.buttonSpecializations = new System.Windows.Forms.Button();
             this.buttonReactivateUser = new System.Windows.Forms.Button();
             this.buttonClearFilter = new System.Windows.Forms.Button();
             this.buttonDeactivateUser = new System.Windows.Forms.Button();
@@ -54,16 +53,6 @@
             this.buttonEditUser.Text = "Edit user";
             this.buttonEditUser.UseVisualStyleBackColor = true;
             this.buttonEditUser.Click += new System.EventHandler(this.buttonEditUser_Click);
-            // 
-            // buttonSpecializations
-            // 
-            this.buttonSpecializations.Location = new System.Drawing.Point(251, 380);
-            this.buttonSpecializations.Name = "buttonSpecializations";
-            this.buttonSpecializations.Size = new System.Drawing.Size(142, 45);
-            this.buttonSpecializations.TabIndex = 32;
-            this.buttonSpecializations.Text = "Edit Specializations";
-            this.buttonSpecializations.UseVisualStyleBackColor = true;
-            this.buttonSpecializations.Click += new System.EventHandler(this.buttonSpecializations_Click);
             // 
             // buttonReactivateUser
             // 
@@ -192,7 +181,6 @@
             this.Controls.Add(this.textBoxLastname);
             this.Controls.Add(this.textBoxUsername);
             this.Controls.Add(this.buttonEditUser);
-            this.Controls.Add(this.buttonSpecializations);
             this.Controls.Add(this.buttonReactivateUser);
             this.Controls.Add(this.buttonClearFilter);
             this.Controls.Add(this.buttonDeactivateUser);
