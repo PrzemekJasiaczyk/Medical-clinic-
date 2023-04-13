@@ -28,181 +28,187 @@
         /// </summary>
         private void InitializeComponent()
         {
-            buttonEditUser = new Button();
-            buttonSpecializations = new Button();
-            buttonReactivateUser = new Button();
-            buttonClearFilter = new Button();
-            buttonDeactivateUser = new Button();
-            buttonReviewUser = new Button();
-            buttonAddUser = new Button();
-            buttonFilterUser = new Button();
-            comboBoxRole = new ComboBox();
-            labelFilter = new Label();
-            dataGridViewUsers = new DataGridView();
-            textBoxUsername = new TextBox();
-            textBoxLastname = new TextBox();
-            textBoxFirstname = new TextBox();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewUsers).BeginInit();
-            SuspendLayout();
+            this.buttonEditUser = new System.Windows.Forms.Button();
+            this.buttonSpecializations = new System.Windows.Forms.Button();
+            this.buttonReactivateUser = new System.Windows.Forms.Button();
+            this.buttonClearFilter = new System.Windows.Forms.Button();
+            this.buttonDeactivateUser = new System.Windows.Forms.Button();
+            this.buttonReviewUser = new System.Windows.Forms.Button();
+            this.buttonAddUser = new System.Windows.Forms.Button();
+            this.buttonFilterUser = new System.Windows.Forms.Button();
+            this.comboBoxRole = new System.Windows.Forms.ComboBox();
+            this.labelFilter = new System.Windows.Forms.Label();
+            this.dataGridViewUsers = new System.Windows.Forms.DataGridView();
+            this.textBoxUsername = new System.Windows.Forms.TextBox();
+            this.textBoxLastname = new System.Windows.Forms.TextBox();
+            this.textBoxFirstname = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).BeginInit();
+            this.SuspendLayout();
             // 
             // buttonEditUser
             // 
-            buttonEditUser.Location = new Point(402, 380);
-            buttonEditUser.Name = "buttonEditUser";
-            buttonEditUser.Size = new Size(142, 45);
-            buttonEditUser.TabIndex = 33;
-            buttonEditUser.Text = "Edit user";
-            buttonEditUser.UseVisualStyleBackColor = true;
-            buttonEditUser.Click += buttonEditUser_Click;
+            this.buttonEditUser.Location = new System.Drawing.Point(402, 380);
+            this.buttonEditUser.Name = "buttonEditUser";
+            this.buttonEditUser.Size = new System.Drawing.Size(142, 45);
+            this.buttonEditUser.TabIndex = 33;
+            this.buttonEditUser.Text = "Edit user";
+            this.buttonEditUser.UseVisualStyleBackColor = true;
+            this.buttonEditUser.Click += new System.EventHandler(this.buttonEditUser_Click);
             // 
             // buttonSpecializations
             // 
-            buttonSpecializations.Location = new Point(251, 380);
-            buttonSpecializations.Name = "buttonSpecializations";
-            buttonSpecializations.Size = new Size(142, 45);
-            buttonSpecializations.TabIndex = 32;
-            buttonSpecializations.Text = "Edit Specializations";
-            buttonSpecializations.UseVisualStyleBackColor = true;
+            this.buttonSpecializations.Location = new System.Drawing.Point(251, 380);
+            this.buttonSpecializations.Name = "buttonSpecializations";
+            this.buttonSpecializations.Size = new System.Drawing.Size(142, 45);
+            this.buttonSpecializations.TabIndex = 32;
+            this.buttonSpecializations.Text = "Edit Specializations";
+            this.buttonSpecializations.UseVisualStyleBackColor = true;
+            this.buttonSpecializations.Click += new System.EventHandler(this.buttonSpecializations_Click);
             // 
             // buttonReactivateUser
             // 
-            buttonReactivateUser.Location = new Point(648, 380);
-            buttonReactivateUser.Name = "buttonReactivateUser";
-            buttonReactivateUser.Size = new Size(140, 45);
-            buttonReactivateUser.TabIndex = 31;
-            buttonReactivateUser.Text = "Reactivate user";
-            buttonReactivateUser.UseVisualStyleBackColor = true;
+            this.buttonReactivateUser.Location = new System.Drawing.Point(648, 380);
+            this.buttonReactivateUser.Name = "buttonReactivateUser";
+            this.buttonReactivateUser.Size = new System.Drawing.Size(140, 45);
+            this.buttonReactivateUser.TabIndex = 31;
+            this.buttonReactivateUser.Text = "Reactivate user";
+            this.buttonReactivateUser.UseVisualStyleBackColor = true;
+            this.buttonReactivateUser.Click += new System.EventHandler(this.buttonReactivateUser_Click);
             // 
             // buttonClearFilter
             // 
-            buttonClearFilter.Location = new Point(8, 390);
-            buttonClearFilter.Name = "buttonClearFilter";
-            buttonClearFilter.Size = new Size(100, 24);
-            buttonClearFilter.TabIndex = 30;
-            buttonClearFilter.Text = "Clear filter";
-            buttonClearFilter.UseVisualStyleBackColor = true;
-            buttonClearFilter.Click += buttonClearFilter_Click;
+            this.buttonClearFilter.Location = new System.Drawing.Point(8, 390);
+            this.buttonClearFilter.Name = "buttonClearFilter";
+            this.buttonClearFilter.Size = new System.Drawing.Size(100, 24);
+            this.buttonClearFilter.TabIndex = 30;
+            this.buttonClearFilter.Text = "Clear filter";
+            this.buttonClearFilter.UseVisualStyleBackColor = true;
+            this.buttonClearFilter.Click += new System.EventHandler(this.buttonClearFilter_Click);
             // 
             // buttonDeactivateUser
             // 
-            buttonDeactivateUser.Location = new Point(648, 329);
-            buttonDeactivateUser.Name = "buttonDeactivateUser";
-            buttonDeactivateUser.Size = new Size(140, 45);
-            buttonDeactivateUser.TabIndex = 29;
-            buttonDeactivateUser.Text = "Deactivate user";
-            buttonDeactivateUser.UseVisualStyleBackColor = true;
+            this.buttonDeactivateUser.Location = new System.Drawing.Point(648, 329);
+            this.buttonDeactivateUser.Name = "buttonDeactivateUser";
+            this.buttonDeactivateUser.Size = new System.Drawing.Size(140, 45);
+            this.buttonDeactivateUser.TabIndex = 29;
+            this.buttonDeactivateUser.Text = "Deactivate user";
+            this.buttonDeactivateUser.UseVisualStyleBackColor = true;
+            this.buttonDeactivateUser.Click += new System.EventHandler(this.buttonDeactivateUser_Click);
             // 
             // buttonReviewUser
             // 
-            buttonReviewUser.Location = new Point(399, 329);
-            buttonReviewUser.Name = "buttonReviewUser";
-            buttonReviewUser.Size = new Size(145, 45);
-            buttonReviewUser.TabIndex = 28;
-            buttonReviewUser.Text = "Review user";
-            buttonReviewUser.UseVisualStyleBackColor = true;
-            buttonReviewUser.Click += buttonReviewUser_Click;
+            this.buttonReviewUser.Location = new System.Drawing.Point(399, 329);
+            this.buttonReviewUser.Name = "buttonReviewUser";
+            this.buttonReviewUser.Size = new System.Drawing.Size(145, 45);
+            this.buttonReviewUser.TabIndex = 28;
+            this.buttonReviewUser.Text = "Review user";
+            this.buttonReviewUser.UseVisualStyleBackColor = true;
+            this.buttonReviewUser.Click += new System.EventHandler(this.buttonReviewUser_Click);
             // 
             // buttonAddUser
             // 
-            buttonAddUser.Location = new Point(251, 329);
-            buttonAddUser.Name = "buttonAddUser";
-            buttonAddUser.Size = new Size(142, 45);
-            buttonAddUser.TabIndex = 27;
-            buttonAddUser.Text = "Add new user";
-            buttonAddUser.UseVisualStyleBackColor = true;
-            buttonAddUser.Click += buttonAddUser_Click;
+            this.buttonAddUser.Location = new System.Drawing.Point(251, 329);
+            this.buttonAddUser.Name = "buttonAddUser";
+            this.buttonAddUser.Size = new System.Drawing.Size(142, 45);
+            this.buttonAddUser.TabIndex = 27;
+            this.buttonAddUser.Text = "Add new user";
+            this.buttonAddUser.UseVisualStyleBackColor = true;
+            this.buttonAddUser.Click += new System.EventHandler(this.buttonAddUser_Click);
             // 
             // buttonFilterUser
             // 
-            buttonFilterUser.Location = new Point(118, 390);
-            buttonFilterUser.Name = "buttonFilterUser";
-            buttonFilterUser.Size = new Size(100, 24);
-            buttonFilterUser.TabIndex = 26;
-            buttonFilterUser.Text = "Filtr";
-            buttonFilterUser.UseVisualStyleBackColor = true;
-            buttonFilterUser.Click += buttonFilterUser_Click;
+            this.buttonFilterUser.Location = new System.Drawing.Point(118, 390);
+            this.buttonFilterUser.Name = "buttonFilterUser";
+            this.buttonFilterUser.Size = new System.Drawing.Size(100, 24);
+            this.buttonFilterUser.TabIndex = 26;
+            this.buttonFilterUser.Text = "Filtr";
+            this.buttonFilterUser.UseVisualStyleBackColor = true;
+            this.buttonFilterUser.Click += new System.EventHandler(this.buttonFilterUser_Click);
             // 
             // comboBoxRole
             // 
-            comboBoxRole.FormattingEnabled = true;
-            comboBoxRole.Items.AddRange(new object[] { "Administrator", "Employee" });
-            comboBoxRole.Location = new Point(8, 361);
-            comboBoxRole.Name = "comboBoxRole";
-            comboBoxRole.Size = new Size(100, 23);
-            comboBoxRole.TabIndex = 25;
+            this.comboBoxRole.FormattingEnabled = true;
+            this.comboBoxRole.Items.AddRange(new object[] {
+            "Administrator",
+            "Employee"});
+            this.comboBoxRole.Location = new System.Drawing.Point(8, 361);
+            this.comboBoxRole.Name = "comboBoxRole";
+            this.comboBoxRole.Size = new System.Drawing.Size(100, 23);
+            this.comboBoxRole.TabIndex = 25;
             // 
             // labelFilter
             // 
-            labelFilter.AutoSize = true;
-            labelFilter.Location = new Point(12, 308);
-            labelFilter.Name = "labelFilter";
-            labelFilter.Size = new Size(51, 15);
-            labelFilter.TabIndex = 23;
-            labelFilter.Text = "Filter list";
+            this.labelFilter.AutoSize = true;
+            this.labelFilter.Location = new System.Drawing.Point(12, 308);
+            this.labelFilter.Name = "labelFilter";
+            this.labelFilter.Size = new System.Drawing.Size(51, 15);
+            this.labelFilter.TabIndex = 23;
+            this.labelFilter.Text = "Filter list";
             // 
             // dataGridViewUsers
             // 
-            dataGridViewUsers.AllowUserToAddRows = false;
-            dataGridViewUsers.AllowUserToDeleteRows = false;
-            dataGridViewUsers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewUsers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewUsers.Location = new Point(12, 22);
-            dataGridViewUsers.Name = "dataGridViewUsers";
-            dataGridViewUsers.ReadOnly = true;
-            dataGridViewUsers.RowTemplate.Height = 25;
-            dataGridViewUsers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewUsers.Size = new Size(776, 273);
-            dataGridViewUsers.TabIndex = 22;
+            this.dataGridViewUsers.AllowUserToAddRows = false;
+            this.dataGridViewUsers.AllowUserToDeleteRows = false;
+            this.dataGridViewUsers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewUsers.Location = new System.Drawing.Point(12, 22);
+            this.dataGridViewUsers.Name = "dataGridViewUsers";
+            this.dataGridViewUsers.ReadOnly = true;
+            this.dataGridViewUsers.RowTemplate.Height = 25;
+            this.dataGridViewUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewUsers.Size = new System.Drawing.Size(776, 273);
+            this.dataGridViewUsers.TabIndex = 22;
             // 
             // textBoxUsername
             // 
-            textBoxUsername.Location = new Point(118, 361);
-            textBoxUsername.Name = "textBoxUsername";
-            textBoxUsername.PlaceholderText = "Username";
-            textBoxUsername.Size = new Size(100, 23);
-            textBoxUsername.TabIndex = 34;
+            this.textBoxUsername.Location = new System.Drawing.Point(118, 361);
+            this.textBoxUsername.Name = "textBoxUsername";
+            this.textBoxUsername.PlaceholderText = "Username";
+            this.textBoxUsername.Size = new System.Drawing.Size(100, 23);
+            this.textBoxUsername.TabIndex = 34;
             // 
             // textBoxLastname
             // 
-            textBoxLastname.Location = new Point(118, 332);
-            textBoxLastname.Name = "textBoxLastname";
-            textBoxLastname.PlaceholderText = "Last name";
-            textBoxLastname.Size = new Size(100, 23);
-            textBoxLastname.TabIndex = 35;
+            this.textBoxLastname.Location = new System.Drawing.Point(118, 332);
+            this.textBoxLastname.Name = "textBoxLastname";
+            this.textBoxLastname.PlaceholderText = "Last name";
+            this.textBoxLastname.Size = new System.Drawing.Size(100, 23);
+            this.textBoxLastname.TabIndex = 35;
             // 
             // textBoxFirstname
             // 
-            textBoxFirstname.Location = new Point(8, 332);
-            textBoxFirstname.Name = "textBoxFirstname";
-            textBoxFirstname.PlaceholderText = "First name";
-            textBoxFirstname.Size = new Size(100, 23);
-            textBoxFirstname.TabIndex = 36;
+            this.textBoxFirstname.Location = new System.Drawing.Point(8, 332);
+            this.textBoxFirstname.Name = "textBoxFirstname";
+            this.textBoxFirstname.PlaceholderText = "First name";
+            this.textBoxFirstname.Size = new System.Drawing.Size(100, 23);
+            this.textBoxFirstname.TabIndex = 36;
             // 
             // FormUserList
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(textBoxFirstname);
-            Controls.Add(textBoxLastname);
-            Controls.Add(textBoxUsername);
-            Controls.Add(buttonEditUser);
-            Controls.Add(buttonSpecializations);
-            Controls.Add(buttonReactivateUser);
-            Controls.Add(buttonClearFilter);
-            Controls.Add(buttonDeactivateUser);
-            Controls.Add(buttonReviewUser);
-            Controls.Add(buttonAddUser);
-            Controls.Add(buttonFilterUser);
-            Controls.Add(comboBoxRole);
-            Controls.Add(labelFilter);
-            Controls.Add(dataGridViewUsers);
-            Name = "FormUserList";
-            Text = "FormUserList";
-            Load += FormUserList_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridViewUsers).EndInit();
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textBoxFirstname);
+            this.Controls.Add(this.textBoxLastname);
+            this.Controls.Add(this.textBoxUsername);
+            this.Controls.Add(this.buttonEditUser);
+            this.Controls.Add(this.buttonSpecializations);
+            this.Controls.Add(this.buttonReactivateUser);
+            this.Controls.Add(this.buttonClearFilter);
+            this.Controls.Add(this.buttonDeactivateUser);
+            this.Controls.Add(this.buttonReviewUser);
+            this.Controls.Add(this.buttonAddUser);
+            this.Controls.Add(this.buttonFilterUser);
+            this.Controls.Add(this.comboBoxRole);
+            this.Controls.Add(this.labelFilter);
+            this.Controls.Add(this.dataGridViewUsers);
+            this.Name = "FormUserList";
+            this.Text = "FormUserList";
+            this.Load += new System.EventHandler(this.FormUserList_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
