@@ -36,7 +36,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonFilterUser_Click(object sender, EventArgs e)
         {
-            List<UserModel> filteredUsers = UserService.FilterUsers(textBoxUsername.Text, "", "", comboBoxRole.SelectedItem == null ? "" : comboBoxRole.SelectedItem.ToString());
+            List<UserModel> filteredUsers = UserService.FilterUsers(textBoxUsername.Text, textBoxFirstname.Text, textBoxLastname.Text, comboBoxRole.SelectedItem == null ? "" : comboBoxRole.SelectedItem.ToString());
 
             dataGridViewUsers.Rows.Clear();
             foreach (UserModel user in filteredUsers)
@@ -51,7 +51,7 @@ namespace GUI_Management_of_medical_clinic
             LoadUserData();
             textBoxFirstname.Text = null;
             textBoxLastname.Text = null;
-            textBoxFirstname.Text = null;
+            textBoxUsername.Text = null;
             comboBoxRole.SelectedItem = null;
         }
 
