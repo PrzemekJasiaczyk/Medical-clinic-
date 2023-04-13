@@ -78,7 +78,7 @@
             this.Edit_Employee.FlatAppearance.BorderSize = 2;
             this.Edit_Employee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Edit_Employee.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Edit_Employee.Location = new System.Drawing.Point(810, 839);
+            this.Edit_Employee.Location = new System.Drawing.Point(959, 828);
             this.Edit_Employee.Name = "Edit_Employee";
             this.Edit_Employee.Size = new System.Drawing.Size(236, 66);
             this.Edit_Employee.TabIndex = 22;
@@ -310,6 +310,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label10);
