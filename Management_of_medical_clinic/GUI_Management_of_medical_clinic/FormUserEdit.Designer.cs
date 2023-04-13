@@ -104,7 +104,7 @@
             buttonClose.Name = "buttonClose";
             buttonClose.Size = new Size(140, 38);
             buttonClose.TabIndex = 59;
-            buttonClose.Text = "Close";
+            buttonClose.Text = "Cancel";
             buttonClose.UseVisualStyleBackColor = true;
             buttonClose.Click += buttonClose_Click;
             // 
@@ -134,6 +134,7 @@
             buttonChangePassword.TabIndex = 68;
             buttonChangePassword.Text = "Change password";
             buttonChangePassword.UseVisualStyleBackColor = true;
+            buttonChangePassword.Click += buttonChangePassword_Click;
             // 
             // comboBoxRole
             // 

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Console_Management_of_medical_clinic.Logic
@@ -90,11 +91,33 @@ namespace Console_Management_of_medical_clinic.Logic
         {
             using (AppDbContext db = new AppDbContext()) {
                 UserModel user = db.DbUsers.Find(idUser);
-                user.Username = username;
-                user.Role = userRoles;
-                user.IsActive = isActive;
-                user.IdEmployee = idEmployee;
-                db.SaveChanges();
+                if (user != null)
+                {
+                    user.Username = username;
+                    user.Role = userRoles;
+                    user.IsActive = isActive;
+                    user.IdEmployee = idEmployee;
+                    db.SaveChanges();
+                }
+            }
+        }
+
+        public static bool ValidatePassword(string password)
+        {
+            Regex regex = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[-_!#$*]).{8,15}$");
+            return Regex.Match(password, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[-_!#$*]).{8,15}$").Success;
+        }
+
+        public static void ChangePassword(int idUser, string password)
+        {
+            using(AppDbContext db = new AppDbContext())
+            {
+                UserModel user = db.DbUsers.Find(idUser);
+                if (user != null)
+                {
+                    user.Password = password;
+                    db.SaveChanges();
+                }
             }
         }
     }

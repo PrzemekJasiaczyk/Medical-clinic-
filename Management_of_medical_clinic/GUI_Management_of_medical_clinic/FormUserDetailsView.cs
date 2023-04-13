@@ -41,5 +41,12 @@ namespace GUI_Management_of_medical_clinic
             textBoxRole.Text = user.Role.ToString();
             textBoxActive.Text = user.IsActive ? "Active" : "Disactive";
         }
+
+        private void buttonEditUser_Click(object sender, EventArgs e)
+        {
+            FormUserEdit userEdit = new FormUserEdit(user, currentUser);
+            userEdit.ShowDialog();
+            Show();
+        }
     }
 }

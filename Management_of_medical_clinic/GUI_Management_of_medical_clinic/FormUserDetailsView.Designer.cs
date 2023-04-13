@@ -88,6 +88,7 @@
             buttonEditUser.TabIndex = 44;
             buttonEditUser.Text = "Edit";
             buttonEditUser.UseVisualStyleBackColor = true;
+            buttonEditUser.Click += buttonEditUser_Click;
             // 
             // textBoxActive
             // 

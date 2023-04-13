@@ -80,13 +80,13 @@ namespace GUI_Management_of_medical_clinic
             MessageBox.Show("Success, data is saved.");
             Hide();
         }
-        
+
         private void buttonClose_Click(object sender, EventArgs e)
         {
-            if(user.IdEmployee != int.Parse(Regex.Match(listBoxEmployees.SelectedItem.ToString(), @"^\d+").Value) || comboBoxRole.SelectedItem.ToString().Equals(user.Role.ToString()) || comboBoxActive.SelectedItem.Equals(user.IsActive ? "Active" : "Disactive"))
+            if (user.IdEmployee != int.Parse(Regex.Match(listBoxEmployees.SelectedItem.ToString(), @"^\d+").Value) || comboBoxRole.SelectedItem.ToString().Equals(user.Role.ToString()) || comboBoxActive.SelectedItem.Equals(user.IsActive ? "Active" : "Disactive"))
             {
                 DialogResult result = MessageBox.Show("Are you sure you want to cancel the operation? ", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if(result == DialogResult.No)
+                if (result == DialogResult.No)
                 {
                     return;
                 }
@@ -116,6 +116,13 @@ namespace GUI_Management_of_medical_clinic
                 listBoxEmployees.SelectedItem = null;
             }
             checkIfRequiredFilled();
+        }
+
+        private void buttonChangePassword_Click(object sender, EventArgs e)
+        {
+            FormChangePasswordOfUser formChange = new FormChangePasswordOfUser(user, currentUser);
+            formChange.ShowDialog();
+            Show();
         }
     }
 }
