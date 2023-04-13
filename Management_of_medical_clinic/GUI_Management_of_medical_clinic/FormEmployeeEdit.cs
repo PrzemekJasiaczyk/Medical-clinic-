@@ -162,5 +162,10 @@ namespace GUI_Management_of_medical_clinic
             }
             checkedListBoxSpecialization.SetItemCheckState(selectedIndex, CheckState.Checked);
         }
+
+        private void comboBoxRole_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            checkIfMedicalDoctor();
+        }
     }
 }
