@@ -57,16 +57,7 @@ namespace GUI_Management_of_medical_clinic
             buttonSaveUser.Enabled = false;
             if (textBoxUsername.Text.Trim().Length > 0 && listBoxEmployees.SelectedItem != null && comboBoxRole.SelectedItem != null && comboBoxActive.SelectedItem != null)
             {
-                //taki problem, że wychodzi false || false || fasle = true
-                //MessageBox.Show("user.IdEmployee != int.Parse(Regex.Match(listBoxEmployees.SelectedItem.ToString(), @\" ^\\d + \").Value): " + (user.IdEmployee != int.Parse(Regex.Match(listBoxEmployees.SelectedItem.ToString(), @"^\d+").Value)));
-                //MessageBox.Show("!comboBoxRole.SelectedItem.ToString().Equals(user.Role.ToString()): " + (!comboBoxRole.SelectedItem.ToString().Equals(user.Role.ToString())));
-                //MessageBox.Show("comboBoxActive.SelectedItem != (user.IsActive ? \"Active\" : \"Disactive\"): " + (comboBoxActive.SelectedItem != (user.IsActive ? "Active" : "Disactive")));
-                //MessageBox.Show("listBoxEmployees.Items[0].ToString() != \"There are no employees without a user.\": " + (listBoxEmployees.Items[0].ToString() != "There are no employees without a user."));
-
-                //bool what = user.IdEmployee != int.Parse(Regex.Match(listBoxEmployees.SelectedItem.ToString(), @"^\d+").Value) || comboBoxRole.SelectedItem.ToString().Equals(user.Role.ToString()) || comboBoxActive.SelectedItem.Equals(user.IsActive ? "Active" : "Disactive");
-                //MessageBox.Show(what.ToString());
-
-                if ((listBoxEmployees.Items[0].ToString() != "There are no employees without a user.") && (user.IdEmployee != int.Parse(Regex.Match(listBoxEmployees.SelectedItem.ToString(), @"^\d+").Value) || comboBoxRole.SelectedItem.ToString().Equals(user.Role.ToString()) || comboBoxActive.SelectedItem.Equals(user.IsActive ? "Active" : "Disactive")))
+                if ((listBoxEmployees.Items[0].ToString() != "There are no employees without a user.") && (user.IdEmployee != int.Parse(Regex.Match(listBoxEmployees.SelectedItem.ToString(), @"^\d+").Value) || !comboBoxRole.SelectedItem.ToString().Equals(user.Role.ToString()) || !comboBoxActive.SelectedItem.Equals(user.IsActive ? "Active" : "Disactive")))
                 {
                     buttonSaveUser.Enabled = true;
                 }

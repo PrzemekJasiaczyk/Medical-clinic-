@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             buttonEditUser = new Button();
-            buttonSpecializations = new Button();
             buttonReactivateUser = new Button();
             buttonClearFilter = new Button();
             buttonDeactivateUser = new Button();
@@ -47,22 +46,13 @@
             // 
             // buttonEditUser
             // 
-            buttonEditUser.Location = new Point(402, 380);
+            buttonEditUser.Location = new Point(251, 380);
             buttonEditUser.Name = "buttonEditUser";
-            buttonEditUser.Size = new Size(142, 45);
+            buttonEditUser.Size = new Size(293, 45);
             buttonEditUser.TabIndex = 33;
             buttonEditUser.Text = "Edit user";
             buttonEditUser.UseVisualStyleBackColor = true;
             buttonEditUser.Click += buttonEditUser_Click;
-            // 
-            // buttonSpecializations
-            // 
-            buttonSpecializations.Location = new Point(251, 380);
-            buttonSpecializations.Name = "buttonSpecializations";
-            buttonSpecializations.Size = new Size(142, 45);
-            buttonSpecializations.TabIndex = 32;
-            buttonSpecializations.Text = "Edit Specializations";
-            buttonSpecializations.UseVisualStyleBackColor = true;
             // 
             // buttonReactivateUser
             // 
@@ -187,7 +177,6 @@
             Controls.Add(textBoxLastname);
             Controls.Add(textBoxUsername);
             Controls.Add(buttonEditUser);
-            Controls.Add(buttonSpecializations);
             Controls.Add(buttonReactivateUser);
             Controls.Add(buttonClearFilter);
             Controls.Add(buttonDeactivateUser);
@@ -208,7 +197,6 @@
         #endregion
 
         private Button buttonEditUser;
-        private Button buttonSpecializations;
         private Button buttonReactivateUser;
         private Button buttonClearFilter;
         private Button buttonDeactivateUser;

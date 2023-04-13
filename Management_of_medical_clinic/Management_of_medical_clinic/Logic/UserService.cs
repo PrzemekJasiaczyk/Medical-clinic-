@@ -45,12 +45,12 @@ namespace Console_Management_of_medical_clinic.Logic
 
             if (!string.IsNullOrEmpty(firstname))
             {
-                //filteredUsers = filteredUsers.Where(u => u.FirstName.Contains(firstname)).ToList();
+                filteredUsers = filteredUsers.Where(u => EmployeeModel.FindEmployee(u.IdEmployee).FirstName.Contains(firstname)).ToList();
             }
 
             if (!string.IsNullOrEmpty(lastname))
             {
-                //filteredUsers = filteredUsers.Where(u => u.LastName.Contains(lastname)).ToList();
+                filteredUsers = filteredUsers.Where(u => EmployeeModel.FindEmployee(u.IdEmployee).LastName.Contains(lastname)).ToList();
             }
 
             if (role != "")
