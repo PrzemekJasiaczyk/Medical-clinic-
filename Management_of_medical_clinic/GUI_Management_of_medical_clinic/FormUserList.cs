@@ -89,12 +89,45 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonDeactivateUser_Click(object sender, EventArgs e)
         {
+            if (dataGridViewUsers.SelectedRows.Count == 1)
+            {
+                if (dataGridViewUsers.CurrentRow.Cells["IsActive"].Value.ToString() != "Not active")
+                {
+                    FormChangeStatusOfUser formChange = new FormChangeStatusOfUser(UserService.GetUserById((int)dataGridViewUsers.CurrentRow.Cells[0].Value), currentUser);
+                    formChange.ShowDialog();
+
+                }
+                else
+                {
+                    MessageBox.Show("User is deactive!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Select one user from list!");
+            }
 
         }
 
         private void buttonReactivateUser_Click(object sender, EventArgs e)
         {
+            if (dataGridViewUsers.SelectedRows.Count == 1)
+            {
+                if (dataGridViewUsers.CurrentRow.Cells["IsActive"].Value.ToString() != "Active")
+                {
+                    FormChangeStatusOfUser formChange = new FormChangeStatusOfUser(UserService.GetUserById((int)dataGridViewUsers.CurrentRow.Cells[0].Value), currentUser);
+                    formChange.ShowDialog();
 
+                }
+                else
+                {
+                    MessageBox.Show("User is active!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Select one user from list!");
+            }
         }
 
         private void buttonLogOut_Click(object sender, EventArgs e)

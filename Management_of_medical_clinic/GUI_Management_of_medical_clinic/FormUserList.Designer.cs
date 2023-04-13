@@ -43,8 +43,8 @@
             buttonDeactivateUser = new Button();
             buttonLogOut = new Button();
             panel2 = new Panel();
-            buttonFilterUser = new Button();
             buttonFilterClear = new Button();
+            buttonFilterUser = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewUsers).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
@@ -196,6 +196,7 @@
             buttonReactivateUser.TabIndex = 35;
             buttonReactivateUser.Text = "Reactivate user";
             buttonReactivateUser.UseVisualStyleBackColor = false;
+            buttonReactivateUser.Click += buttonReactivateUser_Click;
             // 
             // buttonDeactivateUser
             // 
@@ -208,6 +209,7 @@
             buttonDeactivateUser.TabIndex = 34;
             buttonDeactivateUser.Text = "Deactivate user";
             buttonDeactivateUser.UseVisualStyleBackColor = false;
+            buttonDeactivateUser.Click += buttonDeactivateUser_Click;
             // 
             // buttonLogOut
             // 
@@ -239,17 +241,6 @@
             panel2.Size = new Size(1077, 306);
             panel2.TabIndex = 39;
             // 
-            // buttonFilterUser
-            // 
-            buttonFilterUser.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonFilterUser.Location = new Point(124, 200);
-            buttonFilterUser.Name = "buttonFilterUser";
-            buttonFilterUser.Size = new Size(329, 87);
-            buttonFilterUser.TabIndex = 14;
-            buttonFilterUser.Text = "Filter";
-            buttonFilterUser.UseVisualStyleBackColor = true;
-            buttonFilterUser.Click += buttonFilterUser_Click;
-            // 
             // buttonFilterClear
             // 
             buttonFilterClear.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
@@ -260,6 +251,17 @@
             buttonFilterClear.Text = "Clear filter";
             buttonFilterClear.UseVisualStyleBackColor = true;
             buttonFilterClear.Click += buttonFilterClear_Click;
+            // 
+            // buttonFilterUser
+            // 
+            buttonFilterUser.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonFilterUser.Location = new Point(124, 200);
+            buttonFilterUser.Name = "buttonFilterUser";
+            buttonFilterUser.Size = new Size(329, 87);
+            buttonFilterUser.TabIndex = 14;
+            buttonFilterUser.Text = "Filter";
+            buttonFilterUser.UseVisualStyleBackColor = true;
+            buttonFilterUser.Click += buttonFilterUser_Click;
             // 
             // FormUserList
             // 

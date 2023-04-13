@@ -1,5 +1,6 @@
 
-﻿using Console_Management_of_medical_clinic.Data.Enums;
+using Console_Management_of_medical_clinic.Data;
+using Console_Management_of_medical_clinic.Data.Enums;
 using System;
 
 using System.Collections.Generic;
@@ -48,6 +49,16 @@ namespace Console_Management_of_medical_clinic.Model
             Password = password;
             Role = role;
             IsActive = isActive;
+        }
+
+        public static void ChangeUserStatus(UserModel user)
+        {
+            using (AppDbContext context = new AppDbContext())
+            {
+                user = context.DbUsers.Find(user.IdUser);
+                user.IsActive = !user.IsActive;
+                context.SaveChanges();
+            }
         }
     }
 

@@ -44,6 +44,7 @@
             panel2 = new Panel();
             pictureBox1 = new PictureBox();
             buttonClose = new Button();
+            buttonChangeStatus = new Button();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -204,12 +205,23 @@
             buttonClose.UseVisualStyleBackColor = false;
             buttonClose.Click += buttonClose_Click;
             // 
+            // buttonChangeStatus
+            // 
+            buttonChangeStatus.Location = new Point(864, 605);
+            buttonChangeStatus.Name = "buttonChangeStatus";
+            buttonChangeStatus.Size = new Size(170, 38);
+            buttonChangeStatus.TabIndex = 69;
+            buttonChangeStatus.Text = "Change status of user";
+            buttonChangeStatus.UseVisualStyleBackColor = true;
+            buttonChangeStatus.Click += buttonChangeStatus_Click;
+            // 
             // FormUserEdit
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Info;
             ClientSize = new Size(1920, 1080);
+            Controls.Add(buttonChangeStatus);
             Controls.Add(panel2);
             Controls.Add(label6);
             Controls.Add(listBoxEmployees);
@@ -251,5 +263,6 @@
         private Panel panel2;
         private PictureBox pictureBox1;
         private Button buttonClose;
+        private Button buttonChangeStatus;
     }
 }

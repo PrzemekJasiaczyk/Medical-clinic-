@@ -26,10 +26,10 @@ namespace Console_Management_of_medical_clinic.Logic
         public static void AddUser(string username, string password, EnumUserRoles role, bool isActive, int employeeId)
         {
             //a method to add new User to Database
-            using(AppDbContext db = new AppDbContext())
+            using(AppDbContext context = new AppDbContext())
             {
-                db.DbUsers.Add(new UserModel(username, password, role, isActive, employeeId));
-                db.SaveChanges();
+                context.DbUsers.Add(new UserModel(username, password, role, isActive, employeeId));
+                context.SaveChanges();
             }
         } 
 
@@ -64,7 +64,7 @@ namespace Console_Management_of_medical_clinic.Logic
 
         public static UserModel GetUserById(int id)
         {
-            return GetUsersData().FirstOrDefault(u => u.IdUser == id);
+            return GetUsersData().FirstOrDefault(user => user.IdUser == id);
         }
 
         public static bool CheckIfUsernameExists(string username)
@@ -84,20 +84,20 @@ namespace Console_Management_of_medical_clinic.Logic
 
         public static bool CheckIfIdIsAlreadyUsed(int id)
         {
-            return GetUsersData().Any(u => u.IdEmployee == id);
+            return GetUsersData().Any(user => user.IdEmployee == id);
         }
 
         public static void EditUser(int idUser, string username, EnumUserRoles userRoles, bool isActive, int idEmployee)
         {
-            using (AppDbContext db = new AppDbContext()) {
-                UserModel user = db.DbUsers.Find(idUser);
+            using (AppDbContext context = new AppDbContext()) {
+                UserModel user = context.DbUsers.Find(idUser);
                 if (user != null)
                 {
                     user.Username = username;
                     user.Role = userRoles;
                     user.IsActive = isActive;
                     user.IdEmployee = idEmployee;
-                    db.SaveChanges();
+                    context.SaveChanges();
                 }
             }
         }
@@ -109,13 +109,13 @@ namespace Console_Management_of_medical_clinic.Logic
 
         public static void ChangePassword(int idUser, string password)
         {
-            using(AppDbContext db = new AppDbContext())
+            using(AppDbContext context = new AppDbContext())
             {
-                UserModel user = db.DbUsers.Find(idUser);
+                UserModel user = context.DbUsers.Find(idUser);
                 if (user != null)
                 {
                     user.Password = password;
-                    db.SaveChanges();
+                    context.SaveChanges();
                 }
             }
         }
