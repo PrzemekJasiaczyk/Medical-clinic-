@@ -92,5 +92,26 @@ namespace Console_Management_of_medical_clinic.Logic
             }
             return false;
         }
+
+        public static void EditSpecialization(string oldName, string newName, out string errorMessage)
+        {
+            try
+            {
+                AppDbContext context = new AppDbContext();
+                SpecializationModel spc = context.DbSpecializations.Find(getSpecializationIdByName(oldName));
+                if (spc != null)
+                {
+                    spc.Name = newName;
+                    context.SaveChanges();
+                    errorMessage = null;
+                    return;
+                }
+                errorMessage = "Specialization not found";
+            }
+            catch (Exception ex)
+            {
+                errorMessage = "Edit failed: " + ex.Message;
+            }
+        }
     }
 }

@@ -38,6 +38,8 @@
             this.buttonReplace = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.textBoxNewName = new System.Windows.Forms.TextBox();
+            this.labelNewName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSpecializations)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -71,7 +73,7 @@
             // buttonAdd
             // 
             this.buttonAdd.Enabled = false;
-            this.buttonAdd.Location = new System.Drawing.Point(1258, 302);
+            this.buttonAdd.Location = new System.Drawing.Point(1287, 302);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(142, 45);
             this.buttonAdd.TabIndex = 76;
@@ -92,9 +94,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(1225, 255);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(165, 15);
+            this.label1.Size = new System.Drawing.Size(168, 15);
             this.label1.TabIndex = 78;
-            this.label1.Text = "Name of Specialization to edit";
+            this.label1.Text = "Name of Specialization to Edit:";
             // 
             // dataGridViewSpecializations
             // 
@@ -109,7 +111,7 @@
             // buttonRemove
             // 
             this.buttonRemove.Enabled = false;
-            this.buttonRemove.Location = new System.Drawing.Point(1258, 353);
+            this.buttonRemove.Location = new System.Drawing.Point(1287, 353);
             this.buttonRemove.Name = "buttonRemove";
             this.buttonRemove.Size = new System.Drawing.Size(142, 45);
             this.buttonRemove.TabIndex = 80;
@@ -120,7 +122,7 @@
             // buttonReplace
             // 
             this.buttonReplace.Enabled = false;
-            this.buttonReplace.Location = new System.Drawing.Point(1258, 404);
+            this.buttonReplace.Location = new System.Drawing.Point(1462, 302);
             this.buttonReplace.Name = "buttonReplace";
             this.buttonReplace.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.buttonReplace.Size = new System.Drawing.Size(142, 45);
@@ -149,12 +151,30 @@
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
+            // textBoxNewName
+            // 
+            this.textBoxNewName.Location = new System.Drawing.Point(1462, 273);
+            this.textBoxNewName.Name = "textBoxNewName";
+            this.textBoxNewName.Size = new System.Drawing.Size(204, 23);
+            this.textBoxNewName.TabIndex = 85;
+            // 
+            // labelNewName
+            // 
+            this.labelNewName.AutoSize = true;
+            this.labelNewName.Location = new System.Drawing.Point(1462, 255);
+            this.labelNewName.Name = "labelNewName";
+            this.labelNewName.Size = new System.Drawing.Size(90, 15);
+            this.labelNewName.TabIndex = 86;
+            this.labelNewName.Text = "Updated Name:";
+            // 
             // FormSpecializationAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.Controls.Add(this.labelNewName);
+            this.Controls.Add(this.textBoxNewName);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.buttonReplace);
             this.Controls.Add(this.buttonRemove);
@@ -188,5 +208,7 @@
         private Button buttonReplace;
         private Panel panel2;
         private PictureBox pictureBox1;
+        private TextBox textBoxNewName;
+        private Label labelNewName;
     }
 }
