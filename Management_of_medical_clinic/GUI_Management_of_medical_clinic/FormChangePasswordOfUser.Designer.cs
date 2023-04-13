@@ -28,133 +28,134 @@
         /// </summary>
         private void InitializeComponent()
         {
-            labelTitle = new Label();
-            textBoxPasswordConfirm = new TextBox();
-            textBoxPassword = new TextBox();
-            label3 = new Label();
-            label1 = new Label();
-            buttonSaveUser = new Button();
-            panel2 = new Panel();
-            pictureBox1 = new PictureBox();
-            buttonCancel = new Button();
-            panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            SuspendLayout();
+            this.labelTitle = new System.Windows.Forms.Label();
+            this.textBoxPasswordConfirm = new System.Windows.Forms.TextBox();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.buttonSaveUser = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.buttonCancel = new System.Windows.Forms.Button();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.SuspendLayout();
             // 
             // labelTitle
             // 
-            labelTitle.AutoSize = true;
-            labelTitle.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            labelTitle.Location = new Point(985, 307);
-            labelTitle.Name = "labelTitle";
-            labelTitle.Size = new Size(185, 30);
-            labelTitle.TabIndex = 64;
-            labelTitle.Text = "Change password";
+            this.labelTitle.AutoSize = true;
+            this.labelTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelTitle.Location = new System.Drawing.Point(985, 307);
+            this.labelTitle.Name = "labelTitle";
+            this.labelTitle.Size = new System.Drawing.Size(185, 30);
+            this.labelTitle.TabIndex = 64;
+            this.labelTitle.Text = "Change password";
             // 
             // textBoxPasswordConfirm
             // 
-            textBoxPasswordConfirm.Location = new Point(1040, 403);
-            textBoxPasswordConfirm.MaxLength = 11;
-            textBoxPasswordConfirm.Name = "textBoxPasswordConfirm";
-            textBoxPasswordConfirm.PasswordChar = '*';
-            textBoxPasswordConfirm.Size = new Size(199, 23);
-            textBoxPasswordConfirm.TabIndex = 68;
-            textBoxPasswordConfirm.TextChanged += textBoxPasswordConfirm_TextChanged;
+            this.textBoxPasswordConfirm.Location = new System.Drawing.Point(1040, 403);
+            this.textBoxPasswordConfirm.MaxLength = 11;
+            this.textBoxPasswordConfirm.Name = "textBoxPasswordConfirm";
+            this.textBoxPasswordConfirm.PasswordChar = '*';
+            this.textBoxPasswordConfirm.Size = new System.Drawing.Size(199, 23);
+            this.textBoxPasswordConfirm.TabIndex = 68;
+            this.textBoxPasswordConfirm.TextChanged += new System.EventHandler(this.textBoxPasswordConfirm_TextChanged);
             // 
             // textBoxPassword
             // 
-            textBoxPassword.Location = new Point(1040, 374);
-            textBoxPassword.MaxLength = 100;
-            textBoxPassword.Name = "textBoxPassword";
-            textBoxPassword.PasswordChar = '*';
-            textBoxPassword.Size = new Size(199, 23);
-            textBoxPassword.TabIndex = 67;
-            textBoxPassword.TextChanged += textBoxPassword_TextChanged;
+            this.textBoxPassword.Location = new System.Drawing.Point(1040, 374);
+            this.textBoxPassword.MaxLength = 100;
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.PasswordChar = '*';
+            this.textBoxPassword.Size = new System.Drawing.Size(199, 23);
+            this.textBoxPassword.TabIndex = 67;
+            this.textBoxPassword.TextChanged += new System.EventHandler(this.textBoxPassword_TextChanged);
             // 
             // label3
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(927, 406);
-            label3.Name = "label3";
-            label3.Size = new Size(104, 15);
-            label3.TabIndex = 66;
-            label3.Text = "Confirm Password";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(927, 406);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(104, 15);
+            this.label3.TabIndex = 66;
+            this.label3.Text = "Confirm Password";
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(927, 377);
-            label1.Name = "label1";
-            label1.Size = new Size(84, 15);
-            label1.TabIndex = 65;
-            label1.Text = "New password";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(927, 377);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(84, 15);
+            this.label1.TabIndex = 65;
+            this.label1.Text = "New password";
             // 
             // buttonSaveUser
             // 
-            buttonSaveUser.Location = new Point(998, 469);
-            buttonSaveUser.Name = "buttonSaveUser";
-            buttonSaveUser.Size = new Size(147, 38);
-            buttonSaveUser.TabIndex = 69;
-            buttonSaveUser.Text = "Save";
-            buttonSaveUser.UseVisualStyleBackColor = true;
-            buttonSaveUser.Click += buttonSaveUser_Click;
+            this.buttonSaveUser.Location = new System.Drawing.Point(998, 469);
+            this.buttonSaveUser.Name = "buttonSaveUser";
+            this.buttonSaveUser.Size = new System.Drawing.Size(147, 38);
+            this.buttonSaveUser.TabIndex = 69;
+            this.buttonSaveUser.Text = "Save";
+            this.buttonSaveUser.UseVisualStyleBackColor = true;
+            this.buttonSaveUser.Click += new System.EventHandler(this.buttonSaveUser_Click);
             // 
             // panel2
             // 
-            panel2.BackColor = Color.SteelBlue;
-            panel2.Controls.Add(pictureBox1);
-            panel2.Controls.Add(buttonCancel);
-            panel2.Location = new Point(0, 0);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(312, 1081);
-            panel2.TabIndex = 71;
+            this.panel2.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Controls.Add(this.buttonCancel);
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(312, 1081);
+            this.panel2.TabIndex = 71;
             // 
             // pictureBox1
             // 
-            pictureBox1.BackgroundImage = Properties.Resources.MC_Logo;
-            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.Location = new Point(61, 12);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(176, 168);
-            pictureBox1.TabIndex = 2;
-            pictureBox1.TabStop = false;
+            this.pictureBox1.BackgroundImage = global::GUI_Management_of_medical_clinic.Properties.Resources.MC_Logo;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(61, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(176, 168);
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
             // 
             // buttonCancel
             // 
-            buttonCancel.BackColor = Color.Gainsboro;
-            buttonCancel.FlatAppearance.BorderColor = Color.White;
-            buttonCancel.FlatAppearance.BorderSize = 2;
-            buttonCancel.FlatStyle = FlatStyle.Flat;
-            buttonCancel.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonCancel.Location = new Point(24, 985);
-            buttonCancel.Name = "buttonCancel";
-            buttonCancel.Size = new Size(252, 66);
-            buttonCancel.TabIndex = 33;
-            buttonCancel.Text = "Cancel";
-            buttonCancel.UseVisualStyleBackColor = false;
-            buttonCancel.Click += buttonClose_Click;
+            this.buttonCancel.BackColor = System.Drawing.Color.Gainsboro;
+            this.buttonCancel.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonCancel.FlatAppearance.BorderSize = 2;
+            this.buttonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonCancel.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonCancel.Location = new System.Drawing.Point(24, 985);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(252, 66);
+            this.buttonCancel.TabIndex = 33;
+            this.buttonCancel.Text = "Cancel";
+            this.buttonCancel.UseVisualStyleBackColor = false;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonClose_Click);
             // 
             // FormChangePasswordOfUser
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.Info;
-            ClientSize = new Size(1920, 1080);
-            Controls.Add(panel2);
-            Controls.Add(buttonSaveUser);
-            Controls.Add(textBoxPasswordConfirm);
-            Controls.Add(textBoxPassword);
-            Controls.Add(label3);
-            Controls.Add(label1);
-            Controls.Add(labelTitle);
-            FormBorderStyle = FormBorderStyle.None;
-            Name = "FormChangePasswordOfUser";
-            Text = "FormChangePasswordOfUser";
-            Load += FormChangePasswordOfUser_Load;
-            panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Info;
+            this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.buttonSaveUser);
+            this.Controls.Add(this.textBoxPasswordConfirm);
+            this.Controls.Add(this.textBoxPassword);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelTitle);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "FormChangePasswordOfUser";
+            this.Text = "FormChangePasswordOfUser";
+            this.Load += new System.EventHandler(this.FormChangePasswordOfUser_Load);
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
