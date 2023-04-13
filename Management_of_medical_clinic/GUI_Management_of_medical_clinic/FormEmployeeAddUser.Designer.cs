@@ -155,6 +155,7 @@
             this.Name = "FormEmployeeAddUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormEmployeeSetPassword";
+            this.Load += new System.EventHandler(this.FormEmployeeAddUser_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
