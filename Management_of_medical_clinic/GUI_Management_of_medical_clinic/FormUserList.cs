@@ -89,10 +89,12 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonDeactivateUser_Click(object sender, EventArgs e)
         {
+
             if (dataGridViewUsers.SelectedRows.Count != 1)
             {
                 MessageBox.Show("Select one user from list!");
                 return;
+
             }
 
             int rowIndex = dataGridViewUsers.CurrentCell.RowIndex;
@@ -110,6 +112,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonReactivateUser_Click(object sender, EventArgs e)
         {
+
             if (dataGridViewUsers.SelectedRows.Count != 1)
             {
                 MessageBox.Show("Select one user from list!");
@@ -127,6 +130,7 @@ namespace GUI_Management_of_medical_clinic
             UserModel user = UserService.GetUserById(IdUser);
             FormChangeStatusOfUser deactivate = new FormChangeStatusOfUser(user, currentUser);
             deactivate.ShowDialog();
+
         }
 
         private void buttonLogOut_Click(object sender, EventArgs e)

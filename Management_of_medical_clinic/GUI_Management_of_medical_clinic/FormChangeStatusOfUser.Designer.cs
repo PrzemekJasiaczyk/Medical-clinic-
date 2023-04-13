@@ -80,6 +80,7 @@
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.labelPassword);
             this.Name = "FormChangeStatusOfUser";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormChangeStatusOfUser";
             this.ResumeLayout(false);
             this.PerformLayout();

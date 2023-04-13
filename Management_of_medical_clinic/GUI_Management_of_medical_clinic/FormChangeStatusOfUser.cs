@@ -16,6 +16,7 @@ namespace GUI_Management_of_medical_clinic
     {
         UserModel user;
         EmployeeModel currentUser;
+
         public FormChangeStatusOfUser(UserModel usr, EmployeeModel currentU)
         {
             InitializeComponent();
@@ -36,14 +37,17 @@ namespace GUI_Management_of_medical_clinic
             FormUserList formUserList = new FormUserList(currentUser);
             formUserList.ShowDialog();
             this.Close();
+
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
+
             FormUserList formEmployeeList = new FormUserList(currentUser);
             //this.Hide();
             formEmployeeList.ShowDialog();
             this.Close();
+
         }
     }
 }

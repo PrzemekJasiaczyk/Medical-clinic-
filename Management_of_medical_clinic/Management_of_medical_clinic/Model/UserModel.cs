@@ -53,6 +53,7 @@ namespace Console_Management_of_medical_clinic.Model
 
         public static void ChangeUserStatus(UserModel user)
         {
+
             if (user.IsActive == true)
             {
                 var context = new AppDbContext();
@@ -70,6 +71,7 @@ namespace Console_Management_of_medical_clinic.Model
                 usr.IsActive = true;
                 context.SaveChanges();
                 return;
+
             }
         }
     }

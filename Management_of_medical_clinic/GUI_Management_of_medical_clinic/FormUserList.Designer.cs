@@ -28,28 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonEditUser = new System.Windows.Forms.Button();
-            this.buttonReviewUser = new System.Windows.Forms.Button();
-            this.buttonAddUser = new System.Windows.Forms.Button();
-            this.comboBoxRole = new System.Windows.Forms.ComboBox();
-            this.labelFilter = new System.Windows.Forms.Label();
-            this.dataGridViewUsers = new System.Windows.Forms.DataGridView();
-            this.textBoxUsername = new System.Windows.Forms.TextBox();
-            this.textBoxLastname = new System.Windows.Forms.TextBox();
-            this.textBoxFirstname = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.buttonReactivateUser = new System.Windows.Forms.Button();
-            this.buttonDeactivateUser = new System.Windows.Forms.Button();
-            this.buttonLogOut = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.buttonFilterClear = new System.Windows.Forms.Button();
-            this.buttonFilterUser = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.SuspendLayout();
+            buttonEditUser = new Button();
+            buttonReviewUser = new Button();
+            buttonAddUser = new Button();
+            comboBoxRole = new ComboBox();
+            labelFilter = new Label();
+            dataGridViewUsers = new DataGridView();
+            textBoxUsername = new TextBox();
+            textBoxLastname = new TextBox();
+            textBoxFirstname = new TextBox();
+            pictureBox1 = new PictureBox();
+            panel1 = new Panel();
+            buttonReactivateUser = new Button();
+            buttonDeactivateUser = new Button();
+            buttonLogOut = new Button();
+            panel2 = new Panel();
+            buttonFilterClear = new Button();
+            buttonFilterUser = new Button();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewUsers).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel1.SuspendLayout();
+            panel2.SuspendLayout();
+            SuspendLayout();
             // 
             // buttonEditUser
             // 
@@ -189,29 +189,29 @@
             // 
             // buttonReactivateUser
             // 
-            this.buttonReactivateUser.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonReactivateUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonReactivateUser.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonReactivateUser.Location = new System.Drawing.Point(-7, 631);
-            this.buttonReactivateUser.Name = "buttonReactivateUser";
-            this.buttonReactivateUser.Size = new System.Drawing.Size(329, 87);
-            this.buttonReactivateUser.TabIndex = 35;
-            this.buttonReactivateUser.Text = "Reactivate user";
-            this.buttonReactivateUser.UseVisualStyleBackColor = false;
-            this.buttonReactivateUser.Click += new System.EventHandler(this.buttonReactivateUser_Click);
+            buttonReactivateUser.BackColor = Color.SteelBlue;
+            buttonReactivateUser.FlatStyle = FlatStyle.Flat;
+            buttonReactivateUser.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonReactivateUser.Location = new Point(-7, 631);
+            buttonReactivateUser.Name = "buttonReactivateUser";
+            buttonReactivateUser.Size = new Size(329, 87);
+            buttonReactivateUser.TabIndex = 35;
+            buttonReactivateUser.Text = "Reactivate user";
+            buttonReactivateUser.UseVisualStyleBackColor = false;
+            buttonReactivateUser.Click += buttonReactivateUser_Click;
             // 
             // buttonDeactivateUser
             // 
-            this.buttonDeactivateUser.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonDeactivateUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDeactivateUser.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonDeactivateUser.Location = new System.Drawing.Point(-7, 538);
-            this.buttonDeactivateUser.Name = "buttonDeactivateUser";
-            this.buttonDeactivateUser.Size = new System.Drawing.Size(329, 87);
-            this.buttonDeactivateUser.TabIndex = 34;
-            this.buttonDeactivateUser.Text = "Deactivate user";
-            this.buttonDeactivateUser.UseVisualStyleBackColor = false;
-            this.buttonDeactivateUser.Click += new System.EventHandler(this.buttonDeactivateUser_Click);
+            buttonDeactivateUser.BackColor = Color.SteelBlue;
+            buttonDeactivateUser.FlatStyle = FlatStyle.Flat;
+            buttonDeactivateUser.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonDeactivateUser.Location = new Point(-7, 538);
+            buttonDeactivateUser.Name = "buttonDeactivateUser";
+            buttonDeactivateUser.Size = new Size(329, 87);
+            buttonDeactivateUser.TabIndex = 34;
+            buttonDeactivateUser.Text = "Deactivate user";
+            buttonDeactivateUser.UseVisualStyleBackColor = false;
+            buttonDeactivateUser.Click += buttonDeactivateUser_Click;
             // 
             // buttonLogOut
             // 
@@ -230,18 +230,18 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.SteelBlue;
-            this.panel2.Controls.Add(this.buttonFilterClear);
-            this.panel2.Controls.Add(this.buttonFilterUser);
-            this.panel2.Controls.Add(this.textBoxFirstname);
-            this.panel2.Controls.Add(this.textBoxLastname);
-            this.panel2.Controls.Add(this.textBoxUsername);
-            this.panel2.Controls.Add(this.labelFilter);
-            this.panel2.Controls.Add(this.comboBoxRole);
-            this.panel2.Location = new System.Drawing.Point(562, 762);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1077, 306);
-            this.panel2.TabIndex = 39;
+            panel2.BackColor = Color.SteelBlue;
+            panel2.Controls.Add(buttonFilterClear);
+            panel2.Controls.Add(buttonFilterUser);
+            panel2.Controls.Add(textBoxFirstname);
+            panel2.Controls.Add(textBoxLastname);
+            panel2.Controls.Add(textBoxUsername);
+            panel2.Controls.Add(labelFilter);
+            panel2.Controls.Add(comboBoxRole);
+            panel2.Location = new Point(562, 762);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(1077, 306);
+            panel2.TabIndex = 39;
             // 
             // buttonFilterClear
             // 
@@ -264,6 +264,17 @@
             this.buttonFilterUser.Text = "Filter";
             this.buttonFilterUser.UseVisualStyleBackColor = true;
             this.buttonFilterUser.Click += new System.EventHandler(this.buttonFilterUser_Click);
+            // 
+            // buttonFilterUser
+            // 
+            buttonFilterUser.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonFilterUser.Location = new Point(124, 200);
+            buttonFilterUser.Name = "buttonFilterUser";
+            buttonFilterUser.Size = new Size(329, 87);
+            buttonFilterUser.TabIndex = 14;
+            buttonFilterUser.Text = "Filter";
+            buttonFilterUser.UseVisualStyleBackColor = true;
+            buttonFilterUser.Click += buttonFilterUser_Click;
             // 
             // FormUserList
             // 

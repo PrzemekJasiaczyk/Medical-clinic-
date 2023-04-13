@@ -121,5 +121,12 @@ namespace GUI_Management_of_medical_clinic
             formChange.ShowDialog();
             Show();
         }
+
+        private void buttonChangeStatus_Click(object sender, EventArgs e)
+        {
+            FormChangeStatusOfUser formChange = new FormChangeStatusOfUser(user, currentUser);
+            formChange.ShowDialog();
+            Close();
+        }
     }
 }

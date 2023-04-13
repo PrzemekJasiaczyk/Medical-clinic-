@@ -28,25 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBoxUserId = new System.Windows.Forms.TextBox();
-            this.labelTitle = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.buttonSaveUser = new System.Windows.Forms.Button();
-            this.textBoxUsername = new System.Windows.Forms.TextBox();
-            this.buttonChangePassword = new System.Windows.Forms.Button();
-            this.comboBoxRole = new System.Windows.Forms.ComboBox();
-            this.comboBoxActive = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.listBoxEmployees = new System.Windows.Forms.ListBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.buttonClose = new System.Windows.Forms.Button();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.SuspendLayout();
+            label4 = new Label();
+            textBoxUserId = new TextBox();
+            labelTitle = new Label();
+            label3 = new Label();
+            label2 = new Label();
+            label1 = new Label();
+            buttonSaveUser = new Button();
+            textBoxUsername = new TextBox();
+            buttonChangePassword = new Button();
+            comboBoxRole = new ComboBox();
+            comboBoxActive = new ComboBox();
+            label6 = new Label();
+            listBoxEmployees = new ListBox();
+            panel2 = new Panel();
+            pictureBox1 = new PictureBox();
+            buttonClose = new Button();
+            buttonChangeStatus = new Button();
+            panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            SuspendLayout();
             // 
             // label4
             // 
@@ -208,35 +209,45 @@
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
+            // buttonChangeStatus
+            // 
+            buttonChangeStatus.Location = new Point(864, 605);
+            buttonChangeStatus.Name = "buttonChangeStatus";
+            buttonChangeStatus.Size = new Size(170, 38);
+            buttonChangeStatus.TabIndex = 69;
+            buttonChangeStatus.Text = "Change status of user";
+            buttonChangeStatus.UseVisualStyleBackColor = true;
+            buttonChangeStatus.Click += buttonChangeStatus_Click;
+            // 
             // FormUserEdit
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Info;
-            this.ClientSize = new System.Drawing.Size(1920, 1080);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.listBoxEmployees);
-            this.Controls.Add(this.comboBoxActive);
-            this.Controls.Add(this.comboBoxRole);
-            this.Controls.Add(this.buttonChangePassword);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBoxUserId);
-            this.Controls.Add(this.labelTitle);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.buttonSaveUser);
-            this.Controls.Add(this.textBoxUsername);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FormUserEdit";
-            this.Text = "FormUserEdit";
-            this.Load += new System.EventHandler(this.FormUserEdit_Load);
-            this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.Info;
+            ClientSize = new Size(1920, 1080);
+            Controls.Add(buttonChangeStatus);
+            Controls.Add(panel2);
+            Controls.Add(label6);
+            Controls.Add(listBoxEmployees);
+            Controls.Add(comboBoxActive);
+            Controls.Add(comboBoxRole);
+            Controls.Add(buttonChangePassword);
+            Controls.Add(label4);
+            Controls.Add(textBoxUserId);
+            Controls.Add(labelTitle);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(buttonSaveUser);
+            Controls.Add(textBoxUsername);
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "FormUserEdit";
+            Text = "FormUserEdit";
+            Load += FormUserEdit_Load;
+            panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -256,5 +267,6 @@
         private Panel panel2;
         private PictureBox pictureBox1;
         private Button buttonClose;
+        private Button buttonChangeStatus;
     }
 }
