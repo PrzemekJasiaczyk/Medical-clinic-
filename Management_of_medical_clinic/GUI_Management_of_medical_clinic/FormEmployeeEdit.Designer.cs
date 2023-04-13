@@ -31,14 +31,10 @@
             this.comboBoxRole = new System.Windows.Forms.ComboBox();
             this.buttonConfirm = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.phoneNumberTextBox = new System.Windows.Forms.TextBox();
-            this.textBoxEmail = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.correspAddressTextBox = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBoxDateOfBirth = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxPESEL = new System.Windows.Forms.TextBox();
             this.textBoxLastName = new System.Windows.Forms.TextBox();
@@ -51,6 +47,10 @@
             this.comboBoxSex = new System.Windows.Forms.ComboBox();
             this.labelSpecialization = new System.Windows.Forms.Label();
             this.checkedListBoxSpecialization = new System.Windows.Forms.CheckedListBox();
+            this.dateTimePickerDate = new System.Windows.Forms.DateTimePicker();
+            this.textBoxPhone = new System.Windows.Forms.TextBox();
+            this.textBoxEmail = new System.Windows.Forms.TextBox();
+            this.textBoxAddress = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // comboBoxRole
@@ -81,20 +81,6 @@
             this.label7.TabIndex = 69;
             this.label7.Text = "Sex";
             // 
-            // phoneNumberTextBox
-            // 
-            this.phoneNumberTextBox.Location = new System.Drawing.Point(718, 501);
-            this.phoneNumberTextBox.Name = "phoneNumberTextBox";
-            this.phoneNumberTextBox.Size = new System.Drawing.Size(199, 23);
-            this.phoneNumberTextBox.TabIndex = 68;
-            // 
-            // textBoxEmail
-            // 
-            this.textBoxEmail.Location = new System.Drawing.Point(718, 472);
-            this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(199, 23);
-            this.textBoxEmail.TabIndex = 67;
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -112,13 +98,6 @@
             this.label9.Size = new System.Drawing.Size(41, 15);
             this.label9.TabIndex = 65;
             this.label9.Text = "E-mail";
-            // 
-            // correspAddressTextBox
-            // 
-            this.correspAddressTextBox.Location = new System.Drawing.Point(718, 443);
-            this.correspAddressTextBox.Name = "correspAddressTextBox";
-            this.correspAddressTextBox.Size = new System.Drawing.Size(199, 23);
-            this.correspAddressTextBox.TabIndex = 64;
             // 
             // label10
             // 
@@ -138,15 +117,6 @@
             this.label5.TabIndex = 62;
             this.label5.Text = "Role*";
             // 
-            // textBoxDateOfBirth
-            // 
-            this.textBoxDateOfBirth.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.textBoxDateOfBirth.Location = new System.Drawing.Point(718, 357);
-            this.textBoxDateOfBirth.Name = "textBoxDateOfBirth";
-            this.textBoxDateOfBirth.Size = new System.Drawing.Size(199, 23);
-            this.textBoxDateOfBirth.TabIndex = 61;
-            this.textBoxDateOfBirth.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -159,10 +129,10 @@
             // textBoxPESEL
             // 
             this.textBoxPESEL.Location = new System.Drawing.Point(718, 328);
+            this.textBoxPESEL.MaxLength = 11;
             this.textBoxPESEL.Name = "textBoxPESEL";
             this.textBoxPESEL.Size = new System.Drawing.Size(199, 23);
             this.textBoxPESEL.TabIndex = 59;
-            this.textBoxPESEL.Text = "11111111111";
             // 
             // textBoxLastName
             // 
@@ -170,7 +140,7 @@
             this.textBoxLastName.Name = "textBoxLastName";
             this.textBoxLastName.Size = new System.Drawing.Size(199, 23);
             this.textBoxLastName.TabIndex = 58;
-            this.textBoxLastName.Text = "a";
+            this.textBoxLastName.Text = "Surname";
             // 
             // label3
             // 
@@ -196,7 +166,7 @@
             this.textBoxFirstName.Name = "textBoxFirstName";
             this.textBoxFirstName.Size = new System.Drawing.Size(199, 23);
             this.textBoxFirstName.TabIndex = 55;
-            this.textBoxFirstName.Text = "a";
+            this.textBoxFirstName.Text = "Name";
             // 
             // label2
             // 
@@ -257,25 +227,58 @@
             this.checkedListBoxSpecialization.TabIndex = 74;
             this.checkedListBoxSpecialization.Visible = false;
             // 
+            // dateTimePickerDate
+            // 
+            this.dateTimePickerDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerDate.Location = new System.Drawing.Point(718, 357);
+            this.dateTimePickerDate.Name = "dateTimePickerDate";
+            this.dateTimePickerDate.Size = new System.Drawing.Size(199, 23);
+            this.dateTimePickerDate.TabIndex = 76;
+            this.dateTimePickerDate.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            // 
+            // textBoxPhone
+            // 
+            this.textBoxPhone.Location = new System.Drawing.Point(718, 504);
+            this.textBoxPhone.MaxLength = 9;
+            this.textBoxPhone.Name = "textBoxPhone";
+            this.textBoxPhone.Size = new System.Drawing.Size(199, 23);
+            this.textBoxPhone.TabIndex = 79;
+            // 
+            // textBoxEmail
+            // 
+            this.textBoxEmail.Location = new System.Drawing.Point(718, 475);
+            this.textBoxEmail.MaxLength = 200;
+            this.textBoxEmail.Name = "textBoxEmail";
+            this.textBoxEmail.Size = new System.Drawing.Size(199, 23);
+            this.textBoxEmail.TabIndex = 78;
+            // 
+            // textBoxAddress
+            // 
+            this.textBoxAddress.Location = new System.Drawing.Point(718, 446);
+            this.textBoxAddress.MaxLength = 500;
+            this.textBoxAddress.Name = "textBoxAddress";
+            this.textBoxAddress.Size = new System.Drawing.Size(199, 23);
+            this.textBoxAddress.TabIndex = 77;
+            // 
             // FormEmployeeEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.textBoxPhone);
+            this.Controls.Add(this.textBoxEmail);
+            this.Controls.Add(this.textBoxAddress);
+            this.Controls.Add(this.dateTimePickerDate);
             this.Controls.Add(this.labelSpecialization);
             this.Controls.Add(this.checkedListBoxSpecialization);
             this.Controls.Add(this.comboBoxSex);
             this.Controls.Add(this.comboBoxRole);
             this.Controls.Add(this.buttonConfirm);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.phoneNumberTextBox);
-            this.Controls.Add(this.textBoxEmail);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.correspAddressTextBox);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBoxDateOfBirth);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBoxPESEL);
             this.Controls.Add(this.textBoxLastName);
@@ -301,14 +304,10 @@
         private ComboBox comboBoxRole;
         private Button buttonConfirm;
         private Label label7;
-        private TextBox phoneNumberTextBox;
-        private TextBox textBoxEmail;
         private Label label8;
         private Label label9;
-        private TextBox correspAddressTextBox;
         private Label label10;
         private Label label5;
-        private DateTimePicker textBoxDateOfBirth;
         private Label label4;
         private TextBox textBoxPESEL;
         private TextBox textBoxLastName;
@@ -321,5 +320,9 @@
         private ComboBox comboBoxSex;
         private Label labelSpecialization;
         private CheckedListBox checkedListBoxSpecialization;
+        private DateTimePicker dateTimePickerDate;
+        private TextBox textBoxPhone;
+        private TextBox textBoxEmail;
+        private TextBox textBoxAddress;
     }
 }
