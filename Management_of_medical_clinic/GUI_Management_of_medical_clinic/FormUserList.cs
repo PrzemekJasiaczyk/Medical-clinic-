@@ -46,15 +46,6 @@ namespace GUI_Management_of_medical_clinic
 
         }
 
-        private void buttonClearFilter_Click(object sender, EventArgs e)
-        {
-            LoadUserData();
-            textBoxFirstname.Text = null;
-            textBoxLastname.Text = null;
-            textBoxUsername.Text = null;
-            comboBoxRole.SelectedItem = null;
-        }
-
         private void FormUserList_Load(object sender, EventArgs e)
         {
             dataGridViewUsers.Rows.Clear();
@@ -98,11 +89,6 @@ namespace GUI_Management_of_medical_clinic
             Show();
         }
 
-        private void buttonSpecializations_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void buttonDeactivateUser_Click(object sender, EventArgs e)
         {
 
@@ -111,6 +97,22 @@ namespace GUI_Management_of_medical_clinic
         private void buttonReactivateUser_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonLogOut_Click(object sender, EventArgs e)
+        {
+            FormMenu menu = new FormMenu();
+            menu.ShowDialog();
+            Close();
+        }
+
+        private void buttonFilterClear_Click(object sender, EventArgs e)
+        {
+            LoadUserData();
+            textBoxFirstname.Text = null;
+            textBoxLastname.Text = null;
+            textBoxUsername.Text = null;
+            comboBoxRole.SelectedItem = null;
         }
     }
 }
