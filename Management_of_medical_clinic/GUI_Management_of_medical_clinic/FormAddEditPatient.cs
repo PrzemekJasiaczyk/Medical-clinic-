@@ -105,7 +105,7 @@ namespace GUI_Management_of_medical_clinic
             textBoxName.ReadOnly = true;
             dateTimePickerBirthDate.Enabled = false;
             maskedTextBoxPESEL.ReadOnly = true;
-            comboBoxSex.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxSex.Enabled = false;
         }
 
 

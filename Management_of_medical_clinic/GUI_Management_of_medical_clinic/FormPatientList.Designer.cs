@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             buttonClearFilter = new Button();
             buttonAddPatient = new Button();
             buttonFilterEmployee = new Button();
@@ -37,6 +37,7 @@
             labelFilter = new Label();
             buttonEditPatient = new Button();
             panel1 = new Panel();
+            button_ShowDetails = new Button();
             buttonExit = new Button();
             buttonDeactivatePatinet = new Button();
             buttonActivatePatient = new Button();
@@ -45,28 +46,24 @@
             pictureBox1 = new PictureBox();
             label4 = new Label();
             dateTimePicker2 = new DateTimePicker();
-            label3 = new Label();
             dateTimePicker1 = new DateTimePicker();
             maskedTextBox1 = new MaskedTextBox();
             textBox1 = new TextBox();
             dataGridViewPatientList = new DataGridView();
             panel2 = new Panel();
+            button1 = new Button();
+            buttonShowFilters = new Button();
             pictureBox5 = new PictureBox();
             pictureBox4 = new PictureBox();
-            pictureBox3 = new PictureBox();
-            pictureBox2 = new PictureBox();
             label7 = new Label();
             label6 = new Label();
             label5 = new Label();
-            button_ShowDetails = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewPatientList).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // buttonClearFilter
@@ -171,6 +168,21 @@
             panel1.TabIndex = 29;
             panel1.Paint += panel1_Paint;
             // 
+            // button_ShowDetails
+            // 
+            button_ShowDetails.BackColor = Color.SteelBlue;
+            button_ShowDetails.FlatAppearance.BorderColor = Color.Black;
+            button_ShowDetails.FlatStyle = FlatStyle.Flat;
+            button_ShowDetails.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            button_ShowDetails.Location = new Point(-2, 639);
+            button_ShowDetails.Margin = new Padding(3, 4, 3, 4);
+            button_ShowDetails.Name = "button_ShowDetails";
+            button_ShowDetails.Size = new Size(360, 65);
+            button_ShowDetails.TabIndex = 47;
+            button_ShowDetails.Text = "Show details";
+            button_ShowDetails.UseVisualStyleBackColor = false;
+            button_ShowDetails.Click += button_ShowDetails_Click;
+            // 
             // buttonExit
             // 
             buttonExit.BackColor = Color.Gainsboro;
@@ -261,60 +273,52 @@
             // 
             label4.AutoSize = true;
             label4.FlatStyle = FlatStyle.Flat;
-            label4.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(935, 30);
+            label4.Font = new Font("Bernard MT Condensed", 11.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            label4.Location = new Point(936, 18);
             label4.Name = "label4";
-            label4.Size = new Size(20, 15);
+            label4.Size = new Size(17, 18);
             label4.TabIndex = 42;
-            label4.Text = "To";
+            label4.Text = "_";
+            label4.Click += label4_Click;
             // 
             // dateTimePicker2
             // 
             dateTimePicker2.CalendarMonthBackground = SystemColors.Control;
-            dateTimePicker2.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dateTimePicker2.Font = new Font("Segoe UI Symbol", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             dateTimePicker2.Format = DateTimePickerFormat.Short;
-            dateTimePicker2.Location = new Point(959, 25);
+            dateTimePicker2.Location = new Point(958, 21);
             dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(98, 23);
+            dateTimePicker2.Size = new Size(98, 25);
             dateTimePicker2.TabIndex = 41;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.FlatStyle = FlatStyle.Flat;
-            label3.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(766, 30);
-            label3.Name = "label3";
-            label3.Size = new Size(35, 15);
-            label3.TabIndex = 40;
-            label3.Text = "From";
+            dateTimePicker2.ValueChanged += dateTimePicker2_ValueChanged;
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.CalendarMonthBackground = SystemColors.Control;
-            dateTimePicker1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dateTimePicker1.CalendarMonthBackground = SystemColors.ControlLight;
+            dateTimePicker1.Font = new Font("Segoe UI Symbol", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(805, 25);
+            dateTimePicker1.Location = new Point(827, 21);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(98, 23);
+            dateTimePicker1.Size = new Size(98, 25);
             dateTimePicker1.TabIndex = 39;
+            dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
             // 
             // maskedTextBox1
             // 
-            maskedTextBox1.BackColor = SystemColors.Control;
-            maskedTextBox1.Font = new Font("Segoe UI Symbol", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            maskedTextBox1.Location = new Point(437, 24);
+            maskedTextBox1.BackColor = SystemColors.ButtonFace;
+            maskedTextBox1.Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            maskedTextBox1.Location = new Point(488, 24);
             maskedTextBox1.Name = "maskedTextBox1";
-            maskedTextBox1.Size = new Size(129, 25);
+            maskedTextBox1.Size = new Size(129, 23);
             maskedTextBox1.TabIndex = 38;
             // 
             // textBox1
             // 
-            textBox1.BackColor = SystemColors.Control;
-            textBox1.Font = new Font("Segoe UI Symbol", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(165, 24);
+            textBox1.BackColor = SystemColors.ButtonFace;
+            textBox1.Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox1.Location = new Point(183, 24);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(129, 25);
+            textBox1.Size = new Size(129, 23);
             textBox1.TabIndex = 37;
             // 
             // dataGridViewPatientList
@@ -323,14 +327,14 @@
             dataGridViewPatientList.AllowUserToDeleteRows = false;
             dataGridViewPatientList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewPatientList.BackgroundColor = SystemColors.ButtonHighlight;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.SteelBlue;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = Color.SteelBlue;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridViewPatientList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.SteelBlue;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = Color.SteelBlue;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewPatientList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewPatientList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewPatientList.Location = new Point(357, 77);
             dataGridViewPatientList.Name = "dataGridViewPatientList";
@@ -347,10 +351,10 @@
             // panel2
             // 
             panel2.BackColor = Color.SteelBlue;
+            panel2.Controls.Add(button1);
+            panel2.Controls.Add(buttonShowFilters);
             panel2.Controls.Add(pictureBox5);
             panel2.Controls.Add(pictureBox4);
-            panel2.Controls.Add(pictureBox3);
-            panel2.Controls.Add(pictureBox2);
             panel2.Controls.Add(label7);
             panel2.Controls.Add(label6);
             panel2.Controls.Add(label5);
@@ -359,19 +363,49 @@
             panel2.Controls.Add(maskedTextBox1);
             panel2.Controls.Add(dateTimePicker2);
             panel2.Controls.Add(dateTimePicker1);
-            panel2.Controls.Add(label3);
             panel2.Location = new Point(357, 0);
             panel2.Name = "panel2";
             panel2.Size = new Size(1567, 77);
             panel2.TabIndex = 31;
             panel2.Paint += panel2_Paint;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.Gainsboro;
+            button1.FlatAppearance.BorderColor = Color.White;
+            button1.FlatAppearance.BorderSize = 2;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI Symbol", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.Location = new Point(1215, 20);
+            button1.Name = "button1";
+            button1.Size = new Size(86, 26);
+            button1.TabIndex = 49;
+            button1.Text = "Clear";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click_1;
+            // 
+            // buttonShowFilters
+            // 
+            buttonShowFilters.BackColor = Color.Gainsboro;
+            buttonShowFilters.FlatAppearance.BorderColor = Color.White;
+            buttonShowFilters.FlatAppearance.BorderSize = 2;
+            buttonShowFilters.FlatStyle = FlatStyle.Flat;
+            buttonShowFilters.Font = new Font("Segoe UI Symbol", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonShowFilters.Location = new Point(1101, 20);
+            buttonShowFilters.Margin = new Padding(3, 2, 3, 2);
+            buttonShowFilters.Name = "buttonShowFilters";
+            buttonShowFilters.Size = new Size(86, 26);
+            buttonShowFilters.TabIndex = 48;
+            buttonShowFilters.Text = "Show";
+            buttonShowFilters.UseVisualStyleBackColor = false;
+            buttonShowFilters.Click += buttonShowFilters_Click;
+            // 
             // pictureBox5
             // 
             pictureBox5.Image = Properties.Resources.sort;
-            pictureBox5.Location = new Point(1483, 12);
+            pictureBox5.Location = new Point(1486, 21);
             pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(56, 43);
+            pictureBox5.Size = new Size(38, 36);
             pictureBox5.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox5.TabIndex = 46;
             pictureBox5.TabStop = false;
@@ -380,78 +414,43 @@
             // pictureBox4
             // 
             pictureBox4.Image = Properties.Resources.sort__1_;
-            pictureBox4.Location = new Point(1406, 12);
+            pictureBox4.Location = new Point(1438, 21);
             pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(71, 43);
+            pictureBox4.Size = new Size(41, 36);
             pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox4.TabIndex = 45;
             pictureBox4.TabStop = false;
             pictureBox4.Click += pictureBox4_Click;
             // 
-            // pictureBox3
-            // 
-            pictureBox3.Image = Properties.Resources.filter;
-            pictureBox3.Location = new Point(1138, 21);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(57, 34);
-            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox3.TabIndex = 44;
-            pictureBox3.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.Image = Properties.Resources.search;
-            pictureBox2.Location = new Point(1083, 24);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(44, 31);
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.TabIndex = 43;
-            pictureBox2.TabStop = false;
-            // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(605, 29);
+            label7.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label7.Location = new Point(653, 25);
             label7.Name = "label7";
-            label7.Size = new Size(146, 17);
+            label7.Size = new Size(164, 20);
             label7.TabIndex = 2;
             label7.Text = "Date of the latest visit";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(335, 29);
+            label6.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label6.Location = new Point(373, 25);
             label6.Name = "label6";
-            label6.Size = new Size(96, 17);
+            label6.Size = new Size(109, 20);
             label6.TabIndex = 1;
             label6.Text = "PESEL number";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(31, 30);
+            label5.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.Location = new Point(31, 26);
             label5.Name = "label5";
-            label5.Size = new Size(128, 17);
+            label5.Size = new Size(146, 20);
             label5.TabIndex = 0;
             label5.Text = "Name and surname";
-            // 
-            // button_ShowDetails
-            // 
-            button_ShowDetails.BackColor = Color.SteelBlue;
-            button_ShowDetails.FlatAppearance.BorderColor = Color.Black;
-            button_ShowDetails.FlatStyle = FlatStyle.Flat;
-            button_ShowDetails.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            button_ShowDetails.Location = new Point(-2, 639);
-            button_ShowDetails.Margin = new Padding(3, 4, 3, 4);
-            button_ShowDetails.Name = "button_ShowDetails";
-            button_ShowDetails.Size = new Size(360, 65);
-            button_ShowDetails.TabIndex = 47;
-            button_ShowDetails.Text = "Show details";
-            button_ShowDetails.UseVisualStyleBackColor = false;
-            button_ShowDetails.Click += button_ShowDetails_Click;
             // 
             // FormPatientList
             // 
@@ -480,8 +479,6 @@
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -501,7 +498,6 @@
         private DataGridView dataGridViewPatientList;
         private Label label4;
         private DateTimePicker dateTimePicker2;
-        private Label label3;
         private DateTimePicker dateTimePicker1;
         private MaskedTextBox maskedTextBox1;
         private TextBox textBox1;
@@ -511,12 +507,12 @@
         private Panel panel2;
         private PictureBox pictureBox5;
         private PictureBox pictureBox4;
-        private PictureBox pictureBox3;
-        private PictureBox pictureBox2;
         private Label label7;
         private Label label6;
         private Label label5;
         private Button buttonExit;
         private Button button_ShowDetails;
+        private Button button1;
+        private Button buttonShowFilters;
     }
 }

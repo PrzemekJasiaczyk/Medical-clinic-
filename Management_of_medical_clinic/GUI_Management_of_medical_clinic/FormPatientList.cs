@@ -224,7 +224,7 @@ namespace GUI_Management_of_medical_clinic
             Patient patient = new Patient();
             patient = Patient.FindPatient((int)dataGridViewPatientList.SelectedRows[0].Cells[0].Value);
 
-            FormAddEditPatient formAddEditPatient = new FormAddEditPatient(currentUser,patient);
+            FormAddEditPatient formAddEditPatient = new FormAddEditPatient(currentUser, patient);
             Hide();
             formAddEditPatient.ChangeTitle("Edit patient");
             formAddEditPatient.ShowDialog();
@@ -252,6 +252,27 @@ namespace GUI_Management_of_medical_clinic
             Hide();
             formAddEditPatient.ShowDialog();
 
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonShowFilters_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
         }
     }
 }
