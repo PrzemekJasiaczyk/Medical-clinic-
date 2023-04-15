@@ -13,6 +13,10 @@ namespace Console_Management_of_medical_clinic.Data
         public DbSet<Visit> Visits { get; set; }
         public DbSet<EmployeeModel> DbEmployees { get; set; }
 
+        public AppDbContext() { }
+
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
