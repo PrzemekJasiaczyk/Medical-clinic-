@@ -47,22 +47,25 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonAddEditPatient_Click(object sender, EventArgs e)
         {
-            if (isCompletedForm())
+            using (AppDbContext context = new AppDbContext())
             {
-                if (isNewPatient == true)
+                if (isCompletedForm())
                 {
-                    patient = new Patient();
+                    if (isNewPatient == true)
+                    {
+                        patient = new Patient();
 
-                    ChangeOrAddPatientData();
+                        ChangeOrAddPatientData();
 
-                    Patient.AddPatient(patient);
+                        Patient.AddPatient(patient, context);
+                    }
+                    else
+                    {
+                        FindEditPatientInDataBase();
+                    }
+
+                    ComeToPatientList();
                 }
-                else
-                {
-                    FindEditPatientInDataBase();
-                }
-
-                ComeToPatientList();
             }
         }
 
