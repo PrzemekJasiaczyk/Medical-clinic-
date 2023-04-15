@@ -217,7 +217,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonEditPatient_Click(object sender, EventArgs e)
         {
-            if(dataGridViewPatientList.SelectedRows.Count == 0)
+            if (dataGridViewPatientList.SelectedRows.Count == 0)
             {
                 return;
             }
@@ -226,7 +226,53 @@ namespace GUI_Management_of_medical_clinic
 
             FormAddEditPatient formAddEditPatient = new FormAddEditPatient(currentUser, patient);
             Hide();
+            formAddEditPatient.ChangeTitle("Edit patient");
             formAddEditPatient.ShowDialog();
+        }
+
+        private void button_ShowDetails_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewPatientList.SelectedRows.Count == 0)
+            {
+                return;
+            }
+            ShowDetails();
+
+
+        }
+
+        private void ShowDetails()
+        {
+            Patient patient = new Patient();
+            patient = Patient.FindPatient((int)dataGridViewPatientList.SelectedRows[0].Cells[0].Value);
+            FormAddEditPatient formAddEditPatient = new FormAddEditPatient(currentUser, patient);
+            formAddEditPatient.ChangeTitle("Details");
+            formAddEditPatient.ReadOnlyControls();
+            formAddEditPatient.buttonAddEditPatient.Visible = false;
+            Hide();
+            formAddEditPatient.ShowDialog();
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonShowFilters_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
         }
     }
 }

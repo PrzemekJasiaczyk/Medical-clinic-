@@ -28,256 +28,267 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonCancel = new System.Windows.Forms.Button();
-            this.Edit_Employee = new System.Windows.Forms.Button();
-            this.textBoxIsActive = new System.Windows.Forms.TextBox();
-            this.textBoxPhoneNumber = new System.Windows.Forms.TextBox();
-            this.textBoxEmail = new System.Windows.Forms.TextBox();
-            this.textBoxSex = new System.Windows.Forms.TextBox();
-            this.textBoxCorrespondenceAddress = new System.Windows.Forms.TextBox();
-            this.textBoxRole = new System.Windows.Forms.TextBox();
-            this.textBoxDateOfBirth = new System.Windows.Forms.TextBox();
-            this.textBoxPESEL = new System.Windows.Forms.TextBox();
-            this.textBoxLastName = new System.Windows.Forms.TextBox();
-            this.textBoxFirstName = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.SuspendLayout();
+            buttonCancel = new Button();
+            Edit_Employee = new Button();
+            textBoxIsActive = new TextBox();
+            textBoxPhoneNumber = new TextBox();
+            textBoxEmail = new TextBox();
+            textBoxSex = new TextBox();
+            textBoxCorrespondenceAddress = new TextBox();
+            textBoxRole = new TextBox();
+            textBoxDateOfBirth = new TextBox();
+            textBoxPESEL = new TextBox();
+            textBoxLastName = new TextBox();
+            textBoxFirstName = new TextBox();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            label5 = new Label();
+            label6 = new Label();
+            label7 = new Label();
+            label8 = new Label();
+            label9 = new Label();
+            label10 = new Label();
+            SuspendLayout();
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(252, 354);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(140, 38);
-            this.buttonCancel.TabIndex = 23;
-            this.buttonCancel.Text = "Cancel";
-            this.buttonCancel.UseVisualStyleBackColor = true;
-            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            buttonCancel.Location = new Point(288, 472);
+            buttonCancel.Margin = new Padding(3, 4, 3, 4);
+            buttonCancel.Name = "buttonCancel";
+            buttonCancel.Size = new Size(160, 51);
+            buttonCancel.TabIndex = 23;
+            buttonCancel.Text = "Cancel";
+            buttonCancel.UseVisualStyleBackColor = true;
+            buttonCancel.Click += buttonCancel_Click;
             // 
             // Edit_Employee
             // 
-            this.Edit_Employee.Location = new System.Drawing.Point(398, 354);
-            this.Edit_Employee.Name = "Edit_Employee";
-            this.Edit_Employee.Size = new System.Drawing.Size(147, 38);
-            this.Edit_Employee.TabIndex = 22;
-            this.Edit_Employee.Text = "Edit employee";
-            this.Edit_Employee.UseVisualStyleBackColor = true;
-            this.Edit_Employee.Click += new System.EventHandler(this.Edit_Employee_Click);
+            Edit_Employee.Location = new Point(455, 472);
+            Edit_Employee.Margin = new Padding(3, 4, 3, 4);
+            Edit_Employee.Name = "Edit_Employee";
+            Edit_Employee.Size = new Size(168, 51);
+            Edit_Employee.TabIndex = 22;
+            Edit_Employee.Text = "Edit employee";
+            Edit_Employee.UseVisualStyleBackColor = true;
+            Edit_Employee.Click += Edit_Employee_Click;
             // 
             // textBoxIsActive
             // 
-            this.textBoxIsActive.Location = new System.Drawing.Point(449, 288);
-            this.textBoxIsActive.Name = "textBoxIsActive";
-            this.textBoxIsActive.ReadOnly = true;
-            this.textBoxIsActive.Size = new System.Drawing.Size(187, 23);
-            this.textBoxIsActive.TabIndex = 21;
+            textBoxIsActive.Location = new Point(513, 384);
+            textBoxIsActive.Margin = new Padding(3, 4, 3, 4);
+            textBoxIsActive.Name = "textBoxIsActive";
+            textBoxIsActive.ReadOnly = true;
+            textBoxIsActive.Size = new Size(213, 27);
+            textBoxIsActive.TabIndex = 21;
             // 
             // textBoxPhoneNumber
             // 
-            this.textBoxPhoneNumber.Location = new System.Drawing.Point(449, 164);
-            this.textBoxPhoneNumber.Name = "textBoxPhoneNumber";
-            this.textBoxPhoneNumber.ReadOnly = true;
-            this.textBoxPhoneNumber.Size = new System.Drawing.Size(187, 23);
-            this.textBoxPhoneNumber.TabIndex = 20;
+            textBoxPhoneNumber.Location = new Point(513, 219);
+            textBoxPhoneNumber.Margin = new Padding(3, 4, 3, 4);
+            textBoxPhoneNumber.Name = "textBoxPhoneNumber";
+            textBoxPhoneNumber.ReadOnly = true;
+            textBoxPhoneNumber.Size = new Size(213, 27);
+            textBoxPhoneNumber.TabIndex = 20;
             // 
             // textBoxEmail
             // 
-            this.textBoxEmail.Location = new System.Drawing.Point(449, 105);
-            this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.ReadOnly = true;
-            this.textBoxEmail.Size = new System.Drawing.Size(187, 23);
-            this.textBoxEmail.TabIndex = 19;
+            textBoxEmail.Location = new Point(513, 140);
+            textBoxEmail.Margin = new Padding(3, 4, 3, 4);
+            textBoxEmail.Name = "textBoxEmail";
+            textBoxEmail.ReadOnly = true;
+            textBoxEmail.Size = new Size(213, 27);
+            textBoxEmail.TabIndex = 19;
             // 
             // textBoxSex
             // 
-            this.textBoxSex.Location = new System.Drawing.Point(449, 225);
-            this.textBoxSex.Name = "textBoxSex";
-            this.textBoxSex.ReadOnly = true;
-            this.textBoxSex.Size = new System.Drawing.Size(187, 23);
-            this.textBoxSex.TabIndex = 18;
+            textBoxSex.Location = new Point(513, 300);
+            textBoxSex.Margin = new Padding(3, 4, 3, 4);
+            textBoxSex.Name = "textBoxSex";
+            textBoxSex.ReadOnly = true;
+            textBoxSex.Size = new Size(213, 27);
+            textBoxSex.TabIndex = 18;
             // 
             // textBoxCorrespondenceAddress
             // 
-            this.textBoxCorrespondenceAddress.Location = new System.Drawing.Point(449, 41);
-            this.textBoxCorrespondenceAddress.Name = "textBoxCorrespondenceAddress";
-            this.textBoxCorrespondenceAddress.ReadOnly = true;
-            this.textBoxCorrespondenceAddress.Size = new System.Drawing.Size(187, 23);
-            this.textBoxCorrespondenceAddress.TabIndex = 17;
+            textBoxCorrespondenceAddress.Location = new Point(513, 55);
+            textBoxCorrespondenceAddress.Margin = new Padding(3, 4, 3, 4);
+            textBoxCorrespondenceAddress.Name = "textBoxCorrespondenceAddress";
+            textBoxCorrespondenceAddress.ReadOnly = true;
+            textBoxCorrespondenceAddress.Size = new Size(213, 27);
+            textBoxCorrespondenceAddress.TabIndex = 17;
             // 
             // textBoxRole
             // 
-            this.textBoxRole.Location = new System.Drawing.Point(145, 288);
-            this.textBoxRole.Name = "textBoxRole";
-            this.textBoxRole.ReadOnly = true;
-            this.textBoxRole.Size = new System.Drawing.Size(187, 23);
-            this.textBoxRole.TabIndex = 16;
+            textBoxRole.Location = new Point(166, 384);
+            textBoxRole.Margin = new Padding(3, 4, 3, 4);
+            textBoxRole.Name = "textBoxRole";
+            textBoxRole.ReadOnly = true;
+            textBoxRole.Size = new Size(213, 27);
+            textBoxRole.TabIndex = 16;
+            textBoxRole.TextChanged += textBoxRole_TextChanged;
             // 
             // textBoxDateOfBirth
             // 
-            this.textBoxDateOfBirth.Location = new System.Drawing.Point(145, 225);
-            this.textBoxDateOfBirth.Name = "textBoxDateOfBirth";
-            this.textBoxDateOfBirth.ReadOnly = true;
-            this.textBoxDateOfBirth.Size = new System.Drawing.Size(187, 23);
-            this.textBoxDateOfBirth.TabIndex = 15;
+            textBoxDateOfBirth.Location = new Point(166, 300);
+            textBoxDateOfBirth.Margin = new Padding(3, 4, 3, 4);
+            textBoxDateOfBirth.Name = "textBoxDateOfBirth";
+            textBoxDateOfBirth.ReadOnly = true;
+            textBoxDateOfBirth.Size = new Size(213, 27);
+            textBoxDateOfBirth.TabIndex = 15;
             // 
             // textBoxPESEL
             // 
-            this.textBoxPESEL.Location = new System.Drawing.Point(145, 164);
-            this.textBoxPESEL.Name = "textBoxPESEL";
-            this.textBoxPESEL.ReadOnly = true;
-            this.textBoxPESEL.Size = new System.Drawing.Size(187, 23);
-            this.textBoxPESEL.TabIndex = 14;
+            textBoxPESEL.Location = new Point(166, 219);
+            textBoxPESEL.Margin = new Padding(3, 4, 3, 4);
+            textBoxPESEL.Name = "textBoxPESEL";
+            textBoxPESEL.ReadOnly = true;
+            textBoxPESEL.Size = new Size(213, 27);
+            textBoxPESEL.TabIndex = 14;
             // 
             // textBoxLastName
             // 
-            this.textBoxLastName.Location = new System.Drawing.Point(145, 105);
-            this.textBoxLastName.Name = "textBoxLastName";
-            this.textBoxLastName.ReadOnly = true;
-            this.textBoxLastName.Size = new System.Drawing.Size(187, 23);
-            this.textBoxLastName.TabIndex = 13;
+            textBoxLastName.Location = new Point(166, 140);
+            textBoxLastName.Margin = new Padding(3, 4, 3, 4);
+            textBoxLastName.Name = "textBoxLastName";
+            textBoxLastName.ReadOnly = true;
+            textBoxLastName.Size = new Size(213, 27);
+            textBoxLastName.TabIndex = 13;
             // 
             // textBoxFirstName
             // 
-            this.textBoxFirstName.Location = new System.Drawing.Point(145, 41);
-            this.textBoxFirstName.Name = "textBoxFirstName";
-            this.textBoxFirstName.ReadOnly = true;
-            this.textBoxFirstName.Size = new System.Drawing.Size(187, 23);
-            this.textBoxFirstName.TabIndex = 12;
+            textBoxFirstName.Location = new Point(166, 55);
+            textBoxFirstName.Margin = new Padding(3, 4, 3, 4);
+            textBoxFirstName.Name = "textBoxFirstName";
+            textBoxFirstName.ReadOnly = true;
+            textBoxFirstName.Size = new Size(213, 27);
+            textBoxFirstName.TabIndex = 12;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 41);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 15);
-            this.label1.TabIndex = 24;
-            this.label1.Text = "First Name";
+            label1.AutoSize = true;
+            label1.Location = new Point(14, 55);
+            label1.Name = "label1";
+            label1.Size = new Size(80, 20);
+            label1.TabIndex = 24;
+            label1.Text = "First Name";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 105);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 15);
-            this.label2.TabIndex = 25;
-            this.label2.Text = "Last Name";
+            label2.AutoSize = true;
+            label2.Location = new Point(14, 140);
+            label2.Name = "label2";
+            label2.Size = new Size(79, 20);
+            label2.TabIndex = 25;
+            label2.Text = "Last Name";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 164);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 15);
-            this.label3.TabIndex = 26;
-            this.label3.Text = "PESEL";
+            label3.AutoSize = true;
+            label3.Location = new Point(14, 219);
+            label3.Name = "label3";
+            label3.Size = new Size(48, 20);
+            label3.TabIndex = 26;
+            label3.Text = "PESEL";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(11, 228);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(75, 15);
-            this.label4.TabIndex = 27;
-            this.label4.Text = "Date Of Birth";
+            label4.AutoSize = true;
+            label4.Location = new Point(13, 304);
+            label4.Name = "label4";
+            label4.Size = new Size(96, 20);
+            label4.TabIndex = 27;
+            label4.Text = "Date Of Birth";
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(11, 291);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(30, 15);
-            this.label5.TabIndex = 28;
-            this.label5.Text = "Role";
+            label5.AutoSize = true;
+            label5.Location = new Point(13, 388);
+            label5.Name = "label5";
+            label5.Size = new Size(39, 20);
+            label5.TabIndex = 28;
+            label5.Text = "Role";
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(658, 44);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(139, 15);
-            this.label6.TabIndex = 29;
-            this.label6.Text = "Correspondence Address";
+            label6.AutoSize = true;
+            label6.Location = new Point(752, 59);
+            label6.Name = "label6";
+            label6.Size = new Size(174, 20);
+            label6.TabIndex = 29;
+            label6.Text = "Correspondence Address";
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(658, 105);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(36, 15);
-            this.label7.TabIndex = 30;
-            this.label7.Text = "Email";
+            label7.AutoSize = true;
+            label7.Location = new Point(752, 140);
+            label7.Name = "label7";
+            label7.Size = new Size(46, 20);
+            label7.TabIndex = 30;
+            label7.Text = "Email";
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(658, 164);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(88, 15);
-            this.label8.TabIndex = 31;
-            this.label8.Text = "Phone Number";
+            label8.AutoSize = true;
+            label8.Location = new Point(752, 219);
+            label8.Name = "label8";
+            label8.Size = new Size(108, 20);
+            label8.TabIndex = 31;
+            label8.Text = "Phone Number";
             // 
             // label9
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(658, 225);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(25, 15);
-            this.label9.TabIndex = 32;
-            this.label9.Text = "Sex";
+            label9.AutoSize = true;
+            label9.Location = new Point(752, 300);
+            label9.Name = "label9";
+            label9.Size = new Size(32, 20);
+            label9.TabIndex = 32;
+            label9.Text = "Sex";
             // 
             // label10
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(658, 288);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(51, 15);
-            this.label10.TabIndex = 33;
-            this.label10.Text = "Is Active";
+            label10.AutoSize = true;
+            label10.Location = new Point(752, 384);
+            label10.Name = "label10";
+            label10.Size = new Size(64, 20);
+            label10.TabIndex = 33;
+            label10.Text = "Is Active";
             // 
             // FormEmployeeDetailsView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1904, 1041);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.buttonCancel);
-            this.Controls.Add(this.Edit_Employee);
-            this.Controls.Add(this.textBoxIsActive);
-            this.Controls.Add(this.textBoxPhoneNumber);
-            this.Controls.Add(this.textBoxEmail);
-            this.Controls.Add(this.textBoxSex);
-            this.Controls.Add(this.textBoxCorrespondenceAddress);
-            this.Controls.Add(this.textBoxRole);
-            this.Controls.Add(this.textBoxDateOfBirth);
-            this.Controls.Add(this.textBoxPESEL);
-            this.Controls.Add(this.textBoxLastName);
-            this.Controls.Add(this.textBoxFirstName);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FormEmployeeDetailsView";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormEmployeeDetailsView";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.FormEmployeeDetailsView_Load);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(914, 600);
+            Controls.Add(label10);
+            Controls.Add(label9);
+            Controls.Add(label8);
+            Controls.Add(label7);
+            Controls.Add(label6);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(buttonCancel);
+            Controls.Add(Edit_Employee);
+            Controls.Add(textBoxIsActive);
+            Controls.Add(textBoxPhoneNumber);
+            Controls.Add(textBoxEmail);
+            Controls.Add(textBoxSex);
+            Controls.Add(textBoxCorrespondenceAddress);
+            Controls.Add(textBoxRole);
+            Controls.Add(textBoxDateOfBirth);
+            Controls.Add(textBoxPESEL);
+            Controls.Add(textBoxLastName);
+            Controls.Add(textBoxFirstName);
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "FormEmployeeDetailsView";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "FormEmployeeDetailsView";
+            Load += FormEmployeeDetailsView_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
