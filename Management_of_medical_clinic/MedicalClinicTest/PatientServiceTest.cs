@@ -7,10 +7,11 @@ namespace MedicalClinicTest
 {
 	public class PatientServiceTest
 	{
+		// TODO: Remove commented code
 		[Fact]
 		public void NullNameTest()
 		{
-			AppDbContext testContext;
+			//AppDbContext testContext;
 			string errorMessage;
 			PatientService patientService = new();
 			
@@ -26,10 +27,10 @@ namespace MedicalClinicTest
 					LastVisitDate = null
 				};
 
-			using (InMemoryDbContext inMemoryDbContext = new())
-			{
-				testContext = inMemoryDbContext.CreateTestContext();
-			}
+			//using (InMemoryDbContext inMemoryDbContext = new())
+			//{
+			//	testContext = inMemoryDbContext.CreateTestContext();
+			//}
 
 			bool isValid = patientService.IsValidName(patient.FirstName, out errorMessage);
 
