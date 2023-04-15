@@ -1,19 +1,41 @@
 # Clinic staff's module
 ## TODO List
-- [ ] Update Database Model
-- [ ] Analysis
-  - [ ] Diagrams
-  - [ ] Use Case descriptions
-- [x] Patient class
-- [x] Modification of EF Core Model
+- [ ] Functional Tests
+  - [ ] Test scenarios
+  - [ ] Test cases
+- [ ] Refactor Patient class
+- [ ] Improve View form
+- [ ] Improve Login form
+- [ ] Check out merge-branch
+- [ ] Unit Tests
+  - [ ] Patient class
+    - [ ] ChangePatientStatus
+    - [ ] FindPatient
+    - [ ] RemovePatient
+    - [ ] AddPatient
+    - [X] More...
+  - [ ] PatientService class
+    - [ ] GetPatientData
+    - [ ] IsValidName
+    - [ ] IsValidDate
+    - [ ] IsValidPESEL
+    - [X] More..
 - [ ] Forms
   - [ ] View patients' list form
+    - [x] View
     - [ ] Filter
-    - [ ] Sort
-  - [ ] Add patient form
-  - [ ] Edit patient form
-  - [ ] Remove patient form
+    - [x] Sort
+  - [x] Add patient form
+  - [x] Edit patient form
+  - [x] Remove patient form
+- [x] Update Database Model
+- [x] Analysis
+  - [x] Diagrams
+  - [x] Use Case descriptions
+- [x] Patient class
+- [x] Modification of EF Core Model
 - [x] More...
+
 
 ## About
 
