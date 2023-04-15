@@ -35,6 +35,7 @@ namespace GUI_Management_of_medical_clinic
                 FormMessage.ShowDialog();
                 return;
             }
+
             using (AppDbContext context = new AppDbContext())
             {
                 if (source == "activate" || source == "deactivate")

@@ -31,10 +31,6 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             buttonClearFilter = new Button();
             buttonAddPatient = new Button();
-            buttonFilterEmployee = new Button();
-            comboBoxRole = new ComboBox();
-            checkBoxIsActive = new CheckBox();
-            labelFilter = new Label();
             buttonEditPatient = new Button();
             panel1 = new Panel();
             button_ShowDetails = new Button();
@@ -42,7 +38,6 @@
             buttonDeactivatePatinet = new Button();
             buttonActivatePatient = new Button();
             buttonRemovePatient = new Button();
-            buttonBack = new Button();
             pictureBox1 = new PictureBox();
             label4 = new Label();
             dateTimePicker2 = new DateTimePicker();
@@ -92,48 +87,6 @@
             buttonAddPatient.UseVisualStyleBackColor = false;
             buttonAddPatient.Click += buttonAddPatient_Click;
             // 
-            // buttonFilterEmployee
-            // 
-            buttonFilterEmployee.Location = new Point(482, 1277);
-            buttonFilterEmployee.Margin = new Padding(3, 4, 3, 4);
-            buttonFilterEmployee.Name = "buttonFilterEmployee";
-            buttonFilterEmployee.Size = new Size(138, 31);
-            buttonFilterEmployee.TabIndex = 27;
-            buttonFilterEmployee.Text = "Filtruj";
-            buttonFilterEmployee.UseVisualStyleBackColor = true;
-            // 
-            // comboBoxRole
-            // 
-            comboBoxRole.FormattingEnabled = true;
-            comboBoxRole.Items.AddRange(new object[] { "Medical Doctor", "Nurse", "Paramedic", "Janitor", "Technitian" });
-            comboBoxRole.Location = new Point(482, 1239);
-            comboBoxRole.Margin = new Padding(3, 4, 3, 4);
-            comboBoxRole.Name = "comboBoxRole";
-            comboBoxRole.Size = new Size(138, 23);
-            comboBoxRole.TabIndex = 26;
-            // 
-            // checkBoxIsActive
-            // 
-            checkBoxIsActive.AutoSize = true;
-            checkBoxIsActive.Checked = true;
-            checkBoxIsActive.CheckState = CheckState.Checked;
-            checkBoxIsActive.Location = new Point(482, 1205);
-            checkBoxIsActive.Margin = new Padding(3, 4, 3, 4);
-            checkBoxIsActive.Name = "checkBoxIsActive";
-            checkBoxIsActive.Size = new Size(123, 19);
-            checkBoxIsActive.TabIndex = 25;
-            checkBoxIsActive.Text = "Is Employee active";
-            checkBoxIsActive.UseVisualStyleBackColor = true;
-            // 
-            // labelFilter
-            // 
-            labelFilter.AutoSize = true;
-            labelFilter.Location = new Point(482, 1181);
-            labelFilter.Name = "labelFilter";
-            labelFilter.Size = new Size(51, 15);
-            labelFilter.TabIndex = 24;
-            labelFilter.Text = "Filter list";
-            // 
             // buttonEditPatient
             // 
             buttonEditPatient.BackColor = Color.SteelBlue;
@@ -157,7 +110,6 @@
             panel1.Controls.Add(buttonDeactivatePatinet);
             panel1.Controls.Add(buttonActivatePatient);
             panel1.Controls.Add(buttonRemovePatient);
-            panel1.Controls.Add(buttonBack);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(buttonEditPatient);
             panel1.Controls.Add(buttonAddPatient);
@@ -242,21 +194,6 @@
             buttonRemovePatient.Text = "Remove patient";
             buttonRemovePatient.UseVisualStyleBackColor = false;
             buttonRemovePatient.Click += buttonRemovePatient_Click;
-            // 
-            // buttonBack
-            // 
-            buttonBack.BackColor = Color.Gainsboro;
-            buttonBack.FlatAppearance.BorderColor = Color.White;
-            buttonBack.FlatAppearance.BorderSize = 2;
-            buttonBack.FlatStyle = FlatStyle.Flat;
-            buttonBack.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonBack.Location = new Point(33, 1293);
-            buttonBack.Margin = new Padding(3, 4, 3, 4);
-            buttonBack.Name = "buttonBack";
-            buttonBack.Size = new Size(288, 88);
-            buttonBack.TabIndex = 22;
-            buttonBack.Text = "LOG OUT";
-            buttonBack.UseVisualStyleBackColor = false;
             // 
             // pictureBox1
             // 
@@ -460,10 +397,6 @@
             Controls.Add(panel2);
             Controls.Add(dataGridViewPatientList);
             Controls.Add(buttonClearFilter);
-            Controls.Add(buttonFilterEmployee);
-            Controls.Add(comboBoxRole);
-            Controls.Add(checkBoxIsActive);
-            Controls.Add(labelFilter);
             Controls.Add(panel1);
             Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.None;
@@ -480,20 +413,14 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
         private Button buttonClearFilter;
         private Button buttonAddPatient;
-        private Button buttonFilterEmployee;
-        private ComboBox comboBoxRole;
-        private CheckBox checkBoxIsActive;
-        private Label labelFilter;
         private Button buttonEditPatient;
         private Panel panel1;
-        private Button buttonBack;
         private PictureBox pictureBox1;
         private DataGridView dataGridViewPatientList;
         private Label label4;
