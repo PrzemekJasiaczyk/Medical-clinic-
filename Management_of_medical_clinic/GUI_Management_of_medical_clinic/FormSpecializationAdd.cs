@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace GUI_Management_of_medical_clinic
 {
-    
+
 
     public partial class FormSpecializationAdd : Form
     {
@@ -24,11 +24,11 @@ namespace GUI_Management_of_medical_clinic
             currentUser = currentU;
         }
 
-        
+
 
         private void FormSpecializationAdd_Load(object sender, EventArgs e)
         {
-            loadDataGridView();   
+            loadDataGridView();
         }
 
         private void loadDataGridView()
@@ -88,12 +88,12 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonReplace_Click_1(object sender, EventArgs e)
         {
-            if (textBoxName.Text.Length==0 || textBoxNewName.Text.Length == 0)
+            if (textBoxName.Text.Length == 0 || textBoxNewName.Text.Length == 0)
             {
                 MessageBox.Show("Missing Input");
                 return;
             }
-            if (textBoxName.Text==textBoxNewName.Text)
+            if (textBoxName.Text == textBoxNewName.Text)
             {
                 MessageBox.Show("New Name and Old Name are the Same");
                 return;
@@ -119,7 +119,7 @@ namespace GUI_Management_of_medical_clinic
             {
                 buttonAdd.Enabled = false;
                 buttonRemove.Enabled = false;
-                buttonReplace.Enabled= false;
+                buttonReplace.Enabled = false;
             }
         }
 
