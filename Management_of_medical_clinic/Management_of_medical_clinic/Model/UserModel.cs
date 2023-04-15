@@ -1,5 +1,6 @@
 
-﻿using Console_Management_of_medical_clinic.Data.Enums;
+using Console_Management_of_medical_clinic.Data;
+using Console_Management_of_medical_clinic.Data.Enums;
 using System;
 
 using System.Collections.Generic;
@@ -23,7 +24,13 @@ namespace Console_Management_of_medical_clinic.Model
         public EmployeeModel EmployeeModel { get; set; }
 
 
-        public UserModel() { }
+        public UserModel(string username, string password, EnumUserRoles role, bool isActive, int idEmployee) {
+            Username = username;
+            Password = password;
+            Role = role;
+            IsActive = isActive;
+            IdEmployee = idEmployee;
+        }
 
         public UserModel(string username, string password, EnumUserRoles role, bool isActive)
 
@@ -42,6 +49,30 @@ namespace Console_Management_of_medical_clinic.Model
             Password = password;
             Role = role;
             IsActive = isActive;
+        }
+
+        public static void ChangeUserStatus(UserModel user)
+        {
+
+            if (user.IsActive == true)
+            {
+                var context = new AppDbContext();
+                user = context.DbUsers.Find(user.IdUser);
+                user.IsActive = false;
+                context.SaveChanges();
+                return;
+            }
+            else if (user.IsActive == false)
+            {
+                var context = new AppDbContext();
+
+                UserModel usr = context.DbUsers.Find(user.IdUser);
+
+                usr.IsActive = true;
+                context.SaveChanges();
+                return;
+
+            }
         }
     }
 

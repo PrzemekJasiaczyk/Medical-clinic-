@@ -36,7 +36,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonFilterUser_Click(object sender, EventArgs e)
         {
-            List<UserModel> filteredUsers = UserService.FilterUsers(textBoxUsername.Text, "", "", comboBoxRole.SelectedItem == null ? "" : comboBoxRole.SelectedItem.ToString());
+            List<UserModel> filteredUsers = UserService.FilterUsers(textBoxUsername.Text, textBoxFirstname.Text, textBoxLastname.Text, comboBoxRole.SelectedItem == null ? "" : comboBoxRole.SelectedItem.ToString());
 
             dataGridViewUsers.Rows.Clear();
             foreach (UserModel user in filteredUsers)
@@ -44,15 +44,6 @@ namespace GUI_Management_of_medical_clinic
                 dataGridViewUsers.Rows.Add(user.IdUser, user.Username, user.Role, (user.IsActive == true) ? "Active" : "Not Active");
             }
 
-        }
-
-        private void buttonClearFilter_Click(object sender, EventArgs e)
-        {
-            LoadUserData();
-            textBoxFirstname.Text = null;
-            textBoxLastname.Text = null;
-            textBoxFirstname.Text = null;
-            comboBoxRole.SelectedItem = null;
         }
 
         private void FormUserList_Load(object sender, EventArgs e)
@@ -78,7 +69,84 @@ namespace GUI_Management_of_medical_clinic
         {
             FormUserAdd userAdd = new FormUserAdd(currentUser);
             userAdd.ShowDialog();
-            this.Close();
+            Close();
+        }
+
+        private void buttonReviewUser_Click(object sender, EventArgs e)
+        {
+            FormUserDetailsView userDetailsView = new FormUserDetailsView(UserService.GetUserById((int)dataGridViewUsers.CurrentRow.Cells[0].Value), currentUser);
+            //Hide();
+            userDetailsView.ShowDialog();
+            Close();
+        }
+
+        private void buttonEditUser_Click(object sender, EventArgs e)
+        {
+            FormUserEdit formUser = new FormUserEdit(UserService.GetUserById((int)dataGridViewUsers.CurrentRow.Cells[0].Value), currentUser);
+            formUser.ShowDialog();
+            Close();
+        }
+
+        private void buttonDeactivateUser_Click(object sender, EventArgs e)
+        {
+
+            if (dataGridViewUsers.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("Select one user from list!");
+                return;
+
+            }
+
+            int rowIndex = dataGridViewUsers.CurrentCell.RowIndex;
+            if (dataGridViewUsers.Rows[rowIndex].Cells["IsActive"].Value.ToString() == "Not active")
+            {
+                MessageBox.Show("User is deactive!");
+                return;
+            }
+
+            int IdUser = (int)dataGridViewUsers.Rows[rowIndex].Cells[0].Value;
+            UserModel user = UserService.GetUserById(IdUser);
+            FormChangeStatusOfUser deactivate = new FormChangeStatusOfUser(user, currentUser);
+            deactivate.ShowDialog();
+        }
+
+        private void buttonReactivateUser_Click(object sender, EventArgs e)
+        {
+
+            if (dataGridViewUsers.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("Select one user from list!");
+                return;
+            }
+
+            int rowIndex = dataGridViewUsers.CurrentCell.RowIndex;
+            if (dataGridViewUsers.Rows[rowIndex].Cells["IsActive"].Value.ToString() == "Active")
+            {
+                MessageBox.Show("User is Active!");
+                return;
+            }
+
+            int IdUser = (int)dataGridViewUsers.Rows[rowIndex].Cells[0].Value;
+            UserModel user = UserService.GetUserById(IdUser);
+            FormChangeStatusOfUser deactivate = new FormChangeStatusOfUser(user, currentUser);
+            deactivate.ShowDialog();
+
+        }
+
+        private void buttonLogOut_Click(object sender, EventArgs e)
+        {
+            FormMenu menu = new FormMenu();
+            menu.ShowDialog();
+            Close();
+        }
+
+        private void buttonFilterClear_Click(object sender, EventArgs e)
+        {
+            LoadUserData();
+            textBoxFirstname.Text = null;
+            textBoxLastname.Text = null;
+            textBoxUsername.Text = null;
+            comboBoxRole.SelectedItem = null;
         }
     }
 }

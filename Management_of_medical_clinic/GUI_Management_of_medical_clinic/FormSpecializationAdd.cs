@@ -12,8 +12,11 @@ using System.Windows.Forms;
 
 namespace GUI_Management_of_medical_clinic
 {
+    
+
     public partial class FormSpecializationAdd : Form
     {
+        string errorMessage;
         EmployeeModel currentUser;
         public FormSpecializationAdd(EmployeeModel currentU)
         {
@@ -85,7 +88,23 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonReplace_Click_1(object sender, EventArgs e)
         {
-            MessageBox.Show("<<THIS BUTTON DOESN'T WORK YET>>");
+            if (textBoxName.Text.Length==0 || textBoxNewName.Text.Length == 0)
+            {
+                MessageBox.Show("Missing Input");
+                return;
+            }
+            if (textBoxName.Text==textBoxNewName.Text)
+            {
+                MessageBox.Show("New Name and Old Name are the Same");
+                return;
+            }
+
+            SpecializationService.EditSpecialization(textBoxName.Text, textBoxNewName.Text, out errorMessage);
+            loadDataGridView();
+            if (errorMessage != null)
+            {
+                MessageBox.Show(errorMessage);
+            }
         }
 
         private void textBoxName_TextChanged(object sender, EventArgs e)

@@ -41,10 +41,11 @@ namespace GUI_Management_of_medical_clinic
             textBoxFirstName.Text = employee.FirstName;
             textBoxLastName.Text = employee.LastName;
             textBoxPESEL.Text = employee.PESEL;
-            textBoxDateOfBirth.Text = employee.DateOfBirth.ToString();
-            correspAddressTextBox.Text = employee.CorrespondenceAddress;
+            dateTimePickerDate.Text = (employee.DateOfBirth);
+            
+            textBoxAddress.Text = employee.CorrespondenceAddress;
             textBoxEmail.Text = employee.Email;
-            phoneNumberTextBox.Text = employee.PhoneNumber;
+            textBoxPhone.Text = employee.PhoneNumber;
             comboBoxSex.SelectedItem = employee.Sex;
 
             checkIfMedicalDoctor();
@@ -59,7 +60,7 @@ namespace GUI_Management_of_medical_clinic
         }
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
-            (string stringPESEL, bool booleanPESEL) = EmployeeService.validatePESEL(textBoxPESEL.Text, textBoxDateOfBirth.Value, comboBoxSex.SelectedIndex);
+            (string stringPESEL, bool booleanPESEL) = EmployeeService.validatePESEL(textBoxPESEL.Text, dateTimePickerDate.Value, comboBoxSex.SelectedIndex);
             if (!booleanPESEL)
             {
                 MessageBox.Show(stringPESEL);
@@ -73,20 +74,22 @@ namespace GUI_Management_of_medical_clinic
                 return;
             }
 
-            (string stringPhone, bool booleanPhone) = EmployeeService.validatePhone(phoneNumberTextBox.Text);
+            (string stringPhone, bool booleanPhone) = EmployeeService.validatePhone(textBoxPhone.Text);
             if (!booleanPhone)
             {
                 MessageBox.Show(stringPhone);
                 return;
             }
 
+            if (comboBoxRole.Text == "MedicalDoctor" && checkedListBoxSpecialization.CheckedItems.Count == 0)
+            {
+                MessageBox.Show("A specialization needs to be selected");
+                return;
+            }
 
             EnumSex enumSex = (EnumSex)Enum.Parse(typeof(EnumSex), comboBoxSex.SelectedItem.ToString());
             EnumEmployeeRoles enumRole = (EnumEmployeeRoles)Enum.Parse(typeof(EnumEmployeeRoles), comboBoxRole.SelectedItem.ToString());
 
-            EmployeeModel.EditEmployee(employee.IdEmployee, textBoxFirstName.Text, textBoxLastName.Text, textBoxPESEL.Text, textBoxDateOfBirth.Text, enumRole, correspAddressTextBox.Text, textBoxEmail.Text, phoneNumberTextBox.Text, enumSex);
-
-            MessageBox.Show("Employee’s data changed.");
 
             FormEmployeeList employeeList = new FormEmployeeList(currentUser);
             //this.Hide();
@@ -158,6 +161,11 @@ namespace GUI_Management_of_medical_clinic
                 checkedListBoxSpecialization.SetItemCheckState(i, CheckState.Unchecked);
             }
             checkedListBoxSpecialization.SetItemCheckState(selectedIndex, CheckState.Checked);
+        }
+
+        private void comboBoxRole_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            checkIfMedicalDoctor();
         }
     }
 }

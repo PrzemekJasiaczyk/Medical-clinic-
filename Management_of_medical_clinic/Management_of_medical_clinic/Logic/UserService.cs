@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Console_Management_of_medical_clinic.Logic
@@ -22,15 +23,14 @@ namespace Console_Management_of_medical_clinic.Logic
             return users;
         }
 
-        public static void AddUser(int userID, string username, string password, EnumUserRoles role, bool isActive, int employeeId)
+        public static void AddUser(string username, string password, EnumUserRoles role, bool isActive, int employeeId)
         {
-            //a method to add new User and to change the value of IdUser pole of the selected Employee 
-            using(AppDbContext db = new AppDbContext())
+            //a method to add new User to Database
+            using(AppDbContext context = new AppDbContext())
             {
-                db.DbUsers.Add(new UserModel(username, password, role, isActive));
-                db.SaveChanges();
+                context.DbUsers.Add(new UserModel(username, password, role, isActive, employeeId));
+                context.SaveChanges();
             }
-            //not ready
         } 
 
         public static List<UserModel> FilterUsers(string username, string firstname, string lastname, string role)
@@ -45,12 +45,12 @@ namespace Console_Management_of_medical_clinic.Logic
 
             if (!string.IsNullOrEmpty(firstname))
             {
-                //filteredUsers = filteredUsers.Where(u => u.FirstName.Contains(firstname)).ToList();
+                filteredUsers = filteredUsers.Where(u => EmployeeModel.FindEmployee(u.IdEmployee).FirstName.Contains(firstname)).ToList();
             }
 
             if (!string.IsNullOrEmpty(lastname))
             {
-                //filteredUsers = filteredUsers.Where(u => u.LastName.Contains(lastname)).ToList();
+                filteredUsers = filteredUsers.Where(u => EmployeeModel.FindEmployee(u.IdEmployee).LastName.Contains(lastname)).ToList();
             }
 
             if (role != "")
@@ -60,6 +60,11 @@ namespace Console_Management_of_medical_clinic.Logic
             }
 
             return filteredUsers;
+        }
+
+        public static UserModel GetUserById(int id)
+        {
+            return GetUsersData().FirstOrDefault(user => user.IdUser == id);
         }
 
         public static bool CheckIfUsernameExists(string username)
@@ -75,6 +80,57 @@ namespace Console_Management_of_medical_clinic.Logic
                 }
             }
             return false;
+        }
+
+        public static bool CheckIfIdIsAlreadyUsed(int id)
+        {
+            return GetUsersData().Any(user => user.IdEmployee == id);
+        }
+
+        public static void EditUser(int idUser, string username, EnumUserRoles userRoles, bool isActive, int idEmployee)
+        {
+            using (AppDbContext context = new AppDbContext()) {
+                UserModel user = context.DbUsers.Find(idUser);
+                if (user != null)
+                {
+                    user.Username = username;
+                    user.Role = userRoles;
+                    user.IsActive = isActive;
+                    user.IdEmployee = idEmployee;
+                    context.SaveChanges();
+                }
+            }
+        }
+
+        public static bool ValidatePassword(string password)
+        {
+            return Regex.Match(password, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[-_!#$*]).{8,15}$").Success;
+        }
+
+        public static void ChangePassword(int idUser, string password)
+        {
+            using(AppDbContext context = new AppDbContext())
+            {
+                UserModel user = context.DbUsers.Find(idUser);
+                if (user != null)
+                {
+                    user.Password = password;
+                    context.SaveChanges();
+                }
+            }
+        }
+
+        public static UserModel GetUserByEmployeeId(EmployeeModel employee)
+        {
+            List<UserModel> users = GetUsersData();
+            foreach(UserModel user in users)
+            {
+                if(employee.IdEmployee == user.IdEmployee)
+                {
+                    return user;
+                }
+            }
+            return null;
         }
     }
         

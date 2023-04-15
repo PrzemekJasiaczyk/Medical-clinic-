@@ -34,7 +34,7 @@ namespace GUI_Management_of_medical_clinic
                     if (employee != null)
                     {
                         FormEmployeeList employeeList = new FormEmployeeList(employee);
-                        this.Hide();
+                        //this.Hide();
                         employeeList.ShowDialog();
                         this.Close();
                     }

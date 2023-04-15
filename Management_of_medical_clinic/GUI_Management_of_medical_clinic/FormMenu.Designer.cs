@@ -91,13 +91,13 @@
             // 
             // panel2
             // 
-            panel2.BackColor = Color.SteelBlue;
-            panel2.Controls.Add(buttonExit);
-            panel2.Controls.Add(pictureBox1);
-            panel2.Location = new Point(0, -2);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(312, 1081);
-            panel2.TabIndex = 7;
+            this.panel2.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel2.Controls.Add(this.buttonExit);
+            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Location = new System.Drawing.Point(0, -2);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(312, 1081);
+            this.panel2.TabIndex = 7;
             // 
             // buttonExit
             // 
@@ -116,13 +116,13 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.BackgroundImage = Properties.Resources.MC_Logo;
-            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.Location = new Point(61, 12);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(176, 168);
-            pictureBox1.TabIndex = 2;
-            pictureBox1.TabStop = false;
+            this.pictureBox1.BackgroundImage = global::GUI_Management_of_medical_clinic.Properties.Resources.MC_Logo;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(61, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(176, 168);
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
             // 
             // buttonOpenUserList
             // 
