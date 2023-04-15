@@ -1,4 +1,5 @@
-﻿using Console_Management_of_medical_clinic.Model;
+﻿using Console_Management_of_medical_clinic.Data;
+using Console_Management_of_medical_clinic.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,15 +35,17 @@ namespace GUI_Management_of_medical_clinic
                 FormMessage.ShowDialog();
                 return;
             }
-
-            if (source == "activate" || source == "deactivate")
+            using (AppDbContext context = new AppDbContext())
             {
-                Patient.ChangePatientStatus(patient);
+                if (source == "activate" || source == "deactivate")
+                {
+                    Patient.ChangePatientStatus(patient, context);
 
-            }
-            else if (source == "remove")
-            {
-                Patient.RemovePatient(patient);
+                }
+                else if (source == "remove")
+                {
+                    Patient.RemovePatient(patient, context);
+                }
             }
 
             List<Form> otwarteOkna = new List<Form>(Application.OpenForms.Cast<Form>());

@@ -26,22 +26,20 @@ namespace Console_Management_of_medical_clinic.Model
 
         public List<Visit> Visits { get; set; } = new List<Visit>();
 
-        public static void ChangePatientStatus(Patient patient)
+        public static void ChangePatientStatus(Patient patient, AppDbContext context)
         {
-            AppDbContext _context = new AppDbContext();
+            patient = context.Patients.Find(patient.PatientId);
             
             if (patient.IsActive == true)
             {
-                patient = _context.Patients.Find(patient.PatientId);
                 patient.IsActive = false;
-                _context.SaveChanges();
             }
-            else if (patient.IsActive == false)
+            else
             {
-                patient = _context.Patients.Find(patient.PatientId);
                 patient.IsActive = true;
-                _context.SaveChanges();
             }
+            
+            context.SaveChanges();
         }
 
         public static Patient FindPatient(int PatientId)
@@ -52,20 +50,16 @@ namespace Console_Management_of_medical_clinic.Model
             return patient;
         }
 
-        public static void RemovePatient(Patient patient)
+        public static void RemovePatient(Patient patient, AppDbContext context)
         {
-            AppDbContext _context = new AppDbContext();
-
-            _context.Patients.Remove(patient);
-            _context.SaveChanges();
+            context.Patients.Remove(patient);
+            context.SaveChanges();
         }
 
-        public static void AddPatient(Patient patient)
+        public static void AddPatient(Patient patient, AppDbContext context)
         {
-            AppDbContext _context = new AppDbContext();
-
-            _context.Patients.Add(patient);
-            _context.SaveChanges();
+            context.Patients.Add(patient);
+            context.SaveChanges();
         }
     }
 }
