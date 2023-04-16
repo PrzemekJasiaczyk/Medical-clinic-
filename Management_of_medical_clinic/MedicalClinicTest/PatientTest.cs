@@ -9,9 +9,16 @@ namespace MedicalClinicTest
 		[Fact]
 		public void FindExistingPatientInDataBase()
 		{
-
+			Patient patient = Patient.FindPatient(1);
+			Assert.NotNull(patient);
 		}
 
+		[Fact]
+		public void FindNotExistingPatientInDataBase()
+		{
+			Patient patient = Patient.FindPatient(999);
+			Assert.Null(patient);
+		}
 
 
 		//[Fact]
