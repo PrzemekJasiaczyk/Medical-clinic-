@@ -24,52 +24,39 @@ namespace MedicalClinicTest
 			Assert.Null(patient);
 		}
 
+		// test dodawania nie działa
 
-		//[Fact]
-
-		//public void AddPatientToDataBase()
-		//      {
-		//	AppDbContext testContext;
-
-		//          using (InMemoryDbContext inMemoryDbContext = new InMemoryDbContext())
-		//	{
-		//		testContext = inMemoryDbContext.CreateTestContext();
-		//		Patient patient =
-		//		new Patient()
-		//		{
-		//			FirstName = "Paweł",
-		//			LastName = "Dawid",
-		//			PESEL = "45010195612",
-		//			Sex = EnumSex.Male,
-		//			BirthDate = new DateTime(1945, 1, 1),
-		//			IsActive = true,
-		//			LastVisitDate = null
-		//		};
-
-		//		Patient.AddPatient(patient, testContext);
-		//	}
-		//}
 
 		[Fact]
+
 		public void AddPatientToDataBase()
 		{
-            Patient patient = new Patient()
-            {
-                FirstName = "Paweł",
-                LastName = "Dawid",
-                PESEL = "45010195612",
-                Sex = EnumSex.Male,
-                BirthDate = new DateTime(1945, 1, 1),
-                IsActive = true,
-                LastVisitDate = null
-            };
-			using (AppDbContext dbContext = new AppDbContext())
+			AppDbContext testContext;
+
+			using (InMemoryDbContext inMemoryDbContext = new InMemoryDbContext())
 			{
-				Patient.AddPatient(patient, dbContext);				
+				testContext = inMemoryDbContext.CreateTestContext();
+				Patient patient =
+				new Patient()
+				{
+					FirstName = "Paweł",
+					LastName = "Dawid",
+					PESEL = "45010195612",
+					Sex = EnumSex.Male,
+					BirthDate = new DateTime(1945, 1, 1),
+					IsActive = true,
+					LastVisitDate = null
+				};
+
+                inMemoryDbContext.Dispose();
+                
+				int before = testContext.Patients.Count();
+                Patient.AddPatient(patient, testContext);
+
+				int after = testContext.Patients.Count();
+
+				Assert.Equal(before+1, after);
 			}
-        }
-
-
-
+		}
     }
 }

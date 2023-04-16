@@ -36,12 +36,9 @@ namespace GUI_Management_of_medical_clinic
 
             if (patient == null)
             {
-                //dateTimePickerBirthDate.Value = DateTime.Now;
                 isNewPatient = true;
                 return;
             }
-
-            //ChangeTitle("Edit patient");
             CompleteControls();
         }
 
