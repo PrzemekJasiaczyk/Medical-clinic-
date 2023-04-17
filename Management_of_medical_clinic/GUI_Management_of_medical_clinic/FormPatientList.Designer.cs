@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             buttonClearFilter = new Button();
             buttonAddPatient = new Button();
             buttonEditPatient = new Button();
@@ -42,11 +42,11 @@
             label4 = new Label();
             dateTimePicker2 = new DateTimePicker();
             dateTimePicker1 = new DateTimePicker();
-            maskedTextBox1 = new MaskedTextBox();
-            textBox1 = new TextBox();
+            TextBox_PESEL = new MaskedTextBox();
+            textBox1_Name = new TextBox();
             dataGridViewPatientList = new DataGridView();
             panel2 = new Panel();
-            button1 = new Button();
+            buttonClearFilters = new Button();
             buttonShowFilters = new Button();
             pictureBox5 = new PictureBox();
             pictureBox4 = new PictureBox();
@@ -240,23 +240,24 @@
             dateTimePicker1.TabIndex = 39;
             dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
             // 
-            // maskedTextBox1
+            // TextBox_PESEL
             // 
-            maskedTextBox1.BackColor = SystemColors.ButtonFace;
-            maskedTextBox1.Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            maskedTextBox1.Location = new Point(488, 24);
-            maskedTextBox1.Name = "maskedTextBox1";
-            maskedTextBox1.Size = new Size(129, 23);
-            maskedTextBox1.TabIndex = 38;
+            TextBox_PESEL.BackColor = SystemColors.ButtonFace;
+            TextBox_PESEL.Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            TextBox_PESEL.Location = new Point(488, 24);
+            TextBox_PESEL.Name = "TextBox_PESEL";
+            TextBox_PESEL.Size = new Size(129, 23);
+            TextBox_PESEL.TabIndex = 38;
             // 
-            // textBox1
+            // textBox1_Name
             // 
-            textBox1.BackColor = SystemColors.ButtonFace;
-            textBox1.Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(183, 24);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(129, 23);
-            textBox1.TabIndex = 37;
+            textBox1_Name.BackColor = SystemColors.ButtonFace;
+            textBox1_Name.Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox1_Name.Location = new Point(183, 24);
+            textBox1_Name.Name = "textBox1_Name";
+            textBox1_Name.Size = new Size(129, 23);
+            textBox1_Name.TabIndex = 37;
+            textBox1_Name.TextChanged += textBox1_TextChanged;
             // 
             // dataGridViewPatientList
             // 
@@ -264,14 +265,14 @@
             dataGridViewPatientList.AllowUserToDeleteRows = false;
             dataGridViewPatientList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewPatientList.BackgroundColor = SystemColors.ButtonHighlight;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.SteelBlue;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = Color.SteelBlue;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridViewPatientList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.SteelBlue;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = Color.SteelBlue;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridViewPatientList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewPatientList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewPatientList.Location = new Point(357, 77);
             dataGridViewPatientList.Name = "dataGridViewPatientList";
@@ -288,16 +289,16 @@
             // panel2
             // 
             panel2.BackColor = Color.SteelBlue;
-            panel2.Controls.Add(button1);
+            panel2.Controls.Add(buttonClearFilters);
             panel2.Controls.Add(buttonShowFilters);
             panel2.Controls.Add(pictureBox5);
             panel2.Controls.Add(pictureBox4);
             panel2.Controls.Add(label7);
             panel2.Controls.Add(label6);
             panel2.Controls.Add(label5);
-            panel2.Controls.Add(textBox1);
+            panel2.Controls.Add(textBox1_Name);
             panel2.Controls.Add(label4);
-            panel2.Controls.Add(maskedTextBox1);
+            panel2.Controls.Add(TextBox_PESEL);
             panel2.Controls.Add(dateTimePicker2);
             panel2.Controls.Add(dateTimePicker1);
             panel2.Location = new Point(357, 0);
@@ -306,20 +307,20 @@
             panel2.TabIndex = 31;
             panel2.Paint += panel2_Paint;
             // 
-            // button1
+            // buttonClearFilters
             // 
-            button1.BackColor = Color.Gainsboro;
-            button1.FlatAppearance.BorderColor = Color.White;
-            button1.FlatAppearance.BorderSize = 2;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI Symbol", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.Location = new Point(1215, 20);
-            button1.Name = "button1";
-            button1.Size = new Size(86, 26);
-            button1.TabIndex = 49;
-            button1.Text = "Clear";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click_1;
+            buttonClearFilters.BackColor = Color.Gainsboro;
+            buttonClearFilters.FlatAppearance.BorderColor = Color.White;
+            buttonClearFilters.FlatAppearance.BorderSize = 2;
+            buttonClearFilters.FlatStyle = FlatStyle.Flat;
+            buttonClearFilters.Font = new Font("Segoe UI Symbol", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonClearFilters.Location = new Point(1215, 20);
+            buttonClearFilters.Name = "buttonClearFilters";
+            buttonClearFilters.Size = new Size(86, 26);
+            buttonClearFilters.TabIndex = 49;
+            buttonClearFilters.Text = "Clear";
+            buttonClearFilters.UseVisualStyleBackColor = false;
+            buttonClearFilters.Click += button1_Click_1;
             // 
             // buttonShowFilters
             // 
@@ -426,8 +427,8 @@
         private Label label4;
         private DateTimePicker dateTimePicker2;
         private DateTimePicker dateTimePicker1;
-        private MaskedTextBox maskedTextBox1;
-        private TextBox textBox1;
+        private MaskedTextBox TextBox_PESEL;
+        private TextBox textBox1_Name;
         private Button buttonDeactivatePatinet;
         private Button buttonActivatePatient;
         private Button buttonRemovePatient;
@@ -439,7 +440,7 @@
         private Label label5;
         private Button buttonExit;
         private Button button_ShowDetails;
-        private Button button1;
+        private Button buttonClearFilters;
         private Button buttonShowFilters;
     }
 }

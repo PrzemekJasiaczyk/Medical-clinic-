@@ -256,6 +256,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+             
 
         }
 
@@ -273,6 +274,11 @@ namespace GUI_Management_of_medical_clinic
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
