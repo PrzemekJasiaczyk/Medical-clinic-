@@ -24,9 +24,6 @@ namespace MedicalClinicTest
 			Assert.Null(patient);
 		}
 
-		// test dodawania nie działa
-
-
 		[Fact]
 
 		public void AddPatientToDataBase()
