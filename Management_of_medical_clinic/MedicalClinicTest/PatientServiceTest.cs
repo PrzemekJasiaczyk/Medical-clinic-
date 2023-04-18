@@ -1,4 +1,3 @@
-using Console_Management_of_medical_clinic.Data;
 using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
 using Console_Management_of_medical_clinic.Data.Enums;
@@ -7,11 +6,9 @@ namespace MedicalClinicTest
 {
 	public class PatientServiceTest
 	{
-		// TODO: Remove commented code
 		[Fact]
 		public void NullNameTest()
 		{
-			//AppDbContext testContext;
 			string errorMessage;
 			PatientService patientService = new();
 			
@@ -26,11 +23,6 @@ namespace MedicalClinicTest
 					IsActive = true,
 					LastVisitDate = null
 				};
-
-			//using (InMemoryDbContext inMemoryDbContext = new())
-			//{
-			//	testContext = inMemoryDbContext.CreateTestContext();
-			//}
 
 			bool isValid = patientService.IsValidName(patient.FirstName, out errorMessage);
 

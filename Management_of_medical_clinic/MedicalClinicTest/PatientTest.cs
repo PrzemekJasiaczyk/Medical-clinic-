@@ -1,10 +1,6 @@
 ﻿using Console_Management_of_medical_clinic.Data;
 using Console_Management_of_medical_clinic.Data.Enums;
 using Console_Management_of_medical_clinic.Model;
-using MedicalClinicTest.TestData;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace MedicalClinicTest
 {
@@ -25,35 +21,36 @@ namespace MedicalClinicTest
 		}
 
 		[Fact]
-
 		public void AddPatientToDataBase()
 		{
-			AppDbContext testContext;
+			var dbContext = new AppDbContext();
 
-			using (InMemoryDbContext inMemoryDbContext = new InMemoryDbContext())
+			Patient patient =
+			new Patient()
 			{
-				testContext = inMemoryDbContext.CreateTestContext();
-				Patient patient =
-				new Patient()
-				{
-					FirstName = "Paweł",
-					LastName = "Dawid",
-					PESEL = "45010195612",
-					Sex = EnumSex.Male,
-					BirthDate = new DateTime(1945, 1, 1),
-					IsActive = true,
-					LastVisitDate = null
-				};
+				FirstName = "Paweł",
+				LastName = "Dawid",
+				PESEL = "45010195612",
+				Sex = EnumSex.Male,
+				BirthDate = new DateTime(1945, 1, 1),
+				IsActive = true,
+				LastVisitDate = null
+			};
 
-                inMemoryDbContext.Dispose();
-                
-				int before = testContext.Patients.Count();
-                Patient.AddPatient(patient, testContext);
+			Patient.AddPatient(patient, dbContext);
+			dbContext.SaveChanges();
 
-				int after = testContext.Patients.Count();
+			var addedPatient = dbContext.Patients.Find(patient.PatientId);
 
-				Assert.Equal(before+1, after);
-			}
+			Assert.NotNull(addedPatient);
+			Assert.True(addedPatient.FirstName == patient.FirstName);
+			Assert.True(addedPatient.LastName == patient.LastName);
+			Assert.True(addedPatient.Sex == patient.Sex);
+			Assert.True(addedPatient.BirthDate == patient.BirthDate);
+			Assert.True(addedPatient.IsActive == patient.IsActive);
+
+			dbContext.Patients.Remove(patient);
+			dbContext.SaveChanges();
 		}
-    }
+	}
 }
