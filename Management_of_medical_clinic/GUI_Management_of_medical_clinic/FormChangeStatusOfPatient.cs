@@ -1,4 +1,5 @@
 ﻿using Console_Management_of_medical_clinic.Data;
+using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
 using System;
 using System.Collections.Generic;
@@ -28,7 +29,9 @@ namespace GUI_Management_of_medical_clinic
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBoxPassword.Text != currentUser.UserModel.Password)
+			UserModel user = UserService.GetUserByEmployeeId(currentUser);
+
+			if (textBoxPassword.Text != user.Password)
             {
                 string msg = "Invalid password!";
                 FormMessage FormMessage = new FormMessage(msg);
