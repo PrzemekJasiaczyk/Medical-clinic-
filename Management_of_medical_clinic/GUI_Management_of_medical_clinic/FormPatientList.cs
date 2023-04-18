@@ -33,59 +33,7 @@ namespace GUI_Management_of_medical_clinic
             currentUser = employee;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonSort_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox2_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonClear_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonShow_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBoxDate_CheckedChanged(object sender, EventArgs e)
-        {
-
-
-        }
-
-        private void checkBoxPesel_CheckedChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void checkBoxName_CheckedChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
+  
 
         private void FormPatientList_Load(object sender, EventArgs e)
         {
@@ -102,10 +50,6 @@ namespace GUI_Management_of_medical_clinic
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
@@ -256,8 +200,12 @@ namespace GUI_Management_of_medical_clinic
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-             
-
+            //Clear Filters
+            DisplayPatientsList();
+            textBox1_Name.Text = null;
+            TextBox_PESEL.Text = null;
+            dateTimePicker1.Text = null;
+            dateTimePicker2.Text = null;
         }
 
         private void buttonShowFilters_Click(object sender, EventArgs e)
@@ -277,6 +225,11 @@ namespace GUI_Management_of_medical_clinic
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TextBox_PESEL_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
 
         }

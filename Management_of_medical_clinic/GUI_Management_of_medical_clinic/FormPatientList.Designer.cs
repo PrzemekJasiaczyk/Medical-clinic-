@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             buttonClearFilter = new Button();
             buttonAddPatient = new Button();
             buttonEditPatient = new Button();
@@ -248,6 +248,7 @@
             TextBox_PESEL.Name = "TextBox_PESEL";
             TextBox_PESEL.Size = new Size(129, 23);
             TextBox_PESEL.TabIndex = 38;
+            TextBox_PESEL.MaskInputRejected += TextBox_PESEL_MaskInputRejected;
             // 
             // textBox1_Name
             // 
@@ -265,14 +266,14 @@
             dataGridViewPatientList.AllowUserToDeleteRows = false;
             dataGridViewPatientList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewPatientList.BackgroundColor = SystemColors.ButtonHighlight;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.SteelBlue;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = Color.SteelBlue;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridViewPatientList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.SteelBlue;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = Color.SteelBlue;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewPatientList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewPatientList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewPatientList.Location = new Point(357, 77);
             dataGridViewPatientList.Name = "dataGridViewPatientList";
