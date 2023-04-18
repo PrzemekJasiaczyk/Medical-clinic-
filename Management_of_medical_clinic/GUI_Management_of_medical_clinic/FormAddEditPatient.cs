@@ -19,10 +19,10 @@ namespace GUI_Management_of_medical_clinic
     public partial class FormAddEditPatient : Form
     {
         EmployeeModel currentUser;
-        Patient patient;
+        PatientModel patient;
         bool isNewPatient = false;
 
-        public FormAddEditPatient(EmployeeModel currentUser, Patient? patient)
+        public FormAddEditPatient(EmployeeModel currentUser, PatientModel? patient)
         {
             InitializeComponent();
             CompleteComboBox();
@@ -50,11 +50,11 @@ namespace GUI_Management_of_medical_clinic
                 {
                     if (isNewPatient == true)
                     {
-                        patient = new Patient();
+                        patient = new PatientModel();
 
                         ChangeOrAddPatientData();
 
-                        Patient.AddPatient(patient, context);
+                        PatientModel.AddPatient(patient, context);
                     }
                     else
                     {

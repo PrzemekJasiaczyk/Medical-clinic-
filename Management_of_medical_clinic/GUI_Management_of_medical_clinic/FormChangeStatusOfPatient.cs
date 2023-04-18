@@ -15,11 +15,11 @@ namespace GUI_Management_of_medical_clinic
 {
     public partial class FormChangeStatusOfPatient : Form
     {
-        Patient patient;
+        PatientModel patient;
         EmployeeModel currentUser;
         private string source;
 
-        public FormChangeStatusOfPatient(string source, Patient patient, EmployeeModel currentUser)
+        public FormChangeStatusOfPatient(string source, PatientModel patient, EmployeeModel currentUser)
         {
             InitializeComponent();
             this.patient = patient;
@@ -43,12 +43,12 @@ namespace GUI_Management_of_medical_clinic
             {
                 if (source == "activate" || source == "deactivate")
                 {
-                    Patient.ChangePatientStatus(patient, context);
+                    PatientModel.ChangePatientStatus(patient, context);
 
                 }
                 else if (source == "remove")
                 {
-                    Patient.RemovePatient(patient, context);
+                    PatientModel.RemovePatient(patient, context);
                 }
             }
 

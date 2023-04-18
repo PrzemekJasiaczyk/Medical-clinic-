@@ -13,14 +13,14 @@ namespace MedicalClinicTest
 		[Fact]
 		public void FindExistingPatientInDataBase()
 		{
-			Patient patient = Patient.FindPatient(1);
+			PatientModel patient = PatientModel.FindPatient(1);
 			Assert.NotNull(patient);
 		}
 
 		[Fact]
 		public void FindNotExistingPatientInDataBase()
 		{
-			Patient patient = Patient.FindPatient(999);
+			PatientModel patient = PatientModel.FindPatient(999);
 			Assert.Null(patient);
 		}
 
@@ -33,8 +33,8 @@ namespace MedicalClinicTest
 			using (InMemoryDbContext inMemoryDbContext = new InMemoryDbContext())
 			{
 				testContext = inMemoryDbContext.CreateTestContext();
-				Patient patient =
-				new Patient()
+				PatientModel patient =
+				new PatientModel()
 				{
 					FirstName = "Paweł",
 					LastName = "Dawid",
@@ -48,7 +48,7 @@ namespace MedicalClinicTest
                 inMemoryDbContext.Dispose();
                 
 				int before = testContext.Patients.Count();
-                Patient.AddPatient(patient, testContext);
+                PatientModel.AddPatient(patient, testContext);
 
 				int after = testContext.Patients.Count();
 

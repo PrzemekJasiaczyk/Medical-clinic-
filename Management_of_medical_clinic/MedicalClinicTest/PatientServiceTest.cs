@@ -15,8 +15,8 @@ namespace MedicalClinicTest
 			string errorMessage;
 			PatientService patientService = new();
 			
-			Patient patient =
-				new Patient()
+			PatientModel patient =
+				new PatientModel()
 				{
 					FirstName = null,
 					LastName = "Wiktorowicz",
