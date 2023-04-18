@@ -32,8 +32,7 @@ namespace MedicalClinicTest
 
 		#endregion
 
-		#region Tests Expected Results
-
+		#region IsValid Method Tests
 		[Fact]
 		public void IsValidName_NotNullName()
 		{
@@ -77,29 +76,6 @@ namespace MedicalClinicTest
 			Assert.True(isValid);
 			Assert.True(errorMessage == "");
 		}
-
-		[Fact]
-		public void GetPatientsData_ExpectedResult()
-		{
-			AppDbContext dbContext = new();
-			PatientService patientService = new();
-
-			dbContext.Patients.AddRange(_firstFakePatient, _secondFakePatient);
-			dbContext.SaveChanges();
-
-			var result = patientService.GetPatientData();
-
-			Assert.NotNull(result);
-			Assert.Contains(result, p => p.PESEL == "45010195612");
-			Assert.Contains(result, p => p.PESEL == "99030300191");
-
-			dbContext.Patients.RemoveRange(_firstFakePatient, _secondFakePatient);
-			dbContext.SaveChanges();
-		}
-
-		#endregion
-
-		#region Tests Unexpected Results
 
 		[Fact]
 		public void IsValidName_NullName()
@@ -178,5 +154,24 @@ namespace MedicalClinicTest
 		}
 
 		#endregion
+
+		[Fact]
+		public void GetPatientsData_ExpectedResult()
+		{
+			AppDbContext dbContext = new();
+			PatientService patientService = new();
+
+			dbContext.Patients.AddRange(_firstFakePatient, _secondFakePatient);
+			dbContext.SaveChanges();
+
+			var result = patientService.GetPatientData();
+
+			Assert.NotNull(result);
+			Assert.Contains(result, p => p.PESEL == "45010195612");
+			Assert.Contains(result, p => p.PESEL == "99030300191");
+
+			dbContext.Patients.RemoveRange(_firstFakePatient, _secondFakePatient);
+			dbContext.SaveChanges();
+		}
 	}
 }
