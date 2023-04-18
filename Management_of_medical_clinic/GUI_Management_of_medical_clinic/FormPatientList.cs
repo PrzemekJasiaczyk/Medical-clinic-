@@ -219,12 +219,12 @@ namespace GUI_Management_of_medical_clinic
             //      dataGridViewUsers.Rows.Add(user.IdUser, user.Username, user.Role, (user.IsActive == true) ? "Active" : "Not Active");
             // }
 
-            List<PatientModel> FiltredPatients = PatientService.FilterPatient(textBox1_Name.Text,textBox1_Surname.Text, TextBox_PESEL.Text,dateTimePicker1.Value);
+            List<PatientModel> FiltredPatients = PatientService.FilterPatient(textBox1_Name.Text, textBox1_Surname.Text, TextBox_PESEL.Text, dateTimePicker1.Value);
 
             dataGridViewPatientList.Rows.Clear();
             if (textBox1_Name.Text == null && TextBox_PESEL.Text == null && dateTimePicker1.Text == null && dateTimePicker2.Text == null)
             {
-                MessageBox.Show("Please complete filters");
+                MessageBox.Show("Please complete filters !!!");
             }
             else
             {

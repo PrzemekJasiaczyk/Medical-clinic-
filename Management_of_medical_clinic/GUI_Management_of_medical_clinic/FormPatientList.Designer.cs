@@ -46,6 +46,8 @@
             textBox1_Name = new TextBox();
             dataGridViewPatientList = new DataGridView();
             panel2 = new Panel();
+            textBox1_Surname = new TextBox();
+            label1 = new Label();
             buttonClearFilters = new Button();
             buttonShowFilters = new Button();
             pictureBox5 = new PictureBox();
@@ -53,8 +55,6 @@
             label7 = new Label();
             label6 = new Label();
             label5 = new Label();
-            label1 = new Label();
-            textBox1_Surname = new TextBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewPatientList).BeginInit();
@@ -258,6 +258,7 @@
             textBox1_Name.Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
             textBox1_Name.Location = new Point(63, 20);
             textBox1_Name.Name = "textBox1_Name";
+            textBox1_Name.PlaceholderText = "Name";
             textBox1_Name.Size = new Size(129, 23);
             textBox1_Name.TabIndex = 37;
             textBox1_Name.TextChanged += textBox1_TextChanged;
@@ -311,6 +312,27 @@
             panel2.Size = new Size(1567, 77);
             panel2.TabIndex = 31;
             panel2.Paint += panel2_Paint;
+            // 
+            // textBox1_Surname
+            // 
+            textBox1_Surname.BackColor = SystemColors.ButtonFace;
+            textBox1_Surname.Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox1_Surname.Location = new Point(286, 22);
+            textBox1_Surname.Name = "textBox1_Surname";
+            textBox1_Surname.PlaceholderText = "Surname";
+            textBox1_Surname.Size = new Size(129, 23);
+            textBox1_Surname.TabIndex = 51;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(209, 26);
+            label1.Name = "label1";
+            label1.Size = new Size(71, 20);
+            label1.TabIndex = 50;
+            label1.Text = "Surname";
+            label1.Click += label1_Click;
             // 
             // buttonClearFilters
             // 
@@ -394,26 +416,6 @@
             label5.Size = new Size(51, 20);
             label5.TabIndex = 0;
             label5.Text = "Name";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(209, 26);
-            label1.Name = "label1";
-            label1.Size = new Size(71, 20);
-            label1.TabIndex = 50;
-            label1.Text = "Surname";
-            label1.Click += label1_Click;
-            // 
-            // textBox1_Surname
-            // 
-            textBox1_Surname.BackColor = SystemColors.ButtonFace;
-            textBox1_Surname.Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1_Surname.Location = new Point(286, 22);
-            textBox1_Surname.Name = "textBox1_Surname";
-            textBox1_Surname.Size = new Size(129, 23);
-            textBox1_Surname.TabIndex = 51;
             // 
             // FormPatientList
             // 
