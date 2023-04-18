@@ -12,8 +12,11 @@ using System.Windows.Forms;
 
 namespace GUI_Management_of_medical_clinic
 {
+
+
     public partial class FormSpecializationAdd : Form
     {
+        string errorMessage;
         EmployeeModel currentUser;
         public FormSpecializationAdd(EmployeeModel currentU)
         {
@@ -21,30 +24,31 @@ namespace GUI_Management_of_medical_clinic
             currentUser = currentU;
         }
 
-        
+
 
         private void FormSpecializationAdd_Load(object sender, EventArgs e)
         {
-            loadDataGridView();   
+            loadDataGridView();
         }
 
         private void loadDataGridView()
         {
             List<SpecializationModel> specializations = SpecializationService.GetSpecializationsData();
             dataGridViewSpecializations.DataSource = specializations;
+
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             FormEmployeeList employeeList = new FormEmployeeList(currentUser);
-            this.Hide();
+            //this.Hide();
             employeeList.ShowDialog();
             this.Close();
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            string specializationToAdd = textBoxAdd.Text;
+            string specializationToAdd = textBoxName.Text;
 
             if (SpecializationService.CheckIfSpecializationExists(specializationToAdd))
             {
@@ -62,63 +66,70 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonReplace_Click(object sender, EventArgs e)
         {
-            string specializationToRemove = textBoxRemove.Text;
+            string nameSpecialization = textBoxName.Text;
+            int idSpecialization = SpecializationService.getSpecializationIdByName(nameSpecialization);
 
-            MessageBox.Show(SpecializationService.RemoveSpecialization(specializationToRemove));
+            if (idSpecialization == 0)
+            {
+                MessageBox.Show("There in no such specialization in the database");
+                return;
+            }
+
+            if (SpecializationService.checkIfSpecializationIsAssigned(EmployeeService.GetEmployeesData(), SpecializationService.getSpecializationIdByName(nameSpecialization)))
+            {
+                MessageBox.Show("Specialization can not be removed, it is being used by employees");
+                return;
+            }
+
+            SpecializationService.RemoveSpecialization(nameSpecialization);
             loadDataGridView();
         }
 
-        private void textBoxAdd_TextChanged(object sender, EventArgs e)
+
+        private void buttonReplace_Click_1(object sender, EventArgs e)
         {
-            if (textBoxAdd.Text.Length > 0)
+            if (textBoxName.Text.Length == 0 || textBoxNewName.Text.Length == 0)
+            {
+                MessageBox.Show("Missing Input");
+                return;
+            }
+            if (textBoxName.Text == textBoxNewName.Text)
+            {
+                MessageBox.Show("New Name and Old Name are the Same");
+                return;
+            }
+
+            SpecializationService.EditSpecialization(textBoxName.Text, textBoxNewName.Text, out errorMessage);
+            loadDataGridView();
+            if (errorMessage != null)
+            {
+                MessageBox.Show(errorMessage);
+            }
+        }
+
+        private void textBoxName_TextChanged(object sender, EventArgs e)
+        {
+            if (textBoxName.Text.Length > 0)
             {
                 buttonAdd.Enabled = true;
-            }
-            else
-            {
-                buttonAdd.Enabled = false;
-            }
-        }
-
-        private void textBoxRemove_TextChanged(object sender, EventArgs e)
-        {
-            if (textBoxRemove.Text.Length > 0)
-            {
-                buttonRemove.Enabled= true;
-            }
-            else
-            {
-                buttonRemove.Enabled = false;
-            }
-        }
-
-        private void textBoxEditPrevious_TextChanged(object sender, EventArgs e)
-        {
-            if (textBoxEditPrevious.Text.Length > 0 && textBoxEditNew.Text.Length > 0)
-            {
-                buttonReplace.Enabled= true;
-            }
-            else
-            {
-                buttonReplace.Enabled = false;
-            }
-        }
-
-        private void textBoxEditNew_TextChanged(object sender, EventArgs e)
-        {
-            if (textBoxEditPrevious.Text.Length > 0 && textBoxEditNew.Text.Length > 0)
-            {
+                buttonRemove.Enabled = true;
                 buttonReplace.Enabled = true;
             }
             else
             {
+                buttonAdd.Enabled = false;
+                buttonRemove.Enabled = false;
                 buttonReplace.Enabled = false;
             }
         }
 
-        private void buttonReplace_Click_1(object sender, EventArgs e)
+        private void dataGridViewSpecializations_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            MessageBox.Show("<<THIS BUTTON DOESN'T WORK YET>>");
+            if (e.RowIndex > -1)
+            {
+                string nameValue = dataGridViewSpecializations.Rows[e.RowIndex].Cells[1].Value.ToString();
+                textBoxName.Text = nameValue;
+            }
         }
     }
 }

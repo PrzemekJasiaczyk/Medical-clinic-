@@ -28,7 +28,7 @@ namespace GUI_Management_of_medical_clinic
             textBoxLastName.Text = employee.LastName;
             textBoxPESEL.Text = employee.PESEL;
             textBoxDateOfBirth.Text = employee.DateOfBirth.ToString();
-            textBoxRole.Text = employee.Role;
+            textBoxRole.Text = employee.Role.ToString();
             textBoxCorrespondenceAddress.Text = employee.CorrespondenceAddress;
             textBoxEmail.Text = employee.Email;
             textBoxPhoneNumber.Text = employee.PhoneNumber;
@@ -39,7 +39,7 @@ namespace GUI_Management_of_medical_clinic
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             FormEmployeeList employeeList = new FormEmployeeList(currentUser);
-            this.Hide();
+            //this.Hide();
             employeeList.ShowDialog();
             this.Close();
         }
@@ -47,7 +47,7 @@ namespace GUI_Management_of_medical_clinic
         private void Edit_Employee_Click(object sender, EventArgs e)
         {
             FormEmployeeEdit employeeEdit = new FormEmployeeEdit(employee, currentUser);
-            this.Hide();
+            //this.Hide();
             employeeEdit.ShowDialog();
             this.Close();
         }

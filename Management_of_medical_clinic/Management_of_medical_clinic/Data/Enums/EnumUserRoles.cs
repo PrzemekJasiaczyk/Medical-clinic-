@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Console_Management_of_medical_clinic.Data.Enums
 {
-    public enum EnumSex
+    public enum EnumUserRoles
     {
-        Male = 1,
-        Female = 2,
-        Undefined = 3        
+        Administrator =1,
+        Employee =2
     }
 }

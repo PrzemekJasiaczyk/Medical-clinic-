@@ -1,4 +1,5 @@
-﻿using Console_Management_of_medical_clinic.Logic;
+﻿using Console_Management_of_medical_clinic.Data.Enums;
+using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
 using System;
 using System.Collections.Generic;
@@ -67,7 +68,7 @@ namespace GUI_Management_of_medical_clinic
                 return;
             }
 
-            string role = comboBoxRole.SelectedItem.ToString();
+            EnumEmployeeRoles role = (EnumEmployeeRoles)Enum.Parse(typeof(EnumEmployeeRoles), comboBoxRole.SelectedItem.ToString());
             bool isActive = checkBoxIsActive.Checked;
 
             List<EmployeeModel> employees = EmployeeModel.FilterEmployees(role, isActive);
@@ -77,7 +78,7 @@ namespace GUI_Management_of_medical_clinic
             {
                 dataGridViewEmployees.Rows.Add(employee.IdEmployee, employee.FirstName, employee.LastName, employee.Role, (employee.IsActive == true) ? "Active" : "Not Active");
             }
-
+            
         }
         private void buttonClearFilter_Click(object sender, EventArgs e)
         {
@@ -104,7 +105,7 @@ namespace GUI_Management_of_medical_clinic
             int IdEmployee = (int)dataGridViewEmployees.Rows[rowIndex].Cells[0].Value;
             EmployeeModel employee = EmployeeModel.FindEmployee(IdEmployee);
             FormChangeStatusOfEmployee deactivate = new FormChangeStatusOfEmployee(employee, currentUser);
-            this.Hide();
+            this.InitializeComponent();
             deactivate.ShowDialog();
             
 
@@ -131,44 +132,41 @@ namespace GUI_Management_of_medical_clinic
             int IdEmployee = (int)dataGridViewEmployees.Rows[rowIndex].Cells[0].Value;
             EmployeeModel employee = EmployeeModel.FindEmployee(IdEmployee);
             FormChangeStatusOfEmployee deactivate = new FormChangeStatusOfEmployee(employee, currentUser);
-            this.Hide();
+            this.InitializeComponent();
             deactivate.ShowDialog();
 
 
 
         }
-        private void dataGridViewEmployees_CellContentClick(object sender)
-        {
-            
-        }
+       
         private void buttonReviewEmployee_Click(object sender, EventArgs e)
         {
-            int rowIndex = dataGridViewEmployees.CurrentRow.Index;
+            //int rowIndex = dataGridViewEmployees.CurrentRow.Index;
 
-            if (rowIndex < 0)
+            if (dataGridViewEmployees.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Select one employee from list!");
                 return;
             }
 
+            int rowIndex = dataGridViewEmployees.CurrentRow.Index;
+
             int IdEmployee = (int)dataGridViewEmployees.Rows[rowIndex].Cells[0].Value;
             EmployeeModel employee = EmployeeModel.FindEmployee(IdEmployee);
 
-            
-            
+
+
             FormEmployeeDetailsView employeeDetailsView = new FormEmployeeDetailsView(employee, currentUser);
-            this.Hide();
+            //this.Hide();
             employeeDetailsView.ShowDialog();
             this.Close();
-
-
 
         }
         private void buttonAddEmployee_Click(object sender, EventArgs e)
         {
 
             FormEmployeeAdd employeeAdd = new FormEmployeeAdd(currentUser);
-            this.Hide();
+            //this.Hide();
             employeeAdd.ShowDialog();
             this.Close();
         }
@@ -176,7 +174,7 @@ namespace GUI_Management_of_medical_clinic
         private void buttonSpecializations_Click(object sender, EventArgs e)
         {
             FormSpecializationAdd specializationAdd = new FormSpecializationAdd(currentUser);
-            this.Hide();
+            //this.Hide();
             specializationAdd.ShowDialog();
             this.Close();
         }
@@ -195,7 +193,7 @@ namespace GUI_Management_of_medical_clinic
             EmployeeModel employee = EmployeeModel.FindEmployee(IdEmployee);
 
             FormEmployeeEdit employeeEdit = new FormEmployeeEdit(employee, currentUser);
-            this.Hide();
+            //this.Hide();
             employeeEdit.ShowDialog();
             this.Close();
         }
