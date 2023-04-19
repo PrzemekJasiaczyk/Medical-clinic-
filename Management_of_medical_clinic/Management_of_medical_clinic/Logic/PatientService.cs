@@ -96,6 +96,14 @@ namespace Console_Management_of_medical_clinic.Logic
 			string dateOfBirth = birthdate.ToString("yy/MM/dd");
             dateOfBirth = dateOfBirth.Replace(".", "");
 
+            // For people born in 2000 and later
+            if (dateOfBirth.StartsWith("00"))
+            {
+                int thirdDigitValue = int.Parse(dateOfBirth.Substring(2, 1));
+                thirdDigitValue += 2;
+                dateOfBirth = dateOfBirth.Remove(2, 1).Insert(2, thirdDigitValue.ToString());
+			}
+
             string pattern = $@"^{dateOfBirth}\d*";
             bool isMatch = Regex.IsMatch(pesel, pattern);
 
