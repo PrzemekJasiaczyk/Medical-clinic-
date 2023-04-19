@@ -13,7 +13,7 @@ namespace Console_Management_of_medical_clinic.Model
         public string Name { get; set; }
         //Relationships
         public List<EmployeeModel>? EmployeeModels { get; set; }
-
+        public List<OfficeModel>? officeModels { get; set; }
 
 
 

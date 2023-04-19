@@ -14,6 +14,7 @@ namespace Console_Management_of_medical_clinic.Data
         public DbSet<UserModel> DbUsers { get; set; }        
         public DbSet<SpecializationModel> DbSpecializations { get; set; }
         public DbSet<EmployeeModel> DbEmployees { get; set; }
+        public DbSet<OfficeModel> DbOffices { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
