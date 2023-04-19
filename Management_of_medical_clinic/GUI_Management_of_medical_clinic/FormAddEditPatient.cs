@@ -12,6 +12,7 @@ namespace GUI_Management_of_medical_clinic
 		Patient patient;
 		bool isNewPatient = false;
 
+		// Color type cannot be declared as const
 		Color _errorColor = Color.LightPink;
 		Color _normalColor = SystemColors.Window;
 
@@ -64,76 +65,6 @@ namespace GUI_Management_of_medical_clinic
 		{
 			// temps
 			ComeToPatientList();
-		}
-
-
-		// ----------------------------------------------------------- FUNCTIONS ----------------------------------------------------------------- //
-
-
-		private void ComeToPatientList()
-		{
-			FormAddEditPatient.ActiveForm.Close();
-			FormPatientList formPatientList = new FormPatientList(currentUser);
-			formPatientList.ShowDialog();
-		}
-
-
-		private void CompleteComboBox()
-		{
-			comboBoxSex.DataSource = Enum.GetValues(typeof(EnumSex));
-
-		}
-		private void CompleteControls()
-		{
-			textBoxLastName.Text = patient.LastName;
-			textBoxName.Text = patient.FirstName;
-
-			dateTimePickerBirthDate.Value = patient.BirthDate;
-			maskedTextBoxPESEL.Text = patient.PESEL;
-
-			comboBoxSex.SelectedItem = patient.Sex;
-		}
-		internal void ReadOnlyControls()
-		{
-			textBoxLastName.ReadOnly = true;
-			textBoxName.ReadOnly = true;
-			dateTimePickerBirthDate.Enabled = false;
-			maskedTextBoxPESEL.ReadOnly = true;
-			comboBoxSex.Enabled = false;
-		}
-
-
-		internal void ChangeTitle(string title)
-		{
-			labelAddEditNewPatient.Text = title;
-			buttonAddEditPatient.Text = title;
-		}
-
-		private void SetPropertiesDateTimePicker()
-		{
-			dateTimePickerBirthDate.MaxDate = DateTime.Today.AddHours(+1);
-			dateTimePickerBirthDate.MinDate = DateTime.Today.AddYears(-100);
-		}
-
-		private void FindEditPatientInDataBase()
-		{
-			AppDbContext _context = new AppDbContext();
-			patient = _context.Patients.Find(patient.PatientId);
-			ChangeOrAddPatientData();
-			_context.SaveChanges();
-		}
-
-
-		private void ChangeOrAddPatientData()
-		{
-			patient.PESEL = maskedTextBoxPESEL.Text;
-			patient.Sex = (EnumSex)comboBoxSex.SelectedItem;
-
-			patient.BirthDate = dateTimePickerBirthDate.Value;
-
-			patient.FirstName = textBoxName.Text;
-			patient.LastName = textBoxLastName.Text;
-			patient.IsActive = true;
 		}
 
 		#region Validation
@@ -233,6 +164,18 @@ namespace GUI_Management_of_medical_clinic
 			}
 		}
 
+		private void comboBoxSex_SelectedValueChanged(object sender, EventArgs e)
+		{
+			maskedTextBoxPESEL.Focus();
+			comboBoxSex.Focus();
+		}
+
+		private void dateTimePickerBirthDate_ValueChanged(object sender, EventArgs e)
+		{
+			maskedTextBoxPESEL.Focus();
+			dateTimePickerBirthDate.Focus();
+		}
+
 
 		private bool isCompletedForm()
 		{
@@ -255,33 +198,85 @@ namespace GUI_Management_of_medical_clinic
 			return true;
 		}
 
-		#endregion
-
 		private void FormAddEditPatient_FormClosing(object sender, FormClosingEventArgs e)
 		{
 			e.Cancel = false;
 		}
 
-		private void panel1_Paint(object sender, PaintEventArgs e)
-		{
+		#endregion
 
+		#region Custom Methods
+
+		// ----------------------------------------------------------- FUNCTIONS ----------------------------------------------------------------- //
+
+
+		private void ComeToPatientList()
+		{
+			FormAddEditPatient.ActiveForm.Close();
+			FormPatientList formPatientList = new FormPatientList(currentUser);
+			formPatientList.ShowDialog();
 		}
 
-		private void pictureBox1_Click(object sender, EventArgs e)
+
+		private void CompleteComboBox()
 		{
+			comboBoxSex.DataSource = Enum.GetValues(typeof(EnumSex));
 
 		}
-
-		private void comboBoxSex_SelectedValueChanged(object sender, EventArgs e)
+		private void CompleteControls()
 		{
-			maskedTextBoxPESEL.Focus();
-			comboBoxSex.Focus();
+			textBoxLastName.Text = patient.LastName;
+			textBoxName.Text = patient.FirstName;
+
+			dateTimePickerBirthDate.Value = patient.BirthDate;
+			maskedTextBoxPESEL.Text = patient.PESEL;
+
+			comboBoxSex.SelectedItem = patient.Sex;
+		}
+		internal void ReadOnlyControls()
+		{
+			textBoxLastName.ReadOnly = true;
+			textBoxName.ReadOnly = true;
+			dateTimePickerBirthDate.Enabled = false;
+			maskedTextBoxPESEL.ReadOnly = true;
+			comboBoxSex.Enabled = false;
 		}
 
-		private void dateTimePickerBirthDate_ValueChanged(object sender, EventArgs e)
+
+		internal void ChangeTitle(string title)
 		{
-			maskedTextBoxPESEL.Focus();
-			dateTimePickerBirthDate.Focus();
+			labelAddEditNewPatient.Text = title;
+			buttonAddEditPatient.Text = title;
 		}
+
+		private void SetPropertiesDateTimePicker()
+		{
+			dateTimePickerBirthDate.MaxDate = DateTime.Today.AddHours(+1);
+			dateTimePickerBirthDate.MinDate = DateTime.Today.AddYears(-100);
+		}
+
+		private void FindEditPatientInDataBase()
+		{
+			AppDbContext _context = new AppDbContext();
+			patient = _context.Patients.Find(patient.PatientId);
+			ChangeOrAddPatientData();
+			_context.SaveChanges();
+		}
+
+
+		private void ChangeOrAddPatientData()
+		{
+			patient.PESEL = maskedTextBoxPESEL.Text;
+			patient.Sex = (EnumSex)comboBoxSex.SelectedItem;
+
+			patient.BirthDate = dateTimePickerBirthDate.Value;
+
+			patient.FirstName = textBoxName.Text;
+			patient.LastName = textBoxLastName.Text;
+			patient.IsActive = true;
+		}
+
+		#endregion
+
 	}
 }
