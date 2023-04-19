@@ -52,5 +52,87 @@ namespace MedicalClinicTest
 			dbContext.Patients.Remove(patient);
 			dbContext.SaveChanges();
 		}
+
+
+        [Fact]
+        public void TestActivatePatient()
+        {
+            AppDbContext dbContext = new AppDbContext();
+
+            Patient patient = new Patient()
+            {
+                FirstName = "Paweł",
+                LastName = "Dawid",
+                PESEL = "45010195612",
+                Sex = EnumSex.Male,
+                BirthDate = new DateTime(1945, 1, 1),
+                IsActive = false,
+                LastVisitDate = null
+            };
+
+            dbContext.Patients.Add(patient);
+            dbContext.SaveChanges();
+
+            Patient.ChangePatientStatus(patient, dbContext);
+            Patient activatedPatient = dbContext.Patients.Find(patient.PatientId);
+
+            Assert.True(activatedPatient.IsActive);
+
+            dbContext.Patients.Remove(patient);
+            dbContext.SaveChanges();
+        }
+
+        [Fact]
+        public void TestDeactivatePatient()
+        {
+            AppDbContext dbContext = new AppDbContext();
+
+            Patient patient = new Patient()
+            {
+                FirstName = "Paweł",
+                LastName = "Dawid",
+                PESEL = "45010195612",
+                Sex = EnumSex.Male,
+                BirthDate = new DateTime(1945, 1, 1),
+                IsActive = true,
+                LastVisitDate = null
+            };
+
+            dbContext.Patients.Add(patient);
+            dbContext.SaveChanges();
+
+            Patient.ChangePatientStatus(patient, dbContext);
+            Patient deactivatedPatient = dbContext.Patients.Find(patient.PatientId);
+
+            Assert.False(deactivatedPatient.IsActive);
+
+            dbContext.Patients.Remove(patient);
+            dbContext.SaveChanges();
+        }
+
+        [Fact]
+        public void TestRemovePatient()
+        {
+            AppDbContext dbContext = new AppDbContext();
+
+            Patient patient = new Patient()
+            {
+                FirstName = "Paweł",
+                LastName = "Dawid",
+                PESEL = "45010195612",
+                Sex = EnumSex.Male,
+                BirthDate = new DateTime(1945, 1, 1),
+                IsActive = true,
+                LastVisitDate = null
+            };
+
+            dbContext.Patients.Add(patient);
+            dbContext.SaveChanges();
+
+            Patient.RemovePatient(patient, dbContext);
+            Patient removedPatient = dbContext.Patients.Find(patient.PatientId);
+
+            Assert.Null(removedPatient);
+        }
     }
 }
