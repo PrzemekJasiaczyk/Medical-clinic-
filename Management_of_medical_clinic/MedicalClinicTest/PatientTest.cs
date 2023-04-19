@@ -52,5 +52,5 @@ namespace MedicalClinicTest
 			dbContext.Patients.Remove(patient);
 			dbContext.SaveChanges();
 		}
-	}
+    }
 }
