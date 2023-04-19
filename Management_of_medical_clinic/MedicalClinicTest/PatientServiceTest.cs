@@ -435,6 +435,55 @@ namespace MedicalClinicTest
             dbContext.Patients.Remove(patient);
             dbContext.SaveChanges();
         }
+
+
+        [Fact]
+        public void isValidDate_DateFromFuture()
+        {
+            string errorMessage = string.Empty;
+            PatientService patientService = new();
+            Patient patient = new Patient()
+            {
+                FirstName = "Jan",
+                LastName = "Nowak",
+                PESEL = "90010112335",
+                Sex = EnumSex.Male,
+                BirthDate = new DateTime(2100, 1, 1),
+                IsActive = true,
+                LastVisitDate = null
+            };
+
+
+            bool result = patientService.IsValidDate(patient.BirthDate,out errorMessage);
+
+
+            Assert.False(result);
+            Assert.Equal("Birth date cannot be in the future", errorMessage);
+        }
+
+        [Fact]
+        public void isValidDate_Correct()
+        {
+            string errorMessage = string.Empty;
+            PatientService patientService = new();
+            Patient patient = new Patient()
+            {
+                FirstName = "Jan",
+                LastName = "Nowak",
+                PESEL = "90010112335",
+                Sex = EnumSex.Male,
+                BirthDate = new DateTime(2010, 1, 1),
+                IsActive = true,
+                LastVisitDate = null
+            };
+
+
+            bool result = patientService.IsValidDate(patient.BirthDate, out errorMessage);
+
+
+            Assert.True(result);
+            Assert.Equal("", errorMessage);
+        }
     }
 
 
