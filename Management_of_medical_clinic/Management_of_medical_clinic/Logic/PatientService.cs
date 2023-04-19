@@ -97,7 +97,7 @@ namespace Console_Management_of_medical_clinic.Logic
             dateOfBirth = dateOfBirth.Replace(".", "");
 
             // For people born in 2000 and later
-            if (dateOfBirth.StartsWith("00"))
+            if (birthdate.Year > 2000)
             {
                 int thirdDigitValue = int.Parse(dateOfBirth.Substring(2, 1));
                 thirdDigitValue += 2;
