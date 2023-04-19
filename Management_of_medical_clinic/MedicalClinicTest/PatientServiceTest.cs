@@ -485,10 +485,6 @@ namespace MedicalClinicTest
             Assert.Equal("", errorMessage);
         }
     }
-
-
-
-
 }
         
 
