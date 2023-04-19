@@ -2,17 +2,7 @@
 using Console_Management_of_medical_clinic.Data.Enums;
 using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
-using Microsoft.EntityFrameworkCore.Storage;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace GUI_Management_of_medical_clinic
 {
@@ -21,6 +11,10 @@ namespace GUI_Management_of_medical_clinic
 		EmployeeModel currentUser;
 		Patient patient;
 		bool isNewPatient = false;
+
+		Color _errorColor = Color.LightPink;
+		Color _normalColor = SystemColors.Window;
+
 
 		public FormAddEditPatient(EmployeeModel currentUser, Patient? patient)
 		{
@@ -154,7 +148,7 @@ namespace GUI_Management_of_medical_clinic
 			{
 				e.Cancel = false;
 				ErrorProviderFirstName.SetError(textBoxName, errorMessage);
-				textBoxName.BackColor = Color.LightPink;
+				textBoxName.BackColor = _errorColor;
 			}
 		}
 
@@ -165,7 +159,7 @@ namespace GUI_Management_of_medical_clinic
 			if (_patientValidator.IsValidName(textBoxName.Text, out errorMessage))
 			{
 				ErrorProviderFirstName.SetError(textBoxName, "");
-				textBoxName.BackColor = SystemColors.Window;
+				textBoxName.BackColor = _normalColor;
 			}
 		}
 
@@ -177,7 +171,7 @@ namespace GUI_Management_of_medical_clinic
 			{
 				e.Cancel = false;
 				ErrorProviderLastName.SetError(textBoxLastName, errorMessage);
-				textBoxLastName.BackColor = Color.LightPink;
+				textBoxLastName.BackColor = _errorColor;
 			}
 		}
 
@@ -188,7 +182,7 @@ namespace GUI_Management_of_medical_clinic
 			if (_patientValidator.IsValidName(textBoxLastName.Text, out errorMessage))
 			{
 				ErrorProviderLastName.SetError(textBoxLastName, "");
-				textBoxLastName.BackColor = SystemColors.Window;
+				textBoxLastName.BackColor = _normalColor;
 			}
 		}
 
@@ -200,7 +194,7 @@ namespace GUI_Management_of_medical_clinic
 			{
 				e.Cancel = false;
 				ErrorProviderPESEL.SetError(maskedTextBoxPESEL, errorMessage);
-				maskedTextBoxPESEL.BackColor = Color.LightPink;
+				maskedTextBoxPESEL.BackColor = _errorColor;
 			}
 		}
 
@@ -211,7 +205,7 @@ namespace GUI_Management_of_medical_clinic
 			if (_patientValidator.IsValidPESEL(maskedTextBoxPESEL.Text, dateTimePickerBirthDate.Value, (EnumSex)comboBoxSex.SelectedItem, out errorMessage))
 			{
 				ErrorProviderPESEL.SetError(maskedTextBoxPESEL, "");
-				maskedTextBoxPESEL.BackColor = SystemColors.Window;
+				maskedTextBoxPESEL.BackColor = _normalColor;
 			}
 		}
 
@@ -223,7 +217,7 @@ namespace GUI_Management_of_medical_clinic
 			{
 				e.Cancel = false;
 				ErrorProviderBirthDate.SetError(dateTimePickerBirthDate, errorMessage);
-				dateTimePickerBirthDate.CalendarMonthBackground = Color.LightPink;
+				dateTimePickerBirthDate.CalendarMonthBackground = _errorColor;
 			}
 
 		}
@@ -235,7 +229,7 @@ namespace GUI_Management_of_medical_clinic
 			if (_patientValidator.IsValidDate(dateTimePickerBirthDate.Value, out errorMessage))
 			{
 				ErrorProviderBirthDate.SetError(dateTimePickerBirthDate, "");
-				dateTimePickerBirthDate.CalendarMonthBackground = SystemColors.Window;
+				dateTimePickerBirthDate.CalendarMonthBackground = _normalColor;
 			}
 		}
 
@@ -257,15 +251,6 @@ namespace GUI_Management_of_medical_clinic
 			{
 				return false;
 			}
-
-			//if (
-			//	(maskedTextBoxPESEL.Text == String.Empty || textBoxLastName.Text == String.Empty || textBoxName.Text == String.Empty)
-			//	||
-			//	((!string.IsNullOrEmpty(ErrorProviderFirstName.GetError(textBoxName)) || (!string.IsNullOrEmpty(ErrorProviderFirstName.GetError(textBoxName)) || (!string.IsNullOrEmpty(ErrorProviderFirstName.GetError(textBoxName)) || (!string.IsNullOrEmpty(ErrorProviderFirstName.GetError(textBoxName)))))))
-			//	)
-			//{
-			//	return false;
-			//}
 
 			return true;
 		}

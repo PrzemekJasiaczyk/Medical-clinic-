@@ -67,7 +67,6 @@
 			panel1.Name = "panel1";
 			panel1.Size = new Size(357, 1441);
 			panel1.TabIndex = 23;
-			panel1.Paint += panel1_Paint;
 			// 
 			// buttonBack
 			// 
@@ -111,7 +110,6 @@
 			pictureBox1.Size = new Size(201, 224);
 			pictureBox1.TabIndex = 1;
 			pictureBox1.TabStop = false;
-			pictureBox1.Click += pictureBox1_Click;
 			// 
 			// comboBoxSex
 			// 
