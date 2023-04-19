@@ -247,7 +247,57 @@ namespace MedicalClinicTest
             Assert.Equal("", errorMessage);
         }
 
-        [Fact]
+		[Fact]
+		public void IsValidPESEL_After2000_Incorrect()
+		{
+			string errorMessage = string.Empty;
+			PatientService patientService = new();
+			Patient patient = new Patient()
+			{
+				FirstName = "Jan",
+				LastName = "Nowak",
+				PESEL = "22010112335",
+				Sex = EnumSex.Male,
+				BirthDate = new DateTime(2022, 1, 1),
+				IsActive = true,
+				LastVisitDate = null
+			};
+
+
+			bool result = patientService.IsValidPESEL(patient.PESEL,
+				patient.BirthDate, patient.Sex, out errorMessage);
+
+
+			Assert.False(result);
+			Assert.Equal("PESEL has incorrect birth date", errorMessage);
+		}
+
+		[Fact]
+		public void IsValidPESEL_After2000_Correct()
+		{
+			string errorMessage = string.Empty;
+			PatientService patientService = new();
+			Patient patient = new Patient()
+			{
+				FirstName = "Jan",
+				LastName = "Nowak",
+				PESEL = "22210112335",
+				Sex = EnumSex.Male,
+				BirthDate = new DateTime(2022, 1, 1),
+				IsActive = true,
+				LastVisitDate = null
+			};
+
+
+			bool result = patientService.IsValidPESEL(patient.PESEL,
+				patient.BirthDate, patient.Sex, out errorMessage);
+
+
+			Assert.True(result);
+			Assert.Equal("", errorMessage);
+		}
+
+		[Fact]
         public void IsValidPESEL_Empty()
         {
             string errorMessage;
