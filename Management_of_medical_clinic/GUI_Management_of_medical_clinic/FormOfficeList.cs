@@ -71,5 +71,14 @@ namespace GUI_Management_of_medical_clinic
             officeEdit.ShowDialog();
             Close();
         }
+
+        private void buttonRemoveOffice_Click(object sender, EventArgs e)
+        {
+            //There will be checking statement if this room reserved for the future or not
+
+            FormDeletingConfirmation delete = new FormDeletingConfirmation(OfficeService.GetOfficeById((int)dataGridViewOffices.CurrentRow.Cells[0].Value));
+            delete.ShowDialog();
+            LoadOfficeData();
+        }
     }
 }

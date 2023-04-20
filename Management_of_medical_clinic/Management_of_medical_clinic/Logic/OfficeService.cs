@@ -54,5 +54,14 @@ namespace Console_Management_of_medical_clinic.Logic
                 }
             }
         }
+
+        public static void RemoveOfficeById(int id)
+        {
+            using (AppDbContext context = new AppDbContext())
+            {
+                context.DbOffices.Remove(context.DbOffices.Find(id));
+                context.SaveChanges();
+            }
+        }
     }
 }

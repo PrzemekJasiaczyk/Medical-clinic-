@@ -34,7 +34,7 @@
             pictureBox1 = new PictureBox();
             buttonAddOffice = new Button();
             buttonEditOffice = new Button();
-            buttonReviewUser = new Button();
+            buttonRemoveOffice = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewOffices).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -79,7 +79,7 @@
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(buttonAddOffice);
             panel1.Controls.Add(buttonEditOffice);
-            panel1.Controls.Add(buttonReviewUser);
+            panel1.Controls.Add(buttonRemoveOffice);
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(312, 1081);
@@ -123,17 +123,18 @@
             buttonEditOffice.UseVisualStyleBackColor = false;
             buttonEditOffice.Click += buttonEditOffice_Click;
             // 
-            // buttonReviewUser
+            // buttonRemoveOffice
             // 
-            buttonReviewUser.BackColor = Color.SteelBlue;
-            buttonReviewUser.FlatStyle = FlatStyle.Flat;
-            buttonReviewUser.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonReviewUser.Location = new Point(-7, 445);
-            buttonReviewUser.Name = "buttonReviewUser";
-            buttonReviewUser.Size = new Size(329, 87);
-            buttonReviewUser.TabIndex = 28;
-            buttonReviewUser.Text = "Review user";
-            buttonReviewUser.UseVisualStyleBackColor = false;
+            buttonRemoveOffice.BackColor = Color.SteelBlue;
+            buttonRemoveOffice.FlatStyle = FlatStyle.Flat;
+            buttonRemoveOffice.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonRemoveOffice.Location = new Point(-7, 445);
+            buttonRemoveOffice.Name = "buttonRemoveOffice";
+            buttonRemoveOffice.Size = new Size(329, 87);
+            buttonRemoveOffice.TabIndex = 28;
+            buttonRemoveOffice.Text = "Delete office";
+            buttonRemoveOffice.UseVisualStyleBackColor = false;
+            buttonRemoveOffice.Click += buttonRemoveOffice_Click;
             // 
             // FormOfficeList
             // 
@@ -163,6 +164,6 @@
         private PictureBox pictureBox1;
         private Button buttonAddOffice;
         private Button buttonEditOffice;
-        private Button buttonReviewUser;
+        private Button buttonRemoveOffice;
     }
 }
