@@ -145,8 +145,7 @@ namespace Console_Management_of_medical_clinic.Logic
             return true;
         }
 
-
-        public static List<PatientModel> FilterPatient(string firstname, string lastname, string PESEL, DateTime lastvisitdate)
+        public List<PatientModel> FilterPatient(string firstname, string PESEL)
         {
             PatientService patientService = new PatientService();
             List<PatientModel> FilteredPatients = patientService.GetPatientData();
@@ -156,22 +155,14 @@ namespace Console_Management_of_medical_clinic.Logic
                 FilteredPatients = FilteredPatients.Where(p => p.FirstName.Contains(firstname)).ToList();
             }
 
-            if (!string.IsNullOrEmpty(lastname))
-            {
-                FilteredPatients = FilteredPatients.Where(p => PatientModel.FindPatient(p.PatientId).FirstName.Contains(lastname)).ToList();
-            }
-
             if (!string.IsNullOrEmpty(PESEL))
             {
                 FilteredPatients = FilteredPatients.Where(p => PatientModel.FindPatient(p.PatientId).PESEL.Contains(PESEL)).ToList();
             }
-            //if (!String.IsNullOrEmpty (lastvisitdate))
-            //{
-             //   FilteredPatients = FilteredPatients.Where(p => PatientModel.FindPatient(p.PatientId).LastVisitDate.Contains(lastvisitdate)).ToList();
-          //  }
 
 
             return FilteredPatients;
         }
+
     }
 }
