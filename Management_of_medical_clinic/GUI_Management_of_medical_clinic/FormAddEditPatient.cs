@@ -125,6 +125,13 @@ namespace GUI_Management_of_medical_clinic
 			{
 				e.Cancel = false;
 				ErrorProviderPESEL.SetError(maskedTextBoxPESEL, errorMessage);
+
+				if (isNewPatient == false)
+				{
+					ErrorProviderPESEL.SetError(maskedTextBoxPESEL, "");
+					return;
+				}
+
 				maskedTextBoxPESEL.BackColor = _errorColor;
 			}
 		}
