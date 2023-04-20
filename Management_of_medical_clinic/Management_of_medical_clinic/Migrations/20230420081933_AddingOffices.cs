@@ -13,7 +13,7 @@ namespace Console_Management_of_medical_clinic.Migrations
                     IdOffice = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Number = table.Column<int>(type: "INTEGER", nullable: false),
-                    Status = table.Column<string>(type: "TEXT", nullable: false),
+                    Status = table.Column<bool>(type: "INTEGER", nullable: false),
                     Info = table.Column<string>(type: "TEXT", nullable: false),
                     IdSpecialization = table.Column<int>(type: "INTEGER", nullable: false)
                 },

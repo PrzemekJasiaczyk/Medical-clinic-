@@ -1,0 +1,67 @@
+﻿using Console_Management_of_medical_clinic.Logic;
+using Console_Management_of_medical_clinic.Model;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace GUI_Management_of_medical_clinic
+{
+    public partial class FormOfficeList : Form
+    {
+        EmployeeModel currentUser;
+
+        public FormOfficeList()
+        {
+            InitializeComponent();
+        }
+
+        public FormOfficeList(EmployeeModel currentUser)
+        {
+            this.currentUser = currentUser;
+            InitializeComponent();
+        }
+
+        public void LoadOfficeData()
+        {
+            dataGridViewOffices.DataSource = null;
+
+            dataGridViewOffices.Rows.Clear();
+
+            foreach (OfficeModel office in OfficeService.GetOfficesData())
+            {
+                dataGridViewOffices.Rows.Add(office.IdOffice, office.Number, office.Status? "Active" : "Not active", office.Info);
+            }
+        }
+
+        private void FormOfficeList_Load(object sender, EventArgs e)
+        {
+            dataGridViewOffices.Rows.Clear();
+            dataGridViewOffices.Columns.Add("IdOffice", "Id of Office");
+            dataGridViewOffices.Columns.Add("Number", "Number");
+            dataGridViewOffices.Columns.Add("Status", "Status");
+            dataGridViewOffices.Columns.Add("Info", "Info");
+
+            LoadOfficeData();
+        }
+
+        private void buttonAddOffice_Click(object sender, EventArgs e)
+        {
+            FormOfficeAdd officeAdd = new FormOfficeAdd();
+            officeAdd.ShowDialog();
+            Close();
+        }
+
+        private void buttonLogOut_Click(object sender, EventArgs e)
+        {
+            FormMenu menu = new FormMenu();
+            menu.ShowDialog();
+            Close();
+        }
+    }
+}

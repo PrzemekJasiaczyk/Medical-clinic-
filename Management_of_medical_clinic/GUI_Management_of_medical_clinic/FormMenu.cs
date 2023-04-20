@@ -7,7 +7,7 @@ namespace GUI_Management_of_medical_clinic
     {
         public FormMenu()
         {
-            InitializeComponent();         
+            InitializeComponent();
         }
 
         private void FormMenu_Load(object sender, EventArgs e)
@@ -94,12 +94,14 @@ namespace GUI_Management_of_medical_clinic
 
         public void checkIfDataFilled()
         {
-            if (textBoxLogin.Text.Length>0 && textBoxPassword.Text.Length > 0)
+            if (textBoxLogin.Text.Length > 0 && textBoxPassword.Text.Length > 0)
             {
                 buttonOpenEmployeeList.Enabled = true;
                 buttonOpenUserList.Enabled = true;
                 buttonOpenEmployeeList.BackColor = Color.SteelBlue;
                 buttonOpenUserList.BackColor = Color.SteelBlue;
+                buttonOfficeList.Enabled = true;
+                buttonOfficeList.BackColor = Color.SteelBlue;
 
             }
             else
@@ -108,7 +110,25 @@ namespace GUI_Management_of_medical_clinic
                 buttonOpenUserList.Enabled = false;
                 buttonOpenEmployeeList.BackColor = Color.Gray;
                 buttonOpenUserList.BackColor = Color.Gray;
+                buttonOfficeList.Enabled = false;
+                buttonOfficeList.BackColor = Color.Gray;
             }
+        }
+
+        private void buttonOfficeList_Click(object sender, EventArgs e)
+        {
+            UserModel user = UserService.GetUsersData().FirstOrDefault(u => u.Username == textBoxLogin.Text && u.Password == textBoxPassword.Text);
+            if (user != null)
+            {
+                EmployeeModel employee = EmployeeService.GetEmployeeByUserId(user);
+                if (employee != null)
+                {
+                    FormOfficeList officeList = new FormOfficeList();
+                    officeList.ShowDialog();
+                    Close();
+                }
+            }
+            MessageBox.Show("Incorrect login or password");
         }
     }
 }

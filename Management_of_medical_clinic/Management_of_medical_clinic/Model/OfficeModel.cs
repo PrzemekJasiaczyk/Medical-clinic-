@@ -13,7 +13,7 @@ namespace Console_Management_of_medical_clinic.Model
     {
         [Key] public int IdOffice { get; set; }
         public int Number { get; set; }
-        public string Status { get; set; }
+        public bool Status { get; set; }
         public string Info { get; set; }
         //Relationships
         [ForeignKey("SpecializationModel")] public int IdSpecialization { get; set; }
@@ -21,7 +21,7 @@ namespace Console_Management_of_medical_clinic.Model
 
         public OfficeModel() { }
 
-        public OfficeModel(int number, int idSpecialization, string status, string info)
+        public OfficeModel(int number, int idSpecialization, bool status, string info)
         {
             Number = number;
             IdSpecialization = idSpecialization;

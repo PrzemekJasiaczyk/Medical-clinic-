@@ -28,5 +28,10 @@ namespace Console_Management_of_medical_clinic.Logic
                 db.SaveChanges();
             }
         }
+
+        public static bool CheckIfNumberExists(int number)
+        {
+            return GetOfficesData().Any(o => o.Number == number);
+        }
     }
 }

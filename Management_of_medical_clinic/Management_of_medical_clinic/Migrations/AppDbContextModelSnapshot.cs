@@ -82,9 +82,8 @@ namespace Console_Management_of_medical_clinic.Migrations
                     b.Property<int>("Number")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<bool>("Status")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("IdOffice");
 

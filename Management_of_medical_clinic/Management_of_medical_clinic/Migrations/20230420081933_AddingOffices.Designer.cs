@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Console_Management_of_medical_clinic.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230419195345_AddingOffices")]
+    [Migration("20230420081933_AddingOffices")]
     partial class AddingOffices
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -84,9 +84,8 @@ namespace Console_Management_of_medical_clinic.Migrations
                     b.Property<int>("Number")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<bool>("Status")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("IdOffice");
 
