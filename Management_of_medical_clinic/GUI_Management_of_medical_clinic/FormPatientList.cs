@@ -17,6 +17,7 @@ using System.Xml.Linq;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace GUI_Management_of_medical_clinic
 {
@@ -210,30 +211,12 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonShowFilters_Click(object sender, EventArgs e)
         {
-            // Filters
-            // List<UserModel> filteredUsers = UserService.FilterUsers(textBoxUsername.Text, textBoxFirstname.Text, textBoxLastname.Text, comboBoxRole.SelectedItem == null ? "" : comboBoxRole.SelectedItem.ToString());
+            //Filters
+            PatientService patientService = new PatientService();
+            List<PatientModel> FiltredPatients = patientService.FilterPatient(textBox1_Name.Text, TextBox1_PESEL.Text);
+            dataGridViewPatientList.DataSource = FiltredPatients;
 
-            // dataGridViewUsers.Rows.Clear();
-            //  foreach (UserModel user in filteredUsers)
-            //  {
-            //      dataGridViewUsers.Rows.Add(user.IdUser, user.Username, user.Role, (user.IsActive == true) ? "Active" : "Not Active");
-            // }
-
-            List<PatientModel> FiltredPatients = PatientService.FilterPatient(textBox1_Name.Text, textBox1_Surname.Text, TextBox_PESEL.Text, dateTimePicker1.Value);
-
-            dataGridViewPatientList.Rows.Clear();
-            if (textBox1_Name.Text == null && TextBox_PESEL.Text == null && dateTimePicker1.Text == null && dateTimePicker2.Text == null)
-            {
-                MessageBox.Show("Please complete filters !!!");
-            }
-            else
-            {
-                foreach (PatientModel patient in FiltredPatients)
-                {
-                    dataGridViewPatientList.Rows.Add(patient.PatientId, patient.FirstName, patient.LastName, patient.PESEL, patient.Sex, patient.BirthDate, patient.IsActive);
-                }
-
-            }
+      
         }
 
         private void label4_Click(object sender, EventArgs e)
