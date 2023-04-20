@@ -46,8 +46,6 @@
             textBox1_Name = new TextBox();
             dataGridViewPatientList = new DataGridView();
             panel2 = new Panel();
-            textBox1_Surname = new TextBox();
-            label1 = new Label();
             buttonClearFilters = new Button();
             buttonShowFilters = new Button();
             pictureBox5 = new PictureBox();
@@ -213,7 +211,7 @@
             label4.AutoSize = true;
             label4.FlatStyle = FlatStyle.Flat;
             label4.Font = new Font("Bernard MT Condensed", 11.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            label4.Location = new Point(962, 16);
+            label4.Location = new Point(929, 16);
             label4.Name = "label4";
             label4.Size = new Size(17, 18);
             label4.TabIndex = 42;
@@ -225,7 +223,7 @@
             dateTimePicker2.CalendarMonthBackground = SystemColors.Control;
             dateTimePicker2.Font = new Font("Segoe UI Symbol", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             dateTimePicker2.Format = DateTimePickerFormat.Short;
-            dateTimePicker2.Location = new Point(984, 19);
+            dateTimePicker2.Location = new Point(951, 19);
             dateTimePicker2.Name = "dateTimePicker2";
             dateTimePicker2.Size = new Size(98, 25);
             dateTimePicker2.TabIndex = 41;
@@ -236,7 +234,7 @@
             dateTimePicker1.CalendarMonthBackground = SystemColors.ControlLight;
             dateTimePicker1.Font = new Font("Segoe UI Symbol", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(853, 19);
+            dateTimePicker1.Location = new Point(820, 19);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(98, 25);
             dateTimePicker1.TabIndex = 39;
@@ -246,7 +244,7 @@
             // 
             TextBox_PESEL.BackColor = SystemColors.ButtonFace;
             TextBox_PESEL.Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            TextBox_PESEL.Location = new Point(533, 22);
+            TextBox_PESEL.Location = new Point(474, 21);
             TextBox_PESEL.Name = "TextBox_PESEL";
             TextBox_PESEL.Size = new Size(129, 23);
             TextBox_PESEL.TabIndex = 38;
@@ -256,9 +254,8 @@
             // 
             textBox1_Name.BackColor = SystemColors.ButtonFace;
             textBox1_Name.Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1_Name.Location = new Point(63, 20);
+            textBox1_Name.Location = new Point(169, 24);
             textBox1_Name.Name = "textBox1_Name";
-            textBox1_Name.PlaceholderText = "Name";
             textBox1_Name.Size = new Size(129, 23);
             textBox1_Name.TabIndex = 37;
             textBox1_Name.TextChanged += textBox1_TextChanged;
@@ -293,8 +290,6 @@
             // panel2
             // 
             panel2.BackColor = Color.SteelBlue;
-            panel2.Controls.Add(textBox1_Surname);
-            panel2.Controls.Add(label1);
             panel2.Controls.Add(buttonClearFilters);
             panel2.Controls.Add(buttonShowFilters);
             panel2.Controls.Add(pictureBox5);
@@ -312,27 +307,6 @@
             panel2.Size = new Size(1567, 77);
             panel2.TabIndex = 31;
             panel2.Paint += panel2_Paint;
-            // 
-            // textBox1_Surname
-            // 
-            textBox1_Surname.BackColor = SystemColors.ButtonFace;
-            textBox1_Surname.Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1_Surname.Location = new Point(286, 22);
-            textBox1_Surname.Name = "textBox1_Surname";
-            textBox1_Surname.PlaceholderText = "Surname";
-            textBox1_Surname.Size = new Size(129, 23);
-            textBox1_Surname.TabIndex = 51;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(209, 26);
-            label1.Name = "label1";
-            label1.Size = new Size(71, 20);
-            label1.TabIndex = 50;
-            label1.Text = "Surname";
-            label1.Click += label1_Click;
             // 
             // buttonClearFilters
             // 
@@ -391,7 +365,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(679, 23);
+            label7.Location = new Point(646, 23);
             label7.Name = "label7";
             label7.Size = new Size(164, 20);
             label7.TabIndex = 2;
@@ -401,7 +375,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(418, 23);
+            label6.Location = new Point(345, 22);
             label6.Name = "label6";
             label6.Size = new Size(109, 20);
             label6.TabIndex = 1;
@@ -413,9 +387,9 @@
             label5.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             label5.Location = new Point(6, 25);
             label5.Name = "label5";
-            label5.Size = new Size(51, 20);
+            label5.Size = new Size(147, 20);
             label5.TabIndex = 0;
-            label5.Text = "Name";
+            label5.Text = "Name and Surname";
             // 
             // FormPatientList
             // 
@@ -469,7 +443,5 @@
         private Button button_ShowDetails;
         private Button buttonClearFilters;
         private Button buttonShowFilters;
-        private Label label1;
-        private TextBox textBox1_Surname;
     }
 }

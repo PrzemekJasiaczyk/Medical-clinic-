@@ -213,10 +213,10 @@ namespace GUI_Management_of_medical_clinic
         {
             //Filters
             PatientService patientService = new PatientService();
-            List<PatientModel> FiltredPatients = patientService.FilterPatient(textBox1_Name.Text, TextBox1_PESEL.Text);
+            List<PatientModel> FiltredPatients = patientService.FilterPatient(textBox1_Name.Text, TextBox_PESEL.Text);
             dataGridViewPatientList.DataSource = FiltredPatients;
 
-      
+
         }
 
         private void label4_Click(object sender, EventArgs e)

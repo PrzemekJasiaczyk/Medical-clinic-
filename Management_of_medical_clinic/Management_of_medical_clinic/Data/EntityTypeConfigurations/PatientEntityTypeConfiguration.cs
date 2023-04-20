@@ -91,7 +91,7 @@ namespace Console_Management_of_medical_clinic.Data.EntityTypeConfigurations
                         BirthDate = new DateTime(1995, 2, 2).Date,
                         IsActive = true
                     },
-                    new Patient
+                    new PatientModel
                     {
                         PatientId = 3,
                         FirstName = "Aleksander I",
@@ -101,7 +101,7 @@ namespace Console_Management_of_medical_clinic.Data.EntityTypeConfigurations
                         BirthDate = new DateTime(1970, 12, 3).Date,
                         IsActive = true
                     },
-                    new Patient
+                    new PatientModel
                     {
                         PatientId = 4,
                         FirstName = "Żaneta",
@@ -111,7 +111,7 @@ namespace Console_Management_of_medical_clinic.Data.EntityTypeConfigurations
                         BirthDate = new DateTime(1950, 12, 3).Date,
                         IsActive = true
                     },
-                    new Patient
+                    new PatientModel
                     {
                         PatientId = 5,
                         FirstName = "Henryk",
