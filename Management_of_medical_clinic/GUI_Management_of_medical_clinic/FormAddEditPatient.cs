@@ -8,30 +8,30 @@ namespace GUI_Management_of_medical_clinic
 {
 	public partial class FormAddEditPatient : Form
 	{
-		EmployeeModel currentUser;
-		Patient patient;
-		bool isNewPatient = false;
+		EmployeeModel _currentUser;
+		Patient _patient;
+		bool _isNewPatient = false;
 
-		// Color type cannot be declared as const
-		Color _errorColor = Color.LightPink;
-		Color _normalColor = SystemColors.Window;
+		// Const cannot have 'Color' type
+		readonly Color _errorColor = Color.LightPink;
+		readonly Color _normalColor = SystemColors.Window;
 
 
 		public FormAddEditPatient(EmployeeModel currentUser, Patient? patient)
 		{
 			InitializeComponent();
 			CompleteComboBox();
-			this.currentUser = currentUser;
-			this.patient = patient;
+			_currentUser = currentUser;
+			_patient = patient!;
 		}
 
 		private void FormAddEditPatient_Load(object sender, EventArgs e)
 		{
 			SetPropertiesDateTimePicker();
 
-			if (patient == null)
+			if (_patient == null)
 			{
-				isNewPatient = true;
+				_isNewPatient = true;
 				return;
 			}
 			CompleteControls();
@@ -39,17 +39,17 @@ namespace GUI_Management_of_medical_clinic
 
 		private void buttonAddEditPatient_Click(object sender, EventArgs e)
 		{
-			using (AppDbContext context = new AppDbContext())
+			using (AppDbContext context = new())
 			{
 				if (isCompletedForm())
 				{
-					if (isNewPatient == true)
+					if (_isNewPatient == true)
 					{
-						patient = new Patient();
+						_patient = new Patient();
 
 						ChangeOrAddPatientData();
 
-						Patient.AddPatient(patient, context);
+						Patient.AddPatient(_patient, context);
 					}
 					else
 					{
@@ -63,7 +63,6 @@ namespace GUI_Management_of_medical_clinic
 
 		private void buttonBack_Click(object sender, EventArgs e)
 		{
-			// temps
 			ComeToPatientList();
 		}
 
@@ -126,7 +125,7 @@ namespace GUI_Management_of_medical_clinic
 				e.Cancel = false;
 				ErrorProviderPESEL.SetError(maskedTextBoxPESEL, errorMessage);
 
-				if (isNewPatient == false)
+				if (_isNewPatient == false)
 				{
 					ErrorProviderPESEL.SetError(maskedTextBoxPESEL, "");
 					return;
@@ -183,7 +182,6 @@ namespace GUI_Management_of_medical_clinic
 			dateTimePickerBirthDate.Focus();
 		}
 
-
 		private bool isCompletedForm()
 		{
 			List<bool> conditions = new()
@@ -214,32 +212,27 @@ namespace GUI_Management_of_medical_clinic
 
 		#region Custom Methods
 
-		// ----------------------------------------------------------- FUNCTIONS ----------------------------------------------------------------- //
-
-
 		private void ComeToPatientList()
 		{
-			FormAddEditPatient.ActiveForm.Close();
-			FormPatientList formPatientList = new FormPatientList(currentUser);
+			ActiveForm.Close();
+			FormPatientList formPatientList = new(_currentUser);
 			formPatientList.ShowDialog();
 		}
-
 
 		private void CompleteComboBox()
 		{
 			comboBoxSex.DataSource = Enum.GetValues(typeof(EnumSex));
-
 		}
+
 		private void CompleteControls()
 		{
-			textBoxLastName.Text = patient.LastName;
-			textBoxName.Text = patient.FirstName;
-
-			dateTimePickerBirthDate.Value = patient.BirthDate;
-			maskedTextBoxPESEL.Text = patient.PESEL;
-
-			comboBoxSex.SelectedItem = patient.Sex;
+			textBoxLastName.Text = _patient.LastName;
+			textBoxName.Text = _patient.FirstName;
+			dateTimePickerBirthDate.Value = _patient.BirthDate;
+			maskedTextBoxPESEL.Text = _patient.PESEL;
+			comboBoxSex.SelectedItem = _patient.Sex;
 		}
+
 		internal void ReadOnlyControls()
 		{
 			textBoxLastName.ReadOnly = true;
@@ -248,7 +241,6 @@ namespace GUI_Management_of_medical_clinic
 			maskedTextBoxPESEL.ReadOnly = true;
 			comboBoxSex.Enabled = false;
 		}
-
 
 		internal void ChangeTitle(string title)
 		{
@@ -264,23 +256,22 @@ namespace GUI_Management_of_medical_clinic
 
 		private void FindEditPatientInDataBase()
 		{
-			AppDbContext _context = new AppDbContext();
-			patient = _context.Patients.Find(patient.PatientId);
-			ChangeOrAddPatientData();
-			_context.SaveChanges();
+			using (AppDbContext context = new())
+			{
+				_patient = context.Patients.Find(_patient.PatientId);
+				ChangeOrAddPatientData();
+				context.SaveChanges();
+			}
 		}
-
 
 		private void ChangeOrAddPatientData()
 		{
-			patient.PESEL = maskedTextBoxPESEL.Text;
-			patient.Sex = (EnumSex)comboBoxSex.SelectedItem;
-
-			patient.BirthDate = dateTimePickerBirthDate.Value;
-
-			patient.FirstName = textBoxName.Text;
-			patient.LastName = textBoxLastName.Text;
-			patient.IsActive = true;
+			_patient.PESEL = maskedTextBoxPESEL.Text;
+			_patient.Sex = (EnumSex)comboBoxSex.SelectedItem;
+			_patient.BirthDate = dateTimePickerBirthDate.Value;
+			_patient.FirstName = textBoxName.Text;
+			_patient.LastName = textBoxLastName.Text;
+			_patient.IsActive = true;
 		}
 
 		#endregion
