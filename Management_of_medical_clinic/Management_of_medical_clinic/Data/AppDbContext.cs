@@ -9,7 +9,7 @@ namespace Console_Management_of_medical_clinic.Data
 
         public DbSet<UserModel> DbUsers { get; set; }        
         public DbSet<SpecializationModel> DbSpecializations { get; set; }
-        public DbSet<Patient> Patients { get; set; }
+        public DbSet<PatientModel> Patients { get; set; }
         public DbSet<Visit> Visits { get; set; }
         public DbSet<EmployeeModel> DbEmployees { get; set; }
 
@@ -29,10 +29,10 @@ namespace Console_Management_of_medical_clinic.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            new PatientEntityTypeConfiguration().Configure(modelBuilder.Entity<Patient>());
+            new PatientEntityTypeConfiguration().Configure(modelBuilder.Entity<PatientModel>());
             new VisitEntityTypeConfiguration().Configure(modelBuilder.Entity<Visit>());
 
-            new PatientEntityTypeConfiguration().Seed(modelBuilder.Entity<Patient>());
+            new PatientEntityTypeConfiguration().Seed(modelBuilder.Entity<PatientModel>());
             base.OnModelCreating(modelBuilder);
         }
     }    

@@ -38,6 +38,21 @@ namespace MedicalClinicTest
 		{
 			string errorMessage;
 			PatientService patientService = new();
+<<<<<<< HEAD
+=======
+			
+			PatientModel patient =
+				new PatientModel()
+				{
+					FirstName = null,
+					LastName = "Wiktorowicz",
+					PESEL = "99030300191",
+					Sex = EnumSex.Male,
+					BirthDate = new DateTime(1999, 3, 3),
+					IsActive = true,
+					LastVisitDate = null
+				};
+>>>>>>> c52c2b10ba5f90c3698f33f1580ff0247dbd70fa
 
 			Patient patient = _firstFakePatient;
 

@@ -6,9 +6,9 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Console_Management_of_medical_clinic.Data.EntityTypeConfigurations
 {
-    public class PatientEntityTypeConfiguration : IEntityTypeConfiguration<Patient>
+    public class PatientEntityTypeConfiguration : IEntityTypeConfiguration<PatientModel>
     {
-        public void Configure(EntityTypeBuilder<Patient> builder)
+        public void Configure(EntityTypeBuilder<PatientModel> builder)
         {
             builder
                 .ToTable("Patient");
@@ -67,11 +67,11 @@ namespace Console_Management_of_medical_clinic.Data.EntityTypeConfigurations
             #endregion
         }
 
-        public void Seed(EntityTypeBuilder<Patient> builder)
+        public void Seed(EntityTypeBuilder<PatientModel> builder)
         {
             builder
                 .HasData(
-                    new Patient
+                    new PatientModel
                     {
                         PatientId = 1,
                         FirstName = "Juan Pablo",
@@ -81,7 +81,7 @@ namespace Console_Management_of_medical_clinic.Data.EntityTypeConfigurations
                         BirthDate = new DateTime(1990, 1, 1).Date,
                         IsActive = true
                     },
-                    new Patient
+                    new PatientModel
                     {
                         PatientId = 2,
                         FirstName = "Janina",

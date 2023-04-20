@@ -20,7 +20,7 @@
         public EmployeeModel? Employee { get; set; }
 
         public int? PatientId { get; set; }
-        public Patient? Patient { get; set; }
+        public PatientModel? Patient { get; set; }
 
         // TODO: Create office class and connect to visit class 1:1
         //public int OfficeId { get; set; }

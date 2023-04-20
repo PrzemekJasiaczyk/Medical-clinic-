@@ -8,7 +8,7 @@ namespace Console_Management_of_medical_clinic.Model
     /// <c>Patient</c> models a patient registered in clinic.
     /// <c>Visit</c> list contains visits for a patient object.
     /// </summary>
-    public class Patient
+    public class PatientModel
     {
         public int PatientId { get; set; }
         public string FirstName { get; set;}
@@ -26,7 +26,7 @@ namespace Console_Management_of_medical_clinic.Model
 
         public List<Visit> Visits { get; set; } = new List<Visit>();
 
-        public static void ChangePatientStatus(Patient patient, AppDbContext context)
+        public static void ChangePatientStatus(PatientModel patient, AppDbContext context)
         {
             patient = context.Patients.Find(patient.PatientId);
             
@@ -42,21 +42,21 @@ namespace Console_Management_of_medical_clinic.Model
             context.SaveChanges();
         }
 
-        public static Patient FindPatient(int PatientId)
+        public static PatientModel FindPatient(int PatientId)
         {
             AppDbContext _context = new AppDbContext();
 
-            Patient patient = _context.Patients.Find(PatientId);
+            PatientModel patient = _context.Patients.Find(PatientId);
             return patient;
         }
 
-        public static void RemovePatient(Patient patient, AppDbContext context)
+        public static void RemovePatient(PatientModel patient, AppDbContext context)
         {
             context.Patients.Remove(patient);
             context.SaveChanges();
         }
 
-        public static void AddPatient(Patient patient, AppDbContext context)
+        public static void AddPatient(PatientModel patient, AppDbContext context)
         {
             context.Patients.Add(patient);
             context.SaveChanges();

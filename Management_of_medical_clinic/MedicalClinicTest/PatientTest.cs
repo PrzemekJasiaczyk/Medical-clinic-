@@ -9,14 +9,14 @@ namespace MedicalClinicTest
 		[Fact]
 		public void FindExistingPatientInDataBase()
 		{
-			Patient patient = Patient.FindPatient(1);
+			PatientModel patient = PatientModel.FindPatient(1);
 			Assert.NotNull(patient);
 		}
 
 		[Fact]
 		public void FindNotExistingPatientInDataBase()
 		{
-			Patient patient = Patient.FindPatient(999);
+			PatientModel patient = PatientModel.FindPatient(999);
 			Assert.Null(patient);
 		}
 
@@ -28,6 +28,7 @@ namespace MedicalClinicTest
 			Patient patient =
 			new Patient()
 			{
+<<<<<<< HEAD
 				FirstName = "Paweł",
 				LastName = "Dawid",
 				PESEL = "45010195612",
@@ -39,6 +40,25 @@ namespace MedicalClinicTest
 
 			Patient.AddPatient(patient, dbContext);
 			dbContext.SaveChanges();
+=======
+				testContext = inMemoryDbContext.CreateTestContext();
+				PatientModel patient =
+				new PatientModel()
+				{
+					FirstName = "Paweł",
+					LastName = "Dawid",
+					PESEL = "45010195612",
+					Sex = EnumSex.Male,
+					BirthDate = new DateTime(1945, 1, 1),
+					IsActive = true,
+					LastVisitDate = null
+				};
+
+                inMemoryDbContext.Dispose();
+                
+				int before = testContext.Patients.Count();
+                PatientModel.AddPatient(patient, testContext);
+>>>>>>> c52c2b10ba5f90c3698f33f1580ff0247dbd70fa
 
 			var addedPatient = dbContext.Patients.Find(patient.PatientId);
 

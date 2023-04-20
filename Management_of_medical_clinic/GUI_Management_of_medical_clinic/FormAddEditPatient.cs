@@ -6,6 +6,7 @@ using System.ComponentModel;
 
 namespace GUI_Management_of_medical_clinic
 {
+<<<<<<< HEAD
 	public partial class FormAddEditPatient : Form
 	{
 		EmployeeModel currentUser;
@@ -15,6 +16,63 @@ namespace GUI_Management_of_medical_clinic
 		// Color type cannot be declared as const
 		Color _errorColor = Color.LightPink;
 		Color _normalColor = SystemColors.Window;
+=======
+    public partial class FormAddEditPatient : Form
+    {
+        EmployeeModel currentUser;
+        PatientModel patient;
+        bool isNewPatient = false;
+
+        public FormAddEditPatient(EmployeeModel currentUser, PatientModel? patient)
+        {
+            InitializeComponent();
+            CompleteComboBox();
+            this.currentUser = currentUser;
+            this.patient = patient;
+        }
+
+        private void FormAddEditPatient_Load(object sender, EventArgs e)
+        {
+            SetPropertiesDateTimePicker();
+
+            if (patient == null)
+            {
+                isNewPatient = true;
+                return;
+            }
+            CompleteControls();
+        }
+
+        private void buttonAddEditPatient_Click(object sender, EventArgs e)
+        {
+            using (AppDbContext context = new AppDbContext())
+            {
+                if (isCompletedForm())
+                {
+                    if (isNewPatient == true)
+                    {
+                        patient = new PatientModel();
+
+                        ChangeOrAddPatientData();
+
+                        PatientModel.AddPatient(patient, context);
+                    }
+                    else
+                    {
+                        FindEditPatientInDataBase();
+                    }
+
+                    ComeToPatientList();
+                }
+            }
+        }
+
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            // temps
+            ComeToPatientList();
+        }
+>>>>>>> c52c2b10ba5f90c3698f33f1580ff0247dbd70fa
 
 
 		public FormAddEditPatient(EmployeeModel currentUser, Patient? patient)

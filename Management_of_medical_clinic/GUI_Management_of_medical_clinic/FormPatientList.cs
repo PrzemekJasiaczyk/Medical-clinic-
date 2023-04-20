@@ -33,59 +33,7 @@ namespace GUI_Management_of_medical_clinic
             currentUser = employee;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void buttonSort_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox2_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonClear_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonShow_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBoxDate_CheckedChanged(object sender, EventArgs e)
-        {
-
-
-        }
-
-        private void checkBoxPesel_CheckedChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void checkBoxName_CheckedChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void FormPatientList_Load(object sender, EventArgs e)
         {
@@ -102,10 +50,6 @@ namespace GUI_Management_of_medical_clinic
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
@@ -119,7 +63,7 @@ namespace GUI_Management_of_medical_clinic
 
         }
 
-        public List<Patient> GetSortedPatientData()
+        public List<PatientModel> GetSortedPatientData()
         {
             using (AppDbContext db = new AppDbContext())
             {
@@ -129,11 +73,11 @@ namespace GUI_Management_of_medical_clinic
 
         private void DisplaySortedPatientData()
         {
-            List<Patient> sortedPatientList = GetSortedPatientData();
+            List<PatientModel> sortedPatientList = GetSortedPatientData();
             dataGridViewPatientList.DataSource = sortedPatientList;
         }
 
-        public List<Patient> GetSortedPatientDataDSC()
+        public List<PatientModel> GetSortedPatientDataDSC()
         {
             using (AppDbContext db = new AppDbContext())
             {
@@ -143,7 +87,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void DisplaySortedPatientDataDSC()
         {
-            List<Patient> sortedPatientList = GetSortedPatientDataDSC();
+            List<PatientModel> sortedPatientList = GetSortedPatientDataDSC();
             dataGridViewPatientList.DataSource = sortedPatientList;
         }
 
@@ -173,7 +117,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonActivatePatient_Click(object sender, EventArgs e)
         {
-            Patient patient = Patient.FindPatient((int)dataGridViewPatientList.SelectedRows[0].Cells[0].Value);
+            PatientModel patient = PatientModel.FindPatient((int)dataGridViewPatientList.SelectedRows[0].Cells[0].Value);
 
             if (patient.IsActive == true)
             {
@@ -189,7 +133,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonDeactivatePatinet_Click(object sender, EventArgs e)
         {
-            Patient patient = Patient.FindPatient((int)dataGridViewPatientList.SelectedRows[0].Cells[0].Value);
+            PatientModel patient = PatientModel.FindPatient((int)dataGridViewPatientList.SelectedRows[0].Cells[0].Value);
 
             if (patient.IsActive == false)
             {
@@ -205,7 +149,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonRemovePatient_Click(object sender, EventArgs e)
         {
-            Patient patient = Patient.FindPatient((int)dataGridViewPatientList.SelectedRows[0].Cells[0].Value);
+            PatientModel patient = PatientModel.FindPatient((int)dataGridViewPatientList.SelectedRows[0].Cells[0].Value);
 
             string msg = "A deleted patient cannot be restored!";
             FormMessage FormMessage = new FormMessage(msg);
@@ -221,8 +165,8 @@ namespace GUI_Management_of_medical_clinic
             {
                 return;
             }
-            Patient patient = new Patient();
-            patient = Patient.FindPatient((int)dataGridViewPatientList.SelectedRows[0].Cells[0].Value);
+            PatientModel patient = new PatientModel();
+            patient = PatientModel.FindPatient((int)dataGridViewPatientList.SelectedRows[0].Cells[0].Value);
 
             FormAddEditPatient formAddEditPatient = new FormAddEditPatient(currentUser, patient);
             Hide();
@@ -243,8 +187,8 @@ namespace GUI_Management_of_medical_clinic
 
         private void ShowDetails()
         {
-            Patient patient = new Patient();
-            patient = Patient.FindPatient((int)dataGridViewPatientList.SelectedRows[0].Cells[0].Value);
+            PatientModel patient = new PatientModel();
+            patient = PatientModel.FindPatient((int)dataGridViewPatientList.SelectedRows[0].Cells[0].Value);
             FormAddEditPatient formAddEditPatient = new FormAddEditPatient(currentUser, patient);
             formAddEditPatient.ChangeTitle("Details");
             formAddEditPatient.ReadOnlyControls();
@@ -256,11 +200,40 @@ namespace GUI_Management_of_medical_clinic
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-
+            //Clear Filters
+            DisplayPatientsList();
+            textBox1_Name.Text = null;
+            TextBox_PESEL.Text = null;
+            dateTimePicker1.Text = null;
+            dateTimePicker2.Text = null;
         }
 
         private void buttonShowFilters_Click(object sender, EventArgs e)
         {
+            // Filters
+            // List<UserModel> filteredUsers = UserService.FilterUsers(textBoxUsername.Text, textBoxFirstname.Text, textBoxLastname.Text, comboBoxRole.SelectedItem == null ? "" : comboBoxRole.SelectedItem.ToString());
+
+            // dataGridViewUsers.Rows.Clear();
+            //  foreach (UserModel user in filteredUsers)
+            //  {
+            //      dataGridViewUsers.Rows.Add(user.IdUser, user.Username, user.Role, (user.IsActive == true) ? "Active" : "Not Active");
+            // }
+
+            List<PatientModel> FiltredPatients = PatientService.FilterPatient(textBox1_Name.Text, textBox1_Surname.Text, TextBox_PESEL.Text, dateTimePicker1.Value);
+
+            dataGridViewPatientList.Rows.Clear();
+            if (textBox1_Name.Text == null && TextBox_PESEL.Text == null && dateTimePicker1.Text == null && dateTimePicker2.Text == null)
+            {
+                MessageBox.Show("Please complete filters !!!");
+            }
+            else
+            {
+                foreach (PatientModel patient in FiltredPatients)
+                {
+                    dataGridViewPatientList.Rows.Add(patient.PatientId, patient.FirstName, patient.LastName, patient.PESEL, patient.Sex, patient.BirthDate, patient.IsActive);
+                }
+
+            }
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -273,6 +246,21 @@ namespace GUI_Management_of_medical_clinic
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TextBox_PESEL_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
