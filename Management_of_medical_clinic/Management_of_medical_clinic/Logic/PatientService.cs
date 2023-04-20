@@ -41,7 +41,6 @@ namespace Console_Management_of_medical_clinic.Logic
                 return false;
             }
 
-
             errorMessage = "";
             return true;
         }
@@ -109,7 +108,7 @@ namespace Console_Management_of_medical_clinic.Logic
 
             if (!isMatch) 
             {
-                errorMessage = "PESEL has incorrect birth date";
+                errorMessage = "PESEL or birth date are incorrect. They don't match.";
                 return false;
             }
 
@@ -120,12 +119,12 @@ namespace Console_Management_of_medical_clinic.Logic
 
             if (sex == EnumSex.Male && genderNumber % 2 == 0) 
             {
-                errorMessage = "PESEL has incorrect gender. For men it's an odd number.";
+                errorMessage = "PESEL or gender are incorrect. They don't match.";
                 return false;
             }
             else if (sex == EnumSex.Female && genderNumber % 2 != 0 || genderNumber == 0) 
             {
-				errorMessage = "PESEL has incorrect gender. For women it's 0 or even number";
+				errorMessage = "PESEL or gender are incorrect. They don't match.";
 				return false;
             }
             
