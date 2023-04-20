@@ -33,7 +33,7 @@
             panel1 = new Panel();
             pictureBox1 = new PictureBox();
             buttonAddOffice = new Button();
-            buttonEditUser = new Button();
+            buttonEditOffice = new Button();
             buttonReviewUser = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewOffices).BeginInit();
             panel1.SuspendLayout();
@@ -78,7 +78,7 @@
             panel1.Controls.Add(buttonLogOut);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(buttonAddOffice);
-            panel1.Controls.Add(buttonEditUser);
+            panel1.Controls.Add(buttonEditOffice);
             panel1.Controls.Add(buttonReviewUser);
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
@@ -109,18 +109,19 @@
             buttonAddOffice.UseVisualStyleBackColor = false;
             buttonAddOffice.Click += buttonAddOffice_Click;
             // 
-            // buttonEditUser
+            // buttonEditOffice
             // 
-            buttonEditUser.BackColor = Color.SteelBlue;
-            buttonEditUser.FlatStyle = FlatStyle.Flat;
-            buttonEditUser.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonEditUser.ForeColor = SystemColors.ActiveCaptionText;
-            buttonEditUser.Location = new Point(-7, 352);
-            buttonEditUser.Name = "buttonEditUser";
-            buttonEditUser.Size = new Size(329, 87);
-            buttonEditUser.TabIndex = 33;
-            buttonEditUser.Text = "Edit user";
-            buttonEditUser.UseVisualStyleBackColor = false;
+            buttonEditOffice.BackColor = Color.SteelBlue;
+            buttonEditOffice.FlatStyle = FlatStyle.Flat;
+            buttonEditOffice.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonEditOffice.ForeColor = SystemColors.ActiveCaptionText;
+            buttonEditOffice.Location = new Point(-7, 352);
+            buttonEditOffice.Name = "buttonEditOffice";
+            buttonEditOffice.Size = new Size(329, 87);
+            buttonEditOffice.TabIndex = 33;
+            buttonEditOffice.Text = "Edit office";
+            buttonEditOffice.UseVisualStyleBackColor = false;
+            buttonEditOffice.Click += buttonEditOffice_Click;
             // 
             // buttonReviewUser
             // 
@@ -161,7 +162,7 @@
         private Panel panel1;
         private PictureBox pictureBox1;
         private Button buttonAddOffice;
-        private Button buttonEditUser;
+        private Button buttonEditOffice;
         private Button buttonReviewUser;
     }
 }

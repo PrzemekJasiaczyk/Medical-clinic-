@@ -1,6 +1,6 @@
 ﻿namespace GUI_Management_of_medical_clinic
 {
-    partial class FormOfficeAdd
+    partial class FormOfficeEdit
     {
         /// <summary>
         /// Required designer variable.
@@ -31,14 +31,18 @@
             panel2 = new Panel();
             pictureBox1 = new PictureBox();
             buttonCancel = new Button();
-            buttonAddNewOffice = new Button();
+            labelTitle = new Label();
+            buttonEditOffice = new Button();
+            label2 = new Label();
             label4 = new Label();
+            textBoxNumber = new TextBox();
             listBoxSpecializations = new ListBox();
             textBoxInfo = new TextBox();
             label3 = new Label();
-            textBoxNumber = new TextBox();
-            label2 = new Label();
-            labelTitle = new Label();
+            comboBoxActive = new ComboBox();
+            label1 = new Label();
+            textBoxOfficeId = new TextBox();
+            label5 = new Label();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -51,7 +55,7 @@
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
             panel2.Size = new Size(312, 1081);
-            panel2.TabIndex = 61;
+            panel2.TabIndex = 62;
             // 
             // pictureBox1
             // 
@@ -78,108 +82,152 @@
             buttonCancel.UseVisualStyleBackColor = false;
             buttonCancel.Click += buttonCancel_Click;
             // 
-            // buttonAddNewOffice
+            // labelTitle
             // 
-            buttonAddNewOffice.Font = new Font("Segoe UI", 18.75F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonAddNewOffice.Location = new Point(1359, 713);
-            buttonAddNewOffice.Name = "buttonAddNewOffice";
-            buttonAddNewOffice.Size = new Size(220, 60);
-            buttonAddNewOffice.TabIndex = 69;
-            buttonAddNewOffice.Text = "Add";
-            buttonAddNewOffice.UseVisualStyleBackColor = true;
-            buttonAddNewOffice.Click += buttonAddNewUser_Click;
+            labelTitle.AutoSize = true;
+            labelTitle.Font = new Font("Segoe UI", 24.75F, FontStyle.Bold, GraphicsUnit.Point);
+            labelTitle.Location = new Point(1034, 334);
+            labelTitle.Name = "labelTitle";
+            labelTitle.Size = new Size(178, 45);
+            labelTitle.TabIndex = 70;
+            labelTitle.Text = "Edit office";
+            // 
+            // buttonEditOffice
+            // 
+            buttonEditOffice.Font = new Font("Segoe UI", 18.75F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonEditOffice.Location = new Point(1316, 721);
+            buttonEditOffice.Name = "buttonEditOffice";
+            buttonEditOffice.Size = new Size(220, 60);
+            buttonEditOffice.TabIndex = 77;
+            buttonEditOffice.Text = "Save";
+            buttonEditOffice.UseVisualStyleBackColor = true;
+            buttonEditOffice.Click += buttonEditOffice_Click;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 18.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(710, 475);
+            label2.Name = "label2";
+            label2.Size = new Size(113, 35);
+            label2.TabIndex = 71;
+            label2.Text = "Number";
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 18.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(1169, 394);
+            label4.Location = new Point(1126, 402);
             label4.Name = "label4";
             label4.Size = new Size(401, 35);
-            label4.TabIndex = 68;
+            label4.TabIndex = 76;
             label4.Text = "Choose specialization to a office:";
+            // 
+            // textBoxNumber
+            // 
+            textBoxNumber.Font = new Font("Segoe UI", 18.75F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxNumber.Location = new Point(889, 472);
+            textBoxNumber.MaxLength = 100;
+            textBoxNumber.Name = "textBoxNumber";
+            textBoxNumber.Size = new Size(199, 41);
+            textBoxNumber.TabIndex = 72;
+            textBoxNumber.TextChanged += textBoxNumber_TextChanged;
             // 
             // listBoxSpecializations
             // 
             listBoxSpecializations.FormattingEnabled = true;
             listBoxSpecializations.ItemHeight = 15;
-            listBoxSpecializations.Location = new Point(1217, 448);
+            listBoxSpecializations.Location = new Point(1174, 456);
             listBoxSpecializations.Name = "listBoxSpecializations";
             listBoxSpecializations.Size = new Size(296, 229);
-            listBoxSpecializations.TabIndex = 67;
+            listBoxSpecializations.TabIndex = 75;
             listBoxSpecializations.SelectedIndexChanged += listBoxSpecializations_SelectedIndexChanged;
             // 
             // textBoxInfo
             // 
             textBoxInfo.Font = new Font("Segoe UI", 18.75F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxInfo.Location = new Point(910, 572);
+            textBoxInfo.Location = new Point(889, 540);
             textBoxInfo.MaxLength = 300;
             textBoxInfo.Name = "textBoxInfo";
             textBoxInfo.Size = new Size(199, 41);
-            textBoxInfo.TabIndex = 66;
+            textBoxInfo.TabIndex = 74;
             textBoxInfo.TextChanged += textBoxInfo_TextChanged;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 18.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(731, 575);
+            label3.Location = new Point(710, 543);
             label3.Name = "label3";
             label3.Size = new Size(63, 35);
-            label3.TabIndex = 64;
+            label3.TabIndex = 73;
             label3.Text = "Info";
             // 
-            // textBoxNumber
+            // comboBoxActive
             // 
-            textBoxNumber.Font = new Font("Segoe UI", 18.75F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxNumber.Location = new Point(910, 504);
-            textBoxNumber.MaxLength = 100;
-            textBoxNumber.Name = "textBoxNumber";
-            textBoxNumber.Size = new Size(199, 41);
-            textBoxNumber.TabIndex = 62;
-            textBoxNumber.TextChanged += textBoxNumber_TextChanged;
+            comboBoxActive.Font = new Font("Segoe UI", 18.75F, FontStyle.Regular, GraphicsUnit.Point);
+            comboBoxActive.FormattingEnabled = true;
+            comboBoxActive.Items.AddRange(new object[] { "Active", "Non active" });
+            comboBoxActive.Location = new Point(889, 605);
+            comboBoxActive.Name = "comboBoxActive";
+            comboBoxActive.Size = new Size(199, 43);
+            comboBoxActive.TabIndex = 72;
+            comboBoxActive.SelectedIndexChanged += comboBoxActive_SelectedIndexChanged;
             // 
-            // label2
+            // label1
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 18.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(731, 507);
-            label2.Name = "label2";
-            label2.Size = new Size(113, 35);
-            label2.TabIndex = 61;
-            label2.Text = "Number";
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 18.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(710, 608);
+            label1.Name = "label1";
+            label1.Size = new Size(87, 35);
+            label1.TabIndex = 71;
+            label1.Text = "Status";
             // 
-            // labelTitle
+            // textBoxOfficeId
             // 
-            labelTitle.AutoSize = true;
-            labelTitle.Font = new Font("Segoe UI", 24.75F, FontStyle.Bold, GraphicsUnit.Point);
-            labelTitle.Location = new Point(762, 322);
-            labelTitle.Name = "labelTitle";
-            labelTitle.Size = new Size(720, 45);
-            labelTitle.TabIndex = 60;
-            labelTitle.Text = "Set Number and Information about the room";
+            textBoxOfficeId.Font = new Font("Segoe UI", 18.75F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxOfficeId.Location = new Point(966, 399);
+            textBoxOfficeId.Name = "textBoxOfficeId";
+            textBoxOfficeId.ReadOnly = true;
+            textBoxOfficeId.Size = new Size(59, 41);
+            textBoxOfficeId.TabIndex = 78;
             // 
-            // FormOfficeAdd
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 18.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.Location = new Point(811, 402);
+            label5.Name = "label5";
+            label5.Size = new Size(149, 35);
+            label5.TabIndex = 79;
+            label5.Text = "Id of Office";
+            // 
+            // FormOfficeEdit
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Info;
             ClientSize = new Size(1920, 1080);
-            Controls.Add(panel2);
+            Controls.Add(label5);
+            Controls.Add(textBoxOfficeId);
+            Controls.Add(comboBoxActive);
+            Controls.Add(label1);
             Controls.Add(labelTitle);
-            Controls.Add(buttonAddNewOffice);
+            Controls.Add(buttonEditOffice);
             Controls.Add(label2);
             Controls.Add(label4);
             Controls.Add(textBoxNumber);
             Controls.Add(listBoxSpecializations);
             Controls.Add(textBoxInfo);
             Controls.Add(label3);
+            Controls.Add(panel2);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "FormOfficeAdd";
+            Name = "FormOfficeEdit";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FormOfficeAdd";
+            Text = "FormOfficeEdit";
             WindowState = FormWindowState.Maximized;
-            Load += FormOfficeAdd_Load;
+            Load += FormOfficeEdit_Load;
             panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
@@ -191,13 +239,17 @@
         private Panel panel2;
         private PictureBox pictureBox1;
         private Button buttonCancel;
-        private Button buttonAddNewOffice;
+        private Label labelTitle;
+        private Button buttonEditOffice;
+        private Label label2;
         private Label label4;
+        private TextBox textBoxNumber;
         private ListBox listBoxSpecializations;
         private TextBox textBoxInfo;
         private Label label3;
-        private TextBox textBoxNumber;
-        private Label label2;
-        private Label labelTitle;
+        private ComboBox comboBoxActive;
+        private Label label1;
+        private TextBox textBoxOfficeId;
+        private Label label5;
     }
 }

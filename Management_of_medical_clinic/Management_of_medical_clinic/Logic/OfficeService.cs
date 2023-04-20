@@ -33,5 +33,26 @@ namespace Console_Management_of_medical_clinic.Logic
         {
             return GetOfficesData().Any(o => o.Number == number);
         }
+
+        public static OfficeModel GetOfficeById(int id)
+        {
+            return GetOfficesData().FirstOrDefault(o => o.IdOffice == id);
+        }
+
+        public static void EditOffice(int idOffice, int number, bool status, string info, int idSpecialization)
+        {
+            using (AppDbContext context = new AppDbContext())
+            {
+                OfficeModel office = context.DbOffices.Find(idOffice);
+                if (office != null)
+                {
+                    office.Number = number;
+                    office.Status = status;
+                    office.Info = info;
+                    office.IdSpecialization = idSpecialization;
+                    context.SaveChanges();
+                }
+            }
+        }
     }
 }

@@ -35,7 +35,7 @@ namespace GUI_Management_of_medical_clinic
 
             foreach (OfficeModel office in OfficeService.GetOfficesData())
             {
-                dataGridViewOffices.Rows.Add(office.IdOffice, office.Number, office.Status? "Active" : "Not active", office.Info);
+                dataGridViewOffices.Rows.Add(office.IdOffice, office.Number, office.Status ? "Active" : "Not active", office.Info, SpecializationService.GetSpecializationById(office.IdSpecialization).Name);
             }
         }
 
@@ -46,13 +46,14 @@ namespace GUI_Management_of_medical_clinic
             dataGridViewOffices.Columns.Add("Number", "Number");
             dataGridViewOffices.Columns.Add("Status", "Status");
             dataGridViewOffices.Columns.Add("Info", "Info");
+            dataGridViewOffices.Columns.Add("SpecializationName", "Specialization name");
 
             LoadOfficeData();
         }
 
         private void buttonAddOffice_Click(object sender, EventArgs e)
         {
-            FormOfficeAdd officeAdd = new FormOfficeAdd();
+            FormOfficeAdd officeAdd = new FormOfficeAdd(currentUser);
             officeAdd.ShowDialog();
             Close();
         }
@@ -61,6 +62,13 @@ namespace GUI_Management_of_medical_clinic
         {
             FormMenu menu = new FormMenu();
             menu.ShowDialog();
+            Close();
+        }
+
+        private void buttonEditOffice_Click(object sender, EventArgs e)
+        {
+            FormOfficeEdit officeEdit = new FormOfficeEdit(currentUser, OfficeService.GetOfficeById((int)dataGridViewOffices.CurrentRow.Cells[0].Value));
+            officeEdit.ShowDialog();
             Close();
         }
     }

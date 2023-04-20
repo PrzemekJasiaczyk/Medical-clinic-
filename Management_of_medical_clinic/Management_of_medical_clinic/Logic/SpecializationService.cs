@@ -81,6 +81,11 @@ namespace Console_Management_of_medical_clinic.Logic
             return 0;
         }
 
+        public static SpecializationModel GetSpecializationById(int id)
+        {
+            return GetSpecializationsData().FirstOrDefault(specialization => specialization.IdSpecialization == id);
+        }
+
         public static bool checkIfSpecializationIsAssigned(List<EmployeeModel> Employees, int idSpecialization)
         {
             foreach(EmployeeModel employee in Employees)
