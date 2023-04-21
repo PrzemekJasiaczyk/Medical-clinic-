@@ -111,7 +111,7 @@
             // 
             comboBoxSex.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxSex.FormattingEnabled = true;
-            comboBoxSex.Location = new Point(365, 428);
+            comboBoxSex.Location = new Point(370, 600);
             comboBoxSex.Margin = new Padding(3, 2, 3, 2);
             comboBoxSex.Name = "comboBoxSex";
             comboBoxSex.Size = new Size(305, 36);
@@ -133,7 +133,7 @@
             // 
             labelSex.AutoSize = true;
             labelSex.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            labelSex.Location = new Point(364, 403);
+            labelSex.Location = new Point(370, 550);
             labelSex.Name = "labelSex";
             labelSex.Size = new Size(46, 28);
             labelSex.TabIndex = 50;
@@ -143,7 +143,7 @@
             // 
             labelDateOfBirth.AutoSize = true;
             labelDateOfBirth.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            labelDateOfBirth.Location = new Point(364, 481);
+            labelDateOfBirth.Location = new Point(370, 700);
             labelDateOfBirth.Name = "labelDateOfBirth";
             labelDateOfBirth.Size = new Size(127, 28);
             labelDateOfBirth.TabIndex = 48;
@@ -152,7 +152,7 @@
             // maskedTextBoxPESEL
             // 
             maskedTextBoxPESEL.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            maskedTextBoxPESEL.Location = new Point(366, 314);
+            maskedTextBoxPESEL.Location = new Point(370, 450);
             maskedTextBoxPESEL.Margin = new Padding(3, 2, 3, 2);
             maskedTextBoxPESEL.Mask = "00000000000";
             maskedTextBoxPESEL.Name = "maskedTextBoxPESEL";
@@ -165,7 +165,7 @@
             // 
             labelPESEL.AutoSize = true;
             labelPESEL.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            labelPESEL.Location = new Point(366, 275);
+            labelPESEL.Location = new Point(370, 400);
             labelPESEL.Name = "labelPESEL";
             labelPESEL.Size = new Size(67, 28);
             labelPESEL.TabIndex = 46;
@@ -175,7 +175,7 @@
             // 
             labelLastName.AutoSize = true;
             labelLastName.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            labelLastName.Location = new Point(366, 183);
+            labelLastName.Location = new Point(370, 250);
             labelLastName.Name = "labelLastName";
             labelLastName.Size = new Size(103, 28);
             labelLastName.TabIndex = 45;
@@ -184,7 +184,7 @@
             // textBoxLastName
             // 
             textBoxLastName.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxLastName.Location = new Point(365, 208);
+            textBoxLastName.Location = new Point(370, 300);
             textBoxLastName.Margin = new Padding(3, 2, 3, 2);
             textBoxLastName.Name = "textBoxLastName";
             textBoxLastName.Size = new Size(305, 34);
@@ -196,7 +196,7 @@
             // 
             labelName.AutoSize = true;
             labelName.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            labelName.Location = new Point(366, 92);
+            labelName.Location = new Point(370, 100);
             labelName.Name = "labelName";
             labelName.Size = new Size(68, 28);
             labelName.TabIndex = 43;
@@ -205,7 +205,7 @@
             // textBoxName
             // 
             textBoxName.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxName.Location = new Point(365, 117);
+            textBoxName.Location = new Point(370, 150);
             textBoxName.Margin = new Padding(3, 2, 3, 2);
             textBoxName.Name = "textBoxName";
             textBoxName.Size = new Size(305, 34);
@@ -216,7 +216,7 @@
             // dateTimePickerBirthDate
             // 
             dateTimePickerBirthDate.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            dateTimePickerBirthDate.Location = new Point(364, 519);
+            dateTimePickerBirthDate.Location = new Point(370, 750);
             dateTimePickerBirthDate.MaxDate = new DateTime(2023, 4, 6, 0, 0, 0, 0);
             dateTimePickerBirthDate.Name = "dateTimePickerBirthDate";
             dateTimePickerBirthDate.Size = new Size(306, 34);
@@ -254,7 +254,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1362, 663);
+            ClientSize = new Size(1362, 1100);
             Controls.Add(dateTimePickerBirthDate);
             Controls.Add(comboBoxSex);
             Controls.Add(labelAddEditNewPatient);
