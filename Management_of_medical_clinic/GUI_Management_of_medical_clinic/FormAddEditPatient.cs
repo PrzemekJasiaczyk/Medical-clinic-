@@ -29,13 +29,16 @@ namespace GUI_Management_of_medical_clinic
 		{
 			SetPropertiesDateTimePicker();
 
-			if (patient == null)
-			{
-				isNewPatient = true;
-				return;
-			}
-			CompleteControls();
-		}
+            if (patient == null)
+            {
+                isNewPatient = true;
+                return;
+            }
+            CompleteControls();
+
+            textBoxName.MaxLength = 60;
+            textBoxLastName.MaxLength = 60;
+        }
 
 		private void buttonAddEditPatient_Click(object sender, EventArgs e)
 		{
