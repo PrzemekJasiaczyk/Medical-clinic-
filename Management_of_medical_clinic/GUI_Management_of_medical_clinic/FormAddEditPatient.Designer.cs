@@ -109,11 +109,12 @@
             // 
             // comboBoxSex
             // 
+            comboBoxSex.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxSex.FormattingEnabled = true;
             comboBoxSex.Location = new Point(781, 117);
             comboBoxSex.Margin = new Padding(3, 2, 3, 2);
             comboBoxSex.Name = "comboBoxSex";
-            comboBoxSex.Size = new Size(305, 23);
+            comboBoxSex.Size = new Size(305, 36);
             comboBoxSex.TabIndex = 56;
             comboBoxSex.SelectedValueChanged += comboBoxSex_SelectedValueChanged;
             // 
@@ -131,28 +132,31 @@
             // labelSex
             // 
             labelSex.AutoSize = true;
+            labelSex.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             labelSex.Location = new Point(780, 92);
             labelSex.Name = "labelSex";
-            labelSex.Size = new Size(28, 15);
+            labelSex.Size = new Size(46, 28);
             labelSex.TabIndex = 50;
             labelSex.Text = "Sex:";
             // 
             // labelDateOfBirth
             // 
             labelDateOfBirth.AutoSize = true;
+            labelDateOfBirth.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             labelDateOfBirth.Location = new Point(780, 170);
             labelDateOfBirth.Name = "labelDateOfBirth";
-            labelDateOfBirth.Size = new Size(76, 15);
+            labelDateOfBirth.Size = new Size(127, 28);
             labelDateOfBirth.TabIndex = 48;
             labelDateOfBirth.Text = "Date of birth:";
             // 
             // maskedTextBoxPESEL
             // 
+            maskedTextBoxPESEL.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             maskedTextBoxPESEL.Location = new Point(366, 314);
             maskedTextBoxPESEL.Margin = new Padding(3, 2, 3, 2);
             maskedTextBoxPESEL.Mask = "00000000000";
             maskedTextBoxPESEL.Name = "maskedTextBoxPESEL";
-            maskedTextBoxPESEL.Size = new Size(305, 23);
+            maskedTextBoxPESEL.Size = new Size(305, 34);
             maskedTextBoxPESEL.TabIndex = 47;
             maskedTextBoxPESEL.Validating += maskedTextBoxPESEL_Validating;
             maskedTextBoxPESEL.Validated += maskedTextBoxPESEL_Validated;
@@ -160,27 +164,30 @@
             // labelPESEL
             // 
             labelPESEL.AutoSize = true;
+            labelPESEL.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             labelPESEL.Location = new Point(366, 275);
             labelPESEL.Name = "labelPESEL";
-            labelPESEL.Size = new Size(41, 15);
+            labelPESEL.Size = new Size(67, 28);
             labelPESEL.TabIndex = 46;
             labelPESEL.Text = "PESEL:";
             // 
             // labelLastName
             // 
             labelLastName.AutoSize = true;
+            labelLastName.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             labelLastName.Location = new Point(366, 183);
             labelLastName.Name = "labelLastName";
-            labelLastName.Size = new Size(64, 15);
+            labelLastName.Size = new Size(103, 28);
             labelLastName.TabIndex = 45;
             labelLastName.Text = "Last name:";
             // 
             // textBoxLastName
             // 
+            textBoxLastName.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             textBoxLastName.Location = new Point(365, 208);
             textBoxLastName.Margin = new Padding(3, 2, 3, 2);
             textBoxLastName.Name = "textBoxLastName";
-            textBoxLastName.Size = new Size(305, 23);
+            textBoxLastName.Size = new Size(305, 34);
             textBoxLastName.TabIndex = 44;
             textBoxLastName.Validating += textBoxLastName_Validating;
             textBoxLastName.Validated += textBoxLastName_Validated;
@@ -188,28 +195,31 @@
             // labelName
             // 
             labelName.AutoSize = true;
+            labelName.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             labelName.Location = new Point(366, 92);
             labelName.Name = "labelName";
-            labelName.Size = new Size(42, 15);
+            labelName.Size = new Size(68, 28);
             labelName.TabIndex = 43;
             labelName.Text = "Name:";
             // 
             // textBoxName
             // 
+            textBoxName.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             textBoxName.Location = new Point(365, 117);
             textBoxName.Margin = new Padding(3, 2, 3, 2);
             textBoxName.Name = "textBoxName";
-            textBoxName.Size = new Size(305, 23);
+            textBoxName.Size = new Size(305, 34);
             textBoxName.TabIndex = 42;
             textBoxName.Validating += textBoxName_Validating;
             textBoxName.Validated += textBoxName_Validated;
             // 
             // dateTimePickerBirthDate
             // 
+            dateTimePickerBirthDate.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             dateTimePickerBirthDate.Location = new Point(780, 208);
             dateTimePickerBirthDate.MaxDate = new DateTime(2023, 4, 6, 0, 0, 0, 0);
             dateTimePickerBirthDate.Name = "dateTimePickerBirthDate";
-            dateTimePickerBirthDate.Size = new Size(306, 23);
+            dateTimePickerBirthDate.Size = new Size(306, 34);
             dateTimePickerBirthDate.TabIndex = 57;
             dateTimePickerBirthDate.Value = new DateTime(2023, 4, 6, 0, 0, 0, 0);
             dateTimePickerBirthDate.ValueChanged += dateTimePickerBirthDate_ValueChanged;
