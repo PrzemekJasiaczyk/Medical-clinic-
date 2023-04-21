@@ -31,8 +31,8 @@
             components = new System.ComponentModel.Container();
             panel1 = new Panel();
             buttonBack = new Button();
-            buttonAddEditPatient = new Button();
             pictureBox1 = new PictureBox();
+            buttonAddEditPatient = new Button();
             comboBoxSex = new ComboBox();
             labelAddEditNewPatient = new Label();
             labelSex = new Label();
@@ -82,6 +82,16 @@
             buttonBack.UseVisualStyleBackColor = false;
             buttonBack.Click += buttonBack_Click;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackgroundImage = Properties.Resources.MC_Logo;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox1.Location = new Point(61, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(176, 168);
+            pictureBox1.TabIndex = 1;
+            pictureBox1.TabStop = false;
+            // 
             // buttonAddEditPatient
             // 
             buttonAddEditPatient.BackColor = Color.Gainsboro;
@@ -95,16 +105,6 @@
             buttonAddEditPatient.Text = "Add patient";
             buttonAddEditPatient.UseVisualStyleBackColor = false;
             buttonAddEditPatient.Click += buttonAddEditPatient_Click;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackgroundImage = Properties.Resources.MC_Logo;
-            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.Location = new Point(61, 12);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(176, 168);
-            pictureBox1.TabIndex = 1;
-            pictureBox1.TabStop = false;
             // 
             // comboBoxSex
             // 
@@ -188,6 +188,7 @@
             textBoxLastName.Name = "textBoxLastName";
             textBoxLastName.Size = new Size(453, 34);
             textBoxLastName.TabIndex = 44;
+            textBoxLastName.TextChanged += textBoxLastName_TextChanged;
             textBoxLastName.Validating += textBoxLastName_Validating;
             textBoxLastName.Validated += textBoxLastName_Validated;
             // 
@@ -209,6 +210,7 @@
             textBoxName.Name = "textBoxName";
             textBoxName.Size = new Size(453, 34);
             textBoxName.TabIndex = 42;
+            textBoxName.TextChanged += textBoxName_TextChanged;
             textBoxName.Validating += textBoxName_Validating;
             textBoxName.Validated += textBoxName_Validated;
             // 

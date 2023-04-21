@@ -36,8 +36,6 @@ namespace GUI_Management_of_medical_clinic
             }
             CompleteControls();
 
-            textBoxName.MaxLength = 60;
-            textBoxLastName.MaxLength = 60;
         }
 
         private void buttonAddEditPatient_Click(object sender, EventArgs e)
@@ -220,6 +218,16 @@ namespace GUI_Management_of_medical_clinic
         // ----------------------------------------------------------- FUNCTIONS ----------------------------------------------------------------- //
 
 
+        private void maxLengthInTextBox(TextBox textBox, int MaxNumberOfCharacters)
+        {
+            if (textBox.TextLength > MaxNumberOfCharacters)
+            {
+                textBox.Text = textBox.Text.Substring(0, MaxNumberOfCharacters);
+                textBox.SelectionStart = 0;
+            }
+        }
+
+
         private void ComeToPatientList()
         {
             FormAddEditPatient.ActiveForm.Close();
@@ -288,5 +296,14 @@ namespace GUI_Management_of_medical_clinic
 
         #endregion
 
+        private void textBoxName_TextChanged(object sender, EventArgs e)
+        {
+            maxLengthInTextBox(textBoxName,60);
+        }
+
+        private void textBoxLastName_TextChanged(object sender, EventArgs e)
+        {
+            maxLengthInTextBox(textBoxLastName, 60);
+        }
     }
 }
