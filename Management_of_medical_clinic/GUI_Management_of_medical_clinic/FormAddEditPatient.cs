@@ -223,7 +223,7 @@ namespace GUI_Management_of_medical_clinic
             if (textBox.TextLength > MaxNumberOfCharacters)
             {
                 textBox.Text = textBox.Text.Substring(0, MaxNumberOfCharacters);
-                textBox.SelectionStart = 0;
+                textBox.SelectionStart = MaxNumberOfCharacters;
             }
         }
 
