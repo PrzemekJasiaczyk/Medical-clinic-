@@ -60,7 +60,6 @@
             // 
             panel1.BackColor = Color.SteelBlue;
             panel1.Controls.Add(buttonBack);
-            panel1.Controls.Add(buttonAddEditPatient);
             panel1.Controls.Add(pictureBox1);
             panel1.Location = new Point(-3, 0);
             panel1.Name = "panel1";
@@ -85,13 +84,13 @@
             // 
             // buttonAddEditPatient
             // 
-            buttonAddEditPatient.BackColor = Color.SteelBlue;
+            buttonAddEditPatient.BackColor = Color.Gainsboro;
             buttonAddEditPatient.FlatStyle = FlatStyle.Flat;
             buttonAddEditPatient.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonAddEditPatient.ForeColor = SystemColors.ActiveCaptionText;
-            buttonAddEditPatient.Location = new Point(-29, 208);
+            buttonAddEditPatient.ForeColor = SystemColors.ControlText;
+            buttonAddEditPatient.Location = new Point(370, 970);
             buttonAddEditPatient.Name = "buttonAddEditPatient";
-            buttonAddEditPatient.Size = new Size(360, 65);
+            buttonAddEditPatient.Size = new Size(453, 65);
             buttonAddEditPatient.TabIndex = 59;
             buttonAddEditPatient.Text = "Add patient";
             buttonAddEditPatient.UseVisualStyleBackColor = false;
@@ -256,6 +255,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1362, 1100);
             Controls.Add(dateTimePickerBirthDate);
+            Controls.Add(buttonAddEditPatient);
             Controls.Add(comboBoxSex);
             Controls.Add(labelAddEditNewPatient);
             Controls.Add(labelSex);
