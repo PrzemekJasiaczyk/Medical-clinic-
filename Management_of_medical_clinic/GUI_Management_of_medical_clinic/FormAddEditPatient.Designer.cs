@@ -114,7 +114,7 @@
             comboBoxSex.Location = new Point(370, 600);
             comboBoxSex.Margin = new Padding(3, 2, 3, 2);
             comboBoxSex.Name = "comboBoxSex";
-            comboBoxSex.Size = new Size(305, 36);
+            comboBoxSex.Size = new Size(453, 36);
             comboBoxSex.TabIndex = 56;
             comboBoxSex.SelectedValueChanged += comboBoxSex_SelectedValueChanged;
             // 
@@ -156,7 +156,7 @@
             maskedTextBoxPESEL.Margin = new Padding(3, 2, 3, 2);
             maskedTextBoxPESEL.Mask = "00000000000";
             maskedTextBoxPESEL.Name = "maskedTextBoxPESEL";
-            maskedTextBoxPESEL.Size = new Size(305, 34);
+            maskedTextBoxPESEL.Size = new Size(453, 34);
             maskedTextBoxPESEL.TabIndex = 47;
             maskedTextBoxPESEL.Validating += maskedTextBoxPESEL_Validating;
             maskedTextBoxPESEL.Validated += maskedTextBoxPESEL_Validated;
@@ -187,7 +187,7 @@
             textBoxLastName.Location = new Point(370, 300);
             textBoxLastName.Margin = new Padding(3, 2, 3, 2);
             textBoxLastName.Name = "textBoxLastName";
-            textBoxLastName.Size = new Size(305, 34);
+            textBoxLastName.Size = new Size(453, 34);
             textBoxLastName.TabIndex = 44;
             textBoxLastName.Validating += textBoxLastName_Validating;
             textBoxLastName.Validated += textBoxLastName_Validated;
@@ -208,7 +208,7 @@
             textBoxName.Location = new Point(370, 150);
             textBoxName.Margin = new Padding(3, 2, 3, 2);
             textBoxName.Name = "textBoxName";
-            textBoxName.Size = new Size(305, 34);
+            textBoxName.Size = new Size(453, 34);
             textBoxName.TabIndex = 42;
             textBoxName.Validating += textBoxName_Validating;
             textBoxName.Validated += textBoxName_Validated;
@@ -219,7 +219,7 @@
             dateTimePickerBirthDate.Location = new Point(370, 750);
             dateTimePickerBirthDate.MaxDate = new DateTime(2023, 4, 6, 0, 0, 0, 0);
             dateTimePickerBirthDate.Name = "dateTimePickerBirthDate";
-            dateTimePickerBirthDate.Size = new Size(306, 34);
+            dateTimePickerBirthDate.Size = new Size(454, 34);
             dateTimePickerBirthDate.TabIndex = 57;
             dateTimePickerBirthDate.Value = new DateTime(2023, 4, 6, 0, 0, 0, 0);
             dateTimePickerBirthDate.ValueChanged += dateTimePickerBirthDate_ValueChanged;
