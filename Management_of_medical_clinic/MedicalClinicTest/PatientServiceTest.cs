@@ -269,7 +269,7 @@ namespace MedicalClinicTest
 
 
 			Assert.False(result);
-			Assert.Equal("PESEL has incorrect birth date", errorMessage);
+			Assert.Equal("PESEL or birth date are incorrect. They don't match.", errorMessage);
 		}
 
 		[Fact]
@@ -391,7 +391,7 @@ namespace MedicalClinicTest
                 patient.BirthDate, patient.Sex, out errorMessage);
 
 
-            Assert.True(errorMessage == "PESEL has incorrect birth date");
+            Assert.True(errorMessage == "PESEL or birth date are incorrect. They don't match.");
             Assert.False(result);
         }
 
@@ -416,7 +416,7 @@ namespace MedicalClinicTest
                 patient.BirthDate, patient.Sex, out errorMessage);
 
 
-            Assert.True(errorMessage == "PESEL has incorrect gender. For men it's an odd number.");
+            Assert.True(errorMessage == "PESEL or gender are incorrect. They don't match.");
             Assert.False(result);
         }
 
@@ -442,7 +442,7 @@ namespace MedicalClinicTest
                 patient.BirthDate, patient.Sex, out errorMessage);
 
 
-            Assert.True(errorMessage == "PESEL has incorrect gender. For women it's 0 or even number");
+            Assert.True(errorMessage == "PESEL or gender are incorrect. They don't match.");
             Assert.False(result);
         }
 
