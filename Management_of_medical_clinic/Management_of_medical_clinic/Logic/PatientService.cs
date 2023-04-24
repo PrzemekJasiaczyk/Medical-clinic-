@@ -15,7 +15,27 @@ namespace Console_Management_of_medical_clinic.Logic
             }
         }
 
-        public bool IsValidName(string patientName, out string errorMessage)
+
+		public List<Patient> FilterPatient(string firstname, string PESEL)
+		{
+			PatientService patientService = new PatientService();
+			List<Patient> FilteredPatients = patientService.GetPatientData();
+
+			if (!string.IsNullOrEmpty(firstname))
+			{
+				FilteredPatients = FilteredPatients.Where(p => p.FirstName.Contains(firstname)).ToList();
+			}
+
+			if (!string.IsNullOrEmpty(PESEL))
+			{
+				FilteredPatients = FilteredPatients.Where(p => Patient.FindPatient(p.PatientId).PESEL.Contains(PESEL)).ToList();
+			}
+
+
+			return FilteredPatients;
+		}
+
+		public bool IsValidName(string patientName, out string errorMessage)
         {
             // White space checking
             if (string.IsNullOrWhiteSpace(patientName)) 
