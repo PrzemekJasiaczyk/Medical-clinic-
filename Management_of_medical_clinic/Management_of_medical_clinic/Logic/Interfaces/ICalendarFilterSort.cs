@@ -2,7 +2,7 @@
 {
 	public interface ICalendarFilterSort
     {
-		// TODO: Odkomentować i podmienić nazwy gdy będzie gotowe
+		// TODO: Odkomentować i podmienić nazwy gdy będzie gotowe.
 		//public List<CalendarModel> GetAll();
 
 		//public List<CalendarModel> Filter(List<CalendarModel> calendars, string calendarName);
