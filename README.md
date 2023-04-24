@@ -1,29 +1,34 @@
 # Clinic staff's module
 ## TODO List
-- [ ] Functional Tests
-  - [ ] Test scenarios
-  - [ ] Test cases
-- [ ] Refactor Patient class
-- [ ] Improve View form
-- [ ] Improve Login form
-- [ ] Check out merge-branch
-- [ ] Unit Tests
-  - [ ] Patient class
-    - [ ] ChangePatientStatus
-    - [ ] FindPatient
-    - [ ] RemovePatient
-    - [ ] AddPatient
+For now:
+- [ ] Help Administratior module team with their stuff
+- [ ] Solve problems and repair mistakes with validation logic
+---
+Done:
+- [x] Functional Tests
+  - [x] Test scenarios
+  - [x] Test cases
+- [x] Refactor Patient class
+- [x] Improve View form
+- [x] Improve Login form
+- [x] Check out merge-branch
+- [x] Unit Tests
+  - [x] Patient class
+    - [x] ChangePatientStatus
+    - [x] FindPatient
+    - [x] RemovePatient
+    - [x] AddPatient
     - [X] More...
-  - [ ] PatientService class
-    - [ ] GetPatientData
-    - [ ] IsValidName
-    - [ ] IsValidDate
-    - [ ] IsValidPESEL
+  - [x] PatientService class
+    - [x] GetPatientData
+    - [x] IsValidName
+    - [x] IsValidDate
+    - [x] IsValidPESEL
     - [X] More..
-- [ ] Forms
-  - [ ] View patients' list form
+- [x] Forms
+  - [x] View patients' list form
     - [x] View
-    - [ ] Filter
+    - [x] Filter
     - [x] Sort
   - [x] Add patient form
   - [x] Edit patient form
