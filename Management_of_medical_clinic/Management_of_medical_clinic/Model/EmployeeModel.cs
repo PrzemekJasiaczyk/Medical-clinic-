@@ -114,8 +114,8 @@ namespace Console_Management_of_medical_clinic.Model
         }
         
 
-        public static void EditEmployee(int IdEmployee, string firstName, string lastName, string pesel, string dateOfBirth, EnumEmployeeRoles rolem, string correspondenceAddress, string email, string phoneNumber,
-            EnumSex sex)
+        public static void EditEmployee(int IdEmployee, string firstName, string lastName, string pesel, string dateOfBirth, EnumEmployeeRoles role, string correspondenceAddress, string email, string phoneNumber,
+            EnumSex sex, int idSpecialization, bool isActive)
         {
             var context = new AppDbContext();
             var emp = context.DbEmployees.Find(IdEmployee);
@@ -128,6 +128,9 @@ namespace Console_Management_of_medical_clinic.Model
             emp.Email = email;
             emp.PhoneNumber = phoneNumber;
             emp.Sex = sex;
+            emp.Role = role;
+            emp.IdSpecialization = idSpecialization;
+            emp.IsActive = isActive;
             context.SaveChanges();
         }
 

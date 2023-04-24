@@ -3,14 +3,16 @@ using System;
 using Console_Management_of_medical_clinic.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Console_Management_of_medical_clinic.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230420081933_AddingOffices")]
+    partial class AddingOffices
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -66,6 +68,32 @@ namespace Console_Management_of_medical_clinic.Migrations
                     b.ToTable("DbEmployees");
                 });
 
+            modelBuilder.Entity("Console_Management_of_medical_clinic.Model.OfficeModel", b =>
+                {
+                    b.Property<int>("IdOffice")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("IdSpecialization")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Info")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Number")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("IdOffice");
+
+                    b.HasIndex("IdSpecialization");
+
+                    b.ToTable("DbOffices");
+                });
+
             modelBuilder.Entity("Console_Management_of_medical_clinic.Model.SpecializationModel", b =>
                 {
                     b.Property<int>("IdSpecialization")
@@ -112,40 +140,6 @@ namespace Console_Management_of_medical_clinic.Migrations
                     b.ToTable("DbUsers");
                 });
 
-            modelBuilder.Entity("Console_Management_of_medical_clinic.Model.Visit", b =>
-                {
-                    b.Property<int>("VisitId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("IdVisit");
-
-                    b.Property<decimal>("Cost")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("CostVisit");
-
-                    b.Property<int?>("EmployeeId")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("IdEmployee");
-
-                    b.Property<int?>("PatientId")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("IdPatient");
-
-                    b.Property<DateTime>("VisitDate")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("DateVisit");
-
-                    b.Property<DateTime>("VisitHour")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("HourVisit");
-
-                    b.HasKey("VisitId");
-
-                    b.HasIndex("PatientId");
-
-                    b.ToTable("Visit");
-                });
-
             modelBuilder.Entity("Console_Management_of_medical_clinic.Model.EmployeeModel", b =>
                 {
                     b.HasOne("Console_Management_of_medical_clinic.Model.SpecializationModel", "SpecializationModel")
@@ -177,31 +171,9 @@ namespace Console_Management_of_medical_clinic.Migrations
                     b.Navigation("EmployeeModel");
                 });
 
-            modelBuilder.Entity("Console_Management_of_medical_clinic.Model.Visit", b =>
-                {
-                    b.HasOne("Console_Management_of_medical_clinic.Model.EmployeeModel", "Employee")
-                        .WithMany("Visits")
-                        .HasForeignKey("PatientId");
-
-                    b.HasOne("Console_Management_of_medical_clinic.Model.Patient", "Patient")
-                        .WithMany("Visits")
-                        .HasForeignKey("PatientId");
-
-                    b.Navigation("Employee");
-
-                    b.Navigation("Patient");
-                });
-
             modelBuilder.Entity("Console_Management_of_medical_clinic.Model.EmployeeModel", b =>
                 {
                     b.Navigation("UserModel");
-
-                    b.Navigation("Visits");
-                });
-
-            modelBuilder.Entity("Console_Management_of_medical_clinic.Model.Patient", b =>
-                {
-                    b.Navigation("Visits");
                 });
 
             modelBuilder.Entity("Console_Management_of_medical_clinic.Model.SpecializationModel", b =>
