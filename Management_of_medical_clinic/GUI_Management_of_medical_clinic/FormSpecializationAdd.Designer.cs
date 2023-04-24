@@ -28,173 +28,173 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.labelTitle = new System.Windows.Forms.Label();
-            this.buttonCancel = new System.Windows.Forms.Button();
-            this.buttonAdd = new System.Windows.Forms.Button();
-            this.textBoxName = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dataGridViewSpecializations = new System.Windows.Forms.DataGridView();
-            this.buttonRemove = new System.Windows.Forms.Button();
-            this.buttonReplace = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.textBoxNewName = new System.Windows.Forms.TextBox();
-            this.labelNewName = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSpecializations)).BeginInit();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.SuspendLayout();
+            labelTitle = new Label();
+            buttonCancel = new Button();
+            buttonAdd = new Button();
+            textBoxName = new TextBox();
+            label1 = new Label();
+            dataGridViewSpecializations = new DataGridView();
+            buttonRemove = new Button();
+            buttonReplace = new Button();
+            panel2 = new Panel();
+            pictureBox1 = new PictureBox();
+            textBoxNewName = new TextBox();
+            labelNewName = new Label();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewSpecializations).BeginInit();
+            panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            SuspendLayout();
             // 
             // labelTitle
             // 
-            this.labelTitle.AutoSize = true;
-            this.labelTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelTitle.Location = new System.Drawing.Point(991, 215);
-            this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(195, 30);
-            this.labelTitle.TabIndex = 73;
-            this.labelTitle.Text = "Edit Specializations";
+            labelTitle.AutoSize = true;
+            labelTitle.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            labelTitle.Location = new Point(991, 215);
+            labelTitle.Name = "labelTitle";
+            labelTitle.Size = new Size(195, 30);
+            labelTitle.TabIndex = 73;
+            labelTitle.Text = "Edit Specializations";
             // 
             // buttonCancel
             // 
-            this.buttonCancel.BackColor = System.Drawing.Color.Gainsboro;
-            this.buttonCancel.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.buttonCancel.FlatAppearance.BorderSize = 2;
-            this.buttonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCancel.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonCancel.Location = new System.Drawing.Point(26, 973);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(252, 66);
-            this.buttonCancel.TabIndex = 72;
-            this.buttonCancel.Text = "CANCEL";
-            this.buttonCancel.UseVisualStyleBackColor = false;
-            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            buttonCancel.BackColor = Color.Gainsboro;
+            buttonCancel.FlatAppearance.BorderColor = Color.White;
+            buttonCancel.FlatAppearance.BorderSize = 2;
+            buttonCancel.FlatStyle = FlatStyle.Flat;
+            buttonCancel.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonCancel.Location = new Point(26, 973);
+            buttonCancel.Name = "buttonCancel";
+            buttonCancel.Size = new Size(252, 66);
+            buttonCancel.TabIndex = 72;
+            buttonCancel.Text = "CANCEL";
+            buttonCancel.UseVisualStyleBackColor = false;
+            buttonCancel.Click += buttonCancel_Click;
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Enabled = false;
-            this.buttonAdd.Location = new System.Drawing.Point(1287, 302);
-            this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(142, 45);
-            this.buttonAdd.TabIndex = 76;
-            this.buttonAdd.Text = "Add";
-            this.buttonAdd.UseVisualStyleBackColor = true;
-            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            buttonAdd.Enabled = false;
+            buttonAdd.Location = new Point(1287, 302);
+            buttonAdd.Name = "buttonAdd";
+            buttonAdd.Size = new Size(142, 45);
+            buttonAdd.TabIndex = 76;
+            buttonAdd.Text = "Add";
+            buttonAdd.UseVisualStyleBackColor = true;
+            buttonAdd.Click += buttonAdd_Click;
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(1225, 273);
-            this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(204, 23);
-            this.textBoxName.TabIndex = 77;
-            this.textBoxName.TextChanged += new System.EventHandler(this.textBoxName_TextChanged);
+            textBoxName.Location = new Point(1225, 273);
+            textBoxName.Name = "textBoxName";
+            textBoxName.Size = new Size(204, 23);
+            textBoxName.TabIndex = 77;
+            textBoxName.TextChanged += textBoxName_TextChanged;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1225, 255);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(168, 15);
-            this.label1.TabIndex = 78;
-            this.label1.Text = "Name of Specialization to Edit:";
+            label1.AutoSize = true;
+            label1.Location = new Point(1225, 255);
+            label1.Name = "label1";
+            label1.Size = new Size(168, 15);
+            label1.TabIndex = 78;
+            label1.Text = "Name of Specialization to Edit:";
             // 
             // dataGridViewSpecializations
             // 
-            this.dataGridViewSpecializations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewSpecializations.Location = new System.Drawing.Point(675, 255);
-            this.dataGridViewSpecializations.Name = "dataGridViewSpecializations";
-            this.dataGridViewSpecializations.RowTemplate.Height = 25;
-            this.dataGridViewSpecializations.Size = new System.Drawing.Size(506, 387);
-            this.dataGridViewSpecializations.TabIndex = 79;
-            this.dataGridViewSpecializations.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSpecializations_CellClick);
+            dataGridViewSpecializations.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewSpecializations.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewSpecializations.Location = new Point(675, 255);
+            dataGridViewSpecializations.Name = "dataGridViewSpecializations";
+            dataGridViewSpecializations.RowTemplate.Height = 25;
+            dataGridViewSpecializations.Size = new Size(506, 387);
+            dataGridViewSpecializations.TabIndex = 79;
+            dataGridViewSpecializations.CellClick += dataGridViewSpecializations_CellClick;
             // 
             // buttonRemove
             // 
-            this.buttonRemove.Enabled = false;
-            this.buttonRemove.Location = new System.Drawing.Point(1287, 353);
-            this.buttonRemove.Name = "buttonRemove";
-            this.buttonRemove.Size = new System.Drawing.Size(142, 45);
-            this.buttonRemove.TabIndex = 80;
-            this.buttonRemove.Text = "Remove";
-            this.buttonRemove.UseVisualStyleBackColor = true;
-            this.buttonRemove.Click += new System.EventHandler(this.buttonReplace_Click);
+            buttonRemove.Enabled = false;
+            buttonRemove.Location = new Point(1287, 353);
+            buttonRemove.Name = "buttonRemove";
+            buttonRemove.Size = new Size(142, 45);
+            buttonRemove.TabIndex = 80;
+            buttonRemove.Text = "Remove";
+            buttonRemove.UseVisualStyleBackColor = true;
+            buttonRemove.Click += buttonReplace_Click;
             // 
             // buttonReplace
             // 
-            this.buttonReplace.Enabled = false;
-            this.buttonReplace.Location = new System.Drawing.Point(1462, 302);
-            this.buttonReplace.Name = "buttonReplace";
-            this.buttonReplace.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.buttonReplace.Size = new System.Drawing.Size(142, 45);
-            this.buttonReplace.TabIndex = 83;
-            this.buttonReplace.Text = "Replace";
-            this.buttonReplace.UseVisualStyleBackColor = true;
-            this.buttonReplace.Click += new System.EventHandler(this.buttonReplace_Click_1);
+            buttonReplace.Enabled = false;
+            buttonReplace.Location = new Point(1462, 302);
+            buttonReplace.Name = "buttonReplace";
+            buttonReplace.RightToLeft = RightToLeft.No;
+            buttonReplace.Size = new Size(142, 45);
+            buttonReplace.TabIndex = 83;
+            buttonReplace.Text = "Replace";
+            buttonReplace.UseVisualStyleBackColor = true;
+            buttonReplace.Click += buttonReplace_Click_1;
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.SteelBlue;
-            this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Controls.Add(this.buttonCancel);
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(312, 1081);
-            this.panel2.TabIndex = 84;
+            panel2.BackColor = Color.SteelBlue;
+            panel2.Controls.Add(pictureBox1);
+            panel2.Controls.Add(buttonCancel);
+            panel2.Location = new Point(0, 0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(312, 1081);
+            panel2.TabIndex = 84;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackgroundImage = global::GUI_Management_of_medical_clinic.Properties.Resources.MC_Logo;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(61, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(176, 168);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
+            pictureBox1.BackgroundImage = Properties.Resources.MC_Logo;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox1.Location = new Point(61, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(176, 168);
+            pictureBox1.TabIndex = 2;
+            pictureBox1.TabStop = false;
             // 
             // textBoxNewName
             // 
-            this.textBoxNewName.Location = new System.Drawing.Point(1462, 273);
-            this.textBoxNewName.Name = "textBoxNewName";
-            this.textBoxNewName.Size = new System.Drawing.Size(204, 23);
-            this.textBoxNewName.TabIndex = 85;
+            textBoxNewName.Location = new Point(1462, 273);
+            textBoxNewName.Name = "textBoxNewName";
+            textBoxNewName.Size = new Size(204, 23);
+            textBoxNewName.TabIndex = 85;
             // 
             // labelNewName
             // 
-            this.labelNewName.AutoSize = true;
-            this.labelNewName.Location = new System.Drawing.Point(1462, 255);
-            this.labelNewName.Name = "labelNewName";
-            this.labelNewName.Size = new System.Drawing.Size(90, 15);
-            this.labelNewName.TabIndex = 86;
-            this.labelNewName.Text = "Updated Name:";
+            labelNewName.AutoSize = true;
+            labelNewName.Location = new Point(1462, 255);
+            labelNewName.Name = "labelNewName";
+            labelNewName.Size = new Size(90, 15);
+            labelNewName.TabIndex = 86;
+            labelNewName.Text = "Updated Name:";
             // 
             // FormSpecializationAdd
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Info;
-            this.ClientSize = new System.Drawing.Size(1920, 1080);
-            this.Controls.Add(this.labelNewName);
-            this.Controls.Add(this.textBoxNewName);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.buttonReplace);
-            this.Controls.Add(this.buttonRemove);
-            this.Controls.Add(this.dataGridViewSpecializations);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBoxName);
-            this.Controls.Add(this.buttonAdd);
-            this.Controls.Add(this.labelTitle);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FormSpecializationAdd";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormSpecializationAdd";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.FormSpecializationAdd_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSpecializations)).EndInit();
-            this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.Info;
+            ClientSize = new Size(1920, 1080);
+            Controls.Add(labelNewName);
+            Controls.Add(textBoxNewName);
+            Controls.Add(panel2);
+            Controls.Add(buttonReplace);
+            Controls.Add(buttonRemove);
+            Controls.Add(dataGridViewSpecializations);
+            Controls.Add(label1);
+            Controls.Add(textBoxName);
+            Controls.Add(buttonAdd);
+            Controls.Add(labelTitle);
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "FormSpecializationAdd";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "FormSpecializationAdd";
+            WindowState = FormWindowState.Maximized;
+            Load += FormSpecializationAdd_Load;
+            ((System.ComponentModel.ISupportInitialize)dataGridViewSpecializations).EndInit();
+            panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
