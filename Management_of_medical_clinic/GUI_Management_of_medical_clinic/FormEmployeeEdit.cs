@@ -42,7 +42,7 @@ namespace GUI_Management_of_medical_clinic
             textBoxLastName.Text = employee.LastName;
             textBoxPESEL.Text = employee.PESEL;
             dateTimePickerDate.Text = (employee.DateOfBirth);
-            
+
             textBoxAddress.Text = employee.CorrespondenceAddress;
             textBoxEmail.Text = employee.Email;
             textBoxPhone.Text = employee.PhoneNumber;
@@ -90,6 +90,10 @@ namespace GUI_Management_of_medical_clinic
             EnumSex enumSex = (EnumSex)Enum.Parse(typeof(EnumSex), comboBoxSex.SelectedItem.ToString());
             EnumEmployeeRoles enumRole = (EnumEmployeeRoles)Enum.Parse(typeof(EnumEmployeeRoles), comboBoxRole.SelectedItem.ToString());
 
+            EmployeeModel.EditEmployee(employee.IdEmployee, textBoxFirstName.Text, textBoxLastName.Text, textBoxPESEL.Text, dateTimePickerDate.Text,
+                enumRole, textBoxAddress.Text, textBoxEmail.Text, textBoxPhone.Text, enumSex, 1, true);
+
+            MessageBox.Show("Employee’s data changed.");
 
             FormEmployeeList employeeList = new FormEmployeeList(currentUser);
             //this.Hide();
@@ -166,6 +170,32 @@ namespace GUI_Management_of_medical_clinic
         private void comboBoxRole_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             checkIfMedicalDoctor();
+            checkForms();
+        }
+
+        private void textBoxPESEL_TextChanged_1(object sender, EventArgs e)
+        {
+            checkForms();
+        }
+
+        private void checkedListBoxSpecialization_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            int selectedIndex = checkedListBoxSpecialization.SelectedIndex;
+            foreach (int i in checkedListBoxSpecialization.CheckedIndices)
+            {
+                checkedListBoxSpecialization.SetItemCheckState(i, CheckState.Unchecked);
+            }
+            checkedListBoxSpecialization.SetItemCheckState(selectedIndex, CheckState.Checked);
+        }
+
+        private void textBoxFirstName_TextChanged_1(object sender, EventArgs e)
+        {
+            checkForms();
+        }
+
+        private void textBoxLastName_TextChanged_1(object sender, EventArgs e)
+        {
+            checkForms();
         }
     }
 }

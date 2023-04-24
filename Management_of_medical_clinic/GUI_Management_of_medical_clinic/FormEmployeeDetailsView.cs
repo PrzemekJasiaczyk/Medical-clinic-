@@ -51,5 +51,10 @@ namespace GUI_Management_of_medical_clinic
             employeeEdit.ShowDialog();
             this.Close();
         }
+
+        private void textBoxRole_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

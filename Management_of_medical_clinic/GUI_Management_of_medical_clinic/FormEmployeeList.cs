@@ -33,7 +33,7 @@ namespace GUI_Management_of_medical_clinic
 
                 if (employee.IdEmployee == currentUser.IdEmployee) { currentUser = employee; }     // it makes user always refreshed
             }
-            
+
         }
 
         public FormEmployeeList(EmployeeModel emp)
@@ -52,7 +52,7 @@ namespace GUI_Management_of_medical_clinic
             dataGridViewEmployees.Columns.Add("LastName", "Last Name");
             dataGridViewEmployees.Columns.Add("Role", "Role");
             dataGridViewEmployees.Columns.Add("IsActive", "Is active?");
-            
+
 
             LoadEmployeeData();
 
@@ -74,7 +74,7 @@ namespace GUI_Management_of_medical_clinic
             List<EmployeeModel> employees = EmployeeModel.FilterEmployees(role, isActive);
 
             dataGridViewEmployees.Rows.Clear();
-            foreach(EmployeeModel employee in employees)
+            foreach (EmployeeModel employee in employees)
             {
                 dataGridViewEmployees.Rows.Add(employee.IdEmployee, employee.FirstName, employee.LastName, employee.Role, (employee.IsActive == true) ? "Active" : "Not Active");
             }
@@ -82,7 +82,7 @@ namespace GUI_Management_of_medical_clinic
         }
         private void buttonClearFilter_Click(object sender, EventArgs e)
         {
-            
+
             LoadEmployeeData();
             comboBoxRole.SelectedItem = null;
             checkBoxIsActive.Checked = false;
@@ -107,7 +107,7 @@ namespace GUI_Management_of_medical_clinic
             FormChangeStatusOfEmployee deactivate = new FormChangeStatusOfEmployee(employee, currentUser);
             this.InitializeComponent();
             deactivate.ShowDialog();
-            
+
 
         }
         private void dataGridViewEmployees_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
