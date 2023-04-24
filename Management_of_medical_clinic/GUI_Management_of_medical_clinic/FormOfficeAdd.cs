@@ -51,6 +51,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonAddNewUser_Click(object sender, EventArgs e)
         {
+            
             if (OfficeService.CheckIfNumberExists((int.Parse(textBoxNumber.Text)))) { MessageBox.Show("The number of room entered is already taken. Please choose a different number.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
 
             OfficeService.AddOffice(new OfficeModel(int.Parse(textBoxNumber.Text), int.Parse(Regex.Match(listBoxSpecializations.SelectedItem.ToString(), @"^\d+").Value), true, textBoxInfo.Text));
@@ -58,6 +59,7 @@ namespace GUI_Management_of_medical_clinic
             FormOfficeList officeList = new FormOfficeList(currentUser);
             officeList.ShowDialog();
             Close();
+            
         }
 
         public void checkIfRequiredFilled()

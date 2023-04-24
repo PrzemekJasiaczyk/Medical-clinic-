@@ -34,6 +34,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
+            
             OfficeService.RemoveOfficeById(office.IdOffice);
 
             MessageBox.Show("Data was successfully deleted.");
