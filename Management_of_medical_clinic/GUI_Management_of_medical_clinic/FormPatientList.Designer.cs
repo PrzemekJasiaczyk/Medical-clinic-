@@ -248,7 +248,6 @@
             TextBox_PESEL.Name = "TextBox_PESEL";
             TextBox_PESEL.Size = new Size(129, 23);
             TextBox_PESEL.TabIndex = 38;
-            TextBox_PESEL.MaskInputRejected += TextBox_PESEL_MaskInputRejected;
             // 
             // textBox1_Name
             // 
@@ -258,7 +257,6 @@
             textBox1_Name.Name = "textBox1_Name";
             textBox1_Name.Size = new Size(129, 23);
             textBox1_Name.TabIndex = 37;
-            textBox1_Name.TextChanged += textBox1_TextChanged;
             // 
             // dataGridViewPatientList
             // 
