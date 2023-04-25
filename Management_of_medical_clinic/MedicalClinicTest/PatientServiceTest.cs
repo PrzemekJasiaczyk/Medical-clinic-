@@ -23,7 +23,7 @@ namespace MedicalClinicTest
 		{
 			FirstName = "Jan",
 			LastName = "Wiktorowicz",
-			PESEL = "99030300191",
+			PESEL = "99030300190",
 			Sex = EnumSex.Male,
 			BirthDate = new DateTime(1999, 3, 3),
 			IsActive = true,
@@ -32,7 +32,7 @@ namespace MedicalClinicTest
 
 		#endregion
 
-		#region IsValid Method Tests
+		#region IsValidName Method Tests
 		[Fact]
 		public void IsValidName_NotNullName()
 		{
@@ -54,7 +54,7 @@ namespace MedicalClinicTest
 			PatientService patientService = new();
 
 			Patient patient = _firstFakePatient;
-			_firstFakePatient.FirstName = "Juan Pablo";
+			patient.FirstName = "Juan Pablo";
 
 			bool isValid = patientService.IsValidName(patient.FirstName, out errorMessage);
 
@@ -69,7 +69,7 @@ namespace MedicalClinicTest
 			PatientService patientService = new();
 
 			Patient patient = _firstFakePatient;
-			_firstFakePatient.LastName = "Œwiderska-¯anecka";
+			patient.LastName = "Œwiderska-¯anecka";
 
 			bool isValid = patientService.IsValidName(patient.LastName, out errorMessage);
 
@@ -84,7 +84,7 @@ namespace MedicalClinicTest
 			PatientService patientService = new();
 
 			Patient patient = _firstFakePatient;
-			patient.FirstName = null;
+			patient.FirstName = null!;
 
 			bool isValid = patientService.IsValidName(patient.FirstName, out errorMessage);
 
@@ -114,7 +114,6 @@ namespace MedicalClinicTest
 			PatientService patientService = new();
 
 			Patient patient = _firstFakePatient;
-
 			patient.FirstName = "Pedro Maria Alvarez Silvio Juan Pablo Emanuel Ulrich Jan Pawe³ Gawe³ Luffy Zoro Saitama Stanis³aw";
 
 			bool isValid = patientService.IsValidName(patient.FirstName, out errorMessage);
@@ -128,8 +127,8 @@ namespace MedicalClinicTest
 		{
 			string errorMessage;
 			PatientService patientService = new();
-			Patient patient = _firstFakePatient;
 
+			Patient patient = _firstFakePatient;
 			patient.FirstName = "1234 Jan Gawe³";
 
 			bool isValid = patientService.IsValidName(patient.FirstName, out errorMessage);
@@ -143,8 +142,8 @@ namespace MedicalClinicTest
 		{
 			string errorMessage;
 			PatientService patientService = new();
-			Patient patient = _firstFakePatient;
 
+			Patient patient = _firstFakePatient;
 			patient.FirstName = "Ruda @";
 
 			bool isValid = patientService.IsValidName(patient.FirstName, out errorMessage);
@@ -168,13 +167,14 @@ namespace MedicalClinicTest
 
 			Assert.NotNull(result);
 			Assert.Contains(result, p => p.PESEL == "45010195612");
-			Assert.Contains(result, p => p.PESEL == "99030300191");
+			Assert.Contains(result, p => p.PESEL == "99030300190");
 
 			dbContext.Patients.RemoveRange(_firstFakePatient, _secondFakePatient);
 			dbContext.SaveChanges();
 		}
 
-        [Fact]
+		#region IsValidPESEL Tests
+		[Fact]
         public void IsValidPESEL_TooShort()
         {
             string errorMessage;
@@ -231,7 +231,7 @@ namespace MedicalClinicTest
             {
                 FirstName = "Jan",
                 LastName = "Nowak",
-                PESEL = "90010112335",
+                PESEL = "90010112332",
                 Sex = EnumSex.Male,
                 BirthDate = new DateTime(1990, 1, 1),
                 IsActive = true,
@@ -256,7 +256,7 @@ namespace MedicalClinicTest
 			{
 				FirstName = "Jan",
 				LastName = "Nowak",
-				PESEL = "22010112335",
+				PESEL = "22010112339",
 				Sex = EnumSex.Male,
 				BirthDate = new DateTime(2022, 1, 1),
 				IsActive = true,
@@ -281,7 +281,7 @@ namespace MedicalClinicTest
 			{
 				FirstName = "Jan",
 				LastName = "Nowak",
-				PESEL = "22210112335",
+				PESEL = "22210112339",
 				Sex = EnumSex.Male,
 				BirthDate = new DateTime(2022, 1, 1),
 				IsActive = true,
@@ -296,6 +296,8 @@ namespace MedicalClinicTest
 			Assert.True(result);
 			Assert.Equal("", errorMessage);
 		}
+
+
 
 		[Fact]
         public void IsValidPESEL_Empty()
@@ -457,7 +459,7 @@ namespace MedicalClinicTest
             {
                 FirstName = "Jan",
                 LastName = "Nowak",
-                PESEL = "90010112335",
+                PESEL = "90010112332",
                 Sex = EnumSex.Male,
                 BirthDate = new DateTime(1990, 1, 1),
                 IsActive = true,
@@ -470,7 +472,7 @@ namespace MedicalClinicTest
             {
                 FirstName = "Jan",
                 LastName = "Nowak",
-                PESEL = "90010112335",
+                PESEL = "90010112332",
                 Sex = EnumSex.Male,
                 BirthDate = new DateTime(1990, 1, 1),
                 IsActive = true,
@@ -486,8 +488,24 @@ namespace MedicalClinicTest
             dbContext.SaveChanges();
         }
 
-
         [Fact]
+		public void IsValidPESEL_IncorrectLastNumber()
+		{
+			string errorMessage;
+			PatientService patientService = new();
+
+			Patient patient = _firstFakePatient;
+            patient.PESEL = "45010195611";
+
+			bool isValid = patientService.IsValidPESEL(patient.PESEL, patient.BirthDate, patient.Sex, out errorMessage);
+
+			Assert.False(isValid);
+			Assert.True(errorMessage == "Control number in PESEL is incorrect. It should be 2 at the end.");
+		}
+
+		#endregion
+
+		[Fact]
         public void isValidDate_DateFromFuture()
         {
             string errorMessage = string.Empty;
@@ -496,7 +514,7 @@ namespace MedicalClinicTest
             {
                 FirstName = "Jan",
                 LastName = "Nowak",
-                PESEL = "90010112335",
+                PESEL = "90010112332",
                 Sex = EnumSex.Male,
                 BirthDate = new DateTime(2100, 1, 1),
                 IsActive = true,
@@ -520,7 +538,7 @@ namespace MedicalClinicTest
             {
                 FirstName = "Jan",
                 LastName = "Nowak",
-                PESEL = "90010112335",
+                PESEL = "90010112332",
                 Sex = EnumSex.Male,
                 BirthDate = new DateTime(2010, 1, 1),
                 IsActive = true,
