@@ -3,6 +3,8 @@ using Console_Management_of_medical_clinic.Data.Enums;
 using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
 using System.ComponentModel;
+using System.Windows.Forms;
+
 
 namespace GUI_Management_of_medical_clinic
 {
@@ -57,10 +59,48 @@ namespace GUI_Management_of_medical_clinic
 						FindEditPatientInDataBase();
 					}
 
-					ComeToPatientList();
-				}
-			}
-		}
+                    ComeToPatientList();
+                }
+            }
+
+            string msg= "Incorrect data. The following errors occurred:\n\n";
+
+            if (ErrorProviderFirstName.GetError(textBoxName) != string.Empty)
+            {
+                msg += "• " + ErrorProviderFirstName.GetError(textBoxName) + ".\n";
+
+            }
+
+            if (ErrorProviderLastName.GetError(textBoxLastName) != string.Empty)
+            {
+                msg += "• Last " + ErrorProviderLastName.GetError(textBoxLastName) + ".\n";
+                
+            }
+
+            if (ErrorProviderPESEL.GetError(maskedTextBoxPESEL) != string.Empty)
+            {
+                msg += "• " + ErrorProviderPESEL.GetError(maskedTextBoxPESEL) + "\n";
+
+            }
+
+            if (ErrorProviderBirthDate.GetError(dateTimePickerBirthDate) != string.Empty)
+            {
+                msg += "• " + ErrorProviderBirthDate.GetError(dateTimePickerBirthDate);
+
+            }
+
+            FormMessage formMessage = new FormMessage(msg);
+
+            formMessage.Size=formMessage.MaximumSize;
+            formMessage.Controls["buttonOK"].Size = formMessage.Controls["buttonOK"].MaximumSize;
+            formMessage.Controls["panel1"].Size = formMessage.Controls["panel1"].MaximumSize;
+
+            formMessage.Controls["buttonOK"].Location = new Point(75, 250);
+            formMessage.Controls["panel1"].Location = new Point(0, 225);
+
+            formMessage.ShowDialog();
+
+        }
 
 		private void buttonBack_Click(object sender, EventArgs e)
 		{

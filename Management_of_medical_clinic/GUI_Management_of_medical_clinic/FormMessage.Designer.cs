@@ -46,6 +46,7 @@
             buttonOK.Font = new Font("Tw Cen MT Condensed Extra Bold", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
             buttonOK.ForeColor = SystemColors.Control;
             buttonOK.Location = new Point(75, 170);
+            buttonOK.MaximumSize = new Size(550, 55);
             buttonOK.Name = "buttonOK";
             buttonOK.Size = new Size(450, 55);
             buttonOK.TabIndex = 20;
@@ -58,6 +59,7 @@
             panel1.BackColor = SystemColors.ActiveCaption;
             panel1.Controls.Add(button2);
             panel1.Location = new Point(0, 145);
+            panel1.MaximumSize = new Size(700, 105);
             panel1.Name = "panel1";
             panel1.Size = new Size(600, 105);
             panel1.TabIndex = 24;
@@ -81,7 +83,7 @@
             labelMessage.AutoSize = true;
             labelMessage.Font = new Font("Segoe UI", 17F, FontStyle.Regular, GraphicsUnit.Point);
             labelMessage.Location = new Point(75, 38);
-            labelMessage.MaximumSize = new Size(450, 80);
+            labelMessage.MaximumSize = new Size(550, 160);
             labelMessage.MinimumSize = new Size(450, 80);
             labelMessage.Name = "labelMessage";
             labelMessage.Size = new Size(450, 80);
@@ -92,11 +94,13 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(600, 250);
             Controls.Add(labelMessage);
             Controls.Add(buttonOK);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
+            MaximumSize = new Size(700, 330);
             Name = "FormMessage";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormMessage";
