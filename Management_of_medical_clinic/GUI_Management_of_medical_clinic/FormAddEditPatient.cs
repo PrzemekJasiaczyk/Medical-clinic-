@@ -77,24 +77,26 @@ namespace GUI_Management_of_medical_clinic
                 
             }
 
-            if(ErrorProviderPESEL.GetError(maskedTextBoxPESEL) != "")
+            if (ErrorProviderPESEL.GetError(maskedTextBoxPESEL) != string.Empty)
             {
                 msg += "• " + ErrorProviderPESEL.GetError(maskedTextBoxPESEL) + "\n";
+
             }
 
             if (ErrorProviderBirthDate.GetError(dateTimePickerBirthDate) != string.Empty)
             {
                 msg += "• " + ErrorProviderBirthDate.GetError(dateTimePickerBirthDate);
+
             }
 
             FormMessage formMessage = new FormMessage(msg);
 
-            //formMessage.Size=formMessage.MaximumSize;
-            //formMessage.Controls["buttonOK"].Size = formMessage.Controls["buttonOK"].MaximumSize;
-            //formMessage.Controls["panel1"].Size = formMessage.Controls["panel1"].MaximumSize;
+            formMessage.Size=formMessage.MaximumSize;
+            formMessage.Controls["buttonOK"].Size = formMessage.Controls["buttonOK"].MaximumSize;
+            formMessage.Controls["panel1"].Size = formMessage.Controls["panel1"].MaximumSize;
 
-            //formMessage.Controls["buttonOK"].Location = new Point(75, 250);
-            //formMessage.Controls["panel1"].Location = new Point(0, 225);
+            formMessage.Controls["buttonOK"].Location = new Point(75, 250);
+            formMessage.Controls["panel1"].Location = new Point(0, 225);
 
             formMessage.ShowDialog();
 
