@@ -81,7 +81,7 @@
             labelMessage.AutoSize = true;
             labelMessage.Font = new Font("Segoe UI", 17F, FontStyle.Regular, GraphicsUnit.Point);
             labelMessage.Location = new Point(75, 38);
-            labelMessage.MaximumSize = new Size(450, 80);
+            labelMessage.MaximumSize = new Size(550, 160);
             labelMessage.MinimumSize = new Size(450, 80);
             labelMessage.Name = "labelMessage";
             labelMessage.Size = new Size(450, 80);
