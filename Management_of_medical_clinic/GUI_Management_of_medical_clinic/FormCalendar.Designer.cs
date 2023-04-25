@@ -44,7 +44,8 @@
             buttonNextMonth = new Button();
             buttonPreviousMonth = new Button();
             buttonToday = new Button();
-            label8 = new Label();
+            labelDate = new Label();
+            buttonAddAppointment = new Button();
             panelMenu.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -231,21 +232,32 @@
             buttonToday.UseVisualStyleBackColor = true;
             buttonToday.Click += buttonToday_Click;
             // 
-            // label8
+            // labelDate
             // 
-            label8.AutoSize = true;
-            label8.Location = new Point(1660, 293);
-            label8.Name = "label8";
-            label8.Size = new Size(163, 15);
-            label8.TabIndex = 1;
-            label8.Text = "Miejsce na wyświetlanie wizyt";
+            labelDate.AutoSize = true;
+            labelDate.Location = new Point(1698, 521);
+            labelDate.Name = "labelDate";
+            labelDate.Size = new Size(64, 15);
+            labelDate.TabIndex = 1;
+            labelDate.Text = "Select date";
+            // 
+            // buttonAddAppointment
+            // 
+            buttonAddAppointment.Location = new Point(1628, 620);
+            buttonAddAppointment.Name = "buttonAddAppointment";
+            buttonAddAppointment.Size = new Size(225, 78);
+            buttonAddAppointment.TabIndex = 15;
+            buttonAddAppointment.Text = "Add appointment";
+            buttonAddAppointment.UseVisualStyleBackColor = true;
+            buttonAddAppointment.Click += buttonAddAppointment_Click;
             // 
             // FormCalendar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1920, 1080);
-            Controls.Add(label8);
+            Controls.Add(buttonAddAppointment);
+            Controls.Add(labelDate);
             Controls.Add(flowLayoutPanelMonth);
             Controls.Add(buttonToday);
             Controls.Add(buttonPreviousMonth);
@@ -290,6 +302,7 @@
         private Button buttonToday;
         private Button buttonExit;
         private Label label7;
-        private Label label8;
+        private Label labelDate;
+        private Button buttonAddAppointment;
     }
 }

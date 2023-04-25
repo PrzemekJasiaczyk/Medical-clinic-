@@ -12,11 +12,15 @@ namespace Calendar
 {
     public partial class UserControlDay : UserControl
     {
-        DateTime selectedDate;
+        public DateTime selectedDate;
 
-        public UserControlDay(DateTime selectedDate)
+        public delegate void ControlClickedEventHandler(object sender, DateTime selectedDate);
+        public event ControlClickedEventHandler ControlClicked;
+
+
+        public UserControlDay(DateTime selecteddate)
         {
-            this.selectedDate = selectedDate;
+            selectedDate = selecteddate;
             InitializeComponent();
         }
 
@@ -27,9 +31,7 @@ namespace Calendar
 
         private void UserControlDay_MouseClick(object sender, MouseEventArgs e)
         {
-
-            string str = "Wybrana data to: "+ selectedDate.Date.ToString();
-            MessageBox.Show(str);
+            ControlClicked?.Invoke(this, selectedDate);
         }
     }
 }

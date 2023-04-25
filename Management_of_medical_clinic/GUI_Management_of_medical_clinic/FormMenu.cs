@@ -18,10 +18,14 @@ namespace GUI_Management_of_medical_clinic
 
         }
 
+        
+
         private void buttonOpenEmployeeList_Click(object sender, EventArgs e)
         {
             string login = textBoxLogin.Text;
             string password = textBoxPassword.Text;
+
+       
 
             List<UserModel> users = UserService.GetUsersData();
 
@@ -61,6 +65,8 @@ namespace GUI_Management_of_medical_clinic
             string login = textBoxLogin.Text;
             string password = textBoxPassword.Text;
 
+            
+
             List<UserModel> users = UserService.GetUsersData();
 
             foreach (UserModel user in users)
@@ -80,7 +86,7 @@ namespace GUI_Management_of_medical_clinic
                 }
             }
 
-            MessageBox.Show("Incorrect login or password");
+            MessageBox.Show("Incorrect login or password"); 
         }
 
         private void textBoxLogin_TextChanged(object sender, EventArgs e)
@@ -158,8 +164,38 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonKalendarz_Click(object sender, EventArgs e)
         {
-            FormCalendar formCalendar = new FormCalendar();
-            formCalendar.ShowDialog();
+
+
+            string login = textBoxLogin.Text;
+            string password = textBoxPassword.Text;
+
+
+
+            List<UserModel> users = UserService.GetUsersData();
+
+            foreach (UserModel user in users)
+            {
+
+                if (user.Username == login && user.Password == password)
+
+                {
+                    EmployeeModel employee = EmployeeService.GetEmployeeByUserId(user);
+                    if (employee != null)
+                    {
+                        FormCalendar formCalendar = new FormCalendar(employee);
+                        this.Hide();
+                        formCalendar.ShowDialog();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("User isn't linked to an employee account\nLog in unsuccessful");
+                        return;
+                    }
+                }
+            }
+
+            MessageBox.Show("Incorrect login or password");
         }
     }
 }
