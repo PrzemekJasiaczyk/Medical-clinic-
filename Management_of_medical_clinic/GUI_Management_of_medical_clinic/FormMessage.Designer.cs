@@ -93,11 +93,13 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(600, 250);
             Controls.Add(labelMessage);
             Controls.Add(buttonOK);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
+            MaximumSize = new Size(700, 330);
             Name = "FormMessage";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormMessage";
