@@ -46,6 +46,7 @@
             buttonOK.Font = new Font("Tw Cen MT Condensed Extra Bold", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
             buttonOK.ForeColor = SystemColors.Control;
             buttonOK.Location = new Point(75, 170);
+            buttonOK.MaximumSize = new Size(550, 55);
             buttonOK.Name = "buttonOK";
             buttonOK.Size = new Size(450, 55);
             buttonOK.TabIndex = 20;
