@@ -59,6 +59,7 @@
             panel1.BackColor = SystemColors.ActiveCaption;
             panel1.Controls.Add(button2);
             panel1.Location = new Point(0, 145);
+            panel1.MaximumSize = new Size(700, 105);
             panel1.Name = "panel1";
             panel1.Size = new Size(600, 105);
             panel1.TabIndex = 24;
