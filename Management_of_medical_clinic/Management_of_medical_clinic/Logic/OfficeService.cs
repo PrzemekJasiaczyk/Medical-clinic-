@@ -10,6 +10,7 @@ namespace Console_Management_of_medical_clinic.Logic
 {
     public class OfficeService
     {
+        
         public static List<OfficeModel> GetOfficesData()
         {
             List<OfficeModel> offices;
@@ -63,5 +64,6 @@ namespace Console_Management_of_medical_clinic.Logic
                 context.SaveChanges();
             }
         }
+     
     }
 }

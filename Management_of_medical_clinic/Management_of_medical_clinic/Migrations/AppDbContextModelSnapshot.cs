@@ -16,6 +16,68 @@ namespace Console_Management_of_medical_clinic.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.17");
 
+            modelBuilder.Entity("Console_Management_of_medical_clinic.Model.AppointmentModel", b =>
+                {
+                    b.Property<int>("IdAppointment")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("Cost")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("IdCalendar")
+                        .IsRequired()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("IdEmployee")
+                        .IsRequired()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("IdOffice")
+                        .IsRequired()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("IdTerm")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("PatientId")
+                        .IsRequired()
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("IdAppointment");
+
+                    b.HasIndex("IdCalendar");
+
+                    b.HasIndex("IdEmployee");
+
+                    b.HasIndex("IdOffice");
+
+                    b.HasIndex("PatientId");
+
+                    b.ToTable("DbAppointments");
+                });
+
+            modelBuilder.Entity("Console_Management_of_medical_clinic.Model.CalendarModel", b =>
+                {
+                    b.Property<int>("IdCalendar")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("Active")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("DateReference")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("IdCalendar");
+
+                    b.ToTable("DbCalendars");
+                });
+
             modelBuilder.Entity("Console_Management_of_medical_clinic.Model.EmployeeModel", b =>
                 {
                     b.Property<int>("IdEmployee")
@@ -269,6 +331,41 @@ namespace Console_Management_of_medical_clinic.Migrations
                     b.ToTable("Visit");
                 });
 
+            modelBuilder.Entity("Console_Management_of_medical_clinic.Model.AppointmentModel", b =>
+                {
+                    b.HasOne("Console_Management_of_medical_clinic.Model.CalendarModel", "CalendarModel")
+                        .WithMany("AppointmentModels")
+                        .HasForeignKey("IdCalendar")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Console_Management_of_medical_clinic.Model.EmployeeModel", "EmployeeModel")
+                        .WithMany()
+                        .HasForeignKey("IdEmployee")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Console_Management_of_medical_clinic.Model.OfficeModel", "OfficeModel")
+                        .WithMany()
+                        .HasForeignKey("IdOffice")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Console_Management_of_medical_clinic.Model.Patient", "Patient")
+                        .WithMany()
+                        .HasForeignKey("PatientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CalendarModel");
+
+                    b.Navigation("EmployeeModel");
+
+                    b.Navigation("OfficeModel");
+
+                    b.Navigation("Patient");
+                });
+
             modelBuilder.Entity("Console_Management_of_medical_clinic.Model.EmployeeModel", b =>
                 {
                     b.HasOne("Console_Management_of_medical_clinic.Model.SpecializationModel", "SpecializationModel")
@@ -281,7 +378,7 @@ namespace Console_Management_of_medical_clinic.Migrations
             modelBuilder.Entity("Console_Management_of_medical_clinic.Model.OfficeModel", b =>
                 {
                     b.HasOne("Console_Management_of_medical_clinic.Model.SpecializationModel", "SpecializationModel")
-                        .WithMany("officeModels")
+                        .WithMany()
                         .HasForeignKey("IdSpecialization")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -315,6 +412,11 @@ namespace Console_Management_of_medical_clinic.Migrations
                     b.Navigation("Patient");
                 });
 
+            modelBuilder.Entity("Console_Management_of_medical_clinic.Model.CalendarModel", b =>
+                {
+                    b.Navigation("AppointmentModels");
+                });
+
             modelBuilder.Entity("Console_Management_of_medical_clinic.Model.EmployeeModel", b =>
                 {
                     b.Navigation("UserModel");
@@ -330,8 +432,6 @@ namespace Console_Management_of_medical_clinic.Migrations
             modelBuilder.Entity("Console_Management_of_medical_clinic.Model.SpecializationModel", b =>
                 {
                     b.Navigation("EmployeeModels");
-
-                    b.Navigation("officeModels");
                 });
 #pragma warning restore 612, 618
         }

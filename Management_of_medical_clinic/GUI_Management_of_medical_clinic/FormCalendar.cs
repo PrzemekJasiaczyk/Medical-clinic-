@@ -1,12 +1,17 @@
+using Console_Management_of_medical_clinic.Model;
 using GUI_Management_of_medical_clinic;
+using System.Drawing.Text;
+using System.Windows.Forms;
 
 namespace Calendar
 {
     public partial class FormCalendar : Form
     {
-        public FormCalendar()
+        EmployeeModel currentEmployee;
+        public FormCalendar(EmployeeModel currentEmployee)
         {
             InitializeComponent();
+            this.currentEmployee = currentEmployee;
         }
 
         DateTime displayMonth = DateTime.Today;
@@ -71,6 +76,7 @@ namespace Calendar
         }
 
 
+
         private void displayDays(DateTime date)
         {
             // bierzemy pierwszy dzieñ miesi¹ca
@@ -98,6 +104,9 @@ namespace Calendar
                 DateTime day = new DateTime(date.Year, date.Month, i);
 
                 UserControlDay userControlDay = new UserControlDay(day);
+
+                userControlDay.ControlClicked += UserControlDay_ControlClicked;
+
                 flowLayoutPanelMonth.Controls.Add(userControlDay);
             }
 
@@ -109,12 +118,32 @@ namespace Calendar
                 UserControlBlank userControlBlank = new UserControlBlank();
                 flowLayoutPanelMonth.Controls.Add(userControlBlank);
             }
+
+
         }
 
+        private void UserControlDay_ControlClicked(object sender, DateTime selectedDate)   // Date From UserControlDay
+        {
+            labelDate.Text = selectedDate.ToString();
+        }
 
 
         #endregion
 
 
+        private void buttonAddAppointment_Click(object sender, EventArgs e)
+        {
+            if (labelDate.Text == "Select date") { MessageBox.Show("Choose term"); return; }
+
+            FormAppointmentAdd formAppointmentAdd = new FormAppointmentAdd(DateTime.Parse(labelDate.Text), currentEmployee);
+            //this.Hide();
+            formAppointmentAdd.ShowDialog();
+            //this.Close();
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

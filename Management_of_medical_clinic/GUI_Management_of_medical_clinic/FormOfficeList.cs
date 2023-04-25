@@ -29,6 +29,7 @@ namespace GUI_Management_of_medical_clinic
 
         public void LoadOfficeData()
         {
+            
             dataGridViewOffices.DataSource = null;
 
             dataGridViewOffices.Rows.Clear();
@@ -67,6 +68,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonEditOffice_Click(object sender, EventArgs e)
         {
+            
             FormOfficeEdit officeEdit = new FormOfficeEdit(currentUser, OfficeService.GetOfficeById((int)dataGridViewOffices.CurrentRow.Cells[0].Value));
             officeEdit.ShowDialog();
             Close();
@@ -74,6 +76,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonRemoveOffice_Click(object sender, EventArgs e)
         {
+            
             //There will be checking statement if this room reserved for the future or not
 
             FormDeletingConfirmation delete = new FormDeletingConfirmation(OfficeService.GetOfficeById((int)dataGridViewOffices.CurrentRow.Cells[0].Value));

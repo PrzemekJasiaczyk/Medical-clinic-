@@ -11,7 +11,9 @@ namespace Console_Management_of_medical_clinic.Model
 {
     public class OfficeModel
     {
+
         [Key] public int IdOffice { get; set; }
+        
         public int Number { get; set; }
         public bool Status { get; set; }
         public string Info { get; set; }
@@ -33,5 +35,6 @@ namespace Console_Management_of_medical_clinic.Model
         {
             return Number.ToString() + " - " + Status + " - " + Info;
         }
+        
     }
 }
