@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Console_Management_of_medical_clinic.Data.EntityTypeConfigurations
 {
+    // TODO: Follow changes in Visit class
     public class VisitEntityTypeConfiguration : IEntityTypeConfiguration<Visit>
     {
         public void Configure(EntityTypeBuilder<Visit> builder)
@@ -40,12 +41,6 @@ namespace Console_Management_of_medical_clinic.Data.EntityTypeConfigurations
             builder
                 .Property(v => v.EmployeeId)
                 .HasColumnName("IdEmployee");
-
-            // Office class will be created in the future
-            //builder
-            //    .Property(v => v.OfficeId)
-            //    .IsRequired(false)
-            //    .HasColumnname("IdOffice");
 
             builder
                 .Property(v => v.VisitDate)

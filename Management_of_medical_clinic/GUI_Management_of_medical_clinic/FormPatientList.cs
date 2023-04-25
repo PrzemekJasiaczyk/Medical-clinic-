@@ -33,90 +33,9 @@ namespace GUI_Management_of_medical_clinic
             currentUser = employee;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonSort_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox2_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonClear_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonShow_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBoxDate_CheckedChanged(object sender, EventArgs e)
-        {
-
-
-        }
-
-        private void checkBoxPesel_CheckedChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void checkBoxName_CheckedChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FormPatientList_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridViewPatientList_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         public void DisplayPatientsList()
         {
             dataGridViewPatientList.DataSource = patientService.GetPatientData();
-
-
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
@@ -214,18 +133,6 @@ namespace GUI_Management_of_medical_clinic
             Hide();
             formAddEditPatient.ShowDialog();
 
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
         }
 
 		public List<Patient> GetSortedPatientData()

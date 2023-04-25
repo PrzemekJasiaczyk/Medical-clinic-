@@ -38,25 +38,14 @@ namespace Console_Management_of_medical_clinic.Logic
 
             if (!string.IsNullOrEmpty(PESEL))
             {
-				filteredPatients = 
+                filteredPatients =
                     filteredPatients
                     .Where(
-                        p => 
-                        p.PESEL == PESEL
+                        p =>
+                        p.PESEL.Contains(PESEL)
                         )
                     .ToList();
 			}
-
-			//if (!string.IsNullOrEmpty(firstname))
-			//{
-			//	FilteredPatients = FilteredPatients.Where(p => p.FirstName.Contains(firstname)).ToList();
-			//}
-
-			//if (!string.IsNullOrEmpty(PESEL))
-			//{
-			//	FilteredPatients = FilteredPatients.Where(p => Patient.FindPatient(p.PatientId).PESEL.Contains(PESEL)).ToList();
-			//}
-
 
 			return filteredPatients;
 		}
