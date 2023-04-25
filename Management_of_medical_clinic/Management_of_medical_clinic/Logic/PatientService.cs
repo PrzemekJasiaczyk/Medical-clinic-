@@ -16,23 +16,49 @@ namespace Console_Management_of_medical_clinic.Logic
         }
 
 
-		public List<Patient> FilterPatient(string firstname, string PESEL)
+		public List<Patient> FilterPatient(string searchedText, string PESEL)
 		{
 			PatientService patientService = new PatientService();
-			List<Patient> FilteredPatients = patientService.GetPatientData();
+			List<Patient> filteredPatients = patientService.GetPatientData();
 
-			if (!string.IsNullOrEmpty(firstname))
-			{
-				FilteredPatients = FilteredPatients.Where(p => p.FirstName.Contains(firstname)).ToList();
+            if (!string.IsNullOrEmpty(searchedText))
+            {
+				searchedText = searchedText.ToLower();
+
+                filteredPatients =
+                    filteredPatients
+                    .Where(
+                        p =>
+                        (p.FirstName + " " + p.LastName)
+                            .ToLower()
+                            .Contains(searchedText)
+                        )
+                    .ToList();
+			}    
+
+            if (!string.IsNullOrEmpty(PESEL))
+            {
+				filteredPatients = 
+                    filteredPatients
+                    .Where(
+                        p => 
+                        p.PESEL == PESEL
+                        )
+                    .ToList();
 			}
 
-			if (!string.IsNullOrEmpty(PESEL))
-			{
-				FilteredPatients = FilteredPatients.Where(p => Patient.FindPatient(p.PatientId).PESEL.Contains(PESEL)).ToList();
-			}
+			//if (!string.IsNullOrEmpty(firstname))
+			//{
+			//	FilteredPatients = FilteredPatients.Where(p => p.FirstName.Contains(firstname)).ToList();
+			//}
+
+			//if (!string.IsNullOrEmpty(PESEL))
+			//{
+			//	FilteredPatients = FilteredPatients.Where(p => Patient.FindPatient(p.PatientId).PESEL.Contains(PESEL)).ToList();
+			//}
 
 
-			return FilteredPatients;
+			return filteredPatients;
 		}
 
 		public bool IsValidName(string patientName, out string errorMessage)
