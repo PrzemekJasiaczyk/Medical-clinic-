@@ -235,15 +235,16 @@
             // labelDate
             // 
             labelDate.AutoSize = true;
-            labelDate.Location = new Point(1698, 521);
+            labelDate.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
+            labelDate.Location = new Point(1643, 347);
             labelDate.Name = "labelDate";
-            labelDate.Size = new Size(64, 15);
+            labelDate.Size = new Size(188, 45);
             labelDate.TabIndex = 1;
-            labelDate.Text = "Select date";
+            labelDate.Text = "Select term";
             // 
             // buttonAddAppointment
             // 
-            buttonAddAppointment.Location = new Point(1628, 620);
+            buttonAddAppointment.Location = new Point(1628, 946);
             buttonAddAppointment.Name = "buttonAddAppointment";
             buttonAddAppointment.Size = new Size(225, 78);
             buttonAddAppointment.TabIndex = 15;
