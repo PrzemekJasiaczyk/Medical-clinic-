@@ -37,10 +37,9 @@
 			buttonOpenUserList = new Button();
 			label1 = new Label();
 			panelLogIn = new Panel();
+			buttonOpenCalendarsList = new Button();
 			buttonOpenPatientsList = new Button();
 			buttonOfficeList = new Button();
-			buttonKalendarz = new Button();
-			buttonOpenCalendarsList = new Button();
 			panel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
 			panelLogIn.SuspendLayout();
@@ -174,6 +173,24 @@
 			panelLogIn.Size = new Size(598, 725);
 			panelLogIn.TabIndex = 10;
 			// 
+			// buttonOpenCalendarsList
+			// 
+			buttonOpenCalendarsList.Anchor = AnchorStyles.None;
+			buttonOpenCalendarsList.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+			buttonOpenCalendarsList.BackColor = Color.Gray;
+			buttonOpenCalendarsList.Enabled = false;
+			buttonOpenCalendarsList.FlatAppearance.BorderColor = Color.AntiqueWhite;
+			buttonOpenCalendarsList.FlatAppearance.BorderSize = 5;
+			buttonOpenCalendarsList.FlatStyle = FlatStyle.Flat;
+			buttonOpenCalendarsList.Font = new Font("Microsoft Sans Serif", 19F, FontStyle.Regular, GraphicsUnit.Point);
+			buttonOpenCalendarsList.Location = new Point(147, 634);
+			buttonOpenCalendarsList.Name = "buttonOpenCalendarsList";
+			buttonOpenCalendarsList.Size = new Size(325, 61);
+			buttonOpenCalendarsList.TabIndex = 12;
+			buttonOpenCalendarsList.Text = "CALENDARS LIST";
+			buttonOpenCalendarsList.UseVisualStyleBackColor = false;
+			buttonOpenCalendarsList.Click += buttonOpenCalendarsList_Click;
+			// 
 			// buttonOpenPatientsList
 			// 
 			buttonOpenPatientsList.Anchor = AnchorStyles.None;
@@ -210,34 +227,6 @@
 			buttonOfficeList.UseVisualStyleBackColor = false;
 			buttonOfficeList.Click += buttonOfficeList_Click;
 			// 
-			// buttonKalendarz
-			// 
-			buttonKalendarz.Location = new Point(382, 670);
-			buttonKalendarz.Name = "buttonKalendarz";
-			buttonKalendarz.Size = new Size(159, 68);
-			buttonKalendarz.TabIndex = 11;
-			buttonKalendarz.Text = "Kalendarz";
-			buttonKalendarz.UseVisualStyleBackColor = true;
-			buttonKalendarz.Click += buttonKalendarz_Click;
-			// 
-			// buttonOpenCalendarsList
-			// 
-			buttonOpenCalendarsList.Anchor = AnchorStyles.None;
-			buttonOpenCalendarsList.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-			buttonOpenCalendarsList.BackColor = Color.Gray;
-			buttonOpenCalendarsList.Enabled = false;
-			buttonOpenCalendarsList.FlatAppearance.BorderColor = Color.AntiqueWhite;
-			buttonOpenCalendarsList.FlatAppearance.BorderSize = 5;
-			buttonOpenCalendarsList.FlatStyle = FlatStyle.Flat;
-			buttonOpenCalendarsList.Font = new Font("Microsoft Sans Serif", 19F, FontStyle.Regular, GraphicsUnit.Point);
-			buttonOpenCalendarsList.Location = new Point(147, 634);
-			buttonOpenCalendarsList.Name = "buttonOpenCalendarsList";
-			buttonOpenCalendarsList.Size = new Size(325, 61);
-			buttonOpenCalendarsList.TabIndex = 12;
-			buttonOpenCalendarsList.Text = "CALENDARS LIST";
-			buttonOpenCalendarsList.UseVisualStyleBackColor = false;
-			buttonOpenCalendarsList.Click += buttonOpenCalendarsList_Click;
-			// 
 			// FormMenu
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
@@ -245,7 +234,6 @@
 			BackgroundImage = Properties.Resources.Website_Headers_5;
 			BackgroundImageLayout = ImageLayout.Stretch;
 			ClientSize = new Size(1920, 1080);
-			Controls.Add(buttonKalendarz);
 			Controls.Add(panelLogIn);
 			Controls.Add(panel2);
 			DoubleBuffered = true;
@@ -275,7 +263,6 @@
 		private Panel panelLogIn;
 		private Button buttonOfficeList;
 		private Button buttonOpenPatientsList;
-		private Button buttonKalendarz;
 		private Button buttonOpenCalendarsList;
 	}
 }

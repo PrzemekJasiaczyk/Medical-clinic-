@@ -8,13 +8,16 @@ namespace GUI_Management_of_medical_clinic
 	{
 		EmployeeModel currentUser;
 		CalendarService _calendarService = new();
+		List<string> statusList = new List<string>()
+		{ "Active", "Inactive", "" };
 
 		public FormCalendarsList(EmployeeModel currentUser)
 		{
 			this.currentUser = currentUser;
 			InitializeComponent();
 			dataGridViewCalendars.DataSource = _calendarService.GetAll();
-			comboBoxStatus.DataSource = ("Active", "Inactive", "");
+			comboBoxStatus.DataSource = statusList;
+			comboBoxStatus.SelectedIndex = 2;
 		}
 
 		private void buttonLogOut_Click(object sender, EventArgs e)

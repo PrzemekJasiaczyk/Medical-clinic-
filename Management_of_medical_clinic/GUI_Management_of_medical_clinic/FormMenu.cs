@@ -166,42 +166,6 @@ namespace GUI_Management_of_medical_clinic
 			MessageBox.Show("Incorrect login or password");
 		}
 
-		private void buttonKalendarz_Click(object sender, EventArgs e)
-		{
-
-
-			string login = textBoxLogin.Text;
-			string password = textBoxPassword.Text;
-
-
-
-			List<UserModel> users = UserService.GetUsersData();
-
-			foreach (UserModel user in users)
-			{
-
-				if (user.Username == login && user.Password == password)
-
-				{
-					EmployeeModel employee = EmployeeService.GetEmployeeByUserId(user);
-					if (employee != null)
-					{
-						FormCalendar formCalendar = new FormCalendar(employee);
-						this.Hide();
-						formCalendar.ShowDialog();
-						this.Close();
-					}
-					else
-					{
-						MessageBox.Show("User isn't linked to an employee account\nLog in unsuccessful");
-						return;
-					}
-				}
-			}
-
-			MessageBox.Show("Incorrect login or password");
-		}
-
 		private void buttonOpenCalendarsList_Click(object sender, EventArgs e)
 		{
 			string login = textBoxLogin.Text;
