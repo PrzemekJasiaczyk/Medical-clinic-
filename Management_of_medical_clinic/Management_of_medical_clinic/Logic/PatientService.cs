@@ -16,23 +16,38 @@ namespace Console_Management_of_medical_clinic.Logic
         }
 
 
-		public List<Patient> FilterPatient(string firstname, string PESEL)
+		public List<Patient> FilterPatient(string searchedText, string PESEL)
 		{
 			PatientService patientService = new PatientService();
-			List<Patient> FilteredPatients = patientService.GetPatientData();
+			List<Patient> filteredPatients = patientService.GetPatientData();
 
-			if (!string.IsNullOrEmpty(firstname))
-			{
-				FilteredPatients = FilteredPatients.Where(p => p.FirstName.Contains(firstname)).ToList();
+            if (!string.IsNullOrEmpty(searchedText))
+            {
+				searchedText = searchedText.ToLower();
+
+                filteredPatients =
+                    filteredPatients
+                    .Where(
+                        p =>
+                        (p.FirstName + " " + p.LastName)
+                            .ToLower()
+                            .Contains(searchedText)
+                        )
+                    .ToList();
+			}    
+
+            if (!string.IsNullOrEmpty(PESEL))
+            {
+                filteredPatients =
+                    filteredPatients
+                    .Where(
+                        p =>
+                        p.PESEL.Contains(PESEL)
+                        )
+                    .ToList();
 			}
 
-			if (!string.IsNullOrEmpty(PESEL))
-			{
-				FilteredPatients = FilteredPatients.Where(p => Patient.FindPatient(p.PatientId).PESEL.Contains(PESEL)).ToList();
-			}
-
-
-			return FilteredPatients;
+			return filteredPatients;
 		}
 
 		public bool IsValidName(string patientName, out string errorMessage)
@@ -147,9 +162,30 @@ namespace Console_Management_of_medical_clinic.Logic
 				errorMessage = "PESEL or gender are incorrect. They don't match.";
 				return false;
             }
-            
-            // Uniqueness checking
-            using (AppDbContext context = new())
+
+            // Last digit checking
+            // Rules for that https://obywatel.gov.pl/pl/dokumenty-i-dane-osobowe/czym-jest-numer-pesel
+            // Example: for PESEL starting as 0207080362x, x = 8
+			int[] weights = { 1, 3, 7, 9, 1, 3, 7, 9, 1, 3 };
+			int sum = 0;
+            int lastNumber = int.Parse(pesel[10].ToString());
+
+			for (int i = 0; i < 10; i++)
+			{
+				int digit = int.Parse(pesel[i].ToString());
+				sum += ((digit * weights[i]) % 10);
+			}
+
+			int controlNumber = (10 - (sum % 10)) % 10;
+
+            if (controlNumber != lastNumber)
+            {
+                errorMessage = $"Control number in PESEL is incorrect. It should be {controlNumber} at the end.";
+                return false;
+            }
+
+			// Uniqueness checking
+			using (AppDbContext context = new())
             {
                 bool patientExist = context.Patients.Any(p => p.PESEL == pesel);
 

@@ -118,7 +118,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(357, 1080);
             panel1.TabIndex = 29;
-            panel1.Paint += panel1_Paint;
             // 
             // button_ShowDetails
             // 
@@ -216,7 +215,6 @@
             label4.Size = new Size(17, 18);
             label4.TabIndex = 42;
             label4.Text = "_";
-            label4.Click += label4_Click;
             // 
             // dateTimePicker2
             // 
@@ -227,7 +225,6 @@
             dateTimePicker2.Name = "dateTimePicker2";
             dateTimePicker2.Size = new Size(98, 25);
             dateTimePicker2.TabIndex = 41;
-            dateTimePicker2.ValueChanged += dateTimePicker2_ValueChanged;
             // 
             // dateTimePicker1
             // 
@@ -238,7 +235,6 @@
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(98, 25);
             dateTimePicker1.TabIndex = 39;
-            dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
             // 
             // TextBox_PESEL
             // 
@@ -282,8 +278,6 @@
             dataGridViewPatientList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewPatientList.Size = new Size(1567, 1060);
             dataGridViewPatientList.TabIndex = 30;
-            dataGridViewPatientList.CellContentClick += dataGridViewPatientList_CellContentClick;
-            dataGridViewPatientList.CellContentDoubleClick += dataGridViewPatientList_CellContentClick;
             // 
             // panel2
             // 
@@ -304,7 +298,6 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(1567, 77);
             panel2.TabIndex = 31;
-            panel2.Paint += panel2_Paint;
             // 
             // buttonClearFilters
             // 
@@ -404,7 +397,6 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormPatientList";
             WindowState = FormWindowState.Maximized;
-            Load += FormPatientList_Load;
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewPatientList).EndInit();

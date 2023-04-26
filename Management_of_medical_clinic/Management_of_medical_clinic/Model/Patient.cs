@@ -18,11 +18,9 @@ namespace Console_Management_of_medical_clinic.Model
         public string PESEL { get; set; }
 
         public EnumSex Sex { get; set; }
-        public DateTime BirthDate { get; set; } // TODO: Check if a date is not later than today
+        public DateTime BirthDate { get; set; }
         public bool IsActive { get; set; }
         public DateTime? LastVisitDate;
-        // TODO: LastVisitDate - autogenerate
-        // Visits?.Where(v => v.Date <= DateTime.Today).OrderByDescending(v => v.Date).FirstOrDefault()?.Date;
 
         public List<Visit> Visits { get; set; } = new List<Visit>();
 
