@@ -46,7 +46,7 @@ namespace GUI_Management_of_medical_clinic
 
 		private void buttonFilterCalendars_Click(object sender, EventArgs e)
 		{
-			dataGridViewCalendars.DataSource = _calendarService.Filter(textBoxDateReference.Text, comboBoxStatus.SelectedText);
+			dataGridViewCalendars.DataSource = _calendarService.Filter(textBoxDateReference.Text,(string)comboBoxStatus.SelectedValue);
 		}
 
 		private void buttonClearFilter_Click(object sender, EventArgs e)
