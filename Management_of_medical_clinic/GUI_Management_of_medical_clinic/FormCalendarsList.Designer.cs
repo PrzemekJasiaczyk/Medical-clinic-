@@ -40,6 +40,8 @@
 			buttonClearFilter = new Button();
 			comboBoxStatus = new ComboBox();
 			buttonFilterCalendars = new Button();
+			buttonSortAscending = new Button();
+			buttonSortDescending = new Button();
 			((System.ComponentModel.ISupportInitialize)dataGridViewCalendars).BeginInit();
 			panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -145,6 +147,8 @@
 			// panel2
 			// 
 			panel2.BackColor = Color.SteelBlue;
+			panel2.Controls.Add(buttonSortDescending);
+			panel2.Controls.Add(buttonSortAscending);
 			panel2.Controls.Add(textBoxDateReference);
 			panel2.Controls.Add(buttonClearFilter);
 			panel2.Controls.Add(comboBoxStatus);
@@ -156,7 +160,7 @@
 			// 
 			// textBoxDateReference
 			// 
-			textBoxDateReference.Location = new Point(146, 44);
+			textBoxDateReference.Location = new Point(54, 42);
 			textBoxDateReference.MaximumSize = new Size(271, 36);
 			textBoxDateReference.Name = "textBoxDateReference";
 			textBoxDateReference.Size = new Size(271, 23);
@@ -165,7 +169,7 @@
 			// buttonClearFilter
 			// 
 			buttonClearFilter.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
-			buttonClearFilter.Location = new Point(637, 139);
+			buttonClearFilter.Location = new Point(392, 144);
 			buttonClearFilter.Name = "buttonClearFilter";
 			buttonClearFilter.Size = new Size(307, 56);
 			buttonClearFilter.TabIndex = 18;
@@ -180,7 +184,7 @@
 			comboBoxStatus.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
 			comboBoxStatus.FormattingEnabled = true;
 			comboBoxStatus.Items.AddRange(new object[] { "MedicalDoctor", "Nurse", "Janitor", "Technitian" });
-			comboBoxStatus.Location = new Point(673, 31);
+			comboBoxStatus.Location = new Point(392, 42);
 			comboBoxStatus.Name = "comboBoxStatus";
 			comboBoxStatus.Size = new Size(271, 36);
 			comboBoxStatus.TabIndex = 13;
@@ -188,13 +192,35 @@
 			// buttonFilterCalendars
 			// 
 			buttonFilterCalendars.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
-			buttonFilterCalendars.Location = new Point(146, 139);
+			buttonFilterCalendars.Location = new Point(45, 144);
 			buttonFilterCalendars.Name = "buttonFilterCalendars";
 			buttonFilterCalendars.Size = new Size(280, 56);
 			buttonFilterCalendars.TabIndex = 14;
-			buttonFilterCalendars.Text = "Filtruj";
+			buttonFilterCalendars.Text = "Filter";
 			buttonFilterCalendars.UseVisualStyleBackColor = true;
 			buttonFilterCalendars.Click += buttonFilterCalendars_Click;
+			// 
+			// buttonSortAscending
+			// 
+			buttonSortAscending.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
+			buttonSortAscending.Location = new Point(766, 42);
+			buttonSortAscending.Name = "buttonSortAscending";
+			buttonSortAscending.Size = new Size(280, 56);
+			buttonSortAscending.TabIndex = 20;
+			buttonSortAscending.Text = "Sort Ascending";
+			buttonSortAscending.UseVisualStyleBackColor = true;
+			buttonSortAscending.Click += buttonSortAscending_Click;
+			// 
+			// buttonSortDescending
+			// 
+			buttonSortDescending.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
+			buttonSortDescending.Location = new Point(766, 144);
+			buttonSortDescending.Name = "buttonSortDescending";
+			buttonSortDescending.Size = new Size(280, 56);
+			buttonSortDescending.TabIndex = 21;
+			buttonSortDescending.Text = "SortDescending";
+			buttonSortDescending.UseVisualStyleBackColor = true;
+			buttonSortDescending.Click += buttonSortDescending_Click;
 			// 
 			// FormCalendarsList
 			// 
@@ -232,5 +258,7 @@
 		private Button buttonClearFilter;
 		private ComboBox comboBoxStatus;
 		private Button buttonFilterCalendars;
+		private Button buttonSortDescending;
+		private Button buttonSortAscending;
 	}
 }

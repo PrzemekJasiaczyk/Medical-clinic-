@@ -52,5 +52,15 @@ namespace GUI_Management_of_medical_clinic
 		{
 			dataGridViewCalendars.DataSource = _calendarService.GetAll();
 		}
+
+		private void buttonSortAscending_Click(object sender, EventArgs e)
+		{
+			dataGridViewCalendars.DataSource = _calendarService.Sort(textBoxDateReference.Text, true);
+		}
+
+		private void buttonSortDescending_Click(object sender, EventArgs e)
+		{
+			dataGridViewCalendars.DataSource = _calendarService.Sort(textBoxDateReference.Text, false);
+		}
 	}
 }
