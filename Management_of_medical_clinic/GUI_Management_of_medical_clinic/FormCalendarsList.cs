@@ -1,14 +1,5 @@
 ﻿using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace GUI_Management_of_medical_clinic
 {
@@ -21,6 +12,7 @@ namespace GUI_Management_of_medical_clinic
 		{
 			InitializeComponent();
 			dataGridViewCalendars.DataSource = _calendarService.GetAll();
+			comboBoxStatus.DataSource = ("Active", "Inactive", "");
 		}
 
 		public FormCalendarsList(EmployeeModel currentUser)
@@ -49,6 +41,16 @@ namespace GUI_Management_of_medical_clinic
 		private void buttonRemoveCalendar_Click(object sender, EventArgs e)
 		{
 			// TODO: Open a window with a confirmation if someone really wants to delete selected calendar
+		}
+
+		private void buttonFilterCalendars_Click(object sender, EventArgs e)
+		{
+			dataGridViewCalendars.DataSource = _calendarService.Filter(textBoxDateReference.Text, comboBoxStatus.SelectedText);
+		}
+
+		private void buttonClearFilter_Click(object sender, EventArgs e)
+		{
+			dataGridViewCalendars.DataSource = _calendarService.GetAll();
 		}
 	}
 }

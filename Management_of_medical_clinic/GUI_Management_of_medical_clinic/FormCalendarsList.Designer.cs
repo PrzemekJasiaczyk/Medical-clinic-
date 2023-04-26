@@ -35,9 +35,15 @@
 			buttonAddCalendar = new Button();
 			buttonEditCalendar = new Button();
 			buttonRemoveCalendar = new Button();
+			panel2 = new Panel();
+			textBoxDateReference = new TextBox();
+			buttonClearFilter = new Button();
+			comboBoxStatus = new ComboBox();
+			buttonFilterCalendars = new Button();
 			((System.ComponentModel.ISupportInitialize)dataGridViewCalendars).BeginInit();
 			panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+			panel2.SuspendLayout();
 			SuspendLayout();
 			// 
 			// dataGridViewCalendars
@@ -48,7 +54,7 @@
 			dataGridViewCalendars.BackgroundColor = SystemColors.Info;
 			dataGridViewCalendars.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			dataGridViewCalendars.GridColor = SystemColors.Info;
-			dataGridViewCalendars.Location = new Point(647, 148);
+			dataGridViewCalendars.Location = new Point(641, 96);
 			dataGridViewCalendars.Name = "dataGridViewCalendars";
 			dataGridViewCalendars.ReadOnly = true;
 			dataGridViewCalendars.RowHeadersVisible = false;
@@ -136,12 +142,67 @@
 			buttonRemoveCalendar.UseVisualStyleBackColor = false;
 			buttonRemoveCalendar.Click += buttonRemoveCalendar_Click;
 			// 
+			// panel2
+			// 
+			panel2.BackColor = Color.SteelBlue;
+			panel2.Controls.Add(textBoxDateReference);
+			panel2.Controls.Add(buttonClearFilter);
+			panel2.Controls.Add(comboBoxStatus);
+			panel2.Controls.Add(buttonFilterCalendars);
+			panel2.Location = new Point(630, 782);
+			panel2.Name = "panel2";
+			panel2.Size = new Size(1077, 237);
+			panel2.TabIndex = 40;
+			// 
+			// textBoxDateReference
+			// 
+			textBoxDateReference.Location = new Point(146, 44);
+			textBoxDateReference.MaximumSize = new Size(271, 36);
+			textBoxDateReference.Name = "textBoxDateReference";
+			textBoxDateReference.Size = new Size(271, 23);
+			textBoxDateReference.TabIndex = 19;
+			// 
+			// buttonClearFilter
+			// 
+			buttonClearFilter.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
+			buttonClearFilter.Location = new Point(637, 139);
+			buttonClearFilter.Name = "buttonClearFilter";
+			buttonClearFilter.Size = new Size(307, 56);
+			buttonClearFilter.TabIndex = 18;
+			buttonClearFilter.Text = "Clear filter";
+			buttonClearFilter.UseVisualStyleBackColor = true;
+			buttonClearFilter.Click += buttonClearFilter_Click;
+			// 
+			// comboBoxStatus
+			// 
+			comboBoxStatus.BackColor = Color.Gainsboro;
+			comboBoxStatus.DropDownStyle = ComboBoxStyle.DropDownList;
+			comboBoxStatus.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+			comboBoxStatus.FormattingEnabled = true;
+			comboBoxStatus.Items.AddRange(new object[] { "MedicalDoctor", "Nurse", "Janitor", "Technitian" });
+			comboBoxStatus.Location = new Point(673, 31);
+			comboBoxStatus.Name = "comboBoxStatus";
+			comboBoxStatus.Size = new Size(271, 36);
+			comboBoxStatus.TabIndex = 13;
+			// 
+			// buttonFilterCalendars
+			// 
+			buttonFilterCalendars.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
+			buttonFilterCalendars.Location = new Point(146, 139);
+			buttonFilterCalendars.Name = "buttonFilterCalendars";
+			buttonFilterCalendars.Size = new Size(280, 56);
+			buttonFilterCalendars.TabIndex = 14;
+			buttonFilterCalendars.Text = "Filtruj";
+			buttonFilterCalendars.UseVisualStyleBackColor = true;
+			buttonFilterCalendars.Click += buttonFilterCalendars_Click;
+			// 
 			// FormCalendarsList
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = SystemColors.Control;
 			ClientSize = new Size(1920, 1080);
+			Controls.Add(panel2);
 			Controls.Add(panel1);
 			Controls.Add(dataGridViewCalendars);
 			FormBorderStyle = FormBorderStyle.None;
@@ -152,6 +213,8 @@
 			((System.ComponentModel.ISupportInitialize)dataGridViewCalendars).EndInit();
 			panel1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+			panel2.ResumeLayout(false);
+			panel2.PerformLayout();
 			ResumeLayout(false);
 		}
 
@@ -164,5 +227,10 @@
 		private Button buttonAddCalendar;
 		private Button buttonEditCalendar;
 		private Button buttonRemoveCalendar;
+		private Panel panel2;
+		private TextBox textBoxDateReference;
+		private Button buttonClearFilter;
+		private ComboBox comboBoxStatus;
+		private Button buttonFilterCalendars;
 	}
 }
