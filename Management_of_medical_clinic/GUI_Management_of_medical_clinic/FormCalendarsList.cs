@@ -1,4 +1,5 @@
-﻿using Console_Management_of_medical_clinic.Logic;
+﻿using Calendar;
+using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
 
 namespace GUI_Management_of_medical_clinic
@@ -8,17 +9,12 @@ namespace GUI_Management_of_medical_clinic
 		EmployeeModel currentUser;
 		CalendarService _calendarService = new();
 
-		public FormCalendarsList()
-		{
-			InitializeComponent();
-			dataGridViewCalendars.DataSource = _calendarService.GetAll();
-			comboBoxStatus.DataSource = ("Active", "Inactive", "");
-		}
-
 		public FormCalendarsList(EmployeeModel currentUser)
 		{
 			this.currentUser = currentUser;
 			InitializeComponent();
+			dataGridViewCalendars.DataSource = _calendarService.GetAll();
+			comboBoxStatus.DataSource = ("Active", "Inactive", "");
 		}
 
 		private void buttonLogOut_Click(object sender, EventArgs e)
@@ -30,7 +26,9 @@ namespace GUI_Management_of_medical_clinic
 
 		private void buttonAddCalendar_Click(object sender, EventArgs e)
 		{
-			// TODO: Open create new calendar form
+			FormCalendar formCalendar = new(currentUser);
+			formCalendar.ShowDialog();
+			Close();
 		}
 
 		private void buttonEditCalendar_Click(object sender, EventArgs e)
