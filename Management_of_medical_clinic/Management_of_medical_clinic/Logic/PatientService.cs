@@ -15,11 +15,9 @@ namespace Console_Management_of_medical_clinic.Logic
             }
         }
 
-
 		public List<Patient> FilterPatient(string searchedText, string PESEL)
 		{
-			PatientService patientService = new PatientService();
-			List<Patient> filteredPatients = patientService.GetPatientData();
+			List<Patient> filteredPatients = GetPatientData();
 
             if (!string.IsNullOrEmpty(searchedText))
             {
