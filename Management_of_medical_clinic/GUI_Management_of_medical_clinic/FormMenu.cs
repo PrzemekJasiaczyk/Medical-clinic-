@@ -18,14 +18,14 @@ namespace GUI_Management_of_medical_clinic
 
         }
 
-        
+
 
         private void buttonOpenEmployeeList_Click(object sender, EventArgs e)
         {
             string login = textBoxLogin.Text;
             string password = textBoxPassword.Text;
 
-       
+
 
             List<UserModel> users = UserService.GetUsersData();
 
@@ -65,7 +65,7 @@ namespace GUI_Management_of_medical_clinic
             string login = textBoxLogin.Text;
             string password = textBoxPassword.Text;
 
-            
+
 
             List<UserModel> users = UserService.GetUsersData();
 
@@ -86,7 +86,7 @@ namespace GUI_Management_of_medical_clinic
                 }
             }
 
-            MessageBox.Show("Incorrect login or password"); 
+            MessageBox.Show("Incorrect login or password");
         }
 
         private void textBoxLogin_TextChanged(object sender, EventArgs e)
@@ -111,6 +111,8 @@ namespace GUI_Management_of_medical_clinic
                 buttonOfficeList.BackColor = Color.SteelBlue;
                 buttonOpenPatientsList.Enabled = true;
                 buttonOpenPatientsList.BackColor = Color.SteelBlue;
+                buttonCalnedar.Enabled = true;
+                buttonCalnedar.BackColor = Color.SteelBlue;
 
             }
             else
@@ -123,6 +125,8 @@ namespace GUI_Management_of_medical_clinic
                 buttonOfficeList.BackColor = Color.Gray;
                 buttonOpenPatientsList.Enabled = false;
                 buttonOpenPatientsList.BackColor = Color.Gray;
+                buttonCalnedar.Enabled = false;
+                buttonCalnedar.BackColor = Color.Gray;
             }
         }
 
@@ -196,6 +200,11 @@ namespace GUI_Management_of_medical_clinic
             }
 
             MessageBox.Show("Incorrect login or password");
+        }
+
+        private void panelLogIn_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

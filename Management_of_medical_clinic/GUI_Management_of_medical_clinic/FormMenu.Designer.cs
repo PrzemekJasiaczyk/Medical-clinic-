@@ -37,9 +37,9 @@
             buttonOpenUserList = new Button();
             label1 = new Label();
             panelLogIn = new Panel();
+            buttonCalnedar = new Button();
             buttonOpenPatientsList = new Button();
             buttonOfficeList = new Button();
-            buttonKalendarz = new Button();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panelLogIn.SuspendLayout();
@@ -55,7 +55,7 @@
             buttonOpenEmployeeList.FlatAppearance.BorderSize = 5;
             buttonOpenEmployeeList.FlatStyle = FlatStyle.Flat;
             buttonOpenEmployeeList.Font = new Font("Microsoft Sans Serif", 19F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonOpenEmployeeList.Location = new Point(147, 192);
+            buttonOpenEmployeeList.Location = new Point(134, 230);
             buttonOpenEmployeeList.Name = "buttonOpenEmployeeList";
             buttonOpenEmployeeList.Size = new Size(325, 125);
             buttonOpenEmployeeList.TabIndex = 2;
@@ -69,7 +69,7 @@
             textBoxLogin.BackColor = Color.MintCream;
             textBoxLogin.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point);
             textBoxLogin.ForeColor = SystemColors.MenuText;
-            textBoxLogin.Location = new Point(49, 28);
+            textBoxLogin.Location = new Point(49, 102);
             textBoxLogin.Multiline = true;
             textBoxLogin.Name = "textBoxLogin";
             textBoxLogin.PlaceholderText = "Login";
@@ -83,7 +83,7 @@
             textBoxPassword.BackColor = Color.MintCream;
             textBoxPassword.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point);
             textBoxPassword.ForeColor = SystemColors.MenuText;
-            textBoxPassword.Location = new Point(49, 90);
+            textBoxPassword.Location = new Point(49, 164);
             textBoxPassword.Multiline = true;
             textBoxPassword.Name = "textBoxPassword";
             textBoxPassword.PasswordChar = '*';
@@ -137,7 +137,7 @@
             buttonOpenUserList.FlatAppearance.BorderSize = 5;
             buttonOpenUserList.FlatStyle = FlatStyle.Flat;
             buttonOpenUserList.Font = new Font("Microsoft Sans Serif", 19F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonOpenUserList.Location = new Point(147, 332);
+            buttonOpenUserList.Location = new Point(134, 370);
             buttonOpenUserList.Name = "buttonOpenUserList";
             buttonOpenUserList.Size = new Size(325, 125);
             buttonOpenUserList.TabIndex = 8;
@@ -150,7 +150,7 @@
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(207, 153);
+            label1.Location = new Point(194, 41);
             label1.Name = "label1";
             label1.Size = new Size(194, 24);
             label1.TabIndex = 9;
@@ -160,6 +160,7 @@
             // 
             panelLogIn.BackColor = SystemColors.ControlLight;
             panelLogIn.BorderStyle = BorderStyle.FixedSingle;
+            panelLogIn.Controls.Add(buttonCalnedar);
             panelLogIn.Controls.Add(buttonOpenPatientsList);
             panelLogIn.Controls.Add(buttonOfficeList);
             panelLogIn.Controls.Add(buttonOpenEmployeeList);
@@ -169,8 +170,25 @@
             panelLogIn.Controls.Add(textBoxLogin);
             panelLogIn.Location = new Point(748, 223);
             panelLogIn.Name = "panelLogIn";
-            panelLogIn.Size = new Size(598, 615);
+            panelLogIn.Size = new Size(598, 763);
             panelLogIn.TabIndex = 10;
+            panelLogIn.Paint += panelLogIn_Paint;
+            // 
+            // buttonCalnedar
+            // 
+            buttonCalnedar.BackColor = Color.Gray;
+            buttonCalnedar.Enabled = false;
+            buttonCalnedar.FlatAppearance.BorderColor = Color.AntiqueWhite;
+            buttonCalnedar.FlatAppearance.BorderSize = 5;
+            buttonCalnedar.FlatStyle = FlatStyle.Flat;
+            buttonCalnedar.Font = new Font("Microsoft Sans Serif", 19F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonCalnedar.Location = new Point(134, 657);
+            buttonCalnedar.Name = "buttonCalnedar";
+            buttonCalnedar.Size = new Size(325, 55);
+            buttonCalnedar.TabIndex = 11;
+            buttonCalnedar.Text = "CALENDAR";
+            buttonCalnedar.UseVisualStyleBackColor = false;
+            buttonCalnedar.Click += buttonKalendarz_Click;
             // 
             // buttonOpenPatientsList
             // 
@@ -182,7 +200,7 @@
             buttonOpenPatientsList.FlatAppearance.BorderSize = 5;
             buttonOpenPatientsList.FlatStyle = FlatStyle.Flat;
             buttonOpenPatientsList.Font = new Font("Microsoft Sans Serif", 19F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonOpenPatientsList.Location = new Point(147, 541);
+            buttonOpenPatientsList.Location = new Point(134, 579);
             buttonOpenPatientsList.Name = "buttonOpenPatientsList";
             buttonOpenPatientsList.Size = new Size(325, 61);
             buttonOpenPatientsList.TabIndex = 11;
@@ -200,23 +218,13 @@
             buttonOfficeList.FlatAppearance.BorderSize = 5;
             buttonOfficeList.FlatStyle = FlatStyle.Flat;
             buttonOfficeList.Font = new Font("Microsoft Sans Serif", 19F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonOfficeList.Location = new Point(147, 474);
+            buttonOfficeList.Location = new Point(134, 512);
             buttonOfficeList.Name = "buttonOfficeList";
             buttonOfficeList.Size = new Size(325, 61);
             buttonOfficeList.TabIndex = 10;
             buttonOfficeList.Text = "OFFICE LIST";
             buttonOfficeList.UseVisualStyleBackColor = false;
             buttonOfficeList.Click += buttonOfficeList_Click;
-            // 
-            // buttonKalendarz
-            // 
-            buttonKalendarz.Location = new Point(382, 670);
-            buttonKalendarz.Name = "buttonKalendarz";
-            buttonKalendarz.Size = new Size(159, 68);
-            buttonKalendarz.TabIndex = 11;
-            buttonKalendarz.Text = "Kalendarz";
-            buttonKalendarz.UseVisualStyleBackColor = true;
-            buttonKalendarz.Click += buttonKalendarz_Click;
             // 
             // FormMenu
             // 
@@ -225,7 +233,6 @@
             BackgroundImage = Properties.Resources.Website_Headers_5;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1920, 1080);
-            Controls.Add(buttonKalendarz);
             Controls.Add(panelLogIn);
             Controls.Add(panel2);
             DoubleBuffered = true;
@@ -255,6 +262,6 @@
         private Panel panelLogIn;
         private Button buttonOfficeList;
         private Button buttonOpenPatientsList;
-        private Button buttonKalendarz;
+        private Button buttonCalnedar;
     }
 }

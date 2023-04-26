@@ -124,7 +124,7 @@ namespace Calendar
 
         private void UserControlDay_ControlClicked(object sender, DateTime selectedDate)   // Date From UserControlDay
         {
-            labelDate.Text = selectedDate.ToString();
+            labelDate.Text = selectedDate.ToString("d");
         }
 
 
@@ -133,7 +133,7 @@ namespace Calendar
 
         private void buttonAddAppointment_Click(object sender, EventArgs e)
         {
-            if (labelDate.Text == "Select date") { MessageBox.Show("Choose term"); return; }
+            if (labelDate.Text == "Select term") { MessageBox.Show("Choose term"); return; }
 
             FormAppointmentAdd formAppointmentAdd = new FormAppointmentAdd(DateTime.Parse(labelDate.Text), currentEmployee);
             //this.Hide();

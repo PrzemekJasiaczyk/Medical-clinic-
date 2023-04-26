@@ -1,4 +1,5 @@
 ﻿using Calendar;
+using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
 using System;
 using System.Collections.Generic;
@@ -34,6 +35,18 @@ namespace GUI_Management_of_medical_clinic
         private void FormAppointmentAdd_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            if (comboBoxTerm.SelectedIndex < 0) return;
+
+            string term = comboBoxTerm.SelectedItem.ToString();
+            int idTerm = AppointmentService.GetIdTerm(term);
+
+            AppointmentModel appointmentModel = new AppointmentModel(idTerm, 1000, true, 1, 1, 1, 1);
+            AppointmentService.AddAppointment(appointmentModel);
+            MessageBox.Show("Success!");
         }
     }
 }

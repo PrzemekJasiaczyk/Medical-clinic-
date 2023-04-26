@@ -26,13 +26,24 @@ namespace Console_Management_of_medical_clinic.Model
         [ForeignKey("OfficeModel")] public int? IdOffice { get; set; }
         public OfficeModel OfficeModel { get; set; }
 
-        AppointmentModel() { }
+        public AppointmentModel() { }
 
-        AppointmentModel(int idTerm, decimal cost, bool isActive)
+        public AppointmentModel(int idTerm, decimal cost, bool isActive)
         {
             IdTerm = idTerm;
             Cost = cost;
             IsActive = isActive;
+        }
+
+        public AppointmentModel(int idTerm, decimal cost, bool isActive, int? idCalendar, int? idEmployee, int? patientId, int? idOffice)
+        {
+            IdTerm = idTerm;
+            Cost = cost;
+            IsActive = isActive;
+            IdCalendar = idCalendar;
+            IdEmployee = idEmployee;
+            PatientId = patientId;
+            IdOffice = idOffice;
         }
     }
 }
