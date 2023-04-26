@@ -6,7 +6,6 @@ namespace Console_Management_of_medical_clinic.Logic
 {
 	public class CalendarService : ICalendarFilterSort
 	{
-		// TODO: Odkomentować i podmienić nazwy gdy będzie gotowe.
 		public List<CalendarModel> GetAll()
 		{
 			using (AppDbContext context = new())
@@ -15,53 +14,81 @@ namespace Console_Management_of_medical_clinic.Logic
 			}
 		}
 
-		//public List<CalendarModel> Filter(List<CalendarModel> calendars, string calendarName)
-		//{
-		//	return calendars
-		//		.Where(c => c.CalendarModelTime == calendarName)
-		//		.ToList();
-		//}
+		public List<CalendarModel> Filter(string dateReference, string activityStatus)
+		{
+			List<CalendarModel> filteredCalendars = GetAll();
 
-		//public List<CalendarModel> Filter(List<CalendarModel> calendars, CalendarStatus status)
-		//{
-		//	return calendars
-		//		.Where(c => c.CalendarStatus == status)
-		//		.ToList();
-		//}
+			dateReference = dateReference.ToLower().Trim();
 
-		//public List<CalendarModel> Filter(List<CalendarModel> calendars, string calendarName, CalendarStatus status)
-		//{
-		//	return calendars
-		//		.Where(c => (c.CalendarStatus == status && c.CalendarModelTime == calendarName))
-		//		.ToList();
-		//}
+			// Filtering by date reference
+			// Consider improving it by normalizing input or create a mask for a field where it will be written
+			if (!string.IsNullOrEmpty(dateReference))
+			{
+				filteredCalendars =
+					filteredCalendars
+					.Where(
+						c =>
+						c.DateReference.ToLower().Contains(dateReference)
+						)
+					.ToList();
+			}
 
-		//public List<CalendarModel> Sort(List<CalendarModel> calendars, string propertyName, bool IsAscending = true)
-		//{
-		//	var propertyInfo = typeof(CalendarModel).GetProperty(propertyName);
+			// Filtering by an activity status - curenntly it's active or inactive
+			// If it changes to some enum values, it should be changed
+			if (!string.IsNullOrEmpty(activityStatus))
+			{
+				if (activityStatus == "Inactive")
+				{
+					filteredCalendars =
+						filteredCalendars
+						.Where(
+							c =>
+							c.Active == false
+							)
+						.ToList();
+				}
 
-		//	if (propertyInfo == null)
-		//	{
-		//		throw new ArgumentException($"Invalid property name '{propertyName}'");
-		//	}
+				if (activityStatus == "Active")
+				{
+					filteredCalendars =
+						filteredCalendars
+						.Where(
+							c =>
+							c.Active == true
+							)
+						.ToList();
+				}
+			}
 
-		//	// Żeby posortować po CalendarStatus rosnąco trzeba dać:
-		//	// calendarService.Sort(listaKalendarzy, CalendarStatus)
-		//	// Żeby posortować po ID malejaco trzeba dać:
-		//	// calendarService.Sort(listaKalendarzy, CalendarModelId, false)
-		//	if (IsAscending)
-		//	{
-		//		return calendars
-		//			.OrderBy(c => propertyInfo.GetValue(c, null))
-		//			.ToList();
-		//	}
-		//	else
-		//	{
-		//		return calendars
-		//			.OrderByDescending(c => propertyInfo.GetValue(c, null))
-		//			.ToList();
-		//	}
-		//}
+			return filteredCalendars;
+		}
 
+		public List<CalendarModel> Sort(string dateReference, bool IsAscending)
+		{
+			// dateReference is in format "mm-yyyy" which is not sortable in meaningful way
+			// TODO: Consider sorting calendars by year taken from "yyyy" part and then by month taken from "mm" part
+			List<CalendarModel> sortedCalendars = GetAll();
+
+			if (IsAscending)
+			{
+				sortedCalendars =
+					sortedCalendars
+					.OrderBy(
+						c =>
+						c.DateReference)
+					.ToList();
+			}
+			else
+			{
+				sortedCalendars =
+					sortedCalendars
+					.OrderByDescending(
+						c =>
+						c.DateReference)
+					.ToList();
+			}
+
+			return sortedCalendars;
+		}
 	}
 }
