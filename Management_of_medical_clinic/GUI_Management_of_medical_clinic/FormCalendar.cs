@@ -98,6 +98,7 @@ namespace Calendar
             {
                 UserControlBlank userControlBlank = new UserControlBlank();
                 flowLayoutPanelMonth.Controls.Add(userControlBlank);
+
             }
 
 
@@ -111,6 +112,14 @@ namespace Calendar
 
                 userControlDay.ControlClicked += UserControlDay_ControlClicked;
 
+                bool isSunday = day.DayOfWeek == DayOfWeek.Sunday;
+                if (isSunday)
+                {
+                    userControlDay.BackColor = Color.DarkGray;
+                }
+
+                
+
                 flowLayoutPanelMonth.Controls.Add(userControlDay);
             }
 
@@ -120,6 +129,7 @@ namespace Calendar
             for (int i = completeControls; i < 42; i++)
             {
                 UserControlBlank userControlBlank = new UserControlBlank();
+                
                 flowLayoutPanelMonth.Controls.Add(userControlBlank);
             }
 
