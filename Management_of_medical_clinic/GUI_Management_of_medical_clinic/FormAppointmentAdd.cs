@@ -66,12 +66,17 @@ namespace GUI_Management_of_medical_clinic
         {
             try
             {
-                if (comboBoxTerm.SelectedIndex < 0) return;
+                if (comboBoxTerm.SelectedIndex < 0 ) return;
+                if (comboBoxCalendar.SelectedIndex < 0) return;
+                if (comboBoxDoctor.SelectedIndex < 0) return;
+                if (comboBoxOffice.SelectedIndex < 0) return;
+                if (comboBoxPatient.SelectedIndex < 0) return;
+
 
                 string term = comboBoxTerm.SelectedItem.ToString();
                 int idTerm = AppointmentService.GetIdTerm(term);
 
-                AppointmentModel appointmentModel = new AppointmentModel(idTerm, 1000, selectedDay, true, 1, 1, 1, 1);
+                AppointmentModel appointmentModel = new AppointmentModel(idTerm, 1000, selectedDay, true, (int)comboBoxCalendar.SelectedItem, (int)comboBoxDoctor.SelectedItem, (int)comboBoxPatient.SelectedItem, (int)comboBoxOffice.SelectedItem); 
                 AppointmentService.AddAppointment(appointmentModel);
                 MessageBox.Show("Success!");
             }
