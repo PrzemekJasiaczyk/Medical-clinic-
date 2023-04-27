@@ -14,7 +14,8 @@ namespace Console_Management_of_medical_clinic.Model
         [Key] public int IdAppointment { get; set; }
 
         public int IdTerm { get; set; }
-        public decimal Cost { get; set; }
+        public int IdDay { get; set; }
+        public decimal Cost { get; set; } 
         public bool IsActive { get; set; }
         //Relationships
         [ForeignKey("CalendarModel")] public int? IdCalendar { get; set; }
@@ -35,10 +36,11 @@ namespace Console_Management_of_medical_clinic.Model
             IsActive = isActive;
         }
 
-        public AppointmentModel(int idTerm, decimal cost, bool isActive, int? idCalendar, int? idEmployee, int? patientId, int? idOffice)
+        public AppointmentModel(int idTerm, decimal cost, int idDay, bool isActive, int idCalendar, int idEmployee, int patientId, int idOffice)
         {
             IdTerm = idTerm;
             Cost = cost;
+            IdDay = idDay;
             IsActive = isActive;
             IdCalendar = idCalendar;
             IdEmployee = idEmployee;
