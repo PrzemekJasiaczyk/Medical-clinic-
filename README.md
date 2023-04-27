@@ -8,6 +8,10 @@ For now:
 - [ ] Registering a new appointment
   - [ ] Forms
   - [ ] Validation
+- [ ] Analysis
+  - [ ] Improve analysis for administration module
+  - [ ] Analysis for visit registration and calendar view for clinic staff
+- [ ] Functional tests for clinic staff module
   
 Soon:
 - [ ] Rescheluding an appointment
