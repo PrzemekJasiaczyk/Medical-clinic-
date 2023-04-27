@@ -200,7 +200,7 @@
             // 
             buttonNextMonth.BackgroundImageLayout = ImageLayout.None;
             buttonNextMonth.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonNextMonth.Location = new Point(562, 104);
+            buttonNextMonth.Location = new Point(593, 104);
             buttonNextMonth.Name = "buttonNextMonth";
             buttonNextMonth.Size = new Size(50, 50);
             buttonNextMonth.TabIndex = 11;
@@ -213,7 +213,7 @@
             // 
             buttonPreviousMonth.BackgroundImageLayout = ImageLayout.None;
             buttonPreviousMonth.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonPreviousMonth.Location = new Point(506, 104);
+            buttonPreviousMonth.Location = new Point(528, 104);
             buttonPreviousMonth.Name = "buttonPreviousMonth";
             buttonPreviousMonth.Size = new Size(50, 50);
             buttonPreviousMonth.TabIndex = 12;
@@ -237,7 +237,7 @@
             // 
             labelDate.AutoSize = true;
             labelDate.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
-            labelDate.Location = new Point(1643, 347);
+            labelDate.Location = new Point(1607, 248);
             labelDate.Name = "labelDate";
             labelDate.Size = new Size(188, 45);
             labelDate.TabIndex = 1;
@@ -258,11 +258,11 @@
             createCalendarButton.BackColor = SystemColors.GradientActiveCaption;
             createCalendarButton.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
             createCalendarButton.ForeColor = SystemColors.ControlText;
-            createCalendarButton.Location = new Point(1628, 83);
+            createCalendarButton.Location = new Point(1607, 104);
             createCalendarButton.Name = "createCalendarButton";
             createCalendarButton.Size = new Size(280, 132);
             createCalendarButton.TabIndex = 17;
-            createCalendarButton.Text = "Create calendar";
+            createCalendarButton.Text = "Create Calendar for Selected Month";
             createCalendarButton.UseVisualStyleBackColor = false;
             createCalendarButton.Click += createCalendarButton_Click;
             // 

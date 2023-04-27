@@ -15,13 +15,14 @@ namespace GUI_Management_of_medical_clinic
 {
     public partial class FormAppointmentAdd : Form
     {
-        DateTime date;
+        int selectedDay;
         EmployeeModel currentEmployee;
         public FormAppointmentAdd(DateTime date, EmployeeModel currentEmployee)
         {
-            this.date = date;
+            selectedDay = date.Day;
             this.currentEmployee = currentEmployee;
             InitializeComponent();
+            MessageBox.Show(selectedDay.ToString());
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -41,7 +42,7 @@ namespace GUI_Management_of_medical_clinic
             string term = comboBoxTerm.SelectedItem.ToString();
             int idTerm = AppointmentService.GetIdTerm(term);
 
-            AppointmentModel appointmentModel = new AppointmentModel(idTerm, 1000,1, true, 1, 1, 1, 1);
+            AppointmentModel appointmentModel = new AppointmentModel(idTerm, 1000, selectedDay, true, 1, 1, 1, 1);
             AppointmentService.AddAppointment(appointmentModel);
             MessageBox.Show("Success!");
         }
