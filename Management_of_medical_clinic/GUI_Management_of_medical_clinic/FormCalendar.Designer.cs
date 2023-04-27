@@ -55,6 +55,7 @@
             // panelMenu
             // 
             panelMenu.BackColor = Color.SteelBlue;
+            panelMenu.Controls.Add(createCalendarButton);
             panelMenu.Controls.Add(buttonExit);
             panelMenu.Location = new Point(-3, 0);
             panelMenu.Name = "panelMenu";
@@ -259,11 +260,15 @@
             createCalendarButton.BackColor = SystemColors.GradientActiveCaption;
             createCalendarButton.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
             createCalendarButton.ForeColor = SystemColors.ControlText;
+
             createCalendarButton.Location = new Point(1596, 113);
+
             createCalendarButton.Name = "createCalendarButton";
-            createCalendarButton.Size = new Size(280, 132);
+            createCalendarButton.Size = new Size(252, 103);
             createCalendarButton.TabIndex = 17;
+
             createCalendarButton.Text = "Create Calendar for Selected Month";
+
             createCalendarButton.UseVisualStyleBackColor = false;
             createCalendarButton.Click += createCalendarButton_Click;
             // 

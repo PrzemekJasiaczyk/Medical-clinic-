@@ -155,6 +155,9 @@ namespace Calendar
             CalendarModel calendarModel = new CalendarModel(monthAndYear, false);
             CalendarService.AddCalendar(calendarModel);
             MessageBox.Show("Calendar added");
+            FormCalendarsList formCalendarsList = new FormCalendarsList(currentEmployee);
+            formCalendarsList.ShowDialog();
+            Close();
         }
     }
 }

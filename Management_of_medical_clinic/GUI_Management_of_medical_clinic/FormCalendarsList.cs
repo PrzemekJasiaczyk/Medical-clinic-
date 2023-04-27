@@ -27,12 +27,16 @@ namespace GUI_Management_of_medical_clinic
             Close();
         }
 
-        private void buttonAddCalendar_Click(object sender, EventArgs e)
-        {
-            FormCalendar formCalendar = new(currentUser);
-            formCalendar.ShowDialog();
-            Close();
-        }
+
+		private void buttonAddCalendar_Click(object sender, EventArgs e)
+		{
+			FormBlankOrPreviousCalendar formBlankOrPreviousCalendar = new(currentUser);
+			formBlankOrPreviousCalendar.ShowDialog();
+			//FormCalendar formCalendar = new(currentUser);
+			//formCalendar.ShowDialog();
+			Close();
+		}
+
 
         private void buttonEditCalendar_Click(object sender, EventArgs e)
         {
