@@ -19,10 +19,10 @@ namespace Console_Management_of_medical_clinic.Data
         {
 
             //MIGRATION STRING
-            string CustomPath = Directory.GetCurrentDirectory() + "\\..\\Database\\DbMain.db";
+            //string CustomPath = Directory.GetCurrentDirectory() + "\\..\\Database\\DbMain.db";
 
             //NORMAL USE STRING
-            //string CustomPath = Directory.GetCurrentDirectory() + "\\..\\..\\..\\..\\Database\\DbMain.db";
+            string CustomPath = Directory.GetCurrentDirectory() + "\\..\\..\\..\\..\\Database\\DbMain.db";
 
             optionsBuilder.UseSqlite(@"Data Source = " + CustomPath);
 

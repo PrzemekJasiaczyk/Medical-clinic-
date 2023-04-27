@@ -1,3 +1,4 @@
+using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
 using GUI_Management_of_medical_clinic;
 using System.Drawing.Text;
@@ -144,6 +145,16 @@ namespace Calendar
         private void label9_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void createCalendarButton_Click(object sender, EventArgs e)
+        {
+            string month = displayMonth.ToString("MM");
+            string year = displayMonth.ToString("yyyy");
+            string monthAndYear = month + "-" + year;
+            CalendarModel calendarModel = new CalendarModel(monthAndYear, false);
+            CalendarService.AddCalendar(calendarModel);
+            MessageBox.Show("Calendar added");
         }
     }
 }

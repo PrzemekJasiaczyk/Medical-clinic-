@@ -46,6 +46,7 @@
             buttonToday = new Button();
             labelDate = new Label();
             buttonAddAppointment = new Button();
+            createCalendarButton = new Button();
             panelMenu.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -252,11 +253,25 @@
             buttonAddAppointment.UseVisualStyleBackColor = true;
             buttonAddAppointment.Click += buttonAddAppointment_Click;
             // 
+            // createCalendarButton
+            // 
+            createCalendarButton.BackColor = SystemColors.GradientActiveCaption;
+            createCalendarButton.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            createCalendarButton.ForeColor = SystemColors.ControlText;
+            createCalendarButton.Location = new Point(1628, 83);
+            createCalendarButton.Name = "createCalendarButton";
+            createCalendarButton.Size = new Size(280, 132);
+            createCalendarButton.TabIndex = 17;
+            createCalendarButton.Text = "Create calendar";
+            createCalendarButton.UseVisualStyleBackColor = false;
+            createCalendarButton.Click += createCalendarButton_Click;
+            // 
             // FormCalendar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1920, 1080);
+            Controls.Add(createCalendarButton);
             Controls.Add(buttonAddAppointment);
             Controls.Add(labelDate);
             Controls.Add(flowLayoutPanelMonth);
@@ -305,5 +320,6 @@
         private Label label7;
         private Label labelDate;
         private Button buttonAddAppointment;
+        private Button createCalendarButton;
     }
 }

@@ -6,7 +6,17 @@ namespace Console_Management_of_medical_clinic.Logic
 {
 	public class CalendarService : ICalendarFilterSort
 	{
-		public List<CalendarModel> GetAll()
+
+        public static void AddCalendar(CalendarModel calendarModel)
+        {
+            using (AppDbContext context = new AppDbContext())
+            {
+                context.DbCalendars.Add(calendarModel);
+                context.SaveChanges();
+            }
+        }
+
+        public List<CalendarModel> GetAll()
 		{
 			using (AppDbContext context = new())
 			{
