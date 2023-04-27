@@ -43,10 +43,22 @@ namespace Console_Management_of_medical_clinic.Logic
             {
                 employees = db.DbEmployees.ToList();
             }
-
-
-
             return employees;
+        }
+
+        public static List<int> GetDoctorIds()
+        {
+            List<int> doctorsIds = new List<int>();
+            List<EmployeeModel> employees = GetEmployeesData();
+            
+            foreach (EmployeeModel employee in employees) 
+            {
+                if (employee.Role == EnumEmployeeRoles.MedicalDoctor)
+                {
+                    doctorsIds.Add(employee.IdEmployee);
+                }                
+            }            
+            return doctorsIds;
         }
         
         public static EmployeeModel GetEmployeeByUserId(UserModel user)

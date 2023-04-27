@@ -1,4 +1,5 @@
 ﻿using Console_Management_of_medical_clinic.Data;
+using Console_Management_of_medical_clinic.Data.Enums;
 using Console_Management_of_medical_clinic.Logic.Interfaces;
 using Console_Management_of_medical_clinic.Model;
 
@@ -6,15 +7,47 @@ namespace Console_Management_of_medical_clinic.Logic
 {
 	public class CalendarService : ICalendarFilterSort
 	{
-		public List<CalendarModel> GetAll()
+
+        public static void AddCalendar(CalendarModel calendarModel)
+        {
+            using (AppDbContext context = new AppDbContext())
+            {
+                context.DbCalendars.Add(calendarModel);
+                context.SaveChanges();
+            }
+        }
+		
+        public List<CalendarModel> GetAll()
 		{
 			using (AppDbContext context = new())
 			{
 				return context.DbCalendars.ToList();
 			}
 		}
+		
+        public static List<CalendarModel> GetCalendarData()
+        {
+            List<CalendarModel> calendars = new List<CalendarModel>();
+            using (var db = new AppDbContext())
+            {
+                calendars = db.DbCalendars.ToList();
+            }
+            return calendars;
+        }
 
-		public List<CalendarModel> Filter(string dateReference, string activityStatus)
+        public static List<int> GetCalendarIds()
+        {
+            List<int> calendarIds = new List<int>();
+            List<CalendarModel> calendars = GetCalendarData();
+
+            foreach (CalendarModel calendar in calendars)
+            {
+				calendarIds.Add(calendar.IdCalendar);                
+            }
+            return calendarIds;
+        }
+
+        public List<CalendarModel> Filter(string dateReference, string activityStatus)
 		{
 			List<CalendarModel> filteredCalendars = GetAll();
 

@@ -28,7 +28,7 @@ namespace Calendar
         private void UserControlDay_MouseClick(object sender, MouseEventArgs e)
         {
 
-            string str = "Wybrana data to: "+ selectedDate.Date.ToString();
+            string str = "Wybrana data to: " + selectedDate.Date.ToString();
             MessageBox.Show(str);
         }
     }

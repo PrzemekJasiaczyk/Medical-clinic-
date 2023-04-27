@@ -15,9 +15,31 @@ namespace Console_Management_of_medical_clinic.Logic
             }
         }
 
-		public List<Patient> FilterPatient(string searchedText, string PESEL)
+        public static List<Patient> GetPatientDataStatic()
+        {
+            List<Patient> patients;
+            using (AppDbContext db = new AppDbContext())
+            {
+                patients = db.Patients.ToList();
+            }
+            return patients;
+        }
+
+        public static List<int> GetPatientIds()
+        {
+            List<int> patientIds = new List<int>();
+            List<Patient> patients = GetPatientDataStatic();
+
+            foreach (Patient patient in patients)
+            {
+                patientIds.Add(patient.PatientId);
+            }
+            return patientIds;
+        }
+
+        public List<Patient> FilterPatient(string searchedText, string PESEL)
 		{
-			List<Patient> filteredPatients = GetPatientData();
+			List<Patient> filteredPatients = GetPatientDataStatic();
 
             if (!string.IsNullOrEmpty(searchedText))
             {
@@ -48,7 +70,20 @@ namespace Console_Management_of_medical_clinic.Logic
 			return filteredPatients;
 		}
 
-		public bool IsValidName(string patientName, out string errorMessage)
+        public static List<Patient> GetPatientsData()
+        {
+            using (AppDbContext db = new AppDbContext())
+            {
+                return db.Patients.ToList();
+            }
+        }
+
+        public static Patient GetPatientById(int id)
+        {
+            return GetPatientsData().FirstOrDefault(patient => patient.PatientId == id);
+        }
+
+        public bool IsValidName(string patientName, out string errorMessage)
         {
             // White space checking
             if (string.IsNullOrWhiteSpace(patientName)) 

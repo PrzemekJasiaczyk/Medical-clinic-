@@ -30,29 +30,31 @@
         {
             labelTerm = new Label();
             label2 = new Label();
-            label3 = new Label();
             label4 = new Label();
             label6 = new Label();
             label7 = new Label();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
-            textBox6 = new TextBox();
             buttonAdd = new Button();
-            comboBoxTerm = new ComboBox();
             panel1 = new Panel();
             buttonBack = new Button();
             pictureBox1 = new PictureBox();
+            label1 = new Label();
+            comboBoxTerm = new ComboBox();
+            numericUpDownCost = new NumericUpDown();
+            comboBoxCalendar = new ComboBox();
+            comboBoxPatient = new ComboBox();
+            comboBoxDoctor = new ComboBox();
+            comboBoxOffice = new ComboBox();
+            labelDay = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownCost).BeginInit();
             SuspendLayout();
             // 
             // labelTerm
             // 
             labelTerm.AutoSize = true;
             labelTerm.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            labelTerm.Location = new Point(1264, 238);
+            labelTerm.Location = new Point(1056, 272);
             labelTerm.Name = "labelTerm";
             labelTerm.Size = new Size(82, 37);
             labelTerm.TabIndex = 1;
@@ -62,91 +64,41 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(370, 235);
+            label2.Location = new Point(1056, 336);
             label2.Name = "label2";
             label2.Size = new Size(74, 37);
             label2.TabIndex = 2;
             label2.Text = "Cost";
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(370, 309);
-            label3.Name = "label3";
-            label3.Size = new Size(118, 37);
-            label3.TabIndex = 3;
-            label3.Text = "isActive";
-            // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(370, 376);
+            label4.Location = new Point(610, 272);
             label4.Name = "label4";
-            label4.Size = new Size(156, 37);
+            label4.Size = new Size(164, 37);
             label4.TabIndex = 4;
-            label4.Text = "idCalendar";
+            label4.Text = "Calendar Id";
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(825, 241);
+            label6.Location = new Point(610, 336);
             label6.Name = "label6";
-            label6.Size = new Size(136, 37);
+            label6.Size = new Size(142, 37);
             label6.TabIndex = 6;
-            label6.Text = "patientId";
+            label6.Text = "Patient Id";
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(825, 312);
+            label7.Location = new Point(610, 401);
             label7.Name = "label7";
-            label7.Size = new Size(116, 37);
+            label7.Size = new Size(139, 37);
             label7.TabIndex = 7;
-            label7.Text = "officeId";
-            // 
-            // textBox2
-            // 
-            textBox2.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox2.Location = new Point(553, 229);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(222, 43);
-            textBox2.TabIndex = 9;
-            // 
-            // textBox3
-            // 
-            textBox3.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox3.Location = new Point(553, 300);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(222, 43);
-            textBox3.TabIndex = 10;
-            // 
-            // textBox4
-            // 
-            textBox4.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox4.Location = new Point(553, 376);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(222, 43);
-            textBox4.TabIndex = 11;
-            // 
-            // textBox5
-            // 
-            textBox5.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox5.Location = new Point(978, 235);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(203, 43);
-            textBox5.TabIndex = 12;
-            // 
-            // textBox6
-            // 
-            textBox6.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox6.Location = new Point(978, 306);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(203, 43);
-            textBox6.TabIndex = 13;
+            label7.Text = "Doctor Id";
             // 
             // buttonAdd
             // 
@@ -155,27 +107,13 @@
             buttonAdd.FlatAppearance.BorderSize = 2;
             buttonAdd.FlatStyle = FlatStyle.Flat;
             buttonAdd.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonAdd.Location = new Point(610, 760);
+            buttonAdd.Location = new Point(918, 553);
             buttonAdd.Name = "buttonAdd";
             buttonAdd.Size = new Size(252, 66);
             buttonAdd.TabIndex = 14;
             buttonAdd.Text = "Add";
             buttonAdd.UseVisualStyleBackColor = false;
             buttonAdd.Click += buttonAdd_Click;
-            // 
-            // comboBoxTerm
-            // 
-            comboBoxTerm.DropDownHeight = 200;
-            comboBoxTerm.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxTerm.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBoxTerm.FormattingEnabled = true;
-            comboBoxTerm.IntegralHeight = false;
-            comboBoxTerm.ItemHeight = 37;
-            comboBoxTerm.Items.AddRange(new object[] { "07:00 ", "07:20", "07:40", "08:00", "08:20", "08:40", "09:00", "09:20", "09:40", "10:00, ", "10:20", "10:40", "11:20", "11:40", "12:00", "12:20", "12:40", "13:00", "13:20 ", "13:40", "14:00 ", "14:20 ", "14:40", "15:00 ", "15:40", "16:00", "16:20", "16:40 ", "17:00", "17:20", "17:40 ", "18:00", "18:20", "18:40", "19:00", "19:20", "19:40" });
-            comboBoxTerm.Location = new Point(1381, 232);
-            comboBoxTerm.Name = "comboBoxTerm";
-            comboBoxTerm.Size = new Size(218, 45);
-            comboBoxTerm.TabIndex = 15;
             // 
             // panel1
             // 
@@ -212,24 +150,102 @@
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(610, 468);
+            label1.Name = "label1";
+            label1.Size = new Size(126, 37);
+            label1.TabIndex = 42;
+            label1.Text = "Office Id";
+            // 
+            // comboBoxTerm
+            // 
+            comboBoxTerm.DropDownHeight = 200;
+            comboBoxTerm.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxTerm.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            comboBoxTerm.FormattingEnabled = true;
+            comboBoxTerm.IntegralHeight = false;
+            comboBoxTerm.ItemHeight = 37;
+            comboBoxTerm.Items.AddRange(new object[] { "07:00 ", "07:20", "07:40", "08:00", "08:20", "08:40", "09:00", "09:20", "09:40", "10:00, ", "10:20", "10:40", "11:20", "11:40", "12:00", "12:20", "12:40", "13:00", "13:20 ", "13:40", "14:00 ", "14:20 ", "14:40", "15:00 ", "15:40", "16:00", "16:20", "16:40 ", "17:00", "17:20", "17:40 ", "18:00", "18:20", "18:40", "19:00", "19:20", "19:40" });
+            comboBoxTerm.Location = new Point(1172, 272);
+            comboBoxTerm.Name = "comboBoxTerm";
+            comboBoxTerm.Size = new Size(218, 45);
+            comboBoxTerm.TabIndex = 15;
+            // 
+            // numericUpDownCost
+            // 
+            numericUpDownCost.DecimalPlaces = 2;
+            numericUpDownCost.Location = new Point(1172, 346);
+            numericUpDownCost.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
+            numericUpDownCost.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            numericUpDownCost.Name = "numericUpDownCost";
+            numericUpDownCost.Size = new Size(218, 23);
+            numericUpDownCost.TabIndex = 43;
+            numericUpDownCost.Value = new decimal(new int[] { 100, 0, 0, 0 });
+            // 
+            // comboBoxCalendar
+            // 
+            comboBoxCalendar.FormattingEnabled = true;
+            comboBoxCalendar.Location = new Point(780, 282);
+            comboBoxCalendar.Name = "comboBoxCalendar";
+            comboBoxCalendar.Size = new Size(218, 23);
+            comboBoxCalendar.TabIndex = 44;
+            // 
+            // comboBoxPatient
+            // 
+            comboBoxPatient.FormattingEnabled = true;
+            comboBoxPatient.Location = new Point(780, 347);
+            comboBoxPatient.Name = "comboBoxPatient";
+            comboBoxPatient.Size = new Size(218, 23);
+            comboBoxPatient.TabIndex = 45;
+            // 
+            // comboBoxDoctor
+            // 
+            comboBoxDoctor.FormattingEnabled = true;
+            comboBoxDoctor.Location = new Point(780, 412);
+            comboBoxDoctor.Name = "comboBoxDoctor";
+            comboBoxDoctor.Size = new Size(218, 23);
+            comboBoxDoctor.TabIndex = 46;
+            // 
+            // comboBoxOffice
+            // 
+            comboBoxOffice.FormattingEnabled = true;
+            comboBoxOffice.Location = new Point(780, 478);
+            comboBoxOffice.Name = "comboBoxOffice";
+            comboBoxOffice.Size = new Size(218, 23);
+            comboBoxOffice.TabIndex = 47;
+            // 
+            // labelDay
+            // 
+            labelDay.AutoSize = true;
+            labelDay.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            labelDay.Location = new Point(610, 143);
+            labelDay.Name = "labelDay";
+            labelDay.Size = new Size(201, 37);
+            labelDay.TabIndex = 48;
+            labelDay.Text = "Selected Date:";
+            // 
             // FormAppointmentAdd
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Info;
             ClientSize = new Size(1920, 1080);
+            Controls.Add(labelDay);
+            Controls.Add(comboBoxOffice);
+            Controls.Add(comboBoxDoctor);
+            Controls.Add(comboBoxPatient);
+            Controls.Add(comboBoxCalendar);
+            Controls.Add(numericUpDownCost);
+            Controls.Add(label1);
             Controls.Add(panel1);
             Controls.Add(comboBoxTerm);
             Controls.Add(buttonAdd);
-            Controls.Add(textBox6);
-            Controls.Add(textBox5);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label4);
-            Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(labelTerm);
             FormBorderStyle = FormBorderStyle.None;
@@ -240,6 +256,7 @@
             Load += FormAppointmentAdd_Load;
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownCost).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -247,19 +264,20 @@
         #endregion
         private Label labelTerm;
         private Label label2;
-        private Label label3;
         private Label label4;
         private Label label6;
         private Label label7;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox5;
-        private TextBox textBox6;
         private Button buttonAdd;
-        private ComboBox comboBoxTerm;
         private Panel panel1;
         private Button buttonBack;
         private PictureBox pictureBox1;
+        private Label label1;
+        private ComboBox comboBoxTerm;
+        private NumericUpDown numericUpDownCost;
+        private ComboBox comboBoxCalendar;
+        private ComboBox comboBoxPatient;
+        private ComboBox comboBoxDoctor;
+        private ComboBox comboBoxOffice;
+        private Label labelDay;
     }
 }

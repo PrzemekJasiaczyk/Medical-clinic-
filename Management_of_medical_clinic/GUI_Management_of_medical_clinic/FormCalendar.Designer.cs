@@ -30,6 +30,7 @@
         {
             panelMenu = new Panel();
             buttonExit = new Button();
+            createCalendarButton = new Button();
             flowLayoutPanelMonth = new FlowLayoutPanel();
             panel1 = new Panel();
             label7 = new Label();
@@ -46,8 +47,11 @@
             buttonToday = new Button();
             labelDate = new Label();
             buttonAddAppointment = new Button();
+            label8 = new Label();
+            dataGridViewAppointments = new DataGridView();
             panelMenu.SuspendLayout();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewAppointments).BeginInit();
             SuspendLayout();
             // 
             // panelMenu
@@ -71,6 +75,19 @@
             buttonExit.Text = "Back";
             buttonExit.UseVisualStyleBackColor = false;
             buttonExit.Click += buttonExit_Click;
+            // 
+            // createCalendarButton
+            // 
+            createCalendarButton.BackColor = SystemColors.GradientActiveCaption;
+            createCalendarButton.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            createCalendarButton.ForeColor = SystemColors.ControlText;
+            createCalendarButton.Location = new Point(1596, 113);
+            createCalendarButton.Name = "createCalendarButton";
+            createCalendarButton.Size = new Size(252, 103);
+            createCalendarButton.TabIndex = 17;
+            createCalendarButton.Text = "Create Calendar for Selected Month";
+            createCalendarButton.UseVisualStyleBackColor = false;
+            createCalendarButton.Click += createCalendarButton_Click;
             // 
             // flowLayoutPanelMonth
             // 
@@ -199,7 +216,7 @@
             // 
             buttonNextMonth.BackgroundImageLayout = ImageLayout.None;
             buttonNextMonth.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonNextMonth.Location = new Point(562, 104);
+            buttonNextMonth.Location = new Point(593, 104);
             buttonNextMonth.Name = "buttonNextMonth";
             buttonNextMonth.Size = new Size(50, 50);
             buttonNextMonth.TabIndex = 11;
@@ -212,7 +229,7 @@
             // 
             buttonPreviousMonth.BackgroundImageLayout = ImageLayout.None;
             buttonPreviousMonth.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonPreviousMonth.Location = new Point(506, 104);
+            buttonPreviousMonth.Location = new Point(528, 104);
             buttonPreviousMonth.Name = "buttonPreviousMonth";
             buttonPreviousMonth.Size = new Size(50, 50);
             buttonPreviousMonth.TabIndex = 12;
@@ -236,7 +253,7 @@
             // 
             labelDate.AutoSize = true;
             labelDate.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
-            labelDate.Location = new Point(1643, 347);
+            labelDate.Location = new Point(1628, 248);
             labelDate.Name = "labelDate";
             labelDate.Size = new Size(188, 45);
             labelDate.TabIndex = 1;
@@ -252,11 +269,36 @@
             buttonAddAppointment.UseVisualStyleBackColor = true;
             buttonAddAppointment.Click += buttonAddAppointment_Click;
             // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label8.Location = new Point(1651, 306);
+            label8.Name = "label8";
+            label8.Size = new Size(144, 30);
+            label8.TabIndex = 18;
+            label8.Text = "Appointments";
+            // 
+            // dataGridViewAppointments
+            // 
+            dataGridViewAppointments.BackgroundColor = SystemColors.Info;
+            dataGridViewAppointments.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewAppointments.Location = new Point(1563, 349);
+            dataGridViewAppointments.Name = "dataGridViewAppointments";
+            dataGridViewAppointments.ReadOnly = true;
+            dataGridViewAppointments.RowTemplate.Height = 25;
+            dataGridViewAppointments.SelectionMode = DataGridViewSelectionMode.CellSelect;
+            dataGridViewAppointments.Size = new Size(345, 538);
+            dataGridViewAppointments.TabIndex = 19;
+            // 
             // FormCalendar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1920, 1080);
+            Controls.Add(dataGridViewAppointments);
+            Controls.Add(label8);
+            Controls.Add(createCalendarButton);
             Controls.Add(buttonAddAppointment);
             Controls.Add(labelDate);
             Controls.Add(flowLayoutPanelMonth);
@@ -281,6 +323,7 @@
             panelMenu.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewAppointments).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -305,5 +348,8 @@
         private Label label7;
         private Label labelDate;
         private Button buttonAddAppointment;
+        private Button createCalendarButton;
+        private Label label8;
+        private DataGridView dataGridViewAppointments;
     }
 }
