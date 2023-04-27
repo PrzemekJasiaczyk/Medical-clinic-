@@ -39,6 +39,8 @@
             textBoxNumber = new TextBox();
             label2 = new Label();
             labelTitle = new Label();
+            comboBoxStatus = new ComboBox();
+            label1 = new Label();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -159,12 +161,34 @@
             labelTitle.TabIndex = 60;
             labelTitle.Text = "Add a New Office";
             // 
+            // comboBoxStatus
+            // 
+            comboBoxStatus.Font = new Font("Segoe UI", 18.75F, FontStyle.Regular, GraphicsUnit.Point);
+            comboBoxStatus.FormattingEnabled = true;
+            comboBoxStatus.Items.AddRange(new object[] { "General", "Private" });
+            comboBoxStatus.Location = new Point(925, 577);
+            comboBoxStatus.Name = "comboBoxStatus";
+            comboBoxStatus.Size = new Size(255, 43);
+            comboBoxStatus.TabIndex = 74;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 18.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(731, 580);
+            label1.Name = "label1";
+            label1.Size = new Size(87, 35);
+            label1.TabIndex = 73;
+            label1.Text = "Status";
+            // 
             // FormOfficeAdd
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Info;
             ClientSize = new Size(1920, 1080);
+            Controls.Add(comboBoxStatus);
+            Controls.Add(label1);
             Controls.Add(panel2);
             Controls.Add(labelTitle);
             Controls.Add(buttonAddNewOffice);
@@ -199,5 +223,7 @@
         private TextBox textBoxNumber;
         private Label label2;
         private Label labelTitle;
+        private ComboBox comboBoxStatus;
+        private Label label1;
     }
 }

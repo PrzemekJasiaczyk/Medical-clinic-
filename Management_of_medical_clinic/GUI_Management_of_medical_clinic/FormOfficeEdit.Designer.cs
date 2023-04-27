@@ -39,7 +39,7 @@
             listBoxSpecializations = new ListBox();
             textBoxInfo = new TextBox();
             label3 = new Label();
-            comboBoxActive = new ComboBox();
+            comboBoxStatus = new ComboBox();
             label1 = new Label();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -161,16 +161,16 @@
             label3.TabIndex = 73;
             label3.Text = "Info";
             // 
-            // comboBoxActive
+            // comboBoxStatus
             // 
-            comboBoxActive.Font = new Font("Segoe UI", 18.75F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBoxActive.FormattingEnabled = true;
-            comboBoxActive.Items.AddRange(new object[] { "Active", "Non active" });
-            comboBoxActive.Location = new Point(889, 605);
-            comboBoxActive.Name = "comboBoxActive";
-            comboBoxActive.Size = new Size(199, 43);
-            comboBoxActive.TabIndex = 72;
-            comboBoxActive.SelectedIndexChanged += comboBoxActive_SelectedIndexChanged;
+            comboBoxStatus.Font = new Font("Segoe UI", 18.75F, FontStyle.Regular, GraphicsUnit.Point);
+            comboBoxStatus.FormattingEnabled = true;
+            comboBoxStatus.Items.AddRange(new object[] { "General", "Private" });
+            comboBoxStatus.Location = new Point(889, 605);
+            comboBoxStatus.Name = "comboBoxStatus";
+            comboBoxStatus.Size = new Size(199, 43);
+            comboBoxStatus.TabIndex = 72;
+            comboBoxStatus.SelectedIndexChanged += comboBoxActive_SelectedIndexChanged;
             // 
             // label1
             // 
@@ -188,7 +188,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Info;
             ClientSize = new Size(1920, 1080);
-            Controls.Add(comboBoxActive);
+            Controls.Add(comboBoxStatus);
             Controls.Add(label1);
             Controls.Add(labelTitle);
             Controls.Add(buttonEditOffice);
@@ -224,7 +224,7 @@
         private ListBox listBoxSpecializations;
         private TextBox textBoxInfo;
         private Label label3;
-        private ComboBox comboBoxActive;
+        private ComboBox comboBoxStatus;
         private Label label1;
     }
 }
