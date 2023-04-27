@@ -9,10 +9,12 @@ namespace Calendar
     public partial class FormCalendar : Form
     {
         EmployeeModel currentEmployee;
-        public FormCalendar(EmployeeModel currentEmployee)
+        bool previousMonth;
+        public FormCalendar(EmployeeModel currentEmployee, bool previousMonth = false)
         {
             InitializeComponent();
             this.currentEmployee = currentEmployee;
+            this.previousMonth = previousMonth;
         }
 
         DateTime displayMonth = DateTime.Today;
@@ -21,6 +23,7 @@ namespace Calendar
         private void FormCalendar_Load(object sender, EventArgs e)
         {
             RemoveControlPanels();
+            displayMonth = previousMonth ? displayMonth.AddMonths(-1) : displayMonth;
             displayDays(displayMonth);
             ChangeTitle(labelTitleCalendar, displayMonth);
         }

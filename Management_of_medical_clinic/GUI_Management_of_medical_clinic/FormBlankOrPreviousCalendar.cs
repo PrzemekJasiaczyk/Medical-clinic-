@@ -42,7 +42,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonPreviousForm_Click(object sender, EventArgs e)
         {
-            FormCalendar formCalendar = new(currentUser);
+            FormCalendar formCalendar = new(currentUser, true);
             formCalendar.ShowDialog();
             Close();
         }
