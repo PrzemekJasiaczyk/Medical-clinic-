@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            buttonCancel = new Button();
             labelTerm = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -42,133 +41,184 @@
             textBox6 = new TextBox();
             buttonAdd = new Button();
             comboBoxTerm = new ComboBox();
+            panel1 = new Panel();
+            buttonBack = new Button();
+            pictureBox1 = new PictureBox();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
-            // 
-            // buttonCancel
-            // 
-            buttonCancel.Location = new Point(277, 449);
-            buttonCancel.Name = "buttonCancel";
-            buttonCancel.Size = new Size(242, 80);
-            buttonCancel.TabIndex = 0;
-            buttonCancel.Text = "Cancel";
-            buttonCancel.UseVisualStyleBackColor = true;
-            buttonCancel.Click += buttonCancel_Click;
             // 
             // labelTerm
             // 
             labelTerm.AutoSize = true;
-            labelTerm.Location = new Point(836, 117);
+            labelTerm.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            labelTerm.Location = new Point(1264, 238);
             labelTerm.Name = "labelTerm";
-            labelTerm.Size = new Size(33, 15);
+            labelTerm.Size = new Size(82, 37);
             labelTerm.TabIndex = 1;
             labelTerm.Text = "Term";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(140, 122);
+            label2.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(370, 235);
             label2.Name = "label2";
-            label2.Size = new Size(31, 15);
+            label2.Size = new Size(74, 37);
             label2.TabIndex = 2;
             label2.Text = "Cost";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(140, 167);
+            label3.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Location = new Point(370, 309);
             label3.Name = "label3";
-            label3.Size = new Size(48, 15);
+            label3.Size = new Size(118, 37);
             label3.TabIndex = 3;
             label3.Text = "isActive";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(140, 211);
+            label4.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.Location = new Point(370, 376);
             label4.Name = "label4";
-            label4.Size = new Size(64, 15);
+            label4.Size = new Size(156, 37);
             label4.TabIndex = 4;
             label4.Text = "idCalendar";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(511, 119);
+            label6.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label6.Location = new Point(825, 241);
             label6.Name = "label6";
-            label6.Size = new Size(54, 15);
+            label6.Size = new Size(136, 37);
             label6.TabIndex = 6;
             label6.Text = "patientId";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(511, 159);
+            label7.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label7.Location = new Point(825, 312);
             label7.Name = "label7";
-            label7.Size = new Size(47, 15);
+            label7.Size = new Size(116, 37);
             label7.TabIndex = 7;
             label7.Text = "officeId";
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(228, 117);
+            textBox2.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox2.Location = new Point(553, 229);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(159, 23);
+            textBox2.Size = new Size(222, 43);
             textBox2.TabIndex = 9;
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(228, 166);
+            textBox3.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox3.Location = new Point(553, 300);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(159, 23);
+            textBox3.Size = new Size(222, 43);
             textBox3.TabIndex = 10;
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(227, 212);
+            textBox4.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox4.Location = new Point(553, 376);
             textBox4.Name = "textBox4";
-            textBox4.Size = new Size(160, 23);
+            textBox4.Size = new Size(222, 43);
             textBox4.TabIndex = 11;
             // 
             // textBox5
             // 
-            textBox5.Location = new Point(593, 119);
+            textBox5.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox5.Location = new Point(978, 235);
             textBox5.Name = "textBox5";
-            textBox5.Size = new Size(149, 23);
+            textBox5.Size = new Size(203, 43);
             textBox5.TabIndex = 12;
             // 
             // textBox6
             // 
-            textBox6.Location = new Point(593, 159);
+            textBox6.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox6.Location = new Point(978, 306);
             textBox6.Name = "textBox6";
-            textBox6.Size = new Size(147, 23);
+            textBox6.Size = new Size(203, 43);
             textBox6.TabIndex = 13;
             // 
             // buttonAdd
             // 
-            buttonAdd.Location = new Point(564, 451);
+            buttonAdd.BackColor = Color.Gainsboro;
+            buttonAdd.FlatAppearance.BorderColor = Color.White;
+            buttonAdd.FlatAppearance.BorderSize = 2;
+            buttonAdd.FlatStyle = FlatStyle.Flat;
+            buttonAdd.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonAdd.Location = new Point(610, 760);
             buttonAdd.Name = "buttonAdd";
-            buttonAdd.Size = new Size(218, 78);
+            buttonAdd.Size = new Size(252, 66);
             buttonAdd.TabIndex = 14;
             buttonAdd.Text = "Add";
-            buttonAdd.UseVisualStyleBackColor = true;
+            buttonAdd.UseVisualStyleBackColor = false;
             buttonAdd.Click += buttonAdd_Click;
             // 
             // comboBoxTerm
             // 
+            comboBoxTerm.DropDownHeight = 200;
             comboBoxTerm.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxTerm.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxTerm.FormattingEnabled = true;
-            comboBoxTerm.ItemHeight = 15;
+            comboBoxTerm.IntegralHeight = false;
+            comboBoxTerm.ItemHeight = 37;
             comboBoxTerm.Items.AddRange(new object[] { "07:00 ", "07:20", "07:40", "08:00", "08:20", "08:40", "09:00", "09:20", "09:40", "10:00, ", "10:20", "10:40", "11:20", "11:40", "12:00", "12:20", "12:40", "13:00", "13:20 ", "13:40", "14:00 ", "14:20 ", "14:40", "15:00 ", "15:40", "16:00", "16:20", "16:40 ", "17:00", "17:20", "17:40 ", "18:00", "18:20", "18:40", "19:00", "19:20", "19:40" });
-            comboBoxTerm.Location = new Point(912, 117);
+            comboBoxTerm.Location = new Point(1381, 232);
             comboBoxTerm.Name = "comboBoxTerm";
-            comboBoxTerm.Size = new Size(192, 23);
+            comboBoxTerm.Size = new Size(218, 45);
             comboBoxTerm.TabIndex = 15;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.SteelBlue;
+            panel1.Controls.Add(buttonBack);
+            panel1.Controls.Add(pictureBox1);
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(312, 1081);
+            panel1.TabIndex = 40;
+            // 
+            // buttonBack
+            // 
+            buttonBack.BackColor = Color.Gainsboro;
+            buttonBack.FlatAppearance.BorderColor = Color.White;
+            buttonBack.FlatAppearance.BorderSize = 2;
+            buttonBack.FlatStyle = FlatStyle.Flat;
+            buttonBack.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonBack.Location = new Point(28, 953);
+            buttonBack.Name = "buttonBack";
+            buttonBack.Size = new Size(252, 66);
+            buttonBack.TabIndex = 40;
+            buttonBack.Text = "CANCEL";
+            buttonBack.UseVisualStyleBackColor = false;
+            buttonBack.Click += buttonBack_Click;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackgroundImage = Properties.Resources.MC_Logo;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox1.Location = new Point(61, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(176, 168);
+            pictureBox1.TabIndex = 1;
+            pictureBox1.TabStop = false;
             // 
             // FormAppointmentAdd
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1145, 588);
+            BackColor = SystemColors.Info;
+            ClientSize = new Size(1920, 1080);
+            Controls.Add(panel1);
             Controls.Add(comboBoxTerm);
             Controls.Add(buttonAdd);
             Controls.Add(textBox6);
@@ -182,17 +232,19 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(labelTerm);
-            Controls.Add(buttonCancel);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "FormAppointmentAdd";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FormAppointmentAdd";
+            WindowState = FormWindowState.Maximized;
             Load += FormAppointmentAdd_Load;
+            panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private Button buttonCancel;
         private Label labelTerm;
         private Label label2;
         private Label label3;
@@ -206,5 +258,8 @@
         private TextBox textBox6;
         private Button buttonAdd;
         private ComboBox comboBoxTerm;
+        private Panel panel1;
+        private Button buttonBack;
+        private PictureBox pictureBox1;
     }
 }
