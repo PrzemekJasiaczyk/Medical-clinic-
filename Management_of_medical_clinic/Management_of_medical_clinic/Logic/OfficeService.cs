@@ -21,6 +21,18 @@ namespace Console_Management_of_medical_clinic.Logic
             return offices;
         }
 
+        public static List<int> GetCalendarIds()
+        {
+            List<int> officeIds = new List<int>();
+            List<OfficeModel> offices = GetOfficesData();
+
+            foreach (OfficeModel office in offices)
+            {
+                officeIds.Add(office.IdOffice);
+            }
+            return officeIds;
+        }
+
         public static void AddOffice(OfficeModel newOffice)
         {
             using (AppDbContext db = new AppDbContext())

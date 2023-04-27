@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panelMenu = new Panel();
+            createCalendarButton = new Button();
             buttonExit = new Button();
             flowLayoutPanelMonth = new FlowLayoutPanel();
             panel1 = new Panel();
@@ -46,7 +47,6 @@
             buttonToday = new Button();
             labelDate = new Label();
             buttonAddAppointment = new Button();
-            createCalendarButton = new Button();
             label8 = new Label();
             panelMenu.SuspendLayout();
             panel1.SuspendLayout();
@@ -55,12 +55,24 @@
             // panelMenu
             // 
             panelMenu.BackColor = Color.SteelBlue;
-            panelMenu.Controls.Add(createCalendarButton);
             panelMenu.Controls.Add(buttonExit);
             panelMenu.Location = new Point(-3, 0);
             panelMenu.Name = "panelMenu";
             panelMenu.Size = new Size(312, 1081);
             panelMenu.TabIndex = 0;
+            // 
+            // createCalendarButton
+            // 
+            createCalendarButton.BackColor = SystemColors.GradientActiveCaption;
+            createCalendarButton.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            createCalendarButton.ForeColor = SystemColors.ControlText;
+            createCalendarButton.Location = new Point(1596, 113);
+            createCalendarButton.Name = "createCalendarButton";
+            createCalendarButton.Size = new Size(252, 103);
+            createCalendarButton.TabIndex = 17;
+            createCalendarButton.Text = "Create Calendar for Selected Month";
+            createCalendarButton.UseVisualStyleBackColor = false;
+            createCalendarButton.Click += createCalendarButton_Click;
             // 
             // buttonExit
             // 
@@ -254,23 +266,6 @@
             buttonAddAppointment.Text = "Add appointment";
             buttonAddAppointment.UseVisualStyleBackColor = true;
             buttonAddAppointment.Click += buttonAddAppointment_Click;
-            // 
-            // createCalendarButton
-            // 
-            createCalendarButton.BackColor = SystemColors.GradientActiveCaption;
-            createCalendarButton.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            createCalendarButton.ForeColor = SystemColors.ControlText;
-
-            createCalendarButton.Location = new Point(1596, 113);
-
-            createCalendarButton.Name = "createCalendarButton";
-            createCalendarButton.Size = new Size(252, 103);
-            createCalendarButton.TabIndex = 17;
-
-            createCalendarButton.Text = "Create Calendar for Selected Month";
-
-            createCalendarButton.UseVisualStyleBackColor = false;
-            createCalendarButton.Click += createCalendarButton_Click;
             // 
             // label8
             // 

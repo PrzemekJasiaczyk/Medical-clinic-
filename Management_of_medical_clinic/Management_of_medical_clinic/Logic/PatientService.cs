@@ -15,9 +15,31 @@ namespace Console_Management_of_medical_clinic.Logic
             }
         }
 
-		public List<Patient> FilterPatient(string searchedText, string PESEL)
+        public static List<Patient> GetPatientDataStatic()
+        {
+            List<Patient> patients;
+            using (AppDbContext db = new AppDbContext())
+            {
+                patients = db.Patients.ToList();
+            }
+            return patients;
+        }
+
+        public static List<int> GetPatientIds()
+        {
+            List<int> patientIds = new List<int>();
+            List<Patient> patients = GetPatientDataStatic();
+
+            foreach (Patient patient in patients)
+            {
+                patientIds.Add(patient.PatientId);
+            }
+            return patientIds;
+        }
+
+        public List<Patient> FilterPatient(string searchedText, string PESEL)
 		{
-			List<Patient> filteredPatients = GetPatientData();
+			List<Patient> filteredPatients = GetPatientDataStatic();
 
             if (!string.IsNullOrEmpty(searchedText))
             {
