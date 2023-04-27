@@ -26,6 +26,13 @@ namespace Calendar
             displayMonth = previousMonth ? displayMonth.AddMonths(-1) : displayMonth;
             displayDays(displayMonth);
             ChangeTitle(labelTitleCalendar, displayMonth);
+
+            dataGridViewAppointments.Rows.Clear();
+            dataGridViewAppointments.Columns.Add("Doctor", "Doctor");
+            dataGridViewAppointments.Columns.Add("Day", "Day");
+            dataGridViewAppointments.Columns.Add("Hour", "Hour");
+            dataGridViewAppointments.Columns.Add("Patient", "Patient");
+
         }
 
         private void buttonToday_Click(object sender, EventArgs e)
@@ -139,6 +146,14 @@ namespace Calendar
         private void UserControlDay_ControlClicked(object sender, DateTime selectedDate)   // Date From UserControlDay
         {
             labelDate.Text = selectedDate.ToString("d");
+
+            List<AppointmentModel> appointments = AppointmentService.CheckAppointmentsAndReturnList(selectedDate);
+            dataGridViewAppointments.Rows.Clear();
+            foreach (AppointmentModel appointment in appointments)
+            {
+                Patient patient = PatientService.GetPatientById((int)appointment.PatientId);
+                dataGridViewAppointments.Rows.Add(appointment.IdEmployee, appointment.IdDay, appointment.IdTerm, patient.FirstName + " " + patient.LastName);
+            }
         }
 
 

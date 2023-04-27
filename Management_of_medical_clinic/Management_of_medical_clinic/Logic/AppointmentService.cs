@@ -40,5 +40,26 @@ namespace Console_Management_of_medical_clinic.Logic
                 return idTerm;
             }
         }
+
+        public static List<AppointmentModel> CheckAppointmentsAndReturnList(DateTime selectedDate, int idCalendar = 1)
+        { 
+            int idDay = selectedDate.Day;
+            
+            int idTerm = GetIdTerm(selectedDate.ToString("HH:mm"));
+            List<AppointmentModel> appointments = new List<AppointmentModel>();
+
+            using(AppDbContext context = new AppDbContext())
+            {
+                foreach(AppointmentModel appointment in context.DbAppointments)
+                {
+                    if(appointment.IdDay == idDay && appointment.IdCalendar == idCalendar)
+                    {
+                        appointments.Add(appointment);
+                    }
+                }
+            }
+
+            return appointments;
+        }
     }
 }
