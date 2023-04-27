@@ -47,6 +47,7 @@
             labelDate = new Label();
             buttonAddAppointment = new Button();
             createCalendarButton = new Button();
+            label8 = new Label();
             panelMenu.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -237,7 +238,7 @@
             // 
             labelDate.AutoSize = true;
             labelDate.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
-            labelDate.Location = new Point(1607, 248);
+            labelDate.Location = new Point(1596, 248);
             labelDate.Name = "labelDate";
             labelDate.Size = new Size(188, 45);
             labelDate.TabIndex = 1;
@@ -258,7 +259,7 @@
             createCalendarButton.BackColor = SystemColors.GradientActiveCaption;
             createCalendarButton.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
             createCalendarButton.ForeColor = SystemColors.ControlText;
-            createCalendarButton.Location = new Point(1607, 104);
+            createCalendarButton.Location = new Point(1596, 113);
             createCalendarButton.Name = "createCalendarButton";
             createCalendarButton.Size = new Size(280, 132);
             createCalendarButton.TabIndex = 17;
@@ -266,11 +267,22 @@
             createCalendarButton.UseVisualStyleBackColor = false;
             createCalendarButton.Click += createCalendarButton_Click;
             // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label8.Location = new Point(1596, 293);
+            label8.Name = "label8";
+            label8.Size = new Size(287, 30);
+            label8.TabIndex = 18;
+            label8.Text = "No. of active appointments: 0";
+            // 
             // FormCalendar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1920, 1080);
+            Controls.Add(label8);
             Controls.Add(createCalendarButton);
             Controls.Add(buttonAddAppointment);
             Controls.Add(labelDate);
@@ -321,5 +333,6 @@
         private Label labelDate;
         private Button buttonAddAppointment;
         private Button createCalendarButton;
+        private Label label8;
     }
 }
