@@ -1,18 +1,32 @@
 # Clinic staff's module
 ## TODO List
 For now:
-- [ ] Help Administratior module team with their stuff
-- [ ] Solve problems and repair mistakes with validation logic
+- [ ] View list of appointments
+  - [ ] Forms
+  - [ ] Filtering
+  - [ ] Sorting
+- [ ] Registering a new appointment
+  - [ ] Forms
+  - [ ] Validation
+  
+Soon:
+- [ ] Rescheluding an appointment
+- [ ] Cancelling an appointment
+- [ ] Issuing a confirmation
+- [ ] Cleaning calendar from outdated and past visits
+- [ ] Appointment details
 ---
 Done:
-- [x] Functional Tests
+- [X] Help Administratior module team with their stuff
+- [X] Solve problems and repair mistakes with validation logic
+- [x] Functional Tests (Patient management)
   - [x] Test scenarios
   - [x] Test cases
 - [x] Refactor Patient class
 - [x] Improve View form
 - [x] Improve Login form
 - [x] Check out merge-branch
-- [x] Unit Tests
+- [x] Unit Tests (Patient management)
   - [x] Patient class
     - [x] ChangePatientStatus
     - [x] FindPatient
@@ -25,7 +39,7 @@ Done:
     - [x] IsValidDate
     - [x] IsValidPESEL
     - [X] More..
-- [x] Forms
+- [x] Forms (Patient management)
   - [x] View patients' list form
     - [x] View
     - [x] Filter
@@ -33,7 +47,7 @@ Done:
   - [x] Add patient form
   - [x] Edit patient form
   - [x] Remove patient form
-- [x] Update Database Model
+- [x] Update Database Model (Patient management)
 - [x] Analysis
   - [x] Diagrams
   - [x] Use Case descriptions
