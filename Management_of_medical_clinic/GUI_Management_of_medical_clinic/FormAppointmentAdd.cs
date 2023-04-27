@@ -44,7 +44,7 @@ namespace GUI_Management_of_medical_clinic
             string term = comboBoxTerm.SelectedItem.ToString();
             int idTerm = AppointmentService.GetIdTerm(term);
 
-            AppointmentModel appointmentModel = new AppointmentModel(idTerm, 1000, true, 1, 1, 1, 1);
+            AppointmentModel appointmentModel = new AppointmentModel(idTerm, 1000,1, true, 1, 1, 1, 1);
             AppointmentService.AddAppointment(appointmentModel);
             MessageBox.Show("Success!");
         }
