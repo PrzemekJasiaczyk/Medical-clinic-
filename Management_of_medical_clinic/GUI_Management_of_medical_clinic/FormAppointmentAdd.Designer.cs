@@ -223,9 +223,9 @@
             labelDay.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
             labelDay.Location = new Point(610, 143);
             labelDay.Name = "labelDay";
-            labelDay.Size = new Size(190, 37);
+            labelDay.Size = new Size(201, 37);
             labelDay.TabIndex = 48;
-            labelDay.Text = "Selected Day:";
+            labelDay.Text = "Selected Date:";
             // 
             // FormAppointmentAdd
             // 

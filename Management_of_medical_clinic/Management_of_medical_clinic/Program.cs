@@ -1,4 +1,5 @@
 ﻿using Console_Management_of_medical_clinic.Data;
+using Console_Management_of_medical_clinic.Data.Enums;
 using Console_Management_of_medical_clinic.Model;
 
 static List<EmployeeModel> GetEmployeesData()
@@ -12,18 +13,25 @@ static List<EmployeeModel> GetEmployeesData()
     return employees;
 }
 
-static EmployeeModel GetEmployeeByUserId(UserModel user)
+static List<int> GetDoctorId()
 {
+    List<int> doctorsId = new List<int>();
     List<EmployeeModel> employees = GetEmployeesData();
 
     foreach (EmployeeModel employee in employees)
     {
-        //if (employee.IdUser == user)
-        //{
-         //   return employee;
-        //}
+        if (employee.Role == EnumEmployeeRoles.MedicalDoctor)
+        {
+            doctorsId.Add(employee.IdEmployee);
+        }
     }
-    return null;
+    foreach (int doctor in doctorsId)
+    {
+        Console.WriteLine(doctor);
+    }
+    return doctorsId;
 }
+
+GetDoctorId();
 
 
