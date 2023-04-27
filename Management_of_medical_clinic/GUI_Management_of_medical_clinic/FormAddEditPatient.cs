@@ -323,8 +323,11 @@ namespace GUI_Management_of_medical_clinic
 			comboBoxSex.SelectedItem = patient.Sex;
 
 			// Prevent showing a message about PESEL textbox being empty when editing
-			maskedTextBoxPESEL.BackColor = _normalColor;
-			ErrorProviderPESEL.SetError(maskedTextBoxPESEL, "");
+			if (!isNewPatient && maskedTextBoxPESEL.Text.Length > 0)
+			{
+				maskedTextBoxPESEL.BackColor = _normalColor;
+				ErrorProviderPESEL.SetError(maskedTextBoxPESEL, "");
+			}
 		}
 		internal void ReadOnlyControls()
 		{
