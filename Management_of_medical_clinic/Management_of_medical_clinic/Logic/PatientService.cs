@@ -70,7 +70,20 @@ namespace Console_Management_of_medical_clinic.Logic
 			return filteredPatients;
 		}
 
-		public bool IsValidName(string patientName, out string errorMessage)
+        public static List<Patient> GetPatientsData()
+        {
+            using (AppDbContext db = new AppDbContext())
+            {
+                return db.Patients.ToList();
+            }
+        }
+
+        public static Patient GetPatientById(int id)
+        {
+            return GetPatientsData().FirstOrDefault(patient => patient.PatientId == id);
+        }
+
+        public bool IsValidName(string patientName, out string errorMessage)
         {
             // White space checking
             if (string.IsNullOrWhiteSpace(patientName)) 

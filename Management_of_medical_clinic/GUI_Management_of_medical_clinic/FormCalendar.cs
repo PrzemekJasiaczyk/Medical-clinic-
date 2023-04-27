@@ -141,7 +141,8 @@ namespace Calendar
             dataGridViewAppointments.Rows.Clear();
             foreach (AppointmentModel appointment in appointments)
             {
-                dataGridViewAppointments.Rows.Add(appointment.IdEmployee, appointment.IdDay, appointment.IdTerm, appointment.PatientId);
+                Patient patient = PatientService.GetPatientById((int)appointment.PatientId);
+                dataGridViewAppointments.Rows.Add(appointment.IdEmployee, appointment.IdDay, appointment.IdTerm, patient.FirstName + " " + patient.LastName);
             }
         }
 
