@@ -199,18 +199,18 @@ namespace GUI_Management_of_medical_clinic
 					_patientValidator
 					.GetPatientData()
 					.Where(
-						p =>
-						(p.FirstName == patient.FirstName &&
-						p.LastName == patient.LastName &&
-						p.PESEL == patient.PESEL &&
-						p.BirthDate == patient.BirthDate &&
-						p.Sex == patient.Sex)
-						)
-					.FirstOrDefault();
+						p => 
+						p.PESEL == maskedTextBoxPESEL.Text &&
+						p.PatientId != patient.PatientId)
+						.FirstOrDefault();
 
-				ErrorProviderPESEL.SetError(maskedTextBoxPESEL, "");
-				maskedTextBoxPESEL.BackColor = _normalColor;
-				errorMessage = "";
+
+				if (existingPatient == null)
+				{
+					ErrorProviderPESEL.SetError(maskedTextBoxPESEL, "");
+					maskedTextBoxPESEL.BackColor = _normalColor;
+					errorMessage = "";
+				}
 			}
 		}
 
