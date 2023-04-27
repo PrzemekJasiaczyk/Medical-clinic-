@@ -1,4 +1,5 @@
 ﻿using Console_Management_of_medical_clinic.Data;
+using Console_Management_of_medical_clinic.Data.Enums;
 using Console_Management_of_medical_clinic.Model;
 using System;
 using System.Collections.Generic;
@@ -52,7 +53,7 @@ namespace Console_Management_of_medical_clinic.Logic
             return GetOfficesData().FirstOrDefault(o => o.IdOffice == id);
         }
 
-        public static void EditOffice(int idOffice, int number, bool status, string info, int idSpecialization)
+        public static void EditOffice(int idOffice, int number, EnumOfficeStatuses status, string info, int idSpecialization)
         {
             using (AppDbContext context = new AppDbContext())
             {

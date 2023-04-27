@@ -36,7 +36,7 @@ namespace GUI_Management_of_medical_clinic
 
             foreach (OfficeModel office in OfficeService.GetOfficesData())
             {
-                dataGridViewOffices.Rows.Add(office.IdOffice, office.Number, office.Status ? "Active" : "Not active", office.Info, SpecializationService.GetSpecializationById(office.IdSpecialization).Name);
+                dataGridViewOffices.Rows.Add(office.IdOffice, office.Number, office.Status.ToString(), office.Info, SpecializationService.GetSpecializationById(office.IdSpecialization).Name);
             }
         }
 
