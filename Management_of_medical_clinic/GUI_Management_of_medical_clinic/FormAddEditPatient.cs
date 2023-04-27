@@ -83,12 +83,6 @@ namespace GUI_Management_of_medical_clinic
 
             }
 
-            if (ErrorProviderBirthDate.GetError(dateTimePickerBirthDate) != string.Empty)
-            {
-                msg += "• " + ErrorProviderBirthDate.GetError(dateTimePickerBirthDate);
-
-            }
-
             FormMessage formMessage = new FormMessage(msg);
 
             formMessage.Size=formMessage.MaximumSize;
