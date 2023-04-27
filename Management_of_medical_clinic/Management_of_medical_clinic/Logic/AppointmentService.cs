@@ -41,6 +41,14 @@ namespace Console_Management_of_medical_clinic.Logic
             }
         }
 
+        public static string GetTermByTermId(int idTerm)
+        {
+            int minutesFromOpening = (idTerm - 1) * 20;
+            int hour = minutesFromOpening / 60 + 7;
+            int minute = minutesFromOpening % 60;
+            return $"{hour:00}:{minute:00}";
+        }
+
         public static List<AppointmentModel> CheckAppointmentsAndReturnList(DateTime selectedDate, int idCalendar = 1)
         { 
             int idDay = selectedDate.Day;
