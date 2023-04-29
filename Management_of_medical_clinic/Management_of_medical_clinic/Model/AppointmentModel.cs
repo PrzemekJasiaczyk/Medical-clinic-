@@ -47,5 +47,8 @@ namespace Console_Management_of_medical_clinic.Model
             PatientId = patientId;
             IdOffice = idOffice;
         }
+
+
+        public object[] appointmentData => new object[] { IdEmployee, IdTerm };
     }
 }

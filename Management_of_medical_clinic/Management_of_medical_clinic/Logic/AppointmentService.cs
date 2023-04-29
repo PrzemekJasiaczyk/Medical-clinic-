@@ -40,5 +40,24 @@ namespace Console_Management_of_medical_clinic.Logic
                 return idTerm;
             }
         }
+
+
+        public List<AppointmentModel> GetFreeApoitments(DateTime date)
+        {
+            List<AppointmentModel> result = new List<AppointmentModel>();
+
+            using (AppDbContext db = new AppDbContext())
+            {
+                foreach(AppointmentModel appointmentModel in db.DbAppointments)
+                {
+                    if(appointmentModel.IdDay)
+                }
+
+
+
+                return result;
+            }
+        }
+
     }
 }

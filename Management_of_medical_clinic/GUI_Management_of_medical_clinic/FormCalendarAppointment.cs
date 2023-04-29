@@ -24,6 +24,7 @@ namespace GUI_Management_of_medical_clinic
             ChangeTitle(displayMonth);
         }
 
+
         private void buttonToday_Click(object sender, EventArgs e)
         {
             RemoveControlPanels();
@@ -70,7 +71,7 @@ namespace GUI_Management_of_medical_clinic
         private void ChangeTitle(DateTime date)
         {
             string year = date.Year.ToString();
-            
+
             CultureInfo culture = new CultureInfo("en-US");
             string month = date.ToString("MMMM", culture);
 
@@ -145,7 +146,7 @@ namespace GUI_Management_of_medical_clinic
             //DateTime[] holidays = calendar.GetHolidays(year);
 
 
-            if (date.DayOfWeek != 0 )  //|| !holidays.Contains(date)
+            if (date.DayOfWeek != 0)  //|| !holidays.Contains(date)
             {
                 UserControlDay userControlDay = new UserControlDay(date);
                 return userControlDay;
@@ -165,6 +166,14 @@ namespace GUI_Management_of_medical_clinic
         }
 
 
+        private void ExampleDataInDataGridView()
+        {
+            
+        }
+
+
         #endregion
+
+        
     }
 }
