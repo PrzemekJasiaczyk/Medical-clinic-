@@ -2,9 +2,10 @@ using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
 using GUI_Management_of_medical_clinic;
 using System.Drawing.Text;
+using System.Globalization;
 using System.Windows.Forms;
 
-namespace Calendar
+namespace GUI_Management_of_medical_clinic
 {
     public partial class FormCalendar : Form
     {
@@ -25,7 +26,7 @@ namespace Calendar
             RemoveControlPanels();
             displayMonth = previousMonth ? displayMonth.AddMonths(-1) : displayMonth;
             displayDays(displayMonth);
-            ChangeTitle(labelTitleCalendar, displayMonth);
+            ChangeTitle(displayMonth);
 
             dataGridViewAppointments.Rows.Clear();
             dataGridViewAppointments.Columns.Add("Doctor", "Doctor");
@@ -40,7 +41,7 @@ namespace Calendar
             RemoveControlPanels();
             displayMonth = DateTime.Now;
             displayDays(displayMonth);
-            ChangeTitle(labelTitleCalendar, displayMonth);
+            ChangeTitle(displayMonth);
         }
 
         private void buttonPreviousMonth_Click(object sender, EventArgs e)
@@ -50,7 +51,7 @@ namespace Calendar
             displayMonth = displayMonth.AddMonths(-1);
 
             displayDays(displayMonth);
-            ChangeTitle(labelTitleCalendar, displayMonth);
+            ChangeTitle(displayMonth);
         }
 
         private void buttonNextMonth_Click(object sender, EventArgs e)
@@ -60,7 +61,7 @@ namespace Calendar
             displayMonth = displayMonth.AddMonths(+1);
 
             displayDays(displayMonth);
-            ChangeTitle(labelTitleCalendar, displayMonth);
+            ChangeTitle(displayMonth);
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
@@ -78,32 +79,32 @@ namespace Calendar
             flowLayoutPanelMonth.Controls.Clear();
         }
 
-        private void ChangeTitle(Label label, DateTime date)
+        private void ChangeTitle(DateTime date)
         {
             string year = date.Year.ToString();
-            string month = date.ToString("MMMM");
 
-            label.Text = year + " - " + month;
+            CultureInfo culture = new CultureInfo("en-US");
+            string month = date.ToString("MMMM", culture);
+
+            labelTitleCalendar_Month.Text = month.ToUpper();
+            labelTitleCalendar_Year.Text = year;
         }
 
 
 
         private void displayDays(DateTime date)
         {
-            // bierzemy pierwszy dzieñ miesi¹ca
+
             DateTime startOfTheMonth = new DateTime(date.Year, date.Month, 1);
 
-            // liczymy iloœæ dni w miesi¹cu aby wiedzieæ ile paneli trzeba pokazaæ
             int days = DateTime.DaysInMonth(date.Year, date.Month);
 
 
-            // konwertujemy startOfTheMonth na int, dzieñ tygodnia
-            // -- w którym miejscu panel ma siê pojawiæ, jak 3 to œroda itp
             int dayOfWeek = Convert.ToInt32(startOfTheMonth.DayOfWeek);
 
             for (int i = 0; i < dayOfWeek; i++)
             {
-                UserControlBlank userControlBlank = new UserControlBlank();
+                UserControlBlank userControlBlank = new UserControlBlank(null);
                 flowLayoutPanelMonth.Controls.Add(userControlBlank);
 
             }
@@ -114,33 +115,59 @@ namespace Calendar
             {
 
                 DateTime day = new DateTime(date.Year, date.Month, i);
+          
+                UserControl userControl = itIsADayOf(day);
 
-                UserControlDay userControlDay = new UserControlDay(day);
+                MarkToday(userControl, day);
 
-                userControlDay.ControlClicked += UserControlDay_ControlClicked;
+                flowLayoutPanelMonth.Controls.Add(userControl);
 
-                bool isSunday = day.DayOfWeek == DayOfWeek.Sunday;
-                if (isSunday)
-                {
-                    userControlDay.BackColor = Color.DarkGray;
-                }
-
-                
-
-                flowLayoutPanelMonth.Controls.Add(userControlDay);
             }
 
-            // liczymy ile trzeba dodaæ pustych paneli,aby uzupe³niæ kalendarz
             int completeControls = dayOfWeek + days;
 
             for (int i = completeControls; i < 42; i++)
             {
-                UserControlBlank userControlBlank = new UserControlBlank();
-                
+                UserControlBlank userControlBlank = new UserControlBlank(null);
                 flowLayoutPanelMonth.Controls.Add(userControlBlank);
             }
 
 
+        }
+
+        private void MarkToday(UserControl userControl, DateTime day)
+        {
+            if (day.Date == DateTime.Today.Date)
+            {
+                userControl.BackColor = Color.LightBlue;
+            }
+        }
+
+        private UserControl itIsADayOf(DateTime date)
+        {
+            //add holidays to calendar --dont work
+
+            //int year = date.Year;
+            //string countryCode = "PL";
+
+            //CultureInfo culture = new CultureInfo(countryCode);
+            //Calendar calendar = culture.Calendar;
+
+            //DateTime[] holidays = calendar.GetHolidays(year);
+
+
+            if (date.DayOfWeek != 0)  //|| !holidays.Contains(date)
+            {
+                UserControlDay userControlDay = new UserControlDay(date);
+                userControlDay.ControlClicked += UserControlDay_ControlClicked;
+                return userControlDay;
+            }
+            else
+            {
+                UserControlBlank userControlBlank = new UserControlBlank(date);
+                userControlBlank.BackColor = Color.Gainsboro;
+                return userControlBlank;
+            }
         }
 
         private void UserControlDay_ControlClicked(object sender, DateTime selectedDate)   // Date From UserControlDay
@@ -171,10 +198,6 @@ namespace Calendar
             //this.Close();
         }
 
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void createCalendarButton_Click(object sender, EventArgs e)
         {

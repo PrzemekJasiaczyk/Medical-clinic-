@@ -1,3 +1,4 @@
+using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
 using System.Globalization;
 //using System.Globalization.Extensions;
@@ -159,21 +160,24 @@ namespace GUI_Management_of_medical_clinic
             }
         }
 
-
-        private void UserControlDay_ControlClicked(object sender, DateTime selectedDate)   // Date From UserControlDay
+        private void getFreeTerms(DateTime date)
         {
-            labelDate.Text = selectedDate.ToString("d");
+            string timeTerm;
+
+            List<AppointmentModel> appointments = AppointmentService.CheckAppointmentsAndReturnList(date);
+
+            foreach (AppointmentModel appointment in appointments)
+            {
+                if (appointment.Patient == null && appointment.IsActive == true)
+                {
+                    timeTerm = AppointmentService.GetTermByTermId(appointment.IdTerm);
+
+                    int index = dataGridViewAppointment.Rows.Add(appointment.appointmentData);
+                    dataGridViewAppointment.Rows[index].Tag = appointment;
+                }
+            }
         }
-
-
-        private void ExampleDataInDataGridView()
-        {
-            
-        }
-
 
         #endregion
-
-        
     }
 }
