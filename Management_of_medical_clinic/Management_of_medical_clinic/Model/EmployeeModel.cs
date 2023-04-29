@@ -134,5 +134,11 @@ namespace Console_Management_of_medical_clinic.Model
             context.SaveChanges();
         }
 
+
+        public override string ToString()
+        {
+            return LastName + " " + FirstName;
+        }
+
     }
 }

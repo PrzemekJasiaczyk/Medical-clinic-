@@ -125,7 +125,7 @@ namespace Calendar
                     userControlDay.BackColor = Color.DarkGray;
                 }
 
-                
+
 
                 flowLayoutPanelMonth.Controls.Add(userControlDay);
             }
@@ -136,7 +136,7 @@ namespace Calendar
             for (int i = completeControls; i < 42; i++)
             {
                 UserControlBlank userControlBlank = new UserControlBlank();
-                
+
                 flowLayoutPanelMonth.Controls.Add(userControlBlank);
             }
 
@@ -187,6 +187,11 @@ namespace Calendar
             FormCalendarsList formCalendarsList = new FormCalendarsList(currentEmployee);
             formCalendarsList.ShowDialog();
             Close();
+        }
+
+        private void dataGridViewAppointments_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

@@ -135,62 +135,67 @@ namespace GUI_Management_of_medical_clinic
 
         }
 
-		public List<Patient> GetSortedPatientData()
-		{
-			using (AppDbContext db = new AppDbContext())
-			{
-				return db.Patients.OrderBy(p => p.LastName).ToList();
-			}
-		}
+        public List<Patient> GetSortedPatientData()
+        {
+            using (AppDbContext db = new AppDbContext())
+            {
+                return db.Patients.OrderBy(p => p.LastName).ToList();
+            }
+        }
 
-		private void DisplaySortedPatientData()
-		{
-			List<Patient> sortedPatientList = GetSortedPatientData();
-			dataGridViewPatientList.DataSource = sortedPatientList;
-		}
+        private void DisplaySortedPatientData()
+        {
+            List<Patient> sortedPatientList = GetSortedPatientData();
+            dataGridViewPatientList.DataSource = sortedPatientList;
+        }
 
-		public List<Patient> GetSortedPatientDataDSC()
-		{
-			using (AppDbContext db = new AppDbContext())
-			{
-				return db.Patients.OrderByDescending(p => p.LastName).ToList();
-			}
-		}
+        public List<Patient> GetSortedPatientDataDSC()
+        {
+            using (AppDbContext db = new AppDbContext())
+            {
+                return db.Patients.OrderByDescending(p => p.LastName).ToList();
+            }
+        }
 
-		private void DisplaySortedPatientDataDSC()
-		{
-			List<Patient> sortedPatientList = GetSortedPatientDataDSC();
-			dataGridViewPatientList.DataSource = sortedPatientList;
-		}
+        private void DisplaySortedPatientDataDSC()
+        {
+            List<Patient> sortedPatientList = GetSortedPatientDataDSC();
+            dataGridViewPatientList.DataSource = sortedPatientList;
+        }
 
-		private void pictureBox4_Click(object sender, EventArgs e)
-		{
-			DisplaySortedPatientData();
-		}
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            DisplaySortedPatientData();
+        }
 
-		private void pictureBox5_Click(object sender, EventArgs e)
-		{
-			DisplaySortedPatientDataDSC();
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+            DisplaySortedPatientDataDSC();
 
-		}
+        }
 
-		private void button1_Click_1(object sender, EventArgs e)
-		{
-			//Clear Filters
-			DisplayPatientsList();
-			textBox1_Name.Text = null;
-			TextBox_PESEL.Text = null;
-			dateTimePicker1.Text = null;
-			dateTimePicker2.Text = null;
-		}
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            //Clear Filters
+            DisplayPatientsList();
+            textBox1_Name.Text = null;
+            TextBox_PESEL.Text = null;
+            dateTimePicker1.Text = null;
+            dateTimePicker2.Text = null;
+        }
 
-		private void buttonShowFilters_Click(object sender, EventArgs e)
-		{
-			//Filters
-			PatientService patientService = new PatientService();
-			List<Patient> FiltredPatients = patientService.FilterPatient(textBox1_Name.Text, TextBox_PESEL.Text);
-			dataGridViewPatientList.DataSource = FiltredPatients;
+        private void buttonShowFilters_Click(object sender, EventArgs e)
+        {
+            //Filters
+            PatientService patientService = new PatientService();
+            List<Patient> FiltredPatients = patientService.FilterPatient(textBox1_Name.Text, TextBox_PESEL.Text);
+            dataGridViewPatientList.DataSource = FiltredPatients;
 
-		}
-	}
+        }
+
+        private void dataGridViewPatientList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+    }
 }
