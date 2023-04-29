@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Console_Management_of_medical_clinic.Data;
 using Console_Management_of_medical_clinic.Logic;
 
 namespace Console_Management_of_medical_clinic.Model
@@ -52,6 +53,14 @@ namespace Console_Management_of_medical_clinic.Model
         {
             return IdDay.ToString() +" " + AppointmentService.GetTermByTermId(IdTerm).ToString();
 
+        }
+
+        public static AppointmentModel FindAppointment(int IdAppointment)
+        {
+            AppDbContext _context = new AppDbContext();
+
+            AppointmentModel appointment = _context.DbAppointments.Find(IdAppointment);
+            return appointment;
         }
     }
 }

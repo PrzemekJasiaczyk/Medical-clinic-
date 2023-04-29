@@ -3,6 +3,7 @@ using Console_Management_of_medical_clinic.Data.Enums;
 using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Migrations;
 using Console_Management_of_medical_clinic.Model;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -120,7 +121,7 @@ namespace GUI_Management_of_medical_clinic
         {
             using (AppDbContext db = new AppDbContext())
             {
-                string[] nameParts = selectedDoctor.Split(' ');
+                string[] nameParts = selectedPatient.Split(' ');
                 string lastName = nameParts[0];
                 string firstName = nameParts[1];
 
@@ -181,22 +182,27 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonAddAppointment_Click(object sender, EventArgs e)
         {
-            using (AppDbContext db = new AppDbContext())
+
+
+            int appointmentId = GetAppointmentId(selectedDate);
+            int patientId = GetPatientId(selectedPatient);
+
+            using (var context = new AppDbContext())
             {
-                AppointmentModel model = db.DbAppointments.FirstOrDefault(a => a.IdAppointment == GetAppointmentId(selectedDate));
+                AppointmentModel appointment = AppointmentModel.FindAppointment(appointmentId);
 
-                if (model != null)
+
+                //if (appointment != null)
                 {
-                    model.PatientId = GetPatientId(selectedPatient);
-                    model.IsActive = false;
+                    appointment.PatientId = patientId;
+                    appointment.IsActive = false;
 
-                    db.DbAppointments.Update(model);
-                    db.SaveChanges();
-                    label1.Text = "udalo sie";
+                    context.SaveChanges();
+                    label1.Text = "ssss";
+                    
                 }
             }
 
-            label1.Text = "udalo sie";
 
 
         }
