@@ -9,7 +9,6 @@ For now:
   - [ ] Forms
   - [ ] Validation
 - [ ] Analysis
-  - [ ] Improve analysis for administration module
   - [ ] Analysis for visit registration and calendar view for clinic staff
 - [ ] Functional tests for clinic staff module
   
