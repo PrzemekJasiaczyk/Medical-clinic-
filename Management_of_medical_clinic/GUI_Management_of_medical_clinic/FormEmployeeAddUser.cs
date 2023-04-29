@@ -22,6 +22,7 @@ namespace GUI_Management_of_medical_clinic
             InitializeComponent();
             currentEmployee = currentE;
             newEmployee = newE;
+            MessageBox.Show(newE.FirstName);
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)

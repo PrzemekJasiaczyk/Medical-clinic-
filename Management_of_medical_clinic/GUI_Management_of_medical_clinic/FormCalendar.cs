@@ -1,17 +1,20 @@
+using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
 using GUI_Management_of_medical_clinic;
 using System.Drawing.Text;
 using System.Windows.Forms;
 
-namespace GUI_Management_of_medical_clinic
+namespace Calendar
 {
     public partial class FormCalendar : Form
     {
         EmployeeModel currentEmployee;
-        public FormCalendar(EmployeeModel currentEmployee)
+        bool previousMonth;
+        public FormCalendar(EmployeeModel currentEmployee, bool previousMonth = false)
         {
             InitializeComponent();
             this.currentEmployee = currentEmployee;
+            this.previousMonth = previousMonth;
         }
 
         DateTime displayMonth = DateTime.Today;
@@ -20,8 +23,16 @@ namespace GUI_Management_of_medical_clinic
         private void FormCalendar_Load(object sender, EventArgs e)
         {
             RemoveControlPanels();
+            displayMonth = previousMonth ? displayMonth.AddMonths(-1) : displayMonth;
             displayDays(displayMonth);
             ChangeTitle(labelTitleCalendar, displayMonth);
+
+            dataGridViewAppointments.Rows.Clear();
+            dataGridViewAppointments.Columns.Add("Doctor", "Doctor");
+            dataGridViewAppointments.Columns.Add("Day", "Day");
+            dataGridViewAppointments.Columns.Add("Hour", "Hour");
+            dataGridViewAppointments.Columns.Add("Patient", "Patient");
+
         }
 
         private void buttonToday_Click(object sender, EventArgs e)
@@ -92,8 +103,9 @@ namespace GUI_Management_of_medical_clinic
 
             for (int i = 0; i < dayOfWeek; i++)
             {
-                UserControlBlank userControlBlank = new UserControlBlank(null);
+                UserControlBlank userControlBlank = new UserControlBlank();
                 flowLayoutPanelMonth.Controls.Add(userControlBlank);
+
             }
 
 
@@ -107,6 +119,14 @@ namespace GUI_Management_of_medical_clinic
 
                 userControlDay.ControlClicked += UserControlDay_ControlClicked;
 
+                bool isSunday = day.DayOfWeek == DayOfWeek.Sunday;
+                if (isSunday)
+                {
+                    userControlDay.BackColor = Color.DarkGray;
+                }
+
+                
+
                 flowLayoutPanelMonth.Controls.Add(userControlDay);
             }
 
@@ -115,7 +135,8 @@ namespace GUI_Management_of_medical_clinic
 
             for (int i = completeControls; i < 42; i++)
             {
-                UserControlBlank userControlBlank = new UserControlBlank(null);
+                UserControlBlank userControlBlank = new UserControlBlank();
+                
                 flowLayoutPanelMonth.Controls.Add(userControlBlank);
             }
 
@@ -125,6 +146,15 @@ namespace GUI_Management_of_medical_clinic
         private void UserControlDay_ControlClicked(object sender, DateTime selectedDate)   // Date From UserControlDay
         {
             labelDate.Text = selectedDate.ToString("d");
+
+            List<AppointmentModel> appointments = AppointmentService.CheckAppointmentsAndReturnList(selectedDate);
+            dataGridViewAppointments.Rows.Clear();
+            foreach (AppointmentModel appointment in appointments)
+            {
+                string timeTerm = AppointmentService.GetTermByTermId(appointment.IdTerm);
+                Patient patient = PatientService.GetPatientById((int)appointment.PatientId);
+                dataGridViewAppointments.Rows.Add(appointment.IdEmployee, appointment.IdDay, timeTerm, patient.FirstName + " " + patient.LastName);
+            }
         }
 
 
@@ -144,6 +174,19 @@ namespace GUI_Management_of_medical_clinic
         private void label9_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void createCalendarButton_Click(object sender, EventArgs e)
+        {
+            string month = displayMonth.ToString("MM");
+            string year = displayMonth.ToString("yyyy");
+            string monthAndYear = month + "-" + year;
+            CalendarModel calendarModel = new CalendarModel(monthAndYear, false);
+            CalendarService.AddCalendar(calendarModel);
+            MessageBox.Show("Calendar added");
+            FormCalendarsList formCalendarsList = new FormCalendarsList(currentEmployee);
+            formCalendarsList.ShowDialog();
+            Close();
         }
     }
 }

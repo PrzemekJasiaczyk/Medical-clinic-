@@ -1,4 +1,5 @@
-﻿using Console_Management_of_medical_clinic.Logic;
+﻿using Console_Management_of_medical_clinic.Data.Enums;
+using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
 using Microsoft.VisualBasic.ApplicationServices;
 using System;
@@ -34,7 +35,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void checkIfRequiredFilled()
         {
-            if (textBoxInfo.Text.Trim().Length > 0 && textBoxNumber.Text.Trim().Length > 0 && comboBoxActive.SelectedItem != null && listBoxSpecializations.SelectedItem != null && int.TryParse(textBoxNumber.Text, out _))
+            if (textBoxInfo.Text.Trim().Length > 0 && textBoxNumber.Text.Trim().Length > 0 && comboBoxStatus.SelectedItem != null && listBoxSpecializations.SelectedItem != null && int.TryParse(textBoxNumber.Text, out _))
             {
                 buttonEditOffice.Enabled = true;
             }
@@ -66,26 +67,24 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonEditOffice_Click(object sender, EventArgs e)
         {
-            
+
             if (OfficeService.CheckIfNumberExists(int.Parse(textBoxNumber.Text)) && office.Number != int.Parse(textBoxNumber.Text)) { MessageBox.Show("The number of room entered is already taken. Please choose a different number.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
 
-            OfficeService.EditOffice(int.Parse(textBoxOfficeId.Text), int.Parse(textBoxNumber.Text), comboBoxActive.SelectedItem == "Active" ? true : false, textBoxInfo.Text, int.Parse(Regex.Match(listBoxSpecializations.SelectedItem.ToString(), @"^\d+").Value));
+            OfficeService.EditOffice(office.IdOffice, int.Parse(textBoxNumber.Text), (EnumOfficeStatuses)Enum.Parse(typeof(EnumOfficeStatuses), comboBoxStatus.SelectedItem.ToString()), textBoxInfo.Text, int.Parse(Regex.Match(listBoxSpecializations.SelectedItem.ToString(), @"^\d+").Value));
 
             MessageBox.Show("Success, data is saved.");
 
             FormOfficeList officeList = new FormOfficeList(currentUser);
             officeList.ShowDialog();
             Close();
-            
+
         }
 
         private void FormOfficeEdit_Load(object sender, EventArgs e)
         {
-            
-            textBoxOfficeId.Text = office.IdOffice.ToString();
             textBoxInfo.Text = office.Info;
             textBoxNumber.Text = office.Number.ToString();
-            comboBoxActive.SelectedItem = office.Status ? "Active" : "Non active";
+            comboBoxStatus.SelectedItem = office.Status.ToString();
 
             foreach (SpecializationModel specialization in SpecializationService.GetSpecializationsData())
             {
@@ -97,8 +96,8 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            
-            if (office.IdSpecialization != int.Parse(Regex.Match(listBoxSpecializations.SelectedItem.ToString(), @"^\d+").Value) || !comboBoxActive.SelectedItem.Equals(office.Status ? "Active" : "Non active") || !textBoxInfo.Text.Equals(office.Info) || office.Number != int.Parse(textBoxNumber.Text))
+
+            if (office.IdSpecialization != int.Parse(Regex.Match(listBoxSpecializations.SelectedItem.ToString(), @"^\d+").Value) || !comboBoxStatus.SelectedItem.Equals(office.Status.ToString()) || !textBoxInfo.Text.Equals(office.Info) || office.Number != int.Parse(textBoxNumber.Text))
             {
                 DialogResult result = MessageBox.Show("Are you sure you want to cancel the operation? ", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.No)

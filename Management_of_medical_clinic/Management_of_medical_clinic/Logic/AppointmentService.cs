@@ -41,26 +41,33 @@ namespace Console_Management_of_medical_clinic.Logic
             }
         }
 
-
-        public List<AppointmentModel> GetFreeApoitments(DateTime date)
+        public static string GetTermByTermId(int idTerm)
         {
-            List<AppointmentModel> result = new List<AppointmentModel>();
-
-            using (AppDbContext db = new AppDbContext())
-            {
-                foreach(AppointmentModel appointmentModel in db.DbAppointments)
-                {
-                    if(date.Date)
-                    {
-
-                    }
-                }
-
-
-
-                return result;
-            }
+            int minutesFromOpening = (idTerm - 1) * 20;
+            int hour = minutesFromOpening / 60 + 7;
+            int minute = minutesFromOpening % 60;
+            return $"{hour:00}:{minute:00}";
         }
 
+        public static List<AppointmentModel> CheckAppointmentsAndReturnList(DateTime selectedDate, int idCalendar = 1)
+        { 
+            int idDay = selectedDate.Day;
+            
+            int idTerm = GetIdTerm(selectedDate.ToString("HH:mm"));
+            List<AppointmentModel> appointments = new List<AppointmentModel>();
+
+            using(AppDbContext context = new AppDbContext())
+            {
+                foreach(AppointmentModel appointment in context.DbAppointments)
+                {
+                    if(appointment.IdDay == idDay && appointment.IdCalendar == idCalendar)
+                    {
+                        appointments.Add(appointment);
+                    }
+                }
+            }
+
+            return appointments;
+        }
     }
 }
