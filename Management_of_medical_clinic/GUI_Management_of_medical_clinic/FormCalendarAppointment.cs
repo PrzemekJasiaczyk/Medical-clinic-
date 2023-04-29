@@ -1,10 +1,7 @@
 using Console_Management_of_medical_clinic.Model;
-using GUI_Management_of_medical_clinic;
-using System.Drawing.Text;
-using System.Windows.Forms;
-using System;
 using System.Globalization;
-using System.Globalization.Extensions;
+//using System.Globalization.Extensions;
+
 
 namespace GUI_Management_of_medical_clinic
 {
@@ -73,7 +70,9 @@ namespace GUI_Management_of_medical_clinic
         private void ChangeTitle(DateTime date)
         {
             string year = date.Year.ToString();
-            string month = date.ToString("MMMM");
+            
+            CultureInfo culture = new CultureInfo("en-US");
+            string month = date.ToString("MMMM", culture);
 
             labelTitleCalendar_Month.Text = month.ToUpper();
             labelTitleCalendar_Year.Text = year;
@@ -135,7 +134,7 @@ namespace GUI_Management_of_medical_clinic
 
         private UserControl itIsADayOf(DateTime date)
         {
-            // add holidays to calendar -- dont work
+            //add holidays to calendar --dont work
 
             //int year = date.Year;
             //string countryCode = "PL";
@@ -146,7 +145,7 @@ namespace GUI_Management_of_medical_clinic
             //DateTime[] holidays = calendar.GetHolidays(year);
 
 
-            if (date.DayOfWeek != 0)
+            if (date.DayOfWeek != 0 )  //|| !holidays.Contains(date)
             {
                 UserControlDay userControlDay = new UserControlDay(date);
                 return userControlDay;
