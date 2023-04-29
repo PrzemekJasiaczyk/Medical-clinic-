@@ -158,7 +158,7 @@ namespace GUI_Management_of_medical_clinic
 
             if (date.DayOfWeek != 0)  //|| !holidays.Contains(date)
             {
-                UserControlDay userControlDay = new UserControlDay(date);
+                UserControlDay userControlDay = new UserControlDay(date,null);
                 userControlDay.ControlClicked += UserControlDay_ControlClicked;
                 return userControlDay;
             }
