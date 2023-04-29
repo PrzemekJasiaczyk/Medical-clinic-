@@ -47,5 +47,11 @@ namespace Console_Management_of_medical_clinic.Model
             PatientId = patientId;
             IdOffice = idOffice;
         }
+
+        public override string ToString()
+        {
+            return IdDay.ToString() +" " + AppointmentService.GetTermByTermId(IdTerm).ToString();
+
+        }
     }
 }

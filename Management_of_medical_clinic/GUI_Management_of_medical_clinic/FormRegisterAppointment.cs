@@ -1,6 +1,7 @@
 ﻿using Console_Management_of_medical_clinic.Data;
 using Console_Management_of_medical_clinic.Data.Enums;
 using Console_Management_of_medical_clinic.Logic;
+using Console_Management_of_medical_clinic.Migrations;
 using Console_Management_of_medical_clinic.Model;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,8 @@ namespace GUI_Management_of_medical_clinic
         private PatientService patientService;
         public AppointmentService appointmentService;
         string selectedDoctor;
+        string selectedPatient;
+        string selectedDate;
 
         public FormRegisterAppointment()
         {
@@ -39,15 +42,9 @@ namespace GUI_Management_of_medical_clinic
         private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
         {
             comboBoxDate.SelectedIndex = -1;
-
             comboBoxDate.Items.Clear();
-
-            label1.Text = "Testuje";
             selectedDoctor = comboBoxDoctor.SelectedItem.ToString();
-
             comboBoxDate.Items.AddRange(GetAppointments(GetDoctorId(selectedDoctor)).ToArray());
-
-
         }
 
         public List<string> GetPatientNames()
@@ -59,12 +56,6 @@ namespace GUI_Management_of_medical_clinic
                     .Select(p => p.ToString())
                     .ToList();
             }
-        }
-
-        private void addTocombobox()
-        {
-            
-
         }
 
         public List<string> GetDoctorNames()
@@ -103,6 +94,45 @@ namespace GUI_Management_of_medical_clinic
             }
         }
 
+        public int GetAppointmentId(string selectedDate)
+        {
+            
+            using (AppDbContext db = new AppDbContext())
+            {
+                string[] dateParts = selectedDate.Split(' ');
+                int selectedDay = int.Parse(dateParts[0]);
+                string selectedTerm = (dateParts[1]);
+
+
+                int term = AppointmentService.GetIdTerm(selectedTerm);
+                int idPatient = (int)db.DbAppointments
+                    .Where(e => e.IdDay == selectedDay && e.IdTerm == term)
+                    .Select(e => e.PatientId)
+                    .FirstOrDefault();
+                return idPatient;
+            }
+            
+        
+
+        }
+
+        public int GetPatientId(string selectedPatient)
+        {
+            using (AppDbContext db = new AppDbContext())
+            {
+                string[] nameParts = selectedDoctor.Split(' ');
+                string lastName = nameParts[0];
+                string firstName = nameParts[1];
+
+                int idPatient = db.Patients
+                    .Where(e => e.LastName == lastName && e.FirstName == firstName)
+                    .Select(e => e.PatientId)
+                    .FirstOrDefault();
+                return idPatient;
+            }
+        }
+
+
         public List<string> GetAppointments(int idEmployee)
         {
             using (AppDbContext db = new AppDbContext())
@@ -111,8 +141,8 @@ namespace GUI_Management_of_medical_clinic
                     .Where(a => a.IdEmployee == idEmployee)
                     .Where(a => a.IsActive == true)
                     //.Where(a => a.Patient == null || a.PatientId == null)
-                    .Where(a => a.PatientId == null)
-                    .Select(a => $" {a.IdDay} {AppointmentService.GetTermByTermId(a.IdTerm)}")
+                    //.Where(a => a.PatientId == null)
+                    .Select(a => a.ToString())
                     .ToList();
             }
         }
@@ -120,6 +150,8 @@ namespace GUI_Management_of_medical_clinic
 
         private void comboBoxDate_SelectedIndexChanged(object sender, EventArgs e)
         {
+            selectedDate = comboBoxDate.SelectedItem.ToString();
+
 
         }
 
@@ -146,5 +178,35 @@ namespace GUI_Management_of_medical_clinic
         {
             CheckIfAllComboBoxesAreSelected();
         }
+
+        private void buttonAddAppointment_Click(object sender, EventArgs e)
+        {
+            using (AppDbContext db = new AppDbContext())
+            {
+                AppointmentModel model = db.DbAppointments.FirstOrDefault(a => a.IdAppointment == GetAppointmentId(selectedDate));
+
+                if (model != null)
+                {
+                    model.PatientId = GetPatientId(selectedPatient);
+                    model.IsActive = false;
+
+                    db.DbAppointments.Update(model);
+                    db.SaveChanges();
+                    label1.Text = "udalo sie";
+                }
+            }
+
+            label1.Text = "udalo sie";
+
+
+        }
+
+        private void comboBoxPatient_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectedPatient = comboBoxPatient.SelectedItem.ToString();
+
+        }
+        
+
     }
 }

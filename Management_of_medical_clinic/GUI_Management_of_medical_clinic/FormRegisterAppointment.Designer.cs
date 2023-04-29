@@ -129,6 +129,7 @@
             comboBoxPatient.Name = "comboBoxPatient";
             comboBoxPatient.Size = new Size(453, 36);
             comboBoxPatient.TabIndex = 71;
+            comboBoxPatient.SelectedIndexChanged += comboBoxPatient_SelectedIndexChanged;
             comboBoxPatient.SelectionChangeCommitted += comboBoxPatient_SelectionChangeCommitted;
             // 
             // comboBoxDate
@@ -168,6 +169,7 @@
             buttonAddAppointment.TabIndex = 74;
             buttonAddAppointment.Text = "Add an appointment";
             buttonAddAppointment.UseVisualStyleBackColor = false;
+            buttonAddAppointment.Click += buttonAddAppointment_Click;
             // 
             // label1
             // 
