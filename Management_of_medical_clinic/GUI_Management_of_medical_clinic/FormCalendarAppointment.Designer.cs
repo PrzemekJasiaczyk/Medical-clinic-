@@ -365,6 +365,7 @@
             // 
             dataGridViewAppointment.AllowUserToAddRows = false;
             dataGridViewAppointment.AllowUserToDeleteRows = false;
+            dataGridViewAppointment.AllowUserToResizeColumns = false;
             dataGridViewAppointment.BackgroundColor = SystemColors.Control;
             dataGridViewAppointment.BorderStyle = BorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
