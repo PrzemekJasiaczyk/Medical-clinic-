@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panelMenu = new Panel();
+            buttonExit = new Button();
             pictureBox1 = new PictureBox();
             createCalendarButton = new Button();
             flowLayoutPanelMonth = new FlowLayoutPanel();
@@ -58,7 +59,6 @@
             label4 = new Label();
             panel8 = new Panel();
             label5 = new Label();
-            buttonExit = new Button();
             panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
@@ -83,6 +83,21 @@
             panelMenu.Size = new Size(312, 1081);
             panelMenu.TabIndex = 0;
             // 
+            // buttonExit
+            // 
+            buttonExit.BackColor = Color.Gainsboro;
+            buttonExit.FlatAppearance.BorderColor = Color.White;
+            buttonExit.FlatAppearance.BorderSize = 2;
+            buttonExit.FlatStyle = FlatStyle.Flat;
+            buttonExit.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonExit.Location = new Point(26, 983);
+            buttonExit.Name = "buttonExit";
+            buttonExit.Size = new Size(252, 66);
+            buttonExit.TabIndex = 48;
+            buttonExit.Text = "Back";
+            buttonExit.UseVisualStyleBackColor = false;
+            buttonExit.Click += buttonExit_Click;
+            // 
             // pictureBox1
             // 
             pictureBox1.BackgroundImage = Properties.Resources.MC_Logo;
@@ -99,9 +114,9 @@
             createCalendarButton.BackColor = SystemColors.GradientActiveCaption;
             createCalendarButton.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
             createCalendarButton.ForeColor = SystemColors.ControlText;
-            createCalendarButton.Location = new Point(1596, 113);
+            createCalendarButton.Location = new Point(1321, 2);
             createCalendarButton.Name = "createCalendarButton";
-            createCalendarButton.Size = new Size(252, 103);
+            createCalendarButton.Size = new Size(252, 94);
             createCalendarButton.TabIndex = 17;
             createCalendarButton.Text = "Create Calendar for Selected Month";
             createCalendarButton.UseVisualStyleBackColor = false;
@@ -253,6 +268,7 @@
             panel9.Controls.Add(labelTitleCalendar_Month);
             panel9.Controls.Add(button2);
             panel9.Controls.Add(button3);
+            panel9.Controls.Add(createCalendarButton);
             panel9.Location = new Point(296, 75);
             panel9.Name = "panel9";
             panel9.Size = new Size(1888, 99);
@@ -413,21 +429,6 @@
             label5.Text = "Saturday";
             label5.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // buttonExit
-            // 
-            buttonExit.BackColor = Color.Gainsboro;
-            buttonExit.FlatAppearance.BorderColor = Color.White;
-            buttonExit.FlatAppearance.BorderSize = 2;
-            buttonExit.FlatStyle = FlatStyle.Flat;
-            buttonExit.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonExit.Location = new Point(26, 983);
-            buttonExit.Name = "buttonExit";
-            buttonExit.Size = new Size(252, 66);
-            buttonExit.TabIndex = 48;
-            buttonExit.Text = "Back";
-            buttonExit.UseVisualStyleBackColor = false;
-            buttonExit.Click += buttonExit_Click;
-            // 
             // FormCalendar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -442,7 +443,6 @@
             Controls.Add(panel8);
             Controls.Add(dataGridViewAppointments);
             Controls.Add(label8);
-            Controls.Add(createCalendarButton);
             Controls.Add(buttonAddAppointment);
             Controls.Add(labelDate);
             Controls.Add(flowLayoutPanelMonth);

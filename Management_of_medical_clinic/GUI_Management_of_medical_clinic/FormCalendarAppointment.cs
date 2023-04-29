@@ -105,10 +105,9 @@ namespace GUI_Management_of_medical_clinic
 
                 DateTime day = new DateTime(date.Year, date.Month, i);
 
-                //userControlDay.ControlClicked += UserControlDay_ControlClicked;
+                userControlDay.ControlClicked += UserControlDay_ControlClicked;
 
                 UserControl userControl = itIsADayOf(day);
-
                 MarkToday(userControl, day);
 
                 flowLayoutPanelMonth.Controls.Add(userControl);
@@ -150,6 +149,7 @@ namespace GUI_Management_of_medical_clinic
             if (date.DayOfWeek != 0)  //|| !holidays.Contains(date)
             {
                 UserControlDay userControlDay = new UserControlDay(date);
+                //userControlDay.ControlClicked += UserControlDay_ControlClicked;
                 return userControlDay;
             }
             else

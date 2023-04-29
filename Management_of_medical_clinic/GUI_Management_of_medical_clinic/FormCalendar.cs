@@ -115,7 +115,7 @@ namespace GUI_Management_of_medical_clinic
             {
 
                 DateTime day = new DateTime(date.Year, date.Month, i);
-          
+
                 UserControl userControl = itIsADayOf(day);
 
                 MarkToday(userControl, day);
