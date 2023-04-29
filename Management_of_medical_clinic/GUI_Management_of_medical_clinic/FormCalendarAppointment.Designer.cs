@@ -1,4 +1,4 @@
-﻿namespace Calendar
+﻿namespace GUI_Management_of_medical_clinic
 {
     partial class FormCalendarAppointment
     {
@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             panelMenu = new Panel();
+            pictureBox1 = new PictureBox();
             buttonExit = new Button();
-            flowLayoutPanelMonth = new FlowLayoutPanel();
             panel1 = new Panel();
-            labelTitleCalendar = new Label();
+            labelTitleCalendar_Month = new Label();
             labelMonday = new Label();
             label1 = new Label();
             label2 = new Label();
@@ -43,10 +43,26 @@
             buttonNextMonth = new Button();
             buttonPreviousMonth = new Button();
             buttonToday = new Button();
-            labelDate = new Label();
-            pictureBox1 = new PictureBox();
+            panel2 = new Panel();
+            panel3 = new Panel();
+            panel4 = new Panel();
+            panel5 = new Panel();
+            panel6 = new Panel();
+            panel7 = new Panel();
+            panel8 = new Panel();
+            panel9 = new Panel();
+            labelTitleCalendar_Year = new Label();
+            flowLayoutPanelMonth = new FlowLayoutPanel();
             panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel2.SuspendLayout();
+            panel3.SuspendLayout();
+            panel4.SuspendLayout();
+            panel5.SuspendLayout();
+            panel6.SuspendLayout();
+            panel7.SuspendLayout();
+            panel8.SuspendLayout();
+            panel9.SuspendLayout();
             SuspendLayout();
             // 
             // panelMenu
@@ -59,9 +75,22 @@
             panelMenu.Size = new Size(312, 1081);
             panelMenu.TabIndex = 0;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackgroundImage = Properties.Resources.MC_Logo;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox1.Location = new Point(61, 12);
+            pictureBox1.Margin = new Padding(3, 4, 3, 4);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(176, 168);
+            pictureBox1.TabIndex = 16;
+            pictureBox1.TabStop = false;
+            // 
             // buttonExit
             // 
             buttonExit.BackColor = Color.Gainsboro;
+            buttonExit.FlatAppearance.BorderColor = Color.White;
+            buttonExit.FlatAppearance.BorderSize = 2;
             buttonExit.FlatStyle = FlatStyle.Flat;
             buttonExit.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
             buttonExit.Location = new Point(26, 983);
@@ -72,14 +101,6 @@
             buttonExit.UseVisualStyleBackColor = false;
             buttonExit.Click += buttonExit_Click;
             // 
-            // flowLayoutPanelMonth
-            // 
-            flowLayoutPanelMonth.BackColor = SystemColors.Control;
-            flowLayoutPanelMonth.Location = new Point(342, 248);
-            flowLayoutPanelMonth.Name = "flowLayoutPanelMonth";
-            flowLayoutPanelMonth.Size = new Size(1200, 820);
-            flowLayoutPanelMonth.TabIndex = 1;
-            // 
             // panel1
             // 
             panel1.BackColor = Color.SteelBlue;
@@ -88,24 +109,25 @@
             panel1.Size = new Size(1888, 77);
             panel1.TabIndex = 2;
             // 
-            // labelTitleCalendar
+            // labelTitleCalendar_Month
             // 
-            labelTitleCalendar.AutoSize = true;
-            labelTitleCalendar.BackColor = SystemColors.Control;
-            labelTitleCalendar.Font = new Font("Segoe UI", 30F, FontStyle.Bold, GraphicsUnit.Point);
-            labelTitleCalendar.Location = new Point(813, 104);
-            labelTitleCalendar.Name = "labelTitleCalendar";
-            labelTitleCalendar.Size = new Size(266, 54);
-            labelTitleCalendar.TabIndex = 10;
-            labelTitleCalendar.Text = "Year - month";
-            labelTitleCalendar.TextAlign = ContentAlignment.MiddleCenter;
+            labelTitleCalendar_Month.AutoSize = true;
+            labelTitleCalendar_Month.BackColor = Color.White;
+            labelTitleCalendar_Month.Font = new Font("Segoe UI", 30F, FontStyle.Bold, GraphicsUnit.Point);
+            labelTitleCalendar_Month.Location = new Point(337, 29);
+            labelTitleCalendar_Month.Name = "labelTitleCalendar_Month";
+            labelTitleCalendar_Month.Size = new Size(149, 54);
+            labelTitleCalendar_Month.TabIndex = 10;
+            labelTitleCalendar_Month.Text = "Month";
+            labelTitleCalendar_Month.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // labelMonday
             // 
             labelMonday.AutoSize = true;
-            labelMonday.BackColor = SystemColors.Control;
+            labelMonday.BackColor = Color.White;
             labelMonday.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            labelMonday.Location = new Point(528, 189);
+            labelMonday.ImageAlign = ContentAlignment.MiddleRight;
+            labelMonday.Location = new Point(23, 12);
             labelMonday.Name = "labelMonday";
             labelMonday.Size = new Size(115, 37);
             labelMonday.TabIndex = 3;
@@ -115,9 +137,10 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.BackColor = SystemColors.Control;
+            label1.BackColor = Color.White;
             label1.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(700, 189);
+            label1.ImageAlign = ContentAlignment.MiddleRight;
+            label1.Location = new Point(27, 11);
             label1.Name = "label1";
             label1.Size = new Size(114, 37);
             label1.TabIndex = 4;
@@ -127,9 +150,10 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.BackColor = SystemColors.Control;
+            label2.BackColor = Color.White;
             label2.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(1035, 189);
+            label2.ImageAlign = ContentAlignment.MiddleRight;
+            label2.Location = new Point(23, 12);
             label2.Name = "label2";
             label2.Size = new Size(124, 37);
             label2.TabIndex = 6;
@@ -139,9 +163,10 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.BackColor = SystemColors.Control;
+            label3.BackColor = Color.White;
             label3.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(852, 191);
+            label3.ImageAlign = ContentAlignment.MiddleRight;
+            label3.Location = new Point(5, 12);
             label3.Name = "label3";
             label3.RightToLeft = RightToLeft.No;
             label3.Size = new Size(154, 37);
@@ -152,9 +177,10 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.BackColor = SystemColors.Control;
+            label5.BackColor = Color.White;
             label5.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(1380, 189);
+            label5.ImageAlign = ContentAlignment.MiddleRight;
+            label5.Location = new Point(23, 12);
             label5.Name = "label5";
             label5.Size = new Size(121, 37);
             label5.TabIndex = 7;
@@ -164,9 +190,10 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.BackColor = SystemColors.Control;
+            label4.BackColor = Color.White;
             label4.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(1227, 189);
+            label4.ImageAlign = ContentAlignment.MiddleRight;
+            label4.Location = new Point(38, 12);
             label4.Name = "label4";
             label4.Size = new Size(89, 37);
             label4.TabIndex = 8;
@@ -176,9 +203,10 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.BackColor = SystemColors.Control;
+            label6.BackColor = Color.Gainsboro;
             label6.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(361, 189);
+            label6.ImageAlign = ContentAlignment.MiddleRight;
+            label6.Location = new Point(30, 11);
             label6.Name = "label6";
             label6.Size = new Size(104, 37);
             label6.TabIndex = 9;
@@ -187,82 +215,162 @@
             // 
             // buttonNextMonth
             // 
+            buttonNextMonth.BackColor = Color.White;
             buttonNextMonth.BackgroundImageLayout = ImageLayout.None;
-            buttonNextMonth.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonNextMonth.Location = new Point(562, 104);
+            buttonNextMonth.FlatAppearance.BorderSize = 0;
+            buttonNextMonth.FlatStyle = FlatStyle.Flat;
+            buttonNextMonth.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonNextMonth.Location = new Point(260, 25);
             buttonNextMonth.Name = "buttonNextMonth";
-            buttonNextMonth.Size = new Size(50, 50);
+            buttonNextMonth.Size = new Size(62, 62);
             buttonNextMonth.TabIndex = 11;
             buttonNextMonth.Text = ">";
             buttonNextMonth.TextAlign = ContentAlignment.TopCenter;
-            buttonNextMonth.UseVisualStyleBackColor = true;
+            buttonNextMonth.UseVisualStyleBackColor = false;
             buttonNextMonth.Click += buttonNextMonth_Click;
             // 
             // buttonPreviousMonth
             // 
+            buttonPreviousMonth.BackColor = Color.White;
             buttonPreviousMonth.BackgroundImageLayout = ImageLayout.None;
-            buttonPreviousMonth.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonPreviousMonth.Location = new Point(506, 104);
+            buttonPreviousMonth.FlatAppearance.BorderSize = 0;
+            buttonPreviousMonth.FlatStyle = FlatStyle.Flat;
+            buttonPreviousMonth.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonPreviousMonth.Location = new Point(193, 25);
             buttonPreviousMonth.Name = "buttonPreviousMonth";
-            buttonPreviousMonth.Size = new Size(50, 50);
+            buttonPreviousMonth.Size = new Size(62, 62);
             buttonPreviousMonth.TabIndex = 12;
             buttonPreviousMonth.Text = "<";
             buttonPreviousMonth.TextAlign = ContentAlignment.TopCenter;
-            buttonPreviousMonth.UseVisualStyleBackColor = true;
+            buttonPreviousMonth.UseVisualStyleBackColor = false;
             buttonPreviousMonth.Click += buttonPreviousMonth_Click;
             // 
             // buttonToday
             // 
-            buttonToday.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonToday.Location = new Point(333, 104);
+            buttonToday.BackColor = Color.White;
+            buttonToday.FlatAppearance.BorderSize = 0;
+            buttonToday.FlatStyle = FlatStyle.Flat;
+            buttonToday.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonToday.Location = new Point(20, 25);
             buttonToday.Name = "buttonToday";
-            buttonToday.Size = new Size(150, 50);
+            buttonToday.Size = new Size(165, 62);
             buttonToday.TabIndex = 14;
             buttonToday.Text = "Today";
-            buttonToday.UseVisualStyleBackColor = true;
+            buttonToday.UseVisualStyleBackColor = false;
             buttonToday.Click += buttonToday_Click;
             // 
-            // labelDate
+            // panel2
             // 
-            labelDate.AutoSize = true;
-            labelDate.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
-            labelDate.Location = new Point(1643, 347);
-            labelDate.Name = "labelDate";
-            labelDate.Size = new Size(188, 45);
-            labelDate.TabIndex = 1;
-            labelDate.Text = "Select term";
+            panel2.BackColor = Color.Gainsboro;
+            panel2.Controls.Add(label6);
+            panel2.Location = new Point(311, 180);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(165, 62);
+            panel2.TabIndex = 3;
             // 
-            // pictureBox1
+            // panel3
             // 
-            pictureBox1.BackgroundImage = GUI_Management_of_medical_clinic.Properties.Resources.MC_Logo;
-            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.Location = new Point(61, 12);
-            pictureBox1.Margin = new Padding(3, 4, 3, 4);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(176, 168);
-            pictureBox1.TabIndex = 16;
-            pictureBox1.TabStop = false;
+            panel3.BackColor = Color.White;
+            panel3.Controls.Add(labelMonday);
+            panel3.Location = new Point(483, 180);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(165, 62);
+            panel3.TabIndex = 10;
+            // 
+            // panel4
+            // 
+            panel4.BackColor = Color.White;
+            panel4.Controls.Add(label1);
+            panel4.Location = new Point(654, 180);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(165, 62);
+            panel4.TabIndex = 11;
+            // 
+            // panel5
+            // 
+            panel5.BackColor = Color.White;
+            panel5.Controls.Add(label3);
+            panel5.Location = new Point(825, 180);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(165, 62);
+            panel5.TabIndex = 12;
+            // 
+            // panel6
+            // 
+            panel6.BackColor = Color.White;
+            panel6.Controls.Add(label2);
+            panel6.Location = new Point(996, 180);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(165, 62);
+            panel6.TabIndex = 13;
+            // 
+            // panel7
+            // 
+            panel7.BackColor = Color.White;
+            panel7.Controls.Add(label4);
+            panel7.Location = new Point(1167, 180);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(165, 62);
+            panel7.TabIndex = 14;
+            // 
+            // panel8
+            // 
+            panel8.BackColor = Color.White;
+            panel8.Controls.Add(label5);
+            panel8.Location = new Point(1338, 180);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(165, 62);
+            panel8.TabIndex = 15;
+            // 
+            // panel9
+            // 
+            panel9.BackColor = Color.White;
+            panel9.Controls.Add(buttonToday);
+            panel9.Controls.Add(labelTitleCalendar_Year);
+            panel9.Controls.Add(labelTitleCalendar_Month);
+            panel9.Controls.Add(buttonNextMonth);
+            panel9.Controls.Add(buttonPreviousMonth);
+            panel9.Location = new Point(296, 75);
+            panel9.Name = "panel9";
+            panel9.Size = new Size(1888, 99);
+            panel9.TabIndex = 3;
+            // 
+            // labelTitleCalendar_Year
+            // 
+            labelTitleCalendar_Year.AutoSize = true;
+            labelTitleCalendar_Year.BackColor = Color.White;
+            labelTitleCalendar_Year.Font = new Font("Segoe UI", 40F, FontStyle.Bold, GraphicsUnit.Point);
+            labelTitleCalendar_Year.Location = new Point(1074, 15);
+            labelTitleCalendar_Year.Name = "labelTitleCalendar_Year";
+            labelTitleCalendar_Year.Size = new Size(154, 72);
+            labelTitleCalendar_Year.TabIndex = 17;
+            labelTitleCalendar_Year.Text = "2023";
+            labelTitleCalendar_Year.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // flowLayoutPanelMonth
+            // 
+            flowLayoutPanelMonth.BackColor = SystemColors.Control;
+            flowLayoutPanelMonth.Location = new Point(309, 248);
+            flowLayoutPanelMonth.Name = "flowLayoutPanelMonth";
+            flowLayoutPanelMonth.Size = new Size(1200, 820);
+            flowLayoutPanelMonth.TabIndex = 1;
             // 
             // FormCalendarAppointment
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1920, 1080);
-            Controls.Add(labelDate);
             Controls.Add(flowLayoutPanelMonth);
-            Controls.Add(buttonToday);
-            Controls.Add(buttonPreviousMonth);
-            Controls.Add(label6);
-            Controls.Add(buttonNextMonth);
-            Controls.Add(label4);
-            Controls.Add(labelTitleCalendar);
-            Controls.Add(label5);
-            Controls.Add(label2);
-            Controls.Add(label3);
-            Controls.Add(label1);
-            Controls.Add(labelMonday);
             Controls.Add(panel1);
             Controls.Add(panelMenu);
+            Controls.Add(panel2);
+            Controls.Add(panel3);
+            Controls.Add(panel4);
+            Controls.Add(panel5);
+            Controls.Add(panel6);
+            Controls.Add(panel7);
+            Controls.Add(panel8);
+            Controls.Add(panel9);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormCalendarAppointment";
             Text = "Calendar";
@@ -270,14 +378,28 @@
             Load += FormCalendarAppointment_Load;
             panelMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
+            panel5.ResumeLayout(false);
+            panel5.PerformLayout();
+            panel6.ResumeLayout(false);
+            panel6.PerformLayout();
+            panel7.ResumeLayout(false);
+            panel7.PerformLayout();
+            panel8.ResumeLayout(false);
+            panel8.PerformLayout();
+            panel9.ResumeLayout(false);
+            panel9.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
         private Panel panelMenu;
-        private FlowLayoutPanel flowLayoutPanelMonth;
         private Panel panel1;
         private Label labelMonday;
         private Label label1;
@@ -286,12 +408,22 @@
         private Label label5;
         private Label label4;
         private Label label6;
-        private Label labelTitleCalendar;
+        private Label labelTitleCalendar_Month;
         private Button buttonNextMonth;
         private Button buttonPreviousMonth;
         private Button buttonToday;
         private Button buttonExit;
         private Label labelDate;
         private PictureBox pictureBox1;
+        private Panel panel2;
+        private Panel panel3;
+        private Panel panel4;
+        private Panel panel5;
+        private Panel panel6;
+        private Panel panel7;
+        private Panel panel8;
+        private Panel panel9;
+        private FlowLayoutPanel flowLayoutPanelMonth;
+        private Label labelTitleCalendar_Year;
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Calendar
+﻿namespace GUI_Management_of_medical_clinic
 {
     partial class UserControlBlank
     {
@@ -28,19 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
+            labelNumberOfDay = new Label();
             SuspendLayout();
+            // 
+            // labelNumberOfDay
+            // 
+            labelNumberOfDay.AutoSize = true;
+            labelNumberOfDay.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            labelNumberOfDay.Location = new Point(13, 13);
+            labelNumberOfDay.Name = "labelNumberOfDay";
+            labelNumberOfDay.Size = new Size(0, 37);
+            labelNumberOfDay.TabIndex = 1;
             // 
             // UserControlBlank
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
+            Controls.Add(labelNumberOfDay);
             Name = "UserControlBlank";
             Size = new Size(165, 130);
             Load += UserControlBlank_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Label labelNumberOfDay;
     }
 }

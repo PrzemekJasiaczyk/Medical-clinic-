@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Calendar
+namespace GUI_Management_of_medical_clinic
 {
     public partial class UserControlDay : UserControl
     {

@@ -3,7 +3,7 @@ using GUI_Management_of_medical_clinic;
 using System.Drawing.Text;
 using System.Windows.Forms;
 
-namespace Calendar
+namespace GUI_Management_of_medical_clinic
 {
     public partial class FormCalendar : Form
     {
@@ -92,7 +92,7 @@ namespace Calendar
 
             for (int i = 0; i < dayOfWeek; i++)
             {
-                UserControlBlank userControlBlank = new UserControlBlank();
+                UserControlBlank userControlBlank = new UserControlBlank(null);
                 flowLayoutPanelMonth.Controls.Add(userControlBlank);
             }
 
@@ -115,7 +115,7 @@ namespace Calendar
 
             for (int i = completeControls; i < 42; i++)
             {
-                UserControlBlank userControlBlank = new UserControlBlank();
+                UserControlBlank userControlBlank = new UserControlBlank(null);
                 flowLayoutPanelMonth.Controls.Add(userControlBlank);
             }
 

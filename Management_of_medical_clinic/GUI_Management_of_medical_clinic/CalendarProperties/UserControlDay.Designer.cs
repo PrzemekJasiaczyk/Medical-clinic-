@@ -1,4 +1,4 @@
-﻿namespace Calendar
+﻿namespace GUI_Management_of_medical_clinic
 {
     partial class UserControlDay
     {

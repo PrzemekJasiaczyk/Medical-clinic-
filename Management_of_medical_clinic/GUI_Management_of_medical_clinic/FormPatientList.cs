@@ -17,6 +17,7 @@ using System.Xml.Linq;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
+using GUI_Management_of_medical_clinic;
 
 namespace GUI_Management_of_medical_clinic
 {
@@ -191,6 +192,12 @@ namespace GUI_Management_of_medical_clinic
             List<Patient> FiltredPatients = patientService.FilterPatient(textBox1_Name.Text, TextBox_PESEL.Text);
             dataGridViewPatientList.DataSource = FiltredPatients;
 
+        }
+
+        private void buttonViewAppointments_Click(object sender, EventArgs e)
+        {
+            FormCalendarAppointment formCalendarAppointment = new FormCalendarAppointment(currentUser);
+            formCalendarAppointment.ShowDialog();
         }
     }
 }

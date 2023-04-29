@@ -2,16 +2,19 @@ using Console_Management_of_medical_clinic.Model;
 using GUI_Management_of_medical_clinic;
 using System.Drawing.Text;
 using System.Windows.Forms;
+using System;
+using System.Globalization;
+//using System.Globalization.Extensions;
 
-namespace Calendar
+namespace GUI_Management_of_medical_clinic
 {
     public partial class FormCalendarAppointment : Form
     {
-        EmployeeModel currentEmployee;
-        public FormCalendarAppointment(EmployeeModel currentEmployee)
+        EmployeeModel employee;
+        public FormCalendarAppointment(EmployeeModel employee)
         {
             InitializeComponent();
-            this.currentEmployee = currentEmployee;
+            this.employee = employee;
         }
 
         DateTime displayMonth = DateTime.Today;
@@ -21,7 +24,7 @@ namespace Calendar
         {
             RemoveControlPanels();
             displayDays(displayMonth);
-            ChangeTitle(labelTitleCalendar, displayMonth);
+            ChangeTitle(displayMonth);
         }
 
         private void buttonToday_Click(object sender, EventArgs e)
@@ -29,7 +32,7 @@ namespace Calendar
             RemoveControlPanels();
             displayMonth = DateTime.Now;
             displayDays(displayMonth);
-            ChangeTitle(labelTitleCalendar, displayMonth);
+            ChangeTitle(displayMonth);
         }
 
         private void buttonPreviousMonth_Click(object sender, EventArgs e)
@@ -39,7 +42,7 @@ namespace Calendar
             displayMonth = displayMonth.AddMonths(-1);
 
             displayDays(displayMonth);
-            ChangeTitle(labelTitleCalendar, displayMonth);
+            ChangeTitle(displayMonth);
         }
 
         private void buttonNextMonth_Click(object sender, EventArgs e)
@@ -49,14 +52,14 @@ namespace Calendar
             displayMonth = displayMonth.AddMonths(+1);
 
             displayDays(displayMonth);
-            ChangeTitle(labelTitleCalendar, displayMonth);
+            ChangeTitle(displayMonth);
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
         {
-            FormMenu formMenu = new FormMenu();
+            FormPatientList formPatientList = new FormPatientList(employee);
             this.Hide();
-            formMenu.ShowDialog();
+            formPatientList.ShowDialog();
             this.Close();
         }
 
@@ -67,12 +70,13 @@ namespace Calendar
             flowLayoutPanelMonth.Controls.Clear();
         }
 
-        private void ChangeTitle(Label label, DateTime date)
+        private void ChangeTitle(DateTime date)
         {
             string year = date.Year.ToString();
             string month = date.ToString("MMMM");
 
-            label.Text = year + " - " + month;
+            labelTitleCalendar_Month.Text = month.ToUpper();
+            labelTitleCalendar_Year.Text = year;
         }
 
 
@@ -89,7 +93,7 @@ namespace Calendar
 
             for (int i = 0; i < dayOfWeek; i++)
             {
-                UserControlBlank userControlBlank = new UserControlBlank();
+                UserControlBlank userControlBlank = new UserControlBlank(null);
                 flowLayoutPanelMonth.Controls.Add(userControlBlank);
             }
 
@@ -100,11 +104,13 @@ namespace Calendar
 
                 DateTime day = new DateTime(date.Year, date.Month, i);
 
-                UserControlDay userControlDay = new UserControlDay(day);
-
                 //userControlDay.ControlClicked += UserControlDay_ControlClicked;
 
-                flowLayoutPanelMonth.Controls.Add(userControlDay);
+                UserControl userControl = itIsADayOf(day);
+
+                MarkToday(userControl, day);
+
+                flowLayoutPanelMonth.Controls.Add(userControl);
             }
 
 
@@ -112,12 +118,47 @@ namespace Calendar
 
             for (int i = completeControls; i < 42; i++)
             {
-                UserControlBlank userControlBlank = new UserControlBlank();
+                UserControlBlank userControlBlank = new UserControlBlank(null);
                 flowLayoutPanelMonth.Controls.Add(userControlBlank);
             }
 
 
         }
+
+        private void MarkToday(UserControl userControl, DateTime day)
+        {
+            if (day.Date == DateTime.Today.Date)
+            {
+                userControl.BackColor = Color.LightBlue;
+            }
+        }
+
+        private UserControl itIsADayOf(DateTime date)
+        {
+            // add holidays to calendar -- dont work
+
+            //int year = date.Year;
+            //string countryCode = "PL";
+
+            //CultureInfo culture = new CultureInfo(countryCode);
+            //Calendar calendar = culture.Calendar;
+
+            //DateTime[] holidays = calendar.GetHolidays(year);
+
+
+            if (date.DayOfWeek != 0)
+            {
+                UserControlDay userControlDay = new UserControlDay(date);
+                return userControlDay;
+            }
+            else
+            {
+                UserControlBlank userControlBlank = new UserControlBlank(date);
+                userControlBlank.BackColor = Color.Gainsboro;
+                return userControlBlank;
+            }
+        }
+
 
         private void UserControlDay_ControlClicked(object sender, DateTime selectedDate)   // Date From UserControlDay
         {
@@ -126,17 +167,5 @@ namespace Calendar
 
 
         #endregion
-
-
-        private void buttonAddAppointment_Click(object sender, EventArgs e)
-        {
-            if (labelDate.Text == "Select term") { MessageBox.Show("Choose term"); return; }
-
-            FormAppointmentAdd formAppointmentAdd = new FormAppointmentAdd(DateTime.Parse(labelDate.Text), currentEmployee);
-            //this.Hide();
-            formAppointmentAdd.ShowDialog();
-            //this.Close();
-        }
-
     }
 }
