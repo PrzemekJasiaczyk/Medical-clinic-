@@ -4,7 +4,7 @@ using System.Drawing.Text;
 using System.Windows.Forms;
 using System;
 using System.Globalization;
-//using System.Globalization.Extensions;
+using System.Globalization.Extensions;
 
 namespace GUI_Management_of_medical_clinic
 {
