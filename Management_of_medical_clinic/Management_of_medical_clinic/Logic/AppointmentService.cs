@@ -50,7 +50,10 @@ namespace Console_Management_of_medical_clinic.Logic
             {
                 foreach(AppointmentModel appointmentModel in db.DbAppointments)
                 {
-                    if(appointmentModel.IdDay)
+                    if(date.Date)
+                    {
+
+                    }
                 }
 
 
