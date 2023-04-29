@@ -5,10 +5,10 @@ using System.Windows.Forms;
 
 namespace Calendar
 {
-    public partial class FormCalendar : Form
+    public partial class FormCalendarAppointment : Form
     {
         EmployeeModel currentEmployee;
-        public FormCalendar(EmployeeModel currentEmployee)
+        public FormCalendarAppointment(EmployeeModel currentEmployee)
         {
             InitializeComponent();
             this.currentEmployee = currentEmployee;
@@ -17,7 +17,7 @@ namespace Calendar
         DateTime displayMonth = DateTime.Today;
 
 
-        private void FormCalendar_Load(object sender, EventArgs e)
+        private void FormCalendarAppointment_Load(object sender, EventArgs e)
         {
             RemoveControlPanels();
             displayDays(displayMonth);
@@ -79,15 +79,12 @@ namespace Calendar
 
         private void displayDays(DateTime date)
         {
-            // bierzemy pierwszy dzieñ miesi¹ca
+
             DateTime startOfTheMonth = new DateTime(date.Year, date.Month, 1);
 
-            // liczymy iloœæ dni w miesi¹cu aby wiedzieæ ile paneli trzeba pokazaæ
             int days = DateTime.DaysInMonth(date.Year, date.Month);
 
 
-            // konwertujemy startOfTheMonth na int, dzieñ tygodnia
-            // -- w którym miejscu panel ma siê pojawiæ, jak 3 to œroda itp
             int dayOfWeek = Convert.ToInt32(startOfTheMonth.DayOfWeek);
 
             for (int i = 0; i < dayOfWeek; i++)
@@ -105,12 +102,12 @@ namespace Calendar
 
                 UserControlDay userControlDay = new UserControlDay(day);
 
-                userControlDay.ControlClicked += UserControlDay_ControlClicked;
+                //userControlDay.ControlClicked += UserControlDay_ControlClicked;
 
                 flowLayoutPanelMonth.Controls.Add(userControlDay);
             }
 
-            // liczymy ile trzeba dodaæ pustych paneli,aby uzupe³niæ kalendarz
+
             int completeControls = dayOfWeek + days;
 
             for (int i = completeControls; i < 42; i++)
@@ -141,9 +138,5 @@ namespace Calendar
             //this.Close();
         }
 
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

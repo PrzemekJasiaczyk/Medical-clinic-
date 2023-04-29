@@ -32,7 +32,6 @@
             buttonExit = new Button();
             flowLayoutPanelMonth = new FlowLayoutPanel();
             panel1 = new Panel();
-            label7 = new Label();
             labelTitleCalendar = new Label();
             labelMonday = new Label();
             label1 = new Label();
@@ -45,14 +44,15 @@
             buttonPreviousMonth = new Button();
             buttonToday = new Button();
             labelDate = new Label();
-            buttonAddAppointment = new Button();
+            pictureBox1 = new PictureBox();
             panelMenu.SuspendLayout();
-            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panelMenu
             // 
             panelMenu.BackColor = Color.SteelBlue;
+            panelMenu.Controls.Add(pictureBox1);
             panelMenu.Controls.Add(buttonExit);
             panelMenu.Location = new Point(-3, 0);
             panelMenu.Name = "panelMenu";
@@ -83,20 +83,10 @@
             // panel1
             // 
             panel1.BackColor = Color.SteelBlue;
-            panel1.Controls.Add(label7);
             panel1.Location = new Point(307, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(1888, 77);
             panel1.TabIndex = 2;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(601, 19);
-            label7.Name = "label7";
-            label7.Size = new Size(181, 15);
-            label7.TabIndex = 0;
-            label7.Text = "Miejsce na elementy filtrujące itp";
             // 
             // labelTitleCalendar
             // 
@@ -242,22 +232,22 @@
             labelDate.TabIndex = 1;
             labelDate.Text = "Select term";
             // 
-            // buttonAddAppointment
+            // pictureBox1
             // 
-            buttonAddAppointment.Location = new Point(1628, 946);
-            buttonAddAppointment.Name = "buttonAddAppointment";
-            buttonAddAppointment.Size = new Size(225, 78);
-            buttonAddAppointment.TabIndex = 15;
-            buttonAddAppointment.Text = "Add appointment";
-            buttonAddAppointment.UseVisualStyleBackColor = true;
-            buttonAddAppointment.Click += buttonAddAppointment_Click;
+            pictureBox1.BackgroundImage = GUI_Management_of_medical_clinic.Properties.Resources.MC_Logo;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox1.Location = new Point(61, 12);
+            pictureBox1.Margin = new Padding(3, 4, 3, 4);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(176, 168);
+            pictureBox1.TabIndex = 16;
+            pictureBox1.TabStop = false;
             // 
-            // FormCalendar
+            // FormCalendarAppointment
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1920, 1080);
-            Controls.Add(buttonAddAppointment);
             Controls.Add(labelDate);
             Controls.Add(flowLayoutPanelMonth);
             Controls.Add(buttonToday);
@@ -274,13 +264,12 @@
             Controls.Add(panel1);
             Controls.Add(panelMenu);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "FormCalendar";
+            Name = "FormCalendarAppointment";
             Text = "Calendar";
             WindowState = FormWindowState.Maximized;
             Load += FormCalendarAppointment_Load;
             panelMenu.ResumeLayout(false);
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -302,8 +291,7 @@
         private Button buttonPreviousMonth;
         private Button buttonToday;
         private Button buttonExit;
-        private Label label7;
         private Label labelDate;
-        private Button buttonAddAppointment;
+        private PictureBox pictureBox1;
     }
 }

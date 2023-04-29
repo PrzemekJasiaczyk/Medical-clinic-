@@ -53,6 +53,7 @@
             label7 = new Label();
             label6 = new Label();
             label5 = new Label();
+            button1 = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewPatientList).BeginInit();
@@ -105,6 +106,7 @@
             // panel1
             // 
             panel1.BackColor = Color.SteelBlue;
+            panel1.Controls.Add(button1);
             panel1.Controls.Add(button_ShowDetails);
             panel1.Controls.Add(buttonExit);
             panel1.Controls.Add(buttonDeactivatePatinet);
@@ -382,6 +384,20 @@
             label5.TabIndex = 0;
             label5.Text = "Name and Surname";
             // 
+            // button1
+            // 
+            button1.BackColor = Color.SteelBlue;
+            button1.FlatAppearance.BorderColor = Color.Black;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.Location = new Point(-1, 712);
+            button1.Margin = new Padding(3, 4, 3, 4);
+            button1.Name = "button1";
+            button1.Size = new Size(360, 65);
+            button1.TabIndex = 48;
+            button1.Text = "View appointments";
+            button1.UseVisualStyleBackColor = false;
+            // 
             // FormPatientList
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -433,5 +449,6 @@
         private Button button_ShowDetails;
         private Button buttonClearFilters;
         private Button buttonShowFilters;
+        private Button button1;
     }
 }
