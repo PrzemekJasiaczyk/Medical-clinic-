@@ -80,7 +80,10 @@ namespace GUI_Management_of_medical_clinic
             labelTitleCalendar_Year.Text = year;
         }
 
-
+        private void RemoveRowsInDataGridView()
+        {
+            dataGridViewAppointment.Rows.Clear();
+        }
 
         private void displayDays(DateTime date)
         {
@@ -149,7 +152,7 @@ namespace GUI_Management_of_medical_clinic
             if (date.DayOfWeek != 0)  //|| !holidays.Contains(date)
             {
                 UserControlDay userControlDay = new UserControlDay(date, null);
-                //userControlDay.ControlClicked += UserControlDay_ControlClicked;
+                userControlDay.ControlClicked += UserControlDay_ControlClicked;
                 return userControlDay;
             }
             else
@@ -160,9 +163,18 @@ namespace GUI_Management_of_medical_clinic
             }
         }
 
-        private void getFreeTerms(DateTime date)
+        private void UpdateDateInLabel(DateTime date)
         {
+            labelSelectedDate.Text = "Selected date: " + date.ToShortDateString();
+        }
+
+        private void UserControlDay_ControlClicked(object sender, DateTime date)   // Date From UserControlDay
+        {
+            RemoveRowsInDataGridView();
+            UpdateDateInLabel(date);
+
             string timeTerm;
+            string doctor;
 
             List<AppointmentModel> appointments = AppointmentService.CheckAppointmentsAndReturnList(date);
 
@@ -171,8 +183,9 @@ namespace GUI_Management_of_medical_clinic
                 if (appointment.Patient == null && appointment.IsActive == true)
                 {
                     timeTerm = AppointmentService.GetTermByTermId(appointment.IdTerm);
+                    doctor = AppointmentService.GetLastNameAndNameOfEmployeeByAppointment(appointment);
 
-                    int index = dataGridViewAppointment.Rows.Add(appointment.appointmentData);
+                    int index = dataGridViewAppointment.Rows.Add(doctor, timeTerm);
                     dataGridViewAppointment.Rows[index].Tag = appointment;
                 }
             }
@@ -180,6 +193,6 @@ namespace GUI_Management_of_medical_clinic
 
         #endregion
 
-       
+
     }
 }

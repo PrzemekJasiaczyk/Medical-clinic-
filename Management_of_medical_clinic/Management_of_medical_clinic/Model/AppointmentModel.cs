@@ -49,6 +49,6 @@ namespace Console_Management_of_medical_clinic.Model
         }
 
 
-        public object[] appointmentData => new object[] { IdEmployee, IdTerm };
+        
     }
 }

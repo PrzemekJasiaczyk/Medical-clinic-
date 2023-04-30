@@ -3,6 +3,7 @@ using Console_Management_of_medical_clinic.Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,16 +23,16 @@ namespace Console_Management_of_medical_clinic.Logic
 
         public static int GetIdTerm(string selectedTime)
         {
-            
+
             string[] timeParts = selectedTime.Split(':');
             int hour = int.Parse(timeParts[0]);
             int minute = int.Parse(timeParts[1]);
             int selectedTimeInMinutes = (hour * 60) + minute;
 
-            
+
             if (selectedTimeInMinutes < 420 || selectedTimeInMinutes >= 1200 || (selectedTimeInMinutes >= 660 && selectedTimeInMinutes < 680) || (selectedTimeInMinutes >= 980 && selectedTimeInMinutes < 1000))
             {
-                
+
                 return -1;
             }
             else
@@ -48,6 +49,39 @@ namespace Console_Management_of_medical_clinic.Logic
             int minute = minutesFromOpening % 60;
             return $"{hour:00}:{minute:00}";
         }
+
+        public static string GetLastNameAndNameOfEmployeeByAppointment(AppointmentModel AppointmentModel)
+        {
+            if (AppointmentModel.IdEmployee == null) 
+            { 
+                throw new Exception ("IdEmployee = null");
+            }
+
+            string result = string.Empty;
+
+
+            int id = (int)AppointmentModel.IdEmployee;
+
+            using (AppDbContext context = new AppDbContext())
+            {
+                foreach(EmployeeModel employeeModel in context.DbEmployees)
+                {
+                    if(employeeModel.IdEmployee == id)
+                    {
+                       result = employeeModel.FirstName+" "+ employeeModel.LastName;
+                    }
+                }
+            }
+            
+            if(result==string.Empty)
+            {
+                throw new Exception("Employee not found");
+            }
+
+            return result;
+
+        }
+
 
         public static List<AppointmentModel> CheckAppointmentsAndReturnList(DateTime selectedDate, int idCalendar = 1)
         { 
