@@ -54,13 +54,5 @@ namespace Console_Management_of_medical_clinic.Model
             return IdDay.ToString() +" " + AppointmentService.GetTermByTermId(IdTerm).ToString();
 
         }
-
-        public static AppointmentModel FindAppointment(int IdAppointment)
-        {
-            AppDbContext _context = new AppDbContext();
-
-            AppointmentModel appointment = _context.DbAppointments.Find(IdAppointment);
-            return appointment;
-        }
     }
 }

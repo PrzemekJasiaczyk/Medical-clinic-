@@ -45,7 +45,7 @@ namespace GUI_Management_of_medical_clinic
             comboBoxDate.SelectedIndex = -1;
             comboBoxDate.Items.Clear();
             selectedDoctor = comboBoxDoctor.SelectedItem.ToString();
-            comboBoxDate.Items.AddRange(GetAppointments(GetDoctorId(selectedDoctor)).ToArray());
+            comboBoxDate.Items.AddRange(GetAppointments(EmployeeService.GetDoctorId(selectedDoctor)).ToArray());
         }
 
         public List<string> GetPatientNames()
@@ -79,59 +79,11 @@ namespace GUI_Management_of_medical_clinic
 
         }
 
-        public int GetDoctorId(string selectedDoctor)
-        {
-            using (AppDbContext db = new AppDbContext())
-            {
-                string[] nameParts = selectedDoctor.Split(' ');
-                string lastName = nameParts[0];
-                string firstName = nameParts[1];
-
-                int idEmployee = db.DbEmployees
-                    .Where(e => e.LastName == lastName && e.FirstName == firstName)
-                    .Select(e => e.IdEmployee)
-                    .FirstOrDefault();
-                return idEmployee;
-            }
-        }
-
-        public int GetAppointmentId(string selectedDate)
-        {
-            
-            using (AppDbContext db = new AppDbContext())
-            {
-                string[] dateParts = selectedDate.Split(' ');
-                int selectedDay = int.Parse(dateParts[0]);
-                string selectedTerm = (dateParts[1]);
-
-
-                int term = AppointmentService.GetIdTerm(selectedTerm);
-                int idAppointment = (int)db.DbAppointments
-                    .Where(e => e.IdDay == selectedDay && e.IdTerm == term)
-                    .Select(e => e.IdAppointment)
-                    .FirstOrDefault();
-                return idAppointment;
-            }
-            
         
 
-        }
+        
 
-        public int GetPatientId(string selectedPatient)
-        {
-            using (AppDbContext db = new AppDbContext())
-            {
-                string[] nameParts = selectedPatient.Split(' ');
-                string lastName = nameParts[0];
-                string firstName = nameParts[1];
-
-                int idPatient = db.Patients
-                    .Where(e => e.LastName == lastName && e.FirstName == firstName)
-                    .Select(e => e.PatientId)
-                    .FirstOrDefault();
-                return idPatient;
-            }
-        }
+        
 
 
         public List<string> GetAppointments(int idEmployee)
@@ -182,25 +134,11 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonAddAppointment_Click(object sender, EventArgs e)
         {
-
-
-            int appointmentId = GetAppointmentId(selectedDate);
-            int patientId = GetPatientId(selectedPatient);
+            int appointmentId = AppointmentService.GetAppointmentId(selectedDate);
+            int patientId = PatientService.GetPatientId(selectedPatient);
 
             using (AppDbContext db = new AppDbContext())
-            {/*
-                AppointmentModel appointment = AppointmentModel.FindAppointment(appointmentId);
-                //if (appointment != null)
-                {
-                    appointment.PatientId = patientId;
-                    appointment.IsActive = false;
-
-                    db.SaveChanges();
-                    label1.Text = "ssss";
-                    
-                }
-                */
-
+            {
                 var appointment = db.DbAppointments.FirstOrDefault(a => a.IdAppointment == appointmentId);
 
                 if (appointment != null)
@@ -209,12 +147,8 @@ namespace GUI_Management_of_medical_clinic
                     appointment.IsActive = false;
                     db.Entry(appointment).State = EntityState.Modified;
                     db.SaveChanges();
-                    label1.Text = "ssss";
 
                 }
-
-
-
             }
         }
 
@@ -223,7 +157,7 @@ namespace GUI_Management_of_medical_clinic
             selectedPatient = comboBoxPatient.SelectedItem.ToString();
 
         }
-        
+
 
     }
 }
