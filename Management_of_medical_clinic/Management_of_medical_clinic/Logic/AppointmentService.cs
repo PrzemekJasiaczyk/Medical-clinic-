@@ -50,6 +50,35 @@ namespace Console_Management_of_medical_clinic.Logic
             return $"{hour:00}:{minute:00}";
         }
 
+        public static Patient GetPatientDataByIdPatient(AppointmentModel appointment)
+        {
+            Patient result = new Patient();
+
+            if (appointment.PatientId == null)
+            {
+                throw new Exception("IdEmployee = null");
+            }
+
+            using(AppDbContext context =  new AppDbContext()) 
+            {
+                foreach(Patient patient in  context.Patients) 
+                {
+                    if(patient.PatientId == appointment.PatientId)
+                    {
+                        result = patient;
+                    }
+                }
+            }
+
+            if (result == null)
+            {
+                throw new Exception("Patient not found in database");
+            }
+
+            return result;
+
+        }
+
         public static string GetLastNameAndNameOfEmployeeByAppointment(AppointmentModel AppointmentModel)
         {
             if (AppointmentModel.IdEmployee == null) 
@@ -75,11 +104,22 @@ namespace Console_Management_of_medical_clinic.Logic
             
             if(result==string.Empty)
             {
-                throw new Exception("Employee not found");
+                throw new Exception("Employee not found in database");
             }
 
             return result;
 
+        }
+
+        public static List<AppointmentModel> GetAppointmentData()
+        {
+            List<AppointmentModel> result = new List<AppointmentModel> ();
+
+            using (AppDbContext context = new AppDbContext()) 
+            {
+                result = context.DbAppointments.ToList();
+            }
+            return result;
         }
 
 

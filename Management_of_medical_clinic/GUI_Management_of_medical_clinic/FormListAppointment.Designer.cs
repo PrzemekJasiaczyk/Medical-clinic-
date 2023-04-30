@@ -47,6 +47,13 @@
             label7 = new Label();
             label6 = new Label();
             label5 = new Label();
+            ColumnPatient = new DataGridViewTextBoxColumn();
+            ColumnPESEL = new DataGridViewTextBoxColumn();
+            ColumnDoctor = new DataGridViewTextBoxColumn();
+            ColumnSpecialization = new DataGridViewTextBoxColumn();
+            ColumnDate = new DataGridViewTextBoxColumn();
+            ColumnOffice = new DataGridViewTextBoxColumn();
+            ColumnCost = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAppointmentList).BeginInit();
@@ -166,6 +173,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridViewAppointmentList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewAppointmentList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewAppointmentList.Columns.AddRange(new DataGridViewColumn[] { ColumnPatient, ColumnPESEL, ColumnDoctor, ColumnSpecialization, ColumnDate, ColumnOffice, ColumnCost });
             dataGridViewAppointmentList.Location = new Point(357, 77);
             dataGridViewAppointmentList.Name = "dataGridViewAppointmentList";
             dataGridViewAppointmentList.ReadOnly = true;
@@ -275,6 +283,48 @@
             label5.TabIndex = 0;
             label5.Text = "Name and Surname";
             // 
+            // ColumnPatient
+            // 
+            ColumnPatient.HeaderText = "Patient";
+            ColumnPatient.Name = "ColumnPatient";
+            ColumnPatient.ReadOnly = true;
+            // 
+            // ColumnPESEL
+            // 
+            ColumnPESEL.HeaderText = "PESEL";
+            ColumnPESEL.Name = "ColumnPESEL";
+            ColumnPESEL.ReadOnly = true;
+            // 
+            // ColumnDoctor
+            // 
+            ColumnDoctor.HeaderText = "Doctor";
+            ColumnDoctor.Name = "ColumnDoctor";
+            ColumnDoctor.ReadOnly = true;
+            // 
+            // ColumnSpecialization
+            // 
+            ColumnSpecialization.HeaderText = "Specialization";
+            ColumnSpecialization.Name = "ColumnSpecialization";
+            ColumnSpecialization.ReadOnly = true;
+            // 
+            // ColumnDate
+            // 
+            ColumnDate.HeaderText = "Date";
+            ColumnDate.Name = "ColumnDate";
+            ColumnDate.ReadOnly = true;
+            // 
+            // ColumnOffice
+            // 
+            ColumnOffice.HeaderText = "Office";
+            ColumnOffice.Name = "ColumnOffice";
+            ColumnOffice.ReadOnly = true;
+            // 
+            // ColumnCost
+            // 
+            ColumnCost.HeaderText = "Cost";
+            ColumnCost.Name = "ColumnCost";
+            ColumnCost.ReadOnly = true;
+            // 
             // FormListAppointment
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -328,5 +378,12 @@
         private Button buttonClearFilters;
         private Button buttonShowFilters;
         private Button buttonViewAppointments;
+        private DataGridViewTextBoxColumn ColumnPatient;
+        private DataGridViewTextBoxColumn ColumnPESEL;
+        private DataGridViewTextBoxColumn ColumnDoctor;
+        private DataGridViewTextBoxColumn ColumnSpecialization;
+        private DataGridViewTextBoxColumn ColumnDate;
+        private DataGridViewTextBoxColumn ColumnOffice;
+        private DataGridViewTextBoxColumn ColumnCost;
     }
 }

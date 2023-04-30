@@ -19,7 +19,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void FormListAppointment_Load(object sender, EventArgs e)
         {
-
+            DisplayDataInDataGridView();
         }
 
 
@@ -30,6 +30,26 @@ namespace GUI_Management_of_medical_clinic
             formCalendarAppointment.ShowDialog();
             this.Close();
         }
+
+        #region // Display data
+
+        private void DisplayDataInDataGridView()
+        {
+            dataGridViewAppointmentList.Rows.Clear();
+            List<AppointmentModel> appointments = AppointmentService.GetAppointmentData();
+
+            
+
+            foreach (AppointmentModel appointment in appointments)
+            {
+                if(appointment.Patient != null && appointment.IsActive == true)
+                {
+                    int index = dataGridViewAppointmentList.Rows.Add(appointment.appointmentData);
+                    dataGridViewAppointmentList.Rows[index].Tag = appointment;
+                }
+            }
+        }
+        #endregion
 
     }
 }
