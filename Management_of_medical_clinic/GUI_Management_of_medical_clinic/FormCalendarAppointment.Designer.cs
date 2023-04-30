@@ -30,6 +30,8 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             panelMenu = new Panel();
             buttonEditPatient = new Button();
             pictureBox1 = new PictureBox();
@@ -55,10 +57,19 @@
             panel8 = new Panel();
             panel9 = new Panel();
             labelTitleCalendar_Year = new Label();
+            panel11 = new Panel();
+            label8 = new Label();
+            panel10 = new Panel();
+            label7 = new Label();
             flowLayoutPanelMonth = new FlowLayoutPanel();
             dataGridViewAppointment = new DataGridView();
             ColumnDoctor = new DataGridViewTextBoxColumn();
             ColumnTime = new DataGridViewTextBoxColumn();
+            panel12 = new Panel();
+            labelSelectedDate = new Label();
+            panel13 = new Panel();
+            label9 = new Label();
+            panel14 = new Panel();
             panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -69,7 +80,11 @@
             panel7.SuspendLayout();
             panel8.SuspendLayout();
             panel9.SuspendLayout();
+            panel11.SuspendLayout();
+            panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAppointment).BeginInit();
+            panel12.SuspendLayout();
+            panel13.SuspendLayout();
             SuspendLayout();
             // 
             // panelMenu
@@ -126,9 +141,9 @@
             // panel1
             // 
             panel1.BackColor = Color.SteelBlue;
-            panel1.Location = new Point(307, 0);
+            panel1.Location = new Point(309, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1888, 77);
+            panel1.Size = new Size(1242, 77);
             panel1.TabIndex = 2;
             // 
             // labelTitleCalendar_Month
@@ -369,6 +384,50 @@
             labelTitleCalendar_Year.Text = "2023";
             labelTitleCalendar_Year.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // panel11
+            // 
+            panel11.BackColor = Color.White;
+            panel11.Controls.Add(label8);
+            panel11.Location = new Point(204, 116);
+            panel11.Name = "panel11";
+            panel11.Size = new Size(197, 58);
+            panel11.TabIndex = 17;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.BackColor = Color.White;
+            label8.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            label8.ImageAlign = ContentAlignment.MiddleRight;
+            label8.Location = new Point(61, 9);
+            label8.Name = "label8";
+            label8.Size = new Size(75, 37);
+            label8.TabIndex = 7;
+            label8.Text = "Time";
+            label8.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // panel10
+            // 
+            panel10.BackColor = Color.White;
+            panel10.Controls.Add(label7);
+            panel10.Location = new Point(3, 116);
+            panel10.Name = "panel10";
+            panel10.Size = new Size(195, 58);
+            panel10.TabIndex = 16;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.BackColor = Color.White;
+            label7.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            label7.ImageAlign = ContentAlignment.MiddleRight;
+            label7.Location = new Point(50, 9);
+            label7.Name = "label7";
+            label7.Size = new Size(98, 37);
+            label7.TabIndex = 7;
+            label7.Text = "Doctor";
+            label7.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // flowLayoutPanelMonth
             // 
             flowLayoutPanelMonth.BackColor = SystemColors.Control;
@@ -382,35 +441,51 @@
             dataGridViewAppointment.AllowUserToAddRows = false;
             dataGridViewAppointment.AllowUserToDeleteRows = false;
             dataGridViewAppointment.AllowUserToResizeColumns = false;
-            dataGridViewAppointment.BackgroundColor = SystemColors.Control;
+            dataGridViewAppointment.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.Padding = new Padding(3);
+            dataGridViewAppointment.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewAppointment.BackgroundColor = Color.Gainsboro;
             dataGridViewAppointment.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridViewAppointment.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewAppointment.ColumnHeadersHeight = 60;
-            dataGridViewAppointment.Columns.AddRange(new DataGridViewColumn[] { ColumnDoctor, ColumnTime });
+            dataGridViewAppointment.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.GradientInactiveCaption;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dataGridViewAppointment.DefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewAppointment.Location = new Point(1514, 180);
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridViewAppointment.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewAppointment.ColumnHeadersHeight = 60;
+            dataGridViewAppointment.ColumnHeadersVisible = false;
+            dataGridViewAppointment.Columns.AddRange(new DataGridViewColumn[] { ColumnDoctor, ColumnTime });
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dataGridViewAppointment.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewAppointment.Location = new Point(1515, 180);
+            dataGridViewAppointment.MultiSelect = false;
             dataGridViewAppointment.Name = "dataGridViewAppointment";
             dataGridViewAppointment.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Control;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dataGridViewAppointment.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dataGridViewAppointment.RowHeadersVisible = false;
-            dataGridViewAppointment.RowHeadersWidth = 90;
-            dataGridViewAppointment.RowTemplate.Height = 25;
+            dataGridViewAppointment.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            dataGridViewAppointment.RowTemplate.Height = 40;
+            dataGridViewAppointment.RowTemplate.Resizable = DataGridViewTriState.False;
             dataGridViewAppointment.ScrollBars = ScrollBars.None;
             dataGridViewAppointment.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewAppointment.Size = new Size(402, 700);
+            dataGridViewAppointment.Size = new Size(401, 700);
             dataGridViewAppointment.TabIndex = 16;
             // 
             // ColumnDoctor
@@ -430,12 +505,68 @@
             ColumnTime.Resizable = DataGridViewTriState.False;
             ColumnTime.Width = 201;
             // 
+            // panel12
+            // 
+            panel12.BackColor = Color.Gainsboro;
+            panel12.Controls.Add(labelSelectedDate);
+            panel12.Controls.Add(panel13);
+            panel12.Controls.Add(panel11);
+            panel12.Controls.Add(panel10);
+            panel12.Location = new Point(1515, 0);
+            panel12.Name = "panel12";
+            panel12.Size = new Size(410, 180);
+            panel12.TabIndex = 18;
+            // 
+            // labelSelectedDate
+            // 
+            labelSelectedDate.AutoSize = true;
+            labelSelectedDate.BackColor = Color.Gainsboro;
+            labelSelectedDate.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            labelSelectedDate.ImageAlign = ContentAlignment.MiddleRight;
+            labelSelectedDate.Location = new Point(53, 75);
+            labelSelectedDate.Name = "labelSelectedDate";
+            labelSelectedDate.Size = new Size(221, 37);
+            labelSelectedDate.TabIndex = 8;
+            labelSelectedDate.Text = " Day not selected";
+            labelSelectedDate.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // panel13
+            // 
+            panel13.BackColor = Color.White;
+            panel13.Controls.Add(label9);
+            panel13.Location = new Point(3, 5);
+            panel13.Name = "panel13";
+            panel13.Size = new Size(398, 55);
+            panel13.TabIndex = 17;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.BackColor = Color.White;
+            label9.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            label9.ImageAlign = ContentAlignment.MiddleRight;
+            label9.Location = new Point(102, 7);
+            label9.Name = "label9";
+            label9.Size = new Size(196, 37);
+            label9.TabIndex = 7;
+            label9.Text = "Available dates";
+            label9.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // panel14
+            // 
+            panel14.BackColor = Color.Gainsboro;
+            panel14.Location = new Point(1515, 869);
+            panel14.Name = "panel14";
+            panel14.Size = new Size(401, 212);
+            panel14.TabIndex = 19;
+            // 
             // FormCalendarAppointment
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1698, 825);
             Controls.Add(dataGridViewAppointment);
+            Controls.Add(panel12);
             Controls.Add(flowLayoutPanelMonth);
             Controls.Add(panel1);
             Controls.Add(panelMenu);
@@ -447,6 +578,7 @@
             Controls.Add(panel7);
             Controls.Add(panel8);
             Controls.Add(panel9);
+            Controls.Add(panel14);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormCalendarAppointment";
             Text = "Calendar";
@@ -470,7 +602,15 @@
             panel8.PerformLayout();
             panel9.ResumeLayout(false);
             panel9.PerformLayout();
+            panel11.ResumeLayout(false);
+            panel11.PerformLayout();
+            panel10.ResumeLayout(false);
+            panel10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAppointment).EndInit();
+            panel12.ResumeLayout(false);
+            panel12.PerformLayout();
+            panel13.ResumeLayout(false);
+            panel13.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -505,6 +645,15 @@
         private DataGridView dataGridViewAppointment;
         private DataGridViewTextBoxColumn ColumnDoctor;
         private DataGridViewTextBoxColumn ColumnTime;
+        private Panel panel11;
+        private Label label8;
+        private Panel panel10;
+        private Label label7;
+        private Panel panel12;
+        private Label label9;
+        private Panel panel13;
+        private Panel panel14;
+        private Label labelSelectedDate;
         private Button buttonEditPatient;
     }
 }
