@@ -111,7 +111,7 @@ namespace Console_Management_of_medical_clinic.Logic
 
         }
 
-        public static List<AppointmentModel> GetAppointmentData()
+        public static List<AppointmentModel> GetAppointmentsData()
         {
             List<AppointmentModel> result = new List<AppointmentModel> ();
 
@@ -157,7 +157,7 @@ namespace Console_Management_of_medical_clinic.Logic
             return appointments;
         }
 
-        public static List<AppointmentModel> appointmentInSelectedDate(List<AppointmentModel> ListIn ,DateTime selectedDate, int idCalendar = 1)
+        public static List<AppointmentModel> appointmentInSelectedDate(List<AppointmentModel> ListIn ,DateTime selectedDate, int idCalendar)
         {
             List<AppointmentModel> result = new List<AppointmentModel>();
 
