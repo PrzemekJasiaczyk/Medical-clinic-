@@ -36,13 +36,13 @@ namespace GUI_Management_of_medical_clinic
         private void DisplayDataInDataGridView()
         {
             dataGridViewAppointmentList.Rows.Clear();
-            List<AppointmentModel> appointments = AppointmentService.GetAppointmentData();
+            List<AppointmentModel> appointments = AppointmentService.GetAppointmentsData();
 
             
 
             foreach (AppointmentModel appointment in appointments)
             {
-                if(appointment.PatientId != 0 && appointment.IsActive == true)
+                if(appointment.PatientId != null && appointment.IsActive == true)
                 {
                     int index = dataGridViewAppointmentList.Rows.Add(appointment.appointmentData);
                     dataGridViewAppointmentList.Rows[index].Tag = appointment;

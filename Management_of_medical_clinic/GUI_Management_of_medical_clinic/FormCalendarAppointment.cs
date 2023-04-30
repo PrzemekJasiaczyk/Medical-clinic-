@@ -193,10 +193,12 @@ namespace GUI_Management_of_medical_clinic
 
             string timeTerm;
             string doctor;
+            int calendarId = CalendarService.GetIdFromDate(date);
 
-            List<AppointmentModel> appointments = AppointmentService.CheckAppointmentsAndReturnList(date);
+            List<AppointmentModel> appointments = AppointmentService.GetAppointmentsData();
+            List<AppointmentModel> selectedAppointments = AppointmentService.appointmentInSelectedDate(appointments,date, calendarId);
 
-            foreach (AppointmentModel appointment in appointments)
+            foreach (AppointmentModel appointment in selectedAppointments)
             {
                 if (appointment.PatientId == null && appointment.IsActive == true)
                 {

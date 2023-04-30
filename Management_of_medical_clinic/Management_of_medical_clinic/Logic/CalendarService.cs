@@ -123,5 +123,33 @@ namespace Console_Management_of_medical_clinic.Logic
 
 			return sortedCalendars;
 		}
+
+
+		public static int GetIdFromDate(DateTime date) 
+		{
+			int result = 0;
+
+			string month = date.Month.ToString("00");
+			string year = date.Year.ToString();
+
+			string DateReference = month + '-' + year;
+
+			List<CalendarModel> calendarModels = new List<CalendarModel> ();
+            using (AppDbContext context = new AppDbContext())
+            {
+                calendarModels = context.DbCalendars.ToList();
+            }
+
+			foreach (CalendarModel calendarModel in calendarModels)
+			{
+				if(DateReference == calendarModel.DateReference)
+				{
+					result = calendarModel.IdCalendar;
+				}
+			}
+
+            return result;
+		}
+
 	}
 }

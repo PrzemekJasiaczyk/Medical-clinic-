@@ -111,7 +111,7 @@ namespace Console_Management_of_medical_clinic.Logic
 
         }
 
-        public static List<AppointmentModel> GetAppointmentData()
+        public static List<AppointmentModel> GetAppointmentsData()
         {
             List<AppointmentModel> result = new List<AppointmentModel> ();
 
@@ -126,7 +126,7 @@ namespace Console_Management_of_medical_clinic.Logic
                         IsActive = a.IsActive,
                         IdCalendar = a.IdCalendar,
                         IdEmployee = a.IdEmployee,
-                        PatientId = a.PatientId ?? 0,
+                        PatientId = a.PatientId ?? null,
                         IdOffice = a.IdOffice,
                         IdDay = a.IdDay 
                     })
@@ -141,6 +141,7 @@ namespace Console_Management_of_medical_clinic.Logic
             int idDay = selectedDate.Day;
             
             int idTerm = GetIdTerm(selectedDate.ToString("HH:mm"));
+            
             List<AppointmentModel> appointments = new List<AppointmentModel>();
 
             using(AppDbContext context = new AppDbContext())
@@ -154,6 +155,23 @@ namespace Console_Management_of_medical_clinic.Logic
                 }
             }
             return appointments;
+        }
+
+        public static List<AppointmentModel> appointmentInSelectedDate(List<AppointmentModel> ListIn ,DateTime selectedDate, int idCalendar)
+        {
+            List<AppointmentModel> result = new List<AppointmentModel>();
+
+            int idDay = selectedDate.Day;
+
+            foreach (AppointmentModel appointment in ListIn)
+            {
+                if(appointment.IdCalendar == idCalendar && appointment.IdDay == idDay)
+                {
+                    result.Add(appointment);
+                }
+            }
+
+            return result;
         }
 
         public static int GetAppointmentId(string selectedDate)

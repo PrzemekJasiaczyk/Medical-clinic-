@@ -87,7 +87,7 @@ namespace GUI_Management_of_medical_clinic
 
 
 
-        public List<string> GetAppointments(int idEmployee)
+        public List<string> GetAppointments(int idEmployee) // W AppointmentService jest metoda GetAppointmentsData(), która ogarnia null
         {
             using (AppDbContext db = new AppDbContext())
             {
