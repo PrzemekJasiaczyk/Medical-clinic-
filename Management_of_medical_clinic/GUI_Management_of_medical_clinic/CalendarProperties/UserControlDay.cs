@@ -8,19 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Calendar
+namespace GUI_Management_of_medical_clinic
 {
     public partial class UserControlDay : UserControl
     {
         public DateTime selectedDate;
+        string TriggeredTheControl;
 
         public delegate void ControlClickedEventHandler(object sender, DateTime selectedDate);
         public event ControlClickedEventHandler ControlClicked;
 
 
-        public UserControlDay(DateTime selecteddate)
+        public UserControlDay(DateTime selecteddate, string? whichFormTriggeredTheControl)
         {
             selectedDate = selecteddate;
+            TriggeredTheControl = whichFormTriggeredTheControl; // zmienna jest po to by odróżnić, która formatka wywołała kontrlkę, tymczasowo niewymagalna
             InitializeComponent();
         }
 

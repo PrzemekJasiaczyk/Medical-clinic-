@@ -1,4 +1,3 @@
-using Calendar;
 using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
 
