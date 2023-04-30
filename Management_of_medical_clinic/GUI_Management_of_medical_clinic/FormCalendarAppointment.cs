@@ -194,9 +194,11 @@ namespace GUI_Management_of_medical_clinic
             string timeTerm;
             string doctor;
 
-            List<AppointmentModel> appointments = AppointmentService.CheckAppointmentsAndReturnList(date);
 
-            foreach (AppointmentModel appointment in appointments)
+            List<AppointmentModel> appointments = AppointmentService.GetAppointmentData();
+            List<AppointmentModel> selectedAppointments = AppointmentService.appointmentInSelectedDate(appointments,date);
+
+            foreach (AppointmentModel appointment in selectedAppointments)
             {
                 if (appointment.PatientId == null && appointment.IsActive == true)
                 {
