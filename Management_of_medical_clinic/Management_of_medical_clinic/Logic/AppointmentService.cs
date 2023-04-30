@@ -70,7 +70,24 @@ namespace Console_Management_of_medical_clinic.Logic
             return appointments;
         }
 
+        public static int GetAppointmentId(string selectedDate)
+        {
+
+            using (AppDbContext db = new AppDbContext())
+            {
+                string[] dateParts = selectedDate.Split(' ');
+                int selectedDay = int.Parse(dateParts[0]);
+                string selectedTerm = (dateParts[1]);
 
 
+                int term = AppointmentService.GetIdTerm(selectedTerm);
+                int idAppointment = (int)db.DbAppointments
+                    .Where(e => e.IdDay == selectedDay && e.IdTerm == term)
+                    .Select(e => e.IdAppointment)
+                    .FirstOrDefault();
+                return idAppointment;
+            }
+
+        }
     }
 }

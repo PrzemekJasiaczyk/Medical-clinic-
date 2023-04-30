@@ -189,6 +189,7 @@
             dataGridViewAppointments.SelectionMode = DataGridViewSelectionMode.CellSelect;
             dataGridViewAppointments.Size = new Size(345, 538);
             dataGridViewAppointments.TabIndex = 19;
+            dataGridViewAppointments.CellContentClick += dataGridViewAppointments_CellContentClick;
             // 
             // button3
             // 

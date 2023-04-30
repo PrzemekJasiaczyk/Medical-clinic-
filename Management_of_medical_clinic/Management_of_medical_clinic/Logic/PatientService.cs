@@ -83,6 +83,22 @@ namespace Console_Management_of_medical_clinic.Logic
             return GetPatientsData().FirstOrDefault(patient => patient.PatientId == id);
         }
 
+        public static int GetPatientId(string selectedPatient)
+        {
+            using (AppDbContext db = new AppDbContext())
+            {
+                string[] nameParts = selectedPatient.Split(' ');
+                string lastName = nameParts[0];
+                string firstName = nameParts[1];
+
+                int idPatient = db.Patients
+                    .Where(e => e.LastName == lastName && e.FirstName == firstName)
+                    .Select(e => e.PatientId)
+                    .FirstOrDefault();
+                return idPatient;
+            }
+        }
+
         public bool IsValidName(string patientName, out string errorMessage)
         {
             // White space checking

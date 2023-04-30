@@ -186,6 +186,23 @@ namespace Console_Management_of_medical_clinic.Logic
             }
             return ("Success", true);
         }
+
+
+        public static int GetDoctorId(string selectedDoctor)
+        {
+            using (AppDbContext db = new AppDbContext())
+            {
+                string[] nameParts = selectedDoctor.Split(' ');
+                string lastName = nameParts[0];
+                string firstName = nameParts[1];
+
+                int idEmployee = db.DbEmployees
+                    .Where(e => e.LastName == lastName && e.FirstName == firstName)
+                    .Select(e => e.IdEmployee)
+                    .FirstOrDefault();
+                return idEmployee;
+            }
+        }
     }
 
 }
