@@ -208,6 +208,7 @@ namespace GUI_Management_of_medical_clinic
             CalendarService.AddCalendar(calendarModel);
             MessageBox.Show("Calendar added");
             FormCalendarsList formCalendarsList = new FormCalendarsList(currentEmployee);
+            Hide();
             formCalendarsList.ShowDialog();
             Close();
         }

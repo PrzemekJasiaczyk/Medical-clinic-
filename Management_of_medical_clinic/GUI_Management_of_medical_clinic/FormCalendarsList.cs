@@ -23,6 +23,7 @@ namespace GUI_Management_of_medical_clinic
         private void buttonLogOut_Click(object sender, EventArgs e)
         {
             FormMenu menu = new FormMenu();
+            Hide();
             menu.ShowDialog();
             Close();
         }
