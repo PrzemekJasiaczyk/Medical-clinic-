@@ -32,6 +32,13 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
+            List<Form> otwarteOkna = new List<Form>(Application.OpenForms.Cast<Form>());
+
+            foreach (Form otwarteOkno in otwarteOkna)
+            {
+                otwarteOkno.Hide();
+            }
+
             FormEmployeeList formEmployeeList = new FormEmployeeList(currentUser);
             this.Hide();
             formEmployeeList.ShowDialog();
