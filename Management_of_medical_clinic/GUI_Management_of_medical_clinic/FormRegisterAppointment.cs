@@ -153,7 +153,7 @@ namespace GUI_Management_of_medical_clinic
             }
             FormCalendarAppointment formCalendarAppointment = new FormCalendarAppointment(currentUser);
             formCalendarAppointment.ShowDialog();
-            this.Close();
+            //this.Close();
         }
 
         private void comboBoxPatient_SelectedIndexChanged(object sender, EventArgs e)

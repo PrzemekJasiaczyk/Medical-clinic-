@@ -15,43 +15,43 @@ namespace GUI_Management_of_medical_clinic
             this.employee = employee;
         }
 
-        DateTime displayMonth = DateTime.Today;
+        DateTime displayMonth_date = DateTime.Today;
 
 
         private void FormCalendarAppointment_Load(object sender, EventArgs e)
         {
             RemoveControlPanels();
-            displayDays(displayMonth);
-            ChangeTitle(displayMonth);
+            displayDays(displayMonth_date);
+            ChangeTitle(displayMonth_date);
         }
 
 
         private void buttonToday_Click(object sender, EventArgs e)
         {
             RemoveControlPanels();
-            displayMonth = DateTime.Now;
-            displayDays(displayMonth);
-            ChangeTitle(displayMonth);
+            displayMonth_date = DateTime.Now;
+            displayDays(displayMonth_date);
+            ChangeTitle(displayMonth_date);
         }
 
         private void buttonPreviousMonth_Click(object sender, EventArgs e)
         {
             RemoveControlPanels();
 
-            displayMonth = displayMonth.AddMonths(-1);
+            displayMonth_date = displayMonth_date.AddMonths(-1);
 
-            displayDays(displayMonth);
-            ChangeTitle(displayMonth);
+            displayDays(displayMonth_date);
+            ChangeTitle(displayMonth_date);
         }
 
         private void buttonNextMonth_Click(object sender, EventArgs e)
         {
             RemoveControlPanels();
 
-            displayMonth = displayMonth.AddMonths(+1);
+            displayMonth_date = displayMonth_date.AddMonths(+1);
 
-            displayDays(displayMonth);
-            ChangeTitle(displayMonth);
+            displayDays(displayMonth_date);
+            ChangeTitle(displayMonth_date);
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
@@ -61,6 +61,24 @@ namespace GUI_Management_of_medical_clinic
             formPatientList.ShowDialog();
             this.Close();
         }
+
+        private void buttonEditPatient_Click(object sender, EventArgs e)
+        {
+            FormRegisterAppointment formRegisterAppointment = new FormRegisterAppointment();
+            this.Hide();
+            formRegisterAppointment.ShowDialog();
+            this.Close();
+
+        }
+
+        private void buttonDisplayAppointments_Click(object sender, EventArgs e)
+        {
+            FormListAppointment formListAppointment = new FormListAppointment(employee);
+            this.Hide();
+            formListAppointment.ShowDialog();   
+            this.Close();
+        }
+
 
         #region
 
@@ -194,13 +212,5 @@ namespace GUI_Management_of_medical_clinic
         #endregion
 
 
-        private void buttonEditPatient_Click(object sender, EventArgs e)
-        {
-            FormRegisterAppointment formRegisterAppointment = new FormRegisterAppointment();
-            this.Hide();
-            formRegisterAppointment.ShowDialog();
-            this.Close();
-
-        }
     }
 }

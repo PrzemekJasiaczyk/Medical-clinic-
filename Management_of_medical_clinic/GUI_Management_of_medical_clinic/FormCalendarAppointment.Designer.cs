@@ -70,6 +70,7 @@
             panel13 = new Panel();
             label9 = new Label();
             panel14 = new Panel();
+            buttonDisplayAppointments = new Button();
             panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -90,6 +91,7 @@
             // panelMenu
             // 
             panelMenu.BackColor = Color.SteelBlue;
+            panelMenu.Controls.Add(buttonDisplayAppointments);
             panelMenu.Controls.Add(buttonEditPatient);
             panelMenu.Controls.Add(pictureBox1);
             panelMenu.Controls.Add(buttonExit);
@@ -560,6 +562,20 @@
             panel14.Size = new Size(401, 212);
             panel14.TabIndex = 19;
             // 
+            // buttonDisplayAppointments
+            // 
+            buttonDisplayAppointments.BackColor = Color.SteelBlue;
+            buttonDisplayAppointments.FlatAppearance.BorderColor = Color.Black;
+            buttonDisplayAppointments.FlatStyle = FlatStyle.Flat;
+            buttonDisplayAppointments.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonDisplayAppointments.Location = new Point(0, 378);
+            buttonDisplayAppointments.Name = "buttonDisplayAppointments";
+            buttonDisplayAppointments.Size = new Size(315, 63);
+            buttonDisplayAppointments.TabIndex = 47;
+            buttonDisplayAppointments.Text = "Display appointments";
+            buttonDisplayAppointments.UseVisualStyleBackColor = false;
+            buttonDisplayAppointments.Click += buttonDisplayAppointments_Click;
+            // 
             // FormCalendarAppointment
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -655,5 +671,6 @@
         private Panel panel14;
         private Label labelSelectedDate;
         private Button buttonEditPatient;
+        private Button buttonDisplayAppointments;
     }
 }
