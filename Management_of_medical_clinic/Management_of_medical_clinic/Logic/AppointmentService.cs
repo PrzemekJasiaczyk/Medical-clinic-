@@ -115,9 +115,22 @@ namespace Console_Management_of_medical_clinic.Logic
         {
             List<AppointmentModel> result = new List<AppointmentModel> ();
 
-            using (AppDbContext context = new AppDbContext()) 
+            using (AppDbContext context = new AppDbContext())
             {
-                result = context.DbAppointments.ToList();
+                result = context.DbAppointments
+                    .Select(a => new AppointmentModel
+                    {
+                        IdAppointment = a.IdAppointment,
+                        IdTerm = a.IdTerm,
+                        Cost = a.Cost,
+                        IsActive = a.IsActive,
+                        IdCalendar = a.IdCalendar,
+                        IdEmployee = a.IdEmployee,
+                        PatientId = a.PatientId ?? 0,
+                        IdOffice = a.IdOffice,
+                        IdDay = a.IdDay 
+                    })
+                    .ToList();
             }
             return result;
         }
@@ -132,15 +145,14 @@ namespace Console_Management_of_medical_clinic.Logic
 
             using(AppDbContext context = new AppDbContext())
             {
-                foreach(AppointmentModel appointment in context.DbAppointments)
+                foreach (AppointmentModel appointment in context.DbAppointments)
                 {
-                    if(appointment.IdDay == idDay && appointment.IdCalendar == idCalendar)
+                    if (appointment.IdDay == idDay && appointment.IdCalendar == idCalendar)
                     {
                         appointments.Add(appointment);
                     }
                 }
             }
-
             return appointments;
         }
 

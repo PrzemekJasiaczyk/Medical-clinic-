@@ -56,6 +56,6 @@ namespace Console_Management_of_medical_clinic.Model
         }
 
 
-        public object[] appointmentData => new object[] {Patient.ToString(),Patient.PESEL,EmployeeModel.ToString(), EmployeeModel.SpecializationModel.Name, IdDay.ToString()+CalendarModel.DateReference, OfficeModel.Number.ToString(), Cost.ToString() };
+        public object[] appointmentData => new object[] {PatientId,PatientId,IdEmployee, IdEmployee, IdCalendar, IdOffice, Cost.ToString() };
     }
 }
