@@ -13,37 +13,30 @@ namespace GUI_Management_of_medical_clinic
 
 		private void FormMenu_Load(object sender, EventArgs e)
 		{
-
 			panelLogIn.BackColor = Color.FromArgb(150, Color.Gray);
-
 		}
-
-
 
 		private void buttonOpenEmployeeList_Click(object sender, EventArgs e)
 		{
 			string login = textBoxLogin.Text;
 			string password = textBoxPassword.Text;
 
-
-
 			List<UserModel> users = UserService.GetUsersData();
 
 			foreach (UserModel user in users)
 			{
-
 				if (user.Username == login && user.Password == password)
-
 				{
 					EmployeeModel employee = EmployeeService.GetEmployeeByUserId(user);
+					
 					if (employee != null)
 					{
 						FormEmployeeList employeeList = new FormEmployeeList(employee);
-						//this.Hide();
+						Hide();
 						employeeList.ShowDialog();
-						this.Close();
-					}
-					else
+                        Close();
+                    }
+                    else
 					{
 						MessageBox.Show("User isn't linked to an employee account\nLog in unsuccessful");
 						return;
@@ -52,7 +45,6 @@ namespace GUI_Management_of_medical_clinic
 			}
 
 			MessageBox.Show("Incorrect login or password");
-
 		}
 
 		private void buttonExit_Click(object sender, EventArgs e)
@@ -65,25 +57,22 @@ namespace GUI_Management_of_medical_clinic
 			string login = textBoxLogin.Text;
 			string password = textBoxPassword.Text;
 
-
-
 			List<UserModel> users = UserService.GetUsersData();
 
 			foreach (UserModel user in users)
 			{
-
 				if (user.Username == login && user.Password == password)
-
 				{
 					EmployeeModel employee = EmployeeService.GetEmployeeByUserId(user);
+					
 					if (employee != null)
 					{
 						FormUserList userList = new FormUserList(employee);
-						//this.Hide();
+						Hide();
 						userList.ShowDialog();
-						this.Close();
-					}
-				}
+                        Close();
+                    }
+                }
 			}
 
 			MessageBox.Show("Incorrect login or password");
@@ -113,7 +102,6 @@ namespace GUI_Management_of_medical_clinic
 				buttonOpenPatientsList.BackColor = Color.SteelBlue;
 				buttonOpenCalendarsList.Enabled = true;
 				buttonOpenCalendarsList.BackColor = Color.SteelBlue;
-
 			}
 			else
 			{
@@ -133,16 +121,20 @@ namespace GUI_Management_of_medical_clinic
 		private void buttonOfficeList_Click(object sender, EventArgs e)
 		{
 			UserModel user = UserService.GetUsersData().FirstOrDefault(u => u.Username == textBoxLogin.Text && u.Password == textBoxPassword.Text);
+			
 			if (user != null)
 			{
 				EmployeeModel employee = EmployeeService.GetEmployeeByUserId(user);
+				
 				if (employee != null)
 				{
 					FormOfficeList officeList = new FormOfficeList();
-					officeList.ShowDialog();
-					Close();
-				}
-			}
+                    Hide();
+                    officeList.ShowDialog();
+                    Close();
+                }
+            }
+			
 			MessageBox.Show("Incorrect login or password");
 		}
 
@@ -159,9 +151,10 @@ namespace GUI_Management_of_medical_clinic
 			{
 				EmployeeModel employee = EmployeeService.GetEmployeeByUserId(user);
 				FormPatientList formPatientList = new(employee);
-				formPatientList.ShowDialog();
-				Close();
-			}
+                Hide();
+                formPatientList.ShowDialog();
+                Close();
+            }
 
 			MessageBox.Show("Incorrect login or password");
 		}
@@ -179,11 +172,12 @@ namespace GUI_Management_of_medical_clinic
 			{
 				EmployeeModel employee = EmployeeService.GetEmployeeByUserId(user);
 				FormCalendarsList formCalendarsList = new(employee);
-				formCalendarsList.ShowDialog();
-				Close();
-			}
+                Hide();
+                formCalendarsList.ShowDialog();
+                Close();
+            }
 
-			MessageBox.Show("Incorrect login or password");
+            MessageBox.Show("Incorrect login or password");
 		}
 	}
 }
