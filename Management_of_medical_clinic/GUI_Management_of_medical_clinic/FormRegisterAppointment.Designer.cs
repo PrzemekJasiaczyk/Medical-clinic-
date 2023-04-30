@@ -48,9 +48,9 @@
             labelTitle.AutoSize = true;
             labelTitle.FlatStyle = FlatStyle.Flat;
             labelTitle.Font = new Font("Segoe UI", 25F, FontStyle.Bold, GraphicsUnit.Point);
-            labelTitle.Location = new Point(368, 19);
+            labelTitle.Location = new Point(421, 25);
             labelTitle.Name = "labelTitle";
-            labelTitle.Size = new Size(351, 46);
+            labelTitle.Size = new Size(435, 57);
             labelTitle.TabIndex = 67;
             labelTitle.Text = "Add an appointment";
             // 
@@ -58,9 +58,9 @@
             // 
             labelAvailableDates.AutoSize = true;
             labelAvailableDates.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            labelAvailableDates.Location = new Point(373, 400);
+            labelAvailableDates.Location = new Point(426, 533);
             labelAvailableDates.Name = "labelAvailableDates";
-            labelAvailableDates.Size = new Size(148, 28);
+            labelAvailableDates.Size = new Size(187, 35);
             labelAvailableDates.TabIndex = 63;
             labelAvailableDates.Text = "Available dates:";
             // 
@@ -68,9 +68,9 @@
             // 
             labelDoctor.AutoSize = true;
             labelDoctor.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            labelDoctor.Location = new Point(373, 250);
+            labelDoctor.Location = new Point(426, 333);
             labelDoctor.Name = "labelDoctor";
-            labelDoctor.Size = new Size(77, 28);
+            labelDoctor.Size = new Size(97, 35);
             labelDoctor.TabIndex = 62;
             labelDoctor.Text = "Doctor:";
             // 
@@ -78,9 +78,9 @@
             // 
             labelPatient.AutoSize = true;
             labelPatient.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            labelPatient.Location = new Point(373, 100);
+            labelPatient.Location = new Point(426, 133);
             labelPatient.Name = "labelPatient";
-            labelPatient.Size = new Size(76, 28);
+            labelPatient.Size = new Size(95, 35);
             labelPatient.TabIndex = 60;
             labelPatient.Text = "Patient:";
             // 
@@ -90,8 +90,9 @@
             panel1.Controls.Add(buttonBack);
             panel1.Controls.Add(pictureBox1);
             panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(312, 1102);
+            panel1.Size = new Size(357, 1469);
             panel1.TabIndex = 58;
             // 
             // buttonBack
@@ -102,20 +103,23 @@
             buttonBack.FlatAppearance.BorderSize = 2;
             buttonBack.FlatStyle = FlatStyle.Flat;
             buttonBack.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonBack.Location = new Point(29, 970);
+            buttonBack.Location = new Point(33, 1293);
+            buttonBack.Margin = new Padding(3, 4, 3, 4);
             buttonBack.Name = "buttonBack";
-            buttonBack.Size = new Size(252, 66);
+            buttonBack.Size = new Size(288, 88);
             buttonBack.TabIndex = 22;
             buttonBack.Text = "Back";
             buttonBack.UseVisualStyleBackColor = false;
+            buttonBack.Click += buttonBack_Click;
             // 
             // pictureBox1
             // 
             pictureBox1.BackgroundImage = Properties.Resources.MC_Logo;
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.Location = new Point(61, 12);
+            pictureBox1.Location = new Point(70, 16);
+            pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(176, 168);
+            pictureBox1.Size = new Size(201, 224);
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
             // 
@@ -123,10 +127,9 @@
             // 
             comboBoxPatient.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxPatient.FormattingEnabled = true;
-            comboBoxPatient.Location = new Point(373, 148);
-            comboBoxPatient.Margin = new Padding(3, 2, 3, 2);
+            comboBoxPatient.Location = new Point(426, 197);
             comboBoxPatient.Name = "comboBoxPatient";
-            comboBoxPatient.Size = new Size(453, 36);
+            comboBoxPatient.Size = new Size(517, 43);
             comboBoxPatient.TabIndex = 71;
             comboBoxPatient.SelectedIndexChanged += comboBoxPatient_SelectedIndexChanged;
             comboBoxPatient.SelectionChangeCommitted += comboBoxPatient_SelectionChangeCommitted;
@@ -135,10 +138,9 @@
             // 
             comboBoxDate.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxDate.FormattingEnabled = true;
-            comboBoxDate.Location = new Point(373, 448);
-            comboBoxDate.Margin = new Padding(3, 2, 3, 2);
+            comboBoxDate.Location = new Point(426, 597);
             comboBoxDate.Name = "comboBoxDate";
-            comboBoxDate.Size = new Size(453, 36);
+            comboBoxDate.Size = new Size(517, 43);
             comboBoxDate.TabIndex = 72;
             comboBoxDate.SelectedIndexChanged += comboBoxDate_SelectedIndexChanged;
             comboBoxDate.SelectionChangeCommitted += comboBox3_SelectionChangeCommitted;
@@ -147,10 +149,9 @@
             // 
             comboBoxDoctor.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxDoctor.FormattingEnabled = true;
-            comboBoxDoctor.Location = new Point(373, 298);
-            comboBoxDoctor.Margin = new Padding(3, 2, 3, 2);
+            comboBoxDoctor.Location = new Point(426, 397);
             comboBoxDoctor.Name = "comboBoxDoctor";
-            comboBoxDoctor.Size = new Size(453, 36);
+            comboBoxDoctor.Size = new Size(517, 43);
             comboBoxDoctor.TabIndex = 73;
             comboBoxDoctor.SelectedIndexChanged += comboBox4_SelectedIndexChanged;
             comboBoxDoctor.SelectionChangeCommitted += comboBoxDoctor_SelectionChangeCommitted;
@@ -162,9 +163,10 @@
             buttonAddAppointment.FlatStyle = FlatStyle.Flat;
             buttonAddAppointment.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
             buttonAddAppointment.ForeColor = SystemColors.ControlText;
-            buttonAddAppointment.Location = new Point(373, 970);
+            buttonAddAppointment.Location = new Point(426, 1293);
+            buttonAddAppointment.Margin = new Padding(3, 4, 3, 4);
             buttonAddAppointment.Name = "buttonAddAppointment";
-            buttonAddAppointment.Size = new Size(453, 65);
+            buttonAddAppointment.Size = new Size(518, 87);
             buttonAddAppointment.TabIndex = 74;
             buttonAddAppointment.Text = "Add an appointment";
             buttonAddAppointment.UseVisualStyleBackColor = false;
@@ -172,9 +174,9 @@
             // 
             // FormRegisterAppointment
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1362, 1100);
+            ClientSize = new Size(1557, 1372);
             Controls.Add(buttonAddAppointment);
             Controls.Add(comboBoxDoctor);
             Controls.Add(comboBoxDate);
@@ -185,6 +187,7 @@
             Controls.Add(labelPatient);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FormRegisterAppointment";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormRegisterAppointment";

@@ -295,7 +295,7 @@
             dataGridViewPatientList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewPatientList.Size = new Size(1567, 1060);
             dataGridViewPatientList.TabIndex = 30;
-            dataGridViewPatientList.CellContentClick += dataGridViewPatientList_CellContentClick;
+            //dataGridViewPatientList.CellContentClick += dataGridViewPatientList_CellContentClick;
             // 
             // panel2
             // 

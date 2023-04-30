@@ -180,6 +180,14 @@ namespace GUI_Management_of_medical_clinic
 
         #endregion
 
-       
+
+        private void buttonEditPatient_Click(object sender, EventArgs e)
+        {
+            FormRegisterAppointment formRegisterAppointment = new FormRegisterAppointment();
+            this.Hide();
+            formRegisterAppointment.ShowDialog();
+            this.Close();
+
+        }
     }
 }

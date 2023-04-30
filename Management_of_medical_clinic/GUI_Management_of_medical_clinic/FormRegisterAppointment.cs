@@ -21,6 +21,7 @@ namespace GUI_Management_of_medical_clinic
     public partial class FormRegisterAppointment : Form
     {
         private PatientService patientService;
+        EmployeeModel currentUser;
         public AppointmentService appointmentService;
         string selectedDoctor;
         string selectedPatient;
@@ -79,11 +80,11 @@ namespace GUI_Management_of_medical_clinic
 
         }
 
-        
 
-        
 
-        
+
+
+
 
 
         public List<string> GetAppointments(int idEmployee)
@@ -150,6 +151,9 @@ namespace GUI_Management_of_medical_clinic
 
                 }
             }
+            FormCalendarAppointment formCalendarAppointment = new FormCalendarAppointment(currentUser);
+            formCalendarAppointment.ShowDialog();
+            this.Close();
         }
 
         private void comboBoxPatient_SelectedIndexChanged(object sender, EventArgs e)
@@ -158,6 +162,12 @@ namespace GUI_Management_of_medical_clinic
 
         }
 
-
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            FormCalendarAppointment formCalendarAppointment = new FormCalendarAppointment(currentUser);
+            this.Hide();
+            formCalendarAppointment.ShowDialog();
+            this.Close();
+        }
     }
 }
