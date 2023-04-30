@@ -42,7 +42,7 @@ namespace GUI_Management_of_medical_clinic
 
             foreach (AppointmentModel appointment in appointments)
             {
-                if(appointment.Patient != null && appointment.IsActive == true)
+                if(appointment.PatientId != null && appointment.IsActive == true)
                 {
                     int index = dataGridViewAppointmentList.Rows.Add(appointment.appointmentData);
                     dataGridViewAppointmentList.Rows[index].Tag = appointment;
