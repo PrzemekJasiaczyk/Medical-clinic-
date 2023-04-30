@@ -58,7 +58,7 @@ namespace GUI_Management_of_medical_clinic
 					{
 						FindEditPatientInDataBase();
 					}
-					Hide();
+					
                     ComeToPatientList();
                 }
             }
@@ -302,7 +302,8 @@ namespace GUI_Management_of_medical_clinic
 		private void ComeToPatientList()
 		{
 			FormAddEditPatient.ActiveForm.Close();
-			FormPatientList formPatientList = new FormPatientList(currentUser);
+            Hide();
+            FormPatientList formPatientList = new FormPatientList(currentUser);
 			formPatientList.ShowDialog();
 		}
 
