@@ -95,7 +95,7 @@ namespace GUI_Management_of_medical_clinic
                     .Where(a => a.IdEmployee == idEmployee)
                     .Where(a => a.IsActive == true)
                     //.Where(a => a.Patient == null || a.PatientId == null)
-                    //.Where(a => a.PatientId == null)
+                    //.Where(a => a.Patient == null)
                     .Select(a => a.ToString())
                     .ToList();
             }
