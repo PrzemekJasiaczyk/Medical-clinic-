@@ -188,7 +188,7 @@ namespace GUI_Management_of_medical_clinic
             int patientId = GetPatientId(selectedPatient);
 
             using (AppDbContext db = new AppDbContext())
-            {
+            {/*
                 AppointmentModel appointment = AppointmentModel.FindAppointment(appointmentId);
                 //if (appointment != null)
                 {
@@ -199,10 +199,23 @@ namespace GUI_Management_of_medical_clinic
                     label1.Text = "ssss";
                     
                 }
+                */
+
+                var appointment = db.DbAppointments.FirstOrDefault(a => a.IdAppointment == appointmentId);
+
+                if (appointment != null)
+                {
+                    appointment.PatientId = patientId;
+                    appointment.IsActive = false;
+                    db.Entry(appointment).State = EntityState.Modified;
+                    db.SaveChanges();
+                    label1.Text = "ssss";
+
+                }
+
+
+
             }
-
-
-
         }
 
         private void comboBoxPatient_SelectedIndexChanged(object sender, EventArgs e)
