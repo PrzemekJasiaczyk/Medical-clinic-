@@ -106,11 +106,11 @@ namespace GUI_Management_of_medical_clinic
 
 
                 int term = AppointmentService.GetIdTerm(selectedTerm);
-                int idPatient = (int)db.DbAppointments
+                int idAppointment = (int)db.DbAppointments
                     .Where(e => e.IdDay == selectedDay && e.IdTerm == term)
-                    .Select(e => e.PatientId)
+                    .Select(e => e.IdAppointment)
                     .FirstOrDefault();
-                return idPatient;
+                return idAppointment;
             }
             
         
@@ -187,17 +187,15 @@ namespace GUI_Management_of_medical_clinic
             int appointmentId = GetAppointmentId(selectedDate);
             int patientId = GetPatientId(selectedPatient);
 
-            using (var context = new AppDbContext())
+            using (AppDbContext db = new AppDbContext())
             {
                 AppointmentModel appointment = AppointmentModel.FindAppointment(appointmentId);
-
-
                 //if (appointment != null)
                 {
                     appointment.PatientId = patientId;
                     appointment.IsActive = false;
 
-                    context.SaveChanges();
+                    db.SaveChanges();
                     label1.Text = "ssss";
                     
                 }
