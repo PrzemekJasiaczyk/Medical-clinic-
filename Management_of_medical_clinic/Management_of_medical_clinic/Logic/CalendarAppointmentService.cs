@@ -10,8 +10,7 @@ namespace Console_Management_of_medical_clinic.Logic
 {
     public class CalendarAppointmentService: AppointmentModel
     {
-
-        
+                
 
 
         public static Patient GetPatientDataByIdPatient(AppointmentModel appointment)
@@ -43,7 +42,21 @@ namespace Console_Management_of_medical_clinic.Logic
 
         }
 
+        public static List<AppointmentModel> GetFreeAppointments()
+        {
+            List<AppointmentModel> appointments = GetAppointmentsData();
+            List <AppointmentModel> result = new List<AppointmentModel>();
 
+            foreach (AppointmentModel appointment in appointments)
+            {
+                if (appointment.PatientId != null && appointment.IsActive == true)
+                {
+                    result.Add(appointment);
+                }
+            }
+
+            return result;
+        }
 
         public static string GetLastNameAndNameOfEmployeeByAppointment(AppointmentModel AppointmentModel)
         {

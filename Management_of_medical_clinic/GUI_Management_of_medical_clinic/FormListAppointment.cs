@@ -1,5 +1,6 @@
 ﻿using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
+using System.Collections.Generic;
 
 
 //Filter list of appointments 
@@ -59,7 +60,8 @@ namespace GUI_Management_of_medical_clinic
 
         private void FormListAppointment_Load(object sender, EventArgs e)
         {
-            DisplayDataInDataGridView();
+            List<AppointmentModel> appointments = CalendarAppointmentService.GetFreeAppointments();
+            DisplayDataInDataGridView(appointments);
         }
 
 
@@ -73,13 +75,10 @@ namespace GUI_Management_of_medical_clinic
 
         #region // Display data
 
-        private void DisplayDataInDataGridView()
+        private void DisplayDataInDataGridView(List<AppointmentModel> appointments)
         {
             dataGridViewAppointmentList.Rows.Clear();
-            List<AppointmentModel> appointments = CalendarAppointmentService.GetAppointmentsData();
-
-
-
+            
             foreach (AppointmentModel appointment in appointments)
             {
                 if (appointment.PatientId != null && appointment.IsActive == true)
@@ -89,31 +88,39 @@ namespace GUI_Management_of_medical_clinic
                 }
             }
         }
+
         #endregion
 
 
         #region // Sort data
 
-        private List<AppointmentModel> SortedAppointmentList() 
+        private List<AppointmentModel> SortedAppointmentListASC()
         {
-            dataGridViewAppointmentList.Rows.Clear();
-            List<AppointmentModel> appointments = CalendarAppointmentService.GetAppointmentsData();
-            List<AppointmentModel> result = (List<AppointmentModel>)appointments.OrderBy(a => a.IdEmployee);
+            List<AppointmentModel> appointments = CalendarAppointmentService.GetFreeAppointments();
+            List<AppointmentModel> result = (List<AppointmentModel>)appointments.OrderBy( a => a.EmployeeModel.LastName);
+            return result;
+        }
+
+        private List<AppointmentModel> SortedAppointmentListDESC()
+        {
+            List<AppointmentModel> appointments = CalendarAppointmentService.GetFreeAppointments();
+            List<AppointmentModel> result = (List<AppointmentModel>)appointments.OrderByDescending(a => a.IdEmployee);
 
             return result;
 
         }
-
-        #endregion
+            #endregion
 
         private void pictureBoxSortASC_Click(object sender, EventArgs e)
         {
-
+            List<AppointmentModel> appointments = SortedAppointmentListASC();
+            DisplayDataInDataGridView(appointments);
         }
 
         private void pictureBoxSortDESC_Click(object sender, EventArgs e)
         {
-
+            List<AppointmentModel> appointments = SortedAppointmentListDESC();
+            DisplayDataInDataGridView(appointments);
         }
     }
 }
