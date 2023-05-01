@@ -46,8 +46,27 @@ namespace GUI_Management_of_medical_clinic
             comboBoxDate.SelectedIndex = -1;
             comboBoxDate.Items.Clear();
             selectedDoctor = comboBoxDoctor.SelectedItem.ToString();
-            comboBoxDate.Items.AddRange(GetAppointments(EmployeeService.GetDoctorId(selectedDoctor)).ToArray());
+            //
+            //comboBoxDate.Items.AddRange(GetAppointments(EmployeeService.GetDoctorId(selectedDoctor)).ToArray());
+
+            List<AppointmentModel> appointments =
+            AppointmentService.GetAppointmentsData()
+                .Where(a => a.IdEmployee == EmployeeService.GetDoctorId(selectedDoctor))
+                .Where(a => a.IsActive == true)
+                .Where(a => a.Patient == null)
+                .ToList();
+            comboBoxDate.Items.Clear();
+            foreach (AppointmentModel appointment in appointments)
+            {
+                comboBoxDate.Items.Add(appointment);
+            }
+            comboBoxDate.DisplayMember = appointments.ToString();
+
+
+
         }
+
+
 
         public List<string> GetPatientNames()
         {
@@ -60,6 +79,8 @@ namespace GUI_Management_of_medical_clinic
             }
         }
 
+        
+        
         public List<string> GetDoctorNames()
         {
             using (AppDbContext db = new AppDbContext())
@@ -95,7 +116,7 @@ namespace GUI_Management_of_medical_clinic
                     .Where(a => a.IdEmployee == idEmployee)
                     .Where(a => a.IsActive == true)
                     //.Where(a => a.Patient == null || a.PatientId == null)
-                    //.Where(a => a.Patient == null)
+                    .Where(a => a.Patient == null)
                     .Select(a => a.ToString())
                     .ToList();
             }
@@ -104,7 +125,15 @@ namespace GUI_Management_of_medical_clinic
 
         private void comboBoxDate_SelectedIndexChanged(object sender, EventArgs e)
         {
-            selectedDate = comboBoxDate.SelectedItem.ToString();
+
+            try
+            {
+                selectedDate = comboBoxDate.SelectedItem.ToString();
+            }
+            catch (Exception ex)
+            {
+                
+            }
 
 
         }
@@ -140,9 +169,11 @@ namespace GUI_Management_of_medical_clinic
 
             using (AppDbContext db = new AppDbContext())
             {
-                var appointment = db.DbAppointments.FirstOrDefault(a => a.IdAppointment == appointmentId);
+                //var appointment = db.DbAppointments.FirstOrDefault(a => a.IdAppointment == appointmentId);
+                var appointment = db.DbAppointments.Find(appointmentId);
 
-                if (appointment != null)
+
+                //if (appointment != null)
                 {
                     appointment.PatientId = patientId;
                     appointment.IsActive = false;
