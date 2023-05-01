@@ -125,6 +125,34 @@ namespace Console_Management_of_medical_clinic.Logic
 		}
 
 
+
+		public static DateTime GetDateByIdCalendar(int idCalendar, int DayOfMonth) 
+		{
+			List<CalendarModel> calendars = GetCalendarData();
+
+			string reference = string.Empty;
+            int year = 0, month = 0;
+
+            foreach (CalendarModel calendar in calendars) 
+			{
+				if(idCalendar == calendar.IdCalendar)
+				{
+					reference = calendar.DateReference;
+					month = int.Parse(reference.Substring(0, 2));
+					year = int.Parse(reference.Substring(3, 4));
+				}
+			}
+
+			if(reference == string.Empty)
+			{
+				throw new Exception("Calendar don't found in database.");
+			}
+
+            DateTime result = new DateTime(year,month,DayOfMonth);
+
+            return result;
+		}
+
 		public static int GetIdFromDate(DateTime date) 
 		{
 			int result = 0;
@@ -134,12 +162,8 @@ namespace Console_Management_of_medical_clinic.Logic
 
 			string DateReference = month + '-' + year;
 
-			List<CalendarModel> calendarModels = new List<CalendarModel> ();
-            using (AppDbContext context = new AppDbContext())
-            {
-                calendarModels = context.DbCalendars.ToList();
-            }
-
+			List<CalendarModel> calendarModels = GetCalendarData();
+            
 			foreach (CalendarModel calendarModel in calendarModels)
 			{
 				if(DateReference == calendarModel.DateReference)

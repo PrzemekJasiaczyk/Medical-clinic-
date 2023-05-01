@@ -8,8 +8,12 @@ using System.Threading.Tasks;
 
 namespace Console_Management_of_medical_clinic.Logic
 {
-    public class CalendarAppointmentService
+    public class CalendarAppointmentService: AppointmentModel
     {
+
+        
+
+
         public static Patient GetPatientDataByIdPatient(AppointmentModel appointment)
         {
             Patient result = new Patient();
@@ -113,6 +117,11 @@ namespace Console_Management_of_medical_clinic.Logic
             }
             return result;
         }
+
+
+
+
+
 
     }
 }

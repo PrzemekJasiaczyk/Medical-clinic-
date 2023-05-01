@@ -56,6 +56,14 @@ namespace Console_Management_of_medical_clinic.Model
         }
 
 
-        public object[] appointmentData => new object[] {PatientId,PatientId,IdEmployee, IdEmployee, IdCalendar, IdOffice, Cost.ToString() };
+        public object[] appointmentData => new object[] {
+            PatientService.GetPatientById((int)PatientId).ToString(),
+            PatientService.GetPatientById((int)PatientId).PESEL,
+            EmployeeService.GetEmployeeByID((int)IdEmployee).ToString(),
+            SpecializationService.GetSpecializationById((int)EmployeeService.GetEmployeeByID((int)IdEmployee).IdSpecialization).Name,
+            CalendarService.GetDateByIdCalendar((int)IdCalendar,IdDay).ToShortDateString(),
+            OfficeService.GetOfficeById((int)IdOffice).Number,
+            Cost.ToString()
+        };
     }
 }

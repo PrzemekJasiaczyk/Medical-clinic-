@@ -203,6 +203,32 @@ namespace Console_Management_of_medical_clinic.Logic
                 return idEmployee;
             }
         }
+
+
+
+        public static EmployeeModel GetEmployeeByID(int EmployeeID) 
+        {
+            EmployeeModel employee = new EmployeeModel();
+
+            List<EmployeeModel> employees = GetEmployeesData();
+
+            foreach (EmployeeModel employeeModel in employees)
+            {
+                if (employeeModel.IdEmployee == EmployeeID)
+                {
+                    employee = employeeModel;
+                }
+            }
+
+            if (employee == null)
+            {
+                throw new Exception("Employee don't found in database.");
+            }
+
+            return employee;
+        }
+
+        
     }
 
 }
