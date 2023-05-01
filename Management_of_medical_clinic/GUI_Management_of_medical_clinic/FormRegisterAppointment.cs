@@ -50,7 +50,7 @@ namespace GUI_Management_of_medical_clinic
             //comboBoxDate.Items.AddRange(GetAppointments(EmployeeService.GetDoctorId(selectedDoctor)).ToArray());
 
             List<AppointmentModel> appointments =
-            AppointmentService.GetAppointmentsData()
+            CalendarAppointmentService.GetAppointmentsData()
                 .Where(a => a.IdEmployee == EmployeeService.GetDoctorId(selectedDoctor))
                 .Where(a => a.IsActive == true)
                 .Where(a => a.Patient == null)
@@ -62,11 +62,7 @@ namespace GUI_Management_of_medical_clinic
             }
             comboBoxDate.DisplayMember = appointments.ToString();
 
-
-
         }
-
-
 
         public List<string> GetPatientNames()
         {

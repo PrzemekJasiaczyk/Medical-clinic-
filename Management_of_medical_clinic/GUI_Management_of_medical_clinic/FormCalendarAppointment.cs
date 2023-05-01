@@ -195,15 +195,15 @@ namespace GUI_Management_of_medical_clinic
             string doctor;
             int calendarId = CalendarService.GetIdFromDate(date);
 
-            List<AppointmentModel> appointments = AppointmentService.GetAppointmentsData();
-            List<AppointmentModel> selectedAppointments = AppointmentService.appointmentInSelectedDate(appointments,date, calendarId);
+            List<AppointmentModel> appointments = CalendarAppointmentService.GetAppointmentsData();
+            List<AppointmentModel> selectedAppointments = CalendarAppointmentService.appointmentInSelectedDate(appointments,date, calendarId);
 
             foreach (AppointmentModel appointment in selectedAppointments)
             {
                 if (appointment.PatientId == null && appointment.IsActive == true)
                 {
                     timeTerm = AppointmentService.GetTermByTermId(appointment.IdTerm);
-                    doctor = AppointmentService.GetLastNameAndNameOfEmployeeByAppointment(appointment);
+                    doctor = CalendarAppointmentService.GetLastNameAndNameOfEmployeeByAppointment(appointment);
 
                     int index = dataGridViewAppointment.Rows.Add(doctor, timeTerm);
                     dataGridViewAppointment.Rows[index].Tag = appointment;
