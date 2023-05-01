@@ -36,7 +36,7 @@ namespace GUI_Management_of_medical_clinic
         private void DisplayDataInDataGridView()
         {
             dataGridViewAppointmentList.Rows.Clear();
-            List<AppointmentModel> appointments = AppointmentService.GetAppointmentsData();
+            List<AppointmentModel> appointments = CalendarAppointmentService.GetAppointmentsData();
 
             
 
