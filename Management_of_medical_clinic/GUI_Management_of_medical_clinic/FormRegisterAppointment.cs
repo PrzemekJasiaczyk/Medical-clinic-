@@ -126,15 +126,16 @@ namespace GUI_Management_of_medical_clinic
         private void comboBoxDate_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            try
+            if (comboBoxDate.SelectedIndex == -1)
+            {
+                return;
+            }
+            else
             {
                 selectedDate = comboBoxDate.SelectedItem.ToString();
-            }
-            catch (Exception ex)
-            {
-                
-            }
 
+            }
+         
 
         }
 
