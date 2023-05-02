@@ -1,10 +1,5 @@
 ﻿using Console_Management_of_medical_clinic.Data;
 using Console_Management_of_medical_clinic.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Console_Management_of_medical_clinic.Logic
 {
@@ -45,7 +40,7 @@ namespace Console_Management_of_medical_clinic.Logic
             context.SaveChanges();
         }
 
-        public static string RemoveSpecialization(string specializationToRemove)
+        public static void RemoveSpecialization(string specializationToRemove)
         {
             List<SpecializationModel> specializations = GetSpecializationsData();
             using AppDbContext context = new AppDbContext();
@@ -58,20 +53,65 @@ namespace Console_Management_of_medical_clinic.Logic
                     {
                         context.DbSpecializations.Remove(specialization);
                         context.SaveChanges();
-                        return "Specialization removed successfully";
+                        return;
                     }
                     catch (Exception ex)
                     {
-                        return "Specialization is linked to an employee in the database\nIt can not be removed";
-                    }
-                    
+                        return;
+                    }                    
                 }
             }    
-            return "Specialization doesn't exist";
+        }
+        
+        public static int getSpecializationIdByName(string name)
+        {
+            List<SpecializationModel> specializations = GetSpecializationsData();
+            foreach(SpecializationModel specialization in specializations)
+            {
+                if (specialization.Name == name)
+                {
+                    return specialization.IdSpecialization;
+                }
+            }
+            return 0;
         }
 
-       
+        public static SpecializationModel GetSpecializationById(int id)
+        {
+            return GetSpecializationsData().FirstOrDefault(specialization => specialization.IdSpecialization == id);
+        }
 
-        
+        public static bool checkIfSpecializationIsAssigned(List<EmployeeModel> Employees, int idSpecialization)
+        {
+            foreach(EmployeeModel employee in Employees)
+            {
+                if (employee.IdSpecialization == idSpecialization)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public static void EditSpecialization(string oldName, string newName, out string errorMessage)
+        {
+            try
+            {
+                AppDbContext context = new AppDbContext();
+                SpecializationModel spc = context.DbSpecializations.Find(getSpecializationIdByName(oldName));
+                if (spc != null)
+                {
+                    spc.Name = newName;
+                    context.SaveChanges();
+                    errorMessage = null;
+                    return;
+                }
+                errorMessage = "Specialization not found";
+            }
+            catch (Exception ex)
+            {
+                errorMessage = "Edit failed: " + ex.Message;
+            }
+        }
     }
 }

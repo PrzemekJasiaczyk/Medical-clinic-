@@ -270,6 +270,10 @@ ServiceFabricBackup/
 *.ldf
 *.ndf
 
+# SQLite files
+*.db-shm
+*.db-wal
+
 # Business Intelligence projects
 *.rdl.data
 *.bim.layout
@@ -403,6 +407,3 @@ FodyWeavers.xsd
 # Additional files built by Visual Studio
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudio
-
-
-

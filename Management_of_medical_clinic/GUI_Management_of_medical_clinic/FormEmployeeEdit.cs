@@ -27,26 +27,40 @@ namespace GUI_Management_of_medical_clinic
 
         private void FormEmployeeEdit_Load(object sender, EventArgs e)
         {
+            List<SpecializationModel> specializations = SpecializationService.GetSpecializationsData();
+
+            foreach (SpecializationModel specialization in specializations)
+            {
+                checkedListBoxSpecialization.Items.Add(specialization.Name);
+            }
+
+            comboBoxRole.DataSource = Enum.GetValues(typeof(EnumEmployeeRoles));
+            comboBoxSex.DataSource = Enum.GetValues(typeof(EnumSex));
+
             comboBoxRole.SelectedItem = employee.Role;
             textBoxFirstName.Text = employee.FirstName;
             textBoxLastName.Text = employee.LastName;
             textBoxPESEL.Text = employee.PESEL;
-            textBoxDateOfBirth.Text = employee.DateOfBirth.ToString();
-            correspAddressTextBox.Text = employee.CorrespondenceAddress;
+            dateTimePickerDate.Text = (employee.DateOfBirth);
+
+            textBoxAddress.Text = employee.CorrespondenceAddress;
             textBoxEmail.Text = employee.Email;
-            phoneNumberTextBox.Text = employee.PhoneNumber;
-            
+            textBoxPhone.Text = employee.PhoneNumber;
+            comboBoxSex.SelectedItem = employee.Sex;
+
+            checkIfMedicalDoctor();
+
         }
         private void checkForms()
         {
-            if (textBoxFirstName.Text.Length > 0 && textBoxLastName.Text.Length > 0 && textBoxPESEL.Text.Length > 0 && comboBoxRole.Text.Length > 0 && comboBoxSex.SelectedItem!=null)
+            if (textBoxFirstName.Text.Length > 0 && textBoxLastName.Text.Length > 0 && textBoxPESEL.Text.Length == 11 && comboBoxRole.Text.Length > 0 && comboBoxSex.SelectedItem != null)
                 buttonConfirm.Enabled = true;
             else
                 buttonConfirm.Enabled = false;
         }
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
-            /*(string stringPESEL, bool booleanPESEL) = EmployeeService.validatePESEL(textBoxPESEL.Text, textBoxDateOfBirth.Value, comboBoxSex.SelectedIndex);
+            (string stringPESEL, bool booleanPESEL) = EmployeeService.validatePESEL(textBoxPESEL.Text, dateTimePickerDate.Value, comboBoxSex.SelectedIndex);
             if (!booleanPESEL)
             {
                 MessageBox.Show(stringPESEL);
@@ -60,17 +74,26 @@ namespace GUI_Management_of_medical_clinic
                 return;
             }
 
-            (string stringPhone, bool booleanPhone) = EmployeeService.validatePhone(phoneNumberTextBox.Text);
+            (string stringPhone, bool booleanPhone) = EmployeeService.validatePhone(textBoxPhone.Text);
             if (!booleanPhone)
             {
                 MessageBox.Show(stringPhone);
                 return;
             }
 
-            
+            if (comboBoxRole.Text == "MedicalDoctor" && checkedListBoxSpecialization.CheckedItems.Count == 0)
+            {
+                MessageBox.Show("A specialization needs to be selected");
+                return;
+            }
+
             EnumSex enumSex = (EnumSex)Enum.Parse(typeof(EnumSex), comboBoxSex.SelectedItem.ToString());
-            EmployeeModel.EditEmployee(employee.IdEmployee, textBoxFirstName.Text, textBoxLastName.Text, textBoxPESEL.Text, textBoxDateOfBirth.Text, comboBoxRole.Text, correspAddressTextBox.Text, textBoxEmail.Text, phoneNumberTextBox.Text, enumSex);
-            */
+            EnumEmployeeRoles enumRole = (EnumEmployeeRoles)Enum.Parse(typeof(EnumEmployeeRoles), comboBoxRole.SelectedItem.ToString());
+
+            EmployeeModel.EditEmployee(employee.IdEmployee, textBoxFirstName.Text, textBoxLastName.Text, textBoxPESEL.Text, dateTimePickerDate.Text,
+                enumRole, textBoxAddress.Text, textBoxEmail.Text, textBoxPhone.Text, enumSex, 1, true);
+
+            MessageBox.Show("Employee’s data changed.");
 
             FormEmployeeList employeeList = new FormEmployeeList(currentUser);
             //this.Hide();
@@ -78,6 +101,22 @@ namespace GUI_Management_of_medical_clinic
             this.Close();
 
         }
+
+        public void checkIfMedicalDoctor()
+        {
+            if (comboBoxRole.Text == "MedicalDoctor")
+            {
+                checkedListBoxSpecialization.Visible = true;
+                labelSpecialization.Visible = true;
+            }
+
+            else
+            {
+                checkedListBoxSpecialization.Visible = false;
+                labelSpecialization.Visible = false;
+            }
+        }
+
         private void textBoxFirstName_TextChanged(object sender, EventArgs e)
         {
             checkForms();
@@ -96,12 +135,9 @@ namespace GUI_Management_of_medical_clinic
         private void comboBoxRole_SelectedIndexChanged(object sender, EventArgs e)
         {
             checkForms();
+            checkIfMedicalDoctor();
         }
 
-        private void buttonConfirm_Click_1(object sender, EventArgs e)
-        {
-
-        }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
@@ -117,6 +153,47 @@ namespace GUI_Management_of_medical_clinic
         }
 
         private void comboBoxSex_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            checkForms();
+        }
+
+        private void checkedListBoxSpecialization_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedIndex = checkedListBoxSpecialization.SelectedIndex;
+            foreach (int i in checkedListBoxSpecialization.CheckedIndices)
+            {
+                checkedListBoxSpecialization.SetItemCheckState(i, CheckState.Unchecked);
+            }
+            checkedListBoxSpecialization.SetItemCheckState(selectedIndex, CheckState.Checked);
+        }
+
+        private void comboBoxRole_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            checkIfMedicalDoctor();
+            checkForms();
+        }
+
+        private void textBoxPESEL_TextChanged_1(object sender, EventArgs e)
+        {
+            checkForms();
+        }
+
+        private void checkedListBoxSpecialization_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            int selectedIndex = checkedListBoxSpecialization.SelectedIndex;
+            foreach (int i in checkedListBoxSpecialization.CheckedIndices)
+            {
+                checkedListBoxSpecialization.SetItemCheckState(i, CheckState.Unchecked);
+            }
+            checkedListBoxSpecialization.SetItemCheckState(selectedIndex, CheckState.Checked);
+        }
+
+        private void textBoxFirstName_TextChanged_1(object sender, EventArgs e)
+        {
+            checkForms();
+        }
+
+        private void textBoxLastName_TextChanged_1(object sender, EventArgs e)
         {
             checkForms();
         }

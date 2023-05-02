@@ -1,9 +1,6 @@
 ﻿using Console_Management_of_medical_clinic.Data;
 using Console_Management_of_medical_clinic.Data.Enums;
 using Console_Management_of_medical_clinic.Logic;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -25,21 +22,19 @@ namespace Console_Management_of_medical_clinic.Model
         public string? PhoneNumber { get; set; }
         public EnumSex? Sex { get; set; }
         public EnumEmployeeRoles Role { get; set; }
-        
         public bool IsActive { get; set; }
+        //Relationships
+        public UserModel? UserModel { get; set; }
+        [ForeignKey("SpecializationModel")] public int? IdSpecialization { get; set; }
+        public SpecializationModel? SpecializationModel { get; set; }
 
-        [ForeignKey("UserModel")] public int IdUser { get; set; }
-        public virtual UserModel UserModel { get; set; }
-        [ForeignKey("SpecializationModel")] public int IdSpecialization { get; set; }
-        public virtual SpecializationModel SpecializationModel { get; set; }
-
+        public List<Visit> Visits { get; set; } = new List<Visit>();
 
         public EmployeeModel() { }
 
-        public EmployeeModel(int idUser, string firstName, string lastName, string pesel, string dateOfBirth, string correspondenceAddress, 
+        public EmployeeModel(string firstName, string lastName, string pesel, string dateOfBirth, string correspondenceAddress,
             string email, string phoneNumber, EnumSex sex, EnumEmployeeRoles role, int idSpecialization, bool isActive)
         {
-            IdUser = idUser;
             FirstName = firstName;
             LastName = lastName;
             PESEL = pesel;
@@ -53,7 +48,24 @@ namespace Console_Management_of_medical_clinic.Model
             IsActive = isActive;
         }
 
-        
+        public EmployeeModel(int idEmployee, string firstName, string lastName, string pesel, string dateOfBirth, string correspondenceAddress,
+            string email, string phoneNumber, EnumSex sex, EnumEmployeeRoles role, int idSpecialization, bool isActive)
+        {
+            IdEmployee = idEmployee;
+            FirstName = firstName;
+            LastName = lastName;
+            PESEL = pesel;
+            DateOfBirth = dateOfBirth;
+            CorrespondenceAddress = correspondenceAddress;
+            Email = email;
+            PhoneNumber = phoneNumber;
+            Sex = sex;
+            Role = role;
+            IdSpecialization = idSpecialization;
+            IsActive = isActive;
+        }
+
+
         public static void ChangeEmployeeStatus(EmployeeModel employee)
         {
             if (employee.IsActive == true)
@@ -92,7 +104,7 @@ namespace Console_Management_of_medical_clinic.Model
             List<EmployeeModel> employees = new List<EmployeeModel>();
             foreach (EmployeeModel employee in EmployeeService.GetEmployeesData())
             {
-                if(employee.Role==role && employee.IsActive == isActive)
+                if (employee.Role == role && employee.IsActive == isActive)
                 {
                     employees.Add(employee);
                 }
@@ -102,12 +114,12 @@ namespace Console_Management_of_medical_clinic.Model
         }
         
 
-        public static void EditEmployee(int IdEmployee, int idUser,string firstName, string lastName, string pesel, string dateOfBirth, string correspondenceAddress, string email, string phoneNumber,
-            EnumSex sex)
+        public static void EditEmployee(int IdEmployee, string firstName, string lastName, string pesel, string dateOfBirth, EnumEmployeeRoles role, string correspondenceAddress, string email, string phoneNumber,
+            EnumSex sex, int idSpecialization, bool isActive)
         {
             var context = new AppDbContext();
             var emp = context.DbEmployees.Find(IdEmployee);
-            emp.IdUser = idUser;
+
             emp.FirstName = firstName;
             emp.LastName = lastName;
             emp.PESEL = pesel;
@@ -116,7 +128,11 @@ namespace Console_Management_of_medical_clinic.Model
             emp.Email = email;
             emp.PhoneNumber = phoneNumber;
             emp.Sex = sex;
+            emp.Role = role;
+            emp.IdSpecialization = idSpecialization;
+            emp.IsActive = isActive;
             context.SaveChanges();
         }
+
     }
 }

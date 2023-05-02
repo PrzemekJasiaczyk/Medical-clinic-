@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Console_Management_of_medical_clinic.Model
 {
@@ -11,8 +6,11 @@ namespace Console_Management_of_medical_clinic.Model
     {
         [Key] public int IdSpecialization { get; set; }
         public string Name { get; set; }
+        //Relationships
+        public List<EmployeeModel>? EmployeeModels { get; set; }
+        //public List<OfficeModel>? OfficeModels { get; set; }
 
-        public virtual EmployeeModel EmployeeModle { get; set; }
+
 
         public SpecializationModel() { }
 

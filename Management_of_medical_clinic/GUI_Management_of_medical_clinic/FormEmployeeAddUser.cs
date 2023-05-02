@@ -1,4 +1,5 @@
-﻿using Console_Management_of_medical_clinic.Logic;
+﻿using Console_Management_of_medical_clinic.Data.Enums;
+using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
 using System;
 using System.Collections.Generic;
@@ -14,17 +15,20 @@ namespace GUI_Management_of_medical_clinic
 {
     public partial class FormEmployeeAddUser : Form
     {
-        EmployeeModel currentUser;
-        public FormEmployeeAddUser(EmployeeModel currentU)
+        EmployeeModel currentEmployee;
+        EmployeeModel newEmployee;
+        public FormEmployeeAddUser(EmployeeModel currentE, EmployeeModel newE)
         {
             InitializeComponent();
-            currentUser = currentU;
+            currentEmployee = currentE;
+            newEmployee = newE;
+            MessageBox.Show(newE.FirstName);
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            FormEmployeeList employeeList = new FormEmployeeList(currentUser);
-            this.Hide();
+            FormEmployeeList employeeList = new FormEmployeeList(currentEmployee);
+            //this.Hide();
             employeeList.ShowDialog();
             this.Close();
         }
@@ -43,19 +47,30 @@ namespace GUI_Management_of_medical_clinic
                 return;
             }
 
-            MessageBox.Show("<<Success, but button doesn't work yet>>");
+            EmployeeService.AddEmployee(newEmployee);
+            UserService.AddUser(textBoxUsername.Text, textBoxPassword.Text, EnumUserRoles.Employee, true, newEmployee.IdEmployee);
+   
+            //MessageBox.Show("<<Success, but button doesn't work yet>>");
 
-            FormEmployeeList employeeList = new FormEmployeeList(currentUser);
-            this.Hide();
+            FormEmployeeList employeeList = new FormEmployeeList(currentEmployee);
+            //this.Hide();
             employeeList.ShowDialog();
             this.Close();
         }
 
-        private void buttonSkip_Click(object sender, EventArgs e)
+        public void buttonSkip_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("<<Success, but button doesn't work yet>>");
 
-            FormEmployeeList employeeList = new FormEmployeeList(currentUser);
+            if (EmployeeService.AddEmployee(newEmployee))
+            {
+                MessageBox.Show("Employee without user added successfully");
+            }
+            else
+            {
+                MessageBox.Show("Employee not added. Error");
+            }
+
+            FormEmployeeList employeeList = new FormEmployeeList(currentEmployee);
             this.Hide();
             employeeList.ShowDialog();
             this.Close();
@@ -65,11 +80,11 @@ namespace GUI_Management_of_medical_clinic
         {
             if (textBoxUsername.Text.Length > 0 && textBoxPassword.Text.Length > 0 && textBoxPasswordConfirm.Text.Length > 0)
             {
-                buttonCreate.Enabled = true;
+                buttonAssign.Enabled = true;
             }
             else
             {
-                buttonCreate.Enabled = false;
+                buttonAssign.Enabled = false;
             }
         }
 
@@ -88,5 +103,9 @@ namespace GUI_Management_of_medical_clinic
             checkIfRequiredFilled();
         }
 
+        private void FormEmployeeAddUser_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
