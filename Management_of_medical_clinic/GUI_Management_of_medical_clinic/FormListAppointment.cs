@@ -13,17 +13,17 @@ using System.Collections.Generic;
 
 //Acceptance criteria:  
 
-    //The system allows to filter patients on: 
+//The system allows to filter patients on: 
 
-    //Name and the surname of patient. 
+//Name and the surname of patient. 
 
-    //The PESEL number 
+//The PESEL number 
 
-    //Date of the visit 
+//Date of the visit 
 
-    //Doctor specialization 
+//Doctor specialization 
 
-    //Doctor name/surname 
+//Doctor name/surname 
 
 
 
@@ -74,7 +74,7 @@ namespace GUI_Management_of_medical_clinic
         #endregion
 
 
-        
+
 
     }
 }

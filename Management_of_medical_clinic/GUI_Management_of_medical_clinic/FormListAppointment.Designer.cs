@@ -42,9 +42,24 @@
             ColumnOffice = new DataGridViewTextBoxColumn();
             ColumnCost = new DataGridViewTextBoxColumn();
             panel2 = new Panel();
+            textBoxName = new TextBox();
+            label1 = new Label();
+            label2 = new Label();
+            textBoxLastName = new TextBox();
+            label3 = new Label();
+            textBoxPESEL = new TextBox();
+            dateTimePickerDateOfVisit = new DateTimePicker();
+            label4 = new Label();
+            label5 = new Label();
+            comboBoxDoctorSpecialization = new ComboBox();
+            comboBoxSelectDoctorOrPatient = new ComboBox();
+            label6 = new Label();
+            buttonAddFiltr = new Button();
+            buttonClearFiltr = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAppointmentList).BeginInit();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // buttonClearFilter
@@ -165,10 +180,141 @@
             // panel2
             // 
             panel2.BackColor = Color.SteelBlue;
+            panel2.Controls.Add(buttonClearFiltr);
+            panel2.Controls.Add(buttonAddFiltr);
+            panel2.Controls.Add(comboBoxSelectDoctorOrPatient);
+            panel2.Controls.Add(label6);
+            panel2.Controls.Add(comboBoxDoctorSpecialization);
+            panel2.Controls.Add(label5);
+            panel2.Controls.Add(label4);
+            panel2.Controls.Add(dateTimePickerDateOfVisit);
+            panel2.Controls.Add(label3);
+            panel2.Controls.Add(textBoxPESEL);
+            panel2.Controls.Add(label2);
+            panel2.Controls.Add(textBoxLastName);
+            panel2.Controls.Add(label1);
+            panel2.Controls.Add(textBoxName);
             panel2.Location = new Point(357, 0);
             panel2.Name = "panel2";
             panel2.Size = new Size(1567, 77);
             panel2.TabIndex = 31;
+            // 
+            // textBoxName
+            // 
+            textBoxName.Location = new Point(246, 33);
+            textBoxName.Name = "textBoxName";
+            textBoxName.Size = new Size(178, 23);
+            textBoxName.TabIndex = 0;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(246, 12);
+            label1.Name = "label1";
+            label1.Size = new Size(39, 15);
+            label1.TabIndex = 1;
+            label1.Text = "Name";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(453, 12);
+            label2.Name = "label2";
+            label2.Size = new Size(61, 15);
+            label2.TabIndex = 3;
+            label2.Text = "Last name";
+            // 
+            // textBoxLastName
+            // 
+            textBoxLastName.Location = new Point(453, 33);
+            textBoxLastName.Name = "textBoxLastName";
+            textBoxLastName.Size = new Size(178, 23);
+            textBoxLastName.TabIndex = 2;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(660, 12);
+            label3.Name = "label3";
+            label3.Size = new Size(38, 15);
+            label3.TabIndex = 5;
+            label3.Text = "PESEL";
+            // 
+            // textBoxPESEL
+            // 
+            textBoxPESEL.Location = new Point(660, 33);
+            textBoxPESEL.Name = "textBoxPESEL";
+            textBoxPESEL.Size = new Size(178, 23);
+            textBoxPESEL.TabIndex = 4;
+            // 
+            // dateTimePickerDateOfVisit
+            // 
+            dateTimePickerDateOfVisit.Format = DateTimePickerFormat.Short;
+            dateTimePickerDateOfVisit.Location = new Point(867, 33);
+            dateTimePickerDateOfVisit.Name = "dateTimePickerDateOfVisit";
+            dateTimePickerDateOfVisit.Size = new Size(178, 23);
+            dateTimePickerDateOfVisit.TabIndex = 6;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(867, 12);
+            label4.Name = "label4";
+            label4.Size = new Size(89, 15);
+            label4.TabIndex = 7;
+            label4.Text = "Date of the visit";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(1074, 12);
+            label5.Name = "label5";
+            label5.Size = new Size(117, 15);
+            label5.TabIndex = 8;
+            label5.Text = "Doctor specialization";
+            // 
+            // comboBoxDoctorSpecialization
+            // 
+            comboBoxDoctorSpecialization.FormattingEnabled = true;
+            comboBoxDoctorSpecialization.Location = new Point(1074, 33);
+            comboBoxDoctorSpecialization.Name = "comboBoxDoctorSpecialization";
+            comboBoxDoctorSpecialization.Size = new Size(178, 23);
+            comboBoxDoctorSpecialization.TabIndex = 9;
+            // 
+            // comboBoxSelectDoctorOrPatient
+            // 
+            comboBoxSelectDoctorOrPatient.FormattingEnabled = true;
+            comboBoxSelectDoctorOrPatient.Location = new Point(39, 33);
+            comboBoxSelectDoctorOrPatient.Name = "comboBoxSelectDoctorOrPatient";
+            comboBoxSelectDoctorOrPatient.Size = new Size(178, 23);
+            comboBoxSelectDoctorOrPatient.TabIndex = 11;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(39, 12);
+            label6.Name = "label6";
+            label6.Size = new Size(147, 15);
+            label6.TabIndex = 10;
+            label6.Text = "Filtr name or last name by:";
+            // 
+            // buttonAddFiltr
+            // 
+            buttonAddFiltr.Location = new Point(1275, 33);
+            buttonAddFiltr.Name = "buttonAddFiltr";
+            buttonAddFiltr.Size = new Size(103, 23);
+            buttonAddFiltr.TabIndex = 12;
+            buttonAddFiltr.Text = "Add filtr";
+            buttonAddFiltr.UseVisualStyleBackColor = true;
+            // 
+            // buttonClearFiltr
+            // 
+            buttonClearFiltr.Location = new Point(1384, 33);
+            buttonClearFiltr.Name = "buttonClearFiltr";
+            buttonClearFiltr.Size = new Size(117, 23);
+            buttonClearFiltr.TabIndex = 13;
+            buttonClearFiltr.Text = "Clear";
+            buttonClearFiltr.UseVisualStyleBackColor = true;
             // 
             // FormListAppointment
             // 
@@ -189,6 +335,8 @@
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAppointmentList).EndInit();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -214,5 +362,19 @@
         private DataGridViewTextBoxColumn ColumnDate;
         private DataGridViewTextBoxColumn ColumnOffice;
         private DataGridViewTextBoxColumn ColumnCost;
+        private Label label3;
+        private TextBox textBoxPESEL;
+        private Label label2;
+        private TextBox textBoxLastName;
+        private Label label1;
+        private TextBox textBoxName;
+        private Label label4;
+        private DateTimePicker dateTimePickerDateOfVisit;
+        private ComboBox comboBoxDoctorSpecialization;
+        private Label label5;
+        private Button buttonClearFiltr;
+        private Button buttonAddFiltr;
+        private ComboBox comboBoxSelectDoctorOrPatient;
+        private Label label6;
     }
 }
