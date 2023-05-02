@@ -28,29 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBoxPassword = new TextBox();
             buttonConfirm = new Button();
             panel1 = new Panel();
             button3 = new Button();
             buttonCancel = new Button();
             label1 = new Label();
+            textBoxPassword = new TextBox();
             panel1.SuspendLayout();
             SuspendLayout();
-            // 
-            // textBoxPassword
-            // 
-            textBoxPassword.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBoxPassword.BackColor = Color.MintCream;
-            textBoxPassword.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
-            textBoxPassword.ForeColor = SystemColors.MenuText;
-            textBoxPassword.Location = new Point(75, 75);
-            textBoxPassword.Multiline = true;
-            textBoxPassword.Name = "textBoxPassword";
-            textBoxPassword.PasswordChar = '*';
-            textBoxPassword.PlaceholderText = "Input Password";
-            textBoxPassword.Size = new Size(450, 40);
-            textBoxPassword.TabIndex = 28;
-            textBoxPassword.TextAlign = HorizontalAlignment.Center;
             // 
             // buttonConfirm
             // 
@@ -117,9 +102,24 @@
             label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             label1.Location = new Point(76, 39);
             label1.Name = "label1";
-            label1.Size = new Size(145, 25);
+            label1.Size = new Size(426, 25);
             label1.TabIndex = 30;
-            label1.Text = "Input password:";
+            label1.Text = "Confirm cancelling appointment. Input password:";
+            // 
+            // textBoxPassword
+            // 
+            textBoxPassword.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBoxPassword.BackColor = Color.MintCream;
+            textBoxPassword.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            textBoxPassword.ForeColor = SystemColors.MenuText;
+            textBoxPassword.Location = new Point(75, 75);
+            textBoxPassword.Multiline = true;
+            textBoxPassword.Name = "textBoxPassword";
+            textBoxPassword.PasswordChar = '*';
+            textBoxPassword.PlaceholderText = "Input Password";
+            textBoxPassword.Size = new Size(450, 40);
+            textBoxPassword.TabIndex = 28;
+            textBoxPassword.TextAlign = HorizontalAlignment.Center;
             // 
             // FormConfirmCancelAppointment
             // 
@@ -141,12 +141,11 @@
         }
 
         #endregion
-
-        private TextBox textBoxPassword;
         private Button buttonConfirm;
         private Panel panel1;
         private Button button3;
         private Button buttonCancel;
         private Label label1;
+        private TextBox textBoxPassword;
     }
 }
