@@ -47,6 +47,8 @@ namespace GUI_Management_of_medical_clinic
         {
             List<AppointmentModel> appointments = CalendarAppointmentService.GetAppointmentsWithPatients();
             DisplayDataInDataGridView(appointments);
+
+            AddItemsToTheComboBox();
         }
 
 
@@ -58,7 +60,7 @@ namespace GUI_Management_of_medical_clinic
             this.Close();
         }
 
-        #region // Display data
+        #region Display data
 
         private void DisplayDataInDataGridView(List<AppointmentModel> appointments)
         {
@@ -72,6 +74,24 @@ namespace GUI_Management_of_medical_clinic
         }
 
         #endregion
+
+
+        #region Filtr data
+
+        enum DoctorOrPatient {Patient,Doctor}
+
+        private void AddItemsToTheComboBox()
+        {
+            comboBoxSelectDoctorOrPatient.Items.Clear();
+            comboBoxSelectDoctorOrPatient.Items.Add(DoctorOrPatient.Patient);
+            comboBoxSelectDoctorOrPatient.Items.Add(DoctorOrPatient.Doctor);
+
+        }
+
+
+
+        #endregion
+
 
 
 
