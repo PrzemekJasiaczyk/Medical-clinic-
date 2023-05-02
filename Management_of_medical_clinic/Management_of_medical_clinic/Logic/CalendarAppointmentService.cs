@@ -42,7 +42,7 @@ namespace Console_Management_of_medical_clinic.Logic
 
         }
 
-        public static List<AppointmentModel> GetFreeAppointments()
+        public static List<AppointmentModel> GetAppointmentsWithPatients()
         {
             List<AppointmentModel> appointments = GetAppointmentsData();
             List <AppointmentModel> result = new List<AppointmentModel>();

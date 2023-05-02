@@ -42,14 +42,9 @@
             ColumnOffice = new DataGridViewTextBoxColumn();
             ColumnCost = new DataGridViewTextBoxColumn();
             panel2 = new Panel();
-            pictureBoxSortDESC = new PictureBox();
-            pictureBoxSortASC = new PictureBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAppointmentList).BeginInit();
-            panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxSortDESC).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxSortASC).BeginInit();
             SuspendLayout();
             // 
             // buttonClearFilter
@@ -170,34 +165,10 @@
             // panel2
             // 
             panel2.BackColor = Color.SteelBlue;
-            panel2.Controls.Add(pictureBoxSortDESC);
-            panel2.Controls.Add(pictureBoxSortASC);
             panel2.Location = new Point(357, 0);
             panel2.Name = "panel2";
             panel2.Size = new Size(1567, 77);
             panel2.TabIndex = 31;
-            // 
-            // pictureBoxSortDESC
-            // 
-            pictureBoxSortDESC.Image = Properties.Resources.sort;
-            pictureBoxSortDESC.Location = new Point(1486, 21);
-            pictureBoxSortDESC.Name = "pictureBoxSortDESC";
-            pictureBoxSortDESC.Size = new Size(38, 36);
-            pictureBoxSortDESC.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBoxSortDESC.TabIndex = 46;
-            pictureBoxSortDESC.TabStop = false;
-            pictureBoxSortDESC.Click += pictureBoxSortDESC_Click;
-            // 
-            // pictureBoxSortASC
-            // 
-            pictureBoxSortASC.Image = Properties.Resources.sort__1_;
-            pictureBoxSortASC.Location = new Point(1438, 21);
-            pictureBoxSortASC.Name = "pictureBoxSortASC";
-            pictureBoxSortASC.Size = new Size(41, 36);
-            pictureBoxSortASC.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBoxSortASC.TabIndex = 45;
-            pictureBoxSortASC.TabStop = false;
-            pictureBoxSortASC.Click += pictureBoxSortASC_Click;
             // 
             // FormListAppointment
             // 
@@ -218,9 +189,6 @@
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAppointmentList).EndInit();
-            panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBoxSortDESC).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxSortASC).EndInit();
             ResumeLayout(false);
         }
 
@@ -236,8 +204,6 @@
         private Button buttonActivatePatient;
         private Button buttonRemovePatient;
         private Panel panel2;
-        private PictureBox pictureBoxSortDESC;
-        private PictureBox pictureBoxSortASC;
         private Button buttonExit;
         private Button button_ShowDetails;
         private Button buttonViewAppointments;
