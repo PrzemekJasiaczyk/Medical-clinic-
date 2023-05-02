@@ -160,6 +160,7 @@
             dataGridViewAppointmentList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewAppointmentList.Columns.AddRange(new DataGridViewColumn[] { ColumnPatient, ColumnPESEL, ColumnDoctor, ColumnSpecialization, ColumnDate, ColumnOffice, ColumnCost });
             dataGridViewAppointmentList.Location = new Point(357, 84);
+            dataGridViewAppointmentList.MultiSelect = false;
             dataGridViewAppointmentList.Name = "dataGridViewAppointmentList";
             dataGridViewAppointmentList.ReadOnly = true;
             dataGridViewAppointmentList.RowHeadersVisible = false;
@@ -394,7 +395,8 @@
         private Button buttonRemovePatient;
         private Panel panel2;
         private Button buttonExit;
-        private Button button_ShowDetails;
+        private Button buttonShowDetails;
+        private Button buttonRemove;
         private Button buttonViewAppointments;
         private DataGridViewTextBoxColumn ColumnPatient;
         private DataGridViewTextBoxColumn ColumnPESEL;
