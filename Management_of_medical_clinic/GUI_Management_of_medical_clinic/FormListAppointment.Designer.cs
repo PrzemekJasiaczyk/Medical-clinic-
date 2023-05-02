@@ -31,6 +31,7 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             buttonClearFilter = new Button();
             panel1 = new Panel();
+            buttonShowDetails = new Button();
             buttonExit = new Button();
             pictureBox1 = new PictureBox();
             dataGridViewAppointmentList = new DataGridView();
@@ -65,6 +66,7 @@
             // panel1
             // 
             panel1.BackColor = Color.SteelBlue;
+            panel1.Controls.Add(buttonShowDetails);
             panel1.Controls.Add(buttonExit);
             panel1.Controls.Add(pictureBox1);
             panel1.Location = new Point(0, 0);
@@ -72,6 +74,21 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(357, 1080);
             panel1.TabIndex = 29;
+            // 
+            // buttonShowDetails
+            // 
+            buttonShowDetails.BackColor = Color.SteelBlue;
+            buttonShowDetails.FlatAppearance.BorderColor = Color.Black;
+            buttonShowDetails.FlatStyle = FlatStyle.Flat;
+            buttonShowDetails.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonShowDetails.Location = new Point(-1, 273);
+            buttonShowDetails.Margin = new Padding(3, 4, 3, 4);
+            buttonShowDetails.Name = "buttonShowDetails";
+            buttonShowDetails.Size = new Size(360, 65);
+            buttonShowDetails.TabIndex = 47;
+            buttonShowDetails.Text = "Show details";
+            buttonShowDetails.UseVisualStyleBackColor = false;
+            buttonShowDetails.Click += buttonShowDetails_Click;
             // 
             // buttonExit
             // 
@@ -248,5 +265,6 @@
         private DataGridViewTextBoxColumn ColumnDate;
         private DataGridViewTextBoxColumn ColumnOffice;
         private DataGridViewTextBoxColumn ColumnCost;
+        private Button buttonShowDetails;
     }
 }

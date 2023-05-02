@@ -1,4 +1,5 @@
-﻿using Console_Management_of_medical_clinic.Logic;
+﻿using Console_Management_of_medical_clinic.Data;
+using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
 using System.Collections.Generic;
 
@@ -78,7 +79,7 @@ namespace GUI_Management_of_medical_clinic
         private void DisplayDataInDataGridView(List<AppointmentModel> appointments)
         {
             dataGridViewAppointmentList.Rows.Clear();
-            
+
             foreach (AppointmentModel appointment in appointments)
             {
                 if (appointment.PatientId != null && appointment.IsActive == true)
@@ -109,7 +110,7 @@ namespace GUI_Management_of_medical_clinic
             return result;
 
         }
-            #endregion
+        #endregion
 
         private void pictureBoxSortASC_Click(object sender, EventArgs e)
         {
@@ -121,6 +122,16 @@ namespace GUI_Management_of_medical_clinic
         {
             List<AppointmentModel> appointments = SortedAppointmentListDESC();
             DisplayDataInDataGridView(appointments);
+        }
+
+        private void buttonShowDetails_Click(object sender, EventArgs e)
+        {
+            AppDbContext _context = new AppDbContext();
+            AppointmentModel appointment = (AppointmentModel)dataGridViewAppointmentList.SelectedRows[0].Tag; ;
+            FormShowDetailsAppointment formShowDetailsAppointment = new FormShowDetailsAppointment(currentUser, appointment);
+            Hide();
+            formShowDetailsAppointment.ShowDialog();
+            Close();
         }
     }
 }
