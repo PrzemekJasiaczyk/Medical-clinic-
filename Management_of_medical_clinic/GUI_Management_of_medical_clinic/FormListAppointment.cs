@@ -1,6 +1,7 @@
 ﻿using Console_Management_of_medical_clinic.Data;
 using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 
 
@@ -65,7 +66,6 @@ namespace GUI_Management_of_medical_clinic
             DisplayDataInDataGridView(appointments);
         }
 
-
         private void buttonExit_Click(object sender, EventArgs e)
         {
             FormCalendarAppointment formCalendarAppointment = new FormCalendarAppointment(currentUser);
@@ -98,7 +98,7 @@ namespace GUI_Management_of_medical_clinic
         private List<AppointmentModel> SortedAppointmentListASC()
         {
             List<AppointmentModel> appointments = CalendarAppointmentService.GetFreeAppointments();
-            List<AppointmentModel> result = (List<AppointmentModel>)appointments.OrderBy( a => a.EmployeeModel.LastName);
+            List<AppointmentModel> result = (List<AppointmentModel>)appointments.OrderBy(a => a.EmployeeModel.LastName);
             return result;
         }
 
@@ -126,12 +126,47 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonShowDetails_Click(object sender, EventArgs e)
         {
-            AppDbContext _context = new AppDbContext();
-            AppointmentModel appointment = (AppointmentModel)dataGridViewAppointmentList.SelectedRows[0].Tag; ;
+            if (dataGridViewAppointmentList.Rows.Count == 0)
+            {
+                string msg = "No appointments. Register an appointment.";
+                FormMessage FormMessage = new FormMessage(msg);
+                FormMessage.ShowDialog();
+                return;
+            }
+
+            AppointmentModel appointment = (AppointmentModel)dataGridViewAppointmentList.SelectedRows[0].Tag;
+
             FormShowDetailsAppointment formShowDetailsAppointment = new FormShowDetailsAppointment(currentUser, appointment);
             Hide();
             formShowDetailsAppointment.ShowDialog();
             Close();
+        }
+
+        private void buttonRemove_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewAppointmentList.Rows.Count == 0)
+            {
+                string msg2 = "No appointments. Register an appointment.";
+                FormMessage FormMessage2 = new FormMessage(msg2);
+                FormMessage2.ShowDialog();
+                return;
+            }
+
+            AppDbContext _context = new AppDbContext();
+
+            AppointmentModel appointment = (AppointmentModel)dataGridViewAppointmentList.SelectedRows[0].Tag;
+            appointment.PatientId = null;
+            appointment.IsActive = true;
+            appointment.Cost = 0;
+
+            _context.Entry(appointment).State = EntityState.Modified;
+            _context.SaveChanges();
+
+            FormListAppointment_Load(sender, e);
+
+            string msg = "Appointment canceled.";
+            FormMessage FormMessage = new FormMessage(msg);
+            FormMessage.ShowDialog();
         }
     }
 }

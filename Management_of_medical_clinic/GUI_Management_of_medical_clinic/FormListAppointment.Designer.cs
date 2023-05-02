@@ -31,6 +31,7 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             buttonClearFilter = new Button();
             panel1 = new Panel();
+            buttonRemove = new Button();
             buttonShowDetails = new Button();
             buttonExit = new Button();
             pictureBox1 = new PictureBox();
@@ -66,6 +67,7 @@
             // panel1
             // 
             panel1.BackColor = Color.SteelBlue;
+            panel1.Controls.Add(buttonRemove);
             panel1.Controls.Add(buttonShowDetails);
             panel1.Controls.Add(buttonExit);
             panel1.Controls.Add(pictureBox1);
@@ -74,6 +76,21 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(357, 1080);
             panel1.TabIndex = 29;
+            // 
+            // buttonRemove
+            // 
+            buttonRemove.BackColor = Color.SteelBlue;
+            buttonRemove.FlatAppearance.BorderColor = Color.Black;
+            buttonRemove.FlatStyle = FlatStyle.Flat;
+            buttonRemove.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonRemove.Location = new Point(-1, 346);
+            buttonRemove.Margin = new Padding(3, 4, 3, 4);
+            buttonRemove.Name = "buttonRemove";
+            buttonRemove.Size = new Size(360, 65);
+            buttonRemove.TabIndex = 48;
+            buttonRemove.Text = "Cancel appointment";
+            buttonRemove.UseVisualStyleBackColor = false;
+            buttonRemove.Click += buttonRemove_Click;
             // 
             // buttonShowDetails
             // 
@@ -133,6 +150,7 @@
             dataGridViewAppointmentList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewAppointmentList.Columns.AddRange(new DataGridViewColumn[] { ColumnPatient, ColumnPESEL, ColumnDoctor, ColumnSpecialization, ColumnDate, ColumnOffice, ColumnCost });
             dataGridViewAppointmentList.Location = new Point(357, 77);
+            dataGridViewAppointmentList.MultiSelect = false;
             dataGridViewAppointmentList.Name = "dataGridViewAppointmentList";
             dataGridViewAppointmentList.ReadOnly = true;
             dataGridViewAppointmentList.RowHeadersVisible = false;
@@ -266,5 +284,6 @@
         private DataGridViewTextBoxColumn ColumnOffice;
         private DataGridViewTextBoxColumn ColumnCost;
         private Button buttonShowDetails;
+        private Button buttonRemove;
     }
 }
