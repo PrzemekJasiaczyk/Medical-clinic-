@@ -23,17 +23,14 @@ namespace GUI_Management_of_medical_clinic
         private PatientService patientService;
         EmployeeModel currentUser;
         public AppointmentService appointmentService;
-        string selectedDoctor;
-        string selectedPatient;
-        string selectedDate;
+  
 
         public FormRegisterAppointment()
         {
             InitializeComponent();
-            comboBoxPatient.Items.AddRange(GetPatientNames().ToArray());
-            comboBoxDoctor.Items.AddRange(GetDoctorNames().ToArray());
 
-
+            comboboxPatient_add();
+            comboboxDoctor_add();
         }
 
         private void FormRegisterAppointment_Load(object sender, EventArgs e)
@@ -41,15 +38,47 @@ namespace GUI_Management_of_medical_clinic
 
         }
 
+        void comboboxPatient_add()
+        {
+            comboBoxPatient.Items.Clear();
+            List<Patient> patients =
+            PatientService.GetPatientsData();
+            comboBoxPatient.Items.Clear();
+            foreach (Patient patient in patients)
+            {
+                comboBoxPatient.Items.Add(patient);
+            }
+            comboBoxPatient.DisplayMember = patients.ToString();
+        }
+
+        void comboboxDoctor_add()
+        {
+            comboBoxDoctor.Items.Clear();
+            List<EmployeeModel> employees =
+            EmployeeService.GetEmployeesData()
+             .Where(d => d.Role == EnumEmployeeRoles.MedicalDoctor)
+             .ToList();
+            comboBoxDoctor.Items.Clear();
+            foreach (EmployeeModel employee in employees)
+            {
+                comboBoxDoctor.Items.Add(employee);
+            }
+            comboBoxPatient.DisplayMember = employees.ToString();
+        }
+
         private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
         {
             comboBoxDate.SelectedIndex = -1;
             comboBoxDate.Items.Clear();
-            selectedDoctor = comboBoxDoctor.SelectedItem.ToString();
-
+            int selectedDoctorId = -1;
+            if (comboBoxDoctor.SelectedItem != null)
+            {
+                EmployeeModel doc = (EmployeeModel)comboBoxDoctor.SelectedItem;
+                selectedDoctorId = doc.IdEmployee;
+            }
             List<AppointmentModel> appointments =
             CalendarAppointmentService.GetAppointmentsData()
-                .Where(a => a.IdEmployee == EmployeeService.GetDoctorId(selectedDoctor))
+                .Where(a => a.IdEmployee == selectedDoctorId)
                 .Where(a => a.IsActive == true)
                 .Where(a => a.Patient == null)
                 .ToList();
@@ -62,54 +91,16 @@ namespace GUI_Management_of_medical_clinic
 
         }
 
-        public List<string> GetPatientNames()
-        {
-            using (AppDbContext db = new AppDbContext())
-            {
-                return db.Patients
-                    .OrderBy(p => p.LastName)
-                    .Select(p => p.ToString())
-                    .ToList();
-            }
-        }
-
-        
-        
-        public List<string> GetDoctorNames()
-        {
-            using (AppDbContext db = new AppDbContext())
-            {
-                return db.DbEmployees
-                    .Where(d => d.Role == EnumEmployeeRoles.MedicalDoctor)
-                    .OrderBy(d => d.LastName)
-                    .Select(d => d.ToString())
-                    .ToList();
-            }
-        }
-
         private void comboBox3_SelectionChangeCommitted(object sender, EventArgs e)
         {
             CheckIfAllComboBoxesAreSelected();
-
-
 
         }
 
 
         private void comboBoxDate_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            if (comboBoxDate.SelectedIndex == -1)
-            {
-                return;
-            }
-            else
-            {
-                selectedDate = comboBoxDate.SelectedItem.ToString();
-
-            }
-         
-
+   
         }
 
         private void CheckIfAllComboBoxesAreSelected()
@@ -144,7 +135,12 @@ namespace GUI_Management_of_medical_clinic
                 AppointmentModel selectedAppointment = (AppointmentModel)comboBoxDate.SelectedItem;
                 selectedAppointmentId = selectedAppointment.IdAppointment;
             }
-            int patientId = PatientService.GetPatientId(selectedPatient);
+            int selectedPatientId = -1;
+            if (comboBoxPatient.SelectedItem != null)
+            {
+                Patient selectedPatient = (Patient)comboBoxPatient.SelectedItem;
+                selectedPatientId = selectedPatient.PatientId;
+            }
 
             using (AppDbContext db = new AppDbContext())
             {
@@ -152,7 +148,7 @@ namespace GUI_Management_of_medical_clinic
 
                 if (appointment != null)
                 {
-                    appointment.PatientId = patientId;
+                    appointment.PatientId = selectedPatientId;
                     appointment.IsActive = false;
                     db.Entry(appointment).State = EntityState.Modified;
                     db.SaveChanges();
@@ -169,7 +165,6 @@ namespace GUI_Management_of_medical_clinic
 
         private void comboBoxPatient_SelectedIndexChanged(object sender, EventArgs e)
         {
-            selectedPatient = comboBoxPatient.SelectedItem.ToString();
 
         }
 
