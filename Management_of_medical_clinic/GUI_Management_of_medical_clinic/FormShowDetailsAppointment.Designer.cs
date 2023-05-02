@@ -45,7 +45,7 @@
             textBoxDoktor = new TextBox();
             textBoxOffice = new TextBox();
             numericUpDownCost = new NumericUpDown();
-            textBoxDate = new TextBox();
+            textBoxHour = new TextBox();
             labelHour = new Label();
             dateTimePickerDate = new DateTimePicker();
             panel1.SuspendLayout();
@@ -231,15 +231,15 @@
             numericUpDownCost.Size = new Size(453, 34);
             numericUpDownCost.TabIndex = 105;
             // 
-            // textBoxDate
+            // textBoxHour
             // 
-            textBoxDate.Enabled = false;
-            textBoxDate.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxDate.Location = new Point(373, 513);
-            textBoxDate.Margin = new Padding(3, 2, 3, 2);
-            textBoxDate.Name = "textBoxDate";
-            textBoxDate.Size = new Size(453, 34);
-            textBoxDate.TabIndex = 106;
+            textBoxHour.Enabled = false;
+            textBoxHour.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxHour.Location = new Point(373, 513);
+            textBoxHour.Margin = new Padding(3, 2, 3, 2);
+            textBoxHour.Name = "textBoxHour";
+            textBoxHour.Size = new Size(453, 34);
+            textBoxHour.TabIndex = 106;
             // 
             // labelHour
             // 
@@ -267,7 +267,7 @@
             ClientSize = new Size(1904, 1041);
             Controls.Add(dateTimePickerDate);
             Controls.Add(labelHour);
-            Controls.Add(textBoxDate);
+            Controls.Add(textBoxHour);
             Controls.Add(numericUpDownCost);
             Controls.Add(textBoxOffice);
             Controls.Add(textBoxDoktor);
@@ -315,7 +315,7 @@
         private TextBox textBoxDoktor;
         private TextBox textBoxOffice;
         private NumericUpDown numericUpDownCost;
-        private TextBox textBoxDate;
+        private TextBox textBoxHour;
         private Label labelHour;
         private DateTimePicker dateTimePickerDate;
     }

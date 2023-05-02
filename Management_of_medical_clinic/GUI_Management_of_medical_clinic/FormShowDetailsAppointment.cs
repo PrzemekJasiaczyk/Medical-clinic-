@@ -39,7 +39,7 @@ namespace GUI_Management_of_medical_clinic
             textBoxPatient.Text = patient.ToString();
             textBoxPESEL.Text = patient.PESEL;
             dateTimePickerDate.Value = date;
-            textBoxDate.Text = term;
+            textBoxHour.Text = term;
             textBoxDoktor.Text = employee.ToString();
             textBoxSpecialization.Text = specialization.Name.ToString();
             textBoxOffice.Text = office.Number.ToString();
