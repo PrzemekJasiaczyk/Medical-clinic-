@@ -98,27 +98,6 @@ namespace GUI_Management_of_medical_clinic
         }
 
 
-
-
-
-
-
-
-        public List<string> GetAppointments(int idEmployee) // W AppointmentService jest metoda GetAppointmentsData(), która ogarnia null
-        {
-            using (AppDbContext db = new AppDbContext())
-            {
-                return db.DbAppointments
-                    .Where(a => a.IdEmployee == idEmployee)
-                    .Where(a => a.IsActive == true)
-                    //.Where(a => a.Patient == null || a.PatientId == null)
-                    .Where(a => a.Patient == null)
-                    .Select(a => a.ToString())
-                    .ToList();
-            }
-        }
-
-
         private void comboBoxDate_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -161,28 +140,34 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonAddAppointment_Click(object sender, EventArgs e)
         {
-            int appointmentId = AppointmentService.GetAppointmentId(selectedDate);
+            int selectedAppointmentId = -1;
+            if (comboBoxDate.SelectedItem != null)
+            {
+                AppointmentModel selectedAppointment = (AppointmentModel)comboBoxDate.SelectedItem;
+                selectedAppointmentId = selectedAppointment.IdAppointment;
+            }
             int patientId = PatientService.GetPatientId(selectedPatient);
 
             using (AppDbContext db = new AppDbContext())
             {
-                //var appointment = db.DbAppointments.FirstOrDefault(a => a.IdAppointment == appointmentId);
-                var appointment = db.DbAppointments.Find(appointmentId);
+                var appointment = db.DbAppointments.Find(selectedAppointmentId);
 
-
-                //if (appointment != null)
+                if (appointment != null)
                 {
                     appointment.PatientId = patientId;
                     appointment.IsActive = false;
                     db.Entry(appointment).State = EntityState.Modified;
                     db.SaveChanges();
-
                 }
             }
             FormCalendarAppointment formCalendarAppointment = new FormCalendarAppointment(currentUser);
             formCalendarAppointment.ShowDialog();
-            
         }
+
+    
+    
+            
+       
 
         private void comboBoxPatient_SelectedIndexChanged(object sender, EventArgs e)
         {

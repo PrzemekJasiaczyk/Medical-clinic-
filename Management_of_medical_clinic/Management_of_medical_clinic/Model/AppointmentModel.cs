@@ -51,7 +51,7 @@ namespace Console_Management_of_medical_clinic.Model
 
         public override string ToString()
         {
-            return IdDay.ToString() +" " + AppointmentService.GetTermByTermId(IdTerm).ToString();
+            return CalendarService.GetDateByIdCalendar((int)IdCalendar, IdDay).ToShortDateString() + " " + AppointmentService.GetTermByTermId(IdTerm).ToString();
 
         }
 
