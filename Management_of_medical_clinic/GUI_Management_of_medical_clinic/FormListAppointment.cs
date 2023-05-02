@@ -1,32 +1,20 @@
-﻿using Console_Management_of_medical_clinic.Logic;
+﻿using Console_Management_of_medical_clinic.Data;
+using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-
-
-//Filter list of appointments 
-
-//As a medical clinic staff member 
-
-//I want to filter the list of appointments 
-
-//So that I can see only the chosen data on the list. 
-
-//Acceptance criteria:  
 
 //The system allows to filter patients on: 
 
-//Name and the surname of patient. 
+//Name and the surname of patient. x 
 
-//The PESEL number 
+//The PESEL number x
 
-//Date of the visit 
+//Date of the visit x 
 
-//Doctor specialization 
+//Doctor specialization x
 
-//Doctor name/surname 
-
-
-
+//Doctor name/surname x
 
 
 namespace GUI_Management_of_medical_clinic
@@ -48,9 +36,9 @@ namespace GUI_Management_of_medical_clinic
             List<AppointmentModel> appointments = CalendarAppointmentService.GetAppointmentsWithPatients();
             DisplayDataInDataGridView(appointments);
 
-            AddItemsToTheComboBox();
+            AddItemsToTheComboBoxDoctorOrPatient();
+            AddItemsToComboBoxSpecialization();
         }
-
 
         private void buttonExit_Click(object sender, EventArgs e)
         {
@@ -73,22 +61,210 @@ namespace GUI_Management_of_medical_clinic
             }
         }
 
-        #endregion
+        enum DoctorOrPatient { Patient, Doctor }
 
-
-        #region Filtr data
-
-        enum DoctorOrPatient {Patient,Doctor}
-
-        private void AddItemsToTheComboBox()
+        private void AddItemsToTheComboBoxDoctorOrPatient()
         {
             comboBoxSelectDoctorOrPatient.Items.Clear();
             comboBoxSelectDoctorOrPatient.Items.Add(DoctorOrPatient.Patient);
             comboBoxSelectDoctorOrPatient.Items.Add(DoctorOrPatient.Doctor);
 
+            comboBoxSelectDoctorOrPatient.SelectedIndex = 0;
+        }
+
+        private void AddItemsToComboBoxSpecialization()
+        {
+            List<SpecializationModel> specializations = SpecializationService.GetSpecializationsData();
+
+            foreach (SpecializationModel specialization in specializations)
+            {
+                int index = comboBoxDoctorSpecialization.Items.Add(specialization.ToString());
+                comboBoxDoctorSpecialization.Items[index] = specialization;
+            }
+        }
+
+        #endregion
+
+
+        #region Filtr data
+
+        private List<AppointmentModel> FiltrByName(List<AppointmentModel> appointments)
+        {
+            List<AppointmentModel> result = new List<AppointmentModel>();
+            string checkedString = textBoxName.Text.ToLower();
+
+            if (textBoxName.Text == string.Empty)
+            {
+                return appointments;
+            }
+
+            string PatientOrDoctor = SelectedInComboBoxIsDoctorOrPatient();
+
+            string name = string.Empty;
+
+            foreach (AppointmentModel appointment in appointments)
+            {
+
+                if (PatientOrDoctor == "Patient")
+                {
+                    Patient patient = CalendarAppointmentService.GetPatientDataByIdPatient(appointment);
+                    name = patient.FirstName.ToLower();
+
+
+                    if (name.StartsWith(checkedString))
+                    {
+                        result.Add(appointment);
+                    }
+                }
+                else
+                {
+                    EmployeeModel employee = EmployeeService.GetEmployeeByID((int)appointment.IdEmployee);
+                    name = employee.FirstName.ToLower();
+
+                    if (name.StartsWith(checkedString))
+                    {
+                        result.Add(appointment);
+                    }
+                }
+            }
+            return result;
         }
 
 
+        private List<AppointmentModel> FiltrByLastName(List<AppointmentModel> appointments)
+        {
+            string checkedValue = textBoxLastName.Text.ToLower();
+
+            if (textBoxLastName.Text == string.Empty)
+            {
+                return appointments;
+            }
+
+            List<AppointmentModel> result = new List<AppointmentModel>();
+
+            string PatientOrDoctor = SelectedInComboBoxIsDoctorOrPatient();
+            string name = string.Empty;
+
+            foreach (AppointmentModel appointment in appointments)
+            {
+
+                if (PatientOrDoctor == "Patient")
+                {
+                    Patient patient = CalendarAppointmentService.GetPatientDataByIdPatient(appointment);
+                    name = patient.LastName.ToLower();
+
+                    if (name.StartsWith(checkedValue))
+                    {
+                        result.Add(appointment);
+                    }
+                }
+                else
+                {
+                    EmployeeModel employee = EmployeeService.GetEmployeeByID((int)appointment.IdEmployee);
+                    name = employee.LastName.ToLower();
+
+                    if (name.StartsWith(checkedValue))
+                    {
+                        result.Add(appointment);
+                    }
+                }
+            }
+
+            return result;
+        }
+
+
+        private List<AppointmentModel> FiltrByPESEL(List<AppointmentModel> appointments)
+        {
+            string checkedValue = maskedTextBoxPESEL.Text;
+
+            if (checkedValue == string.Empty)
+            {
+                return appointments;
+            }
+
+            List<AppointmentModel> result = new List<AppointmentModel>();
+
+            foreach (AppointmentModel appointment in appointments)
+            {
+                Patient patient = PatientService.GetPatientById((int)appointment.PatientId);
+
+                if (patient.PESEL.StartsWith(checkedValue))
+                {
+                    result.Add(appointment);
+                }
+            }
+            return result;
+        }
+
+
+        private List<AppointmentModel> FiltrByVisit(List<AppointmentModel> appointments)
+        {
+            DateTime checkedValue = dateTimePickerDateOfVisit.Value.Date;
+
+            if (!checkBoxDateOfVisit.Checked)
+            {
+                return appointments;
+            }
+
+            List<AppointmentModel> result = new List<AppointmentModel>();
+
+            DateTime date;
+
+            foreach (AppointmentModel appointment in appointments)
+            {
+                result = CalendarAppointmentService.appointmentInSelectedDate(appointments, checkedValue, (int)appointment.IdCalendar);
+                //?            
+            }
+
+            return result;
+        }
+
+
+        private List<AppointmentModel> FiltrBySpecialization(List<AppointmentModel> appointments)
+        {
+            if (comboBoxDoctorSpecialization.SelectedIndex == -1)
+            {
+                return appointments;
+            }
+
+            List<AppointmentModel> result = new List<AppointmentModel>();
+
+            SpecializationModel checkedValue = (SpecializationModel)comboBoxDoctorSpecialization.SelectedItem;
+
+            int idSpecialization = checkedValue.IdSpecialization;
+
+            EmployeeModel employee = new EmployeeModel();
+
+
+            foreach (AppointmentModel appointment in appointments)
+            {
+                employee = EmployeeService.GetEmployeeByID((int)appointment.IdEmployee);
+
+                if (employee.IdSpecialization == idSpecialization)
+                {
+                    result.Add(appointment);
+                }
+            }
+
+            return result;
+
+        }
+
+        private string SelectedInComboBoxIsDoctorOrPatient()
+        {
+            string result = string.Empty;
+            if (comboBoxSelectDoctorOrPatient.SelectedIndex == 0) // Patient
+            {
+                result = "Patient";
+            }
+            else if (comboBoxSelectDoctorOrPatient.SelectedIndex == 1) //Doctor
+            {
+                result = "Doctor";
+            }
+
+            return result;
+        }
 
         #endregion
 
@@ -96,5 +272,86 @@ namespace GUI_Management_of_medical_clinic
 
 
 
+        private void buttonAddFiltr_Click(object sender, EventArgs e)
+        {
+            dataGridViewAppointmentList.Rows.Clear();
+
+            List<AppointmentModel> appointments = CalendarAppointmentService.GetAppointmentsWithPatients();
+
+            List<AppointmentModel> result = new List<AppointmentModel>();
+
+            result = FiltrByName(appointments);
+            result = FiltrByLastName(result);
+            result = FiltrByPESEL(result);
+            result = FiltrBySpecialization(result);
+            result = FiltrByVisit(result);
+
+            DisplayDataInDataGridView(result);
+
+
+        }
+
+        private void buttonClearFiltr_Click(object sender, EventArgs e)
+        {
+            List<AppointmentModel> appointments = CalendarAppointmentService.GetAppointmentsWithPatients();
+            DisplayDataInDataGridView(appointments);
+
+            comboBoxDoctorSpecialization.SelectedIndex = -1;
+            comboBoxSelectDoctorOrPatient.SelectedIndex = 0;
+
+            textBoxLastName.Text = string.Empty;
+            textBoxName.Text = string.Empty;
+            maskedTextBoxPESEL.Text = string.Empty;
+            dateTimePickerDateOfVisit.Value = DateTime.Today;
+            checkBoxDateOfVisit.Checked = false;
+
+        }
+
+
+
+        private void buttonShowDetails_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewAppointmentList.Rows.Count == 0)
+            {
+                string msg = "No appointments. Register an appointment.";
+                FormMessage FormMessage = new FormMessage(msg);
+                FormMessage.ShowDialog();
+                return;
+            }
+
+            AppointmentModel appointment = (AppointmentModel)dataGridViewAppointmentList.SelectedRows[0].Tag;
+
+            FormShowDetailsAppointment formShowDetailsAppointment = new FormShowDetailsAppointment(currentUser, appointment);
+            Hide();
+            formShowDetailsAppointment.ShowDialog();
+            Close();
+        }
+
+        private void buttonRemove_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewAppointmentList.Rows.Count == 0)
+            {
+                string msg2 = "No appointments. Register an appointment.";
+                FormMessage FormMessage2 = new FormMessage(msg2);
+                FormMessage2.ShowDialog();
+                return;
+            }
+
+            AppDbContext _context = new AppDbContext();
+
+            AppointmentModel appointment = (AppointmentModel)dataGridViewAppointmentList.SelectedRows[0].Tag;
+            appointment.PatientId = null;
+            appointment.IsActive = true;
+            appointment.Cost = 0;
+
+            _context.Entry(appointment).State = EntityState.Modified;
+            _context.SaveChanges();
+
+            FormListAppointment_Load(sender, e);
+
+            string msg = "Appointment cancelled.";
+            FormMessage FormMessage = new FormMessage(msg);
+            FormMessage.ShowDialog();
+        }
     }
 }
