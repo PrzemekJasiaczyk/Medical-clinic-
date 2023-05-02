@@ -71,45 +71,6 @@ namespace Console_Management_of_medical_clinic.Logic
             return appointments;
         }
 
-        public static int GetAppointmentId(string selectedDate)
-        {
 
-            using (AppDbContext db = new AppDbContext())
-            {
-                string[] dateParts = selectedDate.Split(' ');
-                string selectedDay = (dateParts[0]);
-                string selectedTerm = (dateParts[1]);
-                int id = GetDayIdByDate2(selectedDate);
-
-                int term = AppointmentService.GetIdTerm(selectedTerm);
-                int idAppointment = (int)db.DbAppointments
-                    .Where(e => e.IdDay == id && e.IdTerm == term)
-                    .Select(e => e.IdAppointment)
-                    .FirstOrDefault();
-                return idAppointment;
-            }
-
-        }
-
-        public static int GetDayIdByDate2(string selectedTerm)
-        {
-            List<CalendarModel> calendars =CalendarService.GetCalendarData();
-
-            foreach (CalendarModel calendar in calendars)
-            {
-                DateTime referenceDate = DateTime.ParseExact(calendar.DateReference, "MM-yyyy", CultureInfo.InvariantCulture);
-
-                if (DateTime.ParseExact(selectedTerm, "yyyy-MM-dd", CultureInfo.InvariantCulture).Year == referenceDate.Year
-                    && DateTime.ParseExact(selectedTerm, "yyyy-MM-dd", CultureInfo.InvariantCulture).Month == referenceDate.Month)
-                {
-                    int daysInMonth = DateTime.DaysInMonth(referenceDate.Year, referenceDate.Month);
-                    int dayOfMonth = DateTime.ParseExact(selectedTerm, "yyyy-MM-dd", CultureInfo.InvariantCulture).Day;
-
-                    return calendar.IdCalendar + dayOfMonth - 1;
-                }
-            }
-
-            throw new ArgumentException("Invalid date or calendar ID");
-        }
     }
 }
