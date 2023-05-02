@@ -164,7 +164,7 @@ namespace GUI_Management_of_medical_clinic
 
             FormListAppointment_Load(sender, e);
 
-            string msg = "Appointment canceled.";
+            string msg = "Appointment cancelled.";
             FormMessage FormMessage = new FormMessage(msg);
             FormMessage.ShowDialog();
         }

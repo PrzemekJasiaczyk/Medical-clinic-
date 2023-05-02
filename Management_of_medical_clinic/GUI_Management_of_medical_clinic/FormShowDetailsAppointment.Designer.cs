@@ -60,15 +60,15 @@
             labelTitle.Font = new Font("Segoe UI", 25F, FontStyle.Bold, GraphicsUnit.Point);
             labelTitle.Location = new Point(368, 19);
             labelTitle.Name = "labelTitle";
-            labelTitle.Size = new Size(352, 46);
+            labelTitle.Size = new Size(346, 46);
             labelTitle.TabIndex = 79;
-            labelTitle.Text = "Details Appointment";
+            labelTitle.Text = "Details appointment";
             // 
             // labelOffice
             // 
             labelOffice.AutoSize = true;
             labelOffice.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            labelOffice.Location = new Point(897, 347);
+            labelOffice.Location = new Point(900, 347);
             labelOffice.Name = "labelOffice";
             labelOffice.Size = new Size(67, 28);
             labelOffice.TabIndex = 78;
@@ -78,7 +78,7 @@
             // 
             labelDoctor.AutoSize = true;
             labelDoctor.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            labelDoctor.Location = new Point(897, 100);
+            labelDoctor.Location = new Point(900, 100);
             labelDoctor.Name = "labelDoctor";
             labelDoctor.Size = new Size(77, 28);
             labelDoctor.TabIndex = 77;
@@ -144,7 +144,7 @@
             // 
             labelSpecialization.AutoSize = true;
             labelSpecialization.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            labelSpecialization.Location = new Point(897, 223);
+            labelSpecialization.Location = new Point(900, 223);
             labelSpecialization.Name = "labelSpecialization";
             labelSpecialization.Size = new Size(137, 28);
             labelSpecialization.TabIndex = 87;
@@ -154,7 +154,7 @@
             // 
             labelDate.AutoSize = true;
             labelDate.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            labelDate.Location = new Point(374, 349);
+            labelDate.Location = new Point(374, 347);
             labelDate.Name = "labelDate";
             labelDate.Size = new Size(57, 28);
             labelDate.TabIndex = 90;
@@ -164,7 +164,7 @@
             // 
             labelCost.AutoSize = true;
             labelCost.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            labelCost.Location = new Point(896, 469);
+            labelCost.Location = new Point(900, 469);
             labelCost.Name = "labelCost";
             labelCost.Size = new Size(55, 28);
             labelCost.TabIndex = 92;
@@ -174,7 +174,7 @@
             // 
             textBoxSpecialization.Enabled = false;
             textBoxSpecialization.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxSpecialization.Location = new Point(897, 269);
+            textBoxSpecialization.Location = new Point(900, 269);
             textBoxSpecialization.Margin = new Padding(3, 2, 3, 2);
             textBoxSpecialization.Name = "textBoxSpecialization";
             textBoxSpecialization.Size = new Size(453, 34);
@@ -204,7 +204,7 @@
             // 
             textBoxDoktor.Enabled = false;
             textBoxDoktor.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxDoktor.Location = new Point(897, 146);
+            textBoxDoktor.Location = new Point(900, 146);
             textBoxDoktor.Margin = new Padding(3, 2, 3, 2);
             textBoxDoktor.Name = "textBoxDoktor";
             textBoxDoktor.Size = new Size(453, 34);
@@ -214,7 +214,7 @@
             // 
             textBoxOffice.Enabled = false;
             textBoxOffice.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxOffice.Location = new Point(897, 393);
+            textBoxOffice.Location = new Point(900, 393);
             textBoxOffice.Margin = new Padding(3, 2, 3, 2);
             textBoxOffice.Name = "textBoxOffice";
             textBoxOffice.Size = new Size(453, 34);
@@ -225,7 +225,7 @@
             numericUpDownCost.DecimalPlaces = 2;
             numericUpDownCost.Enabled = false;
             numericUpDownCost.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            numericUpDownCost.Location = new Point(897, 514);
+            numericUpDownCost.Location = new Point(900, 513);
             numericUpDownCost.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
             numericUpDownCost.Name = "numericUpDownCost";
             numericUpDownCost.Size = new Size(453, 34);
