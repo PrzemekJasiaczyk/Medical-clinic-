@@ -46,8 +46,6 @@ namespace GUI_Management_of_medical_clinic
             comboBoxDate.SelectedIndex = -1;
             comboBoxDate.Items.Clear();
             selectedDoctor = comboBoxDoctor.SelectedItem.ToString();
-            //
-            //comboBoxDate.Items.AddRange(GetAppointments(EmployeeService.GetDoctorId(selectedDoctor)).ToArray());
 
             List<AppointmentModel> appointments =
             CalendarAppointmentService.GetAppointmentsData()
