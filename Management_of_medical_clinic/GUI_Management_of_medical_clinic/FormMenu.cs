@@ -112,8 +112,10 @@ namespace GUI_Management_of_medical_clinic
 				buttonOpenPatientsList.BackColor = Color.SteelBlue;
 				buttonOpenCalendarsList.Enabled = true;
 				buttonOpenCalendarsList.BackColor = Color.SteelBlue;
+				buttonOpenDoctorDashboard.Enabled = true;
+				buttonOpenDoctorDashboard.BackColor = Color.SteelBlue;
 
-			}
+            }
 			else
 			{
 				buttonOpenEmployeeList.Enabled = false;
@@ -126,7 +128,10 @@ namespace GUI_Management_of_medical_clinic
 				buttonOpenPatientsList.BackColor = Color.Gray;
 				buttonOpenCalendarsList.Enabled = false;
 				buttonOpenCalendarsList.BackColor = Color.Gray;
-			}
+				buttonOpenDoctorDashboard.Enabled = false;
+				buttonOpenDoctorDashboard.BackColor = Color.Gray;
+
+            }
 		}
 
 		private void buttonOfficeList_Click(object sender, EventArgs e)
@@ -184,5 +189,25 @@ namespace GUI_Management_of_medical_clinic
 
 			MessageBox.Show("Incorrect login or password");
 		}
+
+		private void buttonOpenDoctorDashboard_Click(object sender, EventArgs e)
+		{
+            string login = textBoxLogin.Text;
+            string password = textBoxPassword.Text;
+
+            List<UserModel> users = UserService.GetUsersData();
+
+            UserModel? user = users.Where(u => (u.Username == login) && (u.Password == password)).FirstOrDefault();
+
+            if (user != null)
+            {
+                EmployeeModel employee = EmployeeService.GetEmployeeByUserId(user);
+                FormDoctorDashboard formDoctorDashboard = new(employee);
+                formDoctorDashboard.ShowDialog();
+                Close();
+            }
+
+            MessageBox.Show("Incorrect login or password");
+        }
 	}
 }
