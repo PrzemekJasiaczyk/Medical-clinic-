@@ -22,29 +22,29 @@
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        ///  Required method for Designer support - do not modify
-        ///  the contents of this method with the code editor.
-        /// </summary>
-        private void InitializeComponent()
-        {
-            buttonOpenEmployeeList = new Button();
-            textBoxLogin = new TextBox();
-            textBoxPassword = new TextBox();
-            panel2 = new Panel();
-            buttonExit = new Button();
-            pictureBox1 = new PictureBox();
-            buttonOpenUserList = new Button();
-            label1 = new Label();
-            panelLogIn = new Panel();
-            buttonOpenDoctorDashboard = new Button();
-            buttonOpenCalendarsList = new Button();
-            buttonOpenPatientsList = new Button();
-            buttonOfficeList = new Button();
-            panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            panelLogIn.SuspendLayout();
-            SuspendLayout();
+		/// <summary>
+		///  Required method for Designer support - do not modify
+		///  the contents of this method with the code editor.
+		/// </summary>
+		private void InitializeComponent()
+		{
+            this.buttonOpenEmployeeList = new System.Windows.Forms.Button();
+            this.textBoxLogin = new System.Windows.Forms.TextBox();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.buttonExit = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.buttonOpenUserList = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panelLogIn = new System.Windows.Forms.Panel();
+            this.buttonOpenDoctorDashboard = new System.Windows.Forms.Button();
+            this.buttonOpenCalendarsList = new System.Windows.Forms.Button();
+            this.buttonOpenPatientsList = new System.Windows.Forms.Button();
+            this.buttonOfficeList = new System.Windows.Forms.Button();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panelLogIn.SuspendLayout();
+            this.SuspendLayout();
             // 
             // buttonOpenEmployeeList
             // 
@@ -188,22 +188,39 @@
             buttonOpenDoctorDashboard.UseVisualStyleBackColor = false;
             buttonOpenDoctorDashboard.Click += buttonOpenDoctorDashboard_Click;
             // 
+            // buttonOpenDoctorDashboard
+            // 
+            this.buttonOpenDoctorDashboard.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonOpenDoctorDashboard.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonOpenDoctorDashboard.BackColor = System.Drawing.Color.Gray;
+            this.buttonOpenDoctorDashboard.FlatAppearance.BorderColor = System.Drawing.Color.AntiqueWhite;
+            this.buttonOpenDoctorDashboard.FlatAppearance.BorderSize = 5;
+            this.buttonOpenDoctorDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonOpenDoctorDashboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonOpenDoctorDashboard.Location = new System.Drawing.Point(147, 654);
+            this.buttonOpenDoctorDashboard.Name = "buttonOpenDoctorDashboard";
+            this.buttonOpenDoctorDashboard.Size = new System.Drawing.Size(325, 61);
+            this.buttonOpenDoctorDashboard.TabIndex = 13;
+            this.buttonOpenDoctorDashboard.Text = "DOCTOR DASHBOARD";
+            this.buttonOpenDoctorDashboard.UseVisualStyleBackColor = false;
+            this.buttonOpenDoctorDashboard.Click += new System.EventHandler(this.buttonOpenDoctorDashboard_Click);
+            // 
             // buttonOpenCalendarsList
             // 
-            buttonOpenCalendarsList.Anchor = AnchorStyles.None;
-            buttonOpenCalendarsList.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            buttonOpenCalendarsList.BackColor = Color.Gray;
-            buttonOpenCalendarsList.FlatAppearance.BorderColor = Color.AntiqueWhite;
-            buttonOpenCalendarsList.FlatAppearance.BorderSize = 5;
-            buttonOpenCalendarsList.FlatStyle = FlatStyle.Flat;
-            buttonOpenCalendarsList.Font = new Font("Microsoft Sans Serif", 19F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonOpenCalendarsList.Location = new Point(147, 590);
-            buttonOpenCalendarsList.Name = "buttonOpenCalendarsList";
-            buttonOpenCalendarsList.Size = new Size(325, 61);
-            buttonOpenCalendarsList.TabIndex = 12;
-            buttonOpenCalendarsList.Text = "CALENDARS LIST";
-            buttonOpenCalendarsList.UseVisualStyleBackColor = false;
-            buttonOpenCalendarsList.Click += buttonOpenCalendarsList_Click_1;
+            this.buttonOpenCalendarsList.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonOpenCalendarsList.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonOpenCalendarsList.BackColor = System.Drawing.Color.Gray;
+            this.buttonOpenCalendarsList.FlatAppearance.BorderColor = System.Drawing.Color.AntiqueWhite;
+            this.buttonOpenCalendarsList.FlatAppearance.BorderSize = 5;
+            this.buttonOpenCalendarsList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonOpenCalendarsList.Font = new System.Drawing.Font("Microsoft Sans Serif", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonOpenCalendarsList.Location = new System.Drawing.Point(147, 590);
+            this.buttonOpenCalendarsList.Name = "buttonOpenCalendarsList";
+            this.buttonOpenCalendarsList.Size = new System.Drawing.Size(325, 61);
+            this.buttonOpenCalendarsList.TabIndex = 12;
+            this.buttonOpenCalendarsList.Text = "CALENDARS LIST";
+            this.buttonOpenCalendarsList.UseVisualStyleBackColor = false;
+            this.buttonOpenCalendarsList.Click += new System.EventHandler(this.buttonOpenCalendarsList_Click_1);
             // 
             // buttonOpenPatientsList
             // 
@@ -224,20 +241,20 @@
             // 
             // buttonOfficeList
             // 
-            buttonOfficeList.Anchor = AnchorStyles.None;
-            buttonOfficeList.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            buttonOfficeList.BackColor = Color.Gray;
-            buttonOfficeList.Enabled = false;
-            buttonOfficeList.FlatAppearance.BorderColor = Color.AntiqueWhite;
-            buttonOfficeList.FlatAppearance.BorderSize = 5;
-            buttonOfficeList.FlatStyle = FlatStyle.Flat;
-            buttonOfficeList.Font = new Font("Microsoft Sans Serif", 19F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonOfficeList.Location = new Point(147, 459);
-            buttonOfficeList.Name = "buttonOfficeList";
-            buttonOfficeList.Size = new Size(325, 61);
-            buttonOfficeList.TabIndex = 10;
-            buttonOfficeList.Text = "OFFICE LIST";
-            buttonOfficeList.UseVisualStyleBackColor = false;
+            this.buttonOfficeList.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonOfficeList.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonOfficeList.BackColor = System.Drawing.Color.Gray;
+            this.buttonOfficeList.Enabled = false;
+            this.buttonOfficeList.FlatAppearance.BorderColor = System.Drawing.Color.AntiqueWhite;
+            this.buttonOfficeList.FlatAppearance.BorderSize = 5;
+            this.buttonOfficeList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonOfficeList.Font = new System.Drawing.Font("Microsoft Sans Serif", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonOfficeList.Location = new System.Drawing.Point(147, 459);
+            this.buttonOfficeList.Name = "buttonOfficeList";
+            this.buttonOfficeList.Size = new System.Drawing.Size(325, 61);
+            this.buttonOfficeList.TabIndex = 10;
+            this.buttonOfficeList.Text = "OFFICE LIST";
+            this.buttonOfficeList.UseVisualStyleBackColor = false;
             // 
             // FormMenu
             // 

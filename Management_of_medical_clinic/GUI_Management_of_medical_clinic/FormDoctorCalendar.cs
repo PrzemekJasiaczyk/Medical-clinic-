@@ -159,7 +159,7 @@ namespace GUI_Management_of_medical_clinic
                 dataGridViewAppointments.Rows.Add(appointment.IdEmployee, appointment.IdDay, timeTerm, patient.FirstName + " " + patient.LastName);
             }
         }
-
+        
         private void buttonExit_Click_1(object sender, EventArgs e)
         {
             this.Hide();
@@ -175,7 +175,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonAddAppointment_Click(object sender, EventArgs e)
         {
-
-        }
+       
     }
+}
 }
