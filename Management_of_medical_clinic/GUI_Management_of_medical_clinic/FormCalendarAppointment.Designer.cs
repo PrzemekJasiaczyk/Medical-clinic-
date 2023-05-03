@@ -33,6 +33,7 @@
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             panelMenu = new Panel();
+            buttonDisplayAppointments = new Button();
             buttonEditPatient = new Button();
             pictureBox1 = new PictureBox();
             buttonExit = new Button();
@@ -70,7 +71,6 @@
             panel13 = new Panel();
             label9 = new Label();
             panel14 = new Panel();
-            buttonDisplayAppointments = new Button();
             panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -99,6 +99,20 @@
             panelMenu.Name = "panelMenu";
             panelMenu.Size = new Size(312, 1081);
             panelMenu.TabIndex = 0;
+            // 
+            // buttonDisplayAppointments
+            // 
+            buttonDisplayAppointments.BackColor = Color.SteelBlue;
+            buttonDisplayAppointments.FlatAppearance.BorderColor = Color.Black;
+            buttonDisplayAppointments.FlatStyle = FlatStyle.Flat;
+            buttonDisplayAppointments.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonDisplayAppointments.Location = new Point(0, 378);
+            buttonDisplayAppointments.Name = "buttonDisplayAppointments";
+            buttonDisplayAppointments.Size = new Size(315, 63);
+            buttonDisplayAppointments.TabIndex = 47;
+            buttonDisplayAppointments.Text = "Display appointments";
+            buttonDisplayAppointments.UseVisualStyleBackColor = false;
+            buttonDisplayAppointments.Click += buttonDisplayAppointments_Click;
             // 
             // buttonEditPatient
             // 
@@ -485,10 +499,11 @@
             dataGridViewAppointment.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             dataGridViewAppointment.RowTemplate.Height = 40;
             dataGridViewAppointment.RowTemplate.Resizable = DataGridViewTriState.False;
-            dataGridViewAppointment.ScrollBars = ScrollBars.None;
+            dataGridViewAppointment.ScrollBars = ScrollBars.Vertical;
             dataGridViewAppointment.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewAppointment.Size = new Size(401, 700);
+            dataGridViewAppointment.Size = new Size(401, 888);
             dataGridViewAppointment.TabIndex = 16;
+            dataGridViewAppointment.CellContentDoubleClick += dataGridViewAppointment_CellContentDoubleClick;
             // 
             // ColumnDoctor
             // 
@@ -562,25 +577,11 @@
             panel14.Size = new Size(401, 212);
             panel14.TabIndex = 19;
             // 
-            // buttonDisplayAppointments
-            // 
-            buttonDisplayAppointments.BackColor = Color.SteelBlue;
-            buttonDisplayAppointments.FlatAppearance.BorderColor = Color.Black;
-            buttonDisplayAppointments.FlatStyle = FlatStyle.Flat;
-            buttonDisplayAppointments.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonDisplayAppointments.Location = new Point(0, 378);
-            buttonDisplayAppointments.Name = "buttonDisplayAppointments";
-            buttonDisplayAppointments.Size = new Size(315, 63);
-            buttonDisplayAppointments.TabIndex = 47;
-            buttonDisplayAppointments.Text = "Display appointments";
-            buttonDisplayAppointments.UseVisualStyleBackColor = false;
-            buttonDisplayAppointments.Click += buttonDisplayAppointments_Click;
-            // 
             // FormCalendarAppointment
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1698, 825);
+            ClientSize = new Size(1920, 1080);
             Controls.Add(dataGridViewAppointment);
             Controls.Add(panel12);
             Controls.Add(flowLayoutPanelMonth);

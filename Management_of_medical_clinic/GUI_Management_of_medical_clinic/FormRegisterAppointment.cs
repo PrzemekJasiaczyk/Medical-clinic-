@@ -23,18 +23,25 @@ namespace GUI_Management_of_medical_clinic
         private PatientService patientService;
         EmployeeModel currentUser;
         public AppointmentService appointmentService;
-  
 
-        public FormRegisterAppointment()
+        AppointmentModel appointment;
+
+        public FormRegisterAppointment(AppointmentModel? appointment)
         {
             InitializeComponent();
 
             comboboxPatient_add();
             comboboxDoctor_add();
+
+            this.appointment = appointment;
         }
 
         private void FormRegisterAppointment_Load(object sender, EventArgs e)
         {
+            if(appointment==null) return;
+
+            OnlyReadControls();
+            SelectDataInCombo();
 
         }
 
@@ -158,11 +165,6 @@ namespace GUI_Management_of_medical_clinic
             formCalendarAppointment.ShowDialog();
         }
 
-    
-    
-            
-       
-
         private void comboBoxPatient_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -175,5 +177,28 @@ namespace GUI_Management_of_medical_clinic
             formCalendarAppointment.ShowDialog();
             this.Close();
         }
+
+        #region Function
+        private void OnlyReadControls()
+        {
+            comboBoxDate.Enabled = false;
+            comboBoxDoctor.Enabled = false;    
+        }
+
+        private void SelectDataInCombo()
+        {
+            comboBoxDoctor.Items.Clear();
+
+            comboBoxDoctor.Items.Add(EmployeeService.GetEmployeeByID((int)appointment.IdEmployee));
+            comboBoxDoctor.SelectedIndex = 0;
+
+            comboBoxDate.Items.Clear();
+
+            comboBoxDate.Items.Add(appointment);
+            comboBoxDate.SelectedItem = appointment;
+        }
+
+        #endregion
+
     }
 }

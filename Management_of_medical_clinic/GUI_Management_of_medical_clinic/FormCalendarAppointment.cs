@@ -64,7 +64,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonEditPatient_Click(object sender, EventArgs e)
         {
-            FormRegisterAppointment formRegisterAppointment = new FormRegisterAppointment();
+            FormRegisterAppointment formRegisterAppointment = new FormRegisterAppointment(null);
             this.Hide();
             formRegisterAppointment.ShowDialog();
             this.Close();
@@ -75,7 +75,7 @@ namespace GUI_Management_of_medical_clinic
         {
             FormListAppointment formListAppointment = new FormListAppointment(employee);
             this.Hide();
-            formListAppointment.ShowDialog();   
+            formListAppointment.ShowDialog();
             this.Close();
         }
 
@@ -196,7 +196,7 @@ namespace GUI_Management_of_medical_clinic
             int calendarId = CalendarService.GetIdFromDate(date);
 
             List<AppointmentModel> appointments = CalendarAppointmentService.GetAppointmentsData();
-            List<AppointmentModel> selectedAppointments = CalendarAppointmentService.appointmentInSelectedDate(appointments,date, calendarId);
+            List<AppointmentModel> selectedAppointments = CalendarAppointmentService.appointmentInSelectedDate(appointments, date, calendarId);
 
             foreach (AppointmentModel appointment in selectedAppointments)
             {
@@ -213,6 +213,13 @@ namespace GUI_Management_of_medical_clinic
 
         #endregion
 
-
+        private void dataGridViewAppointment_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            AppointmentModel appointment =  (AppointmentModel)dataGridViewAppointment.SelectedRows[0].Tag;
+            FormRegisterAppointment formRegisterAppointment = new FormRegisterAppointment(appointment);
+            this.Hide();
+            formRegisterAppointment.ShowDialog();
+            this.Close();
+        }
     }
 }
