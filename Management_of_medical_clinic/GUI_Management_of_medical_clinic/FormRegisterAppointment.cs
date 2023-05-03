@@ -144,7 +144,6 @@ namespace GUI_Management_of_medical_clinic
             {
                 AppointmentModel? appointment = db.DbAppointments.FirstOrDefault(a=>a.IdAppointment==selectedAppointmentId);
                 
-                //? appointment = db.DbAppointments.Where(d => d.IdAppointment == selectedAppointmentId).FirstOrDefault();
 
 
                 if (appointment != null)
