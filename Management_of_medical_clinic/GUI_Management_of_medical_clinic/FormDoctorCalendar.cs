@@ -41,8 +41,9 @@ namespace GUI_Management_of_medical_clinic
             ChangeTitle(displayMonth);
 
             dataGridViewAppointments.Rows.Clear();
-            dataGridViewAppointments.Columns.Add("Doctor", "Doctor");
-            dataGridViewAppointments.Columns.Add("Day", "Day");
+            //dataGridViewAppointments.Columns.Add("Doctor", "Doctor");
+            //dataGridViewAppointments.Columns.Add("Day", "Day");
+            dataGridViewAppointments.Columns.Add("Room", "Room");
             dataGridViewAppointments.Columns.Add("Hour", "Hour");
             dataGridViewAppointments.Columns.Add("Patient", "Patient");
         }
@@ -95,6 +96,7 @@ namespace GUI_Management_of_medical_clinic
 
                 UserControl userControl = itIsADayOf(day);
 
+                MarkPlannedDays(userControl, day);
                 MarkToday(userControl, day);
 
                 flowLayoutPanelMonth.Controls.Add(userControl);
@@ -109,6 +111,19 @@ namespace GUI_Management_of_medical_clinic
                 flowLayoutPanelMonth.Controls.Add(userControlBlank);
             }
 
+        }
+
+        private void MarkPlannedDays(UserControl userControl, DateTime day)
+        {
+            List<AppointmentModel> appointments = AppointmentService.CheckAppointmentsAndReturnList(day);
+
+            foreach (AppointmentModel appointment in appointments)
+            {
+                if (appointment.IdEmployee == currentEmployee.IdEmployee)
+                {
+                    userControl.BackColor = Color.Orange;
+                }
+            }
         }
 
         private void MarkToday(UserControl userControl, DateTime day)
@@ -154,12 +169,15 @@ namespace GUI_Management_of_medical_clinic
             dataGridViewAppointments.Rows.Clear();
             foreach (AppointmentModel appointment in appointments)
             {
-                string timeTerm = AppointmentService.GetTermByTermId(appointment.IdTerm);
-                Patient patient = PatientService.GetPatientById((int)appointment.PatientId);
-                dataGridViewAppointments.Rows.Add(appointment.IdEmployee, appointment.IdDay, timeTerm, patient.FirstName + " " + patient.LastName);
+                if (appointment.IdEmployee == currentEmployee.IdEmployee)
+                {
+                    string timeTerm = AppointmentService.GetTermByTermId(appointment.IdTerm);
+                    Patient patient = PatientService.GetPatientById((int)appointment.PatientId);
+                    dataGridViewAppointments.Rows.Add(/*currentEmployee.IdEmployee, appointment.IdDay,*/ appointment.IdOffice, timeTerm, patient.FirstName + " " + patient.LastName);
+                }
             }
         }
-        
+
         private void buttonExit_Click_1(object sender, EventArgs e)
         {
             this.Hide();
@@ -175,7 +193,27 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonAddAppointment_Click(object sender, EventArgs e)
         {
-       
+
+        }
+
+        private void buttonNextMonth_Click(object sender, EventArgs e)
+        {
+            RemoveControlPanels();
+
+            displayMonth = displayMonth.AddMonths(+1);
+
+            displayDays(displayMonth);
+            ChangeTitle(displayMonth);
+        }
+
+        private void buttonPreviousMonth_Click(object sender, EventArgs e)
+        {
+            RemoveControlPanels();
+
+            displayMonth = displayMonth.AddMonths(-1);
+
+            displayDays(displayMonth);
+            ChangeTitle(displayMonth);
+        }
     }
-}
 }
