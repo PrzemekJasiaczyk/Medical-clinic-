@@ -24,7 +24,7 @@ namespace Console_Management_of_medical_clinic.Model
         [ForeignKey("EmployeeModel")] public int? IdEmployee { get; set; }
         public EmployeeModel EmployeeModel { get; set; }
         [ForeignKey("Patient")] public int? PatientId { get; set; }
-        public Patient Patient { get; set; }
+        public Patient? Patient { get; set; }
         [ForeignKey("OfficeModel")] public int? IdOffice { get; set; }
         public OfficeModel OfficeModel { get; set; }
 

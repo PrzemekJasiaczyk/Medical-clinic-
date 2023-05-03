@@ -78,9 +78,7 @@ namespace GUI_Management_of_medical_clinic
             }
             List<AppointmentModel> appointments =
             CalendarAppointmentService.GetAppointmentsData()
-                .Where(a => a.IdEmployee == selectedDoctorId)
-                .Where(a => a.IsActive == true)
-                .Where(a => a.Patient == null)
+                .Where(a => a.IdEmployee == selectedDoctorId && a.IsActive == true && a.PatientId == null)
                 .ToList();
             comboBoxDate.Items.Clear();
             foreach (AppointmentModel appointment in appointments)
@@ -144,7 +142,10 @@ namespace GUI_Management_of_medical_clinic
 
             using (AppDbContext db = new AppDbContext())
             {
-                var appointment = db.DbAppointments.Find(selectedAppointmentId);
+                AppointmentModel? appointment = db.DbAppointments.FirstOrDefault(a=>a.IdAppointment==selectedAppointmentId);
+                
+                //? appointment = db.DbAppointments.Where(d => d.IdAppointment == selectedAppointmentId).FirstOrDefault();
+
 
                 if (appointment != null)
                 {
