@@ -16,15 +16,19 @@ namespace GUI_Management_of_medical_clinic
             InitializeComponent();
             this.currentEmployee = currentEmployee;
             this.previousMonth = previousMonth;
+            if (previousMonth)
+            {
+                this.currentMonth = DateTime.Today;
+            }
         }
 
         DateTime displayMonth = DateTime.Today;
-
+        DateTime currentMonth = new DateTime();
 
         private void FormCalendar_Load(object sender, EventArgs e)
         {
             RemoveControlPanels();
-            displayMonth = previousMonth ? displayMonth.AddMonths(-1) : displayMonth;
+            //displayMonth = previousMonth ? displayMonth.AddMonths(-1) : displayMonth;
             displayDays(displayMonth);
             ChangeTitle(displayMonth);
 
@@ -172,9 +176,10 @@ namespace GUI_Management_of_medical_clinic
 
         private void UserControlDay_ControlClicked(object sender, DateTime selectedDate)   // Date From UserControlDay
         {
+            CheckTheMonth();
             labelDate.Text = selectedDate.ToString("d");
 
-            List<AppointmentModel> appointments = AppointmentService.CheckAppointmentsAndReturnList(selectedDate);
+            List<AppointmentModel> appointments = AppointmentService.CheckAppointmentsAndReturnList(selectedDate, previousMonth ?  CalendarService.GetCalendarByDateReference(displayMonth.AddMonths(-1).ToString("MM") + '-' + displayMonth.AddMonths(-1).ToString("yyyy")).IdCalendar : CalendarService.GetCalendarByDateReference(displayMonth.ToString("MM") + '-' + displayMonth.ToString("yyyy")).IdCalendar);
             dataGridViewAppointments.Rows.Clear();
             foreach (AppointmentModel appointment in appointments)
             {
@@ -210,6 +215,17 @@ namespace GUI_Management_of_medical_clinic
             FormCalendarsList formCalendarsList = new FormCalendarsList(currentEmployee);
             formCalendarsList.ShowDialog();
             Close();
+        }
+
+        private void CheckTheMonth()
+        {
+            if (displayMonth.Month == currentMonth.Month)
+            {
+                previousMonth = true;
+                return;
+            
+            }
+            previousMonth = false;
         }
     }
 }
