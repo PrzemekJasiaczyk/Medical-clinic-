@@ -68,7 +68,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonEditPatient_Click(object sender, EventArgs e)
         {
-            FormRegisterAppointment formRegisterAppointment = new FormRegisterAppointment(null);
+            FormRegisterAppointment formRegisterAppointment = new FormRegisterAppointment(employee, null);
             this.Hide();
             formRegisterAppointment.ShowDialog();
             this.Close();
@@ -86,7 +86,7 @@ namespace GUI_Management_of_medical_clinic
         private void dataGridViewAppointment_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             AppointmentModel appointment = (AppointmentModel)dataGridViewAppointment.SelectedRows[0].Tag;
-            FormRegisterAppointment formRegisterAppointment = new FormRegisterAppointment(appointment);
+            FormRegisterAppointment formRegisterAppointment = new FormRegisterAppointment(employee, appointment);
             this.Hide();
             formRegisterAppointment.ShowDialog();
             this.Close();

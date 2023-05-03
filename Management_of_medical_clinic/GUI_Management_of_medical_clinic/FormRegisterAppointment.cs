@@ -26,7 +26,7 @@ namespace GUI_Management_of_medical_clinic
 
         AppointmentModel appointment;
 
-        public FormRegisterAppointment(AppointmentModel? appointment)
+        public FormRegisterAppointment(EmployeeModel user, AppointmentModel? appointment)
         {
             InitializeComponent();
 
@@ -34,6 +34,7 @@ namespace GUI_Management_of_medical_clinic
             comboboxDoctor_add();
 
             this.appointment = appointment;
+            this.currentUser = user;
         }
 
         private void FormRegisterAppointment_Load(object sender, EventArgs e)
