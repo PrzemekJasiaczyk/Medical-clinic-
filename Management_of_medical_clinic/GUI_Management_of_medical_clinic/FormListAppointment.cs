@@ -85,7 +85,6 @@ namespace GUI_Management_of_medical_clinic
 
         #endregion
 
-
         #region Filtr data
 
         private List<AppointmentModel> FiltrByName(List<AppointmentModel> appointments)
@@ -110,7 +109,6 @@ namespace GUI_Management_of_medical_clinic
                     Patient patient = CalendarAppointmentService.GetPatientDataByIdPatient(appointment);
                     name = patient.FirstName.ToLower();
 
-
                     if (name.StartsWith(checkedString))
                     {
                         result.Add(appointment);
@@ -129,7 +127,6 @@ namespace GUI_Management_of_medical_clinic
             }
             return result;
         }
-
 
         private List<AppointmentModel> FiltrByLastName(List<AppointmentModel> appointments)
         {
@@ -268,10 +265,6 @@ namespace GUI_Management_of_medical_clinic
 
         #endregion
 
-
-
-
-
         private void buttonAddFiltr_Click(object sender, EventArgs e)
         {
             dataGridViewAppointmentList.Rows.Clear();
@@ -287,8 +280,6 @@ namespace GUI_Management_of_medical_clinic
             result = FiltrByVisit(result);
 
             DisplayDataInDataGridView(result);
-
-
         }
 
         private void buttonClearFiltr_Click(object sender, EventArgs e)
@@ -304,10 +295,7 @@ namespace GUI_Management_of_medical_clinic
             maskedTextBoxPESEL.Text = string.Empty;
             dateTimePickerDateOfVisit.Value = DateTime.Today;
             checkBoxDateOfVisit.Checked = false;
-
         }
-
-
 
         private void buttonShowDetails_Click(object sender, EventArgs e)
         {
@@ -337,21 +325,9 @@ namespace GUI_Management_of_medical_clinic
                 return;
             }
 
-            AppDbContext _context = new AppDbContext();
-
             AppointmentModel appointment = (AppointmentModel)dataGridViewAppointmentList.SelectedRows[0].Tag;
-            appointment.PatientId = null;
-            appointment.IsActive = true;
-            appointment.Cost = 0;
-
-            _context.Entry(appointment).State = EntityState.Modified;
-            _context.SaveChanges();
-
-            FormListAppointment_Load(sender, e);
-
-            string msg = "Appointment cancelled.";
-            FormMessage FormMessage = new FormMessage(msg);
-            FormMessage.ShowDialog();
+            FormConfirmCancelAppointment cancel = new FormConfirmCancelAppointment(currentUser, appointment);
+            cancel.ShowDialog();
         }
     }
 }
