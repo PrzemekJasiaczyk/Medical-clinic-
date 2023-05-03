@@ -1,6 +1,7 @@
 using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
 using System.Globalization;
+using System.Numerics;
 //using System.Globalization.Extensions;
 
 
@@ -9,13 +10,17 @@ namespace GUI_Management_of_medical_clinic
     public partial class FormCalendarAppointment : Form
     {
         EmployeeModel employee;
+
+
         public FormCalendarAppointment(EmployeeModel employee)
         {
             InitializeComponent();
             this.employee = employee;
         }
 
+
         DateTime displayMonth_date = DateTime.Today;
+        List<AppointmentModel> displayListInDataGridView = new List<AppointmentModel>();
 
 
         private void FormCalendarAppointment_Load(object sender, EventArgs e)
@@ -24,7 +29,6 @@ namespace GUI_Management_of_medical_clinic
             displayDays(displayMonth_date);
             ChangeTitle(displayMonth_date);
         }
-
 
         private void buttonToday_Click(object sender, EventArgs e)
         {
@@ -79,8 +83,60 @@ namespace GUI_Management_of_medical_clinic
             this.Close();
         }
 
+        private void dataGridViewAppointment_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            AppointmentModel appointment = (AppointmentModel)dataGridViewAppointment.SelectedRows[0].Tag;
+            FormRegisterAppointment formRegisterAppointment = new FormRegisterAppointment(appointment);
+            this.Hide();
+            formRegisterAppointment.ShowDialog();
+            this.Close();
+        }
 
-        #region
+        private void panelDoctor_Click(object sender, EventArgs e)
+        {
+            SortByDoctor();
+        }
+
+        private void labelDoctor_Click(object sender, EventArgs e)
+        {
+            SortByDoctor();
+        }
+
+        private void panelTime_Click(object sender, EventArgs e)
+        {
+            SortByTime();
+        }
+
+        private void labelTime_Click(object sender, EventArgs e)
+        {
+            SortByTime();
+        }
+
+        private void UserControlDay_ControlClicked(object sender, DateTime date)   // Date From UserControlDay
+        {
+            RemoveRowsInDataGridView();
+            UpdateDateInLabel(date);
+            displayListInDataGridView.Clear();
+
+            string timeTerm;
+            string doctor;
+            int calendarId = CalendarService.GetIdFromDate(date);
+
+            List<AppointmentModel> appointments = CalendarAppointmentService.GetAppointmentsData();
+            List<AppointmentModel> selectedAppointments = CalendarAppointmentService.appointmentInSelectedDate(appointments, date, calendarId);
+
+            foreach (AppointmentModel appointment in selectedAppointments)
+            {
+                if (appointment.PatientId == null && appointment.IsActive == true)
+                {
+                    AddItemToDataGridView(appointment);
+                    displayListInDataGridView.Add(appointment);
+                }
+            }
+        }
+
+
+        #region Calendar
 
         private void RemoveControlPanels()
         {
@@ -96,11 +152,6 @@ namespace GUI_Management_of_medical_clinic
 
             labelTitleCalendar_Month.Text = month.ToUpper();
             labelTitleCalendar_Year.Text = year;
-        }
-
-        private void RemoveRowsInDataGridView()
-        {
-            dataGridViewAppointment.Rows.Clear();
         }
 
         private void displayDays(DateTime date)
@@ -186,40 +237,54 @@ namespace GUI_Management_of_medical_clinic
             labelSelectedDate.Text = "Selected date: " + date.ToShortDateString();
         }
 
-        private void UserControlDay_ControlClicked(object sender, DateTime date)   // Date From UserControlDay
-        {
-            RemoveRowsInDataGridView();
-            UpdateDateInLabel(date);
+        #endregion
 
+        #region DataGridView
+        private void AddItemToDataGridView(AppointmentModel appointment)
+        {
             string timeTerm;
             string doctor;
-            int calendarId = CalendarService.GetIdFromDate(date);
 
-            List<AppointmentModel> appointments = CalendarAppointmentService.GetAppointmentsData();
-            List<AppointmentModel> selectedAppointments = CalendarAppointmentService.appointmentInSelectedDate(appointments, date, calendarId);
+            timeTerm = AppointmentService.GetTermByTermId(appointment.IdTerm);
+            doctor = CalendarAppointmentService.GetLastNameAndNameOfEmployeeByAppointment(appointment);
 
-            foreach (AppointmentModel appointment in selectedAppointments)
+            int index = dataGridViewAppointment.Rows.Add(doctor, timeTerm);
+            dataGridViewAppointment.Rows[index].Tag = appointment;
+
+        }
+
+        private void RemoveRowsInDataGridView()
+        {
+            dataGridViewAppointment.Rows.Clear();
+        }
+        #endregion
+
+        #region Sort
+
+        void SortByTime()
+        {
+            List<AppointmentModel> result = CalendarAppointmentService.SortByTerm(displayListInDataGridView);
+            dataGridViewAppointment.Rows.Clear();
+
+            foreach (AppointmentModel appointment in result)
             {
-                if (appointment.PatientId == null && appointment.IsActive == true)
-                {
-                    timeTerm = AppointmentService.GetTermByTermId(appointment.IdTerm);
-                    doctor = CalendarAppointmentService.GetLastNameAndNameOfEmployeeByAppointment(appointment);
+                AddItemToDataGridView(appointment);
+            }
+        }
 
-                    int index = dataGridViewAppointment.Rows.Add(doctor, timeTerm);
-                    dataGridViewAppointment.Rows[index].Tag = appointment;
-                }
+        void SortByDoctor()
+        {
+            List<AppointmentModel> result = CalendarAppointmentService.SortByDoctor(displayListInDataGridView);
+            dataGridViewAppointment.Rows.Clear();
+
+            foreach (AppointmentModel appointment in result)
+            {
+                AddItemToDataGridView(appointment);
             }
         }
 
         #endregion
 
-        private void dataGridViewAppointment_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            AppointmentModel appointment =  (AppointmentModel)dataGridViewAppointment.SelectedRows[0].Tag;
-            FormRegisterAppointment formRegisterAppointment = new FormRegisterAppointment(appointment);
-            this.Hide();
-            formRegisterAppointment.ShowDialog();
-            this.Close();
-        }
+
     }
 }

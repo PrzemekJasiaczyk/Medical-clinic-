@@ -8,11 +8,8 @@ using System.Threading.Tasks;
 
 namespace Console_Management_of_medical_clinic.Logic
 {
-    public class CalendarAppointmentService: AppointmentModel
+    public class CalendarAppointmentService
     {
-                
-
-
         public static Patient GetPatientDataByIdPatient(AppointmentModel appointment)
         {
             Patient result = new Patient();
@@ -132,7 +129,14 @@ namespace Console_Management_of_medical_clinic.Logic
         }
 
 
-
+        public static List<AppointmentModel> SortByDoctor(List<AppointmentModel> appointments)
+        {
+            return appointments.OrderBy(a => EmployeeService.GetEmployeeByID((int)a.IdEmployee).LastName).ToList();
+        }
+        public static List<AppointmentModel> SortByTerm(List<AppointmentModel> appointments)
+        {
+            return appointments.OrderBy(a => a.IdTerm).ToList();
+        }
 
 
 
