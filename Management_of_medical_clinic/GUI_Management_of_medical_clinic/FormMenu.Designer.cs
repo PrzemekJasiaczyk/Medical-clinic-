@@ -37,10 +37,10 @@
             this.buttonOpenUserList = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panelLogIn = new System.Windows.Forms.Panel();
+            this.buttonOpenDoctorDashboard = new System.Windows.Forms.Button();
             this.buttonOpenCalendarsList = new System.Windows.Forms.Button();
             this.buttonOpenPatientsList = new System.Windows.Forms.Button();
             this.buttonOfficeList = new System.Windows.Forms.Button();
-            this.buttonOpenDoctorDashboard = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelLogIn.SuspendLayout();
@@ -170,12 +170,28 @@
             this.panelLogIn.Size = new System.Drawing.Size(598, 725);
             this.panelLogIn.TabIndex = 10;
             // 
+            // buttonOpenDoctorDashboard
+            // 
+            this.buttonOpenDoctorDashboard.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonOpenDoctorDashboard.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonOpenDoctorDashboard.BackColor = System.Drawing.Color.Gray;
+            this.buttonOpenDoctorDashboard.FlatAppearance.BorderColor = System.Drawing.Color.AntiqueWhite;
+            this.buttonOpenDoctorDashboard.FlatAppearance.BorderSize = 5;
+            this.buttonOpenDoctorDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonOpenDoctorDashboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonOpenDoctorDashboard.Location = new System.Drawing.Point(147, 654);
+            this.buttonOpenDoctorDashboard.Name = "buttonOpenDoctorDashboard";
+            this.buttonOpenDoctorDashboard.Size = new System.Drawing.Size(325, 61);
+            this.buttonOpenDoctorDashboard.TabIndex = 13;
+            this.buttonOpenDoctorDashboard.Text = "DOCTOR DASHBOARD";
+            this.buttonOpenDoctorDashboard.UseVisualStyleBackColor = false;
+            this.buttonOpenDoctorDashboard.Click += new System.EventHandler(this.buttonOpenDoctorDashboard_Click);
+            // 
             // buttonOpenCalendarsList
             // 
             this.buttonOpenCalendarsList.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.buttonOpenCalendarsList.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonOpenCalendarsList.BackColor = System.Drawing.Color.Gray;
-            this.buttonOpenCalendarsList.Enabled = false;
             this.buttonOpenCalendarsList.FlatAppearance.BorderColor = System.Drawing.Color.AntiqueWhite;
             this.buttonOpenCalendarsList.FlatAppearance.BorderSize = 5;
             this.buttonOpenCalendarsList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -186,6 +202,7 @@
             this.buttonOpenCalendarsList.TabIndex = 12;
             this.buttonOpenCalendarsList.Text = "CALENDARS LIST";
             this.buttonOpenCalendarsList.UseVisualStyleBackColor = false;
+            this.buttonOpenCalendarsList.Click += new System.EventHandler(this.buttonOpenCalendarsList_Click_1);
             // 
             // buttonOpenPatientsList
             // 
@@ -220,24 +237,6 @@
             this.buttonOfficeList.TabIndex = 10;
             this.buttonOfficeList.Text = "OFFICE LIST";
             this.buttonOfficeList.UseVisualStyleBackColor = false;
-            // 
-            // buttonOpenDoctorDashboard
-            // 
-            this.buttonOpenDoctorDashboard.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonOpenDoctorDashboard.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonOpenDoctorDashboard.BackColor = System.Drawing.Color.Gray;
-            this.buttonOpenDoctorDashboard.Enabled = false;
-            this.buttonOpenDoctorDashboard.FlatAppearance.BorderColor = System.Drawing.Color.AntiqueWhite;
-            this.buttonOpenDoctorDashboard.FlatAppearance.BorderSize = 5;
-            this.buttonOpenDoctorDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonOpenDoctorDashboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonOpenDoctorDashboard.Location = new System.Drawing.Point(147, 654);
-            this.buttonOpenDoctorDashboard.Name = "buttonOpenDoctorDashboard";
-            this.buttonOpenDoctorDashboard.Size = new System.Drawing.Size(325, 61);
-            this.buttonOpenDoctorDashboard.TabIndex = 13;
-            this.buttonOpenDoctorDashboard.Text = "DOCTOR DASHBOARD";
-            this.buttonOpenDoctorDashboard.UseVisualStyleBackColor = false;
-            this.buttonOpenDoctorDashboard.Click += new System.EventHandler(this.buttonOpenDoctorDashboard_Click);
             // 
             // FormMenu
             // 

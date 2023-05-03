@@ -170,26 +170,6 @@ namespace GUI_Management_of_medical_clinic
 			MessageBox.Show("Incorrect login or password");
 		}
 
-		private void buttonOpenCalendarsList_Click(object sender, EventArgs e)
-		{
-			string login = textBoxLogin.Text;
-			string password = textBoxPassword.Text;
-
-			List<UserModel> users = UserService.GetUsersData();
-
-			UserModel? user = users.Where(u => (u.Username == login) && (u.Password == password)).FirstOrDefault();
-
-			if (user != null)
-			{
-				EmployeeModel employee = EmployeeService.GetEmployeeByUserId(user);
-				FormCalendarsList formCalendarsList = new(employee);
-				formCalendarsList.ShowDialog();
-				Close();
-			}
-
-			MessageBox.Show("Incorrect login or password");
-		}
-
 		private void buttonOpenDoctorDashboard_Click(object sender, EventArgs e)
 		{
             string login = textBoxLogin.Text;
@@ -202,8 +182,30 @@ namespace GUI_Management_of_medical_clinic
             if (user != null)
             {
                 EmployeeModel employee = EmployeeService.GetEmployeeByUserId(user);
-                FormDoctorDashboard formDoctorDashboard = new(employee);
-                formDoctorDashboard.ShowDialog();
+				//FormDoctorDashboard formDoctorDashboard = new(employee);
+				// formDoctorDashboard.ShowDialog();
+				FormDoctorCalendar formDoctorCalendar = new(employee);
+				formDoctorCalendar.ShowDialog();
+                Close();
+            }
+
+            MessageBox.Show("Incorrect login or password");
+        }
+
+		private void buttonOpenCalendarsList_Click_1(object sender, EventArgs e)
+		{
+            string login = textBoxLogin.Text;
+            string password = textBoxPassword.Text;
+
+            List<UserModel> users = UserService.GetUsersData();
+
+            UserModel? user = users.Where(u => (u.Username == login) && (u.Password == password)).FirstOrDefault();
+
+            if (user != null)
+            {
+                EmployeeModel employee = EmployeeService.GetEmployeeByUserId(user);
+                FormCalendarsList formCalendarsList = new(employee);
+                formCalendarsList.ShowDialog();
                 Close();
             }
 

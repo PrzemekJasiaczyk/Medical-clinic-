@@ -25,14 +25,22 @@ namespace GUI_Management_of_medical_clinic
         {
             this.currentUser = currentUser;
             InitializeComponent();
+            label1.Text = "Welcome, " + currentUser.FirstName + " "+currentUser.Role;
         }     
-      
-        private void buttonLogOut_Click(object sender, EventArgs e)
+
+        private void buttonCalendar_Click(object sender, EventArgs e)
+        {
+            FormDoctorCalendar formDoctor = new FormDoctorCalendar(currentUser);
+            this.currentUser = currentUser;
+            formDoctor.ShowDialog();
+            Close();
+        }
+
+        private void buttonLogOut_Click_1(object sender, EventArgs e)
         {
             FormMenu menu = new FormMenu();
             menu.ShowDialog();
             Close();
         }
-
     }
 }

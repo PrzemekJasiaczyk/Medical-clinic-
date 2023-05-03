@@ -34,6 +34,7 @@
             this.buttonCalendar = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -51,6 +52,7 @@
             this.buttonLogOut.TabIndex = 40;
             this.buttonLogOut.Text = "LOG OUT";
             this.buttonLogOut.UseVisualStyleBackColor = false;
+            this.buttonLogOut.Click += new System.EventHandler(this.buttonLogOut_Click_1);
             // 
             // panel1
             // 
@@ -87,6 +89,7 @@
             this.buttonCalendar.TabIndex = 27;
             this.buttonCalendar.Text = "Calendar";
             this.buttonCalendar.UseVisualStyleBackColor = false;
+            this.buttonCalendar.Click += new System.EventHandler(this.buttonCalendar_Click);
             // 
             // button1
             // 
@@ -113,12 +116,23 @@
             this.button2.Text = "[..]";
             this.button2.UseVisualStyleBackColor = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(370, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(265, 65);
+            this.label1.TabIndex = 40;
+            this.label1.Text = "Welcome []";
+            // 
             // FormDoctorDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormDoctorDashboard";
@@ -128,6 +142,7 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -138,5 +153,6 @@
         private Button buttonCalendar;
         private Button button1;
         private Button button2;
+        private Label label1;
     }
 }
