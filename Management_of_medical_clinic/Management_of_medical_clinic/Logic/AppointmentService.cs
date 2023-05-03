@@ -71,6 +71,34 @@ namespace Console_Management_of_medical_clinic.Logic
             return appointments;
         }
 
+        // Validation when rescheduling
+        public (bool, string) CanReschedule(AppointmentModel appointmentRescheduled, AppointmentModel termToReschedule)
+        {
+            using (AppDbContext context = new())
+            {
+                AppointmentModel? conflict =
+                    context.DbAppointments
+                    .FirstOrDefault(
+                    a =>
+                    a.CalendarModel.IdCalendar == termToReschedule.IdCalendar &&
+                    a.IdDay == termToReschedule.IdDay &&
+                    a.IdTerm == termToReschedule.IdTerm &&
+                    a.PatientId != null);
 
+                if (conflict != null)
+                {
+					if (conflict.IdAppointment == appointmentRescheduled.IdAppointment)
+					{
+						return (false, "It's the same term of appointment");
+					}
+
+                    return (false, "The term to reschedule appointment is already taken");
+				}
+            }
+
+            // TODO: Validate against rescheduling to the past term
+
+            return (true, "Appointment rescheduled succesfully");
+        }
     }
 }
