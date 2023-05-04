@@ -193,14 +193,14 @@ namespace GUI_Management_of_medical_clinic
             labelDate.Text = selectedDate.ToString("d");
             _selectedDate= selectedDate.ToString("d");
 
-            List<AppointmentModel> appointments = AppointmentService.CheckAppointmentsAndReturnList(selectedDate, duplicateCalendar.IdCalendar);
+            /*List<AppointmentModel> appointments = AppointmentService.CheckAppointmentsAndReturnList(selectedDate, duplicateCalendar.IdCalendar);
             dataGridViewAppointments.Rows.Clear();
             foreach (AppointmentModel appointment in appointments)
             {
                 string timeTerm = AppointmentService.GetTermByTermId(appointment.IdTerm);
                 Patient patient = PatientService.GetPatientById((int)appointment.PatientId);
                 dataGridViewAppointments.Rows.Add(appointment.IdEmployee, appointment.IdDay, timeTerm, patient.FirstName + " " + patient.LastName);
-            }
+            }*/
         }
 
 
