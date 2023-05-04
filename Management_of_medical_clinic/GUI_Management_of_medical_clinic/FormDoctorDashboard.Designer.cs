@@ -41,18 +41,18 @@
             // 
             // buttonLogOut
             // 
-            buttonLogOut.BackColor = Color.Gainsboro;
-            buttonLogOut.FlatAppearance.BorderColor = Color.White;
-            buttonLogOut.FlatAppearance.BorderSize = 2;
-            buttonLogOut.FlatStyle = FlatStyle.Flat;
-            buttonLogOut.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonLogOut.Location = new Point(29, 970);
-            buttonLogOut.Name = "buttonLogOut";
-            buttonLogOut.Size = new Size(252, 66);
-            buttonLogOut.TabIndex = 40;
-            buttonLogOut.Text = "LOG OUT";
-            buttonLogOut.UseVisualStyleBackColor = false;
-            buttonLogOut.Click += buttonLogOut_Click_1;
+            this.buttonLogOut.BackColor = System.Drawing.Color.Gainsboro;
+            this.buttonLogOut.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonLogOut.FlatAppearance.BorderSize = 2;
+            this.buttonLogOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonLogOut.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonLogOut.Location = new System.Drawing.Point(29, 970);
+            this.buttonLogOut.Name = "buttonLogOut";
+            this.buttonLogOut.Size = new System.Drawing.Size(252, 66);
+            this.buttonLogOut.TabIndex = 40;
+            this.buttonLogOut.Text = "LOG OUT";
+            this.buttonLogOut.UseVisualStyleBackColor = false;
+            this.buttonLogOut.Click += new System.EventHandler(this.buttonLogOut_Click);
             // 
             // panel1
             // 
@@ -119,13 +119,13 @@
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 36F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(370, 12);
-            label1.Name = "label1";
-            label1.Size = new Size(265, 65);
-            label1.TabIndex = 40;
-            label1.Text = "Welcome []";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(370, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(420, 65);
+            this.label1.TabIndex = 40;
+            this.label1.Text = "Welcome message";
             // 
             // FormDoctorDashboard
             // 

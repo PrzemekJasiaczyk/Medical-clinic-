@@ -47,6 +47,16 @@ namespace Console_Management_of_medical_clinic.Logic
             return calendarIds;
         }
 
+		public static void ChangeStatusToActive(int id)//added by doctors
+        {
+            using (AppDbContext context = new AppDbContext())
+            {
+                CalendarModel calendar = context.DbCalendars.Find(id);
+				calendar.Active = true;
+                context.SaveChanges();
+            }
+        }
+
         public List<CalendarModel> Filter(string dateReference, string activityStatus)
 		{
 			List<CalendarModel> filteredCalendars = GetAll();
