@@ -44,7 +44,7 @@ namespace GUI_Management_of_medical_clinic
             {
                 foreach (EmployeeModel employeeModel in EmployeeService.GetDoctors())
                 {
-                    comboBoxDoctor.Items.Add("ID: " + employeeModel.IdEmployee + "   " + employeeModel.FirstName + "   " + employeeModel.LastName);
+                    comboBoxDoctor.Items.Add(employeeModel.IdEmployee + "-" + employeeModel.FirstName + " " + employeeModel.LastName);
                 }
                 //comboBoxOffice.DataSource = OfficeService.GetCalendarIds();
             }
@@ -150,17 +150,26 @@ namespace GUI_Management_of_medical_clinic
             }
 
             string selectedEmployee = comboBoxDoctor.SelectedItem.ToString();
-            string[] employeeParts = selectedEmployee.Split(' ');
-            int selectedEmployeeId = int.Parse(employeeParts[1]);
+
+            string[] employeeParts = selectedEmployee.Split('-');
+
+            int selectedEmployeeId = int.Parse(employeeParts[0]);
+
             List<EmployeeModel> employees = EmployeeService.GetEmployeesData();
             EmployeeModel doctor = employees.FirstOrDefault(e => e.IdEmployee == selectedEmployeeId);
+            List<SpecializationModel> specializations = SpecializationService.GetSpecializationsData();
+
+
             if (doctor == null) return;
 
             foreach (OfficeModel office in offices)
             {
                 if (office.IdSpecialization == doctor.IdSpecialization)
                 {
-                    comboBoxOffice.Items.Add("Number: " + office.Number + "   " + office.Info);
+
+                    SpecializationModel specalization = specializations.FirstOrDefault(e => e.IdSpecialization == office.IdSpecialization);
+                    comboBoxOffice.Items.Add(office.IdOffice + "-" + specalization.Name + " " + office.Number);
+
                 }
             }
 
