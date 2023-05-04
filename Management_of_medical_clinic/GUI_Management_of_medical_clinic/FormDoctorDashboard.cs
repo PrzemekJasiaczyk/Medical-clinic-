@@ -26,20 +26,34 @@ namespace GUI_Management_of_medical_clinic
             this.currentUser = currentUser;
             InitializeComponent();
             label1.Text = "Welcome, " + currentUser.FirstName + " "+currentUser.Role;
-        }     
-
+        }
+        
         private void buttonCalendar_Click(object sender, EventArgs e)
         {
-            this.Hide();
-
-            FormDoctorCalendar formDoctor = new FormDoctorCalendar(currentUser);
-            this.currentUser = currentUser;
-
-            formDoctor.ShowDialog();
-            this.Close();
+            bool isNewCalendar = false;
+            List<CalendarModel> calendars = new List<CalendarModel>();
+            foreach (CalendarModel calendar in calendars)
+            {
+                if (calendar.IdEmployee == currentUser.IdEmployee && calendar.Active == false)
+                {
+                    isNewCalendar = true;        
+                }
+            }
+            if (isNewCalendar = true)
+            {
+                this.Hide();
+                FormDoctorCalendar formDoctor = new FormDoctorCalendar(currentUser);
+                formDoctor.ShowDialog();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("You don't have any new calendar to check", "Information", MessageBoxButtons.OK);
+            }           
+            
         }
 
-        private void buttonLogOut_Click_1(object sender, EventArgs e)
+        private void buttonLogOut_Click(object sender, EventArgs e)
         {
             FormMenu menu = new FormMenu();
             menu.ShowDialog();

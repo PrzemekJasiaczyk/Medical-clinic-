@@ -52,7 +52,7 @@
             this.buttonLogOut.TabIndex = 40;
             this.buttonLogOut.Text = "LOG OUT";
             this.buttonLogOut.UseVisualStyleBackColor = false;
-            this.buttonLogOut.Click += new System.EventHandler(this.buttonLogOut_Click_1);
+            this.buttonLogOut.Click += new System.EventHandler(this.buttonLogOut_Click);
             // 
             // panel1
             // 
@@ -122,9 +122,9 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(370, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(265, 65);
+            this.label1.Size = new System.Drawing.Size(420, 65);
             this.label1.TabIndex = 40;
-            this.label1.Text = "Welcome []";
+            this.label1.Text = "Welcome message";
             // 
             // FormDoctorDashboard
             // 

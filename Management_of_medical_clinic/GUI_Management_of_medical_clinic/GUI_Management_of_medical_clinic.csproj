@@ -21,6 +21,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="FormDoctorCalendarAcceptConfirm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormDoctorCalendarRejectConfirm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FormDoctorCalendar.cs">
       <SubType>Form</SubType>
     </Compile>
