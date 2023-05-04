@@ -164,16 +164,31 @@ namespace GUI_Management_of_medical_clinic
         {
             //add holidays to calendar --dont work
 
-            //int year = date.Year;
-            //string countryCode = "PL";
+            int year = date.Year;
+            string countryCode = "PL";
 
-            //CultureInfo culture = new CultureInfo(countryCode);
-            //Calendar calendar = culture.Calendar;
+            CultureInfo culture = new CultureInfo(countryCode);
+            Calendar calendar = culture.Calendar;
+
+            DateTime[] holidays = new DateTime[] {
+                new DateTime(2023, 1, 1),  // Nowy Rok
+                new DateTime(2023, 1, 6),  // Œwiêto Trzech Króli
+                new DateTime(2023, 4, 17), // Poniedzia³ek Wielkanocny
+                new DateTime(2023, 5, 1),  // Œwiêto Pracy
+                new DateTime(2023, 5, 3),  // Œwiêto Konstytucji 3 Maja
+                new DateTime(2023, 6, 4),  // Zes³anie Ducha Œwiêtego
+                new DateTime(2023, 6, 15), // Bo¿e Cia³o
+                new DateTime(2023, 8, 15), // Wniebowziêcie Najœwiêtszej Maryi Panny
+                new DateTime(2023, 11, 1), // Wszystkich Œwiêtych
+                new DateTime(2023, 11, 11), // Œwiêto Niepodleg³oœci
+                new DateTime(2023, 12, 25), // Bo¿e Narodzenie (pierwszy dzieñ)
+                new DateTime(2023, 12, 26), // Bo¿e Narodzenie (drugi dzieñ)
+            };
 
             //DateTime[] holidays = calendar.GetHolidays(year);
 
 
-            if (date.DayOfWeek != 0)  //|| !holidays.Contains(date)
+            if ((date.DayOfWeek != 0) && !holidays.Contains(date))
             {
                 UserControlDay userControlDay = new UserControlDay(date, null);
                 userControlDay.ControlClicked += UserControlDay_ControlClicked;
