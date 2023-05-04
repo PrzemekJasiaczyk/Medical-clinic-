@@ -73,20 +73,10 @@ namespace Console_Management_of_medical_clinic.Logic
 			return false;
         }
 
-        public static CalendarModel GetCalendarByDateReference(string dateReference)
+        public static CalendarModel GetCalendarById(int id)
 		{
-			CalendarModel calendar = GetCalendarData().FirstOrDefault(calendar => calendar.DateReference == dateReference);
-			
-			if(calendar == null)
-			{
-				calendar = new CalendarModel();
-				calendar.IdCalendar = 0;
-				return calendar;
-			}
-
-			return calendar;
-
-        }
+			return GetCalendarData().FirstOrDefault(calendar => calendar.IdCalendar == id);
+		}
 
         public List<CalendarModel> Filter(string dateReference, string activityStatus)
 		{

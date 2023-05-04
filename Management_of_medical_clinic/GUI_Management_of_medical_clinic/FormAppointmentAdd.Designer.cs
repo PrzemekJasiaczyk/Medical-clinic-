@@ -59,9 +59,9 @@
             label7.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
             label7.Location = new Point(855, 301);
             label7.Name = "label7";
-            label7.Size = new Size(139, 37);
+            label7.Size = new Size(113, 37);
             label7.TabIndex = 7;
-            label7.Text = "Doctor Id";
+            label7.Text = "Doctor ";
             // 
             // buttonAdd
             // 
@@ -119,9 +119,9 @@
             label1.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
             label1.Location = new Point(855, 354);
             label1.Name = "label1";
-            label1.Size = new Size(126, 37);
+            label1.Size = new Size(100, 37);
             label1.TabIndex = 42;
-            label1.Text = "Office Id";
+            label1.Text = "Office ";
             // 
             // comboBoxDoctor
             // 
@@ -139,6 +139,7 @@
             comboBoxOffice.Name = "comboBoxOffice";
             comboBoxOffice.Size = new Size(218, 23);
             comboBoxOffice.TabIndex = 47;
+            comboBoxOffice.SelectedIndexChanged += comboBoxOffice_SelectedIndexChanged;
             // 
             // labelDay
             // 

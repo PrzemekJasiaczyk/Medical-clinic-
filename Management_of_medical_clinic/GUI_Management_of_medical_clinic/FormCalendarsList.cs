@@ -29,9 +29,9 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonAddCalendar_Click(object sender, EventArgs e)
         {
-            //FormBlankOrPreviousCalendar formBlankOrPreviousCalendar = new(currentUser);
-            //formBlankOrPreviousCalendar.ShowDialog();
-            //Close();
+            FormCalendar formCalendar = new FormCalendar(currentUser, CalendarService.GetCalendarById((int)dataGridViewCalendars.CurrentRow.Cells[0].Value));
+            formCalendar.ShowDialog();
+            Close();
         }
 
 
@@ -70,6 +70,11 @@ namespace GUI_Management_of_medical_clinic
             FormCalendar formCalendar = new(currentUser);
             formCalendar.ShowDialog();
             Close();
+        }
+
+        private void FormCalendarsList_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
