@@ -152,6 +152,8 @@
             textBoxPESEL.Size = new Size(199, 41);
             textBoxPESEL.TabIndex = 59;
             textBoxPESEL.TextChanged += textBoxPESEL_TextChanged_1;
+            textBoxPESEL.Validating += textBoxPESEL_Validating;
+            textBoxPESEL.Validated += textBoxPESEL_Validated;
             // 
             // textBoxLastName
             // 
