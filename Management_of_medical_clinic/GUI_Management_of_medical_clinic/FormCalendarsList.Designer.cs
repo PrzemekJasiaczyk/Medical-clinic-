@@ -42,6 +42,7 @@
             buttonClearFilter = new Button();
             comboBoxStatus = new ComboBox();
             buttonFilterCalendars = new Button();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewCalendars).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -109,11 +110,11 @@
             buttonAddCalendar.FlatStyle = FlatStyle.Flat;
             buttonAddCalendar.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
             buttonAddCalendar.ForeColor = SystemColors.ActiveCaptionText;
-            buttonAddCalendar.Location = new Point(-7, 259);
+            buttonAddCalendar.Location = new Point(-17, 352);
             buttonAddCalendar.Name = "buttonAddCalendar";
             buttonAddCalendar.Size = new Size(329, 87);
             buttonAddCalendar.TabIndex = 27;
-            buttonAddCalendar.Text = "Add New Appointment or Calendar";
+            buttonAddCalendar.Text = "Duplicate calendar";
             buttonAddCalendar.UseVisualStyleBackColor = false;
             buttonAddCalendar.Click += buttonAddCalendar_Click;
             // 
@@ -123,7 +124,7 @@
             buttonEditCalendar.FlatStyle = FlatStyle.Flat;
             buttonEditCalendar.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
             buttonEditCalendar.ForeColor = SystemColors.ActiveCaptionText;
-            buttonEditCalendar.Location = new Point(-7, 352);
+            buttonEditCalendar.Location = new Point(-17, 445);
             buttonEditCalendar.Name = "buttonEditCalendar";
             buttonEditCalendar.Size = new Size(329, 87);
             buttonEditCalendar.TabIndex = 33;
@@ -136,7 +137,7 @@
             buttonRemoveCalendar.BackColor = Color.SteelBlue;
             buttonRemoveCalendar.FlatStyle = FlatStyle.Flat;
             buttonRemoveCalendar.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonRemoveCalendar.Location = new Point(-7, 445);
+            buttonRemoveCalendar.Location = new Point(-17, 538);
             buttonRemoveCalendar.Name = "buttonRemoveCalendar";
             buttonRemoveCalendar.Size = new Size(329, 87);
             buttonRemoveCalendar.TabIndex = 28;
@@ -222,12 +223,27 @@
             buttonFilterCalendars.UseVisualStyleBackColor = true;
             buttonFilterCalendars.Click += buttonFilterCalendars_Click;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.SteelBlue;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.ForeColor = SystemColors.ActiveCaptionText;
+            button1.Location = new Point(-17, 259);
+            button1.Name = "button1";
+            button1.Size = new Size(329, 87);
+            button1.TabIndex = 41;
+            button1.Text = "Add New Plan or Calendar";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
             // FormCalendarsList
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
             ClientSize = new Size(1920, 1080);
+            Controls.Add(button1);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(dataGridViewCalendars);
@@ -260,5 +276,6 @@
         private Button buttonFilterCalendars;
         private Button buttonSortDescending;
         private Button buttonSortAscending;
+        private Button button1;
     }
 }

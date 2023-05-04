@@ -164,7 +164,7 @@
             buttonAddAppointment.Name = "buttonAddAppointment";
             buttonAddAppointment.Size = new Size(225, 78);
             buttonAddAppointment.TabIndex = 15;
-            buttonAddAppointment.Text = "Add appointment";
+            buttonAddAppointment.Text = "Add new Plan";
             buttonAddAppointment.UseVisualStyleBackColor = true;
             buttonAddAppointment.Click += buttonAddAppointment_Click;
             // 
@@ -172,11 +172,11 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(1651, 306);
+            label8.Location = new Point(1617, 307);
             label8.Name = "label8";
-            label8.Size = new Size(144, 30);
+            label8.Size = new Size(228, 30);
             label8.TabIndex = 18;
-            label8.Text = "Appointments";
+            label8.Text = "Doctor's Working Plans";
             // 
             // dataGridViewAppointments
             // 

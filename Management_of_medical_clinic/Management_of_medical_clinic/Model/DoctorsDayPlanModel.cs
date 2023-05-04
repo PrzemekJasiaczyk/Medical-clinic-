@@ -30,6 +30,16 @@ namespace Console_Management_of_medical_clinic.Model
             IsActive = isActive;
         }
 
+        public DoctorsDayPlanModel(string idsWorkingTerms, int idDay, bool isActive, int idCalendar, int idEmployee, int idOffice)
+        {
+            IdsWorkingTerms = idsWorkingTerms;
+            IdDay = idDay;
+            IsActive = isActive;
+            IdCalendar = idCalendar;
+            IdEmployee = idEmployee;
+            IdOffice = idOffice;
+        }
+
         public DoctorsDayPlanModel(int idDoctorsDayPlan, string idsWorkingTerms, int idDay, bool isActive, int idCalendar, int idEmployee, int idOffice)
         {
             IdDoctorsDayPlan = idDoctorsDayPlan;

@@ -162,7 +162,7 @@ namespace GUI_Management_of_medical_clinic
 
             if (date.DayOfWeek != 0)  //|| !holidays.Contains(date)
             {
-                UserControlDay userControlDay = new UserControlDay(date,null);
+                UserControlDay userControlDay = new UserControlDay(date, null);
                 userControlDay.ControlClicked += UserControlDay_ControlClicked;
                 return userControlDay;
             }
@@ -179,7 +179,7 @@ namespace GUI_Management_of_medical_clinic
             CheckTheMonth();
             labelDate.Text = selectedDate.ToString("d");
 
-            List<AppointmentModel> appointments = AppointmentService.CheckAppointmentsAndReturnList(selectedDate, previousMonth ?  CalendarService.GetCalendarByDateReference(displayMonth.AddMonths(-1).ToString("MM") + '-' + displayMonth.AddMonths(-1).ToString("yyyy")).IdCalendar : CalendarService.GetCalendarByDateReference(displayMonth.ToString("MM") + '-' + displayMonth.ToString("yyyy")).IdCalendar);
+            List<AppointmentModel> appointments = AppointmentService.CheckAppointmentsAndReturnList(selectedDate, previousMonth ? CalendarService.GetCalendarByDateReference(displayMonth.AddMonths(-1).ToString("MM") + '-' + displayMonth.AddMonths(-1).ToString("yyyy")).IdCalendar : CalendarService.GetCalendarByDateReference(displayMonth.ToString("MM") + '-' + displayMonth.ToString("yyyy")).IdCalendar);
             dataGridViewAppointments.Rows.Clear();
             foreach (AppointmentModel appointment in appointments)
             {
@@ -223,7 +223,7 @@ namespace GUI_Management_of_medical_clinic
             {
                 previousMonth = true;
                 return;
-            
+
             }
             previousMonth = false;
         }

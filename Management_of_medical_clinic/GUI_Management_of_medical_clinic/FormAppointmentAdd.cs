@@ -1,4 +1,5 @@
-﻿using Console_Management_of_medical_clinic.Logic;
+﻿using Console_Management_of_medical_clinic.Data.Enums;
+using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
 using System;
 using System.Collections.Generic;
@@ -23,12 +24,18 @@ namespace GUI_Management_of_medical_clinic
             selectedDate = date;
             selectedDay = date.Day;
             this.currentEmployee = currentEmployee;
+
             InitializeComponent();
+            //checkedListBoxTerms.Items.AddRange(typeof(EnumTerms).GetEnumNames());
+
+            foreach (EnumTerms term in Enum.GetValues(typeof(EnumTerms)))
+            {
+                checkedListBoxTerms.Items.Add(DoctorsPlanService.GetTermDescription(term));
+            }
+
 
             try
             {
-                comboBoxCalendar.DataSource = CalendarService.GetCalendarIds();
-                comboBoxPatient.DataSource = PatientService.GetPatientIds();
                 comboBoxDoctor.DataSource = EmployeeService.GetDoctorIds();
                 comboBoxOffice.DataSource = OfficeService.GetCalendarIds();
             }
@@ -39,8 +46,6 @@ namespace GUI_Management_of_medical_clinic
 
             try
             {
-                comboBoxCalendar.SelectedIndex = 0;
-                comboBoxPatient.SelectedIndex = 0;
                 comboBoxDoctor.SelectedIndex = 0;
                 comboBoxOffice.SelectedIndex = 0;
             }
@@ -65,18 +70,11 @@ namespace GUI_Management_of_medical_clinic
         {
             try
             {
-                if (comboBoxTerm.SelectedIndex < 0 ) return;
-                if (comboBoxCalendar.SelectedIndex < 0) return;
                 if (comboBoxDoctor.SelectedIndex < 0) return;
                 if (comboBoxOffice.SelectedIndex < 0) return;
-                if (comboBoxPatient.SelectedIndex < 0) return;
 
-
-                string term = comboBoxTerm.SelectedItem.ToString();
-                int idTerm = AppointmentService.GetIdTerm(term);
-
-                AppointmentModel appointmentModel = new AppointmentModel(idTerm, 1000, selectedDay, true, (int)comboBoxCalendar.SelectedItem, (int)comboBoxDoctor.SelectedItem, (int)comboBoxPatient.SelectedItem, (int)comboBoxOffice.SelectedItem); 
-                AppointmentService.AddAppointment(appointmentModel);
+                DoctorsDayPlanModel model = new DoctorsDayPlanModel();
+                DoctorsPlanService.AddAppointment(model);
                 MessageBox.Show("Success!");
             }
             catch (Exception ex)
