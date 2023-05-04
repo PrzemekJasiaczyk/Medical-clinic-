@@ -423,6 +423,7 @@
             this.Name = "FormDoctorCalendar";
             this.Text = "Calendar";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FormDoctorCalendar_Load);
             this.panelMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAppointments)).EndInit();
