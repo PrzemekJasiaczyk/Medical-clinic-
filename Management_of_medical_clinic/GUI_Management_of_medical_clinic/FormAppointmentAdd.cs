@@ -165,7 +165,6 @@ namespace GUI_Management_of_medical_clinic
             }
 
             //string checkedTerms = DoctorsPlanService.CheckIfDoctorHasPlanForCurrentDay((int)comboBoxDoctor.SelectedItem, selectedDay, calendarId);
-            //MessageBox.Show((int)comboBoxDoctor.SelectedItem + selectedDay.ToString() + calendarId.ToString());
             //MessageBox.Show(checkedTerms);
         }
     }
