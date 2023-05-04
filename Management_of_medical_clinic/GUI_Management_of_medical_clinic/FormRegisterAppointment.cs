@@ -111,8 +111,8 @@ namespace GUI_Management_of_medical_clinic
 
         private void CheckIfAllComboBoxesAreSelected()
         {
-            if (comboBoxPatient.SelectedIndex == -1 &&
-                comboBoxDoctor.SelectedIndex == -1 &&
+            if (comboBoxPatient.SelectedIndex == -1 ||
+                comboBoxDoctor.SelectedIndex == -1 ||
                 comboBoxDate.SelectedIndex == -1)
             {
                 buttonAddAppointment.Enabled = false;
