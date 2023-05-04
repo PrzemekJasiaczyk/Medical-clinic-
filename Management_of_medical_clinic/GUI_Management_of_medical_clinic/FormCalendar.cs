@@ -252,7 +252,7 @@ namespace GUI_Management_of_medical_clinic
             string month = displayMonth.ToString("MM");
             string year = displayMonth.ToString("yyyy");
             string monthAndYear = month + "-" + year;
-            if (CalendarService.checkIfCalendarExists(monthAndYear))
+            if (CalendarService.checkIfCalendarExistsCalendarAdd(monthAndYear))
             {
                 MessageBox.Show("Calendar already exists");
                 return;

@@ -58,7 +58,7 @@ namespace Console_Management_of_medical_clinic.Logic
             }
             return calendarIds;
         }
-        public static bool checkIfCalendarExists(string selectedDate)
+        public static bool checkIfCalendarExistsCalendarAdd(string selectedDate)    //only for Calendar adding, need to be edited
         {
             List<CalendarModel> calendars = GetCalendarData();
             //string CurrentDateReference = selectedDate.Remove(0, 3).Replace(".", "-");
@@ -71,6 +71,21 @@ namespace Console_Management_of_medical_clinic.Logic
 				}
 			}
 			return false;
+        }
+
+        public static bool checkIfCalendarExists(string selectedDate)
+        {
+            List<CalendarModel> calendars = GetCalendarData();
+            string CurrentDateReference = selectedDate.Remove(0, 3).Replace(".", "-");
+
+            foreach (CalendarModel calendar in calendars)
+            {
+                if (calendar.DateReference == CurrentDateReference)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public static CalendarModel GetCalendarById(int id)
