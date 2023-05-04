@@ -16,6 +16,7 @@ namespace GUI_Management_of_medical_clinic
     public partial class FormAppointmentAdd : Form
     {
         DateTime selectedDate;
+        string dateReference;
         int selectedDay;
         EmployeeModel currentEmployee;
 
@@ -23,7 +24,11 @@ namespace GUI_Management_of_medical_clinic
         {
             selectedDate = date;
             selectedDay = date.Day;
-            this.currentEmployee = currentEmployee;
+
+
+            dateReference = selectedDate.ToString("d");
+            this.currentEmployee = currentEmployee;        
+
 
             InitializeComponent();
 
@@ -69,16 +74,47 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            try
+            string checkedTerms = "";
+            for (int i = 0; i < checkedListBoxTerms.Items.Count; i++)
             {
-                DoctorsDayPlanModel model = new DoctorsDayPlanModel("1,2,3", selectedDay, 1, (int)comboBoxDoctor.SelectedItem, (int)comboBoxOffice.SelectedItem, true);
-                DoctorsPlanService.AddAppointment(model);
-                MessageBox.Show("New plan added successfully");
+
+                if (checkedListBoxTerms.GetItemChecked(i))
+                {
+                    checkedTerms = checkedTerms + ","+i.ToString();
+                }
+
             }
-            catch (Exception ex)
+            if (checkedTerms.Length == 0)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show("No terms have been selected");
+                return;
             }
+            else
+            {
+                checkedTerms = checkedTerms.Remove(0, 1);
+            }
+
+            int calendarId = CalendarService.GetCalendarIdByDate(dateReference);
+            if (calendarId!=-1)
+            {
+                try
+                {
+                    DoctorsDayPlanModel model = new DoctorsDayPlanModel(checkedTerms, selectedDay, calendarId, (int)comboBoxDoctor.SelectedItem, (int)comboBoxOffice.SelectedItem, true);
+                    DoctorsPlanService.AddAppointment(model);
+                    MessageBox.Show("New plan added successfully");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Calendar for current month hasn't been created");
+                return;
+            }
+
+            
 
         }
 

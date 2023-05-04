@@ -10,79 +10,79 @@ namespace Console_Management_of_medical_clinic.Data.Enums
     public enum EnumTerms
     {
         [Description("7:00")]
-        seven = 1,
+        seven = 0,
         [Description("7:20")]
-        sevenTwenty = 2,
+        sevenTwenty = 1,
         [Description("7:40")]
-        sevenFourty = 3,
+        sevenFourty = 2,
         [Description("8:00")]
-        eight = 4,
+        eight = 3,
         [Description("8:20")]
-        eightTwenty = 5,
+        eightTwenty = 4,
         [Description("8:40")]
-        eightFourty = 6,
+        eightFourty = 5,
         [Description("9:00")]
-        nine = 7,
+        nine = 6,
         [Description("9:20")]
-        nineTwenty = 8,
+        nineTwenty = 7,
         [Description("9:40")]
-        nineFourty = 9,
+        nineFourty = 8,
         [Description("10:00")]
-        ten = 10,
+        ten = 9,
         [Description("10:20")]
-        tenTwenty = 11,
+        tenTwenty = 10,
         [Description("10:40")]
-        tenFourty = 12,
+        tenFourty = 11,
         //BREAK 11:00
         [Description("11:20")]
-        elevenTwenty = 13,
+        elevenTwenty = 12,
         [Description("11:40")]
-        elevenFourty = 14,
+        elevenFourty = 13,
         [Description("12:00")]
-        twelve = 15,
+        twelve = 14,
         [Description("12:20")]
-        twelveTwenty = 16,
+        twelveTwenty = 15,
         [Description("12:40")]
-        twelveFourty = 17,
+        twelveFourty = 16,
         [Description("13:00")]
-        thirteen = 18,
+        thirteen = 17,
         [Description("13:20")]
-        thirteenTwenty = 19,
+        thirteenTwenty = 18,
         [Description("13:40")]
-        thirteenFourty = 20,
+        thirteenFourty = 19,
         [Description("14:00")]
-        fourteen = 21,
+        fourteen = 20,
         [Description("14:20")]
-        fourteenTwenty = 22,
+        fourteenTwenty = 21,
         [Description("14:40")]
-        fourteenFourty = 23,
+        fourteenFourty = 22,
         [Description("15:00")]
-        fifteen = 24,
+        fifteen = 23,
         //BREAK 15:20
         [Description("15:40")]
-        fifteenFourty = 25,
+        fifteenFourty = 24,
         [Description("16:00")]
-        sixteen = 26,
+        sixteen = 25,
         [Description("16:20")]
-        sixteenTwenty = 27,
+        sixteenTwenty = 26,
         [Description("16:40")]
-        sixteenFourty = 28,
+        sixteenFourty = 27,
         [Description("17:00")]
-        seventeen = 29,
+        seventeen = 28,
         [Description("17:20")]
-        seventeenTwenty = 30,
+        seventeenTwenty = 29,
         [Description("17:40")]
-        seventeenFourty = 31,
+        seventeenFourty = 30,
         [Description("18:00")]
-        eighteen = 32,
+        eighteen = 31,
         [Description("18:20")]
-        eighteenTwenty = 33,
+        eighteenTwenty = 32,
         [Description("18:40")]
-        eighteenFourty = 34,
+        eighteenFourty = 33,
         [Description("19:00")]
-        nineteen = 35,
+        nineteen = 34,
         [Description("19:20")]
-        nineteenTwenty = 36,
+        nineteenTwenty = 35,
         //BREAK 19:40
         //END 20:00
 
