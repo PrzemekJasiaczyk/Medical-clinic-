@@ -252,6 +252,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormCalendarsList";
             WindowState = FormWindowState.Maximized;
+            Load += FormCalendarsList_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewCalendars).EndInit();
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

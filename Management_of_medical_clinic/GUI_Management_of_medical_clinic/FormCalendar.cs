@@ -70,9 +70,9 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonExit_Click(object sender, EventArgs e)
         {
-            FormMenu formMenu = new FormMenu();
+            FormCalendarsList formCalendarsList = new FormCalendarsList(currentEmployee);
             this.Hide();
-            formMenu.ShowDialog();
+            formCalendarsList.ShowDialog();
             this.Close();
         }
 
