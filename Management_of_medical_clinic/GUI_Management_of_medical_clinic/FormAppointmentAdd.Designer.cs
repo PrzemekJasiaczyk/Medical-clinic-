@@ -130,6 +130,7 @@
             comboBoxDoctor.Name = "comboBoxDoctor";
             comboBoxDoctor.Size = new Size(218, 23);
             comboBoxDoctor.TabIndex = 46;
+            comboBoxDoctor.SelectedIndexChanged += comboBoxDoctor_SelectedIndexChanged;
             // 
             // comboBoxOffice
             // 
