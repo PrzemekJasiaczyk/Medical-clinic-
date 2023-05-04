@@ -63,7 +63,7 @@ namespace GUI_Management_of_medical_clinic
                 MessageBox.Show("Some data might be missing");
             }
 
-            DoctorsPlanService.CheckIfDoctorHasPlanForCurrentDay((int)comboBoxDoctor.SelectedItem, selectedDay, calendarId);
+            //DoctorsPlanService.CheckIfDoctorHasPlanForCurrentDay((int)comboBoxDoctor.SelectedItem, selectedDay, calendarId);
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -130,13 +130,10 @@ namespace GUI_Management_of_medical_clinic
             this.Hide();
         }
 
-<<<<<<< HEAD
-        private void comboBoxDoctor_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string checkedTerms = DoctorsPlanService.CheckIfDoctorHasPlanForCurrentDay((int)comboBoxDoctor.SelectedItem, selectedDay, calendarId);
-            //MessageBox.Show((int)comboBoxDoctor.SelectedItem + selectedDay.ToString() + calendarId.ToString());
-            //MessageBox.Show(checkedTerms);
-=======
+
+
+
+
         private void comboBoxOffice_SelectedIndexChanged(object sender, EventArgs e)
         {
             
@@ -166,7 +163,10 @@ namespace GUI_Management_of_medical_clinic
                     comboBoxOffice.Items.Add("Number: " + office.Number + "   " + office.Info);
                 }
             }
->>>>>>> 05f70907c6fe31a60a690e80a6b3360f8c8d0901
+
+            //string checkedTerms = DoctorsPlanService.CheckIfDoctorHasPlanForCurrentDay((int)comboBoxDoctor.SelectedItem, selectedDay, calendarId);
+            //MessageBox.Show((int)comboBoxDoctor.SelectedItem + selectedDay.ToString() + calendarId.ToString());
+            //MessageBox.Show(checkedTerms);
         }
     }
 }
