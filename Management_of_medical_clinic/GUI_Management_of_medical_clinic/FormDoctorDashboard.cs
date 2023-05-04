@@ -25,8 +25,8 @@ namespace GUI_Management_of_medical_clinic
         {
             this.currentUser = currentUser;
             InitializeComponent();
-            label1.Text = "Welcome, " + currentUser.FirstName + " "+currentUser.Role;
-        }     
+            label1.Text = "Welcome, " + currentUser.FirstName + " " + currentUser.Role;
+        }
 
         private void buttonCalendar_Click(object sender, EventArgs e)
         {
@@ -44,6 +44,17 @@ namespace GUI_Management_of_medical_clinic
             FormMenu menu = new FormMenu();
             menu.ShowDialog();
             Close();
+        }
+
+        private void buttonCurrentCalendar_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            FormDoctorCurrentCalendar formDoctor = new FormDoctorCurrentCalendar(currentUser);
+            this.currentUser = currentUser;
+
+            formDoctor.ShowDialog();
+            this.Close();
         }
     }
 }
