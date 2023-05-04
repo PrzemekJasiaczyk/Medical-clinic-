@@ -7,7 +7,7 @@ namespace Console_Management_of_medical_clinic.Logic
 {
 	public class CalendarService : ICalendarFilterSort
 	{
-
+		public static string LastErrorMessage { get; private set; }
         public static void AddCalendar(CalendarModel calendarModel)
         {
             using (AppDbContext context = new AppDbContext())
@@ -184,11 +184,12 @@ namespace Console_Management_of_medical_clinic.Logic
 						db.SaveChanges();
 					}
 				}
-			}
-			catch (Microsoft.EntityFrameworkCore.DbUpdateException)
+			}catch(Microsoft.EntityFrameworkCore.DbUpdateException)
 			{
-
-            }
+				LastErrorMessage = "You can't remove this Calendar";
+				throw;
+			}
+			
         }
 	}
 }

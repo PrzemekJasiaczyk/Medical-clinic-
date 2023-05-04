@@ -27,8 +27,15 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
-            CalendarService.DeleteCalendar(calendarId);
-            this.Close();
+            try
+            {
+                CalendarService.DeleteCalendar(calendarId);
+                this.Close();
+            }
+            catch
+            {
+                MessageBox.Show(CalendarService.LastErrorMessage);
+            }
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
