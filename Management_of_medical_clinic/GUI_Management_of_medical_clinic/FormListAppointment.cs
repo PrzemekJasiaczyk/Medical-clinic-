@@ -319,13 +319,25 @@ namespace GUI_Management_of_medical_clinic
         {
             if (dataGridViewAppointmentList.Rows.Count == 0)
             {
-                string msg2 = "No appointments. Register an appointment.";
+                string msg1 = "No appointments. Register an appointment.";
+                FormMessage FormMessage1 = new FormMessage(msg1);
+                FormMessage1.ShowDialog();
+                return;
+            }
+       
+            AppointmentModel appointment = (AppointmentModel)dataGridViewAppointmentList.SelectedRows[0].Tag;
+            DateTime date = CalendarService.GetDateByIdCalendar((int)appointment.IdCalendar, appointment.IdDay);
+            string term = AppointmentService.GetTermByTermId((int)appointment.IdTerm);
+            TimeSpan time = TimeSpan.ParseExact(term, "hh\\:mm", null);
+
+            if (date <= DateTime.Now.Date && time <= DateTime.Now.TimeOfDay)
+            {
+                string msg2 = "You cannot cancel an appointment from the past.";
                 FormMessage FormMessage2 = new FormMessage(msg2);
                 FormMessage2.ShowDialog();
                 return;
             }
 
-            AppointmentModel appointment = (AppointmentModel)dataGridViewAppointmentList.SelectedRows[0].Tag;
             FormConfirmCancelAppointment cancel = new FormConfirmCancelAppointment(currentUser, appointment);
             cancel.ShowDialog();
         }
