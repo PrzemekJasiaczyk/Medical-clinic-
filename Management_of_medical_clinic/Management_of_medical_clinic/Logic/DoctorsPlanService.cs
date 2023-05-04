@@ -12,6 +12,15 @@ namespace Console_Management_of_medical_clinic.Logic
 {
     public static class DoctorsPlanService
     {
+        public static List<DoctorsDayPlanModel> GetDoctorsPlanData()
+        {
+            List<DoctorsDayPlanModel> doctorsPlans = new List<DoctorsDayPlanModel>();
+            using (var db = new AppDbContext())
+            {
+                doctorsPlans = db.DbDoctorsDayPlan.ToList();
+            }
+            return doctorsPlans;
+        }
         public static void AddAppointment(DoctorsDayPlanModel doctorsDayPlanModel)
         {
             using (AppDbContext context = new AppDbContext())
@@ -33,6 +42,18 @@ namespace Console_Management_of_medical_clinic.Logic
             {
                 return (desc[0] as DescriptionAttribute).Description;
             }
+        }
+        public static string CheckIfDoctorHasPlanForCurrentDay(int idEmployee, int idDay, int idCalendar)
+        {
+            List<DoctorsDayPlanModel> doctorsPlans = GetDoctorsPlanData();
+            foreach(DoctorsDayPlanModel plan in doctorsPlans)
+            {
+                if (plan.IdEmployee==idEmployee && plan.IdDay==idDay && plan.IdCalendar == idCalendar)
+                {
+                    return plan.IdsWorkingTerms;
+                }
+            }
+            return "";
         }
     }
 }

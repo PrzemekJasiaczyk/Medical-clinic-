@@ -18,6 +18,7 @@ namespace GUI_Management_of_medical_clinic
         DateTime selectedDate;
         string dateReference;
         int selectedDay;
+        int calendarId;
         EmployeeModel currentEmployee;
 
         public FormAppointmentAdd(DateTime date, EmployeeModel currentEmployee)
@@ -25,8 +26,12 @@ namespace GUI_Management_of_medical_clinic
             selectedDate = date;
             selectedDay = date.Day;
 
+
             dateReference = selectedDate.ToString("d");
-            this.currentEmployee = currentEmployee;        
+            calendarId = CalendarService.GetCalendarIdByDate(dateReference);
+
+            this.currentEmployee = currentEmployee;
+
 
             InitializeComponent();
 
@@ -37,8 +42,11 @@ namespace GUI_Management_of_medical_clinic
 
             try
             {
-                comboBoxDoctor.DataSource = EmployeeService.GetDoctorIds();
-                comboBoxOffice.DataSource = OfficeService.GetCalendarIds();
+                foreach (EmployeeModel employeeModel in EmployeeService.GetDoctors())
+                {
+                    comboBoxDoctor.Items.Add("ID: " + employeeModel.IdEmployee + "   " + employeeModel.FirstName + "   " + employeeModel.LastName);
+                }
+                //comboBoxOffice.DataSource = OfficeService.GetCalendarIds();
             }
             catch (Exception ex)
             {
@@ -47,14 +55,15 @@ namespace GUI_Management_of_medical_clinic
 
             try
             {
-                comboBoxDoctor.SelectedIndex = 0;
-                comboBoxOffice.SelectedIndex = 0;
+                //comboBoxDoctor.SelectedIndex = 0;
+                //comboBoxOffice.SelectedIndex = 0;
             }
             catch
             {
                 MessageBox.Show("Some data might be missing");
             }
 
+            //DoctorsPlanService.CheckIfDoctorHasPlanForCurrentDay((int)comboBoxDoctor.SelectedItem, selectedDay, calendarId);
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -72,10 +81,12 @@ namespace GUI_Management_of_medical_clinic
             string checkedTerms = "";
             for (int i = 0; i < checkedListBoxTerms.Items.Count; i++)
             {
+
                 if (checkedListBoxTerms.GetItemChecked(i))
                 {
-                    checkedTerms = checkedTerms + ","+i.ToString();
+                    checkedTerms = checkedTerms + "," + i.ToString();
                 }
+
             }
             if (checkedTerms.Length == 0)
             {
@@ -87,8 +98,8 @@ namespace GUI_Management_of_medical_clinic
                 checkedTerms = checkedTerms.Remove(0, 1);
             }
 
-            int calendarId = CalendarService.GetCalendarIdByDate(dateReference);
-            if (calendarId!=-1)
+
+            if (calendarId != -1)
             {
                 try
                 {
@@ -107,7 +118,7 @@ namespace GUI_Management_of_medical_clinic
                 return;
             }
 
-            
+
 
         }
 
@@ -117,6 +128,45 @@ namespace GUI_Management_of_medical_clinic
             this.Hide();
             formCalendar.Show();
             this.Hide();
+        }
+
+
+
+
+
+        private void comboBoxOffice_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void comboBoxDoctor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboBoxOffice.Items.Clear();
+
+            List<OfficeModel> offices = OfficeService.GetOfficesData();
+            if (comboBoxDoctor.SelectedIndex < 0)
+            {
+                return;
+            }
+
+            string selectedEmployee = comboBoxDoctor.SelectedItem.ToString();
+            string[] employeeParts = selectedEmployee.Split(' ');
+            int selectedEmployeeId = int.Parse(employeeParts[1]);
+            List<EmployeeModel> employees = EmployeeService.GetEmployeesData();
+            EmployeeModel doctor = employees.FirstOrDefault(e => e.IdEmployee == selectedEmployeeId);
+            if (doctor == null) return;
+
+            foreach (OfficeModel office in offices)
+            {
+                if (office.IdSpecialization == doctor.IdSpecialization)
+                {
+                    comboBoxOffice.Items.Add("Number: " + office.Number + "   " + office.Info);
+                }
+            }
+
+            //string checkedTerms = DoctorsPlanService.CheckIfDoctorHasPlanForCurrentDay((int)comboBoxDoctor.SelectedItem, selectedDay, calendarId);
+            //MessageBox.Show((int)comboBoxDoctor.SelectedItem + selectedDay.ToString() + calendarId.ToString());
+            //MessageBox.Show(checkedTerms);
         }
     }
 }

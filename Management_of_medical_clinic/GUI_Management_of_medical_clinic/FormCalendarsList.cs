@@ -71,5 +71,10 @@ namespace GUI_Management_of_medical_clinic
             formCalendar.ShowDialog();
             Close();
         }
+
+        private void FormCalendarsList_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

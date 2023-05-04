@@ -81,10 +81,12 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonExit_Click(object sender, EventArgs e)
         {
-            //EmployeeModel employee = EmployeeService.GetEmployeeByUserId(user);
-            FormCalendarsList formCalendarsList = new(currentEmployee);
+
+            FormCalendarsList formCalendarsList = new FormCalendarsList(currentEmployee);
+            this.Hide();
             formCalendarsList.ShowDialog();
-            Close();
+            this.Close();
+
         }
 
         #region
@@ -192,6 +194,7 @@ namespace GUI_Management_of_medical_clinic
             _selectedDate= selectedDate.ToString("d");
 
             List<AppointmentModel> appointments = AppointmentService.CheckAppointmentsAndReturnList(selectedDate, duplicateCalendar == null ? 0 : duplicateCalendar.IdCalendar);
+
             dataGridViewAppointments.Rows.Clear();
             foreach (AppointmentModel appointment in appointments)
             {
