@@ -169,5 +169,26 @@ namespace Console_Management_of_medical_clinic.Logic
 
 			return sortedCalendars;
 		}
+
+		public static void DeleteCalendar(int IdCalendar)
+		{
+			try
+			{
+				using (var db = new AppDbContext())
+				{
+					CalendarModel calendar = db.DbCalendars.Find(IdCalendar);
+
+					if (calendar != null)
+					{
+						db.DbCalendars.Remove(calendar);
+						db.SaveChanges();
+					}
+				}
+			}
+			catch (Microsoft.EntityFrameworkCore.DbUpdateException)
+			{
+
+            }
+        }
 	}
 }
