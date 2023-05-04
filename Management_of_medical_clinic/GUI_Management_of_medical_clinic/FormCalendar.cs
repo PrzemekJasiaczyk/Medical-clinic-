@@ -11,6 +11,7 @@ namespace GUI_Management_of_medical_clinic
     {
         EmployeeModel currentEmployee;
         bool previousMonth;
+        CalendarModel duplicateCalendar;
         public FormCalendar(EmployeeModel currentEmployee, bool previousMonth = false)
         {
             InitializeComponent();
@@ -22,13 +23,20 @@ namespace GUI_Management_of_medical_clinic
             }
         }
 
+        public FormCalendar(EmployeeModel currentEmployee, CalendarModel calendarModel)
+        {
+            InitializeComponent();
+            this.currentEmployee = currentEmployee;
+            duplicateCalendar = calendarModel;
+
+        }
+
         DateTime displayMonth = DateTime.Today;
         DateTime currentMonth = new DateTime();
 
         private void FormCalendar_Load(object sender, EventArgs e)
         {
             RemoveControlPanels();
-            //displayMonth = previousMonth ? displayMonth.AddMonths(-1) : displayMonth;
             displayDays(displayMonth);
             ChangeTitle(displayMonth);
 
@@ -179,7 +187,7 @@ namespace GUI_Management_of_medical_clinic
             CheckTheMonth();
             labelDate.Text = selectedDate.ToString("d");
 
-            List<AppointmentModel> appointments = AppointmentService.CheckAppointmentsAndReturnList(selectedDate, previousMonth ? CalendarService.GetCalendarByDateReference(displayMonth.AddMonths(-1).ToString("MM") + '-' + displayMonth.AddMonths(-1).ToString("yyyy")).IdCalendar : CalendarService.GetCalendarByDateReference(displayMonth.ToString("MM") + '-' + displayMonth.ToString("yyyy")).IdCalendar);
+            List<AppointmentModel> appointments = AppointmentService.CheckAppointmentsAndReturnList(selectedDate, duplicateCalendar.IdCalendar);
             dataGridViewAppointments.Rows.Clear();
             foreach (AppointmentModel appointment in appointments)
             {
