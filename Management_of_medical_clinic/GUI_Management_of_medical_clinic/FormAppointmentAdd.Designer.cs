@@ -49,9 +49,9 @@
             labelTerm.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
             labelTerm.Location = new Point(1025, 416);
             labelTerm.Name = "labelTerm";
-            labelTerm.Size = new Size(82, 37);
+            labelTerm.Size = new Size(94, 37);
             labelTerm.TabIndex = 1;
-            labelTerm.Text = "Term";
+            labelTerm.Text = "Terms";
             // 
             // label7
             // 
@@ -117,7 +117,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(868, 354);
+            label1.Location = new Point(855, 354);
             label1.Name = "label1";
             label1.Size = new Size(126, 37);
             label1.TabIndex = 42;
@@ -143,7 +143,7 @@
             // 
             labelDay.AutoSize = true;
             labelDay.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            labelDay.Location = new Point(870, 245);
+            labelDay.Location = new Point(855, 246);
             labelDay.Name = "labelDay";
             labelDay.Size = new Size(201, 37);
             labelDay.TabIndex = 48;

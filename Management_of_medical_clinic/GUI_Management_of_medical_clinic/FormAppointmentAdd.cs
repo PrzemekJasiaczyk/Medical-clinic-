@@ -23,16 +23,14 @@ namespace GUI_Management_of_medical_clinic
         {
             selectedDate = date;
             selectedDay = date.Day;
-            this.currentEmployee = currentEmployee;
+            this.currentEmployee = currentEmployee;        
 
             InitializeComponent();
-            //checkedListBoxTerms.Items.AddRange(typeof(EnumTerms).GetEnumNames());
 
             foreach (EnumTerms term in Enum.GetValues(typeof(EnumTerms)))
             {
                 checkedListBoxTerms.Items.Add(DoctorsPlanService.GetTermDescription(term));
             }
-
 
             try
             {
@@ -70,12 +68,9 @@ namespace GUI_Management_of_medical_clinic
         {
             try
             {
-                if (comboBoxDoctor.SelectedIndex < 0) return;
-                if (comboBoxOffice.SelectedIndex < 0) return;
-
-                DoctorsDayPlanModel model = new DoctorsDayPlanModel();
+                DoctorsDayPlanModel model = new DoctorsDayPlanModel("1,2,3",selectedDay,1,(int)comboBoxDoctor.SelectedItem,(int)comboBoxOffice.SelectedItem, true);
                 DoctorsPlanService.AddAppointment(model);
-                MessageBox.Show("Success!");
+                MessageBox.Show("New plan added successfully");
             }
             catch (Exception ex)
             {
