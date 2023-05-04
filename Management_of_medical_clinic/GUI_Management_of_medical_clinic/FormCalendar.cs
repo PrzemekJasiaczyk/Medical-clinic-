@@ -1,6 +1,7 @@
 using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
 using GUI_Management_of_medical_clinic;
+using Microsoft.VisualBasic.ApplicationServices;
 using System.Drawing.Text;
 using System.Globalization;
 using System.Windows.Forms;
@@ -11,6 +12,8 @@ namespace GUI_Management_of_medical_clinic
     {
         EmployeeModel currentEmployee;
         bool previousMonth;
+        string _selectedDate="";
+
         public FormCalendar(EmployeeModel currentEmployee, bool previousMonth = false)
         {
             InitializeComponent();
@@ -70,10 +73,10 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonExit_Click(object sender, EventArgs e)
         {
-            FormMenu formMenu = new FormMenu();
-            this.Hide();
-            formMenu.ShowDialog();
-            this.Close();
+            //EmployeeModel employee = EmployeeService.GetEmployeeByUserId(user);
+            FormCalendarsList formCalendarsList = new(currentEmployee);
+            formCalendarsList.ShowDialog();
+            Close();
         }
 
         #region
@@ -178,6 +181,7 @@ namespace GUI_Management_of_medical_clinic
         {
             CheckTheMonth();
             labelDate.Text = selectedDate.ToString("d");
+            _selectedDate= selectedDate.ToString("d");
 
             List<AppointmentModel> appointments = AppointmentService.CheckAppointmentsAndReturnList(selectedDate, previousMonth ? CalendarService.GetCalendarByDateReference(displayMonth.AddMonths(-1).ToString("MM") + '-' + displayMonth.AddMonths(-1).ToString("yyyy")).IdCalendar : CalendarService.GetCalendarByDateReference(displayMonth.ToString("MM") + '-' + displayMonth.ToString("yyyy")).IdCalendar);
             dataGridViewAppointments.Rows.Clear();
@@ -195,12 +199,25 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonAddAppointment_Click(object sender, EventArgs e)
         {
-            if (labelDate.Text == "Select term") { MessageBox.Show("Choose term"); return; }
+            if (_selectedDate.Length != 0)
+            {
+                if (CalendarService.checkIfCalendarExists(_selectedDate) == true)
+                {
+                    FormAppointmentAdd formAppointmentAdd = new FormAppointmentAdd(DateTime.Parse(labelDate.Text), currentEmployee);
+                    //this.Hide();
+                    formAppointmentAdd.ShowDialog();
+                    //this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("A calendar hasn't been started for the given month");
+                }
+            }
+            else
+            {
+                MessageBox.Show("A term needs to be selected");
+            }
 
-            FormAppointmentAdd formAppointmentAdd = new FormAppointmentAdd(DateTime.Parse(labelDate.Text), currentEmployee);
-            //this.Hide();
-            formAppointmentAdd.ShowDialog();
-            //this.Close();
         }
 
 
