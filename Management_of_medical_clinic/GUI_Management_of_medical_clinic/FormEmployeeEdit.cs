@@ -18,6 +18,9 @@ namespace GUI_Management_of_medical_clinic
     {
         EmployeeModel employee;
         EmployeeModel currentUser;
+
+        Color _errorColor = Color.LightPink;
+        Color _normalColor = SystemColors.Window;
         public FormEmployeeEdit(EmployeeModel emp, EmployeeModel currentU)
         {
             InitializeComponent();
@@ -58,12 +61,15 @@ namespace GUI_Management_of_medical_clinic
             else
                 buttonConfirm.Enabled = false;
         }
+
+        PatientService _patientValidator = new();
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
-            (string stringPESEL, bool booleanPESEL) = EmployeeService.validatePESEL(textBoxPESEL.Text, dateTimePickerDate.Value, comboBoxSex.SelectedIndex);
-            if (!booleanPESEL)
+            string errorMessage;
+
+            if (!_patientValidator.IsValidPESEL(textBoxPESEL.Text, dateTimePickerDate.Value, (EnumSex)comboBoxSex.SelectedItem, out errorMessage))
             {
-                MessageBox.Show(stringPESEL);
+                MessageBox.Show(errorMessage);
                 return;
             }
 
@@ -193,6 +199,16 @@ namespace GUI_Management_of_medical_clinic
         private void textBoxLastName_TextChanged_1(object sender, EventArgs e)
         {
             checkForms();
+        }
+
+        private void textBoxPESEL_Validated(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxPESEL_Validating(object sender, CancelEventArgs e)
+        {
+
         }
     }
 }
