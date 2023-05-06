@@ -170,5 +170,60 @@ namespace MedicalClinicTest
 
         #endregion
 
+        #region GetLastNameAndNameOfEmployeeByAppointment
+
+        [Fact]
+        public void TestGetLastNameAndNameOfEmployeeByAppointment_Correct()
+        {
+            AppDbContext context = new AppDbContext();
+
+            EmployeeModel employee = fakeEmployee;
+            context.DbEmployees.Add(employee);
+            context.SaveChanges();
+
+            Patient patient = fakePatient;
+            context.Patients.Add(patient);
+            context.SaveChanges();
+
+            AppointmentModel first = firstFakeAppointment;
+            first.IdEmployee = employee.IdEmployee;
+            context.DbAppointments.Add(first);
+            context.SaveChanges();
+
+            string result = CalendarAppointmentService.GetLastNameAndNameOfEmployeeByAppointment(first);
+
+            Assert.Equal(employee.FirstName + " " + employee.LastName, result);
+
+            context.DbAppointments.Remove(first);
+            context.DbEmployees.Remove(employee);
+            context.Patients.Remove(patient);
+            context.SaveChanges();
+        }
+
+        [Fact]
+        public void TestGetLastNameAndNameOfEmployeeByAppointment_EmployeeNotFound()
+        {
+            AppointmentModel appointment = new AppointmentModel
+            {
+                IdEmployee = 9999
+            };
+
+            Exception exception = Assert.Throws<Exception>(() => CalendarAppointmentService.GetLastNameAndNameOfEmployeeByAppointment(appointment));
+            Assert.Equal("Employee not found in database", exception.Message);
+        }
+
+        [Fact]
+        public void TestGetLastNameAndNameOfEmployeeByAppointment_EmployeeIsNull()
+        {
+            AppointmentModel appointment = new AppointmentModel
+            {
+                IdEmployee = null
+            };
+
+            Exception exception = Assert.Throws<Exception>(() => CalendarAppointmentService.GetLastNameAndNameOfEmployeeByAppointment(appointment));
+            Assert.Equal("IdEmployee = null", exception.Message);
+        }
+
+        #endregion
     }
 }
