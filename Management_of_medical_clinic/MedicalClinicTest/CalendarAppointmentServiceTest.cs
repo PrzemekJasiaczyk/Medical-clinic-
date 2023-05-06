@@ -117,5 +117,58 @@ namespace MedicalClinicTest
 
         #endregion
 
+        #region GetAppointmentsWithPatients
+
+        [Fact]
+        public void TestGetAppointmentsWithPatients_Include()
+        {
+            AppDbContext context = new AppDbContext();
+
+            Patient patient = fakePatient;
+            context.Patients.Add(patient);
+            context.SaveChanges();
+
+            EmployeeModel employee = fakeEmployee;
+            context.DbEmployees.Add(employee);
+            context.SaveChanges();
+
+            AppointmentModel first = firstFakeAppointment;
+            context.DbAppointments.Add(first);
+            context.SaveChanges();
+
+            List<AppointmentModel> result = CalendarAppointmentService.GetAppointmentsWithPatients();
+
+            Assert.Contains(result, a => a.IdAppointment == first.IdAppointment);
+
+            context.DbAppointments.Remove(first);
+            context.DbEmployees.Remove(employee);
+            context.Patients.Remove(patient);
+            context.SaveChanges();
+        }
+
+        [Fact]
+        public void TestGetAppointmentsWithPatients_NotInclude()
+        {
+            AppDbContext context = new AppDbContext();
+
+            EmployeeModel employee = fakeEmployee;
+            context.DbEmployees.Add(employee);
+            context.SaveChanges();
+
+            AppointmentModel second = secondFakeAppointment;
+            context.DbAppointments.Add(second);
+            context.SaveChanges();
+
+            List<AppointmentModel> result = CalendarAppointmentService.GetAppointmentsWithPatients();
+
+            Assert.DoesNotContain(result, a => a.IdAppointment == second.IdAppointment);
+
+            context.DbAppointments.Remove(second);
+            context.DbEmployees.Remove(employee);
+            context.SaveChanges();
+        }
+
+        #endregion
+
     }
 }
