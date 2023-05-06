@@ -2,6 +2,8 @@
 using Console_Management_of_medical_clinic.Model;
 using Console_Management_of_medical_clinic.Data.Enums;
 using Console_Management_of_medical_clinic.Data;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace MedicalClinicTest
 {
@@ -25,8 +27,8 @@ namespace MedicalClinicTest
             IdEmployee = 1000,
             FirstName = "Piotr",
             LastName = "Nowak",
-            PESEL= "92013012345",
-            DateOfBirth="13-01-1992"
+            PESEL = "92013012345",
+            DateOfBirth = "13-01-1992"
         };
 
         AppointmentModel firstFakeAppointment = new AppointmentModel()
@@ -53,6 +55,30 @@ namespace MedicalClinicTest
             IdOffice = 1
         };
 
+        AppointmentModel thirdFakeAppointment = new AppointmentModel()
+        {
+            IdTerm = 3,
+            IdDay = 3,
+            Cost = 1000,
+            IsActive = true,
+            IdCalendar = 1,
+            IdEmployee = 3,
+            PatientId = 1,
+            IdOffice = 1
+        };
+
+        AppointmentModel fourthFakeAppointment = new AppointmentModel()
+        {
+            IdTerm = 4,
+            IdDay = 4,
+            Cost = 1000,
+            IsActive = true,
+            IdCalendar = 1,
+            IdEmployee = 4,
+            PatientId = 4,
+            IdOffice = 2
+        };
+
         #endregion
 
         #region GetPatientDataByIdPatient
@@ -70,7 +96,7 @@ namespace MedicalClinicTest
             context.DbEmployees.Add(employee);
             context.SaveChanges();
 
-            AppointmentModel first = firstFakeAppointment; 
+            AppointmentModel first = firstFakeAppointment;
             context.DbAppointments.Add(first);
             context.SaveChanges();
 
@@ -225,5 +251,47 @@ namespace MedicalClinicTest
         }
 
         #endregion
+
+        #region AppointmentInSelectedDate
+        [Fact]
+        public void TestappointmentInSelectedDate_Correct()
+        {
+            DateTime selectedDate = new DateTime(2023, 05, 06);
+            int idCalendar = 1;
+            List<AppointmentModel> appointments = new List<AppointmentModel>()
+            {
+            new AppointmentModel { IdCalendar = 1, IdDay = 6 },
+            new AppointmentModel { IdCalendar = 1, IdDay = 6 },
+            new AppointmentModel { IdCalendar = 2, IdDay = 6 }
+            };
+
+            List<AppointmentModel> result = CalendarAppointmentService.appointmentInSelectedDate(appointments, selectedDate, idCalendar);
+
+            Assert.Equal(2, result.Count);
+            Assert.All(result, appointment => Assert.Equal(1, appointment.IdCalendar));
+            Assert.All(result, appointment => Assert.Equal(6, appointment.IdDay));
+        }
+
+
+        [Fact]
+        public void TestappointmentInSelectedDate_incorrect()
+        {
+            DateTime selectedDate = new DateTime(2023, 05, 06);
+            int idCalendar = 2;
+
+            List<AppointmentModel> appointments = new List<AppointmentModel>()
+            {
+            new AppointmentModel { IdCalendar = 1, IdDay = 7 },
+            new AppointmentModel { IdCalendar = 2, IdDay = 8 }
+            };
+
+            List<AppointmentModel> result = CalendarAppointmentService.appointmentInSelectedDate(appointments, selectedDate, idCalendar);
+            Assert.Empty(result);
+        }
+        #endregion
+
     }
 }
+
+
+
