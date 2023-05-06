@@ -290,8 +290,52 @@ namespace MedicalClinicTest
         }
         #endregion
 
+
+        #region GetAppointmentsData
+        [Fact]
+        public void TestGetAppointmentsData_Correct()
+        {
+            using (AppDbContext context = new AppDbContext())
+            {
+                AppointmentModel fourth = fourthFakeAppointment;
+                context.DbAppointments.Add(fourth);
+                AppointmentModel third = thirdFakeAppointment;
+                context.DbAppointments.Add(third);
+                context.SaveChanges();
+
+                int Count = context.DbAppointments.Count();
+
+                var result = CalendarAppointmentService.GetAppointmentsData();
+                Assert.Equal(Count, result.Count);
+                Assert.Contains(result, a => a.IdTerm == 3);
+                Assert.Contains(result, a => a.IdTerm == 4);
+                Assert.Contains(result, a => a.IdDay == 3);
+                Assert.Contains(result, a => a.IdDay == 4);
+                Assert.Contains(result, a => a.Cost == 1000);
+                Assert.Contains(result, a => a.Cost == 1000);
+                Assert.Contains(result, a => a.IsActive == true);
+                Assert.Contains(result, a => a.IsActive == true);
+                Assert.Contains(result, a => a.IdCalendar == 1);
+                Assert.Contains(result, a => a.IdCalendar == 1);
+                Assert.Contains(result, a => a.IdEmployee == 3);
+                Assert.Contains(result, a => a.IdEmployee == 4);
+                Assert.Contains(result, a => a.PatientId == 1);
+                Assert.Contains(result, a => a.PatientId == 4);
+                Assert.Contains(result, a => a.IdOffice == 1);
+                Assert.Contains(result, a => a.IdOffice == 2);
+
+                context.DbAppointments.Remove(fourth);
+                context.DbAppointments.Remove(third);
+                context.SaveChanges();
+
+            }
+        }
     }
+    #endregion
+
+
 }
+
 
 
 
