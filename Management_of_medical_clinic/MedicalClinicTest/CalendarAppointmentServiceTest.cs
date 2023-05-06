@@ -260,9 +260,38 @@ namespace MedicalClinicTest
             int idCalendar = 1;
             List<AppointmentModel> appointments = new List<AppointmentModel>()
             {
-            new AppointmentModel { IdCalendar = 1, IdDay = 6 },
-            new AppointmentModel { IdCalendar = 1, IdDay = 6 },
-            new AppointmentModel { IdCalendar = 2, IdDay = 6 }
+            new AppointmentModel 
+            {
+                IdTerm = 3,
+                IdDay = 6,
+                Cost = 150,
+                IsActive = true,
+                IdCalendar = 1,
+                IdEmployee = 3,
+                PatientId = 1,
+                IdOffice = 1
+            },
+            new AppointmentModel 
+            { 
+                IdTerm = 4,
+                IdDay = 6,
+                Cost = 150,
+                IsActive = true,
+                IdCalendar = 1,
+                IdEmployee = 3,
+                PatientId = 1,
+                IdOffice = 1 
+            },
+            new AppointmentModel 
+            {  
+                IdTerm = 3,
+                IdDay = 6,
+                Cost = 100,
+                IsActive = true,
+                IdCalendar = 2,
+                IdEmployee = 3,
+                PatientId = 1,
+                IdOffice = 1 }
             };
 
             List<AppointmentModel> result = CalendarAppointmentService.appointmentInSelectedDate(appointments, selectedDate, idCalendar);
@@ -281,8 +310,26 @@ namespace MedicalClinicTest
 
             List<AppointmentModel> appointments = new List<AppointmentModel>()
             {
-            new AppointmentModel { IdCalendar = 1, IdDay = 7 },
-            new AppointmentModel { IdCalendar = 2, IdDay = 8 }
+            new AppointmentModel 
+            { 
+                IdTerm = 3,
+                IdDay = 4,
+                Cost = 1000,
+                IsActive = true,
+                IdCalendar = 2,
+                IdEmployee = 3,
+                PatientId = 2,
+                IdOffice = 1 },
+            new AppointmentModel 
+            { 
+                IdTerm = 10,
+                IdDay = 9,
+                Cost = 1000,
+                IsActive = true,
+                IdCalendar = 1,
+                IdEmployee = 3,
+                PatientId = 3,
+                IdOffice = 1 }
             };
 
             List<AppointmentModel> result = CalendarAppointmentService.appointmentInSelectedDate(appointments, selectedDate, idCalendar);
