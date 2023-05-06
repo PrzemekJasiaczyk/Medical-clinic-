@@ -4,12 +4,14 @@ using Console_Management_of_medical_clinic.Data.Enums;
 using Console_Management_of_medical_clinic.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Xml.Linq;
 
 namespace MedicalClinicTest
 {
     public class CalendarAppointmentServiceTest
     {
         #region Fake Data
+
         Patient fakePatient = new Patient()
         {
             PatientId = 1000,
@@ -90,11 +92,9 @@ namespace MedicalClinicTest
 
             Patient patient = fakePatient;
             context.Patients.Add(patient);
-            context.SaveChanges();
 
             EmployeeModel employee = fakeEmployee;
             context.DbEmployees.Add(employee);
-            context.SaveChanges();
 
             AppointmentModel first = firstFakeAppointment;
             context.DbAppointments.Add(first);
@@ -152,11 +152,9 @@ namespace MedicalClinicTest
 
             Patient patient = fakePatient;
             context.Patients.Add(patient);
-            context.SaveChanges();
 
             EmployeeModel employee = fakeEmployee;
             context.DbEmployees.Add(employee);
-            context.SaveChanges();
 
             AppointmentModel first = firstFakeAppointment;
             context.DbAppointments.Add(first);
@@ -179,7 +177,6 @@ namespace MedicalClinicTest
 
             EmployeeModel employee = fakeEmployee;
             context.DbEmployees.Add(employee);
-            context.SaveChanges();
 
             AppointmentModel second = secondFakeAppointment;
             context.DbAppointments.Add(second);
@@ -205,20 +202,18 @@ namespace MedicalClinicTest
 
             EmployeeModel employee = fakeEmployee;
             context.DbEmployees.Add(employee);
-            context.SaveChanges();
 
             Patient patient = fakePatient;
             context.Patients.Add(patient);
-            context.SaveChanges();
 
             AppointmentModel first = firstFakeAppointment;
-            first.IdEmployee = employee.IdEmployee;
             context.DbAppointments.Add(first);
             context.SaveChanges();
 
             string result = CalendarAppointmentService.GetLastNameAndNameOfEmployeeByAppointment(first);
-
-            Assert.Equal(employee.FirstName + " " + employee.LastName, result);
+            string full_name = employee.FirstName + " " + employee.LastName;
+           
+            Assert.Equal(full_name, result);
 
             context.DbAppointments.Remove(first);
             context.DbEmployees.Remove(employee);
@@ -337,7 +332,6 @@ namespace MedicalClinicTest
         }
         #endregion
 
-
         #region GetAppointmentsData
         [Fact]
         public void TestGetAppointmentsData_Correct()
@@ -380,9 +374,4 @@ namespace MedicalClinicTest
     }
     #endregion
 
-
 }
-
-
-
-
