@@ -116,7 +116,7 @@
             buttonBack.Name = "buttonBack";
             buttonBack.Size = new Size(252, 66);
             buttonBack.TabIndex = 22;
-            buttonBack.Text = "Back";
+            buttonBack.Text = "Cancel";
             buttonBack.UseVisualStyleBackColor = false;
             buttonBack.Click += buttonBack_Click;
             // 
