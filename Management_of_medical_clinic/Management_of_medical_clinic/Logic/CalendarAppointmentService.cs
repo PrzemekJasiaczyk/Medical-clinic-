@@ -126,7 +126,7 @@ namespace Console_Management_of_medical_clinic.Logic
             return result;
         }
 
-        public static List<AppointmentModel> SortByDoctor(List<AppointmentModel> appointments)
+        public static List<AppointmentModel> SortByDoctorLastName(List<AppointmentModel> appointments)
         {
             return appointments.OrderBy(a => EmployeeService.GetEmployeeByID((int)a.IdEmployee).LastName).ToList();
         }

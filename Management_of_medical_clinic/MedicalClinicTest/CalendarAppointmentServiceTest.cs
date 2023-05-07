@@ -24,7 +24,7 @@ namespace MedicalClinicTest
             LastVisitDate = null
         };
 
-        EmployeeModel fakeEmployee = new EmployeeModel()
+        EmployeeModel firstFakeEmployee = new EmployeeModel()
         {
             IdEmployee = 1000,
             FirstName = "Piotr",
@@ -32,6 +32,8 @@ namespace MedicalClinicTest
             PESEL = "92013012345",
             DateOfBirth = "13-01-1992"
         };
+
+        
 
         AppointmentModel firstFakeAppointment = new AppointmentModel()
         {
@@ -83,6 +85,127 @@ namespace MedicalClinicTest
 
         #endregion
 
+        #region Fake data to sort 
+
+        EmployeeModel secendFakeEmployee = new EmployeeModel()
+        {
+            IdEmployee = 1001,
+            FirstName = "Piotr",
+            LastName = "Zowak",
+            PESEL = "85091022515",
+            DateOfBirth = "10-09-1985"
+        };
+
+        EmployeeModel thirdFakeEmployee = new EmployeeModel()
+        {
+            IdEmployee = 1002,
+            FirstName = "Piotr",
+            LastName = "Awak",
+            PESEL = "85091087877",
+            DateOfBirth = "10-09-1985"
+        };
+
+        AppointmentModel fifthFakeAppointment = new AppointmentModel()
+        {
+            IdTerm = 2,
+            IdDay = 2,
+            Cost = 1000,
+            IsActive = true,
+            IdCalendar = 1,
+            IdEmployee = 1001,
+            PatientId = 4,
+            IdOffice = 2
+        };
+
+        AppointmentModel sixthFakeAppointment = new AppointmentModel()
+        {
+            IdTerm = 1,
+            IdDay = 2,
+            Cost = 1000,
+            IsActive = true,
+            IdCalendar = 1,
+            IdEmployee = 1002,
+            PatientId = 4,
+            IdOffice = 2
+        };
+
+
+        #endregion
+
+        #region SortByDoctorLastName
+
+        [Fact]
+        public void TestSortByDoctor_correct()
+        {
+            EmployeeService.AddEmployee(secendFakeEmployee);
+            EmployeeService.AddEmployee(thirdFakeEmployee);
+
+            AppointmentService.AddAppointment(fifthFakeAppointment);
+            AppointmentService.AddAppointment(sixthFakeAppointment);
+
+
+            List<AppointmentModel> fakeListAppointments = new List<AppointmentModel>();
+            fakeListAppointments.Add(fifthFakeAppointment); //Zowak
+            fakeListAppointments.Add(sixthFakeAppointment); //Awak
+
+            List<AppointmentModel> test = CalendarAppointmentService.SortByDoctorLastName(fakeListAppointments);
+            int result = (int)test[0].IdEmployee;
+            int expect = 1002;
+            Assert.Equal(expect, result);
+
+
+            using (AppDbContext context = new AppDbContext())
+            {
+                context.DbAppointments.Remove(fifthFakeAppointment);
+                context.DbAppointments.Remove(sixthFakeAppointment);
+
+                context.DbEmployees.Remove(secendFakeEmployee);
+                context.DbEmployees.Remove(thirdFakeEmployee);
+                
+                context.SaveChanges();
+            }
+
+        }
+
+        #endregion
+
+        #region SortByTerm
+
+        [Fact]
+        public void TestSortByTerm_correct()
+        {
+            EmployeeService.AddEmployee(secendFakeEmployee);
+            EmployeeService.AddEmployee(thirdFakeEmployee);
+
+            AppointmentService.AddAppointment(fifthFakeAppointment);
+            AppointmentService.AddAppointment(sixthFakeAppointment);
+
+            List<AppointmentModel> fakeListAppointments = new List<AppointmentModel>
+            {
+                fifthFakeAppointment, //2
+                sixthFakeAppointment //1
+            };
+
+            List<AppointmentModel> test = CalendarAppointmentService.SortByTerm(fakeListAppointments);
+            int result = (int)test[0].IdTerm;
+            int expect = 1;
+            Assert.Equal(expect, result);
+
+
+            using (AppDbContext context = new AppDbContext())
+            {
+                context.DbAppointments.Remove(fifthFakeAppointment);
+                context.DbAppointments.Remove(sixthFakeAppointment);
+
+                context.DbEmployees.Remove(secendFakeEmployee);
+                context.DbEmployees.Remove(thirdFakeEmployee);
+
+                context.SaveChanges();
+            }
+
+        }
+        #endregion
+
         #region GetPatientDataByIdPatient
 
         [Fact]
@@ -93,7 +216,7 @@ namespace MedicalClinicTest
             Patient patient = fakePatient;
             context.Patients.Add(patient);
 
-            EmployeeModel employee = fakeEmployee;
+            EmployeeModel employee = firstFakeEmployee;
             context.DbEmployees.Add(employee);
 
             AppointmentModel first = firstFakeAppointment;
@@ -153,7 +276,7 @@ namespace MedicalClinicTest
             Patient patient = fakePatient;
             context.Patients.Add(patient);
 
-            EmployeeModel employee = fakeEmployee;
+            EmployeeModel employee = firstFakeEmployee;
             context.DbEmployees.Add(employee);
 
             AppointmentModel first = firstFakeAppointment;
@@ -175,7 +298,7 @@ namespace MedicalClinicTest
         {
             AppDbContext context = new AppDbContext();
 
-            EmployeeModel employee = fakeEmployee;
+            EmployeeModel employee = firstFakeEmployee;
             context.DbEmployees.Add(employee);
 
             AppointmentModel second = secondFakeAppointment;
@@ -200,7 +323,7 @@ namespace MedicalClinicTest
         {
             AppDbContext context = new AppDbContext();
 
-            EmployeeModel employee = fakeEmployee;
+            EmployeeModel employee = firstFakeEmployee;
             context.DbEmployees.Add(employee);
 
             Patient patient = fakePatient;
