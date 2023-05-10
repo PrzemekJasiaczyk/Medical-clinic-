@@ -128,7 +128,7 @@
             buttonExit.Name = "buttonExit";
             buttonExit.Size = new Size(252, 66);
             buttonExit.TabIndex = 46;
-            buttonExit.Text = "Back";
+            buttonExit.Text = "Cancel";
             buttonExit.UseVisualStyleBackColor = false;
             buttonExit.Click += buttonExit_Click;
             // 
@@ -269,7 +269,7 @@
             buttonAddFiltr.Name = "buttonAddFiltr";
             buttonAddFiltr.Size = new Size(103, 23);
             buttonAddFiltr.TabIndex = 12;
-            buttonAddFiltr.Text = "Add filtr";
+            buttonAddFiltr.Text = "Set filters";
             buttonAddFiltr.UseVisualStyleBackColor = true;
             buttonAddFiltr.Click += buttonAddFiltr_Click;
             // 

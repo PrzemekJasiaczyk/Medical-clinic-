@@ -324,9 +324,9 @@ namespace GUI_Management_of_medical_clinic
                 FormMessage1.ShowDialog();
                 return;
             }
-       
+
             AppointmentModel appointment = (AppointmentModel)dataGridViewAppointmentList.SelectedRows[0].Tag;
-            
+
             DateTime date = CalendarService.GetDateByIdCalendar((int)appointment.IdCalendar, appointment.IdDay);
             string term = AppointmentService.GetTermByTermId((int)appointment.IdTerm);
             TimeSpan time = TimeSpan.ParseExact(term, "hh\\:mm", null);
