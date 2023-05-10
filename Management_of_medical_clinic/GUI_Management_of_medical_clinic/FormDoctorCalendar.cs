@@ -22,24 +22,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void FormDoctorCalendar_Load(object sender, EventArgs e)
         {
-            RemoveControlPanels();
-            List<CalendarModel> calendars = new List<CalendarModel>();
-            foreach (CalendarModel calendar in calendars)
-            {
-                if (calendar.IdEmployee == currentUser.IdEmployee && calendar.Active == false)
-                {
-                    displayMonth = Convert.ToDateTime(calendar.DateReference);
-                    this.calendar = calendar;
-                }
-            }        
 
-            displayDays(displayMonth);
-            ChangeTitle(displayMonth);
-
-            dataGridViewAppointments.Rows.Clear();
-            dataGridViewAppointments.Columns.Add("Room", "Room");
-            dataGridViewAppointments.Columns.Add("Hour", "Hour");
-            dataGridViewAppointments.Columns.Add("Patient", "Patient");
         }
 
         private void RemoveControlPanels()
@@ -73,7 +56,8 @@ namespace GUI_Management_of_medical_clinic
             {
                 DateTime day = new DateTime(date.Year, date.Month, i);
                 UserControl userControl = itIsADayOf(day);
-                MarkPlannedDays(userControl, day);            
+                MarkToday(userControl, day);
+                MarkPlannedDays(userControl, day);
                 flowLayoutPanelMonth.Controls.Add(userControl);
             }
 
@@ -113,20 +97,34 @@ namespace GUI_Management_of_medical_clinic
             }
         }
 
+        private void MarkToday(UserControl userControl, DateTime day)
+        {
+            if (day.Date == DateTime.Today.Date)
+            {
+                userControl.BackColor = Color.LightBlue;
+            }
+        }
+
         private void UserControlDay_ControlClicked(object sender, DateTime selectedDate)   // Date From UserControlDay
         {
             labelDate.Text = selectedDate.ToString("d");
 
             List<AppointmentModel> appointments = AppointmentService.CheckAppointmentsAndReturnList(selectedDate);
             dataGridViewAppointments.Rows.Clear();
+            dataGridViewYourAppointments.Rows.Clear();
             foreach (AppointmentModel appointment in appointments)
             {
+                string timeTerm = AppointmentService.GetTermByTermId(appointment.IdTerm);
+                Patient patient = PatientService.GetPatientById((int)appointment.PatientId);
+
                 if (appointment.IdEmployee == currentUser.IdEmployee)
                 {
-                    string timeTerm = AppointmentService.GetTermByTermId(appointment.IdTerm);
-                    Patient patient = PatientService.GetPatientById((int)appointment.PatientId);
-                    dataGridViewAppointments.Rows.Add(appointment.IdOffice, timeTerm, patient.FirstName + " " + patient.LastName);
+                    int index = dataGridViewYourAppointments.Rows.Add(appointment.IdOffice, timeTerm, patient.FirstName + " " + patient.LastName);
+                    dataGridViewYourAppointments.Rows[index].Tag = appointment;
                 }
+
+                dataGridViewAppointments.Rows.Add(appointment.IdEmployee, appointment.IdOffice, timeTerm, patient.FirstName + " " + patient.LastName);
+
             }
         }
         private void buttonExit_Click(object sender, EventArgs e)
@@ -136,12 +134,6 @@ namespace GUI_Management_of_medical_clinic
             formDoctorDashboard.ShowDialog();
             this.Close();
         }
-
-        private void buttonCancelAppointment_Click(object sender, EventArgs e)
-        {
-            //soon..
-        }
-
         private void buttonAccept_Click(object sender, EventArgs e) //accept calendar
         {
             this.Hide();
@@ -156,6 +148,63 @@ namespace GUI_Management_of_medical_clinic
             FormCalendarRejectConfirm formCalendarRejectConfirm = new FormCalendarRejectConfirm(calendar);
             formCalendarRejectConfirm.ShowDialog();
             this.Close();
+        }
+
+        private void buttonExit_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+            FormDoctorDashboard formDoctorDashboard = new FormDoctorDashboard(currentUser);
+            formDoctorDashboard.ShowDialog();
+            this.Close();
+        }
+
+        private void FormDoctorCalendar_Load_1(object sender, EventArgs e)
+        {
+            RemoveControlPanels();
+            List<CalendarModel> calendars = new List<CalendarModel>();
+            foreach (CalendarModel calendar in calendars)
+            {
+                if (calendar.IdEmployee == currentUser.IdEmployee && calendar.Active == false)
+                {
+                    displayMonth = Convert.ToDateTime(calendar.DateReference);
+                    this.calendar = calendar;
+                }
+            }
+
+            displayDays(displayMonth);
+            ChangeTitle(displayMonth);
+
+            dataGridViewAppointments.Rows.Clear();
+            dataGridViewAppointments.Columns.Add("Doctor", "Doctor");
+            dataGridViewAppointments.Columns.Add("Room", "Room");
+            dataGridViewAppointments.Columns.Add("Hour", "Hour");
+            dataGridViewAppointments.Columns.Add("Patient", "Patient");
+
+            dataGridViewYourAppointments.Rows.Clear();
+            dataGridViewYourAppointments.Columns.Add("Room", "Room");
+            dataGridViewYourAppointments.Columns.Add("Hour", "Hour");
+            dataGridViewYourAppointments.Columns.Add("Patient", "Patient");
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelDate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonEditAppointment_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewYourAppointments.SelectedRows.Count < 1)
+                return;
+
+            AppointmentModel appointment = (AppointmentModel)dataGridViewYourAppointments.SelectedRows[0].Tag;
+
+            FormDoctorCalendarEdit edit = new FormDoctorCalendarEdit(appointment);
+            edit.ShowDialog();
         }
     }
 }
