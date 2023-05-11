@@ -112,9 +112,9 @@ namespace Console_Management_of_medical_clinic.Model
 
             return employees;
         }
-        
 
-        public static void EditEmployee(int IdEmployee, string firstName, string lastName, string pesel, string dateOfBirth, EnumEmployeeRoles role, string correspondenceAddress, string email, string phoneNumber,
+
+        public static void EditEmployeeWithSpecialization(int IdEmployee, string firstName, string lastName, string pesel, string dateOfBirth, EnumEmployeeRoles role, string correspondenceAddress, string email, string phoneNumber,
             EnumSex sex, int idSpecialization, bool isActive)
         {
             var context = new AppDbContext();
@@ -134,6 +134,25 @@ namespace Console_Management_of_medical_clinic.Model
             context.SaveChanges();
         }
 
+        public static void EditEmployee(int IdEmployee, string firstName, string lastName, string pesel, string dateOfBirth, EnumEmployeeRoles role, string correspondenceAddress, string email, string phoneNumber,
+            EnumSex sex, bool isActive)
+        {
+            var context = new AppDbContext();
+            var emp = context.DbEmployees.Find(IdEmployee);
+
+            emp.FirstName = firstName;
+            emp.LastName = lastName;
+            emp.PESEL = pesel;
+            emp.DateOfBirth = dateOfBirth;
+            emp.CorrespondenceAddress = correspondenceAddress;
+            emp.Email = email;
+            emp.PhoneNumber = phoneNumber;
+            emp.Sex = sex;
+            emp.Role = role;
+            emp.IdSpecialization = null;
+            emp.IsActive = isActive;
+            context.SaveChanges();
+        }
 
         public override string ToString()
         {

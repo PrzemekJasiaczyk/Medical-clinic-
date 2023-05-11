@@ -50,6 +50,11 @@ namespace GUI_Management_of_medical_clinic
             textBoxEmail.Text = employee.Email;
             textBoxPhone.Text = employee.PhoneNumber;
             comboBoxSex.SelectedItem = employee.Sex;
+            if (employee.IdSpecialization != null)
+            {
+
+                checkedListBoxSpecialization.SelectedItem = SpecializationService.GetSpecializationNameById((int)employee.IdSpecialization);
+            }
 
             checkIfMedicalDoctor();
 
@@ -95,9 +100,19 @@ namespace GUI_Management_of_medical_clinic
 
             EnumSex enumSex = (EnumSex)Enum.Parse(typeof(EnumSex), comboBoxSex.SelectedItem.ToString());
             EnumEmployeeRoles enumRole = (EnumEmployeeRoles)Enum.Parse(typeof(EnumEmployeeRoles), comboBoxRole.SelectedItem.ToString());
+            int idSpecialization;
 
-            EmployeeModel.EditEmployee(employee.IdEmployee, textBoxFirstName.Text, textBoxLastName.Text, textBoxPESEL.Text, dateTimePickerDate.Text,
-                enumRole, textBoxAddress.Text, textBoxEmail.Text, textBoxPhone.Text, enumSex, 1, true);
+            if (comboBoxRole.Text == "MedicalDoctor")
+            {
+                idSpecialization = SpecializationService.getSpecializationIdByName(checkedListBoxSpecialization.SelectedItem.ToString());
+                EmployeeModel.EditEmployeeWithSpecialization(employee.IdEmployee, textBoxFirstName.Text, textBoxLastName.Text, textBoxPESEL.Text, dateTimePickerDate.Text,
+                enumRole, textBoxAddress.Text, textBoxEmail.Text, textBoxPhone.Text, enumSex, idSpecialization, true);
+            }
+            else
+            {
+                EmployeeModel.EditEmployee(employee.IdEmployee, textBoxFirstName.Text, textBoxLastName.Text, textBoxPESEL.Text, dateTimePickerDate.Text,
+                enumRole, textBoxAddress.Text, textBoxEmail.Text, textBoxPhone.Text, enumSex, true);
+            }
 
             MessageBox.Show("Employee’s data changed.");
 
