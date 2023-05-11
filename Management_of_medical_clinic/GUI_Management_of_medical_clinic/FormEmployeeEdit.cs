@@ -102,10 +102,9 @@ namespace GUI_Management_of_medical_clinic
             MessageBox.Show("Employee’s data changed.");
 
             FormEmployeeList employeeList = new FormEmployeeList(currentUser);
-            //this.Hide();
+            Hide();
             employeeList.ShowDialog();
-            this.Close();
-
+            Close();
         }
 
         public void checkIfMedicalDoctor()
@@ -115,7 +114,6 @@ namespace GUI_Management_of_medical_clinic
                 checkedListBoxSpecialization.Visible = true;
                 labelSpecialization.Visible = true;
             }
-
             else
             {
                 checkedListBoxSpecialization.Visible = false;
@@ -144,13 +142,12 @@ namespace GUI_Management_of_medical_clinic
             checkIfMedicalDoctor();
         }
 
-
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             FormEmployeeList employeeList = new FormEmployeeList(currentUser);
-            //this.Hide();
+            Hide();
             employeeList.ShowDialog();
-            this.Close();
+            Close();
         }
 
         private void correspAddressTextBox_TextChanged(object sender, EventArgs e)

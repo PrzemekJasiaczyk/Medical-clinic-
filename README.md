@@ -1,26 +1,44 @@
 # Clinic staff's module
 ## TODO List
 For now:
-- [ ] View list of appointments
-  - [ ] Forms
-  - [ ] Filtering
-  - [ ] Sorting
-- [ ] Registering a new appointment
-  - [ ] Forms
-  - [ ] Validation
-- [ ] Analysis
-  - [ ] Improve analysis for administration module
-  - [ ] Analysis for visit registration and calendar view for clinic staff
-- [ ] Functional tests for clinic staff module
+- [ ] Unit Tests (Appointments)
+  - [ ] AppointmentService
+    - [ ] CanReschedule
+  - [ ] CalendarAppointmentService
+    - [ ] GetPatientDataByIdPatient
+    - [ ] GetAppointmentsWithPatients
+    - [ ] GetLastNameAndNameOfEmployeeByAppointment
+    - [ ] GetAppointmentsData
+    - [ ] appointmentInSelectedDate
+    - [ ] SortByDoctor
+    - [ ] SortByTerm
+  - [ ] CalendarService
+    - [ ] Filter
+    - [ ] Sort
+    - [ ] GetDateByIdCalendar
+    - [ ] GetIdFromDate
+- [ ] Improve forms
+- [ ] Improve analysis for appointments
   
 Soon:
 - [ ] Rescheluding an appointment
-- [ ] Cancelling an appointment
 - [ ] Issuing a confirmation
 - [ ] Cleaning calendar from outdated and past visits
-- [ ] Appointment details
+
 ---
 Done:
+- [x] View list of appointments
+  - [x] Forms
+  - [x] Filtering
+  - [x] Sorting
+- [x] Registering a new appointment
+  - [x] Forms
+  - [x] Validation
+- [x] Analysis
+  - [x] Analysis for visit registration and calendar view for clinic staff
+- [x] Functional tests for clinic staff module
+- [x] Appointment details
+- [x] Cancelling an appointment
 - [X] Help Administratior module team with their stuff
 - [X] Solve problems and repair mistakes with validation logic
 - [x] Functional Tests (Patient management)

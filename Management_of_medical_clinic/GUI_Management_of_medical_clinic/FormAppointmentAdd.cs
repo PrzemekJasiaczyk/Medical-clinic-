@@ -1,4 +1,5 @@
-﻿using Console_Management_of_medical_clinic.Data.Enums;
+﻿using GUI_Management_of_medical_clinic;
+using Console_Management_of_medical_clinic.Data.Enums;
 using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
 using System;

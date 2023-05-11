@@ -7,7 +7,7 @@ namespace Console_Management_of_medical_clinic.Logic
 {
 	public class CalendarService : ICalendarFilterSort
 	{
-
+		public static string LastErrorMessage { get; private set; }
         public static void AddCalendar(CalendarModel calendarModel)
         {
             using (AppDbContext context = new AppDbContext())
@@ -58,7 +58,7 @@ namespace Console_Management_of_medical_clinic.Logic
             }
             return calendarIds;
         }
-        public static bool checkIfCalendarExists(string selectedDate)
+        public static bool checkIfCalendarExistsCalendarAdd(string selectedDate)    //only for Calendar adding, need to be edited
         {
             List<CalendarModel> calendars = GetCalendarData();
             string CurrentDateReference = selectedDate.Remove(0, 3).Replace(".", "-");
@@ -71,6 +71,21 @@ namespace Console_Management_of_medical_clinic.Logic
 				}
 			}
 			return false;
+        }
+
+        public static bool checkIfCalendarExists(string selectedDate)
+        {
+            List<CalendarModel> calendars = GetCalendarData();
+            string CurrentDateReference = selectedDate.Remove(0, 3).Replace(".", "-");
+
+            foreach (CalendarModel calendar in calendars)
+            {
+                if (calendar.DateReference == CurrentDateReference)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public static CalendarModel GetCalendarById(int id)
@@ -154,5 +169,79 @@ namespace Console_Management_of_medical_clinic.Logic
 
 			return sortedCalendars;
 		}
+
+		public static void DeleteCalendar(int IdCalendar)
+		{
+			try
+			{
+				using (var db = new AppDbContext())
+				{
+					CalendarModel calendar = db.DbCalendars.Find(IdCalendar);
+
+					if (calendar != null)
+					{
+						db.DbCalendars.Remove(calendar);
+						db.SaveChanges();
+					}
+				}
+			}catch(Microsoft.EntityFrameworkCore.DbUpdateException)
+			{
+				LastErrorMessage = "You can't remove this Calendar";
+				throw;
+			}
+			
+        }
+
+
+
+		public static DateTime GetDateByIdCalendar(int idCalendar, int DayOfMonth) 
+		{
+			List<CalendarModel> calendars = GetCalendarData();
+
+			string reference = string.Empty;
+            int year = 0, month = 0;
+
+            foreach (CalendarModel calendar in calendars) 
+			{
+				if(idCalendar == calendar.IdCalendar)
+				{
+					reference = calendar.DateReference;
+					month = int.Parse(reference.Substring(0, 2));
+					year = int.Parse(reference.Substring(3, 4));
+				}
+			}
+
+			if(reference == string.Empty)
+			{
+				throw new Exception("Calendar don't found in database.");
+			}
+
+            DateTime result = new DateTime(year,month,DayOfMonth);
+
+            return result;
+		}
+
+		public static int GetIdFromDate(DateTime date) 
+		{
+			int result = 0;
+
+			string month = date.Month.ToString("00");
+			string year = date.Year.ToString();
+
+			string DateReference = month + '-' + year;
+
+			List<CalendarModel> calendarModels = GetCalendarData();
+            
+			foreach (CalendarModel calendarModel in calendarModels)
+			{
+				if(DateReference == calendarModel.DateReference)
+				{
+					result = calendarModel.IdCalendar;
+				}
+			}
+
+            return result;
+		}
+
 	}
 }

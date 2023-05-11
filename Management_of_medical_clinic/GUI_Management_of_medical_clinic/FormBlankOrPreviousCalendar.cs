@@ -1,4 +1,5 @@
-﻿using Console_Management_of_medical_clinic.Model;
+﻿using GUI_Management_of_medical_clinic;
+using Console_Management_of_medical_clinic.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,6 +29,7 @@ namespace GUI_Management_of_medical_clinic
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             FormCalendarsList formCalendarsList = new FormCalendarsList(currentUser);
+            Hide();
             formCalendarsList.ShowDialog();
             Close();
         }
@@ -35,6 +37,7 @@ namespace GUI_Management_of_medical_clinic
         private void buttonBlankForm_Click(object sender, EventArgs e)
         {
             FormCalendar formCalendar = new(currentUser);
+            Hide();
             formCalendar.ShowDialog();
             Close();
         }
@@ -42,6 +45,7 @@ namespace GUI_Management_of_medical_clinic
         private void buttonPreviousForm_Click(object sender, EventArgs e)
         {
             FormCalendar formCalendar = new(currentUser, true);
+            Hide();
             formCalendar.ShowDialog();
             Close();
         }

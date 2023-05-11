@@ -254,7 +254,7 @@ namespace GUI_Management_of_medical_clinic
             string month = displayMonth.ToString("MM");
             string year = displayMonth.ToString("yyyy");
             string monthAndYear = month + "-" + year;
-            if (CalendarService.checkIfCalendarExists(monthAndYear))
+            if (CalendarService.checkIfCalendarExistsCalendarAdd(monthAndYear))
             {
                 MessageBox.Show("Calendar already exists");
                 return;
@@ -264,6 +264,7 @@ namespace GUI_Management_of_medical_clinic
             CalendarService.AddCalendar(calendarModel);
             MessageBox.Show("Calendar added");
             FormCalendarsList formCalendarsList = new FormCalendarsList(currentEmployee);
+            Hide();
             formCalendarsList.ShowDialog();
             Close();
         }

@@ -22,6 +22,7 @@ namespace GUI_Management_of_medical_clinic
         private void buttonLogOut_Click(object sender, EventArgs e)
         {
             FormMenu menu = new FormMenu();
+            Hide();
             menu.ShowDialog();
             Close();
         }
@@ -43,6 +44,18 @@ namespace GUI_Management_of_medical_clinic
         private void buttonRemoveCalendar_Click(object sender, EventArgs e)
         {
             // TODO: Open a window with a confirmation if someone really wants to delete selected calendar
+            try
+            {
+                int calendarId = int.Parse(dataGridViewCalendars.CurrentRow.Cells[0].Value.ToString());
+
+                FormCalendarDelete formCalendarDelete = new FormCalendarDelete(calendarId);
+                formCalendarDelete.ShowDialog();
+                dataGridViewCalendars.DataSource = null;
+                dataGridViewCalendars.DataSource = _calendarService.GetAll();
+            }catch(Microsoft.EntityFrameworkCore.DbUpdateException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void buttonFilterCalendars_Click(object sender, EventArgs e)

@@ -3,6 +3,7 @@ using Console_Management_of_medical_clinic.Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,16 +23,16 @@ namespace Console_Management_of_medical_clinic.Logic
 
         public static int GetIdTerm(string selectedTime)
         {
-            
+
             string[] timeParts = selectedTime.Split(':');
             int hour = int.Parse(timeParts[0]);
             int minute = int.Parse(timeParts[1]);
             int selectedTimeInMinutes = (hour * 60) + minute;
 
-            
+
             if (selectedTimeInMinutes < 420 || selectedTimeInMinutes >= 1200 || (selectedTimeInMinutes >= 660 && selectedTimeInMinutes < 680) || (selectedTimeInMinutes >= 980 && selectedTimeInMinutes < 1000))
             {
-                
+
                 return -1;
             }
             else
@@ -54,20 +55,65 @@ namespace Console_Management_of_medical_clinic.Logic
             int idDay = selectedDate.Day;
             
             int idTerm = GetIdTerm(selectedDate.ToString("HH:mm"));
+            
             List<AppointmentModel> appointments = new List<AppointmentModel>();
 
             using(AppDbContext context = new AppDbContext())
             {
-                foreach(AppointmentModel appointment in context.DbAppointments)
+                foreach (AppointmentModel appointment in context.DbAppointments)
                 {
-                    if(appointment.IdDay == idDay && appointment.IdCalendar == idCalendar)
+                    if (appointment.IdDay == idDay && appointment.IdCalendar == idCalendar)
                     {
                         appointments.Add(appointment);
                     }
                 }
             }
-
             return appointments;
+        }
+
+        // Validation when rescheduling
+        public (bool, string) CanReschedule(AppointmentModel appointmentRescheduled, AppointmentModel termToReschedule)
+        {
+
+			// Rescheduling on the same term of appointment
+			if (termToReschedule.IdAppointment == appointmentRescheduled.IdAppointment)
+			{
+				return (false, "It's the same term of appointment");
+			}
+
+            // Check if taken
+			using (AppDbContext context = new())
+            {
+                bool conflict =
+                    context.DbAppointments
+                    .Any(
+                    a =>
+                    a.CalendarModel.IdCalendar == termToReschedule.IdCalendar &&
+                    a.IdDay == termToReschedule.IdDay &&
+                    a.IdTerm == termToReschedule.IdTerm &&
+                    a.PatientId != null);
+
+                if (conflict)
+                {
+                    return (false, "The term to reschedule appointment is already taken");
+				}
+            }
+
+            // Check if the day from the past
+            int today = DateTime.Today.Day;
+
+            if (termToReschedule.IdDay < today)
+                return (false, "The appointment cannot be rescheduled to the past");
+
+            // Check if an hour from the past
+            bool isTheSameDay = (termToReschedule.IdDay == today);
+            bool isPastHour = (termToReschedule.IdTerm < appointmentRescheduled.IdTerm);
+
+            if (isTheSameDay && isPastHour)
+                return (false, "The appointment cannot be rescheduled to the past");
+
+            // Success
+			return (true, "Appointment rescheduled succesfully");
         }
     }
 }
