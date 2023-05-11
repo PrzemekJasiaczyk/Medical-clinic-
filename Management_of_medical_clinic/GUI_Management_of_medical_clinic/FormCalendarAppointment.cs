@@ -286,5 +286,9 @@ namespace GUI_Management_of_medical_clinic
         #endregion
 
 
+        private void panelMenu_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

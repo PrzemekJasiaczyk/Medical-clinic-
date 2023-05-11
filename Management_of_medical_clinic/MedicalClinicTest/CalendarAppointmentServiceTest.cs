@@ -494,6 +494,47 @@ namespace MedicalClinicTest
 
             }
         }
+
+        #region GetDateByIdCalendar
+
+        [Fact]
+        public void TestGetDateByIdCalendar()
+        {
+           
+            // Arrange
+            int idCalendar = 1;
+            int dayOfMonth = 15;
+            DateTime expectedDate = new DateTime(2023, 03, dayOfMonth);
+            // assumes that the DateReference for idCalendar is "03/2023"
+
+            // Act
+            CalendarService calendarService = new CalendarService();
+            DateTime actualDate = CalendarService.GetDateByIdCalendar(idCalendar, dayOfMonth);
+
+            // Assert
+            Assert.Equal(expectedDate, actualDate);
+
+
+        }
+
+        #endregion
+
+        #region GetIdFromDate
+        [Fact]
+        public void TestGetIdFromDate()
+        {
+            // Arrange
+            DateTime date = new DateTime(2023, 5, 1);
+            int expectedId = 4; // Assuming that there is a calendar in the database for May 2022 with id = 4
+
+            // Act
+            CalendarService calendarService = new CalendarService();
+            int result = CalendarService.GetIdFromDate(date);
+
+            // Assert
+            Assert.Equal(expectedId, result);
+        }
+        #endregion
     }
     #endregion
 
