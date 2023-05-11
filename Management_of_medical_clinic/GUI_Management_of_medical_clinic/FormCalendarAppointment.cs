@@ -274,7 +274,7 @@ namespace GUI_Management_of_medical_clinic
 
         void SortByDoctor()
         {
-            List<AppointmentModel> result = CalendarAppointmentService.SortByDoctor(displayListInDataGridView);
+            List<AppointmentModel> result = CalendarAppointmentService.SortByDoctorLastName(displayListInDataGridView);
             dataGridViewAppointment.Rows.Clear();
 
             foreach (AppointmentModel appointment in result)
@@ -286,5 +286,9 @@ namespace GUI_Management_of_medical_clinic
         #endregion
 
 
+        private void panelMenu_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

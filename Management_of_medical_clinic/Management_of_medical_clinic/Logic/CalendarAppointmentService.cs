@@ -12,11 +12,11 @@ namespace Console_Management_of_medical_clinic.Logic
     {
         public static Patient GetPatientDataByIdPatient(AppointmentModel appointment)
         {
-            Patient result = new Patient();
+            Patient? result = null;
 
             if (appointment.PatientId == null)
             {
-                throw new Exception("IdEmployee = null");
+                throw new Exception("PatientId = null");
             }
 
             using (AppDbContext context = new AppDbContext())
@@ -36,13 +36,12 @@ namespace Console_Management_of_medical_clinic.Logic
             }
 
             return result;
-
         }
 
         public static List<AppointmentModel> GetAppointmentsWithPatients()
         {
             List<AppointmentModel> appointments = GetAppointmentsData();
-            List <AppointmentModel> result = new List<AppointmentModel>();
+            List<AppointmentModel> result = new List<AppointmentModel>();
 
             foreach (AppointmentModel appointment in appointments)
             {
@@ -64,7 +63,6 @@ namespace Console_Management_of_medical_clinic.Logic
 
             string result = string.Empty;
 
-
             int id = (int)AppointmentModel.IdEmployee;
 
             using (AppDbContext context = new AppDbContext())
@@ -84,7 +82,6 @@ namespace Console_Management_of_medical_clinic.Logic
             }
 
             return result;
-
         }
 
         public static List<AppointmentModel> GetAppointmentsData()
@@ -108,9 +105,9 @@ namespace Console_Management_of_medical_clinic.Logic
                     })
                     .ToList();
             }
+
             return result;
         }
-
 
         public static List<AppointmentModel> appointmentInSelectedDate(List<AppointmentModel> ListIn, DateTime selectedDate, int idCalendar)
         {
@@ -125,20 +122,18 @@ namespace Console_Management_of_medical_clinic.Logic
                     result.Add(appointment);
                 }
             }
+
             return result;
         }
 
-
-        public static List<AppointmentModel> SortByDoctor(List<AppointmentModel> appointments)
+        public static List<AppointmentModel> SortByDoctorLastName(List<AppointmentModel> appointments)
         {
             return appointments.OrderBy(a => EmployeeService.GetEmployeeByID((int)a.IdEmployee).LastName).ToList();
         }
+
         public static List<AppointmentModel> SortByTerm(List<AppointmentModel> appointments)
         {
             return appointments.OrderBy(a => a.IdTerm).ToList();
         }
-
-
-
     }
 }

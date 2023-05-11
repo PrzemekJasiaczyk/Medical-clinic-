@@ -39,7 +39,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void FormRegisterAppointment_Load(object sender, EventArgs e)
         {
-            if(appointment==null) return;
+            if (appointment == null) return;
 
             OnlyReadControls();
             SelectDataInCombo();
@@ -106,7 +106,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void comboBoxDate_SelectedIndexChanged(object sender, EventArgs e)
         {
-   
+
         }
 
         private void CheckIfAllComboBoxesAreSelected()
@@ -150,8 +150,8 @@ namespace GUI_Management_of_medical_clinic
 
             using (AppDbContext db = new AppDbContext())
             {
-                AppointmentModel? appointment = db.DbAppointments.FirstOrDefault(a=>a.IdAppointment==selectedAppointmentId);
-                
+                AppointmentModel? appointment = db.DbAppointments.FirstOrDefault(a => a.IdAppointment == selectedAppointmentId);
+
 
 
                 if (appointment != null)
@@ -183,7 +183,7 @@ namespace GUI_Management_of_medical_clinic
         private void OnlyReadControls()
         {
             comboBoxDate.Enabled = false;
-            comboBoxDoctor.Enabled = false;    
+            comboBoxDoctor.Enabled = false;
         }
 
         private void SelectDataInCombo()
