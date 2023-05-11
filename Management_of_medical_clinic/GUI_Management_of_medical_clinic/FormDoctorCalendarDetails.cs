@@ -23,8 +23,7 @@ namespace GUI_Management_of_medical_clinic
             this.currentUser = currentUser;
             this.appointment = appointment;
             InitializeComponent();
-
-            //List<AppointmentModel> appointments = AppointmentService.CheckAppointmentsAndReturnList(DateTime.Today.Date);
+            LoadAppointmentData();
 
         }
         private void buttonBack_Click(object sender, EventArgs e)
@@ -44,15 +43,20 @@ namespace GUI_Management_of_medical_clinic
 
         private void FormDoctorCalendarDetails_Load(object sender, EventArgs e)
         {
+            
+        }
+
+        private void LoadAppointmentData()
+        {
             Patient patient = PatientService.GetPatientById((int)appointment.PatientId);
 
             lblAppPatient.Text = "Patient: " + patient.FirstName + " " + patient.LastName;
             lblApCost.Text = "Cost: " + appointment.Cost;
-            lblAppDate.Text = "Date: " + appointment.IdDay;
+            DateTime date = CalendarService.GetDateByIdCalendar((int)appointment.IdCalendar, appointment.IdDay);
+            lblAppDate.Text = "Date: " + date.ToString("dd.MM.yyyy");
             lblTerm.Text = "Term: " + AppointmentService.GetTermByTermId(appointment.IdTerm);
             lblOfficeNumber.Text = "Office number: " + appointment.IdOffice.ToString();
         }
-
         
     }
 }

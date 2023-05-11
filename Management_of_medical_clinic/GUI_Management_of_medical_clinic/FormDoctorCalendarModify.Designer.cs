@@ -128,7 +128,7 @@
             // 
             dateTimePicker.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             dateTimePicker.Location = new Point(381, 165);
-            dateTimePicker.MaxDate = new DateTime(2023, 4, 6, 0, 0, 0, 0);
+            dateTimePicker.MaxDate = new DateTime(2123, 9, 9, 0, 0, 0, 0);
             dateTimePicker.Name = "dateTimePicker";
             dateTimePicker.Size = new Size(454, 34);
             dateTimePicker.TabIndex = 62;

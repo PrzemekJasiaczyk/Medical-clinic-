@@ -23,10 +23,6 @@ namespace GUI_Management_of_medical_clinic
             this.currentUser = currentUser;
             this.appointment = appointment;
             InitializeComponent();
-
-            //List<AppointmentModel> appointments = AppointmentService.CheckAppointmentsAndReturnList(DateTime.Today.Date);
-
-
         }
 
         private void FormDoctorCalendarModify_Load(object sender, EventArgs e)
@@ -34,17 +30,16 @@ namespace GUI_Management_of_medical_clinic
             try
             {
                 comboBoxOfficeNumber.DataSource = OfficeService.GetCalendarIds();
-                // ????dateTimePicker.MaxDate = appointment.
             }
             catch (Exception ex)
-                {
+            {
                 MessageBox.Show("Error: " + ex);
-                }
+            }
 
             //Change selecteditem in combobox
             try
             {
-                //appointment.IdCalendar
+                dateTimePicker.Value = CalendarService.GetDateByIdCalendar((int)appointment.IdCalendar, appointment.IdDay);
                 comboBoxOfficeNumber.SelectedItem = appointment.IdOffice.ToString();
                 comboBoxTerm.SelectedItem = AppointmentService.GetTermByTermId(appointment.IdTerm);
             }
@@ -56,47 +51,50 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
+            ToFormDetails();
+        }
+
+        private void buttonConfirm_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (comboBoxTerm.SelectedIndex < 0)
+                    return;
+                if (comboBoxOfficeNumber.SelectedIndex < 0)
+                    return;
+                //ToDo available date
+
+
+                string term = comboBoxTerm.SelectedItem.ToString();
+                int idTerm = AppointmentService.GetIdTerm(term);
+
+                AppointmentService.DoctorModifiesAppointment(appointment.IdAppointment, (int)comboBoxOfficeNumber.SelectedItem,
+                    idTerm, dateTimePicker.Value.Day);
+
+                MessageBox.Show("Successfully changed the data!");
+
+                ToFormCalendar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex);
+            }
+        }
+
+        private void ToFormDetails()
+        {
             FormDoctorCalendarDetails formDoctorCalendarDetails = new FormDoctorCalendarDetails(appointment, currentUser);
             this.Hide();
             formDoctorCalendarDetails.ShowDialog();
             this.Close();
         }
 
-        private void buttonConfirm_Click(object sender, EventArgs e)
+        private void ToFormCalendar()
         {
-            FormMenu menu = new FormMenu();
-            menu.ShowDialog();
-            Close();
-        }
-        /*
-            try
-        {
-                if (comboBoxTerm.SelectedIndex < 0)
-                    return;
-                if (comboBoxOfficeNumber.SelectedIndex < 0)
-                    return;
-
-                //appointment.IdTerm = idTerm;
-                //appointment.IdOffice = (int)comboBoxOffice.SelectedItem;
-                //dateTimePicker
-                //Check if the date is from the same month?
-
-                string term = comboBoxTerm.SelectedItem.ToString();
-                int idTerm  = AppointmentService.GetIdTerm(term);
-                AppointmentService.DoctorModifiesAppointment(appointment.IdAppointment, (int)comboBoxOfficeNumber.SelectedItem,
-                    idTerm, dateTimePicker.Value.Day - 1);
-
-            FormDoctorCurrentCalendar formDoctor = new FormDoctorCurrentCalendar(currentUser);
-            this.currentUser = currentUser;
-
-                MessageBox.Show("Success!");
+            FormDoctorCalendar formDoctorCalendar = new FormDoctorCalendar(currentUser);
+            this.Hide();
+            formDoctorCalendar.ShowDialog();
             this.Close();
         }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex);
-            }
-        }
-        */
     }
 }

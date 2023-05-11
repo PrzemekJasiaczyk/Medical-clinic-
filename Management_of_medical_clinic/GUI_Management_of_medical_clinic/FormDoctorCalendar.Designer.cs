@@ -41,6 +41,8 @@
             labelTitleCalendar_Month = new Label();
             labelTitleCalendar_Year = new Label();
             panel9 = new Panel();
+            buttonNextMonth = new Button();
+            buttonPreviousMonth = new Button();
             panel2 = new Panel();
             label6 = new Label();
             panel3 = new Panel();
@@ -223,12 +225,46 @@
             // panel9
             // 
             panel9.BackColor = Color.White;
+            panel9.Controls.Add(buttonNextMonth);
+            panel9.Controls.Add(buttonPreviousMonth);
             panel9.Controls.Add(labelTitleCalendar_Year);
             panel9.Controls.Add(labelTitleCalendar_Month);
             panel9.Location = new Point(296, 75);
             panel9.Name = "panel9";
             panel9.Size = new Size(1888, 99);
             panel9.TabIndex = 20;
+            // 
+            // buttonNextMonth
+            // 
+            buttonNextMonth.BackColor = Color.White;
+            buttonNextMonth.BackgroundImageLayout = ImageLayout.None;
+            buttonNextMonth.FlatAppearance.BorderSize = 0;
+            buttonNextMonth.FlatStyle = FlatStyle.Flat;
+            buttonNextMonth.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonNextMonth.Location = new Point(219, 29);
+            buttonNextMonth.Name = "buttonNextMonth";
+            buttonNextMonth.Size = new Size(62, 62);
+            buttonNextMonth.TabIndex = 18;
+            buttonNextMonth.Text = ">";
+            buttonNextMonth.TextAlign = ContentAlignment.TopCenter;
+            buttonNextMonth.UseVisualStyleBackColor = false;
+            buttonNextMonth.Click += buttonNextMonth_Click;
+            // 
+            // buttonPreviousMonth
+            // 
+            buttonPreviousMonth.BackColor = Color.White;
+            buttonPreviousMonth.BackgroundImageLayout = ImageLayout.None;
+            buttonPreviousMonth.FlatAppearance.BorderSize = 0;
+            buttonPreviousMonth.FlatStyle = FlatStyle.Flat;
+            buttonPreviousMonth.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonPreviousMonth.Location = new Point(152, 29);
+            buttonPreviousMonth.Name = "buttonPreviousMonth";
+            buttonPreviousMonth.Size = new Size(62, 62);
+            buttonPreviousMonth.TabIndex = 19;
+            buttonPreviousMonth.Text = "<";
+            buttonPreviousMonth.TextAlign = ContentAlignment.TopCenter;
+            buttonPreviousMonth.UseVisualStyleBackColor = false;
+            buttonPreviousMonth.Click += buttonPreviousMonth_Click;
             // 
             // panel2
             // 
@@ -515,5 +551,7 @@
         private DataGridView dataGridViewYourAppointments;
         private Label label9;
         private Button buttonEditAppointment;
+        private Button buttonNextMonth;
+        private Button buttonPreviousMonth;
     }
 }

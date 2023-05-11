@@ -56,8 +56,9 @@ namespace GUI_Management_of_medical_clinic
         private void buttonLogOut_Click(object sender, EventArgs e)
         {
             FormMenu menu = new FormMenu();
+            this.Hide();
             menu.ShowDialog();
-            Close();
+            this.Close();
         }
 
         private void buttonCurrentCalendar_Click(object sender, EventArgs e)
