@@ -227,6 +227,7 @@ namespace GUI_Management_of_medical_clinic
         {
             if (_selectedDate.Length != 0)
             {
+                
                 if (CalendarService.checkIfCalendarExists(_selectedDate) == true)
                 {
                     FormAppointmentAdd formAppointmentAdd = new FormAppointmentAdd(DateTime.Parse(labelDate.Text), currentEmployee);
@@ -238,6 +239,7 @@ namespace GUI_Management_of_medical_clinic
                 {
                     MessageBox.Show("A calendar hasn't been started for the given month");
                 }
+
             }
             else
             {

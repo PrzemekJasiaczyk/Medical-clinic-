@@ -61,7 +61,7 @@ namespace Console_Management_of_medical_clinic.Logic
         public static bool checkIfCalendarExists(string selectedDate)
         {
             List<CalendarModel> calendars = GetCalendarData();
-            //string CurrentDateReference = selectedDate.Remove(0, 3).Replace(".", "-");
+            string CurrentDateReference = selectedDate.Remove(0, 3).Replace(".", "-");
 
 			foreach(CalendarModel calendar in calendars)
 			{
