@@ -39,7 +39,14 @@ namespace GUI_Management_of_medical_clinic
 
         private void UserControlDay_Leave(object sender, EventArgs e)
         {
+            DateTime day = DateTime.Today;
+            if (selectedDate.Day == day.Day)
+            {
+                this.BackColor = Color.LightBlue;
+                return;
+            }
             this.BackColor = Color.White;
+            
         }
     }
 }
