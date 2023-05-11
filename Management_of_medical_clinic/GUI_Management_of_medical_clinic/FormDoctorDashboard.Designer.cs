@@ -35,27 +35,24 @@
             buttonCurrentCalendar = new Button();
             button2 = new Button();
             label1 = new Label();
-            dataGridViewAppointments = new DataGridView();
-            label8 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewAppointments).BeginInit();
             SuspendLayout();
             // 
             // buttonLogOut
             // 
-            buttonLogOut.BackColor = Color.Gainsboro;
-            buttonLogOut.FlatAppearance.BorderColor = Color.White;
-            buttonLogOut.FlatAppearance.BorderSize = 2;
-            buttonLogOut.FlatStyle = FlatStyle.Flat;
-            buttonLogOut.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonLogOut.Location = new Point(29, 970);
-            buttonLogOut.Name = "buttonLogOut";
-            buttonLogOut.Size = new Size(252, 66);
-            buttonLogOut.TabIndex = 40;
-            buttonLogOut.Text = "LOG OUT";
-            buttonLogOut.UseVisualStyleBackColor = false;
-            buttonLogOut.Click += buttonLogOut_Click;
+            this.buttonLogOut.BackColor = System.Drawing.Color.Gainsboro;
+            this.buttonLogOut.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonLogOut.FlatAppearance.BorderSize = 2;
+            this.buttonLogOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonLogOut.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonLogOut.Location = new System.Drawing.Point(29, 970);
+            this.buttonLogOut.Name = "buttonLogOut";
+            this.buttonLogOut.Size = new System.Drawing.Size(252, 66);
+            this.buttonLogOut.TabIndex = 40;
+            this.buttonLogOut.Text = "LOG OUT";
+            this.buttonLogOut.UseVisualStyleBackColor = false;
+            this.buttonLogOut.Click += new System.EventHandler(this.buttonLogOut_Click);
             // 
             // panel1
             // 
@@ -122,38 +119,13 @@
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 36F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(375, 115);
-            label1.Name = "label1";
-            label1.Size = new Size(420, 65);
-            label1.TabIndex = 40;
-            label1.Text = "Welcome message";
-            // 
-            // dataGridViewAppointments
-            // 
-            dataGridViewAppointments.BackgroundColor = SystemColors.Info;
-            dataGridViewAppointments.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewAppointments.EditMode = DataGridViewEditMode.EditProgrammatically;
-            dataGridViewAppointments.Location = new Point(1465, 259);
-            dataGridViewAppointments.MultiSelect = false;
-            dataGridViewAppointments.Name = "dataGridViewAppointments";
-            dataGridViewAppointments.ReadOnly = true;
-            dataGridViewAppointments.RowHeadersVisible = false;
-            dataGridViewAppointments.RowTemplate.Height = 25;
-            dataGridViewAppointments.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewAppointments.Size = new Size(345, 538);
-            dataGridViewAppointments.TabIndex = 41;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(1537, 226);
-            label8.Name = "label8";
-            label8.Size = new Size(215, 30);
-            label8.TabIndex = 42;
-            label8.Text = "Today's appointments";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(370, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(420, 65);
+            this.label1.TabIndex = 40;
+            this.label1.Text = "Welcome message";
             // 
             // FormDoctorDashboard
             // 
@@ -161,8 +133,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
             ClientSize = new Size(1920, 1080);
-            Controls.Add(label8);
-            Controls.Add(dataGridViewAppointments);
             Controls.Add(label1);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
@@ -172,7 +142,6 @@
             WindowState = FormWindowState.Maximized;
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewAppointments).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -185,7 +154,5 @@
         private Button buttonCurrentCalendar;
         private Button button2;
         private Label label1;
-        private DataGridView dataGridViewAppointments;
-        private Label label8;
     }
 }

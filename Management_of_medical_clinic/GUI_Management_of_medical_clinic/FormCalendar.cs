@@ -179,7 +179,6 @@ namespace GUI_Management_of_medical_clinic
             foreach (AppointmentModel appointment in appointments)
             {
                 string timeTerm = AppointmentService.GetTermByTermId(appointment.IdTerm);
-                
                 Patient patient = PatientService.GetPatientById((int)appointment.PatientId);
                 dataGridViewAppointments.Rows.Add(appointment.IdEmployee, appointment.IdDay, timeTerm, patient.FirstName + " " + patient.LastName);
             }

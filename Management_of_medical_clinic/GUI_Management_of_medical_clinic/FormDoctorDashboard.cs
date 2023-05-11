@@ -26,22 +26,6 @@ namespace GUI_Management_of_medical_clinic
             this.currentUser = currentUser;
             InitializeComponent();
             label1.Text = "Welcome, " + currentUser.FirstName + " " + currentUser.Role;
-
-            List<AppointmentModel> appointments = AppointmentService.CheckAppointmentsAndReturnList(DateTime.Today.Date);
-
-            dataGridViewAppointments.Rows.Clear();
-            dataGridViewAppointments.Columns.Add("Room", "Room");
-            dataGridViewAppointments.Columns.Add("Hour", "Hour");
-            dataGridViewAppointments.Columns.Add("Patient", "Patient");
-            foreach (AppointmentModel appointment in appointments)
-            {
-                if (appointment.IdEmployee == currentUser.IdEmployee)
-                {
-                    string timeTerm = AppointmentService.GetTermByTermId(appointment.IdTerm);
-                    Patient patient = PatientService.GetPatientById((int)appointment.PatientId);
-                    dataGridViewAppointments.Rows.Add(/*currentEmployee.IdEmployee, appointment.IdDay,*/ appointment.IdOffice, timeTerm, patient.FirstName + " " + patient.LastName);
-                }
-            }
         }
 
         private void buttonCalendar_Click(object sender, EventArgs e)
@@ -52,7 +36,7 @@ namespace GUI_Management_of_medical_clinic
             {
                 if (calendar.IdEmployee == currentUser.IdEmployee && calendar.Active == false)
                 {
-                    isNewCalendar = true;
+                    isNewCalendar = true;        
                 }
             }
             if (isNewCalendar = true)
@@ -65,8 +49,8 @@ namespace GUI_Management_of_medical_clinic
             else
             {
                 MessageBox.Show("You don't have any new calendar to check", "Information", MessageBoxButtons.OK);
-            }
-
+            }           
+            
         }
 
         private void buttonLogOut_Click(object sender, EventArgs e)

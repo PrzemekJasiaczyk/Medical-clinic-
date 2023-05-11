@@ -226,10 +226,5 @@ namespace GUI_Management_of_medical_clinic
         {
             this.Close();
         }
-
-        private void buttonExit_Click_2(object sender, EventArgs e)
-        {
-            this.Close();
-        }
     }
 }

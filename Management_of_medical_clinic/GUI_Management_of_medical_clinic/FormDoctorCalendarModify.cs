@@ -68,7 +68,7 @@ namespace GUI_Management_of_medical_clinic
             menu.ShowDialog();
             Close();
         }
-
+        /*
             try
         {
                 if (comboBoxTerm.SelectedIndex < 0)
@@ -97,5 +97,6 @@ namespace GUI_Management_of_medical_clinic
                 MessageBox.Show("Error: " + ex);
             }
         }
+        */
     }
 }
