@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            buttonLogOut = new Button();
             panel1 = new Panel();
             buttonCancel = new Button();
             pictureBox1 = new PictureBox();
@@ -42,6 +43,21 @@
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
+            // 
+            // buttonLogOut
+            // 
+            buttonLogOut.BackColor = Color.Gainsboro;
+            buttonLogOut.FlatAppearance.BorderColor = Color.White;
+            buttonLogOut.FlatAppearance.BorderSize = 2;
+            buttonLogOut.FlatStyle = FlatStyle.Flat;
+            buttonLogOut.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonLogOut.Location = new Point(29, 970);
+            buttonLogOut.Name = "buttonLogOut";
+            buttonLogOut.Size = new Size(252, 66);
+            buttonLogOut.TabIndex = 40;
+            buttonLogOut.Text = "LOG OUT";
+            buttonLogOut.UseVisualStyleBackColor = false;
+            buttonLogOut.Click += buttonLogOut_Click;
             // 
             // panel1
             // 
@@ -196,6 +212,7 @@
         }
 
         #endregion
+        private Button buttonLogOut;
         private Panel panel1;
         private PictureBox pictureBox1;
         private Label labelModifyAppointment;

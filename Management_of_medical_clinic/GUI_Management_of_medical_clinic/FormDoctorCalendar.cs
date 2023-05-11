@@ -114,13 +114,11 @@ namespace GUI_Management_of_medical_clinic
             dataGridViewYourAppointments.Rows.Clear();
             foreach (AppointmentModel appointment in appointments)
             {
-                string timeTerm = AppointmentService.GetTermByTermId(appointment.IdTerm);
-                Patient patient = PatientService.GetPatientById((int)appointment.PatientId);
-
                 if (appointment.IdEmployee == currentUser.IdEmployee)
                 {
-                    int index = dataGridViewYourAppointments.Rows.Add(appointment.IdOffice, timeTerm, patient.FirstName + " " + patient.LastName);
-                    dataGridViewYourAppointments.Rows[index].Tag = appointment;
+                    string timeTerm = AppointmentService.GetTermByTermId(appointment.IdTerm);
+                    Patient patient = PatientService.GetPatientById((int)appointment.PatientId);
+                    dataGridViewAppointments.Rows.Add(appointment.IdOffice, timeTerm, patient.FirstName + " " + patient.LastName);
                 }
 
                 dataGridViewAppointments.Rows.Add(appointment.IdEmployee, appointment.IdOffice, timeTerm, patient.FirstName + " " + patient.LastName);

@@ -26,6 +26,7 @@ namespace GUI_Management_of_medical_clinic
 
             //List<AppointmentModel> appointments = AppointmentService.CheckAppointmentsAndReturnList(DateTime.Today.Date);
 
+
         }
 
         private void FormDoctorCalendarModify_Load(object sender, EventArgs e)
@@ -36,9 +37,9 @@ namespace GUI_Management_of_medical_clinic
                 // ????dateTimePicker.MaxDate = appointment.
             }
             catch (Exception ex)
-            {
+                {
                 MessageBox.Show("Error: " + ex);
-            }
+                }
 
             //Change selecteditem in combobox
             try
@@ -63,9 +64,13 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
+            FormMenu menu = new FormMenu();
+            menu.ShowDialog();
+            Close();
+        }
 
             try
-            {
+        {
                 if (comboBoxTerm.SelectedIndex < 0)
                     return;
                 if (comboBoxOfficeNumber.SelectedIndex < 0)
@@ -81,10 +86,12 @@ namespace GUI_Management_of_medical_clinic
                 AppointmentService.DoctorModifiesAppointment(appointment.IdAppointment, (int)comboBoxOfficeNumber.SelectedItem,
                     idTerm, dateTimePicker.Value.Day - 1);
 
+            FormDoctorCurrentCalendar formDoctor = new FormDoctorCurrentCalendar(currentUser);
+            this.currentUser = currentUser;
 
                 MessageBox.Show("Success!");
-                this.Close();
-            }
+            this.Close();
+        }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex);
