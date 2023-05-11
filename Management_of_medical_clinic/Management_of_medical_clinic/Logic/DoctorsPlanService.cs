@@ -1,4 +1,5 @@
 ﻿using Console_Management_of_medical_clinic.Data;
+using Console_Management_of_medical_clinic.Data.Enums;
 using Console_Management_of_medical_clinic.Model;
 using System;
 using System.Collections.Generic;
@@ -21,13 +22,37 @@ namespace Console_Management_of_medical_clinic.Logic
             }
             return doctorsPlans;
         }
-        public static void AddAppointment(DoctorsDayPlanModel doctorsDayPlanModel)
+        public static int GetPlanIdIfAlreadyExists(int idEmployee, int idDay, int idCalendar)
+        {
+            List<DoctorsDayPlanModel> doctorsPlans = GetDoctorsPlanData();
+            foreach (DoctorsDayPlanModel plan in doctorsPlans)
+            {
+                if (plan.IdEmployee==idEmployee && plan.IdDay==idDay && plan.IdCalendar == idCalendar)
+                {
+                    return plan.IdDoctorsDayPlan;
+                }
+            }
+            return -1;
+        }
+
+        public static void AddPlan(DoctorsDayPlanModel doctorsDayPlanModel)
         {
             using (AppDbContext context = new AppDbContext())
             {
                 context.DbDoctorsDayPlan.Add(doctorsDayPlanModel);
                 context.SaveChanges();
             }
+        }
+
+        public static void EditPlan(int idDoctorsDayPlan, string idsWorkingTerms, int idOffice)
+        {
+            var context = new AppDbContext();
+            DoctorsDayPlanModel plan = context.DbDoctorsDayPlan.Find(idDoctorsDayPlan);
+
+            plan.IdsWorkingTerms = idsWorkingTerms;
+            plan.IdOffice = idOffice;
+
+            context.SaveChanges();
         }
 
         public static string GetTermDescription(Enum value)

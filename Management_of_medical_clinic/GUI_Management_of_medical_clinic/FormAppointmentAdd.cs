@@ -125,9 +125,23 @@ namespace GUI_Management_of_medical_clinic
                 {
                     try
                     {
-                        DoctorsDayPlanModel model = new DoctorsDayPlanModel(checkedTerms, selectedDay, calendarId, parsedEmployeeId, parsedOfficeId, true);
-                        DoctorsPlanService.AddAppointment(model);
-                        MessageBox.Show("New plan added successfully");
+                        int existingPlanId = DoctorsPlanService.GetPlanIdIfAlreadyExists(parsedEmployeeId, selectedDay, calendarId);
+                        if (existingPlanId!=-1)
+                        {
+                            DoctorsPlanService.EditPlan(existingPlanId, checkedTerms, parsedOfficeId);
+                            MessageBox.Show("Plan updated successfully");
+                        }
+                        else
+                        {
+                            DoctorsDayPlanModel model = new DoctorsDayPlanModel(checkedTerms, selectedDay, calendarId, parsedEmployeeId, parsedOfficeId, true);
+                            DoctorsPlanService.AddPlan(model);
+                            MessageBox.Show("New plan added successfully");                            
+                        }
+                        FormCalendar formCalendar = new FormCalendar(currentEmployee);
+                        this.Hide();
+                        formCalendar.Show();
+                        this.Hide();
+
                     }
                     catch (Exception ex)
                     {
