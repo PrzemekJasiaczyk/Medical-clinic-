@@ -99,9 +99,21 @@ namespace Console_Management_of_medical_clinic.Logic
 				}
             }
 
-            // TODO: Validate against rescheduling to the past term
+            // Check if the day from the past
+            int today = DateTime.Today.Day;
 
-            return (true, "Appointment rescheduled succesfully");
+            if (termToReschedule.IdDay < today)
+                return (false, "The appointment cannot be rescheduled to the past");
+
+            // Check if an hour from the past
+            bool isTheSameDay = (termToReschedule.IdDay == today);
+            bool isPastHour = (termToReschedule.IdTerm < appointmentRescheduled.IdTerm);
+
+            if (isTheSameDay && isPastHour)
+                return (false, "The appointment cannot be rescheduled to the past");
+
+            // Success
+			return (true, "Appointment rescheduled succesfully");
         }
     }
 }
