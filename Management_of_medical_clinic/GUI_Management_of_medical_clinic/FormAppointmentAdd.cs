@@ -16,6 +16,8 @@ namespace GUI_Management_of_medical_clinic
 {
     public partial class FormAppointmentAdd : Form
     {
+        int parsedEmployeeId = -1;
+        int parsedOfficeId = -1;
         DateTime selectedDate;
         string dateReference;
         int selectedDay;
@@ -47,24 +49,42 @@ namespace GUI_Management_of_medical_clinic
                 {
                     comboBoxDoctor.Items.Add(employeeModel.IdEmployee + "-" + employeeModel.FirstName + " " + employeeModel.LastName);
                 }
-                //comboBoxOffice.DataSource = OfficeService.GetCalendarIds();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex);
             }
-
-            try
+            checkSelectedIds();
+            DoctorsPlanService.CheckIfDoctorHasPlanForCurrentDay(parsedEmployeeId, selectedDay, calendarId);
+        }
+        private bool checkSelectedIds()
+        {
+            if (comboBoxDoctor.SelectedIndex == -1 || comboBoxOffice.SelectedIndex == -1)
             {
-                //comboBoxDoctor.SelectedIndex = 0;
-                //comboBoxOffice.SelectedIndex = 0;
+                return false;
             }
-            catch
+            string[] employeeIdString = comboBoxDoctor.SelectedItem.ToString().Split('-');
+            string[] officeIdString = comboBoxOffice.SelectedItem.ToString().Split('-');
+            if (int.TryParse(employeeIdString[0], out int resultEmployeeId))
             {
-                MessageBox.Show("Some data might be missing");
+                parsedEmployeeId = resultEmployeeId;
+                
             }
-
-            //DoctorsPlanService.CheckIfDoctorHasPlanForCurrentDay((int)comboBoxDoctor.SelectedItem, selectedDay, calendarId);
+            else
+            {
+                MessageBox.Show("Error converting employeeId");
+                return false;
+            }
+            if (int.TryParse(officeIdString[0], out int resultOfficeId))
+            {
+                parsedOfficeId = resultOfficeId;
+            }
+            else
+            {
+                MessageBox.Show("Error converting officeId");
+                return false;
+            }
+            return true;
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -79,48 +99,51 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            string checkedTerms = "";
-            for (int i = 0; i < checkedListBoxTerms.Items.Count; i++)
+            if (checkSelectedIds()==true)
             {
-
-                if (checkedListBoxTerms.GetItemChecked(i))
+                string checkedTerms = "";
+                for (int i = 0; i < checkedListBoxTerms.Items.Count; i++)
                 {
-                    checkedTerms = checkedTerms + "," + i.ToString();
+
+                    if (checkedListBoxTerms.GetItemChecked(i))
+                    {
+                        checkedTerms = checkedTerms + "," + i.ToString();
+                    }
                 }
 
-            }
-            if (checkedTerms.Length == 0)
-            {
-                MessageBox.Show("No terms have been selected");
-                return;
+                if (checkedTerms.Length == 0)
+                {
+                    MessageBox.Show("No terms have been selected");
+                    return;
+                }
+                else
+                {
+                    checkedTerms = checkedTerms.Remove(0, 1);
+                }
+
+                if (calendarId != -1)
+                {
+                    try
+                    {
+                        DoctorsDayPlanModel model = new DoctorsDayPlanModel(checkedTerms, selectedDay, calendarId, parsedEmployeeId, parsedOfficeId, true);
+                        DoctorsPlanService.AddAppointment(model);
+                        MessageBox.Show("New plan added successfully");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Calendar for current month hasn't been created");
+                    return;
+                }
             }
             else
             {
-                checkedTerms = checkedTerms.Remove(0, 1);
+                MessageBox.Show("Missing Input");
             }
-
-
-            if (calendarId != -1)
-            {
-                try
-                {
-                    DoctorsDayPlanModel model = new DoctorsDayPlanModel(checkedTerms, selectedDay, calendarId, (int)comboBoxDoctor.SelectedItem, (int)comboBoxOffice.SelectedItem, true);
-                    DoctorsPlanService.AddAppointment(model);
-                    MessageBox.Show("New plan added successfully");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: " + ex.Message);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Calendar for current month hasn't been created");
-                return;
-            }
-
-
-
         }
 
         private void buttonBack_Click(object sender, EventArgs e)
@@ -131,17 +154,49 @@ namespace GUI_Management_of_medical_clinic
             this.Hide();
         }
 
+        private void updateCheckBoxes()
+        {
+            if (checkSelectedIds())
+            {
+                string checkedTerms = DoctorsPlanService.CheckIfDoctorHasPlanForCurrentDay(parsedEmployeeId, selectedDay, calendarId);
+                string[] checkedTermsIds = checkedTerms.Split(',');
+                List<int> parsedCheckedTermsIds = new List<int>();
 
+                foreach (string term in checkedTermsIds)
+                {
+                    if (int.TryParse(term, out int result))
+                    {
+                        parsedCheckedTermsIds.Add(result);
+                    }
+                    else
+                    {
+                        if (parsedCheckedTermsIds.Count != 0)
+                        {
+                            MessageBox.Show("Error converting termsIds");
+                        }                        
+                        return;
+                    }
+                }
 
-
+                for (int i = 0; i < checkedListBoxTerms.Items.Count; i++)
+                {
+                    checkedListBoxTerms.SetItemChecked(i, false);
+                }
+                foreach (int j in parsedCheckedTermsIds)
+                {
+                    checkedListBoxTerms.SetItemChecked(j, true);
+                }
+            }            
+        }
 
         private void comboBoxOffice_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            updateCheckBoxes();
         }
 
         private void comboBoxDoctor_SelectedIndexChanged(object sender, EventArgs e)
         {
+            updateCheckBoxes();
             comboBoxOffice.Items.Clear();
 
             List<OfficeModel> offices = OfficeService.GetOfficesData();
@@ -169,13 +224,10 @@ namespace GUI_Management_of_medical_clinic
                 {
 
                     SpecializationModel specalization = specializations.FirstOrDefault(e => e.IdSpecialization == office.IdSpecialization);
-                    comboBoxOffice.Items.Add(office.IdOffice + "-" + specalization.Name + " " + office.Number);
+                    comboBoxOffice.Items.Add(office.IdOffice + "-" + specalization.Name + " Room:" + office.Number);
 
                 }
-            }
-
-            //string checkedTerms = DoctorsPlanService.CheckIfDoctorHasPlanForCurrentDay((int)comboBoxDoctor.SelectedItem, selectedDay, calendarId);
-            //MessageBox.Show(checkedTerms);
+            }            
         }
     }
 }
