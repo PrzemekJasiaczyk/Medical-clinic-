@@ -101,24 +101,27 @@ namespace GUI_Management_of_medical_clinic
         {
             if (checkSelectedIds()==true)
             {
-                string checkedTerms = "";
+                //string checkedTerms = "";
+                int checkedTerms = 0;
                 for (int i = 0; i < checkedListBoxTerms.Items.Count; i++)
                 {
 
                     if (checkedListBoxTerms.GetItemChecked(i))
                     {
-                        checkedTerms = checkedTerms + "," + i.ToString();
+                        //checkedTerms = checkedTerms + "," + i.ToString();
                     }
                 }
 
-                if (checkedTerms.Length == 0)
+                //if (checkedTerms.Length == 0)
+                if (checkedTerms==-1)
                 {
                     MessageBox.Show("No terms have been selected");
                     return;
                 }
                 else
                 {
-                    checkedTerms = checkedTerms.Remove(0, 1);
+                    //checkedTerms = checkedTerms.Remove(0, 1);
+                    checkedTerms = 0;
                 }
 
                 if (calendarId != -1)
@@ -133,7 +136,7 @@ namespace GUI_Management_of_medical_clinic
                         }
                         else
                         {
-                            DoctorsDayPlanModel model = new DoctorsDayPlanModel(checkedTerms, selectedDay, calendarId, parsedEmployeeId, parsedOfficeId, true);
+                            DoctorsDayPlanModel model = new DoctorsDayPlanModel(checkedTerms, selectedDay, calendarId, parsedEmployeeId, parsedOfficeId, false, true);
                             DoctorsPlanService.AddPlan(model);
                             MessageBox.Show("New plan added successfully");                            
                         }
@@ -172,8 +175,9 @@ namespace GUI_Management_of_medical_clinic
         {
             if (checkSelectedIds())
             {
-                string checkedTerms = DoctorsPlanService.CheckIfDoctorHasPlanForCurrentDay(parsedEmployeeId, selectedDay, calendarId);
-                string[] checkedTermsIds = checkedTerms.Split(',');
+                //string checkedTerms = DoctorsPlanService.CheckIfDoctorHasPlanForCurrentDay(parsedEmployeeId, selectedDay, calendarId);
+                int checkedTerms = 0;
+                /*string[] checkedTermsIds = checkedTerms.Split(',');
                 List<int> parsedCheckedTermsIds = new List<int>();
 
                 foreach (string term in checkedTermsIds)
@@ -199,7 +203,7 @@ namespace GUI_Management_of_medical_clinic
                 foreach (int j in parsedCheckedTermsIds)
                 {
                     checkedListBoxTerms.SetItemChecked(j, true);
-                }
+                }*/
             }            
         }
 

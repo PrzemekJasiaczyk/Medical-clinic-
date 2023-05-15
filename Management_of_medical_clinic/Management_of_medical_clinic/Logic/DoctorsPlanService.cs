@@ -44,12 +44,12 @@ namespace Console_Management_of_medical_clinic.Logic
             }
         }
 
-        public static void EditPlan(int idDoctorsDayPlan, string idsWorkingTerms, int idOffice)
+        public static void EditPlan(int idDoctorsDayPlan, int idsWorkingTerms, int idOffice)
         {
             var context = new AppDbContext();
             DoctorsDayPlanModel plan = context.DbDoctorsDayPlan.Find(idDoctorsDayPlan);
 
-            plan.IdsWorkingTerms = idsWorkingTerms;
+            plan.IdOfTerm = idsWorkingTerms;
             plan.IdOffice = idOffice;
 
             context.SaveChanges();
@@ -68,17 +68,17 @@ namespace Console_Management_of_medical_clinic.Logic
                 return (desc[0] as DescriptionAttribute).Description;
             }
         }
-        public static string CheckIfDoctorHasPlanForCurrentDay(int idEmployee, int idDay, int idCalendar)
+        public static int CheckIfDoctorHasPlanForCurrentDay(int idEmployee, int idDay, int idCalendar)
         {
             List<DoctorsDayPlanModel> doctorsPlans = GetDoctorsPlanData();
             foreach(DoctorsDayPlanModel plan in doctorsPlans)
             {
                 if (plan.IdEmployee==idEmployee && plan.IdDay==idDay && plan.IdCalendar == idCalendar)
                 {
-                    return plan.IdsWorkingTerms;
+                    return plan.IdOfTerm;
                 }
             }
-            return "";
+            return -1;
         }
     }
 }

@@ -11,8 +11,9 @@ namespace Console_Management_of_medical_clinic.Model
     public class DoctorsDayPlanModel
     {
         [Key] public int IdDoctorsDayPlan { get; set; }
-        public string IdsWorkingTerms { get; set; }
+        public int IdOfTerm { get; set; }
         public int IdDay { get; set; }
+        public bool HasVisit { get; set; }
         public bool IsActive { get; set; }
         //Relationships
         [ForeignKey("CalendarModel")] public int? IdCalendar { get; set; }
@@ -24,31 +25,34 @@ namespace Console_Management_of_medical_clinic.Model
 
         public DoctorsDayPlanModel() { }
 
-        public DoctorsDayPlanModel(string idsWorkingTerms, bool isActive)
+        public DoctorsDayPlanModel(int idOfTerm, bool hasVisit, bool isActive)
         {
-            IdsWorkingTerms = idsWorkingTerms;
+            IdOfTerm = idOfTerm;
+            HasVisit = hasVisit;
             IsActive = isActive;
         }
 
-        public DoctorsDayPlanModel(string idsWorkingTerms, int idDay, int idCalendar, int idEmployee, int idOffice, bool isActive)
+        public DoctorsDayPlanModel(int idOfTerm, int idDay, int idCalendar, int idEmployee, int idOffice, bool hasVisit, bool isActive)
         {
-            IdsWorkingTerms = idsWorkingTerms;
-            IdDay = idDay;
-            IsActive = isActive;
+            IdOfTerm = idOfTerm;
+            IdDay = idDay;            
             IdCalendar = idCalendar;
             IdEmployee = idEmployee;
             IdOffice = idOffice;
+            HasVisit = hasVisit;
+            IsActive = isActive;
         }
 
-        public DoctorsDayPlanModel(int idDoctorsDayPlan, string idsWorkingTerms, int idDay, bool isActive, int idCalendar, int idEmployee, int idOffice)
+        public DoctorsDayPlanModel(int idDoctorsDayPlan, int idOfTerm, int idDay, int idCalendar, int idEmployee, int idOffice, bool hasVisit, bool isActive)
         {
             IdDoctorsDayPlan = idDoctorsDayPlan;
-            IdsWorkingTerms = idsWorkingTerms;
-            IdDay = idDay;
-            IsActive = isActive;
+            IdOfTerm = idOfTerm;
+            IdDay = idDay;            
             IdCalendar = idCalendar;
             IdEmployee = idEmployee;
             IdOffice = idOffice;
+            HasVisit = hasVisit;
+            IsActive = isActive;
         }
     }
 }
