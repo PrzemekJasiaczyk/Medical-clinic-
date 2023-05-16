@@ -19,11 +19,11 @@ namespace Console_Management_of_medical_clinic.Data
         {
 
             //MIGRATION STRING
-            string CustomPath = Directory.GetCurrentDirectory() + "\\..\\Database\\DbMain.db";
+            //string CustomPath = Directory.GetCurrentDirectory() + "\\..\\Database\\DbMain.db";
 
 
             //NORMAL USE STRING
-            //string CustomPath = Directory.GetCurrentDirectory() + "\\..\\..\\..\\..\\Database\\DbMain.db";
+            string CustomPath = Directory.GetCurrentDirectory() + "\\..\\..\\..\\..\\Database\\DbMain.db";
 
             optionsBuilder.UseSqlite(@"Data Source = " + CustomPath);
 
@@ -32,6 +32,12 @@ namespace Console_Management_of_medical_clinic.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<DoctorsDayPlanModel>(entity =>
+            {
+                entity.Property(d => d.PatientId)
+                    .IsRequired(false); // Configure PatientId as optional (allow null values)
+            });
+
             new PatientEntityTypeConfiguration().Configure(modelBuilder.Entity<Patient>());
             new VisitEntityTypeConfiguration().Configure(modelBuilder.Entity<Visit>());
 
