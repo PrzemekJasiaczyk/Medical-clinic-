@@ -3,14 +3,16 @@ using System;
 using Console_Management_of_medical_clinic.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Console_Management_of_medical_clinic.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230503235409_DoctorsPlan")]
+    partial class DoctorsPlan
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,6 +49,7 @@ namespace Console_Management_of_medical_clinic.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<int?>("PatientId")
+                        .IsRequired()
                         .HasColumnType("INTEGER");
 
                     b.HasKey("IdAppointment");
@@ -96,17 +99,15 @@ namespace Console_Management_of_medical_clinic.Migrations
                         .IsRequired()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("IdOfTerm")
-                        .HasColumnType("INTEGER");
-
                     b.Property<int?>("IdOffice")
                         .IsRequired()
                         .HasColumnType("INTEGER");
 
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("IdsWorkingTerms")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
-                    b.Property<int?>("PatientId")
+                    b.Property<bool>("IsActive")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("IdDoctorsDayPlan");
@@ -116,8 +117,6 @@ namespace Console_Management_of_medical_clinic.Migrations
                     b.HasIndex("IdEmployee");
 
                     b.HasIndex("IdOffice");
-
-                    b.HasIndex("PatientId");
 
                     b.ToTable("DbDoctorsDayPlan");
                 });
@@ -397,7 +396,9 @@ namespace Console_Management_of_medical_clinic.Migrations
 
                     b.HasOne("Console_Management_of_medical_clinic.Model.Patient", "Patient")
                         .WithMany()
-                        .HasForeignKey("PatientId");
+                        .HasForeignKey("PatientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("CalendarModel");
 
@@ -426,17 +427,11 @@ namespace Console_Management_of_medical_clinic.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Console_Management_of_medical_clinic.Model.Patient", "Patient")
-                        .WithMany()
-                        .HasForeignKey("PatientId");
-
                     b.Navigation("CalendarModel");
 
                     b.Navigation("EmployeeModel");
 
                     b.Navigation("OfficeModel");
-
-                    b.Navigation("Patient");
                 });
 
             modelBuilder.Entity("Console_Management_of_medical_clinic.Model.EmployeeModel", b =>

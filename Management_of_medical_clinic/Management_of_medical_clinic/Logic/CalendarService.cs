@@ -7,7 +7,7 @@ namespace Console_Management_of_medical_clinic.Logic
 {
 	public class CalendarService : ICalendarFilterSort
 	{
-
+		public static string LastErrorMessage { get; private set; }
         public static void AddCalendar(CalendarModel calendarModel)
         {
             using (AppDbContext context = new AppDbContext())
@@ -23,7 +23,7 @@ namespace Console_Management_of_medical_clinic.Logic
 			{
 				return context.DbCalendars.ToList();
 			}
-		}
+		}		
 		
         public static List<CalendarModel> GetCalendarData()
         {
@@ -33,6 +33,18 @@ namespace Console_Management_of_medical_clinic.Logic
                 calendars = db.DbCalendars.ToList();
             }
             return calendars;
+        }
+
+		public static int GetCalendarIdByDate(string selectedDate)
+		{
+            List<CalendarModel> calendars = GetCalendarData();
+            string CurrentDateReference = selectedDate.Remove(0, 3).Replace(".", "-");
+            foreach (CalendarModel calendar in calendars)
+                if (calendar.DateReference == CurrentDateReference)
+                {
+                    return calendar.IdCalendar;
+                }
+			return -1;
         }
 
         public static List<int> GetCalendarIds()
@@ -46,6 +58,40 @@ namespace Console_Management_of_medical_clinic.Logic
             }
             return calendarIds;
         }
+        public static bool checkIfCalendarExistsCalendarAdd(string selectedDate)    //only for Calendar adding, need to be edited
+        {
+            List<CalendarModel> calendars = GetCalendarData();
+            string CurrentDateReference = selectedDate.Remove(0, 3).Replace(".", "-");
+
+			foreach(CalendarModel calendar in calendars)
+			{
+				if (calendar.DateReference == selectedDate)
+				{
+					return true;
+				}
+			}
+			return false;
+        }
+
+        public static bool checkIfCalendarExists(string selectedDate)
+        {
+            List<CalendarModel> calendars = GetCalendarData();
+            string CurrentDateReference = selectedDate.Remove(0, 3).Replace(".", "-");
+
+            foreach (CalendarModel calendar in calendars)
+            {
+                if (calendar.DateReference == CurrentDateReference)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public static CalendarModel GetCalendarById(int id)
+		{
+			return GetCalendarData().FirstOrDefault(calendar => calendar.IdCalendar == id);
+		}
 
         public List<CalendarModel> Filter(string dateReference, string activityStatus)
 		{
@@ -123,6 +169,28 @@ namespace Console_Management_of_medical_clinic.Logic
 
 			return sortedCalendars;
 		}
+
+		public static void DeleteCalendar(int IdCalendar)
+		{
+			try
+			{
+				using (var db = new AppDbContext())
+				{
+					CalendarModel calendar = db.DbCalendars.Find(IdCalendar);
+
+					if (calendar != null)
+					{
+						db.DbCalendars.Remove(calendar);
+						db.SaveChanges();
+					}
+				}
+			}catch(Microsoft.EntityFrameworkCore.DbUpdateException)
+			{
+				LastErrorMessage = "You can't remove this Calendar";
+				throw;
+			}
+			
+        }
 
 
 

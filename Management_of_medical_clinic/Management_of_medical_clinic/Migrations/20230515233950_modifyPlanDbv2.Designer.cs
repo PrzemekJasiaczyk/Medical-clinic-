@@ -3,14 +3,16 @@ using System;
 using Console_Management_of_medical_clinic.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Console_Management_of_medical_clinic.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230515233950_modifyPlanDbv2")]
+    partial class modifyPlanDbv2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -86,6 +88,9 @@ namespace Console_Management_of_medical_clinic.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<bool>("HasVisit")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int?>("IdCalendar")
                         .HasColumnType("INTEGER");
 
@@ -106,9 +111,6 @@ namespace Console_Management_of_medical_clinic.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("PatientId")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("IdDoctorsDayPlan");
 
                     b.HasIndex("IdCalendar");
@@ -116,8 +118,6 @@ namespace Console_Management_of_medical_clinic.Migrations
                     b.HasIndex("IdEmployee");
 
                     b.HasIndex("IdOffice");
-
-                    b.HasIndex("PatientId");
 
                     b.ToTable("DbDoctorsDayPlan");
                 });
@@ -426,17 +426,11 @@ namespace Console_Management_of_medical_clinic.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Console_Management_of_medical_clinic.Model.Patient", "Patient")
-                        .WithMany()
-                        .HasForeignKey("PatientId");
-
                     b.Navigation("CalendarModel");
 
                     b.Navigation("EmployeeModel");
 
                     b.Navigation("OfficeModel");
-
-                    b.Navigation("Patient");
                 });
 
             modelBuilder.Entity("Console_Management_of_medical_clinic.Model.EmployeeModel", b =>
