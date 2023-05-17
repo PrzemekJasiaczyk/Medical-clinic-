@@ -101,6 +101,9 @@ namespace GUI_Management_of_medical_clinic
                 return;
             }
 
+            FormCalendarEdit formCalendar = new FormCalendarEdit(currentUser, CalendarService.GetCalendarById((int)dataGridViewCalendars.CurrentRow.Cells[0].Value), new FormCalendarsList(currentUser));
+            formCalendar.ShowDialog();
+            Close();
         }
     }
 }

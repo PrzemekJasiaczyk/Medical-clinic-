@@ -58,6 +58,8 @@ namespace GUI_Management_of_medical_clinic
             button3.Visible = false;
 
             createCalendarButton.Text = "Edit Calendar";
+            createCalendarButton.Click -= createCalendarButton_Click;
+            createCalendarButton.Click += editCalendar_Click;
 
         }
 
@@ -342,6 +344,19 @@ namespace GUI_Management_of_medical_clinic
             formCalendarsList.ShowDialog();
             Close();
 
+        }
+
+        private void editCalendar_Click(object sender, EventArgs e) 
+        {
+            if (CalendarService.GetCalendarById(CalendarService.GetCalendarIdByDate(displayMonth.ToString("d"))).Active)
+            {
+                MessageBox.Show("It is not possible to change active calendars. Check if the selected calendar is right.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            FormCalendarEdit formCalendarEdit = new FormCalendarEdit(currentEmployee, CalendarService.GetCalendarById(CalendarService.GetCalendarIdByDate(displayMonth.ToString("d"))), new FormCalendar(currentEmployee, CalendarService.GetCalendarIdByDate(displayMonth.ToString("d"))));
+            formCalendarEdit.ShowDialog();
+            Close();
         }
 
         private void CheckTheMonth()
