@@ -17,9 +17,9 @@ namespace GUI_Management_of_medical_clinic
     public partial class FormConfirmCancelAppointment : Form
     {
         EmployeeModel currentUser;
-        AppointmentModel appointment;
+        DoctorsDayPlanModel appointment;
 
-        public FormConfirmCancelAppointment(EmployeeModel currentUser, AppointmentModel appointment)
+        public FormConfirmCancelAppointment(EmployeeModel currentUser, DoctorsDayPlanModel appointment)
         {
             InitializeComponent();
             this.currentUser = currentUser;

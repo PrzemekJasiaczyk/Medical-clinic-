@@ -18,9 +18,9 @@ namespace GUI_Management_of_medical_clinic
     public partial class FormShowDetailsAppointment : Form
     {
         EmployeeModel currentUser;
-        AppointmentModel appointment;
+        DoctorsDayPlanModel appointment;
 
-        public FormShowDetailsAppointment(EmployeeModel currentUser, AppointmentModel appointment)
+        public FormShowDetailsAppointment(EmployeeModel currentUser, DoctorsDayPlanModel appointment)
         {
             InitializeComponent();
             this.currentUser = currentUser;
@@ -34,7 +34,7 @@ namespace GUI_Management_of_medical_clinic
             SpecializationModel specialization = SpecializationService.GetSpecializationById((int)employee.IdSpecialization);
             OfficeModel office = OfficeService.GetOfficeById((int)appointment.IdOffice);
             DateTime date = CalendarService.GetDateByIdCalendar((int)appointment.IdCalendar, appointment.IdDay);
-            string term = AppointmentService.GetTermByTermId((int)appointment.IdTerm);
+            string term = AppointmentService.GetTermByTermId((int)appointment.IdOfTerm);
 
             textBoxPatient.Text = patient.ToString();
             textBoxPESEL.Text = patient.PESEL;
