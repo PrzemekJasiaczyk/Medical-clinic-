@@ -116,7 +116,7 @@
             buttonAddCalendar.TabIndex = 27;
             buttonAddCalendar.Text = "Duplicate calendar";
             buttonAddCalendar.UseVisualStyleBackColor = false;
-            buttonAddCalendar.Click += buttonAddCalendar_Click;
+            buttonAddCalendar.Click += buttonDuplicateCalendar_Click;
             // 
             // buttonEditCalendar
             // 

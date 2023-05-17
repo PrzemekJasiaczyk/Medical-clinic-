@@ -14,6 +14,7 @@ namespace GUI_Management_of_medical_clinic
         bool previousMonth;
         CalendarModel duplicateCalendar;
         string _selectedDate="";
+        DateTime displayMonth = DateTime.Today;
 
         public FormCalendar(EmployeeModel currentEmployee, bool previousMonth = false)
         {
@@ -24,6 +25,8 @@ namespace GUI_Management_of_medical_clinic
             {
                 this.currentMonth = DateTime.Today;
             }
+
+            displayMonth = DateTime.Today;
         }
 
         public FormCalendar(EmployeeModel currentEmployee, CalendarModel calendarModel)
@@ -32,9 +35,22 @@ namespace GUI_Management_of_medical_clinic
             this.currentEmployee = currentEmployee;
             duplicateCalendar = calendarModel;
 
+            button2.Visible = false;
+            button3.Visible = false;
+
+            displayMonth = DateTime.Today.AddMonths(1);
+
+            createCalendarButton.Click -= createCalendarButton_Click;
+            createCalendarButton.Click += duplicateCalendar_Click;
+
         }
 
-        DateTime displayMonth = DateTime.Today;
+        private void CreateCalendarButton_Click(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        
         DateTime currentMonth = new DateTime();
 
         private void FormCalendar_Load(object sender, EventArgs e)
@@ -267,6 +283,27 @@ namespace GUI_Management_of_medical_clinic
             Hide();
             formCalendarsList.ShowDialog();
             Close();
+        }
+
+        private void duplicateCalendar_Click(object sender, EventArgs e)
+        {
+            //if (CalendarService.checkIfCalendarExistsCalendarAdd(monthAndYear))
+            //{
+            //    MessageBox.Show("Calendar already exists");
+            //    return;
+            //}
+
+            MessageBox.Show(displayMonth.ToString("MM") + '-' + displayMonth.ToString("yyyy"));
+            DoctorsPlanService.GetPlansByCalendarId(duplicateCalendar.IdCalendar).ForEach(p => MessageBox.Show(p.IdCalendar.ToString()));
+
+            List<DoctorsDayPlanModel> models = new List<DoctorsDayPlanModel>();
+            DoctorsPlanService.GetPlansByCalendarId(duplicateCalendar.IdCalendar).ForEach(p => {
+                p.IdCalendar = CalendarService.GetCalendarIdByDate(displayMonth.ToString("d"));
+                models.Add(p);
+            });
+
+            models.ForEach(p => MessageBox.Show(p.IdCalendar.ToString()));
+
         }
 
         private void CheckTheMonth()

@@ -430,38 +430,6 @@
             label5.Text = "Saturday";
             label5.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // button3
-            // 
-            button3.BackColor = Color.White;
-            button3.BackgroundImageLayout = ImageLayout.None;
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point);
-            button3.Location = new Point(193, 25);
-            button3.Name = "button3";
-            button3.Size = new Size(62, 62);
-            button3.TabIndex = 12;
-            button3.Text = "<";
-            button3.TextAlign = ContentAlignment.TopCenter;
-            button3.UseVisualStyleBackColor = false;
-            button3.Click += buttonPreviousMonth_Click;
-            // 
-            // button2
-            // 
-            button2.BackColor = Color.White;
-            button2.BackgroundImageLayout = ImageLayout.None;
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point);
-            button2.Location = new Point(260, 25);
-            button2.Name = "button2";
-            button2.Size = new Size(62, 62);
-            button2.TabIndex = 11;
-            button2.Text = ">";
-            button2.TextAlign = ContentAlignment.TopCenter;
-            button2.UseVisualStyleBackColor = false;
-            button2.Click += buttonNextMonth_Click;
-            // 
             // labelTitleCalendar_Month
             // 
             labelTitleCalendar_Month.AutoSize = true;

@@ -80,5 +80,31 @@ namespace Console_Management_of_medical_clinic.Logic
             }
             return -1;
         }
+
+        public static List<DoctorsDayPlanModel> CheckPlansAndReturn(DateTime selectedDay, int calendarId)
+        {
+            List<DoctorsDayPlanModel> doctorsPlans = new List<DoctorsDayPlanModel>();
+
+            using (AppDbContext context  = new AppDbContext())
+            {
+                foreach(DoctorsDayPlanModel model in context.DbDoctorsDayPlan) 
+                {
+                    if(model.IdDay == selectedDay.Day && model.IdCalendar == calendarId && selectedDay.DayOfWeek != DayOfWeek.Sunday)
+                    {
+                        doctorsPlans.Add(model);
+                    }
+                }
+            }
+
+            return doctorsPlans;
+        }
+
+        public static List<DoctorsDayPlanModel> GetPlansByCalendarId(int calendarId)
+        {
+            using (AppDbContext context = new AppDbContext())
+            {
+                return context.DbDoctorsDayPlan.Where(plan => plan.IdCalendar == calendarId).ToList();
+            }
+        }
     }
 }
