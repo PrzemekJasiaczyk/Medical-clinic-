@@ -43,7 +43,15 @@ namespace GUI_Management_of_medical_clinic
             textBoxDoktor.Text = employee.ToString();
             textBoxSpecialization.Text = specialization.Name.ToString();
             textBoxOffice.Text = office.Number.ToString();
-            numericUpDownCost.Value = appointment.Cost;
+
+            if (appointment.Cost == null)
+            {
+                numericUpDownCost.Value = 0;
+			}
+            else
+            {
+				numericUpDownCost.Value = (decimal)appointment.Cost;
+			}
         }
 
         private void buttonBack_Click(object sender, EventArgs e)
