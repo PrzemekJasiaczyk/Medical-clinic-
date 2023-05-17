@@ -28,7 +28,7 @@ namespace GUI_Management_of_medical_clinic
         }
 
 
-        private void buttonAddCalendar_Click(object sender, EventArgs e)
+        private void buttonDuplicateCalendar_Click(object sender, EventArgs e)
         {
             FormCalendar formCalendar = new FormCalendar(currentUser, CalendarService.GetCalendarById((int)dataGridViewCalendars.CurrentRow.Cells[0].Value));
             formCalendar.ShowDialog();
@@ -36,9 +36,11 @@ namespace GUI_Management_of_medical_clinic
         }
 
 
-        private void buttonEditCalendar_Click(object sender, EventArgs e)
+        private void buttonReviewCalendar_Click(object sender, EventArgs e)
         {
-            // TODO: Open edit clicked calendar form
+            FormCalendar formCalendar = new FormCalendar(currentUser, (int)dataGridViewCalendars.CurrentRow.Cells[0].Value);
+            formCalendar.ShowDialog();
+            Close();
         }
 
         private void buttonRemoveCalendar_Click(object sender, EventArgs e)
@@ -52,7 +54,8 @@ namespace GUI_Management_of_medical_clinic
                 formCalendarDelete.ShowDialog();
                 dataGridViewCalendars.DataSource = null;
                 dataGridViewCalendars.DataSource = _calendarService.GetAll();
-            }catch(Microsoft.EntityFrameworkCore.DbUpdateException ex)
+            }
+            catch (Microsoft.EntityFrameworkCore.DbUpdateException ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -88,6 +91,19 @@ namespace GUI_Management_of_medical_clinic
         private void FormCalendarsList_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonEditCalendar_Click(object sender, EventArgs e)
+        {
+            if ((bool)dataGridViewCalendars.CurrentRow.Cells[2].Value)
+            {
+                MessageBox.Show("It is not possible to change active calendars. Check if the selected calendar is right.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            FormCalendarEdit formCalendar = new FormCalendarEdit(currentUser, CalendarService.GetCalendarById((int)dataGridViewCalendars.CurrentRow.Cells[0].Value), new FormCalendarsList(currentUser));
+            formCalendar.ShowDialog();
+            Close();
         }
     }
 }

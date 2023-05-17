@@ -243,5 +243,17 @@ namespace Console_Management_of_medical_clinic.Logic
             return result;
 		}
 
+		public static void EditCalendar(int calendarId, bool active)
+		{
+			using (AppDbContext context = new AppDbContext())
+			{
+				CalendarModel model = context.DbCalendars.Find(calendarId);
+				if (model != null)
+				{
+					model.Active = active;
+					context.SaveChanges();
+				}
+			}
+		}
 	}
 }
