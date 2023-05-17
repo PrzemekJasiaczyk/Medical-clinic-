@@ -25,7 +25,7 @@ namespace GUI_Management_of_medical_clinic
         {
             this.currentUser = currentUser;
             InitializeComponent();
-            label1.Text = "Welcome, " + currentUser.FirstName + " " + currentUser.Role;
+            label1.Text = "Welcome, " + currentUser.FirstName;
         }
 
         private void buttonCalendar_Click(object sender, EventArgs e)
