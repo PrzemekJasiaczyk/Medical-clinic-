@@ -136,7 +136,7 @@ namespace GUI_Management_of_medical_clinic
                         }
                         else
                         {
-                            DoctorsDayPlanModel model = new DoctorsDayPlanModel(checkedTerms, selectedDay, calendarId, parsedEmployeeId, parsedOfficeId, false, true);
+                            DoctorsDayPlanModel model = new DoctorsDayPlanModel(checkedTerms, selectedDay, calendarId, parsedEmployeeId, parsedOfficeId, true);
                             DoctorsPlanService.AddPlan(model);
                             MessageBox.Show("New plan added successfully");                            
                         }

@@ -13,7 +13,6 @@ namespace Console_Management_of_medical_clinic.Model
         [Key] public int IdDoctorsDayPlan { get; set; }
         public int IdOfTerm { get; set; }
         public int IdDay { get; set; }
-        public bool HasVisit { get; set; }
         public bool IsActive { get; set; }
         //Relationships
         [ForeignKey("CalendarModel")] public int? IdCalendar { get; set; }
@@ -22,28 +21,40 @@ namespace Console_Management_of_medical_clinic.Model
         public EmployeeModel EmployeeModel { get; set; }
         [ForeignKey("OfficeModel")] public int? IdOffice { get; set; }
         public OfficeModel OfficeModel { get; set; }
+        [ForeignKey("Patient")] public int? PatientId { get; set; }
+        public Patient Patient { get; set; }
+
 
         public DoctorsDayPlanModel() { }
 
-        public DoctorsDayPlanModel(int idOfTerm, bool hasVisit, bool isActive)
+        public DoctorsDayPlanModel(int idOfTerm,  bool isActive)
         {
             IdOfTerm = idOfTerm;
-            HasVisit = hasVisit;
             IsActive = isActive;
         }
 
-        public DoctorsDayPlanModel(int idOfTerm, int idDay, int idCalendar, int idEmployee, int idOffice, bool hasVisit, bool isActive)
+        public DoctorsDayPlanModel(int idOfTerm, int idDay, int idCalendar, int idEmployee, int idOffice, bool isActive)
+        {
+            IdOfTerm = idOfTerm;
+            IdDay = idDay;
+            IdCalendar = idCalendar;
+            IdEmployee = idEmployee;
+            IdOffice = idOffice;
+            IsActive = isActive;
+        }
+
+        public DoctorsDayPlanModel(int idOfTerm, int idDay, int idCalendar, int idEmployee, int idOffice, int patientId, bool isActive)
         {
             IdOfTerm = idOfTerm;
             IdDay = idDay;            
             IdCalendar = idCalendar;
             IdEmployee = idEmployee;
             IdOffice = idOffice;
-            HasVisit = hasVisit;
+            PatientId = patientId;
             IsActive = isActive;
         }
 
-        public DoctorsDayPlanModel(int idDoctorsDayPlan, int idOfTerm, int idDay, int idCalendar, int idEmployee, int idOffice, bool hasVisit, bool isActive)
+        public DoctorsDayPlanModel(int idDoctorsDayPlan, int idOfTerm, int idDay, int idCalendar, int idEmployee, int idOffice, int patientId, bool isActive)
         {
             IdDoctorsDayPlan = idDoctorsDayPlan;
             IdOfTerm = idOfTerm;
@@ -51,8 +62,9 @@ namespace Console_Management_of_medical_clinic.Model
             IdCalendar = idCalendar;
             IdEmployee = idEmployee;
             IdOffice = idOffice;
-            HasVisit = hasVisit;
+            PatientId = patientId;
             IsActive = isActive;
         }
+
     }
 }
