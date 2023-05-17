@@ -3,14 +3,16 @@ using System;
 using Console_Management_of_medical_clinic.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Console_Management_of_medical_clinic.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230517194717_Add-Cost-Column")]
+    partial class AddCostColumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -381,7 +383,7 @@ namespace Console_Management_of_medical_clinic.Migrations
             modelBuilder.Entity("Console_Management_of_medical_clinic.Model.AppointmentModel", b =>
                 {
                     b.HasOne("Console_Management_of_medical_clinic.Model.CalendarModel", "CalendarModel")
-                        .WithMany()
+                        .WithMany("AppointmentModels")
                         .HasForeignKey("IdCalendar")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -414,7 +416,7 @@ namespace Console_Management_of_medical_clinic.Migrations
             modelBuilder.Entity("Console_Management_of_medical_clinic.Model.DoctorsDayPlanModel", b =>
                 {
                     b.HasOne("Console_Management_of_medical_clinic.Model.CalendarModel", "CalendarModel")
-                        .WithMany("DoctorsDayPlanModels")
+                        .WithMany()
                         .HasForeignKey("IdCalendar");
 
                     b.HasOne("Console_Management_of_medical_clinic.Model.EmployeeModel", "EmployeeModel")
@@ -490,7 +492,7 @@ namespace Console_Management_of_medical_clinic.Migrations
 
             modelBuilder.Entity("Console_Management_of_medical_clinic.Model.CalendarModel", b =>
                 {
-                    b.Navigation("DoctorsDayPlanModels");
+                    b.Navigation("AppointmentModels");
                 });
 
             modelBuilder.Entity("Console_Management_of_medical_clinic.Model.EmployeeModel", b =>

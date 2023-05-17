@@ -20,7 +20,7 @@ namespace GUI_Management_of_medical_clinic
 
 
         DateTime displayMonth_date = DateTime.Today;
-        List<AppointmentModel> displayListInDataGridView = new List<AppointmentModel>();
+        List<DoctorsDayPlanModel> displayListInDataGridView = new List<DoctorsDayPlanModel>();
 
 
         private void FormCalendarAppointment_Load(object sender, EventArgs e)
@@ -85,7 +85,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void dataGridViewAppointment_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            AppointmentModel appointment = (AppointmentModel)dataGridViewAppointment.SelectedRows[0].Tag;
+            DoctorsDayPlanModel appointment = (DoctorsDayPlanModel)dataGridViewAppointment.SelectedRows[0].Tag;
             FormRegisterAppointment formRegisterAppointment = new FormRegisterAppointment(employee, appointment);
             this.Hide();
             formRegisterAppointment.ShowDialog();
@@ -122,10 +122,10 @@ namespace GUI_Management_of_medical_clinic
             string doctor;
             int calendarId = CalendarService.GetIdFromDate(date);
 
-            List<AppointmentModel> appointments = CalendarAppointmentService.GetAppointmentsData();
-            List<AppointmentModel> selectedAppointments = CalendarAppointmentService.appointmentInSelectedDate(appointments, date, calendarId);
+            List<DoctorsDayPlanModel> appointments = CalendarAppointmentService.GetAppointmentsData();
+            List<DoctorsDayPlanModel> selectedAppointments = CalendarAppointmentService.appointmentInSelectedDate(appointments, date, calendarId);
 
-            foreach (AppointmentModel appointment in selectedAppointments)
+            foreach (DoctorsDayPlanModel appointment in selectedAppointments)
             {
                 if (appointment.PatientId == null && appointment.IsActive == true)
                 {
@@ -240,12 +240,12 @@ namespace GUI_Management_of_medical_clinic
         #endregion
 
         #region DataGridView
-        private void AddItemToDataGridView(AppointmentModel appointment)
+        private void AddItemToDataGridView(DoctorsDayPlanModel appointment)
         {
             string timeTerm;
             string doctor;
 
-            timeTerm = AppointmentService.GetTermByTermId(appointment.IdTerm);
+            timeTerm = AppointmentService.GetTermByTermId(appointment.IdOfTerm);
             doctor = CalendarAppointmentService.GetLastNameAndNameOfEmployeeByAppointment(appointment);
 
             int index = dataGridViewAppointment.Rows.Add(doctor, timeTerm);
@@ -263,10 +263,10 @@ namespace GUI_Management_of_medical_clinic
 
         void SortByTime()
         {
-            List<AppointmentModel> result = CalendarAppointmentService.SortByTerm(displayListInDataGridView);
+            List<DoctorsDayPlanModel> result = CalendarAppointmentService.SortByTerm(displayListInDataGridView);
             dataGridViewAppointment.Rows.Clear();
 
-            foreach (AppointmentModel appointment in result)
+            foreach (DoctorsDayPlanModel appointment in result)
             {
                 AddItemToDataGridView(appointment);
             }
@@ -274,10 +274,10 @@ namespace GUI_Management_of_medical_clinic
 
         void SortByDoctor()
         {
-            List<AppointmentModel> result = CalendarAppointmentService.SortByDoctorLastName(displayListInDataGridView);
+            List<DoctorsDayPlanModel> result = CalendarAppointmentService.SortByDoctorLastName(displayListInDataGridView);
             dataGridViewAppointment.Rows.Clear();
 
-            foreach (AppointmentModel appointment in result)
+            foreach (DoctorsDayPlanModel appointment in result)
             {
                 AddItemToDataGridView(appointment);
             }
@@ -286,5 +286,9 @@ namespace GUI_Management_of_medical_clinic
         #endregion
 
 
+        private void panelMenu_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

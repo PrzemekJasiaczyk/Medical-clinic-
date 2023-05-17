@@ -24,9 +24,9 @@ namespace GUI_Management_of_medical_clinic
         EmployeeModel currentUser;
         public AppointmentService appointmentService;
 
-        AppointmentModel appointment;
+        DoctorsDayPlanModel appointment;
 
-        public FormRegisterAppointment(EmployeeModel user, AppointmentModel? appointment)
+        public FormRegisterAppointment(EmployeeModel user, DoctorsDayPlanModel? appointment)
         {
             InitializeComponent();
 
@@ -84,12 +84,12 @@ namespace GUI_Management_of_medical_clinic
                 EmployeeModel doc = (EmployeeModel)comboBoxDoctor.SelectedItem;
                 selectedDoctorId = doc.IdEmployee;
             }
-            List<AppointmentModel> appointments =
+            List<DoctorsDayPlanModel> appointments =
             CalendarAppointmentService.GetAppointmentsData()
                 .Where(a => a.IdEmployee == selectedDoctorId && a.IsActive == true && a.PatientId == null)
                 .ToList();
             comboBoxDate.Items.Clear();
-            foreach (AppointmentModel appointment in appointments)
+            foreach (DoctorsDayPlanModel appointment in appointments)
             {
                 comboBoxDate.Items.Add(appointment);
             }
@@ -138,8 +138,8 @@ namespace GUI_Management_of_medical_clinic
             int selectedAppointmentId = -1;
             if (comboBoxDate.SelectedItem != null)
             {
-                AppointmentModel selectedAppointment = (AppointmentModel)comboBoxDate.SelectedItem;
-                selectedAppointmentId = selectedAppointment.IdAppointment;
+                DoctorsDayPlanModel selectedAppointment = (DoctorsDayPlanModel)comboBoxDate.SelectedItem;
+                selectedAppointmentId = selectedAppointment.IdDoctorsDayPlan;
             }
             int selectedPatientId = -1;
             if (comboBoxPatient.SelectedItem != null)
@@ -150,7 +150,7 @@ namespace GUI_Management_of_medical_clinic
 
             using (AppDbContext db = new AppDbContext())
             {
-                AppointmentModel? appointment = db.DbAppointments.FirstOrDefault(a => a.IdAppointment == selectedAppointmentId);
+                DoctorsDayPlanModel? appointment = db.DbDoctorsDayPlan.FirstOrDefault(a => a.IdDoctorsDayPlan == selectedAppointmentId);
 
 
 

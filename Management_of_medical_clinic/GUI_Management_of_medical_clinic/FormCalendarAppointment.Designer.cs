@@ -99,6 +99,7 @@
             panelMenu.Name = "panelMenu";
             panelMenu.Size = new Size(312, 1081);
             panelMenu.TabIndex = 0;
+            panelMenu.Paint += panelMenu_Paint;
             // 
             // buttonDisplayAppointments
             // 

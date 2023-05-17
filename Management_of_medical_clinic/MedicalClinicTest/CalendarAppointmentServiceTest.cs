@@ -35,9 +35,9 @@ namespace MedicalClinicTest
 
         
 
-        AppointmentModel firstFakeAppointment = new AppointmentModel()
+        DoctorsDayPlanModel firstFakeAppointment = new DoctorsDayPlanModel()
         {
-            IdTerm = 1,
+            IdOfTerm = 1,
             IdDay = 11,
             Cost = 1000,
             IsActive = false,
@@ -47,9 +47,9 @@ namespace MedicalClinicTest
             IdOffice = 1
         };
 
-        AppointmentModel secondFakeAppointment = new AppointmentModel()
+        DoctorsDayPlanModel secondFakeAppointment = new DoctorsDayPlanModel()
         {
-            IdTerm = 1,
+            IdOfTerm = 1,
             IdDay = 11,
             Cost = 1000,
             IsActive = true,
@@ -59,9 +59,9 @@ namespace MedicalClinicTest
             IdOffice = 1
         };
 
-        AppointmentModel thirdFakeAppointment = new AppointmentModel()
+        DoctorsDayPlanModel thirdFakeAppointment = new DoctorsDayPlanModel()
         {
-            IdTerm = 3,
+            IdOfTerm = 3,
             IdDay = 3,
             Cost = 1000,
             IsActive = true,
@@ -71,9 +71,9 @@ namespace MedicalClinicTest
             IdOffice = 1
         };
 
-        AppointmentModel fourthFakeAppointment = new AppointmentModel()
+        DoctorsDayPlanModel fourthFakeAppointment = new DoctorsDayPlanModel()
         {
-            IdTerm = 4,
+            IdOfTerm = 4,
             IdDay = 4,
             Cost = 1000,
             IsActive = true,
@@ -105,9 +105,9 @@ namespace MedicalClinicTest
             DateOfBirth = "10-09-1985"
         };
 
-        AppointmentModel fifthFakeAppointment = new AppointmentModel()
+        DoctorsDayPlanModel fifthFakeAppointment = new DoctorsDayPlanModel()
         {
-            IdTerm = 2,
+            IdOfTerm = 2,
             IdDay = 2,
             Cost = 1000,
             IsActive = true,
@@ -117,9 +117,9 @@ namespace MedicalClinicTest
             IdOffice = 2
         };
 
-        AppointmentModel sixthFakeAppointment = new AppointmentModel()
+        DoctorsDayPlanModel sixthFakeAppointment = new DoctorsDayPlanModel()
         {
-            IdTerm = 1,
+            IdOfTerm = 1,
             IdDay = 2,
             Cost = 1000,
             IsActive = true,
@@ -144,11 +144,11 @@ namespace MedicalClinicTest
             AppointmentService.AddAppointment(sixthFakeAppointment);
 
 
-            List<AppointmentModel> fakeListAppointments = new List<AppointmentModel>();
+            List<DoctorsDayPlanModel> fakeListAppointments = new List<DoctorsDayPlanModel>();
             fakeListAppointments.Add(fifthFakeAppointment); //Zowak
             fakeListAppointments.Add(sixthFakeAppointment); //Awak
 
-            List<AppointmentModel> test = CalendarAppointmentService.SortByDoctorLastName(fakeListAppointments);
+            List<DoctorsDayPlanModel> test = CalendarAppointmentService.SortByDoctorLastName(fakeListAppointments);
             int result = (int)test[0].IdEmployee;
             int expect = 1002;
             Assert.Equal(expect, result);
@@ -156,8 +156,8 @@ namespace MedicalClinicTest
 
             using (AppDbContext context = new AppDbContext())
             {
-                context.DbAppointments.Remove(fifthFakeAppointment);
-                context.DbAppointments.Remove(sixthFakeAppointment);
+                context.DbDoctorsDayPlan.Remove(fifthFakeAppointment);
+                context.DbDoctorsDayPlan.Remove(sixthFakeAppointment);
 
                 context.DbEmployees.Remove(secendFakeEmployee);
                 context.DbEmployees.Remove(thirdFakeEmployee);
@@ -180,22 +180,22 @@ namespace MedicalClinicTest
             AppointmentService.AddAppointment(fifthFakeAppointment);
             AppointmentService.AddAppointment(sixthFakeAppointment);
 
-            List<AppointmentModel> fakeListAppointments = new List<AppointmentModel>
+            List<DoctorsDayPlanModel> fakeListAppointments = new List<DoctorsDayPlanModel>
             {
                 fifthFakeAppointment, //2
                 sixthFakeAppointment //1
             };
 
-            List<AppointmentModel> test = CalendarAppointmentService.SortByTerm(fakeListAppointments);
-            int result = (int)test[0].IdTerm;
+            List<DoctorsDayPlanModel> test = CalendarAppointmentService.SortByTerm(fakeListAppointments);
+            int result = (int)test[0].IdOfTerm;
             int expect = 1;
             Assert.Equal(expect, result);
 
 
             using (AppDbContext context = new AppDbContext())
             {
-                context.DbAppointments.Remove(fifthFakeAppointment);
-                context.DbAppointments.Remove(sixthFakeAppointment);
+                context.DbDoctorsDayPlan.Remove(fifthFakeAppointment);
+                context.DbDoctorsDayPlan.Remove(sixthFakeAppointment);
 
                 context.DbEmployees.Remove(secendFakeEmployee);
                 context.DbEmployees.Remove(thirdFakeEmployee);
@@ -219,8 +219,8 @@ namespace MedicalClinicTest
             EmployeeModel employee = firstFakeEmployee;
             context.DbEmployees.Add(employee);
 
-            AppointmentModel first = firstFakeAppointment;
-            context.DbAppointments.Add(first);
+            DoctorsDayPlanModel first = firstFakeAppointment;
+            context.DbDoctorsDayPlan.Add(first);
             context.SaveChanges();
 
             Patient result = CalendarAppointmentService.GetPatientDataByIdPatient(first);
@@ -234,7 +234,7 @@ namespace MedicalClinicTest
             Assert.Equal(patient.IsActive, result.IsActive);
             Assert.Equal(patient.LastVisitDate, result.LastVisitDate);
 
-            context.DbAppointments.Remove(first);
+            context.DbDoctorsDayPlan.Remove(first);
             context.DbEmployees.Remove(employee);
             context.Patients.Remove(patient);
             context.SaveChanges();
@@ -243,7 +243,7 @@ namespace MedicalClinicTest
         [Fact]
         public void GetPatientDataByIdPatient_PatientNotFound()
         {
-            AppointmentModel appointment = new AppointmentModel
+            DoctorsDayPlanModel appointment = new DoctorsDayPlanModel
             {
                 PatientId = 9999
             };
@@ -255,7 +255,7 @@ namespace MedicalClinicTest
         [Fact]
         public void GetPatientDataByIdPatient_PatientIsNull()
         {
-            AppointmentModel appointment = new AppointmentModel
+            DoctorsDayPlanModel appointment = new DoctorsDayPlanModel
             {
                 PatientId = null
             };
@@ -279,15 +279,15 @@ namespace MedicalClinicTest
             EmployeeModel employee = firstFakeEmployee;
             context.DbEmployees.Add(employee);
 
-            AppointmentModel first = firstFakeAppointment;
-            context.DbAppointments.Add(first);
+            DoctorsDayPlanModel first = firstFakeAppointment;
+            context.DbDoctorsDayPlan.Add(first);
             context.SaveChanges();
 
-            List<AppointmentModel> result = CalendarAppointmentService.GetAppointmentsWithPatients();
+            List<DoctorsDayPlanModel> result = CalendarAppointmentService.GetAppointmentsWithPatients();
 
-            Assert.Contains(result, a => a.IdAppointment == first.IdAppointment);
+            Assert.Contains(result, a => a.IdDoctorsDayPlan == first.IdDoctorsDayPlan);
 
-            context.DbAppointments.Remove(first);
+            context.DbDoctorsDayPlan.Remove(first);
             context.DbEmployees.Remove(employee);
             context.Patients.Remove(patient);
             context.SaveChanges();
@@ -301,15 +301,15 @@ namespace MedicalClinicTest
             EmployeeModel employee = firstFakeEmployee;
             context.DbEmployees.Add(employee);
 
-            AppointmentModel second = secondFakeAppointment;
-            context.DbAppointments.Add(second);
+            DoctorsDayPlanModel second = secondFakeAppointment;
+            context.DbDoctorsDayPlan.Add(second);
             context.SaveChanges();
 
-            List<AppointmentModel> result = CalendarAppointmentService.GetAppointmentsWithPatients();
+            List<DoctorsDayPlanModel> result = CalendarAppointmentService.GetAppointmentsWithPatients();
 
-            Assert.DoesNotContain(result, a => a.IdAppointment == second.IdAppointment);
+            Assert.DoesNotContain(result, a => a.IdDoctorsDayPlan == second.IdDoctorsDayPlan);
 
-            context.DbAppointments.Remove(second);
+            context.DbDoctorsDayPlan.Remove(second);
             context.DbEmployees.Remove(employee);
             context.SaveChanges();
         }
@@ -329,8 +329,8 @@ namespace MedicalClinicTest
             Patient patient = fakePatient;
             context.Patients.Add(patient);
 
-            AppointmentModel first = firstFakeAppointment;
-            context.DbAppointments.Add(first);
+            DoctorsDayPlanModel first = firstFakeAppointment;
+            context.DbDoctorsDayPlan.Add(first);
             context.SaveChanges();
 
             string result = CalendarAppointmentService.GetLastNameAndNameOfEmployeeByAppointment(first);
@@ -338,7 +338,7 @@ namespace MedicalClinicTest
            
             Assert.Equal(full_name, result);
 
-            context.DbAppointments.Remove(first);
+            context.DbDoctorsDayPlan.Remove(first);
             context.DbEmployees.Remove(employee);
             context.Patients.Remove(patient);
             context.SaveChanges();
@@ -347,7 +347,7 @@ namespace MedicalClinicTest
         [Fact]
         public void TestGetLastNameAndNameOfEmployeeByAppointment_EmployeeNotFound()
         {
-            AppointmentModel appointment = new AppointmentModel
+            DoctorsDayPlanModel appointment = new DoctorsDayPlanModel
             {
                 IdEmployee = 9999
             };
@@ -359,7 +359,7 @@ namespace MedicalClinicTest
         [Fact]
         public void TestGetLastNameAndNameOfEmployeeByAppointment_EmployeeIsNull()
         {
-            AppointmentModel appointment = new AppointmentModel
+            DoctorsDayPlanModel appointment = new DoctorsDayPlanModel
             {
                 IdEmployee = null
             };
@@ -376,11 +376,11 @@ namespace MedicalClinicTest
         {
             DateTime selectedDate = new DateTime(2023, 05, 06);
             int idCalendar = 1;
-            List<AppointmentModel> appointments = new List<AppointmentModel>()
+            List<DoctorsDayPlanModel> appointments = new List<DoctorsDayPlanModel>()
             {
-            new AppointmentModel 
+            new DoctorsDayPlanModel 
             {
-                IdTerm = 3,
+                IdOfTerm = 3,
                 IdDay = 6,
                 Cost = 150,
                 IsActive = true,
@@ -389,9 +389,9 @@ namespace MedicalClinicTest
                 PatientId = 1,
                 IdOffice = 1
             },
-            new AppointmentModel 
+            new DoctorsDayPlanModel 
             { 
-                IdTerm = 4,
+                IdOfTerm = 4,
                 IdDay = 6,
                 Cost = 150,
                 IsActive = true,
@@ -400,9 +400,9 @@ namespace MedicalClinicTest
                 PatientId = 1,
                 IdOffice = 1 
             },
-            new AppointmentModel 
+            new DoctorsDayPlanModel 
             {  
-                IdTerm = 3,
+                IdOfTerm = 3,
                 IdDay = 6,
                 Cost = 100,
                 IsActive = true,
@@ -412,7 +412,7 @@ namespace MedicalClinicTest
                 IdOffice = 1 }
             };
 
-            List<AppointmentModel> result = CalendarAppointmentService.appointmentInSelectedDate(appointments, selectedDate, idCalendar);
+            List<DoctorsDayPlanModel> result = CalendarAppointmentService.appointmentInSelectedDate(appointments, selectedDate, idCalendar);
 
             Assert.Equal(2, result.Count);
             Assert.All(result, appointment => Assert.Equal(1, appointment.IdCalendar));
@@ -426,11 +426,11 @@ namespace MedicalClinicTest
             DateTime selectedDate = new DateTime(2023, 05, 06);
             int idCalendar = 2;
 
-            List<AppointmentModel> appointments = new List<AppointmentModel>()
+            List<DoctorsDayPlanModel> appointments = new List<DoctorsDayPlanModel>()
             {
-            new AppointmentModel 
+            new DoctorsDayPlanModel 
             { 
-                IdTerm = 3,
+                IdOfTerm = 3,
                 IdDay = 4,
                 Cost = 1000,
                 IsActive = true,
@@ -438,9 +438,9 @@ namespace MedicalClinicTest
                 IdEmployee = 3,
                 PatientId = 2,
                 IdOffice = 1 },
-            new AppointmentModel 
+            new DoctorsDayPlanModel 
             { 
-                IdTerm = 10,
+                IdOfTerm = 10,
                 IdDay = 9,
                 Cost = 1000,
                 IsActive = true,
@@ -450,7 +450,7 @@ namespace MedicalClinicTest
                 IdOffice = 1 }
             };
 
-            List<AppointmentModel> result = CalendarAppointmentService.appointmentInSelectedDate(appointments, selectedDate, idCalendar);
+            List<DoctorsDayPlanModel> result = CalendarAppointmentService.appointmentInSelectedDate(appointments, selectedDate, idCalendar);
             Assert.Empty(result);
         }
         #endregion
@@ -461,18 +461,18 @@ namespace MedicalClinicTest
         {
             using (AppDbContext context = new AppDbContext())
             {
-                AppointmentModel fourth = fourthFakeAppointment;
-                context.DbAppointments.Add(fourth);
-                AppointmentModel third = thirdFakeAppointment;
-                context.DbAppointments.Add(third);
+                DoctorsDayPlanModel fourth = fourthFakeAppointment;
+                context.DbDoctorsDayPlan.Add(fourth);
+                DoctorsDayPlanModel third = thirdFakeAppointment;
+                context.DbDoctorsDayPlan.Add(third);
                 context.SaveChanges();
 
-                int Count = context.DbAppointments.Count();
+                int Count = context.DbDoctorsDayPlan.Count();
 
                 var result = CalendarAppointmentService.GetAppointmentsData();
                 Assert.Equal(Count, result.Count);
-                Assert.Contains(result, a => a.IdTerm == 3);
-                Assert.Contains(result, a => a.IdTerm == 4);
+                Assert.Contains(result, a => a.IdOfTerm == 3);
+                Assert.Contains(result, a => a.IdOfTerm == 4);
                 Assert.Contains(result, a => a.IdDay == 3);
                 Assert.Contains(result, a => a.IdDay == 4);
                 Assert.Contains(result, a => a.Cost == 1000);
@@ -488,12 +488,53 @@ namespace MedicalClinicTest
                 Assert.Contains(result, a => a.IdOffice == 1);
                 Assert.Contains(result, a => a.IdOffice == 2);
 
-                context.DbAppointments.Remove(fourth);
-                context.DbAppointments.Remove(third);
+                context.DbDoctorsDayPlan.Remove(fourth);
+                context.DbDoctorsDayPlan.Remove(third);
                 context.SaveChanges();
 
             }
         }
+
+        #region GetDateByIdCalendar
+
+        [Fact]
+        public void TestGetDateByIdCalendar()
+        {
+           
+            // Arrange
+            int idCalendar = 1;
+            int dayOfMonth = 15;
+            DateTime expectedDate = new DateTime(2023, 03, dayOfMonth);
+            // assumes that the DateReference for idCalendar is "03/2023"
+
+            // Act
+            CalendarService calendarService = new CalendarService();
+            DateTime actualDate = CalendarService.GetDateByIdCalendar(idCalendar, dayOfMonth);
+
+            // Assert
+            Assert.Equal(expectedDate, actualDate);
+
+
+        }
+
+        #endregion
+
+        #region GetIdFromDate
+        [Fact]
+        public void TestGetIdFromDate()
+        {
+            // Arrange
+            DateTime date = new DateTime(2023, 5, 1);
+            int expectedId = 4; // Assuming that there is a calendar in the database for May 2023 with id = 4
+
+            // Act
+            CalendarService calendarService = new CalendarService();
+            int result = CalendarService.GetIdFromDate(date);
+
+            // Assert
+            Assert.Equal(expectedId, result);
+        }
+        #endregion
     }
     #endregion
 

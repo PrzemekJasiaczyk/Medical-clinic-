@@ -18,9 +18,9 @@ namespace GUI_Management_of_medical_clinic
     public partial class FormShowDetailsAppointment : Form
     {
         EmployeeModel currentUser;
-        AppointmentModel appointment;
+        DoctorsDayPlanModel appointment;
 
-        public FormShowDetailsAppointment(EmployeeModel currentUser, AppointmentModel appointment)
+        public FormShowDetailsAppointment(EmployeeModel currentUser, DoctorsDayPlanModel appointment)
         {
             InitializeComponent();
             this.currentUser = currentUser;
@@ -34,7 +34,7 @@ namespace GUI_Management_of_medical_clinic
             SpecializationModel specialization = SpecializationService.GetSpecializationById((int)employee.IdSpecialization);
             OfficeModel office = OfficeService.GetOfficeById((int)appointment.IdOffice);
             DateTime date = CalendarService.GetDateByIdCalendar((int)appointment.IdCalendar, appointment.IdDay);
-            string term = AppointmentService.GetTermByTermId((int)appointment.IdTerm);
+            string term = AppointmentService.GetTermByTermId((int)appointment.IdOfTerm);
 
             textBoxPatient.Text = patient.ToString();
             textBoxPESEL.Text = patient.PESEL;
@@ -43,7 +43,15 @@ namespace GUI_Management_of_medical_clinic
             textBoxDoktor.Text = employee.ToString();
             textBoxSpecialization.Text = specialization.Name.ToString();
             textBoxOffice.Text = office.Number.ToString();
-            numericUpDownCost.Value = appointment.Cost;
+
+            if (appointment.Cost == null)
+            {
+                numericUpDownCost.Value = 0;
+			}
+            else
+            {
+				numericUpDownCost.Value = (decimal)appointment.Cost;
+			}
         }
 
         private void buttonBack_Click(object sender, EventArgs e)

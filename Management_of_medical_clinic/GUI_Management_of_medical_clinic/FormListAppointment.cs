@@ -33,7 +33,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void FormListAppointment_Load(object sender, EventArgs e)
         {
-            List<AppointmentModel> appointments = CalendarAppointmentService.GetAppointmentsWithPatients();
+            List<DoctorsDayPlanModel> appointments = CalendarAppointmentService.GetAppointmentsWithPatients();
             DisplayDataInDataGridView(appointments);
 
             AddItemsToTheComboBoxDoctorOrPatient();
@@ -50,11 +50,11 @@ namespace GUI_Management_of_medical_clinic
 
         #region Display data
 
-        private void DisplayDataInDataGridView(List<AppointmentModel> appointments)
+        private void DisplayDataInDataGridView(List<DoctorsDayPlanModel> appointments)
         {
             dataGridViewAppointmentList.Rows.Clear();
 
-            foreach (AppointmentModel appointment in appointments)
+            foreach (DoctorsDayPlanModel appointment in appointments)
             {
                 int index = dataGridViewAppointmentList.Rows.Add(appointment.appointmentData);
                 dataGridViewAppointmentList.Rows[index].Tag = appointment;
@@ -87,9 +87,9 @@ namespace GUI_Management_of_medical_clinic
 
         #region Filtr data
 
-        private List<AppointmentModel> FiltrByName(List<AppointmentModel> appointments)
+        private List<DoctorsDayPlanModel> FiltrByName(List<DoctorsDayPlanModel> appointments)
         {
-            List<AppointmentModel> result = new List<AppointmentModel>();
+            List<DoctorsDayPlanModel> result = new List<DoctorsDayPlanModel>();
             string checkedString = textBoxName.Text.ToLower();
 
             if (textBoxName.Text == string.Empty)
@@ -101,7 +101,7 @@ namespace GUI_Management_of_medical_clinic
 
             string name = string.Empty;
 
-            foreach (AppointmentModel appointment in appointments)
+            foreach (DoctorsDayPlanModel appointment in appointments)
             {
 
                 if (PatientOrDoctor == "Patient")
@@ -128,7 +128,7 @@ namespace GUI_Management_of_medical_clinic
             return result;
         }
 
-        private List<AppointmentModel> FiltrByLastName(List<AppointmentModel> appointments)
+        private List<DoctorsDayPlanModel> FiltrByLastName(List<DoctorsDayPlanModel> appointments)
         {
             string checkedValue = textBoxLastName.Text.ToLower();
 
@@ -137,12 +137,12 @@ namespace GUI_Management_of_medical_clinic
                 return appointments;
             }
 
-            List<AppointmentModel> result = new List<AppointmentModel>();
+            List<DoctorsDayPlanModel> result = new List<DoctorsDayPlanModel>();
 
             string PatientOrDoctor = SelectedInComboBoxIsDoctorOrPatient();
             string name = string.Empty;
 
-            foreach (AppointmentModel appointment in appointments)
+            foreach (DoctorsDayPlanModel appointment in appointments)
             {
 
                 if (PatientOrDoctor == "Patient")
@@ -171,7 +171,7 @@ namespace GUI_Management_of_medical_clinic
         }
 
 
-        private List<AppointmentModel> FiltrByPESEL(List<AppointmentModel> appointments)
+        private List<DoctorsDayPlanModel> FiltrByPESEL(List<DoctorsDayPlanModel> appointments)
         {
             string checkedValue = maskedTextBoxPESEL.Text;
 
@@ -180,9 +180,9 @@ namespace GUI_Management_of_medical_clinic
                 return appointments;
             }
 
-            List<AppointmentModel> result = new List<AppointmentModel>();
+            List<DoctorsDayPlanModel> result = new List<DoctorsDayPlanModel>();
 
-            foreach (AppointmentModel appointment in appointments)
+            foreach (DoctorsDayPlanModel appointment in appointments)
             {
                 Patient patient = PatientService.GetPatientById((int)appointment.PatientId);
 
@@ -195,7 +195,7 @@ namespace GUI_Management_of_medical_clinic
         }
 
 
-        private List<AppointmentModel> FiltrByVisit(List<AppointmentModel> appointments)
+        private List<DoctorsDayPlanModel> FiltrByVisit(List<DoctorsDayPlanModel> appointments)
         {
             DateTime checkedValue = dateTimePickerDateOfVisit.Value.Date;
 
@@ -204,11 +204,11 @@ namespace GUI_Management_of_medical_clinic
                 return appointments;
             }
 
-            List<AppointmentModel> result = new List<AppointmentModel>();
+            List<DoctorsDayPlanModel> result = new List<DoctorsDayPlanModel>();
 
             DateTime date;
 
-            foreach (AppointmentModel appointment in appointments)
+            foreach (DoctorsDayPlanModel appointment in appointments)
             {
                 result = CalendarAppointmentService.appointmentInSelectedDate(appointments, checkedValue, (int)appointment.IdCalendar);
                 //?            
@@ -218,14 +218,14 @@ namespace GUI_Management_of_medical_clinic
         }
 
 
-        private List<AppointmentModel> FiltrBySpecialization(List<AppointmentModel> appointments)
+        private List<DoctorsDayPlanModel> FiltrBySpecialization(List<DoctorsDayPlanModel> appointments)
         {
             if (comboBoxDoctorSpecialization.SelectedIndex == -1)
             {
                 return appointments;
             }
 
-            List<AppointmentModel> result = new List<AppointmentModel>();
+            List<DoctorsDayPlanModel> result = new List<DoctorsDayPlanModel>();
 
             SpecializationModel checkedValue = (SpecializationModel)comboBoxDoctorSpecialization.SelectedItem;
 
@@ -234,7 +234,7 @@ namespace GUI_Management_of_medical_clinic
             EmployeeModel employee = new EmployeeModel();
 
 
-            foreach (AppointmentModel appointment in appointments)
+            foreach (DoctorsDayPlanModel appointment in appointments)
             {
                 employee = EmployeeService.GetEmployeeByID((int)appointment.IdEmployee);
 
@@ -269,9 +269,9 @@ namespace GUI_Management_of_medical_clinic
         {
             dataGridViewAppointmentList.Rows.Clear();
 
-            List<AppointmentModel> appointments = CalendarAppointmentService.GetAppointmentsWithPatients();
+            List<DoctorsDayPlanModel> appointments = CalendarAppointmentService.GetAppointmentsWithPatients();
 
-            List<AppointmentModel> result = new List<AppointmentModel>();
+            List<DoctorsDayPlanModel> result = new List<DoctorsDayPlanModel>();
 
             result = FiltrByName(appointments);
             result = FiltrByLastName(result);
@@ -284,7 +284,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonClearFiltr_Click(object sender, EventArgs e)
         {
-            List<AppointmentModel> appointments = CalendarAppointmentService.GetAppointmentsWithPatients();
+            List<DoctorsDayPlanModel> appointments = CalendarAppointmentService.GetAppointmentsWithPatients();
             DisplayDataInDataGridView(appointments);
 
             comboBoxDoctorSpecialization.SelectedIndex = -1;
@@ -307,7 +307,7 @@ namespace GUI_Management_of_medical_clinic
                 return;
             }
 
-            AppointmentModel appointment = (AppointmentModel)dataGridViewAppointmentList.SelectedRows[0].Tag;
+            DoctorsDayPlanModel appointment = (DoctorsDayPlanModel)dataGridViewAppointmentList.SelectedRows[0].Tag;
 
             FormShowDetailsAppointment formShowDetailsAppointment = new FormShowDetailsAppointment(currentUser, appointment);
             Hide();
@@ -325,10 +325,10 @@ namespace GUI_Management_of_medical_clinic
                 return;
             }
 
-            AppointmentModel appointment = (AppointmentModel)dataGridViewAppointmentList.SelectedRows[0].Tag;
+            DoctorsDayPlanModel appointment = (DoctorsDayPlanModel)dataGridViewAppointmentList.SelectedRows[0].Tag;
 
             DateTime date = CalendarService.GetDateByIdCalendar((int)appointment.IdCalendar, appointment.IdDay);
-            string term = AppointmentService.GetTermByTermId((int)appointment.IdTerm);
+            string term = AppointmentService.GetTermByTermId((int)appointment.IdOfTerm);
             TimeSpan time = TimeSpan.ParseExact(term, "hh\\:mm", null);
 
             if (date <= DateTime.Now.Date && time <= DateTime.Now.TimeOfDay)
