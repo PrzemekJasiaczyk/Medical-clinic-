@@ -14,7 +14,7 @@ namespace Console_Management_of_medical_clinic.Model
         public string DateReference { get; set; } //format: "mm-yyyy"
         public bool Active { get; set; }
         //Relationships
-        public List<AppointmentModel>? AppointmentModels { get; set; }
+        public List<DoctorsDayPlanModel>? DoctorsDayPlanModels { get; set; }
 
 
         public CalendarModel() { }
