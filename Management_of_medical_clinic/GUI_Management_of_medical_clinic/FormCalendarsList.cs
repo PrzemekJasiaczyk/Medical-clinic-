@@ -36,9 +36,11 @@ namespace GUI_Management_of_medical_clinic
         }
 
 
-        private void buttonEditCalendar_Click(object sender, EventArgs e)
+        private void buttonReviewCalendar_Click(object sender, EventArgs e)
         {
-            // TODO: Open edit clicked calendar form
+            FormCalendar formCalendar = new FormCalendar(currentUser, (int)dataGridViewCalendars.CurrentRow.Cells[0].Value);
+            formCalendar.ShowDialog();
+            Close();
         }
 
         private void buttonRemoveCalendar_Click(object sender, EventArgs e)
@@ -88,6 +90,16 @@ namespace GUI_Management_of_medical_clinic
 
         private void FormCalendarsList_Load(object sender, EventArgs e)
         {
+
+        }
+
+        private void buttonEditCalendar_Click(object sender, EventArgs e)
+        {
+            if ((bool)dataGridViewCalendars.CurrentRow.Cells[2].Value)
+            {
+                MessageBox.Show("It is not possible to change active calendars. Check if the selected calendar is right.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
         }
     }

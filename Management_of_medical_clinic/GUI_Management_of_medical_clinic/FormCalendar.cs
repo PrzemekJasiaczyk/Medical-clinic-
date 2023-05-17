@@ -35,7 +35,7 @@ namespace GUI_Management_of_medical_clinic
             InitializeComponent();
             this.currentEmployee = currentEmployee;
             duplicateCalendar = calendarModel;
-
+            
             button2.Visible = false;
             button3.Visible = false;
 
@@ -43,6 +43,21 @@ namespace GUI_Management_of_medical_clinic
 
             createCalendarButton.Click -= createCalendarButton_Click;
             createCalendarButton.Click += duplicateCalendar_Click;
+
+        }
+
+        public FormCalendar(EmployeeModel currentEmployee, int calendarIdToReview)
+        {
+            InitializeComponent();
+            this.currentEmployee = currentEmployee;
+
+            string[] dateParts = CalendarService.GetCalendarById(calendarIdToReview).DateReference.Split('-');
+            displayMonth = new DateTime(int.Parse(dateParts[1]), int.Parse(dateParts[0]), 1);
+
+            button2.Visible = false;
+            button3.Visible = false;
+
+            createCalendarButton.Text = "Edit Calendar";
 
         }
 
