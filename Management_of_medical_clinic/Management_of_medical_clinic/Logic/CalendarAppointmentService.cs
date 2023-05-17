@@ -45,7 +45,7 @@ namespace Console_Management_of_medical_clinic.Logic
 
             foreach (DoctorsDayPlanModel appointment in appointments)
             {
-                if (appointment.PatientId != null && appointment.IsActive == false)
+                if (appointment.PatientId != null)
                 {
                     result.Add(appointment);
                 }
