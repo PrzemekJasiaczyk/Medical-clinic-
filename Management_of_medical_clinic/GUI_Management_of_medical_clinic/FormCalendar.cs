@@ -1,3 +1,4 @@
+using Console_Management_of_medical_clinic.Data.Enums;
 using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
 using GUI_Management_of_medical_clinic;
@@ -224,15 +225,27 @@ namespace GUI_Management_of_medical_clinic
             labelDate.Text = selectedDate.ToString("d");
             _selectedDate= selectedDate.ToString("d");
 
-            List<AppointmentModel> appointments = AppointmentService.CheckAppointmentsAndReturnList(selectedDate, duplicateCalendar == null ? 0 : duplicateCalendar.IdCalendar);
+            List<DoctorsDayPlanModel> plansDuplicated = DoctorsPlanService.CheckPlansAndReturnForADay(selectedDate, duplicateCalendar == null ? 0 : duplicateCalendar.IdCalendar);
+            List<DoctorsDayPlanModel> plansOriginal = DoctorsPlanService.CheckPlansAndReturnForADay(selectedDate, CalendarService.GetCalendarIdByDate(displayMonth.ToString("d")));
+            List<DoctorsDayPlanModel> plans = plansDuplicated.Concat(plansOriginal).ToList();
 
             dataGridViewAppointments.Rows.Clear();
-            foreach (AppointmentModel appointment in appointments)
-            {
-                string timeTerm = AppointmentService.GetTermByTermId(appointment.IdTerm);
-                Patient patient = PatientService.GetPatientById((int)appointment.PatientId);
-                dataGridViewAppointments.Rows.Add(appointment.IdEmployee, appointment.IdDay, timeTerm, patient.FirstName + " " + patient.LastName);
-            }
+
+            plans.ForEach(plan => {
+                dataGridViewAppointments.Rows.Add(plan.IdEmployee, plan.IdDay, DoctorsPlanService.GetTermDescription((EnumTerms)plan.IdOfTerm), PatientService.GetPatientById((int)(plan.PatientId == null ? 0 : plan.PatientId)));  //in database there is a null value at PatientId
+            });
+
+            //Changed as DbAppointment is not used anymore
+
+            //List<AppointmentModel> appointments = AppointmentService.CheckAppointmentsAndReturnList(selectedDate, duplicateCalendar == null ? 0 : duplicateCalendar.IdCalendar);
+
+            //dataGridViewAppointments.Rows.Clear();
+            //foreach (AppointmentModel appointment in appointments)
+            //{
+            //    string timeTerm = AppointmentService.GetTermByTermId(appointment.IdTerm);
+            //    Patient patient = PatientService.GetPatientById((int)appointment.PatientId);
+            //    dataGridViewAppointments.Rows.Add(appointment.IdEmployee, appointment.IdDay, timeTerm, patient.FirstName + " " + patient.LastName);
+            //}
         }
 
 
@@ -287,22 +300,32 @@ namespace GUI_Management_of_medical_clinic
 
         private void duplicateCalendar_Click(object sender, EventArgs e)
         {
-            //if (CalendarService.checkIfCalendarExistsCalendarAdd(monthAndYear))
-            //{
-            //    MessageBox.Show("Calendar already exists");
-            //    return;
-            //}
+            string monthAndYear = displayMonth.ToString("MM") + '-' + displayMonth.ToString("yyyy");
 
-            MessageBox.Show(displayMonth.ToString("MM") + '-' + displayMonth.ToString("yyyy"));
-            DoctorsPlanService.GetPlansByCalendarId(duplicateCalendar.IdCalendar).ForEach(p => MessageBox.Show(p.IdCalendar.ToString()));
+            if (CalendarService.checkIfCalendarExistsCalendarAdd(monthAndYear))
+            {
+                MessageBox.Show("Calendar already exists");
+                return;
+            }
 
-            List<DoctorsDayPlanModel> models = new List<DoctorsDayPlanModel>();
-            DoctorsPlanService.GetPlansByCalendarId(duplicateCalendar.IdCalendar).ForEach(p => {
-                p.IdCalendar = CalendarService.GetCalendarIdByDate(displayMonth.ToString("d"));
-                models.Add(p);
+            CalendarService.AddCalendar(new CalendarModel(monthAndYear, false));
+
+            List<DoctorsDayPlanModel> plans = new List<DoctorsDayPlanModel>();
+            DoctorsPlanService.CheckPlansAndReturnForAMonth(duplicateCalendar.IdCalendar).ForEach(plan => {
+                if (!CheckTheHoliday(new DateTime(int.Parse(displayMonth.ToString("yyyy")), int.Parse(displayMonth.ToString("MM")), plan.IdDay))) 
+                {
+                    plan.IdCalendar = CalendarService.GetCalendarIdByDate(displayMonth.ToString("d"));
+                    plan.IdDoctorsDayPlan = 0;
+                    plans.Add(plan);
+                }
             });
 
-            models.ForEach(p => MessageBox.Show(p.IdCalendar.ToString()));
+            plans.ForEach(plan => DoctorsPlanService.AddPlan(plan));
+            MessageBox.Show("Calendar was duplicated!");
+            FormCalendarsList formCalendarsList = new FormCalendarsList(currentEmployee);
+            Hide();
+            formCalendarsList.ShowDialog();
+            Close();
 
         }
 
@@ -315,6 +338,26 @@ namespace GUI_Management_of_medical_clinic
 
             }
             previousMonth = false;
+        }
+
+        private bool CheckTheHoliday(DateTime date) 
+        {
+            DateTime[] holidays = new DateTime[] {
+                new DateTime(displayMonth.Year, 1, 1),  // Nowy Rok
+                new DateTime(displayMonth.Year, 1, 6),  // Œwiêto Trzech Króli
+                new DateTime(displayMonth.Year, 4, 17), // Poniedzia³ek Wielkanocny
+                new DateTime(displayMonth.Year, 5, 1),  // Œwiêto Pracy
+                new DateTime(displayMonth.Year, 5, 3),  // Œwiêto Konstytucji 3 Maja
+                new DateTime(displayMonth.Year, 6, 4),  // Zes³anie Ducha Œwiêtego
+                new DateTime(displayMonth.Year, 6, 15), // Bo¿e Cia³o
+                new DateTime(displayMonth.Year, 8, 15), // Wniebowziêcie Najœwiêtszej Maryi Panny
+                new DateTime(displayMonth.Year, 11, 1), // Wszystkich Œwiêtych
+                new DateTime(displayMonth.Year, 11, 11), // Œwiêto Niepodleg³oœci
+                new DateTime(displayMonth.Year, 12, 25), // Bo¿e Narodzenie (pierwszy dzieñ)
+                new DateTime(displayMonth.Year, 12, 26), // Bo¿e Narodzenie (drugi dzieñ)
+            };
+
+            return holidays.ToList().Contains(date);
         }
     }
 }

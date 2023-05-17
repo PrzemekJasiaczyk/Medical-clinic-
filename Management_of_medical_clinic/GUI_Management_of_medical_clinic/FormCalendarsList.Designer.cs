@@ -114,7 +114,7 @@
             buttonAddCalendar.Name = "buttonAddCalendar";
             buttonAddCalendar.Size = new Size(329, 87);
             buttonAddCalendar.TabIndex = 27;
-            buttonAddCalendar.Text = "Duplicate calendar";
+            buttonAddCalendar.Text = "Select Calendar and duplicate it";
             buttonAddCalendar.UseVisualStyleBackColor = false;
             buttonAddCalendar.Click += buttonDuplicateCalendar_Click;
             // 

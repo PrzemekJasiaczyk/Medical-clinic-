@@ -52,7 +52,8 @@ namespace GUI_Management_of_medical_clinic
                 formCalendarDelete.ShowDialog();
                 dataGridViewCalendars.DataSource = null;
                 dataGridViewCalendars.DataSource = _calendarService.GetAll();
-            }catch(Microsoft.EntityFrameworkCore.DbUpdateException ex)
+            }
+            catch (Microsoft.EntityFrameworkCore.DbUpdateException ex)
             {
                 MessageBox.Show(ex.Message);
             }
