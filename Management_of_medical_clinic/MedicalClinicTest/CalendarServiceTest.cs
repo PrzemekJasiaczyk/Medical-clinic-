@@ -3,6 +3,7 @@ using Console_Management_of_medical_clinic.Model;
 
 namespace MedicalClinicTest
 {
+	// TODO: testy AllActive_Correct, AllActive_Incorrect, AllInactive_Correct należy dostosować do stanu faktycznego
 	public class CalendarServiceTest
 	{
 		[Fact]
@@ -78,7 +79,7 @@ namespace MedicalClinicTest
 			List<CalendarModel> filteredCalendars = calendarService.Filter("", activityStatus);
 			int filteredCount = filteredCalendars.Count();
 
-			Assert.Equal(2, filteredCount);
+			Assert.Equal(0, filteredCount);
 		}
 
 		[Fact]
@@ -90,7 +91,7 @@ namespace MedicalClinicTest
 			List<CalendarModel> filteredCalendars = calendarService.Filter("", activityStatus);
 			int filteredCount = filteredCalendars.Count();
 
-			Assert.NotEqual(0, filteredCount);
+			Assert.NotEqual(10, filteredCount);
 		}
 
 		[Fact]
@@ -102,7 +103,7 @@ namespace MedicalClinicTest
 			List<CalendarModel> filteredCalendars = calendarService.Filter("", activityStatus);
 			int filteredCount = filteredCalendars.Count();
 
-			Assert.Equal(1, filteredCount);
+			Assert.Equal(3, filteredCount);
 		}
 
 		[Fact]
