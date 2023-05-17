@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Console_Management_of_medical_clinic.Logic;
 
 namespace Console_Management_of_medical_clinic.Model
 {
@@ -69,7 +70,7 @@ namespace Console_Management_of_medical_clinic.Model
 
 		public override string ToString()
 		{
-			return CalendarService.GetDateByIdCalendar((int)IdCalendar, IdDay).ToShortDateString() + " " + AppointmentService.GetTermByTermId(IdTerm).ToString() + "  (Cost: " + Cost + ")";
+			return CalendarService.GetDateByIdCalendar((int)IdCalendar, IdDay).ToShortDateString() + " " + AppointmentService.GetTermByTermId(IdOfTerm).ToString() + "  (Cost: " + Cost + ")";
 
 		}
 
