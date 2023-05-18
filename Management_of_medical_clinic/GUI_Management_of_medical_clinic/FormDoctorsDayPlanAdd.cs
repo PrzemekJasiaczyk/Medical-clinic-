@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace GUI_Management_of_medical_clinic
 {
-    public partial class FormAppointmentAdd : Form
+    public partial class FormDoctorsDayPlanAdd : Form
     {
         int parsedEmployeeId = -1;
         int parsedOfficeId = -1;
@@ -24,7 +24,7 @@ namespace GUI_Management_of_medical_clinic
         int calendarId;
         EmployeeModel currentEmployee;
 
-        public FormAppointmentAdd(DateTime date, EmployeeModel currentEmployee)
+        public FormDoctorsDayPlanAdd(DateTime date, EmployeeModel currentEmployee)
         {
             selectedDate = date;
             selectedDay = date.Day;
@@ -99,52 +99,34 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
+            List<int> checkedTerms = new List<int>();
             if (checkSelectedIds()==true)
             {
-                //string checkedTerms = "";
-                int checkedTerms = 0;
                 for (int i = 0; i < checkedListBoxTerms.Items.Count; i++)
                 {
 
                     if (checkedListBoxTerms.GetItemChecked(i))
                     {
-                        //checkedTerms = checkedTerms + "," + i.ToString();
+                        checkedTerms.Add(i);
                     }
                 }
 
-                //if (checkedTerms.Length == 0)
-                if (checkedTerms==-1)
+                if (checkedTerms.Count==0)
                 {
                     MessageBox.Show("No terms have been selected");
                     return;
                 }
-                else
-                {
-                    //checkedTerms = checkedTerms.Remove(0, 1);
-                    checkedTerms = 0;
-                }
 
                 if (calendarId != -1)
-                {
+                {                    
                     try
                     {
-                        int existingPlanId = DoctorsPlanService.GetPlanIdIfAlreadyExists(parsedEmployeeId, selectedDay, calendarId);
-                        if (existingPlanId!=-1)
-                        {
-                            DoctorsPlanService.EditPlan(existingPlanId, checkedTerms, parsedOfficeId);
-                            MessageBox.Show("Plan updated successfully");
-                        }
-                        else
-                        {
-                            DoctorsDayPlanModel model = new DoctorsDayPlanModel(checkedTerms, selectedDay, calendarId, parsedEmployeeId, parsedOfficeId, true);
-                            DoctorsPlanService.AddPlan(model);
-                            MessageBox.Show("New plan added successfully");                            
-                        }
-                        FormCalendar formCalendar = new FormCalendar(currentEmployee);
+                        MessageBox.Show(DoctorsPlanService.AddPlans(checkedTerms, selectedDay, calendarId, parsedEmployeeId, parsedOfficeId));
+
+                        FormDoctorsPlanCalendar formCalendar = new FormDoctorsPlanCalendar(currentEmployee);
                         this.Hide();
                         formCalendar.Show();
                         this.Hide();
-
                     }
                     catch (Exception ex)
                     {
@@ -165,7 +147,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonBack_Click(object sender, EventArgs e)
         {
-            FormCalendar formCalendar = new FormCalendar(currentEmployee);
+            FormDoctorsPlanCalendar formCalendar = new FormDoctorsPlanCalendar(currentEmployee);
             this.Hide();
             formCalendar.Show();
             this.Hide();
@@ -175,35 +157,16 @@ namespace GUI_Management_of_medical_clinic
         {
             if (checkSelectedIds())
             {
-                //string checkedTerms = DoctorsPlanService.CheckIfDoctorHasPlanForCurrentDay(parsedEmployeeId, selectedDay, calendarId);
-                int checkedTerms = 0;
-                /*string[] checkedTermsIds = checkedTerms.Split(',');
-                List<int> parsedCheckedTermsIds = new List<int>();
-
-                foreach (string term in checkedTermsIds)
-                {
-                    if (int.TryParse(term, out int result))
-                    {
-                        parsedCheckedTermsIds.Add(result);
-                    }
-                    else
-                    {
-                        if (parsedCheckedTermsIds.Count != 0)
-                        {
-                            MessageBox.Show("Error converting termsIds");
-                        }                        
-                        return;
-                    }
-                }
+                List<int> checkedTerms = DoctorsPlanService.GetBookedTermsOfDoctorForCurrentDay(parsedEmployeeId, selectedDay, calendarId);
 
                 for (int i = 0; i < checkedListBoxTerms.Items.Count; i++)
                 {
                     checkedListBoxTerms.SetItemChecked(i, false);
                 }
-                foreach (int j in parsedCheckedTermsIds)
+                foreach (int j in checkedTerms)
                 {
                     checkedListBoxTerms.SetItemChecked(j, true);
-                }*/
+                }
             }            
         }
 

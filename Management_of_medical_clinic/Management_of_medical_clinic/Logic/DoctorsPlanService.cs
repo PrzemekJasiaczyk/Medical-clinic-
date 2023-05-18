@@ -22,17 +22,23 @@ namespace Console_Management_of_medical_clinic.Logic
             }
             return doctorsPlans;
         }
-        public static int GetPlanIdIfAlreadyExists(int idEmployee, int idDay, int idCalendar)
+        public static string AddPlans(List<int> checkedTerms, int idDay, int idCalendar, int idEmployee, int idOffice)
         {
             List<DoctorsDayPlanModel> doctorsPlans = GetDoctorsPlanData();
-            foreach (DoctorsDayPlanModel plan in doctorsPlans)
+            foreach (int i in checkedTerms)
             {
-                if (plan.IdEmployee==idEmployee && plan.IdDay==idDay && plan.IdCalendar == idCalendar)
+                foreach (DoctorsDayPlanModel plan in doctorsPlans.ToList())
                 {
-                    return plan.IdDoctorsDayPlan;
+                    if (plan.IdEmployee == idEmployee && plan.IdDay == idDay && plan.IdCalendar == idCalendar)
+                    {
+                        return "A plan for this doctor on this day already exists. You have to edit it if you want to apply changes.";                       
+                    }
+
                 }
-            }
-            return -1;
+                DoctorsDayPlanModel newPlan = new DoctorsDayPlanModel(i, idDay, idCalendar, idEmployee, idOffice, true);
+                AddPlan(newPlan);
+            }            
+            return "Plan added successfully";
         }
 
         public static void AddPlan(DoctorsDayPlanModel doctorsDayPlanModel)
@@ -71,14 +77,28 @@ namespace Console_Management_of_medical_clinic.Logic
         public static int CheckIfDoctorHasPlanForCurrentDay(int idEmployee, int idDay, int idCalendar)
         {
             List<DoctorsDayPlanModel> doctorsPlans = GetDoctorsPlanData();
-            foreach(DoctorsDayPlanModel plan in doctorsPlans)
+            foreach (DoctorsDayPlanModel plan in doctorsPlans)
             {
-                if (plan.IdEmployee==idEmployee && plan.IdDay==idDay && plan.IdCalendar == idCalendar)
+                if (plan.IdEmployee == idEmployee && plan.IdDay == idDay && plan.IdCalendar == idCalendar)
                 {
                     return plan.IdOfTerm;
                 }
             }
             return -1;
+        }
+        public static List<int> GetBookedTermsOfDoctorForCurrentDay(int idEmployee, int idDay, int idCalendar)
+        {
+            List<DoctorsDayPlanModel> doctorsPlans = GetDoctorsPlanData();
+            List<int> bookedTerms = new List<int>();
+
+            foreach(DoctorsDayPlanModel plan in doctorsPlans)
+            {
+                if (plan.IdEmployee==idEmployee && plan.IdDay==idDay && plan.IdCalendar == idCalendar)
+                {
+                    bookedTerms.Add(plan.IdOfTerm);
+                }
+            }
+            return bookedTerms;
         }
 
         public static List<DoctorsDayPlanModel> CheckPlansAndReturnForADay(DateTime selectedDay, int calendarId)

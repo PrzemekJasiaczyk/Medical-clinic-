@@ -1,6 +1,6 @@
 ﻿namespace GUI_Management_of_medical_clinic
 {
-    partial class FormAppointmentAdd
+    partial class FormDoctorsDayPlanAdd
     {
         /// <summary>
         /// Required designer variable.

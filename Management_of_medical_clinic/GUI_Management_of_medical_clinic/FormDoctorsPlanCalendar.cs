@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace GUI_Management_of_medical_clinic
 {
-    public partial class FormCalendar : Form
+    public partial class FormDoctorsPlanCalendar : Form
     {
         EmployeeModel currentEmployee;
         bool previousMonth;
@@ -17,7 +17,7 @@ namespace GUI_Management_of_medical_clinic
         string _selectedDate="";
         DateTime displayMonth = DateTime.Today;
 
-        public FormCalendar(EmployeeModel currentEmployee, bool previousMonth = false)
+        public FormDoctorsPlanCalendar(EmployeeModel currentEmployee, bool previousMonth = false)
         {
             InitializeComponent();
             this.currentEmployee = currentEmployee;
@@ -30,7 +30,7 @@ namespace GUI_Management_of_medical_clinic
             displayMonth = DateTime.Today;
         }
 
-        public FormCalendar(EmployeeModel currentEmployee, CalendarModel calendarModel)
+        public FormDoctorsPlanCalendar(EmployeeModel currentEmployee, CalendarModel calendarModel)
         {
             InitializeComponent();
             this.currentEmployee = currentEmployee;
@@ -46,7 +46,7 @@ namespace GUI_Management_of_medical_clinic
 
         }
 
-        public FormCalendar(EmployeeModel currentEmployee, int calendarIdToReview)
+        public FormDoctorsPlanCalendar(EmployeeModel currentEmployee, int calendarIdToReview)
         {
             InitializeComponent();
             this.currentEmployee = currentEmployee;
@@ -276,7 +276,7 @@ namespace GUI_Management_of_medical_clinic
                 
                 if (CalendarService.checkIfCalendarExists(_selectedDate) == true)
                 {
-                    FormAppointmentAdd formAppointmentAdd = new FormAppointmentAdd(DateTime.Parse(labelDate.Text), currentEmployee);
+                    FormDoctorsDayPlanAdd formAppointmentAdd = new FormDoctorsDayPlanAdd(DateTime.Parse(labelDate.Text), currentEmployee);
                     //this.Hide();
                     formAppointmentAdd.ShowDialog();
                     //this.Close();
@@ -354,7 +354,7 @@ namespace GUI_Management_of_medical_clinic
                 return;
             }
 
-            FormCalendarEdit formCalendarEdit = new FormCalendarEdit(currentEmployee, CalendarService.GetCalendarById(CalendarService.GetCalendarIdByDate(displayMonth.ToString("d"))), new FormCalendar(currentEmployee, CalendarService.GetCalendarIdByDate(displayMonth.ToString("d"))));
+            FormCalendarEdit formCalendarEdit = new FormCalendarEdit(currentEmployee, CalendarService.GetCalendarById(CalendarService.GetCalendarIdByDate(displayMonth.ToString("d"))), new FormDoctorsPlanCalendar(currentEmployee, CalendarService.GetCalendarIdByDate(displayMonth.ToString("d"))));
             formCalendarEdit.ShowDialog();
             Close();
         }
