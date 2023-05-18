@@ -33,6 +33,7 @@
             buttonAddPatient = new Button();
             buttonEditPatient = new Button();
             panel1 = new Panel();
+            buttonViewAppointments = new Button();
             button_ShowDetails = new Button();
             buttonExit = new Button();
             buttonDeactivatePatinet = new Button();
@@ -105,6 +106,7 @@
             // panel1
             // 
             panel1.BackColor = Color.SteelBlue;
+            panel1.Controls.Add(buttonViewAppointments);
             panel1.Controls.Add(button_ShowDetails);
             panel1.Controls.Add(buttonExit);
             panel1.Controls.Add(buttonDeactivatePatinet);
@@ -118,6 +120,21 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(357, 1080);
             panel1.TabIndex = 29;
+            // 
+            // buttonViewAppointments
+            // 
+            buttonViewAppointments.BackColor = Color.SteelBlue;
+            buttonViewAppointments.FlatAppearance.BorderColor = Color.Black;
+            buttonViewAppointments.FlatStyle = FlatStyle.Flat;
+            buttonViewAppointments.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonViewAppointments.Location = new Point(-1, 712);
+            buttonViewAppointments.Margin = new Padding(3, 4, 3, 4);
+            buttonViewAppointments.Name = "buttonViewAppointments";
+            buttonViewAppointments.Size = new Size(360, 65);
+            buttonViewAppointments.TabIndex = 48;
+            buttonViewAppointments.Text = "View appointments";
+            buttonViewAppointments.UseVisualStyleBackColor = false;
+            buttonViewAppointments.Click += buttonViewAppointments_Click;
             // 
             // button_ShowDetails
             // 
@@ -278,6 +295,7 @@
             dataGridViewPatientList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewPatientList.Size = new Size(1567, 1060);
             dataGridViewPatientList.TabIndex = 30;
+            //dataGridViewPatientList.CellContentClick += dataGridViewPatientList_CellContentClick;
             // 
             // panel2
             // 
@@ -433,5 +451,6 @@
         private Button button_ShowDetails;
         private Button buttonClearFilters;
         private Button buttonShowFilters;
+        private Button buttonViewAppointments;
     }
 }

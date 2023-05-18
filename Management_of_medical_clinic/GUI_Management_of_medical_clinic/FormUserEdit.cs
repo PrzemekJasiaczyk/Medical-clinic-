@@ -70,6 +70,7 @@ namespace GUI_Management_of_medical_clinic
             MessageBox.Show("Success, data is saved.");
 
             FormUserList userList = new FormUserList(currentUser);
+            Hide();
             userList.ShowDialog();
             Close();
         }
@@ -86,6 +87,7 @@ namespace GUI_Management_of_medical_clinic
             }
 
             FormUserList userList = new FormUserList(currentUser);
+            Hide();
             userList.ShowDialog();
             Close();
         }
@@ -124,6 +126,7 @@ namespace GUI_Management_of_medical_clinic
         private void buttonChangeStatus_Click(object sender, EventArgs e)
         {
             FormChangeStatusOfUser formChange = new FormChangeStatusOfUser(user, currentUser);
+            Hide();
             formChange.ShowDialog();
             Close();
         }

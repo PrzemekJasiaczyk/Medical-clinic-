@@ -24,5 +24,11 @@ namespace Console_Management_of_medical_clinic.Model
             IdSpecialization = idSpecialization;
             Name = name;            
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
+
     }    
 }

@@ -17,6 +17,7 @@ namespace Console_Management_of_medical_clinic.Model
 
         public int IdEmployee { get; set; } //added by doctors
         public List<AppointmentModel>? AppointmentModels { get; set; }
+        public List<DoctorsDayPlanModel>? DoctorsDayPlanModels { get; set; }
 
 
         public CalendarModel() { }
