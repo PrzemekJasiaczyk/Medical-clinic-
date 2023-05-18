@@ -2,8 +2,8 @@
 ## TODO List
 For now:
 - [ ] The future calendar management
-  - [ ] Future calendar viewing
-  - [ ] Calendar acceptance
+  - [x ] Future calendar viewing
+  - [x ] Calendar acceptance
   - [ ] Calendar modification
   - [ ] Terms rejection
 - [ ] Calendar management
