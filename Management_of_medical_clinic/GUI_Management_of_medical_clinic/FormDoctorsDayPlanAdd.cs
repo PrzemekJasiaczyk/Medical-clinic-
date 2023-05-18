@@ -179,6 +179,7 @@ namespace GUI_Management_of_medical_clinic
         {
             updateCheckBoxes();
             comboBoxOffice.Items.Clear();
+            comboBoxOffice.Text = "";
 
             List<OfficeModel> offices = OfficeService.GetOfficesData();
             if (comboBoxDoctor.SelectedIndex < 0)
