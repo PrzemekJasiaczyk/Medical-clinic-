@@ -90,6 +90,21 @@ namespace GUI_Management_of_medical_clinic
         private void buttonRemovePatient_Click(object sender, EventArgs e)
         {
             Patient patient = Patient.FindPatient((int)dataGridViewPatientList.SelectedRows[0].Cells[0].Value);
+            List<DoctorsDayPlanModel> doctorsDayPlanModels = CalendarAppointmentService.GetAppointmentsWithPatients();
+            
+            foreach (DoctorsDayPlanModel doctorsDayPlanModel in doctorsDayPlanModels)
+            {
+                DateTime date = CalendarService.GetDateByIdCalendar((int)doctorsDayPlanModel.IdCalendar, doctorsDayPlanModel.IdDay);
+                DateTime today = DateTime.Now;
+
+                if (doctorsDayPlanModel.PatientId == patient.PatientId && date >= today)
+                {
+                    string msg2 = "You cannot delete a patient who has an appointment scheduled.";
+                    FormMessage FormMessage2 = new FormMessage(msg2);
+                    FormMessage2.ShowDialog();
+                    return;
+                }
+            }
 
             string msg = "A deleted patient cannot be restored!";
             FormMessage FormMessage = new FormMessage(msg);
