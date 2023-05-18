@@ -39,7 +39,7 @@ namespace GUI_Management_of_medical_clinic
                     isNewCalendar = true;        
                 }
             }
-            if (isNewCalendar = true)
+            if (isNewCalendar == true)
             {
                 FormDoctorCalendar formDoctor = new FormDoctorCalendar(currentUser);
                 formDoctor.ShowDialog();

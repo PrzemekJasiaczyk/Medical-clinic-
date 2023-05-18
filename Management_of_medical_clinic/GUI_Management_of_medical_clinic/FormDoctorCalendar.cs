@@ -33,7 +33,7 @@ namespace GUI_Management_of_medical_clinic
             ChangeTitle(displayMonth);
 
 
-            /*List<CalendarModel> calendars = new List<CalendarModel>();
+            List<CalendarModel> calendars = new List<CalendarModel>();
             foreach (CalendarModel calendar in calendars)
             {
                 if (calendar.IdEmployee == currentUser.IdEmployee && calendar.Active == false)
@@ -41,7 +41,7 @@ namespace GUI_Management_of_medical_clinic
                     displayMonth = Convert.ToDateTime(calendar.DateReference);
                     this.calendar = calendar;
                 }
-            }*/
+            }
 
             dataGridViewAppointments.Rows.Clear();
             dataGridViewAppointments.Columns.Add("Doctor", "Doctor");

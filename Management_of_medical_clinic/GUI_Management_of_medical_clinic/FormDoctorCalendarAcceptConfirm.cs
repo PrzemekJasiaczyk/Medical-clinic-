@@ -22,8 +22,8 @@ namespace GUI_Management_of_medical_clinic
 
         public FormCalendarAcceptConfirm(CalendarModel calendar)
         {
-            this.calendar = calendar;
             InitializeComponent();
+            this.calendar = calendar;
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
