@@ -29,7 +29,6 @@ namespace GUI_Management_of_medical_clinic
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             Hide();
-            Close();
         }
 
         private void buttonConfirm_Click(object sender, EventArgs e)
