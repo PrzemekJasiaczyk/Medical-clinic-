@@ -69,5 +69,49 @@ namespace Console_Management_of_medical_clinic.Logic
 
             return appointments;
         }
+        public static void DoctorModifiesAppointment(int idappointment, int office, int term, int day)
+        {
+            var context = new AppDbContext();
+            var appontment = context.DbAppointments.Find(idappointment);
+
+            appontment.IdTerm = term;
+            appontment.IdOffice = office;
+            appontment.IdDay = day;
+
+            context.SaveChanges();
+        }
+
+        // Validation when rescheduling
+        public (bool, string) CanReschedule(AppointmentModel appointmentRescheduled, AppointmentModel termToReschedule)
+        {
+
+            // Rescheduling on the same term of appointment
+            if (termToReschedule.IdAppointment == appointmentRescheduled.IdAppointment)
+            {
+                return (false, "It's the same term of appointment");
+            }
+
+            // Check if taken
+            using (AppDbContext context = new())
+            {
+                bool conflict =
+                    context.DbAppointments
+                    .Any(
+                    a =>
+                    a.CalendarModel.IdCalendar == termToReschedule.IdCalendar &&
+                    a.IdDay == termToReschedule.IdDay &&
+                    a.IdTerm == termToReschedule.IdTerm &&
+                    a.PatientId != null);
+
+                if (conflict)
+                {
+                    return (false, "The term to reschedule appointment is already taken");
+                }
+            }
+
+            // TODO: Validate against rescheduling to the past term
+
+            return (true, "Appointment rescheduled succesfully");
+        }
     }
 }

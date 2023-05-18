@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonLogOut = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.buttonCalendar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.SuspendLayout();
+            buttonLogOut = new Button();
+            panel1 = new Panel();
+            pictureBox1 = new PictureBox();
+            buttonCalendar = new Button();
+            buttonCurrentCalendar = new Button();
+            button2 = new Button();
+            label1 = new Label();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            SuspendLayout();
             // 
             // buttonLogOut
             // 
@@ -56,65 +56,66 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.SteelBlue;
-            this.panel1.Controls.Add(this.buttonLogOut);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.buttonCalendar);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(312, 1081);
-            this.panel1.TabIndex = 39;
+            panel1.BackColor = Color.SteelBlue;
+            panel1.Controls.Add(buttonLogOut);
+            panel1.Controls.Add(pictureBox1);
+            panel1.Controls.Add(buttonCalendar);
+            panel1.Controls.Add(buttonCurrentCalendar);
+            panel1.Controls.Add(button2);
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(312, 1081);
+            panel1.TabIndex = 39;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackgroundImage = global::GUI_Management_of_medical_clinic.Properties.Resources.MC_Logo;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(61, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(176, 168);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            pictureBox1.BackgroundImage = Properties.Resources.MC_Logo;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox1.Location = new Point(61, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(176, 168);
+            pictureBox1.TabIndex = 1;
+            pictureBox1.TabStop = false;
             // 
             // buttonCalendar
             // 
-            this.buttonCalendar.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonCalendar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCalendar.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonCalendar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonCalendar.Location = new System.Drawing.Point(-7, 259);
-            this.buttonCalendar.Name = "buttonCalendar";
-            this.buttonCalendar.Size = new System.Drawing.Size(329, 87);
-            this.buttonCalendar.TabIndex = 27;
-            this.buttonCalendar.Text = "Calendar";
-            this.buttonCalendar.UseVisualStyleBackColor = false;
-            this.buttonCalendar.Click += new System.EventHandler(this.buttonCalendar_Click);
+            buttonCalendar.BackColor = Color.SteelBlue;
+            buttonCalendar.FlatStyle = FlatStyle.Flat;
+            buttonCalendar.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonCalendar.ForeColor = SystemColors.ActiveCaptionText;
+            buttonCalendar.Location = new Point(-7, 259);
+            buttonCalendar.Name = "buttonCalendar";
+            buttonCalendar.Size = new Size(329, 87);
+            buttonCalendar.TabIndex = 27;
+            buttonCalendar.Text = "Calendar";
+            buttonCalendar.UseVisualStyleBackColor = false;
+            buttonCalendar.Click += buttonCalendar_Click;
             // 
-            // button1
+            // buttonCurrentCalendar
             // 
-            this.button1.BackColor = System.Drawing.Color.SteelBlue;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.Location = new System.Drawing.Point(-7, 352);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(329, 87);
-            this.button1.TabIndex = 33;
-            this.button1.Text = "[..]";
-            this.button1.UseVisualStyleBackColor = false;
+            buttonCurrentCalendar.BackColor = Color.SteelBlue;
+            buttonCurrentCalendar.FlatStyle = FlatStyle.Flat;
+            buttonCurrentCalendar.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonCurrentCalendar.ForeColor = SystemColors.ActiveCaptionText;
+            buttonCurrentCalendar.Location = new Point(-7, 352);
+            buttonCurrentCalendar.Name = "buttonCurrentCalendar";
+            buttonCurrentCalendar.Size = new Size(329, 87);
+            buttonCurrentCalendar.TabIndex = 33;
+            buttonCurrentCalendar.Text = "Current calendar";
+            buttonCurrentCalendar.UseVisualStyleBackColor = false;
+            buttonCurrentCalendar.Click += buttonCurrentCalendar_Click;
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.SteelBlue;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(-7, 445);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(329, 87);
-            this.button2.TabIndex = 28;
-            this.button2.Text = "[..]";
-            this.button2.UseVisualStyleBackColor = false;
+            button2.BackColor = Color.SteelBlue;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button2.Location = new Point(-7, 445);
+            button2.Name = "button2";
+            button2.Size = new Size(329, 87);
+            button2.TabIndex = 28;
+            button2.Text = "[..]";
+            button2.UseVisualStyleBackColor = false;
             // 
             // label1
             // 
@@ -128,22 +129,21 @@
             // 
             // FormDoctorDashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1920, 1080);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FormDoctorDashboard";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormOfficeList";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.Control;
+            ClientSize = new Size(1920, 1080);
+            Controls.Add(label1);
+            Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "FormDoctorDashboard";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "FormOfficeList";
+            WindowState = FormWindowState.Maximized;
+            panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -151,7 +151,7 @@
         private Panel panel1;
         private PictureBox pictureBox1;
         private Button buttonCalendar;
-        private Button button1;
+        private Button buttonCurrentCalendar;
         private Button button2;
         private Label label1;
     }

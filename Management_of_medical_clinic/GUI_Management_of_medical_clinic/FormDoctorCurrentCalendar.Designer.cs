@@ -1,6 +1,6 @@
 ﻿namespace GUI_Management_of_medical_clinic
 {
-    partial class FormDoctorCalendar
+    partial class FormDoctorCurrentCalendar
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             panelMenu = new Panel();
-            buttonReject = new Button();
-            buttonModify = new Button();
-            buttonAccept = new Button();
             buttonExit = new Button();
             pictureBox1 = new PictureBox();
             flowLayoutPanelMonth = new FlowLayoutPanel();
@@ -41,8 +38,7 @@
             labelTitleCalendar_Month = new Label();
             labelTitleCalendar_Year = new Label();
             panel9 = new Panel();
-            buttonNextMonth = new Button();
-            buttonPreviousMonth = new Button();
+            buttonToday = new Button();
             panel2 = new Panel();
             label6 = new Label();
             panel3 = new Panel();
@@ -58,9 +54,6 @@
             panel8 = new Panel();
             label5 = new Label();
             labelDate = new Label();
-            dataGridViewYourAppointments = new DataGridView();
-            label9 = new Label();
-            buttonEditAppointment = new Button();
             panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAppointments).BeginInit();
@@ -72,63 +65,17 @@
             panel6.SuspendLayout();
             panel7.SuspendLayout();
             panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewYourAppointments).BeginInit();
             SuspendLayout();
             // 
             // panelMenu
             // 
             panelMenu.BackColor = Color.SteelBlue;
-            panelMenu.Controls.Add(buttonReject);
-            panelMenu.Controls.Add(buttonModify);
-            panelMenu.Controls.Add(buttonAccept);
             panelMenu.Controls.Add(buttonExit);
             panelMenu.Controls.Add(pictureBox1);
             panelMenu.Location = new Point(-3, 0);
             panelMenu.Name = "panelMenu";
             panelMenu.Size = new Size(312, 1081);
             panelMenu.TabIndex = 0;
-            // 
-            // buttonReject
-            // 
-            buttonReject.BackColor = Color.SteelBlue;
-            buttonReject.FlatStyle = FlatStyle.Flat;
-            buttonReject.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonReject.ForeColor = SystemColors.ActiveCaptionText;
-            buttonReject.Location = new Point(-9, 384);
-            buttonReject.Name = "buttonReject";
-            buttonReject.Size = new Size(329, 87);
-            buttonReject.TabIndex = 50;
-            buttonReject.Text = "Reject";
-            buttonReject.UseVisualStyleBackColor = false;
-            buttonReject.Click += buttonReject_Click;
-            // 
-            // buttonModify
-            // 
-            buttonModify.BackColor = Color.SteelBlue;
-            buttonModify.FlatStyle = FlatStyle.Flat;
-            buttonModify.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonModify.ForeColor = SystemColors.ActiveCaptionText;
-            buttonModify.Location = new Point(-9, 477);
-            buttonModify.Name = "buttonModify";
-            buttonModify.Size = new Size(329, 87);
-            buttonModify.TabIndex = 49;
-            buttonModify.Text = "Modify";
-            buttonModify.UseVisualStyleBackColor = false;
-            buttonModify.Visible = false;
-            // 
-            // buttonAccept
-            // 
-            buttonAccept.BackColor = Color.SteelBlue;
-            buttonAccept.FlatStyle = FlatStyle.Flat;
-            buttonAccept.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonAccept.ForeColor = SystemColors.ActiveCaptionText;
-            buttonAccept.Location = new Point(-9, 291);
-            buttonAccept.Name = "buttonAccept";
-            buttonAccept.Size = new Size(329, 87);
-            buttonAccept.TabIndex = 29;
-            buttonAccept.Text = "Accept";
-            buttonAccept.UseVisualStyleBackColor = false;
-            buttonAccept.Click += buttonAccept_Click;
             // 
             // buttonExit
             // 
@@ -176,26 +123,25 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(1598, 664);
+            label8.Location = new Point(1651, 306);
             label8.Name = "label8";
-            label8.Size = new Size(281, 30);
+            label8.Size = new Size(144, 30);
             label8.TabIndex = 18;
-            label8.Text = "All appointments for this day";
-            label8.Click += label8_Click;
+            label8.Text = "Appointments";
             // 
             // dataGridViewAppointments
             // 
             dataGridViewAppointments.BackgroundColor = SystemColors.Info;
             dataGridViewAppointments.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewAppointments.EditMode = DataGridViewEditMode.EditProgrammatically;
-            dataGridViewAppointments.Location = new Point(1563, 697);
+            dataGridViewAppointments.Location = new Point(1563, 349);
             dataGridViewAppointments.MultiSelect = false;
             dataGridViewAppointments.Name = "dataGridViewAppointments";
             dataGridViewAppointments.ReadOnly = true;
             dataGridViewAppointments.RowHeadersVisible = false;
             dataGridViewAppointments.RowTemplate.Height = 25;
             dataGridViewAppointments.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewAppointments.Size = new Size(345, 371);
+            dataGridViewAppointments.Size = new Size(345, 538);
             dataGridViewAppointments.TabIndex = 19;
             // 
             // labelTitleCalendar_Month
@@ -225,46 +171,28 @@
             // panel9
             // 
             panel9.BackColor = Color.White;
-            panel9.Controls.Add(buttonNextMonth);
-            panel9.Controls.Add(buttonPreviousMonth);
+            panel9.Controls.Add(buttonToday);
             panel9.Controls.Add(labelTitleCalendar_Year);
             panel9.Controls.Add(labelTitleCalendar_Month);
             panel9.Location = new Point(296, 75);
             panel9.Name = "panel9";
             panel9.Size = new Size(1888, 99);
             panel9.TabIndex = 20;
+            panel9.Paint += panel9_Paint;
             // 
-            // buttonNextMonth
+            // buttonToday
             // 
-            buttonNextMonth.BackColor = Color.White;
-            buttonNextMonth.BackgroundImageLayout = ImageLayout.None;
-            buttonNextMonth.FlatAppearance.BorderSize = 0;
-            buttonNextMonth.FlatStyle = FlatStyle.Flat;
-            buttonNextMonth.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonNextMonth.Location = new Point(219, 29);
-            buttonNextMonth.Name = "buttonNextMonth";
-            buttonNextMonth.Size = new Size(62, 62);
-            buttonNextMonth.TabIndex = 18;
-            buttonNextMonth.Text = ">";
-            buttonNextMonth.TextAlign = ContentAlignment.TopCenter;
-            buttonNextMonth.UseVisualStyleBackColor = false;
-            buttonNextMonth.Click += buttonNextMonth_Click;
-            // 
-            // buttonPreviousMonth
-            // 
-            buttonPreviousMonth.BackColor = Color.White;
-            buttonPreviousMonth.BackgroundImageLayout = ImageLayout.None;
-            buttonPreviousMonth.FlatAppearance.BorderSize = 0;
-            buttonPreviousMonth.FlatStyle = FlatStyle.Flat;
-            buttonPreviousMonth.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonPreviousMonth.Location = new Point(152, 29);
-            buttonPreviousMonth.Name = "buttonPreviousMonth";
-            buttonPreviousMonth.Size = new Size(62, 62);
-            buttonPreviousMonth.TabIndex = 19;
-            buttonPreviousMonth.Text = "<";
-            buttonPreviousMonth.TextAlign = ContentAlignment.TopCenter;
-            buttonPreviousMonth.UseVisualStyleBackColor = false;
-            buttonPreviousMonth.Click += buttonPreviousMonth_Click;
+            buttonToday.BackColor = Color.White;
+            buttonToday.FlatAppearance.BorderSize = 0;
+            buttonToday.FlatStyle = FlatStyle.Flat;
+            buttonToday.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonToday.Location = new Point(20, 25);
+            buttonToday.Name = "buttonToday";
+            buttonToday.Size = new Size(165, 62);
+            buttonToday.TabIndex = 14;
+            buttonToday.Text = "Today";
+            buttonToday.UseVisualStyleBackColor = false;
+            buttonToday.Visible = false;
             // 
             // panel2
             // 
@@ -425,56 +353,17 @@
             // 
             labelDate.AutoSize = true;
             labelDate.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            labelDate.Location = new Point(1671, 213);
+            labelDate.Location = new Point(1663, 248);
             labelDate.Name = "labelDate";
             labelDate.Size = new Size(122, 30);
             labelDate.TabIndex = 28;
             labelDate.Text = "Select Date";
-            labelDate.Click += labelDate_Click;
             // 
-            // dataGridViewYourAppointments
-            // 
-            dataGridViewYourAppointments.BackgroundColor = SystemColors.Info;
-            dataGridViewYourAppointments.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewYourAppointments.EditMode = DataGridViewEditMode.EditProgrammatically;
-            dataGridViewYourAppointments.Location = new Point(1563, 291);
-            dataGridViewYourAppointments.MultiSelect = false;
-            dataGridViewYourAppointments.Name = "dataGridViewYourAppointments";
-            dataGridViewYourAppointments.ReadOnly = true;
-            dataGridViewYourAppointments.RowHeadersVisible = false;
-            dataGridViewYourAppointments.RowTemplate.Height = 25;
-            dataGridViewYourAppointments.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewYourAppointments.Size = new Size(345, 333);
-            dataGridViewYourAppointments.TabIndex = 29;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.Location = new Point(1598, 258);
-            label9.Name = "label9";
-            label9.Size = new Size(298, 30);
-            label9.TabIndex = 30;
-            label9.Text = "Your appointments for this day";
-            // 
-            // buttonEditAppointment
-            // 
-            buttonEditAppointment.Location = new Point(1657, 630);
-            buttonEditAppointment.Name = "buttonEditAppointment";
-            buttonEditAppointment.Size = new Size(156, 37);
-            buttonEditAppointment.TabIndex = 31;
-            buttonEditAppointment.Text = "Modify";
-            buttonEditAppointment.UseVisualStyleBackColor = true;
-            buttonEditAppointment.Click += buttonEditAppointment_Click;
-            // 
-            // FormDoctorCalendar
+            // FormDoctorCurrentCalendar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1920, 1080);
-            Controls.Add(buttonEditAppointment);
-            Controls.Add(label9);
-            Controls.Add(dataGridViewYourAppointments);
             Controls.Add(labelDate);
             Controls.Add(panel2);
             Controls.Add(panel3);
@@ -490,10 +379,10 @@
             Controls.Add(panelMenu);
             Controls.Add(panel9);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "FormDoctorCalendar";
+            Name = "FormDoctorCurrentCalendar";
             Text = "Calendar";
             WindowState = FormWindowState.Maximized;
-            Load += FormDoctorCalendar_Load_1;
+            Load += FormDoctorCalendar_Load;
             panelMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAppointments).EndInit();
@@ -513,7 +402,6 @@
             panel7.PerformLayout();
             panel8.ResumeLayout(false);
             panel8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewYourAppointments).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -544,14 +432,7 @@
         private Label label5;
         private PictureBox pictureBox1;
         private Button buttonExit;
+        private Button buttonToday;
         private Label labelDate;
-        private Button buttonReject;
-        private Button buttonModify;
-        private Button buttonAccept;
-        private DataGridView dataGridViewYourAppointments;
-        private Label label9;
-        private Button buttonEditAppointment;
-        private Button buttonNextMonth;
-        private Button buttonPreviousMonth;
     }
 }

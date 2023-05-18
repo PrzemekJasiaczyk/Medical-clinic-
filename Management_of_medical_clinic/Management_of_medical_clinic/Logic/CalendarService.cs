@@ -133,5 +133,71 @@ namespace Console_Management_of_medical_clinic.Logic
 
 			return sortedCalendars;
 		}
-	}
+
+        public static DateTime GetDateByIdCalendar(int idCalendar, int DayOfMonth)
+        {
+            List<CalendarModel> calendars = GetCalendarData();
+
+            string reference = string.Empty;
+            int year = 0, month = 0;
+
+            foreach (CalendarModel calendar in calendars)
+            {
+                if (idCalendar == calendar.IdCalendar)
+                {
+                    reference = calendar.DateReference;
+                    month = int.Parse(reference.Substring(0, 2));
+                    year = int.Parse(reference.Substring(3, 4));
+                }
+            }
+
+            if (reference == string.Empty)
+            {
+                throw new Exception("Calendar don't found in database.");
+            }
+
+            DateTime result = new DateTime(year, month, DayOfMonth);
+
+            return result;
+        }
+
+        public static int GetIdFromDate(DateTime date)
+        {
+            int result = 0;
+
+            string month = date.Month.ToString("00");
+            string year = date.Year.ToString();
+
+            string DateReference = month + '-' + year;
+
+            List<CalendarModel> calendarModels = GetCalendarData();
+
+            foreach (CalendarModel calendarModel in calendarModels)
+            {
+                if (DateReference == calendarModel.DateReference)
+                {
+                    result = calendarModel.IdCalendar;
+                }
+            }
+
+            return result;
+        }
+
+        public static List<AppointmentModel> appointmentInSelectedDate(List<AppointmentModel> ListIn, DateTime selectedDate, int idCalendar)
+        {
+            List<AppointmentModel> result = new List<AppointmentModel>();
+
+            int idDay = selectedDate.Day;
+
+            foreach (AppointmentModel appointment in ListIn)
+            {
+                if (appointment.IdCalendar == idCalendar && appointment.IdDay == idDay)
+                {
+                    result.Add(appointment);
+                }
+            }
+
+            return result;
+        }
+    }
 }
