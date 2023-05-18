@@ -78,9 +78,9 @@ namespace GUI_Management_of_medical_clinic
             for (int i = 1; i <= days; i++)
             {
                 DateTime day = new DateTime(date.Year, date.Month, i);
-                UserControl userControl = itIsADayOf(day);
-                MarkToday(userControl, day);
-                MarkPlannedDays(userControl, day);
+
+                UserControl userControl = createControls(day);
+                MarkPlannedDays(userControl, day);           
                 flowLayoutPanelMonth.Controls.Add(userControl);
             }
 
@@ -111,7 +111,7 @@ namespace GUI_Management_of_medical_clinic
                 }
             }
         }
-        private UserControl itIsADayOf(DateTime date)
+        private UserControl createControls(DateTime date)
         {
 
             if (date.DayOfWeek != 0)  //|| !holidays.Contains(date)
@@ -161,18 +161,22 @@ namespace GUI_Management_of_medical_clinic
         }
         private void buttonAccept_Click(object sender, EventArgs e) //accept calendar
         {
-            this.Hide();
             FormCalendarAcceptConfirm formCalendarAcceptConfirm = new FormCalendarAcceptConfirm(calendar);
             formCalendarAcceptConfirm.ShowDialog();
-            this.Close();
+            this.Hide();
+            FormDoctorDashboard formDoctorDashboard = new FormDoctorDashboard(currentUser);
+            formDoctorDashboard.ShowDialog();
+
         }
 
         private void buttonReject_Click(object sender, EventArgs e) //reject calendar
         {
-            this.Hide();
+            
             FormCalendarRejectConfirm formCalendarRejectConfirm = new FormCalendarRejectConfirm(calendar);
             formCalendarRejectConfirm.ShowDialog();
-            this.Close();
+            this.Hide();
+            FormDoctorDashboard formDoctorDashboard = new FormDoctorDashboard(currentUser);
+            formDoctorDashboard.ShowDialog();
         }
 
         private void buttonExit_Click_1(object sender, EventArgs e)

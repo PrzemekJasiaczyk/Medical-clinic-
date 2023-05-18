@@ -41,7 +41,6 @@ namespace GUI_Management_of_medical_clinic
             }
             if (isNewCalendar = true)
             {
-                this.Hide();
                 FormDoctorCalendar formDoctor = new FormDoctorCalendar(currentUser);
                 formDoctor.ShowDialog();
                 this.Close();
