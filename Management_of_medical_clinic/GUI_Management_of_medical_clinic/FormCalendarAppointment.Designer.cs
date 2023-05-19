@@ -56,20 +56,17 @@
             panel7 = new Panel();
             panel8 = new Panel();
             panel9 = new Panel();
+            label9 = new Label();
+            labelSelectedDate = new Label();
             labelTitleCalendar_Year = new Label();
-            panelTime = new Panel();
-            labelTime = new Label();
+            flowLayoutPanelMonth = new FlowLayoutPanel();
             panelDoctor = new Panel();
             labelDoctor = new Label();
-            flowLayoutPanelMonth = new FlowLayoutPanel();
+            panelTime = new Panel();
+            labelTime = new Label();
             dataGridViewAppointment = new DataGridView();
             ColumnDoctor = new DataGridViewTextBoxColumn();
             ColumnTime = new DataGridViewTextBoxColumn();
-            panel12 = new Panel();
-            labelSelectedDate = new Label();
-            panel13 = new Panel();
-            label9 = new Label();
-            panel14 = new Panel();
             panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -80,11 +77,9 @@
             panel7.SuspendLayout();
             panel8.SuspendLayout();
             panel9.SuspendLayout();
-            panelTime.SuspendLayout();
             panelDoctor.SuspendLayout();
+            panelTime.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAppointment).BeginInit();
-            panel12.SuspendLayout();
-            panel13.SuspendLayout();
             SuspendLayout();
             // 
             // panelMenu
@@ -159,7 +154,7 @@
             labelTitleCalendar_Month.AutoSize = true;
             labelTitleCalendar_Month.BackColor = Color.White;
             labelTitleCalendar_Month.Font = new Font("Segoe UI", 30F, FontStyle.Bold, GraphicsUnit.Point);
-            labelTitleCalendar_Month.Location = new Point(337, 29);
+            labelTitleCalendar_Month.Location = new Point(482, 27);
             labelTitleCalendar_Month.Name = "labelTitleCalendar_Month";
             labelTitleCalendar_Month.Size = new Size(149, 54);
             labelTitleCalendar_Month.TabIndex = 10;
@@ -370,6 +365,8 @@
             // panel9
             // 
             panel9.BackColor = Color.White;
+            panel9.Controls.Add(label9);
+            panel9.Controls.Add(labelSelectedDate);
             panel9.Controls.Add(buttonToday);
             panel9.Controls.Add(labelTitleCalendar_Year);
             panel9.Controls.Add(labelTitleCalendar_Month);
@@ -380,51 +377,59 @@
             panel9.Size = new Size(1888, 99);
             panel9.TabIndex = 3;
             // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.BackColor = Color.White;
+            label9.Font = new Font("Segoe UI", 30F, FontStyle.Bold, GraphicsUnit.Point);
+            label9.ImageAlign = ContentAlignment.MiddleRight;
+            label9.Location = new Point(805, 29);
+            label9.Name = "label9";
+            label9.Size = new Size(362, 54);
+            label9.TabIndex = 7;
+            label9.Text = "AVAILABLE DATES";
+            label9.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // labelSelectedDate
+            // 
+            labelSelectedDate.AutoSize = true;
+            labelSelectedDate.BackColor = Color.White;
+            labelSelectedDate.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            labelSelectedDate.ImageAlign = ContentAlignment.MiddleRight;
+            labelSelectedDate.Location = new Point(1299, 40);
+            labelSelectedDate.Name = "labelSelectedDate";
+            labelSelectedDate.Size = new Size(0, 37);
+            labelSelectedDate.TabIndex = 8;
+            labelSelectedDate.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // labelTitleCalendar_Year
             // 
             labelTitleCalendar_Year.AutoSize = true;
             labelTitleCalendar_Year.BackColor = Color.White;
             labelTitleCalendar_Year.Font = new Font("Segoe UI", 40F, FontStyle.Bold, GraphicsUnit.Point);
-            labelTitleCalendar_Year.Location = new Point(645, 15);
+            labelTitleCalendar_Year.Location = new Point(328, 12);
             labelTitleCalendar_Year.Name = "labelTitleCalendar_Year";
             labelTitleCalendar_Year.Size = new Size(154, 72);
             labelTitleCalendar_Year.TabIndex = 17;
             labelTitleCalendar_Year.Text = "2023";
             labelTitleCalendar_Year.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // panelTime
+            // flowLayoutPanelMonth
             // 
-            panelTime.BackColor = Color.White;
-            panelTime.Controls.Add(labelTime);
-            panelTime.Cursor = Cursors.PanSouth;
-            panelTime.Location = new Point(204, 116);
-            panelTime.Name = "panelTime";
-            panelTime.Size = new Size(197, 58);
-            panelTime.TabIndex = 17;
-            panelTime.Click += panelTime_Click;
-            // 
-            // labelTime
-            // 
-            labelTime.AutoSize = true;
-            labelTime.BackColor = Color.White;
-            labelTime.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            labelTime.ImageAlign = ContentAlignment.MiddleRight;
-            labelTime.Location = new Point(61, 9);
-            labelTime.Name = "labelTime";
-            labelTime.Size = new Size(75, 37);
-            labelTime.TabIndex = 7;
-            labelTime.Text = "Time";
-            labelTime.TextAlign = ContentAlignment.MiddleCenter;
-            labelTime.Click += labelTime_Click;
+            flowLayoutPanelMonth.BackColor = SystemColors.Control;
+            flowLayoutPanelMonth.Location = new Point(309, 172);
+            flowLayoutPanelMonth.Name = "flowLayoutPanelMonth";
+            flowLayoutPanelMonth.Size = new Size(782, 895);
+            flowLayoutPanelMonth.TabIndex = 1;
             // 
             // panelDoctor
             // 
             panelDoctor.BackColor = Color.White;
             panelDoctor.Controls.Add(labelDoctor);
             panelDoctor.Cursor = Cursors.PanSouth;
-            panelDoctor.Location = new Point(3, 116);
+            panelDoctor.Location = new Point(1101, 104);
             panelDoctor.Name = "panelDoctor";
-            panelDoctor.Size = new Size(195, 58);
+            panelDoctor.Size = new Size(405, 62);
             panelDoctor.TabIndex = 16;
             panelDoctor.Click += panelDoctor_Click;
             // 
@@ -434,7 +439,7 @@
             labelDoctor.BackColor = Color.White;
             labelDoctor.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
             labelDoctor.ImageAlign = ContentAlignment.MiddleRight;
-            labelDoctor.Location = new Point(50, 9);
+            labelDoctor.Location = new Point(154, 11);
             labelDoctor.Name = "labelDoctor";
             labelDoctor.Size = new Size(98, 37);
             labelDoctor.TabIndex = 7;
@@ -442,13 +447,30 @@
             labelDoctor.TextAlign = ContentAlignment.MiddleCenter;
             labelDoctor.Click += labelDoctor_Click;
             // 
-            // flowLayoutPanelMonth
+            // panelTime
             // 
-            flowLayoutPanelMonth.BackColor = SystemColors.Control;
-            flowLayoutPanelMonth.Location = new Point(309, 172);
-            flowLayoutPanelMonth.Name = "flowLayoutPanelMonth";
-            flowLayoutPanelMonth.Size = new Size(786, 895);
-            flowLayoutPanelMonth.TabIndex = 1;
+            panelTime.BackColor = Color.White;
+            panelTime.Controls.Add(labelTime);
+            panelTime.Cursor = Cursors.PanSouth;
+            panelTime.Location = new Point(1511, 104);
+            panelTime.Name = "panelTime";
+            panelTime.Size = new Size(405, 62);
+            panelTime.TabIndex = 17;
+            panelTime.Click += panelTime_Click;
+            // 
+            // labelTime
+            // 
+            labelTime.AutoSize = true;
+            labelTime.BackColor = Color.White;
+            labelTime.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            labelTime.ImageAlign = ContentAlignment.MiddleRight;
+            labelTime.Location = new Point(163, 12);
+            labelTime.Name = "labelTime";
+            labelTime.Size = new Size(75, 37);
+            labelTime.TabIndex = 7;
+            labelTime.Text = "Time";
+            labelTime.TextAlign = ContentAlignment.MiddleCenter;
+            labelTime.Click += labelTime_Click;
             // 
             // dataGridViewAppointment
             // 
@@ -459,7 +481,7 @@
             dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 20F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle1.Padding = new Padding(3);
             dataGridViewAppointment.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewAppointment.BackgroundColor = Color.Gainsboro;
+            dataGridViewAppointment.BackgroundColor = SystemColors.Control;
             dataGridViewAppointment.BorderStyle = BorderStyle.None;
             dataGridViewAppointment.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -481,7 +503,7 @@
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dataGridViewAppointment.DefaultCellStyle = dataGridViewCellStyle3;
-            dataGridViewAppointment.Location = new Point(1518, 180);
+            dataGridViewAppointment.Location = new Point(1101, 172);
             dataGridViewAppointment.MultiSelect = false;
             dataGridViewAppointment.Name = "dataGridViewAppointment";
             dataGridViewAppointment.ReadOnly = true;
@@ -499,7 +521,7 @@
             dataGridViewAppointment.RowTemplate.Resizable = DataGridViewTriState.False;
             dataGridViewAppointment.ScrollBars = ScrollBars.Vertical;
             dataGridViewAppointment.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewAppointment.Size = new Size(398, 888);
+            dataGridViewAppointment.Size = new Size(816, 888);
             dataGridViewAppointment.TabIndex = 16;
             dataGridViewAppointment.CellContentDoubleClick += dataGridViewAppointment_CellContentDoubleClick;
             // 
@@ -509,7 +531,7 @@
             ColumnDoctor.MinimumWidth = 6;
             ColumnDoctor.Name = "ColumnDoctor";
             ColumnDoctor.ReadOnly = true;
-            ColumnDoctor.Width = 201;
+            ColumnDoctor.Width = 408;
             // 
             // ColumnTime
             // 
@@ -518,71 +540,16 @@
             ColumnTime.Name = "ColumnTime";
             ColumnTime.ReadOnly = true;
             ColumnTime.Resizable = DataGridViewTriState.False;
-            ColumnTime.Width = 201;
-            // 
-            // panel12
-            // 
-            panel12.BackColor = Color.Gainsboro;
-            panel12.Controls.Add(labelSelectedDate);
-            panel12.Controls.Add(panel13);
-            panel12.Controls.Add(panelTime);
-            panel12.Controls.Add(panelDoctor);
-            panel12.Location = new Point(1515, 0);
-            panel12.Name = "panel12";
-            panel12.Size = new Size(410, 180);
-            panel12.TabIndex = 18;
-            // 
-            // labelSelectedDate
-            // 
-            labelSelectedDate.AutoSize = true;
-            labelSelectedDate.BackColor = Color.Gainsboro;
-            labelSelectedDate.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            labelSelectedDate.ImageAlign = ContentAlignment.MiddleRight;
-            labelSelectedDate.Location = new Point(53, 75);
-            labelSelectedDate.Name = "labelSelectedDate";
-            labelSelectedDate.Size = new Size(221, 37);
-            labelSelectedDate.TabIndex = 8;
-            labelSelectedDate.Text = " Day not selected";
-            labelSelectedDate.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // panel13
-            // 
-            panel13.BackColor = Color.White;
-            panel13.Controls.Add(label9);
-            panel13.Location = new Point(3, 5);
-            panel13.Name = "panel13";
-            panel13.Size = new Size(398, 55);
-            panel13.TabIndex = 17;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.BackColor = Color.White;
-            label9.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.ImageAlign = ContentAlignment.MiddleRight;
-            label9.Location = new Point(102, 7);
-            label9.Name = "label9";
-            label9.Size = new Size(196, 37);
-            label9.TabIndex = 7;
-            label9.Text = "Available dates";
-            label9.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // panel14
-            // 
-            panel14.BackColor = Color.Gainsboro;
-            panel14.Location = new Point(1515, 165);
-            panel14.Name = "panel14";
-            panel14.Size = new Size(498, 916);
-            panel14.TabIndex = 19;
+            ColumnTime.Width = 408;
             // 
             // FormCalendarAppointment
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1920, 1080);
-            Controls.Add(dataGridViewAppointment);
-            Controls.Add(panel12);
+            Controls.Add(panelTime);
             Controls.Add(flowLayoutPanelMonth);
+            Controls.Add(panelDoctor);
             Controls.Add(panelMenu);
             Controls.Add(panel2);
             Controls.Add(panel3);
@@ -592,7 +559,7 @@
             Controls.Add(panel7);
             Controls.Add(panel8);
             Controls.Add(panel9);
-            Controls.Add(panel14);
+            Controls.Add(dataGridViewAppointment);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormCalendarAppointment";
             Text = "Calendar";
@@ -616,15 +583,11 @@
             panel8.PerformLayout();
             panel9.ResumeLayout(false);
             panel9.PerformLayout();
-            panelTime.ResumeLayout(false);
-            panelTime.PerformLayout();
             panelDoctor.ResumeLayout(false);
             panelDoctor.PerformLayout();
+            panelTime.ResumeLayout(false);
+            panelTime.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAppointment).EndInit();
-            panel12.ResumeLayout(false);
-            panel12.PerformLayout();
-            panel13.ResumeLayout(false);
-            panel13.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -655,19 +618,16 @@
         private Panel panel9;
         private FlowLayoutPanel flowLayoutPanelMonth;
         private Label labelTitleCalendar_Year;
-        private DataGridView dataGridViewAppointment;
-        private DataGridViewTextBoxColumn ColumnDoctor;
-        private DataGridViewTextBoxColumn ColumnTime;
-        private Panel panelTime;
-        private Label labelTime;
-        private Panel panelDoctor;
-        private Label labelDoctor;
-        private Panel panel12;
-        private Label label9;
-        private Panel panel13;
-        private Panel panel14;
         private Label labelSelectedDate;
         private Button buttonEditPatient;
         private Button buttonDisplayAppointments;
+        private Panel panelDoctor;
+        private Label labelDoctor;
+        private Panel panelTime;
+        private Label labelTime;
+        private DataGridView dataGridViewAppointment;
+        private DataGridViewTextBoxColumn ColumnDoctor;
+        private DataGridViewTextBoxColumn ColumnTime;
+        private Label label9;
     }
 }

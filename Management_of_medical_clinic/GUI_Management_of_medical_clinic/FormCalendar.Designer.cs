@@ -206,7 +206,7 @@
             labelTitleCalendar_Month.AutoSize = true;
             labelTitleCalendar_Month.BackColor = Color.White;
             labelTitleCalendar_Month.Font = new Font("Segoe UI", 30F, FontStyle.Bold, GraphicsUnit.Point);
-            labelTitleCalendar_Month.Location = new Point(337, 29);
+            labelTitleCalendar_Month.Location = new Point(482, 27);
             labelTitleCalendar_Month.Name = "labelTitleCalendar_Month";
             labelTitleCalendar_Month.Size = new Size(149, 54);
             labelTitleCalendar_Month.TabIndex = 10;
@@ -218,7 +218,7 @@
             labelTitleCalendar_Year.AutoSize = true;
             labelTitleCalendar_Year.BackColor = Color.White;
             labelTitleCalendar_Year.Font = new Font("Segoe UI", 40F, FontStyle.Bold, GraphicsUnit.Point);
-            labelTitleCalendar_Year.Location = new Point(657, 14);
+            labelTitleCalendar_Year.Location = new Point(328, 12);
             labelTitleCalendar_Year.Name = "labelTitleCalendar_Year";
             labelTitleCalendar_Year.Size = new Size(154, 72);
             labelTitleCalendar_Year.TabIndex = 17;
