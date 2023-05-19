@@ -268,7 +268,7 @@
             label6.BackColor = Color.Gainsboro;
             label6.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
             label6.ImageAlign = ContentAlignment.MiddleRight;
-            label6.Location = new Point(30, 11);
+            label6.Location = new Point(23, 11);
             label6.Name = "label6";
             label6.Size = new Size(61, 37);
             label6.TabIndex = 9;
@@ -290,7 +290,7 @@
             labelMonday.BackColor = Color.White;
             labelMonday.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
             labelMonday.ImageAlign = ContentAlignment.MiddleRight;
-            labelMonday.Location = new Point(19, 13);
+            labelMonday.Location = new Point(18, 13);
             labelMonday.Name = "labelMonday";
             labelMonday.Size = new Size(72, 37);
             labelMonday.TabIndex = 3;
@@ -312,7 +312,7 @@
             label1.BackColor = Color.White;
             label1.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ImageAlign = ContentAlignment.MiddleRight;
-            label1.Location = new Point(23, 12);
+            label1.Location = new Point(21, 12);
             label1.Name = "label1";
             label1.Size = new Size(60, 37);
             label1.TabIndex = 4;
@@ -334,7 +334,7 @@
             label3.BackColor = Color.White;
             label3.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
             label3.ImageAlign = ContentAlignment.MiddleRight;
-            label3.Location = new Point(5, 12);
+            label3.Location = new Point(17, 13);
             label3.Name = "label3";
             label3.RightToLeft = RightToLeft.No;
             label3.Size = new Size(71, 37);
@@ -379,7 +379,7 @@
             label4.BackColor = Color.White;
             label4.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
             label4.ImageAlign = ContentAlignment.MiddleRight;
-            label4.Location = new Point(38, 12);
+            label4.Location = new Point(29, 11);
             label4.Name = "label4";
             label4.Size = new Size(46, 37);
             label4.TabIndex = 8;
@@ -401,7 +401,7 @@
             label5.BackColor = Color.White;
             label5.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
             label5.ImageAlign = ContentAlignment.MiddleRight;
-            label5.Location = new Point(23, 12);
+            label5.Location = new Point(25, 11);
             label5.Name = "label5";
             label5.Size = new Size(54, 37);
             label5.TabIndex = 7;
