@@ -31,9 +31,10 @@ namespace GUI_Management_of_medical_clinic
         private void buttonCalendar_Click(object sender, EventArgs e)
         {
             bool isNewCalendar = false;
-            List<CalendarModel> calendars = new List<CalendarModel>();
+            List<CalendarModel> calendars = CalendarService.GetCalendarData();
+            
             foreach (CalendarModel calendar in calendars)
-            {
+            {                
                 if (calendar.IdEmployee == currentUser.IdEmployee && calendar.Active == false)
                 {
                     isNewCalendar = true;        

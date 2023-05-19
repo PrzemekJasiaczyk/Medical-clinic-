@@ -115,9 +115,9 @@ namespace GUI_Management_of_medical_clinic
 
         private void MarkPlannedDays(UserControl userControl, DateTime day)
         {
-            List<AppointmentModel> appointments = AppointmentService.CheckAppointmentsAndReturnList(day);
+            List<DoctorsDayPlanModel> appointments = AppointmentService.CheckAppointmentsAndReturnList(day);
 
-            foreach (AppointmentModel appointment in appointments)
+            foreach (DoctorsDayPlanModel appointment in appointments)
             {
                 if (appointment.IdEmployee == currentEmployee.IdEmployee)
                 {
@@ -165,13 +165,13 @@ namespace GUI_Management_of_medical_clinic
         {
             labelDate.Text = selectedDate.ToString("d");
 
-            List<AppointmentModel> appointments = AppointmentService.CheckAppointmentsAndReturnList(selectedDate);
+            List<DoctorsDayPlanModel> appointments = AppointmentService.CheckAppointmentsAndReturnList(selectedDate);
             dataGridViewAppointments.Rows.Clear();
-            foreach (AppointmentModel appointment in appointments)
+            foreach (DoctorsDayPlanModel appointment in appointments)
             {
                 if (appointment.IdEmployee == currentEmployee.IdEmployee)
                 {
-                    string timeTerm = AppointmentService.GetTermByTermId(appointment.IdTerm);
+                    string timeTerm = AppointmentService.GetTermByTermId(appointment.IdOfTerm);
                     Patient patient = PatientService.GetPatientById((int)appointment.PatientId);
                     dataGridViewAppointments.Rows.Add(/*currentEmployee.IdEmployee, appointment.IdDay,*/ appointment.IdOffice, timeTerm, patient.FirstName + " " + patient.LastName);
                 }

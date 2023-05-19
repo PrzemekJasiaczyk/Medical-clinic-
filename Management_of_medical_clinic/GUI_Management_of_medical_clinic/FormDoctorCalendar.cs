@@ -20,7 +20,7 @@ namespace GUI_Management_of_medical_clinic
 
         DateTime displayMonth = DateTime.Today;
 
-        List<AppointmentModel> displayListInDataGridView = new List<AppointmentModel>();
+        List<DoctorsDayPlanModel> displayListInDataGridView = new List<DoctorsDayPlanModel>();
         private void RemoveControlPanels()
         {
             flowLayoutPanelMonth.Controls.Clear();
@@ -33,7 +33,7 @@ namespace GUI_Management_of_medical_clinic
             ChangeTitle(displayMonth);
 
 
-            List<CalendarModel> calendars = new List<CalendarModel>();
+            List<CalendarModel> calendars = CalendarService.GetCalendarData();
             foreach (CalendarModel calendar in calendars)
             {
                 if (calendar.IdEmployee == currentUser.IdEmployee && calendar.Active == false)
@@ -102,8 +102,8 @@ namespace GUI_Management_of_medical_clinic
         }
         private void MarkPlannedDays(UserControl userControl, DateTime day)
         {
-            List<AppointmentModel> appointments = AppointmentService.CheckAppointmentsAndReturnList(day);
-            foreach (AppointmentModel appointment in appointments)
+            List<DoctorsDayPlanModel> appointments = AppointmentService.CheckAppointmentsAndReturnList(day);
+            foreach (DoctorsDayPlanModel appointment in appointments)
             {
                 if (appointment.IdEmployee == currentUser.IdEmployee)
                 {
@@ -134,14 +134,14 @@ namespace GUI_Management_of_medical_clinic
         {
             UpdatelabelDate(selectedDate);
 
-            List<AppointmentModel> appointments = AppointmentService.CheckAppointmentsAndReturnList(selectedDate);
+            List<DoctorsDayPlanModel> appointments = AppointmentService.CheckAppointmentsAndReturnList(selectedDate);
 
             dataGridViewAppointments.Rows.Clear();
             dataGridViewYourAppointments.Rows.Clear();
 
-            foreach (AppointmentModel appointment in appointments)
+            foreach (DoctorsDayPlanModel appointment in appointments)
             {
-                string timeTerm = AppointmentService.GetTermByTermId(appointment.IdTerm);
+                string timeTerm = AppointmentService.GetTermByTermId(appointment.IdOfTerm);
                 Patient patient = PatientService.GetPatientById((int)appointment.PatientId);
 
                 if (appointment.IdEmployee == currentUser.IdEmployee)
@@ -185,14 +185,6 @@ namespace GUI_Management_of_medical_clinic
             FormDoctorDashboard formDoctorDashboard = new FormDoctorDashboard(currentUser);
             formDoctorDashboard.ShowDialog();
             this.Close();
-        }
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void labelDate_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void buttonEditAppointment_Click(object sender, EventArgs e)
