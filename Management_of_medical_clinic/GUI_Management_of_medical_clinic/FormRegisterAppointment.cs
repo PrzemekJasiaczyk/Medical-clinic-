@@ -86,7 +86,7 @@ namespace GUI_Management_of_medical_clinic
             }
             List<DoctorsDayPlanModel> appointments =
             CalendarAppointmentService.GetAppointmentsData()
-                .Where(a => a.IdEmployee == selectedDoctorId && a.IsActive == true && a.PatientId == null)
+                .Where(a => a.IdEmployee == selectedDoctorId && a.Status == EnumAppointmentStatus.Accepted && a.PatientId == null)
                 .ToList();
             comboBoxDate.Items.Clear();
             foreach (DoctorsDayPlanModel appointment in appointments)
@@ -136,12 +136,14 @@ namespace GUI_Management_of_medical_clinic
         private void buttonAddAppointment_Click(object sender, EventArgs e)
         {
             int selectedAppointmentId = -1;
+            int selectedPatientId = -1;
+
             if (comboBoxDate.SelectedItem != null)
             {
                 DoctorsDayPlanModel selectedAppointment = (DoctorsDayPlanModel)comboBoxDate.SelectedItem;
                 selectedAppointmentId = selectedAppointment.IdDoctorsDayPlan;
             }
-            int selectedPatientId = -1;
+            
             if (comboBoxPatient.SelectedItem != null)
             {
                 Patient selectedPatient = (Patient)comboBoxPatient.SelectedItem;
@@ -152,16 +154,15 @@ namespace GUI_Management_of_medical_clinic
             {
                 DoctorsDayPlanModel? appointment = db.DbDoctorsDayPlan.FirstOrDefault(a => a.IdDoctorsDayPlan == selectedAppointmentId);
 
-
-
                 if (appointment != null)
                 {
                     appointment.PatientId = selectedPatientId;
-                    appointment.IsActive = false;
+                    appointment.Status = EnumAppointmentStatus.Scheduled;
                     db.Entry(appointment).State = EntityState.Modified;
                     db.SaveChanges();
                 }
             }
+
             FormCalendarAppointment formCalendarAppointment = new FormCalendarAppointment(currentUser);
             formCalendarAppointment.ShowDialog();
         }

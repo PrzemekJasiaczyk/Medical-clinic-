@@ -96,7 +96,7 @@ namespace Console_Management_of_medical_clinic.Logic
                         IdDoctorsDayPlan = a.IdDoctorsDayPlan,
                         IdOfTerm = a.IdOfTerm,
                         Cost = a.Cost,
-                        IsActive = a.IsActive,
+                        Status = a.Status,
                         IdCalendar = a.IdCalendar,
                         IdEmployee = a.IdEmployee,
                         PatientId = a.PatientId ?? null,

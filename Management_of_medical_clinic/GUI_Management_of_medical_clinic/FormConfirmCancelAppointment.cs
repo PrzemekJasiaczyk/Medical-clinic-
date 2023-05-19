@@ -1,4 +1,5 @@
 ﻿using Console_Management_of_medical_clinic.Data;
+using Console_Management_of_medical_clinic.Data.Enums;
 using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
 using Microsoft.EntityFrameworkCore;
@@ -41,7 +42,7 @@ namespace GUI_Management_of_medical_clinic
             using (AppDbContext _context = new AppDbContext())
             {
                 appointment.PatientId = null;
-                appointment.IsActive = true;
+                appointment.Status = EnumAppointmentStatus.Cancelled;
 
                 _context.Entry(appointment).State = EntityState.Modified;
                 _context.SaveChanges();
