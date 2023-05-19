@@ -1,12 +1,6 @@
 ﻿using Console_Management_of_medical_clinic.Data;
 using Console_Management_of_medical_clinic.Data.Enums;
 using Console_Management_of_medical_clinic.Model;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Console_Management_of_medical_clinic.Logic
 {
@@ -49,10 +43,22 @@ namespace Console_Management_of_medical_clinic.Logic
             {
                 employees = db.DbEmployees.ToList();
             }
-
-
-
             return employees;
+        }
+
+        public static List<EmployeeModel> GetDoctors()
+        {
+            List<EmployeeModel> doctors = new List<EmployeeModel>();
+            List<EmployeeModel> employees = GetEmployeesData();
+            
+            foreach (EmployeeModel employee in employees) 
+            {
+                if (employee.Role == EnumEmployeeRoles.MedicalDoctor)
+                {
+                    doctors.Add(employee);
+                }                
+            }            
+            return doctors;
         }
         
         public static EmployeeModel GetEmployeeByUserId(UserModel user)
@@ -180,6 +186,31 @@ namespace Console_Management_of_medical_clinic.Logic
             }
             return ("Success", true);
         }
+
+
+        public static EmployeeModel GetEmployeeByID(int EmployeeID) 
+        {
+            EmployeeModel employee = new EmployeeModel();
+
+            List<EmployeeModel> employees = GetEmployeesData();
+
+            foreach (EmployeeModel employeeModel in employees)
+            {
+                if (employeeModel.IdEmployee == EmployeeID)
+                {
+                    employee = employeeModel;
+                }
+            }
+
+            if (employee == null)
+            {
+                throw new Exception("Employee don't found in database.");
+            }
+
+            return employee;
+        }
+
+        
     }
 
 }

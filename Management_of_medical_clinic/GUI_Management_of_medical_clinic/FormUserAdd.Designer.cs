@@ -28,206 +28,213 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBoxPasswordConfirm = new System.Windows.Forms.TextBox();
-            this.textBoxPassword = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBoxUsername = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.labelTitle = new System.Windows.Forms.Label();
-            this.listBoxEmployees = new System.Windows.Forms.ListBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.buttonAddNewUser = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.comboBoxRole = new System.Windows.Forms.ComboBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.buttonCancel = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel2.SuspendLayout();
-            this.SuspendLayout();
+            textBoxPasswordConfirm = new TextBox();
+            textBoxPassword = new TextBox();
+            label3 = new Label();
+            label1 = new Label();
+            textBoxUsername = new TextBox();
+            label2 = new Label();
+            labelTitle = new Label();
+            listBoxEmployees = new ListBox();
+            label4 = new Label();
+            buttonAddNewUser = new Button();
+            label5 = new Label();
+            comboBoxRole = new ComboBox();
+            pictureBox1 = new PictureBox();
+            panel2 = new Panel();
+            buttonCancel = new Button();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel2.SuspendLayout();
+            SuspendLayout();
             // 
             // textBoxPasswordConfirm
             // 
-            this.textBoxPasswordConfirm.Location = new System.Drawing.Point(999, 466);
-            this.textBoxPasswordConfirm.MaxLength = 11;
-            this.textBoxPasswordConfirm.Name = "textBoxPasswordConfirm";
-            this.textBoxPasswordConfirm.PasswordChar = '*';
-            this.textBoxPasswordConfirm.Size = new System.Drawing.Size(199, 23);
-            this.textBoxPasswordConfirm.TabIndex = 53;
-            this.textBoxPasswordConfirm.TextChanged += new System.EventHandler(this.textBoxPasswordConfirm_TextChanged);
+            textBoxPasswordConfirm.Font = new Font("Segoe UI", 18.75F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxPasswordConfirm.Location = new Point(934, 546);
+            textBoxPasswordConfirm.MaxLength = 11;
+            textBoxPasswordConfirm.Name = "textBoxPasswordConfirm";
+            textBoxPasswordConfirm.PasswordChar = '*';
+            textBoxPasswordConfirm.Size = new Size(199, 41);
+            textBoxPasswordConfirm.TabIndex = 53;
+            textBoxPasswordConfirm.TextChanged += textBoxPasswordConfirm_TextChanged;
             // 
             // textBoxPassword
             // 
-            this.textBoxPassword.Location = new System.Drawing.Point(999, 432);
-            this.textBoxPassword.MaxLength = 100;
-            this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.PasswordChar = '*';
-            this.textBoxPassword.Size = new System.Drawing.Size(199, 23);
-            this.textBoxPassword.TabIndex = 52;
-            this.textBoxPassword.TextChanged += new System.EventHandler(this.textBoxPassword_TextChanged);
+            textBoxPassword.Font = new Font("Segoe UI", 18.75F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxPassword.Location = new Point(934, 499);
+            textBoxPassword.MaxLength = 100;
+            textBoxPassword.Name = "textBoxPassword";
+            textBoxPassword.PasswordChar = '*';
+            textBoxPassword.Size = new Size(199, 41);
+            textBoxPassword.TabIndex = 52;
+            textBoxPassword.TextChanged += textBoxPassword_TextChanged;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(897, 469);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 15);
-            this.label3.TabIndex = 51;
-            this.label3.Text = "Repeat Password";
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 18.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Location = new Point(683, 549);
+            label3.Name = "label3";
+            label3.Size = new Size(213, 35);
+            label3.TabIndex = 51;
+            label3.Text = "Repeat Password";
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(897, 440);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 15);
-            this.label1.TabIndex = 50;
-            this.label1.Text = "Password";
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 18.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(683, 502);
+            label1.Name = "label1";
+            label1.Size = new Size(124, 35);
+            label1.TabIndex = 50;
+            label1.Text = "Password";
             // 
             // textBoxUsername
             // 
-            this.textBoxUsername.Location = new System.Drawing.Point(999, 381);
-            this.textBoxUsername.MaxLength = 100;
-            this.textBoxUsername.Name = "textBoxUsername";
-            this.textBoxUsername.Size = new System.Drawing.Size(199, 23);
-            this.textBoxUsername.TabIndex = 49;
-            this.textBoxUsername.TextChanged += new System.EventHandler(this.textBoxUsername_TextChanged);
+            textBoxUsername.Font = new Font("Segoe UI", 18.75F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxUsername.Location = new Point(934, 431);
+            textBoxUsername.MaxLength = 100;
+            textBoxUsername.Name = "textBoxUsername";
+            textBoxUsername.Size = new Size(199, 41);
+            textBoxUsername.TabIndex = 49;
+            textBoxUsername.TextChanged += textBoxUsername_TextChanged;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(897, 389);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 15);
-            this.label2.TabIndex = 48;
-            this.label2.Text = "Username";
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 18.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(683, 434);
+            label2.Name = "label2";
+            label2.Size = new Size(133, 35);
+            label2.TabIndex = 48;
+            label2.Text = "Username";
             // 
             // labelTitle
             // 
-            this.labelTitle.AutoSize = true;
-            this.labelTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelTitle.Location = new System.Drawing.Point(985, 307);
-            this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(422, 30);
-            this.labelTitle.TabIndex = 47;
-            this.labelTitle.Text = "Set Username and Password for Employee";
+            labelTitle.AutoSize = true;
+            labelTitle.Font = new Font("Segoe UI", 24.75F, FontStyle.Bold, GraphicsUnit.Point);
+            labelTitle.Location = new Point(863, 308);
+            labelTitle.Name = "labelTitle";
+            labelTitle.Size = new Size(672, 45);
+            labelTitle.TabIndex = 47;
+            labelTitle.Text = "Set Username and Password for Employee";
             // 
             // listBoxEmployees
             // 
-            this.listBoxEmployees.FormattingEnabled = true;
-            this.listBoxEmployees.ItemHeight = 15;
-            this.listBoxEmployees.Location = new System.Drawing.Point(1284, 381);
-            this.listBoxEmployees.Name = "listBoxEmployees";
-            this.listBoxEmployees.Size = new System.Drawing.Size(296, 229);
-            this.listBoxEmployees.TabIndex = 54;
-            this.listBoxEmployees.SelectedIndexChanged += new System.EventHandler(this.listBoxEmployeesWithout_SelectedIndexChanged);
+            listBoxEmployees.FormattingEnabled = true;
+            listBoxEmployees.ItemHeight = 15;
+            listBoxEmployees.Location = new Point(1239, 431);
+            listBoxEmployees.Name = "listBoxEmployees";
+            listBoxEmployees.Size = new Size(296, 229);
+            listBoxEmployees.TabIndex = 54;
+            listBoxEmployees.SelectedIndexChanged += listBoxEmployeesWithout_SelectedIndexChanged;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1284, 363);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(211, 15);
-            this.label4.TabIndex = 55;
-            this.label4.Text = "Choose an employee to create an user:";
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 18.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.Location = new Point(1163, 377);
+            label4.Name = "label4";
+            label4.Size = new Size(471, 35);
+            label4.TabIndex = 55;
+            label4.Text = "Choose an employee to create an user:";
             // 
             // buttonAddNewUser
             // 
-            this.buttonAddNewUser.Location = new System.Drawing.Point(1470, 640);
-            this.buttonAddNewUser.Name = "buttonAddNewUser";
-            this.buttonAddNewUser.Size = new System.Drawing.Size(140, 45);
-            this.buttonAddNewUser.TabIndex = 56;
-            this.buttonAddNewUser.Text = "Add";
-            this.buttonAddNewUser.UseVisualStyleBackColor = true;
-            this.buttonAddNewUser.Click += new System.EventHandler(this.buttonAddNewUser_Click);
+            buttonAddNewUser.Font = new Font("Segoe UI", 18.75F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonAddNewUser.Location = new Point(1381, 696);
+            buttonAddNewUser.Name = "buttonAddNewUser";
+            buttonAddNewUser.Size = new Size(220, 60);
+            buttonAddNewUser.TabIndex = 56;
+            buttonAddNewUser.Text = "Add";
+            buttonAddNewUser.UseVisualStyleBackColor = true;
+            buttonAddNewUser.Click += buttonAddNewUser_Click;
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(897, 530);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(30, 15);
-            this.label5.TabIndex = 58;
-            this.label5.Text = "Role";
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 18.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.Location = new Point(683, 615);
+            label5.Name = "label5";
+            label5.Size = new Size(66, 35);
+            label5.TabIndex = 58;
+            label5.Text = "Role";
             // 
             // comboBoxRole
             // 
-            this.comboBoxRole.FormattingEnabled = true;
-            this.comboBoxRole.Items.AddRange(new object[] {
-            "Administrator",
-            "Employee"});
-            this.comboBoxRole.Location = new System.Drawing.Point(999, 527);
-            this.comboBoxRole.Name = "comboBoxRole";
-            this.comboBoxRole.Size = new System.Drawing.Size(199, 23);
-            this.comboBoxRole.TabIndex = 59;
-            this.comboBoxRole.SelectedIndexChanged += new System.EventHandler(this.comboBoxRole_SelectedIndexChanged);
+            comboBoxRole.Font = new Font("Segoe UI", 18.75F, FontStyle.Regular, GraphicsUnit.Point);
+            comboBoxRole.FormattingEnabled = true;
+            comboBoxRole.Items.AddRange(new object[] { "Administrator", "Employee" });
+            comboBoxRole.Location = new Point(934, 612);
+            comboBoxRole.Name = "comboBoxRole";
+            comboBoxRole.Size = new Size(199, 43);
+            comboBoxRole.TabIndex = 59;
+            comboBoxRole.SelectedIndexChanged += comboBoxRole_SelectedIndexChanged;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackgroundImage = global::GUI_Management_of_medical_clinic.Properties.Resources.MC_Logo;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(61, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(176, 168);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
+            pictureBox1.BackgroundImage = Properties.Resources.MC_Logo;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox1.Location = new Point(61, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(176, 168);
+            pictureBox1.TabIndex = 2;
+            pictureBox1.TabStop = false;
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.SteelBlue;
-            this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Controls.Add(this.buttonCancel);
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(312, 1081);
-            this.panel2.TabIndex = 60;
+            panel2.BackColor = Color.SteelBlue;
+            panel2.Controls.Add(pictureBox1);
+            panel2.Controls.Add(buttonCancel);
+            panel2.Location = new Point(0, 0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(312, 1081);
+            panel2.TabIndex = 60;
             // 
             // buttonCancel
             // 
-            this.buttonCancel.BackColor = System.Drawing.Color.Gainsboro;
-            this.buttonCancel.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.buttonCancel.FlatAppearance.BorderSize = 2;
-            this.buttonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCancel.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonCancel.Location = new System.Drawing.Point(24, 985);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(252, 66);
-            this.buttonCancel.TabIndex = 33;
-            this.buttonCancel.Text = "Cancel";
-            this.buttonCancel.UseVisualStyleBackColor = false;
-            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            buttonCancel.BackColor = Color.Gainsboro;
+            buttonCancel.FlatAppearance.BorderColor = Color.White;
+            buttonCancel.FlatAppearance.BorderSize = 2;
+            buttonCancel.FlatStyle = FlatStyle.Flat;
+            buttonCancel.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonCancel.Location = new Point(24, 985);
+            buttonCancel.Name = "buttonCancel";
+            buttonCancel.Size = new Size(252, 66);
+            buttonCancel.TabIndex = 33;
+            buttonCancel.Text = "Cancel";
+            buttonCancel.UseVisualStyleBackColor = false;
+            buttonCancel.Click += buttonCancel_Click;
             // 
             // FormUserAdd
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Info;
-            this.ClientSize = new System.Drawing.Size(1920, 1080);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.comboBoxRole);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.buttonAddNewUser);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.listBoxEmployees);
-            this.Controls.Add(this.textBoxPasswordConfirm);
-            this.Controls.Add(this.textBoxPassword);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBoxUsername);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.labelTitle);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FormUserAdd";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormUserAdd";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.FormUserAdd_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.Info;
+            ClientSize = new Size(1920, 1080);
+            Controls.Add(panel2);
+            Controls.Add(comboBoxRole);
+            Controls.Add(label5);
+            Controls.Add(buttonAddNewUser);
+            Controls.Add(label4);
+            Controls.Add(listBoxEmployees);
+            Controls.Add(textBoxPasswordConfirm);
+            Controls.Add(textBoxPassword);
+            Controls.Add(label3);
+            Controls.Add(label1);
+            Controls.Add(textBoxUsername);
+            Controls.Add(label2);
+            Controls.Add(labelTitle);
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "FormUserAdd";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "FormUserAdd";
+            WindowState = FormWindowState.Maximized;
+            Load += FormUserAdd_Load;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel2.ResumeLayout(false);
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

@@ -18,6 +18,9 @@ namespace GUI_Management_of_medical_clinic
     {
         EmployeeModel employee;
         EmployeeModel currentUser;
+
+        Color _errorColor = Color.LightPink;
+        Color _normalColor = SystemColors.Window;
         public FormEmployeeEdit(EmployeeModel emp, EmployeeModel currentU)
         {
             InitializeComponent();
@@ -42,11 +45,16 @@ namespace GUI_Management_of_medical_clinic
             textBoxLastName.Text = employee.LastName;
             textBoxPESEL.Text = employee.PESEL;
             dateTimePickerDate.Text = (employee.DateOfBirth);
-            
+
             textBoxAddress.Text = employee.CorrespondenceAddress;
             textBoxEmail.Text = employee.Email;
             textBoxPhone.Text = employee.PhoneNumber;
             comboBoxSex.SelectedItem = employee.Sex;
+            if (employee.IdSpecialization != null)
+            {
+
+                checkedListBoxSpecialization.SelectedItem = SpecializationService.GetSpecializationNameById((int)employee.IdSpecialization);
+            }
 
             checkIfMedicalDoctor();
 
@@ -58,12 +66,15 @@ namespace GUI_Management_of_medical_clinic
             else
                 buttonConfirm.Enabled = false;
         }
+
+        PatientService _patientValidator = new();
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
-            (string stringPESEL, bool booleanPESEL) = EmployeeService.validatePESEL(textBoxPESEL.Text, dateTimePickerDate.Value, comboBoxSex.SelectedIndex);
-            if (!booleanPESEL)
+            string errorMessage;
+
+            if (!_patientValidator.IsValidPESEL(textBoxPESEL.Text, dateTimePickerDate.Value, (EnumSex)comboBoxSex.SelectedItem, out errorMessage))
             {
-                MessageBox.Show(stringPESEL);
+                MessageBox.Show(errorMessage);
                 return;
             }
 
@@ -89,13 +100,26 @@ namespace GUI_Management_of_medical_clinic
 
             EnumSex enumSex = (EnumSex)Enum.Parse(typeof(EnumSex), comboBoxSex.SelectedItem.ToString());
             EnumEmployeeRoles enumRole = (EnumEmployeeRoles)Enum.Parse(typeof(EnumEmployeeRoles), comboBoxRole.SelectedItem.ToString());
+            int idSpecialization;
 
+            if (comboBoxRole.Text == "MedicalDoctor")
+            {
+                idSpecialization = SpecializationService.getSpecializationIdByName(checkedListBoxSpecialization.SelectedItem.ToString());
+                EmployeeModel.EditEmployeeWithSpecialization(employee.IdEmployee, textBoxFirstName.Text, textBoxLastName.Text, textBoxPESEL.Text, dateTimePickerDate.Text,
+                enumRole, textBoxAddress.Text, textBoxEmail.Text, textBoxPhone.Text, enumSex, idSpecialization, true);
+            }
+            else
+            {
+                EmployeeModel.EditEmployee(employee.IdEmployee, textBoxFirstName.Text, textBoxLastName.Text, textBoxPESEL.Text, dateTimePickerDate.Text,
+                enumRole, textBoxAddress.Text, textBoxEmail.Text, textBoxPhone.Text, enumSex, true);
+            }
+
+            MessageBox.Show("Employee’s data changed.");
 
             FormEmployeeList employeeList = new FormEmployeeList(currentUser);
-            //this.Hide();
+            Hide();
             employeeList.ShowDialog();
-            this.Close();
-
+            Close();
         }
 
         public void checkIfMedicalDoctor()
@@ -105,7 +129,6 @@ namespace GUI_Management_of_medical_clinic
                 checkedListBoxSpecialization.Visible = true;
                 labelSpecialization.Visible = true;
             }
-
             else
             {
                 checkedListBoxSpecialization.Visible = false;
@@ -134,13 +157,12 @@ namespace GUI_Management_of_medical_clinic
             checkIfMedicalDoctor();
         }
 
-
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             FormEmployeeList employeeList = new FormEmployeeList(currentUser);
-            //this.Hide();
+            Hide();
             employeeList.ShowDialog();
-            this.Close();
+            Close();
         }
 
         private void correspAddressTextBox_TextChanged(object sender, EventArgs e)
@@ -166,6 +188,42 @@ namespace GUI_Management_of_medical_clinic
         private void comboBoxRole_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             checkIfMedicalDoctor();
+            checkForms();
+        }
+
+        private void textBoxPESEL_TextChanged_1(object sender, EventArgs e)
+        {
+            checkForms();
+        }
+
+        private void checkedListBoxSpecialization_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            int selectedIndex = checkedListBoxSpecialization.SelectedIndex;
+            foreach (int i in checkedListBoxSpecialization.CheckedIndices)
+            {
+                checkedListBoxSpecialization.SetItemCheckState(i, CheckState.Unchecked);
+            }
+            checkedListBoxSpecialization.SetItemCheckState(selectedIndex, CheckState.Checked);
+        }
+
+        private void textBoxFirstName_TextChanged_1(object sender, EventArgs e)
+        {
+            checkForms();
+        }
+
+        private void textBoxLastName_TextChanged_1(object sender, EventArgs e)
+        {
+            checkForms();
+        }
+
+        private void textBoxPESEL_Validated(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxPESEL_Validating(object sender, CancelEventArgs e)
+        {
+
         }
     }
 }

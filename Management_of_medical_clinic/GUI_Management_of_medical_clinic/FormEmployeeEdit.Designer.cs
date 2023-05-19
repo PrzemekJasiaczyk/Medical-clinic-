@@ -28,332 +28,337 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBoxRole = new System.Windows.Forms.ComboBox();
-            this.buttonConfirm = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBoxPESEL = new System.Windows.Forms.TextBox();
-            this.textBoxLastName = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBoxFirstName = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.labelTitle = new System.Windows.Forms.Label();
-            this.buttonCancel = new System.Windows.Forms.Button();
-            this.comboBoxSex = new System.Windows.Forms.ComboBox();
-            this.labelSpecialization = new System.Windows.Forms.Label();
-            this.checkedListBoxSpecialization = new System.Windows.Forms.CheckedListBox();
-            this.dateTimePickerDate = new System.Windows.Forms.DateTimePicker();
-            this.textBoxPhone = new System.Windows.Forms.TextBox();
-            this.textBoxEmail = new System.Windows.Forms.TextBox();
-            this.textBoxAddress = new System.Windows.Forms.TextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.SuspendLayout();
+            comboBoxRole = new ComboBox();
+            buttonConfirm = new Button();
+            label7 = new Label();
+            label8 = new Label();
+            label9 = new Label();
+            label10 = new Label();
+            label5 = new Label();
+            label4 = new Label();
+            textBoxPESEL = new TextBox();
+            textBoxLastName = new TextBox();
+            label3 = new Label();
+            label1 = new Label();
+            textBoxFirstName = new TextBox();
+            label2 = new Label();
+            labelTitle = new Label();
+            buttonCancel = new Button();
+            comboBoxSex = new ComboBox();
+            labelSpecialization = new Label();
+            checkedListBoxSpecialization = new CheckedListBox();
+            dateTimePickerDate = new DateTimePicker();
+            textBoxPhone = new TextBox();
+            textBoxEmail = new TextBox();
+            textBoxAddress = new TextBox();
+            panel2 = new Panel();
+            pictureBox1 = new PictureBox();
+            panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            SuspendLayout();
             // 
             // comboBoxRole
             // 
-            this.comboBoxRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxRole.Font = new System.Drawing.Font("Segoe UI", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comboBoxRole.FormattingEnabled = true;
-            this.comboBoxRole.Location = new System.Drawing.Point(951, 482);
-            this.comboBoxRole.Name = "comboBoxRole";
-            this.comboBoxRole.Size = new System.Drawing.Size(199, 43);
-            this.comboBoxRole.TabIndex = 72;
-            this.comboBoxRole.SelectedIndexChanged += new System.EventHandler(this.comboBoxRole_SelectedIndexChanged_1);
+            comboBoxRole.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxRole.Font = new Font("Segoe UI", 19F, FontStyle.Regular, GraphicsUnit.Point);
+            comboBoxRole.FormattingEnabled = true;
+            comboBoxRole.Location = new Point(951, 482);
+            comboBoxRole.Name = "comboBoxRole";
+            comboBoxRole.Size = new Size(199, 43);
+            comboBoxRole.TabIndex = 72;
+            comboBoxRole.SelectedIndexChanged += comboBoxRole_SelectedIndexChanged_1;
             // 
             // buttonConfirm
             // 
-            this.buttonConfirm.BackColor = System.Drawing.Color.Gainsboro;
-            this.buttonConfirm.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.buttonConfirm.FlatAppearance.BorderSize = 2;
-            this.buttonConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonConfirm.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonConfirm.Location = new System.Drawing.Point(1064, 882);
-            this.buttonConfirm.Name = "buttonConfirm";
-            this.buttonConfirm.Size = new System.Drawing.Size(252, 66);
-            this.buttonConfirm.TabIndex = 71;
-            this.buttonConfirm.Text = "Confirm";
-            this.buttonConfirm.UseVisualStyleBackColor = false;
-            this.buttonConfirm.Click += new System.EventHandler(this.buttonConfirm_Click);
+            buttonConfirm.BackColor = Color.Gainsboro;
+            buttonConfirm.FlatAppearance.BorderColor = Color.Black;
+            buttonConfirm.FlatAppearance.BorderSize = 2;
+            buttonConfirm.FlatStyle = FlatStyle.Flat;
+            buttonConfirm.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonConfirm.Location = new Point(1064, 882);
+            buttonConfirm.Name = "buttonConfirm";
+            buttonConfirm.Size = new Size(252, 66);
+            buttonConfirm.TabIndex = 71;
+            buttonConfirm.Text = "Confirm";
+            buttonConfirm.UseVisualStyleBackColor = false;
+            buttonConfirm.Click += buttonConfirm_Click;
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 19F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(723, 730);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(58, 36);
-            this.label7.TabIndex = 69;
-            this.label7.Text = "Sex";
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 19F, FontStyle.Bold, GraphicsUnit.Point);
+            label7.Location = new Point(723, 730);
+            label7.Name = "label7";
+            label7.Size = new Size(58, 36);
+            label7.TabIndex = 69;
+            label7.Text = "Sex";
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 19F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(723, 683);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(196, 36);
-            this.label8.TabIndex = 66;
-            this.label8.Text = "Phone number";
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 19F, FontStyle.Bold, GraphicsUnit.Point);
+            label8.Location = new Point(723, 683);
+            label8.Name = "label8";
+            label8.Size = new Size(196, 36);
+            label8.TabIndex = 66;
+            label8.Text = "Phone number";
             // 
             // label9
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 19F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(723, 636);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(92, 36);
-            this.label9.TabIndex = 65;
-            this.label9.Text = "E-mail";
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI", 19F, FontStyle.Bold, GraphicsUnit.Point);
+            label9.Location = new Point(723, 636);
+            label9.Name = "label9";
+            label9.Size = new Size(92, 36);
+            label9.TabIndex = 65;
+            label9.Text = "E-mail";
             // 
             // label10
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 19F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(723, 589);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(175, 36);
-            this.label10.TabIndex = 63;
-            this.label10.Text = "Corr. Address";
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 19F, FontStyle.Bold, GraphicsUnit.Point);
+            label10.Location = new Point(723, 589);
+            label10.Name = "label10";
+            label10.Size = new Size(175, 36);
+            label10.TabIndex = 63;
+            label10.Text = "Corr. Address";
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 19F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(723, 482);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(80, 36);
-            this.label5.TabIndex = 62;
-            this.label5.Text = "Role*";
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 19F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.Location = new Point(723, 482);
+            label5.Name = "label5";
+            label5.Size = new Size(80, 36);
+            label5.TabIndex = 62;
+            label5.Text = "Role*";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 19F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(723, 435);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(185, 36);
-            this.label4.TabIndex = 60;
-            this.label4.Text = "Date of Birth*";
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 19F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.Location = new Point(723, 435);
+            label4.Name = "label4";
+            label4.Size = new Size(185, 36);
+            label4.TabIndex = 60;
+            label4.Text = "Date of Birth*";
             // 
             // textBoxPESEL
             // 
-            this.textBoxPESEL.Font = new System.Drawing.Font("Segoe UI", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxPESEL.Location = new System.Drawing.Point(951, 388);
-            this.textBoxPESEL.MaxLength = 11;
-            this.textBoxPESEL.Name = "textBoxPESEL";
-            this.textBoxPESEL.Size = new System.Drawing.Size(199, 41);
-            this.textBoxPESEL.TabIndex = 59;
+            textBoxPESEL.Font = new Font("Segoe UI", 19F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxPESEL.Location = new Point(951, 388);
+            textBoxPESEL.MaxLength = 11;
+            textBoxPESEL.Name = "textBoxPESEL";
+            textBoxPESEL.Size = new Size(199, 41);
+            textBoxPESEL.TabIndex = 59;
+            textBoxPESEL.TextChanged += textBoxPESEL_TextChanged_1;
+            textBoxPESEL.Validating += textBoxPESEL_Validating;
+            textBoxPESEL.Validated += textBoxPESEL_Validated;
             // 
             // textBoxLastName
             // 
-            this.textBoxLastName.Font = new System.Drawing.Font("Segoe UI", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxLastName.Location = new System.Drawing.Point(951, 341);
-            this.textBoxLastName.Name = "textBoxLastName";
-            this.textBoxLastName.Size = new System.Drawing.Size(199, 41);
-            this.textBoxLastName.TabIndex = 58;
-            this.textBoxLastName.Text = "Surname";
+            textBoxLastName.Font = new Font("Segoe UI", 19F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxLastName.Location = new Point(951, 341);
+            textBoxLastName.Name = "textBoxLastName";
+            textBoxLastName.Size = new Size(199, 41);
+            textBoxLastName.TabIndex = 58;
+            textBoxLastName.Text = "Surname";
+            textBoxLastName.TextChanged += textBoxLastName_TextChanged_1;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 19F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(723, 388);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 36);
-            this.label3.TabIndex = 57;
-            this.label3.Text = "PESEL*";
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 19F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Location = new Point(723, 388);
+            label3.Name = "label3";
+            label3.Size = new Size(96, 36);
+            label3.TabIndex = 57;
+            label3.Text = "PESEL*";
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 19F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(723, 341);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(155, 36);
-            this.label1.TabIndex = 56;
-            this.label1.Text = "Last Name*";
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 19F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(723, 341);
+            label1.Name = "label1";
+            label1.Size = new Size(155, 36);
+            label1.TabIndex = 56;
+            label1.Text = "Last Name*";
             // 
             // textBoxFirstName
             // 
-            this.textBoxFirstName.Font = new System.Drawing.Font("Segoe UI", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxFirstName.Location = new System.Drawing.Point(951, 293);
-            this.textBoxFirstName.Name = "textBoxFirstName";
-            this.textBoxFirstName.Size = new System.Drawing.Size(199, 41);
-            this.textBoxFirstName.TabIndex = 55;
-            this.textBoxFirstName.Text = "Name";
+            textBoxFirstName.Font = new Font("Segoe UI", 19F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxFirstName.Location = new Point(951, 293);
+            textBoxFirstName.Name = "textBoxFirstName";
+            textBoxFirstName.Size = new Size(199, 41);
+            textBoxFirstName.TabIndex = 55;
+            textBoxFirstName.Text = "Name";
+            textBoxFirstName.TextChanged += textBoxFirstName_TextChanged_1;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 19F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(723, 293);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(159, 36);
-            this.label2.TabIndex = 54;
-            this.label2.Text = "First Name*";
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 19F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(723, 293);
+            label2.Name = "label2";
+            label2.Size = new Size(159, 36);
+            label2.TabIndex = 54;
+            label2.Text = "First Name*";
             // 
             // labelTitle
             // 
-            this.labelTitle.AutoSize = true;
-            this.labelTitle.Font = new System.Drawing.Font("Segoe UI", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelTitle.Location = new System.Drawing.Point(808, 98);
-            this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(246, 46);
-            this.labelTitle.TabIndex = 53;
-            this.labelTitle.Text = "Edit employee";
+            labelTitle.AutoSize = true;
+            labelTitle.Font = new Font("Segoe UI", 25F, FontStyle.Bold, GraphicsUnit.Point);
+            labelTitle.Location = new Point(808, 98);
+            labelTitle.Name = "labelTitle";
+            labelTitle.Size = new Size(246, 46);
+            labelTitle.TabIndex = 53;
+            labelTitle.Text = "Edit employee";
             // 
             // buttonCancel
             // 
-            this.buttonCancel.BackColor = System.Drawing.Color.Gainsboro;
-            this.buttonCancel.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.buttonCancel.FlatAppearance.BorderSize = 2;
-            this.buttonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCancel.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonCancel.Location = new System.Drawing.Point(28, 984);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(252, 66);
-            this.buttonCancel.TabIndex = 52;
-            this.buttonCancel.Text = "Cancel";
-            this.buttonCancel.UseVisualStyleBackColor = false;
-            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            buttonCancel.BackColor = Color.Gainsboro;
+            buttonCancel.FlatAppearance.BorderColor = Color.White;
+            buttonCancel.FlatAppearance.BorderSize = 2;
+            buttonCancel.FlatStyle = FlatStyle.Flat;
+            buttonCancel.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonCancel.Location = new Point(28, 984);
+            buttonCancel.Name = "buttonCancel";
+            buttonCancel.Size = new Size(252, 66);
+            buttonCancel.TabIndex = 52;
+            buttonCancel.Text = "Cancel";
+            buttonCancel.UseVisualStyleBackColor = false;
+            buttonCancel.Click += buttonCancel_Click;
             // 
             // comboBoxSex
             // 
-            this.comboBoxSex.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxSex.Font = new System.Drawing.Font("Segoe UI", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comboBoxSex.FormattingEnabled = true;
-            this.comboBoxSex.Location = new System.Drawing.Point(951, 730);
-            this.comboBoxSex.Name = "comboBoxSex";
-            this.comboBoxSex.Size = new System.Drawing.Size(199, 43);
-            this.comboBoxSex.TabIndex = 73;
+            comboBoxSex.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxSex.Font = new Font("Segoe UI", 19F, FontStyle.Regular, GraphicsUnit.Point);
+            comboBoxSex.FormattingEnabled = true;
+            comboBoxSex.Location = new Point(951, 730);
+            comboBoxSex.Name = "comboBoxSex";
+            comboBoxSex.Size = new Size(199, 43);
+            comboBoxSex.TabIndex = 73;
             // 
             // labelSpecialization
             // 
-            this.labelSpecialization.AutoSize = true;
-            this.labelSpecialization.Font = new System.Drawing.Font("Segoe UI", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelSpecialization.Location = new System.Drawing.Point(1229, 214);
-            this.labelSpecialization.Name = "labelSpecialization";
-            this.labelSpecialization.Size = new System.Drawing.Size(383, 46);
-            this.labelSpecialization.TabIndex = 75;
-            this.labelSpecialization.Text = "Doctor\'s Specialization";
-            this.labelSpecialization.Visible = false;
+            labelSpecialization.AutoSize = true;
+            labelSpecialization.Font = new Font("Segoe UI", 25F, FontStyle.Bold, GraphicsUnit.Point);
+            labelSpecialization.Location = new Point(1229, 214);
+            labelSpecialization.Name = "labelSpecialization";
+            labelSpecialization.Size = new Size(383, 46);
+            labelSpecialization.TabIndex = 75;
+            labelSpecialization.Text = "Doctor's Specialization";
+            labelSpecialization.Visible = false;
             // 
             // checkedListBoxSpecialization
             // 
-            this.checkedListBoxSpecialization.CheckOnClick = true;
-            this.checkedListBoxSpecialization.Font = new System.Drawing.Font("Segoe UI", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkedListBoxSpecialization.FormattingEnabled = true;
-            this.checkedListBoxSpecialization.Location = new System.Drawing.Point(1229, 293);
-            this.checkedListBoxSpecialization.Name = "checkedListBoxSpecialization";
-            this.checkedListBoxSpecialization.Size = new System.Drawing.Size(383, 256);
-            this.checkedListBoxSpecialization.TabIndex = 74;
-            this.checkedListBoxSpecialization.Visible = false;
+            checkedListBoxSpecialization.CheckOnClick = true;
+            checkedListBoxSpecialization.Font = new Font("Segoe UI", 19F, FontStyle.Regular, GraphicsUnit.Point);
+            checkedListBoxSpecialization.FormattingEnabled = true;
+            checkedListBoxSpecialization.Location = new Point(1229, 293);
+            checkedListBoxSpecialization.Name = "checkedListBoxSpecialization";
+            checkedListBoxSpecialization.Size = new Size(383, 256);
+            checkedListBoxSpecialization.TabIndex = 74;
+            checkedListBoxSpecialization.Visible = false;
+            checkedListBoxSpecialization.SelectedIndexChanged += checkedListBoxSpecialization_SelectedIndexChanged_1;
             // 
             // dateTimePickerDate
             // 
-            this.dateTimePickerDate.Font = new System.Drawing.Font("Segoe UI", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePickerDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerDate.Location = new System.Drawing.Point(951, 435);
-            this.dateTimePickerDate.Name = "dateTimePickerDate";
-            this.dateTimePickerDate.Size = new System.Drawing.Size(199, 41);
-            this.dateTimePickerDate.TabIndex = 76;
-            this.dateTimePickerDate.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            dateTimePickerDate.Font = new Font("Segoe UI", 19F, FontStyle.Regular, GraphicsUnit.Point);
+            dateTimePickerDate.Format = DateTimePickerFormat.Short;
+            dateTimePickerDate.Location = new Point(951, 435);
+            dateTimePickerDate.Name = "dateTimePickerDate";
+            dateTimePickerDate.Size = new Size(199, 41);
+            dateTimePickerDate.TabIndex = 76;
+            dateTimePickerDate.Value = new DateTime(2000, 1, 1, 0, 0, 0, 0);
             // 
             // textBoxPhone
             // 
-            this.textBoxPhone.Font = new System.Drawing.Font("Segoe UI", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxPhone.Location = new System.Drawing.Point(951, 683);
-            this.textBoxPhone.MaxLength = 9;
-            this.textBoxPhone.Name = "textBoxPhone";
-            this.textBoxPhone.Size = new System.Drawing.Size(199, 41);
-            this.textBoxPhone.TabIndex = 79;
+            textBoxPhone.Font = new Font("Segoe UI", 19F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxPhone.Location = new Point(951, 683);
+            textBoxPhone.MaxLength = 9;
+            textBoxPhone.Name = "textBoxPhone";
+            textBoxPhone.Size = new Size(199, 41);
+            textBoxPhone.TabIndex = 79;
             // 
             // textBoxEmail
             // 
-            this.textBoxEmail.Font = new System.Drawing.Font("Segoe UI", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxEmail.Location = new System.Drawing.Point(951, 636);
-            this.textBoxEmail.MaxLength = 200;
-            this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(199, 41);
-            this.textBoxEmail.TabIndex = 78;
+            textBoxEmail.Font = new Font("Segoe UI", 19F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxEmail.Location = new Point(951, 636);
+            textBoxEmail.MaxLength = 200;
+            textBoxEmail.Name = "textBoxEmail";
+            textBoxEmail.Size = new Size(199, 41);
+            textBoxEmail.TabIndex = 78;
             // 
             // textBoxAddress
             // 
-            this.textBoxAddress.Font = new System.Drawing.Font("Segoe UI", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxAddress.Location = new System.Drawing.Point(951, 589);
-            this.textBoxAddress.MaxLength = 500;
-            this.textBoxAddress.Name = "textBoxAddress";
-            this.textBoxAddress.Size = new System.Drawing.Size(199, 41);
-            this.textBoxAddress.TabIndex = 77;
+            textBoxAddress.Font = new Font("Segoe UI", 19F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxAddress.Location = new Point(951, 589);
+            textBoxAddress.MaxLength = 500;
+            textBoxAddress.Name = "textBoxAddress";
+            textBoxAddress.Size = new Size(199, 41);
+            textBoxAddress.TabIndex = 77;
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.SteelBlue;
-            this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Controls.Add(this.buttonCancel);
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(312, 1081);
-            this.panel2.TabIndex = 76;
+            panel2.BackColor = Color.SteelBlue;
+            panel2.Controls.Add(pictureBox1);
+            panel2.Controls.Add(buttonCancel);
+            panel2.Location = new Point(0, 0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(312, 1081);
+            panel2.TabIndex = 76;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackgroundImage = global::GUI_Management_of_medical_clinic.Properties.Resources.MC_Logo;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(61, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(176, 168);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
+            pictureBox1.BackgroundImage = Properties.Resources.MC_Logo;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox1.Location = new Point(61, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(176, 168);
+            pictureBox1.TabIndex = 2;
+            pictureBox1.TabStop = false;
             // 
             // FormEmployeeEdit
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Info;
-            this.ClientSize = new System.Drawing.Size(1920, 1080);
-            this.Controls.Add(this.textBoxPhone);
-            this.Controls.Add(this.textBoxEmail);
-            this.Controls.Add(this.textBoxAddress);
-            this.Controls.Add(this.dateTimePickerDate);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.labelSpecialization);
-            this.Controls.Add(this.checkedListBoxSpecialization);
-            this.Controls.Add(this.comboBoxSex);
-            this.Controls.Add(this.comboBoxRole);
-            this.Controls.Add(this.buttonConfirm);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBoxPESEL);
-            this.Controls.Add(this.textBoxLastName);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBoxFirstName);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.labelTitle);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FormEmployeeEdit";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormEmployeeEdit";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.FormEmployeeEdit_Load);
-            this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.Info;
+            ClientSize = new Size(1920, 1080);
+            Controls.Add(textBoxPhone);
+            Controls.Add(textBoxEmail);
+            Controls.Add(textBoxAddress);
+            Controls.Add(dateTimePickerDate);
+            Controls.Add(panel2);
+            Controls.Add(labelSpecialization);
+            Controls.Add(checkedListBoxSpecialization);
+            Controls.Add(comboBoxSex);
+            Controls.Add(comboBoxRole);
+            Controls.Add(buttonConfirm);
+            Controls.Add(label7);
+            Controls.Add(label8);
+            Controls.Add(label9);
+            Controls.Add(label10);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(textBoxPESEL);
+            Controls.Add(textBoxLastName);
+            Controls.Add(label3);
+            Controls.Add(label1);
+            Controls.Add(textBoxFirstName);
+            Controls.Add(label2);
+            Controls.Add(labelTitle);
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "FormEmployeeEdit";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "FormEmployeeEdit";
+            WindowState = FormWindowState.Maximized;
+            Load += FormEmployeeEdit_Load;
+            panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

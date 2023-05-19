@@ -33,7 +33,6 @@ namespace GUI_Management_of_medical_clinic
 
                 if (employee.IdEmployee == currentUser.IdEmployee) { currentUser = employee; }     // it makes user always refreshed
             }
-            
         }
 
         public FormEmployeeList(EmployeeModel emp)
@@ -52,13 +51,9 @@ namespace GUI_Management_of_medical_clinic
             dataGridViewEmployees.Columns.Add("LastName", "Last Name");
             dataGridViewEmployees.Columns.Add("Role", "Role");
             dataGridViewEmployees.Columns.Add("IsActive", "Is active?");
-            
 
             LoadEmployeeData();
-
-
         }
-
 
         private void buttonFilterEmployee_Click(object sender, EventArgs e)
         {
@@ -74,28 +69,29 @@ namespace GUI_Management_of_medical_clinic
             List<EmployeeModel> employees = EmployeeModel.FilterEmployees(role, isActive);
 
             dataGridViewEmployees.Rows.Clear();
-            foreach(EmployeeModel employee in employees)
+            foreach (EmployeeModel employee in employees)
             {
                 dataGridViewEmployees.Rows.Add(employee.IdEmployee, employee.FirstName, employee.LastName, employee.Role, (employee.IsActive == true) ? "Active" : "Not Active");
             }
-            
         }
+
         private void buttonClearFilter_Click(object sender, EventArgs e)
         {
-            
             LoadEmployeeData();
             comboBoxRole.SelectedItem = null;
             checkBoxIsActive.Checked = false;
         }
+
         private void buttonDeactivateEmployee_Click(object sender, EventArgs e)
         {
             if (dataGridViewEmployees.SelectedRows.Count != 1)
             {
                 MessageBox.Show("Select one employee from list!");
                 return;
-
             }
+            
             int rowIndex = dataGridViewEmployees.CurrentCell.RowIndex;
+            
             if (dataGridViewEmployees.Rows[rowIndex].Cells["IsActive"].Value.ToString() == "Not Active")
             {
                 MessageBox.Show("Employee is deactive!");
@@ -104,25 +100,27 @@ namespace GUI_Management_of_medical_clinic
 
             int IdEmployee = (int)dataGridViewEmployees.Rows[rowIndex].Cells[0].Value;
             EmployeeModel employee = EmployeeModel.FindEmployee(IdEmployee);
+            
             FormChangeStatusOfEmployee deactivate = new FormChangeStatusOfEmployee(employee, currentUser);
             this.InitializeComponent();
             deactivate.ShowDialog();
-            
-
         }
+
         private void dataGridViewEmployees_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
 
         }
+
         private void buttonReactivate_Click(object sender, EventArgs e)
         {
             if (dataGridViewEmployees.SelectedRows.Count != 1)
             {
                 MessageBox.Show("Select one employee from list!");
                 return;
-
             }
+            
             int rowIndex = dataGridViewEmployees.CurrentCell.RowIndex;
+            
             if (dataGridViewEmployees.Rows[rowIndex].Cells["IsActive"].Value.ToString() == "Active")
             {
                 MessageBox.Show("Employee is active!");
@@ -131,12 +129,10 @@ namespace GUI_Management_of_medical_clinic
 
             int IdEmployee = (int)dataGridViewEmployees.Rows[rowIndex].Cells[0].Value;
             EmployeeModel employee = EmployeeModel.FindEmployee(IdEmployee);
+            
             FormChangeStatusOfEmployee deactivate = new FormChangeStatusOfEmployee(employee, currentUser);
             this.InitializeComponent();
             deactivate.ShowDialog();
-
-
-
         }
        
         private void buttonReviewEmployee_Click(object sender, EventArgs e)
@@ -154,29 +150,26 @@ namespace GUI_Management_of_medical_clinic
             int IdEmployee = (int)dataGridViewEmployees.Rows[rowIndex].Cells[0].Value;
             EmployeeModel employee = EmployeeModel.FindEmployee(IdEmployee);
 
-
-
             FormEmployeeDetailsView employeeDetailsView = new FormEmployeeDetailsView(employee, currentUser);
-            //this.Hide();
+            Hide();
             employeeDetailsView.ShowDialog();
-            this.Close();
-
+            Close();
         }
+
         private void buttonAddEmployee_Click(object sender, EventArgs e)
         {
-
             FormEmployeeAdd employeeAdd = new FormEmployeeAdd(currentUser);
-            //this.Hide();
+            Hide();
             employeeAdd.ShowDialog();
-            this.Close();
+            Close();
         }
 
         private void buttonSpecializations_Click(object sender, EventArgs e)
         {
             FormSpecializationAdd specializationAdd = new FormSpecializationAdd(currentUser);
-            //this.Hide();
+            Hide();
             specializationAdd.ShowDialog();
-            this.Close();
+            Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -193,17 +186,17 @@ namespace GUI_Management_of_medical_clinic
             EmployeeModel employee = EmployeeModel.FindEmployee(IdEmployee);
 
             FormEmployeeEdit employeeEdit = new FormEmployeeEdit(employee, currentUser);
-            //this.Hide();
+            Hide();
             employeeEdit.ShowDialog();
-            this.Close();
+            Close();
         }
 
         private void buttonBack_Click(object sender, EventArgs e)
         {
             FormMenu formMenu = new FormMenu();
-            //this.Hide();
+            Hide();
             formMenu.ShowDialog();
-            this.Close();
+            Close();
         }
     }
 }

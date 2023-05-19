@@ -1,10 +1,5 @@
 ﻿using Console_Management_of_medical_clinic.Data;
 using Console_Management_of_medical_clinic.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Console_Management_of_medical_clinic.Logic
 {
@@ -54,7 +49,7 @@ namespace Console_Management_of_medical_clinic.Logic
             {
                 if (specialization.Name == specializationToRemove)
                 {
-                    try 
+                    try
                     {
                         context.DbSpecializations.Remove(specialization);
                         context.SaveChanges();
@@ -63,15 +58,15 @@ namespace Console_Management_of_medical_clinic.Logic
                     catch (Exception ex)
                     {
                         return;
-                    }                    
+                    }
                 }
-            }    
+            }
         }
-        
+
         public static int getSpecializationIdByName(string name)
         {
             List<SpecializationModel> specializations = GetSpecializationsData();
-            foreach(SpecializationModel specialization in specializations)
+            foreach (SpecializationModel specialization in specializations)
             {
                 if (specialization.Name == name)
                 {
@@ -81,9 +76,14 @@ namespace Console_Management_of_medical_clinic.Logic
             return 0;
         }
 
+        public static SpecializationModel GetSpecializationById(int id)
+        {
+            return GetSpecializationsData().FirstOrDefault(specialization => specialization.IdSpecialization == id);
+        }
+
         public static bool checkIfSpecializationIsAssigned(List<EmployeeModel> Employees, int idSpecialization)
         {
-            foreach(EmployeeModel employee in Employees)
+            foreach (EmployeeModel employee in Employees)
             {
                 if (employee.IdSpecialization == idSpecialization)
                 {
@@ -112,6 +112,11 @@ namespace Console_Management_of_medical_clinic.Logic
             {
                 errorMessage = "Edit failed: " + ex.Message;
             }
+        }
+
+        public static string GetSpecializationNameById(int id)
+        {
+            return GetSpecializationById(id).Name;
         }
     }
 }

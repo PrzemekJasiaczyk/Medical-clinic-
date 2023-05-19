@@ -39,17 +39,22 @@ namespace GUI_Management_of_medical_clinic
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             FormEmployeeList employeeList = new FormEmployeeList(currentUser);
-            //this.Hide();
+            Hide();
             employeeList.ShowDialog();
-            this.Close();
+            Close();
         }
 
         private void Edit_Employee_Click(object sender, EventArgs e)
         {
             FormEmployeeEdit employeeEdit = new FormEmployeeEdit(employee, currentUser);
-            //this.Hide();
+            Hide();
             employeeEdit.ShowDialog();
-            this.Close();
+            Close();
+        }
+
+        private void textBoxRole_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

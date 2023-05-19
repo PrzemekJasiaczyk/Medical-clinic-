@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Console_Management_of_medical_clinic.Model
 {
@@ -13,7 +8,7 @@ namespace Console_Management_of_medical_clinic.Model
         public string Name { get; set; }
         //Relationships
         public List<EmployeeModel>? EmployeeModels { get; set; }
-
+        //public List<OfficeModel>? OfficeModels { get; set; }
 
 
 
@@ -29,5 +24,11 @@ namespace Console_Management_of_medical_clinic.Model
             IdSpecialization = idSpecialization;
             Name = name;            
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
+
     }    
 }

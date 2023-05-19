@@ -1,9 +1,6 @@
 ﻿using Console_Management_of_medical_clinic.Data;
 using Console_Management_of_medical_clinic.Data.Enums;
 using Console_Management_of_medical_clinic.Logic;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -31,6 +28,7 @@ namespace Console_Management_of_medical_clinic.Model
         [ForeignKey("SpecializationModel")] public int? IdSpecialization { get; set; }
         public SpecializationModel? SpecializationModel { get; set; }
 
+        public List<Visit> Visits { get; set; } = new List<Visit>();
 
         public EmployeeModel() { }
 
@@ -106,7 +104,7 @@ namespace Console_Management_of_medical_clinic.Model
             List<EmployeeModel> employees = new List<EmployeeModel>();
             foreach (EmployeeModel employee in EmployeeService.GetEmployeesData())
             {
-                if(employee.Role==role && employee.IsActive == isActive)
+                if (employee.Role == role && employee.IsActive == isActive)
                 {
                     employees.Add(employee);
                 }
@@ -114,10 +112,10 @@ namespace Console_Management_of_medical_clinic.Model
 
             return employees;
         }
-        
 
-        public static void EditEmployee(int IdEmployee, string firstName, string lastName, string pesel, string dateOfBirth, EnumEmployeeRoles rolem, string correspondenceAddress, string email, string phoneNumber,
-            EnumSex sex)
+
+        public static void EditEmployeeWithSpecialization(int IdEmployee, string firstName, string lastName, string pesel, string dateOfBirth, EnumEmployeeRoles role, string correspondenceAddress, string email, string phoneNumber,
+            EnumSex sex, int idSpecialization, bool isActive)
         {
             var context = new AppDbContext();
             var emp = context.DbEmployees.Find(IdEmployee);
@@ -130,7 +128,35 @@ namespace Console_Management_of_medical_clinic.Model
             emp.Email = email;
             emp.PhoneNumber = phoneNumber;
             emp.Sex = sex;
+            emp.Role = role;
+            emp.IdSpecialization = idSpecialization;
+            emp.IsActive = isActive;
             context.SaveChanges();
+        }
+
+        public static void EditEmployee(int IdEmployee, string firstName, string lastName, string pesel, string dateOfBirth, EnumEmployeeRoles role, string correspondenceAddress, string email, string phoneNumber,
+            EnumSex sex, bool isActive)
+        {
+            var context = new AppDbContext();
+            var emp = context.DbEmployees.Find(IdEmployee);
+
+            emp.FirstName = firstName;
+            emp.LastName = lastName;
+            emp.PESEL = pesel;
+            emp.DateOfBirth = dateOfBirth;
+            emp.CorrespondenceAddress = correspondenceAddress;
+            emp.Email = email;
+            emp.PhoneNumber = phoneNumber;
+            emp.Sex = sex;
+            emp.Role = role;
+            emp.IdSpecialization = null;
+            emp.IsActive = isActive;
+            context.SaveChanges();
+        }
+
+        public override string ToString()
+        {
+            return LastName + " " + FirstName;
         }
 
     }
