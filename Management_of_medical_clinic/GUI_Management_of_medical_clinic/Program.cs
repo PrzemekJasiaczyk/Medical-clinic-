@@ -12,6 +12,7 @@ namespace GUI_Management_of_medical_clinic
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new FormMenu());
+            //Application.Run(new FormRegisterAppointment());
         }
     }
 }

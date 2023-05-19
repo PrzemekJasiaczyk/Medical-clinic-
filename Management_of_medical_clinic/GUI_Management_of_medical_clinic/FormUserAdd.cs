@@ -52,6 +52,7 @@ namespace GUI_Management_of_medical_clinic
             else
             {
                 FormUserList userList = new FormUserList(currentUser);
+                Hide();
                 userList.ShowDialog();
                 Close();
             }
@@ -66,6 +67,7 @@ namespace GUI_Management_of_medical_clinic
             UserService.AddUser(textBoxUsername.Text, textBoxPassword.Text, (EnumUserRoles)Enum.Parse(typeof(EnumUserRoles), comboBoxRole.SelectedItem.ToString()), true, int.Parse(Regex.Match(listBoxEmployees.SelectedItem.ToString(), @"^\d+").Value));
 
             FormUserList userList = new FormUserList(currentUser);
+            Hide();
             userList.ShowDialog();
             Close();
         }

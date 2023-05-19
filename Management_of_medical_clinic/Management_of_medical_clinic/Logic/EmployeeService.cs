@@ -46,19 +46,19 @@ namespace Console_Management_of_medical_clinic.Logic
             return employees;
         }
 
-        public static List<int> GetDoctorIds()
+        public static List<EmployeeModel> GetDoctors()
         {
-            List<int> doctorsIds = new List<int>();
+            List<EmployeeModel> doctors = new List<EmployeeModel>();
             List<EmployeeModel> employees = GetEmployeesData();
             
             foreach (EmployeeModel employee in employees) 
             {
                 if (employee.Role == EnumEmployeeRoles.MedicalDoctor)
                 {
-                    doctorsIds.Add(employee.IdEmployee);
+                    doctors.Add(employee);
                 }                
             }            
-            return doctorsIds;
+            return doctors;
         }
         
         public static EmployeeModel GetEmployeeByUserId(UserModel user)
@@ -207,6 +207,7 @@ namespace Console_Management_of_medical_clinic.Logic
             }
             return ("Success", true);
         }
+        
     }
 
 }

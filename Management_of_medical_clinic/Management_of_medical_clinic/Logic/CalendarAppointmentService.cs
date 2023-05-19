@@ -10,7 +10,8 @@ namespace Console_Management_of_medical_clinic.Logic
 {
     public class CalendarAppointmentService
     {
-        public static Patient GetPatientDataByIdPatient(AppointmentModel appointment)
+        //public static Patient GetPatientDataByIdPatient(AppointmentModel appointment)?
+        public static Patient GetPatientDataByIdPatient(DoctorsDayPlanModel appointment)
         {
             Patient? result = null;
 
@@ -37,7 +38,7 @@ namespace Console_Management_of_medical_clinic.Logic
 
             return result;
         }
-
+        /*
         public static List<AppointmentModel> GetAppointmentsWithPatients()
         {
             List<AppointmentModel> appointments = GetAppointmentsData();
@@ -53,17 +54,33 @@ namespace Console_Management_of_medical_clinic.Logic
 
             return result;
         }
-
-        public static string GetLastNameAndNameOfEmployeeByAppointment(AppointmentModel AppointmentModel)
+        */
+        public static List<DoctorsDayPlanModel> GetAppointmentsWithPatients()
         {
-            if (AppointmentModel.IdEmployee == null)
+            List<DoctorsDayPlanModel> appointments = GetAppointmentsData();
+            List<DoctorsDayPlanModel> result = new List<DoctorsDayPlanModel>();
+
+            foreach (DoctorsDayPlanModel appointment in appointments)
+            {
+                if (appointment.PatientId != null)
+                {
+                    result.Add(appointment);
+                }
+            }
+
+            return result;
+        }
+
+        public static string GetLastNameAndNameOfEmployeeByAppointment(DoctorsDayPlanModel DoctorsDayPlanModel)
+        {
+            if (DoctorsDayPlanModel.IdEmployee == null)
             {
                 throw new Exception("IdEmployee = null");
             }
 
             string result = string.Empty;
 
-            int id = (int)AppointmentModel.IdEmployee;
+            int id = (int)DoctorsDayPlanModel.IdEmployee;
 
             using (AppDbContext context = new AppDbContext())
             {
@@ -84,17 +101,17 @@ namespace Console_Management_of_medical_clinic.Logic
             return result;
         }
 
-        public static List<AppointmentModel> GetAppointmentsData()
+        public static List<DoctorsDayPlanModel> GetAppointmentsData()
         {
-            List<AppointmentModel> result = new List<AppointmentModel>();
+            List<DoctorsDayPlanModel> result = new List<DoctorsDayPlanModel>();
 
             using (AppDbContext context = new AppDbContext())
             {
-                result = context.DbAppointments
-                    .Select(a => new AppointmentModel
+                result = context.DbDoctorsDayPlan
+                    .Select(a => new DoctorsDayPlanModel
                     {
-                        IdAppointment = a.IdAppointment,
-                        IdTerm = a.IdTerm,
+                        IdDoctorsDayPlan = a.IdDoctorsDayPlan,
+                        IdOfTerm = a.IdOfTerm,
                         Cost = a.Cost,
                         IsActive = a.IsActive,
                         IdCalendar = a.IdCalendar,
@@ -109,13 +126,13 @@ namespace Console_Management_of_medical_clinic.Logic
             return result;
         }
 
-        public static List<AppointmentModel> appointmentInSelectedDate(List<AppointmentModel> ListIn, DateTime selectedDate, int idCalendar)
+        public static List<DoctorsDayPlanModel> appointmentInSelectedDate(List<DoctorsDayPlanModel> ListIn, DateTime selectedDate, int idCalendar)
         {
-            List<AppointmentModel> result = new List<AppointmentModel>();
+            List<DoctorsDayPlanModel> result = new List<DoctorsDayPlanModel>();
 
             int idDay = selectedDate.Day;
 
-            foreach (AppointmentModel appointment in ListIn)
+            foreach (DoctorsDayPlanModel appointment in ListIn)
             {
                 if (appointment.IdCalendar == idCalendar && appointment.IdDay == idDay)
                 {
@@ -126,14 +143,14 @@ namespace Console_Management_of_medical_clinic.Logic
             return result;
         }
 
-        public static List<AppointmentModel> SortByDoctorLastName(List<AppointmentModel> appointments)
+        public static List<DoctorsDayPlanModel> SortByDoctorLastName(List<DoctorsDayPlanModel> appointments)
         {
             return appointments.OrderBy(a => EmployeeService.GetEmployeeByID((int)a.IdEmployee).LastName).ToList();
         }
 
-        public static List<AppointmentModel> SortByTerm(List<AppointmentModel> appointments)
+        public static List<DoctorsDayPlanModel> SortByTerm(List<DoctorsDayPlanModel> appointments)
         {
-            return appointments.OrderBy(a => a.IdTerm).ToList();
+            return appointments.OrderBy(a => a.IdOfTerm).ToList();
         }
     }
 }
