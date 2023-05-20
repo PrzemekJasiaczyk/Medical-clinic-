@@ -18,6 +18,7 @@ namespace GUI_Management_of_medical_clinic
     {
         EmployeeModel currentEmployee;
         EmployeeModel newEmployee;
+        
         public FormEmployeeAdd(EmployeeModel currentE)
         {
             InitializeComponent();
@@ -43,19 +44,28 @@ namespace GUI_Management_of_medical_clinic
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             FormEmployeeList employeeList = new FormEmployeeList(currentEmployee);
-            //this.Hide();
+            Hide();
             employeeList.ShowDialog();
-            this.Close();
+            Close();
         }
 
+        PatientService _patientValidator = new();
         private void buttonNext_Click(object sender, EventArgs e)
         {
-            (string stringPESEL, bool booleanPESEL) = EmployeeService.validatePESEL(textBoxPESEL.Text, dateTimePickerDate.Value, comboBoxSex.SelectedIndex);
-            if (!booleanPESEL)
+            string errorMessage;
+
+            if (!_patientValidator.IsValidPESEL(textBoxPESEL.Text, dateTimePickerDate.Value, (EnumSex)comboBoxSex.SelectedItem, out errorMessage))
             {
-                MessageBox.Show(stringPESEL);
+                MessageBox.Show(errorMessage);
                 return;
             }
+
+            //(string stringPESEL, bool booleanPESEL) = EmployeeService.validatePESEL(textBoxPESEL.Text, dateTimePickerDate.Value, comboBoxSex.SelectedIndex);
+            //if (!booleanPESEL)
+            //{
+            //    MessageBox.Show(stringPESEL);
+            //    return;
+            //}
 
             (string stringEmail, bool booleanEmail) = EmployeeService.validateEmail(textBoxEmail.Text, textBoxFirstName.Text);
             if (!booleanEmail)
@@ -80,14 +90,13 @@ namespace GUI_Management_of_medical_clinic
             EnumSex enumSex = (EnumSex)Enum.Parse(typeof(EnumSex), comboBoxSex.SelectedItem.ToString());
             EnumEmployeeRoles enumRole = (EnumEmployeeRoles)Enum.Parse(typeof(EnumEmployeeRoles), comboBoxRole.SelectedItem.ToString());
        
-
             EmployeeModel newEmployee = new EmployeeModel(textBoxFirstName.Text, textBoxLastName.Text, textBoxPESEL.Text, dateTimePickerDate.Text, 
                 textBoxAddress.Text, textBoxEmail.Text, textBoxPhone.Text, enumSex, enumRole, 1, true);
 
             FormEmployeeAddUser employeeAddUser = new FormEmployeeAddUser(currentEmployee, newEmployee);
-            //this.Hide();
+            Hide();
             employeeAddUser.ShowDialog();
-            this.Close();
+            Close();
         }
 
         //Check if all required data is filled

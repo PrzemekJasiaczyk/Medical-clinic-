@@ -34,20 +34,25 @@ namespace GUI_Management_of_medical_clinic
             }
 
             UserModel.ChangeUserStatus(user);
+
+            List<Form> otwarteOkna = new List<Form>(Application.OpenForms.Cast<Form>());
+            
+            foreach (Form otwarteOkno in otwarteOkna)
+            {
+                otwarteOkno.Hide();
+            }
+
             FormUserList formUserList = new FormUserList(currentUser);
             formUserList.ShowDialog();
             this.Close();
-
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-
             FormUserList formEmployeeList = new FormUserList(currentUser);
-            //this.Hide();
+            this.Hide();
             formEmployeeList.ShowDialog();
             this.Close();
-
         }
     }
 }

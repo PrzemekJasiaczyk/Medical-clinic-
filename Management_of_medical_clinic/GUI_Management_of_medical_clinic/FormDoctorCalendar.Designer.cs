@@ -181,7 +181,6 @@
             label8.Size = new Size(281, 30);
             label8.TabIndex = 18;
             label8.Text = "All appointments for this day";
-            label8.Click += label8_Click;
             // 
             // dataGridViewAppointments
             // 
@@ -430,7 +429,6 @@
             labelDate.Size = new Size(122, 30);
             labelDate.TabIndex = 28;
             labelDate.Text = "Select Date";
-            labelDate.Click += labelDate_Click;
             // 
             // dataGridViewYourAppointments
             // 

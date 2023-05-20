@@ -31,6 +31,7 @@ namespace GUI_Management_of_medical_clinic
         private void buttonClose_Click(object sender, EventArgs e)
         {
             FormUserList userList = new FormUserList(currentUser);
+            Hide();
             userList.ShowDialog();
             Close();
         }
@@ -47,6 +48,7 @@ namespace GUI_Management_of_medical_clinic
         private void buttonEditUser_Click(object sender, EventArgs e)
         {
             FormUserEdit userEdit = new FormUserEdit(user, currentUser);
+            Hide();
             userEdit.ShowDialog();
             Close();
         }

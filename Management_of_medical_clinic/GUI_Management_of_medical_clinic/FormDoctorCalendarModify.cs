@@ -66,7 +66,7 @@ namespace GUI_Management_of_medical_clinic
 
 
                 string term = comboBoxTerm.SelectedItem.ToString();
-                int idTerm = AppointmentService.GetIdTerm(term);
+                int idTerm = AppointmentService.GetIdOfTerm(term);
 
                 AppointmentService.DoctorModifiesAppointment(appointment.IdAppointment, (int)comboBoxOfficeNumber.SelectedItem,
                     idTerm, dateTimePicker.Value.Day);

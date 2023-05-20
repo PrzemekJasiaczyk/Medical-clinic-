@@ -44,6 +44,7 @@ namespace GUI_Management_of_medical_clinic
             else
             {
                 FormOfficeList officeList = new FormOfficeList(currentUser);
+                Hide();
                 officeList.ShowDialog();
                 Close();
             }
@@ -57,6 +58,7 @@ namespace GUI_Management_of_medical_clinic
             OfficeService.AddOffice(new OfficeModel(int.Parse(textBoxNumber.Text), int.Parse(Regex.Match(listBoxSpecializations.SelectedItem.ToString(), @"^\d+").Value), (EnumOfficeStatuses)Enum.Parse(typeof(EnumOfficeStatuses), comboBoxStatus.SelectedItem.ToString()), textBoxInfo.Text));
 
             FormOfficeList officeList = new FormOfficeList(currentUser);
+            Hide();
             officeList.ShowDialog();
             Close();
 

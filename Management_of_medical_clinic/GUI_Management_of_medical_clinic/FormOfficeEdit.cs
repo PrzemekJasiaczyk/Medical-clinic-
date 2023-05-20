@@ -75,6 +75,7 @@ namespace GUI_Management_of_medical_clinic
             MessageBox.Show("Success, data is saved.");
 
             FormOfficeList officeList = new FormOfficeList(currentUser);
+            Hide();
             officeList.ShowDialog();
             Close();
 
@@ -107,6 +108,7 @@ namespace GUI_Management_of_medical_clinic
             }
 
             FormOfficeList officeList = new FormOfficeList(currentUser);
+            Hide();
             officeList.ShowDialog();
             Close();
         }

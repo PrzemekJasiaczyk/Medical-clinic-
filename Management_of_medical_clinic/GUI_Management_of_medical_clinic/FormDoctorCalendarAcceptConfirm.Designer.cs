@@ -52,6 +52,7 @@
             this.buttonCancel.TabIndex = 11;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // button1
             // 
@@ -62,6 +63,7 @@
             this.button1.TabIndex = 13;
             this.button1.Text = "Confirm";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.buttonConfirm_Click);
             // 
             // FormCalendarAcceptConfirm
             // 
@@ -72,7 +74,7 @@
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.label1);
             this.Name = "FormCalendarAcceptConfirm";
-            this.Text = "FormDeletingConfirmation";
+            this.Text = "FormDoctorCalendarAcceptConfirm";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -47,7 +47,6 @@ namespace Console_Management_of_medical_clinic.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<int?>("PatientId")
-                        .IsRequired()
                         .HasColumnType("INTEGER");
 
                     b.HasKey("IdAppointment");
@@ -79,6 +78,51 @@ namespace Console_Management_of_medical_clinic.Migrations
                     b.HasKey("IdCalendar");
 
                     b.ToTable("DbCalendars");
+                });
+
+            modelBuilder.Entity("Console_Management_of_medical_clinic.Model.DoctorsDayPlanModel", b =>
+                {
+                    b.Property<int>("IdDoctorsDayPlan")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal?>("Cost")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("IdCalendar")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("IdDay")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("IdEmployee")
+                        .IsRequired()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("IdOfTerm")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("IdOffice")
+                        .IsRequired()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("PatientId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("IdDoctorsDayPlan");
+
+                    b.HasIndex("IdCalendar");
+
+                    b.HasIndex("IdEmployee");
+
+                    b.HasIndex("IdOffice");
+
+                    b.HasIndex("PatientId");
+
+                    b.ToTable("DbDoctorsDayPlan");
                 });
 
             modelBuilder.Entity("Console_Management_of_medical_clinic.Model.EmployeeModel", b =>
@@ -147,7 +191,7 @@ namespace Console_Management_of_medical_clinic.Migrations
                     b.Property<int>("Number")
                         .HasColumnType("INTEGER");
 
-                    b.Property<bool>("Status")
+                    b.Property<int>("Status")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("IdOffice");
@@ -337,7 +381,7 @@ namespace Console_Management_of_medical_clinic.Migrations
             modelBuilder.Entity("Console_Management_of_medical_clinic.Model.AppointmentModel", b =>
                 {
                     b.HasOne("Console_Management_of_medical_clinic.Model.CalendarModel", "CalendarModel")
-                        .WithMany("AppointmentModels")
+                        .WithMany()
                         .HasForeignKey("IdCalendar")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -356,9 +400,38 @@ namespace Console_Management_of_medical_clinic.Migrations
 
                     b.HasOne("Console_Management_of_medical_clinic.Model.Patient", "Patient")
                         .WithMany()
-                        .HasForeignKey("PatientId")
+                        .HasForeignKey("PatientId");
+
+                    b.Navigation("CalendarModel");
+
+                    b.Navigation("EmployeeModel");
+
+                    b.Navigation("OfficeModel");
+
+                    b.Navigation("Patient");
+                });
+
+            modelBuilder.Entity("Console_Management_of_medical_clinic.Model.DoctorsDayPlanModel", b =>
+                {
+                    b.HasOne("Console_Management_of_medical_clinic.Model.CalendarModel", "CalendarModel")
+                        .WithMany("DoctorsDayPlanModels")
+                        .HasForeignKey("IdCalendar");
+
+                    b.HasOne("Console_Management_of_medical_clinic.Model.EmployeeModel", "EmployeeModel")
+                        .WithMany()
+                        .HasForeignKey("IdEmployee")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("Console_Management_of_medical_clinic.Model.OfficeModel", "OfficeModel")
+                        .WithMany()
+                        .HasForeignKey("IdOffice")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Console_Management_of_medical_clinic.Model.Patient", "Patient")
+                        .WithMany()
+                        .HasForeignKey("PatientId");
 
                     b.Navigation("CalendarModel");
 
@@ -417,7 +490,7 @@ namespace Console_Management_of_medical_clinic.Migrations
 
             modelBuilder.Entity("Console_Management_of_medical_clinic.Model.CalendarModel", b =>
                 {
-                    b.Navigation("AppointmentModels");
+                    b.Navigation("DoctorsDayPlanModels");
                 });
 
             modelBuilder.Entity("Console_Management_of_medical_clinic.Model.EmployeeModel", b =>

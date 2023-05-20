@@ -50,6 +50,7 @@
             Name = "UserControlDay";
             Size = new Size(165, 130);
             Load += UserControlDay_Load;
+            Leave += UserControlDay_Leave;
             MouseClick += UserControlDay_MouseClick;
             ResumeLayout(false);
             PerformLayout();

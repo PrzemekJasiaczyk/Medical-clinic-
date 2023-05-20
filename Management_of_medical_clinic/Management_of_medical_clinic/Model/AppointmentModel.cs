@@ -24,7 +24,7 @@ namespace Console_Management_of_medical_clinic.Model
         [ForeignKey("EmployeeModel")] public int? IdEmployee { get; set; }
         public EmployeeModel EmployeeModel { get; set; }
         [ForeignKey("Patient")] public int? PatientId { get; set; }
-        public Patient Patient { get; set; }
+        public Patient? Patient { get; set; }
         [ForeignKey("OfficeModel")] public int? IdOffice { get; set; }
         public OfficeModel OfficeModel { get; set; }
 
@@ -49,5 +49,21 @@ namespace Console_Management_of_medical_clinic.Model
             IdOffice = idOffice;
         }
 
+        public override string ToString()
+        {
+            return CalendarService.GetDateByIdCalendar((int)IdCalendar, IdDay).ToShortDateString() + " " + AppointmentService.GetTermByTermId(IdTerm).ToString() + "  (Cost: "+Cost+")";
+
+        }
+
+
+        public object[] appointmentData => new object[] {
+            PatientService.GetPatientById((int)PatientId).ToString(),
+            PatientService.GetPatientById((int)PatientId).PESEL,
+            EmployeeService.GetEmployeeByID((int)IdEmployee).ToString(),
+            SpecializationService.GetSpecializationById((int)EmployeeService.GetEmployeeByID((int)IdEmployee).IdSpecialization).Name,
+            CalendarService.GetDateByIdCalendar((int)IdCalendar,IdDay).ToShortDateString(),
+            OfficeService.GetOfficeById((int)IdOffice).Number,
+            Cost.ToString()
+        };
     }
 }

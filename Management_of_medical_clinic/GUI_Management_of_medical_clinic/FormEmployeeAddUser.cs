@@ -17,6 +17,7 @@ namespace GUI_Management_of_medical_clinic
     {
         EmployeeModel currentEmployee;
         EmployeeModel newEmployee;
+
         public FormEmployeeAddUser(EmployeeModel currentE, EmployeeModel newE)
         {
             InitializeComponent();
@@ -28,9 +29,9 @@ namespace GUI_Management_of_medical_clinic
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             FormEmployeeList employeeList = new FormEmployeeList(currentEmployee);
-            //this.Hide();
+            Hide();
             employeeList.ShowDialog();
-            this.Close();
+            Close();
         }
 
         private void buttonCreate_Click(object sender, EventArgs e)
@@ -41,6 +42,7 @@ namespace GUI_Management_of_medical_clinic
                 MessageBox.Show("Username is already taken");
                 return;
             }
+
             if (textBoxPassword.Text != textBoxPasswordConfirm.Text)
             {
                 MessageBox.Show("Passwords don't match");
@@ -53,9 +55,9 @@ namespace GUI_Management_of_medical_clinic
             //MessageBox.Show("<<Success, but button doesn't work yet>>");
 
             FormEmployeeList employeeList = new FormEmployeeList(currentEmployee);
-            //this.Hide();
+            Hide();
             employeeList.ShowDialog();
-            this.Close();
+            Close();
         }
 
         public void buttonSkip_Click(object sender, EventArgs e)
@@ -71,9 +73,9 @@ namespace GUI_Management_of_medical_clinic
             }
 
             FormEmployeeList employeeList = new FormEmployeeList(currentEmployee);
-            this.Hide();
+            Hide();
             employeeList.ShowDialog();
-            this.Close();
+            Close();
         }
 
         public void checkIfRequiredFilled()

@@ -8,6 +8,7 @@ namespace Console_Management_of_medical_clinic.Data.Enums
 {
     public enum EnumOfficeStatuses
     {
-        General = 0, Private = 1
+        General = 0, 
+        Private = 1
     }
 }

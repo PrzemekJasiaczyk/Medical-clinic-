@@ -55,6 +55,7 @@ namespace GUI_Management_of_medical_clinic
         private void buttonAddOffice_Click(object sender, EventArgs e)
         {
             FormOfficeAdd officeAdd = new FormOfficeAdd(currentUser);
+            Hide();
             officeAdd.ShowDialog();
             Close();
         }
@@ -62,14 +63,15 @@ namespace GUI_Management_of_medical_clinic
         private void buttonLogOut_Click(object sender, EventArgs e)
         {
             FormMenu menu = new FormMenu();
+            Hide();
             menu.ShowDialog();
             Close();
         }
 
         private void buttonEditOffice_Click(object sender, EventArgs e)
         {
-            
             FormOfficeEdit officeEdit = new FormOfficeEdit(currentUser, OfficeService.GetOfficeById((int)dataGridViewOffices.CurrentRow.Cells[0].Value));
+            Hide();
             officeEdit.ShowDialog();
             Close();
         }

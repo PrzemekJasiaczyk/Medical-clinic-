@@ -25,23 +25,23 @@ namespace GUI_Management_of_medical_clinic
         {
             this.currentUser = currentUser;
             InitializeComponent();
-            label1.Text = "Welcome, " + currentUser.FirstName + " " + currentUser.Role;
+            label1.Text = "Welcome, " + currentUser.FirstName;
         }
 
         private void buttonCalendar_Click(object sender, EventArgs e)
         {
             bool isNewCalendar = false;
-            List<CalendarModel> calendars = new List<CalendarModel>();
+            List<CalendarModel> calendars = CalendarService.GetCalendarData();
+            
             foreach (CalendarModel calendar in calendars)
-            {
+            {                
                 if (calendar.IdEmployee == currentUser.IdEmployee && calendar.Active == false)
                 {
                     isNewCalendar = true;        
                 }
             }
-            if (isNewCalendar = true)
+            if (isNewCalendar == true)
             {
-                this.Hide();
                 FormDoctorCalendar formDoctor = new FormDoctorCalendar(currentUser);
                 formDoctor.ShowDialog();
                 this.Close();
