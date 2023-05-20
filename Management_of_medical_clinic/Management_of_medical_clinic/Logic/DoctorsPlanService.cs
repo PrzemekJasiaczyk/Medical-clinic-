@@ -35,7 +35,8 @@ namespace Console_Management_of_medical_clinic.Logic
                     }
 
                 }
-                DoctorsDayPlanModel newPlan = new DoctorsDayPlanModel(i, idDay, idCalendar, idEmployee, idOffice, true);
+                // TODO: Brak statusu przy tworzeniu
+                DoctorsDayPlanModel newPlan = new DoctorsDayPlanModel(i, idDay, idCalendar, idEmployee, idOffice);
                 AddPlan(newPlan);
             }            
             return "Plan added successfully";

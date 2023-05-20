@@ -41,7 +41,8 @@ namespace GUI_Management_of_medical_clinic
             using (AppDbContext _context = new AppDbContext())
             {
                 appointment.PatientId = null;
-                appointment.IsActive = true;
+                // TODO: Naprawić IsActive
+                //appointment.IsActive = true;
 
                 _context.Entry(appointment).State = EntityState.Modified;
                 _context.SaveChanges();

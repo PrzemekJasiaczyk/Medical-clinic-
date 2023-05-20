@@ -86,7 +86,8 @@ namespace GUI_Management_of_medical_clinic
             }
             List<DoctorsDayPlanModel> appointments =
             CalendarAppointmentService.GetAppointmentsData()
-                .Where(a => a.IdEmployee == selectedDoctorId && a.IsActive == true && a.PatientId == null)
+            // TODO: Naprawić IsActive
+                .Where(a => a.IdEmployee == selectedDoctorId /* && a.IsActive == true*/ && a.PatientId == null)
                 .ToList();
             comboBoxDate.Items.Clear();
             foreach (DoctorsDayPlanModel appointment in appointments)
@@ -157,7 +158,8 @@ namespace GUI_Management_of_medical_clinic
                 if (appointment != null)
                 {
                     appointment.PatientId = selectedPatientId;
-                    appointment.IsActive = false;
+                    // TODO: Naprawić IsActive
+                    //appointment.IsActive = false;
                     db.Entry(appointment).State = EntityState.Modified;
                     db.SaveChanges();
                 }

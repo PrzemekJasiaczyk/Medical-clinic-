@@ -127,7 +127,8 @@ namespace GUI_Management_of_medical_clinic
 
             foreach (DoctorsDayPlanModel appointment in selectedAppointments)
             {
-                if (appointment.PatientId == null && appointment.IsActive == true)
+                // TODO: Naprawiæ zakomentowane
+                if (appointment.PatientId == null /*&& appointment.IsActive == true*/)
                 {
                     AddItemToDataGridView(appointment);
                     displayListInDataGridView.Add(appointment);

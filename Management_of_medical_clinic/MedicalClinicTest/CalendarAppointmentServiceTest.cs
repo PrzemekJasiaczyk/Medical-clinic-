@@ -40,7 +40,6 @@ namespace MedicalClinicTest
             IdOfTerm = 1,
             IdDay = 11,
             Cost = 1000,
-            IsActive = false,
             IdCalendar = 1,
             IdEmployee = 1000,
             PatientId = 1000,
@@ -52,7 +51,6 @@ namespace MedicalClinicTest
             IdOfTerm = 1,
             IdDay = 11,
             Cost = 1000,
-            IsActive = true,
             IdCalendar = 1,
             IdEmployee = 1000,
             PatientId = null,
@@ -64,7 +62,6 @@ namespace MedicalClinicTest
             IdOfTerm = 3,
             IdDay = 3,
             Cost = 1000,
-            IsActive = true,
             IdCalendar = 1,
             IdEmployee = 3,
             PatientId = 1,
@@ -76,7 +73,6 @@ namespace MedicalClinicTest
             IdOfTerm = 4,
             IdDay = 4,
             Cost = 1000,
-            IsActive = true,
             IdCalendar = 1,
             IdEmployee = 4,
             PatientId = 4,
@@ -110,7 +106,6 @@ namespace MedicalClinicTest
             IdOfTerm = 2,
             IdDay = 2,
             Cost = 1000,
-            IsActive = true,
             IdCalendar = 1,
             IdEmployee = 1001,
             PatientId = 4,
@@ -122,7 +117,6 @@ namespace MedicalClinicTest
             IdOfTerm = 1,
             IdDay = 2,
             Cost = 1000,
-            IsActive = true,
             IdCalendar = 1,
             IdEmployee = 1002,
             PatientId = 4,
@@ -383,7 +377,6 @@ namespace MedicalClinicTest
                 IdOfTerm = 3,
                 IdDay = 6,
                 Cost = 150,
-                IsActive = true,
                 IdCalendar = 1,
                 IdEmployee = 3,
                 PatientId = 1,
@@ -394,7 +387,6 @@ namespace MedicalClinicTest
                 IdOfTerm = 4,
                 IdDay = 6,
                 Cost = 150,
-                IsActive = true,
                 IdCalendar = 1,
                 IdEmployee = 3,
                 PatientId = 1,
@@ -405,7 +397,6 @@ namespace MedicalClinicTest
                 IdOfTerm = 3,
                 IdDay = 6,
                 Cost = 100,
-                IsActive = true,
                 IdCalendar = 2,
                 IdEmployee = 3,
                 PatientId = 1,
@@ -433,7 +424,6 @@ namespace MedicalClinicTest
                 IdOfTerm = 3,
                 IdDay = 4,
                 Cost = 1000,
-                IsActive = true,
                 IdCalendar = 2,
                 IdEmployee = 3,
                 PatientId = 2,
@@ -443,7 +433,6 @@ namespace MedicalClinicTest
                 IdOfTerm = 10,
                 IdDay = 9,
                 Cost = 1000,
-                IsActive = true,
                 IdCalendar = 1,
                 IdEmployee = 3,
                 PatientId = 3,
@@ -477,8 +466,6 @@ namespace MedicalClinicTest
                 Assert.Contains(result, a => a.IdDay == 4);
                 Assert.Contains(result, a => a.Cost == 1000);
                 Assert.Contains(result, a => a.Cost == 1000);
-                Assert.Contains(result, a => a.IsActive == true);
-                Assert.Contains(result, a => a.IsActive == true);
                 Assert.Contains(result, a => a.IdCalendar == 1);
                 Assert.Contains(result, a => a.IdCalendar == 1);
                 Assert.Contains(result, a => a.IdEmployee == 3);
