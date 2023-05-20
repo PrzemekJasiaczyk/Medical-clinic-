@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Console_Management_of_medical_clinic.Logic;
+using Console_Management_of_medical_clinic.Data.Enums;
 
 namespace Console_Management_of_medical_clinic.Model
 {
@@ -15,7 +16,8 @@ namespace Console_Management_of_medical_clinic.Model
         public int IdOfTerm { get; set; }
         public int IdDay { get; set; }
         public bool IsActive { get; set; }
-        public decimal? Cost { get; set; } = 100;
+		public EnumAppointmentStatus Status { get; set; } = EnumAppointmentStatus.Inactive;
+		public decimal? Cost { get; set; } = 100;
 		//Relationships
 		[ForeignKey("CalendarModel")] public int? IdCalendar { get; set; }
         public CalendarModel CalendarModel { get; set; }
