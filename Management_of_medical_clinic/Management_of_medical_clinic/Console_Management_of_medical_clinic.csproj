@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <Folder Include="Database\" />
+    <Folder Include="Data\PDF\" />
   </ItemGroup>
 
 </Project>
