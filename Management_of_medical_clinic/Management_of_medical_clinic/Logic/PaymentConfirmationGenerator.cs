@@ -6,11 +6,14 @@ using iText.IO.Image;
 using Console_Management_of_medical_clinic.Logic.Interfaces;
 using Console_Management_of_medical_clinic.Model;
 using iText.Kernel.Pdf.Canvas.Draw;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System;
 
 namespace Console_Management_of_medical_clinic.Logic
 {
 	public class PaymentConfirmationGenerator : IPaymentConfirmationGenerator
 	{
+		// TODO: Sections are not created correctly
 		public void GeneratePDFConfirmation(DoctorsDayPlanModel appointment)
 		{
 			// If an object of DoctorsDayPlanModel doesn't have a patient, it's not an appointment
@@ -19,9 +22,10 @@ namespace Console_Management_of_medical_clinic.Logic
 				throw new ArgumentNullException(nameof(appointment.Patient), "Patient is null in given DoctorsDayPlanModel object");
 			}
 
+			// TODO: Repair relative paths
 			// relative paths
-			string pdfFolder = @"Management_of_medical_clinic\Data\PDF\";
-			string logoFolder = @"GUI_Management_of_medical_clinic\Resources\MC_Logo.png";
+			string pdfFolder = @"C:\Users\micha\Documents\Projekty\CSharp\Klinika\TO_registration_gr3\Management_of_medical_clinic\Management_of_medical_clinic\Data\PDF\";
+			string logoFolder = @"C:\Users\micha\Documents\Projekty\CSharp\Klinika\TO_registration_gr3\Management_of_medical_clinic\GUI_Management_of_medical_clinic\Resources\MC_Logo.png";
 			string filename = $"Payment confirmation for {appointment.IdDoctorsDayPlan}-{appointment.IdCalendar}-{appointment.IdDay}-{appointment.IdOfTerm}.pdf";
 
 			// pdf destination
