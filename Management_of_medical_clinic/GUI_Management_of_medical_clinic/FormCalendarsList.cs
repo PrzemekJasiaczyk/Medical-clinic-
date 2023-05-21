@@ -30,7 +30,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonDuplicateCalendar_Click(object sender, EventArgs e)
         {
-            FormCalendar formCalendar = new FormCalendar(currentUser, CalendarService.GetCalendarById((int)dataGridViewCalendars.CurrentRow.Cells[0].Value));
+            FormDoctorsPlanCalendar formCalendar = new FormDoctorsPlanCalendar(currentUser, CalendarService.GetCalendarById((int)dataGridViewCalendars.CurrentRow.Cells[0].Value));
             formCalendar.ShowDialog();
             Close();
         }
@@ -38,7 +38,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonReviewCalendar_Click(object sender, EventArgs e)
         {
-            FormCalendar formCalendar = new FormCalendar(currentUser, (int)dataGridViewCalendars.CurrentRow.Cells[0].Value);
+            FormDoctorsPlanCalendar formCalendar = new FormDoctorsPlanCalendar(currentUser, (int)dataGridViewCalendars.CurrentRow.Cells[0].Value);
             formCalendar.ShowDialog();
             Close();
         }
@@ -83,7 +83,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void button1_Click(object sender, EventArgs e)
         {
-            FormCalendar formCalendar = new(currentUser);
+            FormDoctorsPlanCalendar formCalendar = new(currentUser);
             formCalendar.ShowDialog();
             Close();
         }
