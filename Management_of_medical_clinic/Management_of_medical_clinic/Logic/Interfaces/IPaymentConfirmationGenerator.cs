@@ -4,6 +4,6 @@ namespace Console_Management_of_medical_clinic.Logic.Interfaces
 {
 	public interface IPaymentConfirmationGenerator
 	{
-		public void GenerateConfirmation(DoctorsDayPlanModel appointment);
+		public void GeneratePDFConfirmation(DoctorsDayPlanModel appointment);
 	}
 }
