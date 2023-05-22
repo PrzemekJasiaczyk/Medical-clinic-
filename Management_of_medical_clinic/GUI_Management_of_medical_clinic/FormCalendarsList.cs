@@ -15,6 +15,8 @@ namespace GUI_Management_of_medical_clinic
             this.currentUser = currentUser;
             InitializeComponent();
             dataGridViewCalendars.DataSource = _calendarService.GetAll();
+            dataGridViewCalendars.Columns["NumberOfDoctors"].HeaderText = "Number of doctors";
+            dataGridViewCalendars.Columns["NumberOfAcceptedDoctors"].HeaderText = "Number of accepted doctors";
             comboBoxStatus.DataSource = statusList;
             comboBoxStatus.SelectedIndex = 2;
         }

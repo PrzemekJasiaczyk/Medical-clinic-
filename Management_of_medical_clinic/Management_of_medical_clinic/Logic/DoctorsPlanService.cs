@@ -44,11 +44,41 @@ namespace Console_Management_of_medical_clinic.Logic
 
         public static void AddPlan(DoctorsDayPlanModel doctorsDayPlanModel)
         {
+            if (CheckIfDoctorIsUnique(doctorsDayPlanModel.IdCalendar, doctorsDayPlanModel.IdEmployee))
+            {
+                using (AppDbContext context = new AppDbContext())
+                {
+                    CalendarModel calendar = context.DbCalendars.FirstOrDefault(c => c.IdCalendar == doctorsDayPlanModel.IdCalendar);
+                    calendar.NumberOfDoctors += 1;
+                    context.SaveChanges();
+                }
+            }
             using (AppDbContext context = new AppDbContext())
             {
                 context.DbDoctorsDayPlan.Add(doctorsDayPlanModel);
                 context.SaveChanges();
             }
+        }
+
+        public static bool CheckIfDoctorIsUnique(int? idCalendar, int? idEmployee)
+        {
+            List<DoctorsDayPlanModel> doctorsDayPlanModels = new List<DoctorsDayPlanModel>();
+            doctorsDayPlanModels = DoctorsPlanService.GetDoctorsPlanData();
+
+            foreach(DoctorsDayPlanModel doctorsDayPlan in doctorsDayPlanModels)
+            {
+                if(doctorsDayPlan.IdCalendar == idCalendar && doctorsDayPlan.IdEmployee == idEmployee)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+
+            /*bool isUnique = doctorsDayPlanModels
+                .Count(e => e.IdCalendar == idCalendar && e.IdEmployee == idEmployee) < 1;
+
+            return isUnique;*/
         }
 
         public static void EditPlan(int idDoctorsDayPlan, int idsWorkingTerms, int idOffice)
