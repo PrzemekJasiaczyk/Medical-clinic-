@@ -75,6 +75,12 @@ namespace Console_Management_of_medical_clinic.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<int?>("NumberOfAcceptedDoctors")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("NumberOfDoctors")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("IdCalendar");
 
                     b.ToTable("DbCalendars");
