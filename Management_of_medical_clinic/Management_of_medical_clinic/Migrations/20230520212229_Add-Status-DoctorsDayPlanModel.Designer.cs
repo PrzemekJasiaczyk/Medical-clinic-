@@ -3,14 +3,16 @@ using System;
 using Console_Management_of_medical_clinic.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Console_Management_of_medical_clinic.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230520212229_Add-Status-DoctorsDayPlanModel")]
+    partial class AddStatusDoctorsDayPlanModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -104,6 +106,9 @@ namespace Console_Management_of_medical_clinic.Migrations
 
                     b.Property<int?>("IdOffice")
                         .IsRequired()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsActive")
                         .HasColumnType("INTEGER");
 
                     b.Property<int?>("PatientId")

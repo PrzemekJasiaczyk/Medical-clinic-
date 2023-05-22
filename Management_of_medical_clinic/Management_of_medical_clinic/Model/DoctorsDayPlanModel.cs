@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Console_Management_of_medical_clinic.Logic;
+using Console_Management_of_medical_clinic.Data.Enums;
 
 namespace Console_Management_of_medical_clinic.Model
 {
@@ -14,8 +15,9 @@ namespace Console_Management_of_medical_clinic.Model
         [Key] public int IdDoctorsDayPlan { get; set; }
         public int IdOfTerm { get; set; }
         public int IdDay { get; set; }
-        public bool IsActive { get; set; }
-        public decimal? Cost { get; set; } = 100;
+        //public bool IsActive { get; set; }
+		public EnumAppointmentStatus Status { get; set; } = EnumAppointmentStatus.Inactive;
+		public decimal? Cost { get; set; } = 100;
 		//Relationships
 		[ForeignKey("CalendarModel")] public int? IdCalendar { get; set; }
         public CalendarModel CalendarModel { get; set; }
@@ -32,20 +34,18 @@ namespace Console_Management_of_medical_clinic.Model
         public DoctorsDayPlanModel(int idOfTerm,  bool isActive)
         {
             IdOfTerm = idOfTerm;
-            IsActive = isActive;
         }
 
-        public DoctorsDayPlanModel(int idOfTerm, int idDay, int idCalendar, int idEmployee, int idOffice, bool isActive)
+        public DoctorsDayPlanModel(int idOfTerm, int idDay, int idCalendar, int idEmployee, int idOffice)
         {
             IdOfTerm = idOfTerm;
             IdDay = idDay;
             IdCalendar = idCalendar;
             IdEmployee = idEmployee;
             IdOffice = idOffice;
-            IsActive = isActive;
         }
 
-        public DoctorsDayPlanModel(int idOfTerm, int idDay, int idCalendar, int idEmployee, int idOffice, int patientId, bool isActive)
+        public DoctorsDayPlanModel(int idOfTerm, int idDay, int idCalendar, int idEmployee, int idOffice, int patientId)
         {
             IdOfTerm = idOfTerm;
             IdDay = idDay;            
@@ -53,10 +53,9 @@ namespace Console_Management_of_medical_clinic.Model
             IdEmployee = idEmployee;
             IdOffice = idOffice;
             PatientId = patientId;
-            IsActive = isActive;
         }
 
-        public DoctorsDayPlanModel(int idDoctorsDayPlan, int idOfTerm, int idDay, int idCalendar, int idEmployee, int idOffice, int patientId, bool isActive)
+        public DoctorsDayPlanModel(int idDoctorsDayPlan, int idOfTerm, int idDay, int idCalendar, int idEmployee, int idOffice, int patientId)
         {
             IdDoctorsDayPlan = idDoctorsDayPlan;
             IdOfTerm = idOfTerm;
@@ -65,7 +64,6 @@ namespace Console_Management_of_medical_clinic.Model
             IdEmployee = idEmployee;
             IdOffice = idOffice;
             PatientId = patientId;
-            IsActive = isActive;
         }
 
 		public override string ToString()
