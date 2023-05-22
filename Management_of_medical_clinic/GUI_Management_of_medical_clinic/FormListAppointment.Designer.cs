@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             buttonClearFilter = new Button();
             panel1 = new Panel();
+            button_Clear = new Button();
             buttonRemove = new Button();
             buttonShowDetails = new Button();
             buttonExit = new Button();
@@ -58,7 +59,6 @@
             textBoxLastName = new TextBox();
             label1 = new Label();
             textBoxName = new TextBox();
-            button_Clear = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAppointmentList).BeginInit();
@@ -88,6 +88,21 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(357, 1080);
             panel1.TabIndex = 29;
+            // 
+            // button_Clear
+            // 
+            button_Clear.BackColor = Color.SteelBlue;
+            button_Clear.FlatAppearance.BorderColor = Color.Black;
+            button_Clear.FlatStyle = FlatStyle.Flat;
+            button_Clear.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            button_Clear.Location = new Point(-1, 419);
+            button_Clear.Margin = new Padding(3, 4, 3, 4);
+            button_Clear.Name = "button_Clear";
+            button_Clear.Size = new Size(360, 65);
+            button_Clear.TabIndex = 49;
+            button_Clear.Text = "Clear the calendars";
+            button_Clear.UseVisualStyleBackColor = false;
+            button_Clear.Click += button_Clear_Click;
             // 
             // buttonRemove
             // 
@@ -151,14 +166,14 @@
             dataGridViewAppointmentList.AllowUserToDeleteRows = false;
             dataGridViewAppointmentList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewAppointmentList.BackgroundColor = SystemColors.ButtonHighlight;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.SteelBlue;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = Color.SteelBlue;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridViewAppointmentList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.SteelBlue;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = Color.SteelBlue;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewAppointmentList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewAppointmentList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewAppointmentList.Columns.AddRange(new DataGridViewColumn[] { ColumnPatient, ColumnPESEL, ColumnDoctor, ColumnSpecialization, ColumnDate, ColumnOffice, ColumnCost });
             dataGridViewAppointmentList.Location = new Point(357, 84);
@@ -359,21 +374,6 @@
             textBoxName.Name = "textBoxName";
             textBoxName.Size = new Size(178, 23);
             textBoxName.TabIndex = 0;
-            // 
-            // button_Clear
-            // 
-            button_Clear.BackColor = Color.SteelBlue;
-            button_Clear.FlatAppearance.BorderColor = Color.Black;
-            button_Clear.FlatStyle = FlatStyle.Flat;
-            button_Clear.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            button_Clear.Location = new Point(-1, 419);
-            button_Clear.Margin = new Padding(3, 4, 3, 4);
-            button_Clear.Name = "button_Clear";
-            button_Clear.Size = new Size(360, 65);
-            button_Clear.TabIndex = 49;
-            button_Clear.Text = "Clear the calendar";
-            button_Clear.UseVisualStyleBackColor = false;
-            button_Clear.Click += button_Clear_Click;
             // 
             // FormListAppointment
             // 

@@ -31,6 +31,7 @@
             dataGridViewCalendars = new DataGridView();
             buttonLogOut = new Button();
             panel1 = new Panel();
+            button_Clear = new Button();
             buttonReviewCalendar = new Button();
             pictureBox1 = new PictureBox();
             buttonAddCalendar = new Button();
@@ -44,7 +45,6 @@
             comboBoxStatus = new ComboBox();
             buttonFilterCalendars = new Button();
             button1 = new Button();
-            button_Clear = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewCalendars).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -97,6 +97,21 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(312, 1081);
             panel1.TabIndex = 39;
+            // 
+            // button_Clear
+            // 
+            button_Clear.BackColor = Color.SteelBlue;
+            button_Clear.FlatAppearance.BorderColor = Color.Black;
+            button_Clear.FlatStyle = FlatStyle.Flat;
+            button_Clear.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button_Clear.Location = new Point(-17, 724);
+            button_Clear.Margin = new Padding(3, 4, 3, 4);
+            button_Clear.Name = "button_Clear";
+            button_Clear.Size = new Size(329, 87);
+            button_Clear.TabIndex = 50;
+            button_Clear.Text = "Clear the calendars";
+            button_Clear.UseVisualStyleBackColor = false;
+            button_Clear.Click += button_Clear_Click;
             // 
             // buttonReviewCalendar
             // 
@@ -253,21 +268,6 @@
             button1.Text = "Add New Plan or Calendar";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
-            // 
-            // button_Clear
-            // 
-            button_Clear.BackColor = Color.SteelBlue;
-            button_Clear.FlatAppearance.BorderColor = Color.Black;
-            button_Clear.FlatStyle = FlatStyle.Flat;
-            button_Clear.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            button_Clear.Location = new Point(-17, 724);
-            button_Clear.Margin = new Padding(3, 4, 3, 4);
-            button_Clear.Name = "button_Clear";
-            button_Clear.Size = new Size(329, 87);
-            button_Clear.TabIndex = 50;
-            button_Clear.Text = "Clear the calendar";
-            button_Clear.UseVisualStyleBackColor = false;
-            button_Clear.Click += button_Clear_Click;
             // 
             // FormCalendarsList
             // 

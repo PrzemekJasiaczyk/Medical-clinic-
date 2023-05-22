@@ -368,7 +368,7 @@ namespace GUI_Management_of_medical_clinic
 
             if (count > 0)
             {
-                string msg1 = "There are no past or canceled appointments in the calendar.";
+                string msg1 = "The calendars are already cleared.";
                 FormMessage FormMessage1 = new FormMessage(msg1);
                 FormMessage1.ShowDialog();
                 return;

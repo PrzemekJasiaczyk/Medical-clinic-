@@ -71,9 +71,17 @@ namespace GUI_Management_of_medical_clinic
             {
                 otwarteOkno.Hide();
             }
-
-            FormListAppointment formListAppointment = new FormListAppointment(currentUser);
-            formListAppointment.ShowDialog();
+            
+            if (source == "cancel")
+            {
+                FormListAppointment formListAppointment = new FormListAppointment(currentUser);
+                formListAppointment.ShowDialog();
+            }
+            else if (source == "clear")
+            {
+                FormCalendarsList formCalendarsList = new(currentUser);
+                formCalendarsList.ShowDialog();
+            }
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
