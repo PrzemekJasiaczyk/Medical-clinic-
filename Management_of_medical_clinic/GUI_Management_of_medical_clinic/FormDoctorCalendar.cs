@@ -142,15 +142,15 @@ namespace GUI_Management_of_medical_clinic
             foreach (DoctorsDayPlanModel appointment in appointments)
             {
                 string timeTerm = AppointmentService.GetTermByTermId(appointment.IdOfTerm);
-                Patient patient = PatientService.GetPatientById((int)appointment.PatientId);
+                //Patient patient = PatientService.GetPatientById((int)appointment.PatientId);
 
                 if (appointment.IdEmployee == currentUser.IdEmployee)
                 {
-                    int index = dataGridViewYourAppointments.Rows.Add(appointment.IdOffice, timeTerm, patient.FirstName + " " + patient.LastName);
+                    int index = dataGridViewYourAppointments.Rows.Add(appointment.IdOffice, timeTerm, /*patient.FirstName +*/" " /*+ patient.LastName*/);
                     dataGridViewYourAppointments.Rows[index].Tag = appointment;
                 }
 
-                dataGridViewAppointments.Rows.Add(appointment.IdEmployee, appointment.IdOffice, timeTerm, patient.FirstName + " " + patient.LastName);
+                dataGridViewAppointments.Rows.Add(appointment.IdEmployee, appointment.IdOffice, timeTerm, /*patient.FirstName +*/" " /*+ patient.LastName*/);
 
             }
         }

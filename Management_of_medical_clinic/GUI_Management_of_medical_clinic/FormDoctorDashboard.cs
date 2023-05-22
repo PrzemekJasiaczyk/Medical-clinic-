@@ -1,5 +1,6 @@
 ﻿using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,7 +31,8 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonCalendar_Click(object sender, EventArgs e)
         {
-            bool isNewCalendar = false;
+            bool isNewCalendar = true;
+            //bool isNewCalendar = false; roboczo dałem true
             List<CalendarModel> calendars = CalendarService.GetCalendarData();
             
             foreach (CalendarModel calendar in calendars)
@@ -63,12 +65,43 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonCurrentCalendar_Click(object sender, EventArgs e)
         {
+            IsCalendarActiveForCurrentMonth();
+        }
+
+
+        private void IsCalendarActiveForCurrentMonth()
+        {
+            bool isCurrentCalendar = false;
+            string currentMonthYear = DateTime.Today.ToString("MM-yyyy");
+
+
+            List<CalendarModel> calendars = CalendarService.GetCalendarData();
+            foreach (CalendarModel calendar in calendars)
+            {
+                if (calendar.IdEmployee == currentUser.IdEmployee && 
+                    calendar.Active == true && 
+                    calendar.DateReference == currentMonthYear)
+                {
+                    isCurrentCalendar = true;
+                    break;
+                }
+            }
+
+            if (isCurrentCalendar)
+            {
+                ToFormCurrentCalendar();
+            }
+            else
+            {
+                MessageBox.Show("Brak takich");
+            }
+            
+        }
+        private void ToFormCurrentCalendar()
+        {
+            FormDoctorCurrentCalendar formCurrentCalendar = new FormDoctorCurrentCalendar(currentUser);
             this.Hide();
-
-            FormDoctorCurrentCalendar formDoctor = new FormDoctorCurrentCalendar(currentUser);
-            this.currentUser = currentUser;
-
-            formDoctor.ShowDialog();
+            formCurrentCalendar.ShowDialog();
             this.Close();
         }
     }
