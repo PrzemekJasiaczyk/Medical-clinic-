@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             buttonClearFilter = new Button();
             panel1 = new Panel();
             buttonRemove = new Button();
@@ -58,6 +58,7 @@
             textBoxLastName = new TextBox();
             label1 = new Label();
             textBoxName = new TextBox();
+            button_Clear = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAppointmentList).BeginInit();
@@ -77,6 +78,7 @@
             // panel1
             // 
             panel1.BackColor = Color.SteelBlue;
+            panel1.Controls.Add(button_Clear);
             panel1.Controls.Add(buttonRemove);
             panel1.Controls.Add(buttonShowDetails);
             panel1.Controls.Add(buttonExit);
@@ -149,14 +151,14 @@
             dataGridViewAppointmentList.AllowUserToDeleteRows = false;
             dataGridViewAppointmentList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewAppointmentList.BackgroundColor = SystemColors.ButtonHighlight;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.SteelBlue;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = Color.SteelBlue;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridViewAppointmentList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.SteelBlue;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = Color.SteelBlue;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridViewAppointmentList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewAppointmentList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewAppointmentList.Columns.AddRange(new DataGridViewColumn[] { ColumnPatient, ColumnPESEL, ColumnDoctor, ColumnSpecialization, ColumnDate, ColumnOffice, ColumnCost });
             dataGridViewAppointmentList.Location = new Point(357, 84);
@@ -358,6 +360,21 @@
             textBoxName.Size = new Size(178, 23);
             textBoxName.TabIndex = 0;
             // 
+            // button_Clear
+            // 
+            button_Clear.BackColor = Color.SteelBlue;
+            button_Clear.FlatAppearance.BorderColor = Color.Black;
+            button_Clear.FlatStyle = FlatStyle.Flat;
+            button_Clear.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            button_Clear.Location = new Point(-1, 419);
+            button_Clear.Margin = new Padding(3, 4, 3, 4);
+            button_Clear.Name = "button_Clear";
+            button_Clear.Size = new Size(360, 65);
+            button_Clear.TabIndex = 49;
+            button_Clear.Text = "Clear the calendar";
+            button_Clear.UseVisualStyleBackColor = false;
+            button_Clear.Click += button_Clear_Click;
+            // 
             // FormListAppointment
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -420,5 +437,6 @@
         private Label label1;
         private CheckBox checkBoxDateOfVisit;
         private CheckBox checkBoxName;
+        private Button button_Clear;
     }
 }

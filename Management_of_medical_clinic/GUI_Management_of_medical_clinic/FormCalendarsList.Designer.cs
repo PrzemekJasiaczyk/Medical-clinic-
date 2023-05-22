@@ -44,6 +44,7 @@
             comboBoxStatus = new ComboBox();
             buttonFilterCalendars = new Button();
             button1 = new Button();
+            button_Clear = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewCalendars).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -85,6 +86,7 @@
             // panel1
             // 
             panel1.BackColor = Color.SteelBlue;
+            panel1.Controls.Add(button_Clear);
             panel1.Controls.Add(buttonReviewCalendar);
             panel1.Controls.Add(buttonLogOut);
             panel1.Controls.Add(pictureBox1);
@@ -252,6 +254,21 @@
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
+            // button_Clear
+            // 
+            button_Clear.BackColor = Color.SteelBlue;
+            button_Clear.FlatAppearance.BorderColor = Color.Black;
+            button_Clear.FlatStyle = FlatStyle.Flat;
+            button_Clear.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button_Clear.Location = new Point(-17, 724);
+            button_Clear.Margin = new Padding(3, 4, 3, 4);
+            button_Clear.Name = "button_Clear";
+            button_Clear.Size = new Size(329, 87);
+            button_Clear.TabIndex = 50;
+            button_Clear.Text = "Clear the calendar";
+            button_Clear.UseVisualStyleBackColor = false;
+            button_Clear.Click += button_Clear_Click;
+            // 
             // FormCalendarsList
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -294,5 +311,6 @@
         private Button buttonSortAscending;
         private Button button1;
         private Button buttonReviewCalendar;
+        private Button button_Clear;
     }
 }

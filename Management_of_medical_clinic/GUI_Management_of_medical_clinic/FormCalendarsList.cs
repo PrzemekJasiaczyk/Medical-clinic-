@@ -1,4 +1,5 @@
-﻿using Console_Management_of_medical_clinic.Logic;
+﻿using Console_Management_of_medical_clinic.Data.Enums;
+using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
 
 namespace GUI_Management_of_medical_clinic
@@ -104,6 +105,37 @@ namespace GUI_Management_of_medical_clinic
             FormCalendarEdit formCalendar = new FormCalendarEdit(currentUser, CalendarService.GetCalendarById((int)dataGridViewCalendars.CurrentRow.Cells[0].Value), new FormCalendarsList(currentUser));
             formCalendar.ShowDialog();
             Close();
+        }
+
+        private void button_Clear_Click(object sender, EventArgs e)
+        {
+            List<DoctorsDayPlanModel> doctorsDayPlanModels = CalendarAppointmentService.GetAppointmentsWithPatients();
+
+            int count = 0;
+
+            foreach (DoctorsDayPlanModel doctorsDayPlanModel in doctorsDayPlanModels)
+            {
+                DateTime date = CalendarService.GetDateByIdCalendar((int)doctorsDayPlanModel.IdCalendar, doctorsDayPlanModel.IdDay);
+
+                if (doctorsDayPlanModel.Status == EnumAppointmentStatus.Overdue || date < DateTime.Now.Date)
+                {
+                    FormConfirmCancelAppointment clear = new FormConfirmCancelAppointment("clear", currentUser, doctorsDayPlanModel);
+                    clear.ShowDialog();
+                    return;
+                }
+                else
+                {
+                    count++;
+                }
+            }
+
+            if (count > 0)
+            {
+                string msg1 = "There are no past or canceled appointments in the calendar.";
+                FormMessage FormMessage1 = new FormMessage(msg1);
+                FormMessage1.ShowDialog();
+                return;
+            }
         }
     }
 }
