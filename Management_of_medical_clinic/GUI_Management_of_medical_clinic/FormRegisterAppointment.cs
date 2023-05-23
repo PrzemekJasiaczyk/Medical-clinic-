@@ -10,6 +10,8 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Numerics;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -24,6 +26,8 @@ namespace GUI_Management_of_medical_clinic
         EmployeeModel currentUser;
         public AppointmentService appointmentService;
 
+        bool isEdit;
+
         DoctorsDayPlanModel appointment;
 
         public FormRegisterAppointment(EmployeeModel user, DoctorsDayPlanModel? appointment)
@@ -37,12 +41,38 @@ namespace GUI_Management_of_medical_clinic
             this.currentUser = user;
         }
 
+        public FormRegisterAppointment(EmployeeModel user, DoctorsDayPlanModel appointment, bool isEdit)
+        {
+            InitializeComponent();
+
+            comboboxPatient_add();
+            comboboxDoctor_add();
+
+            this.appointment = appointment;
+            this.currentUser = user;
+            this.isEdit = isEdit;
+            
+        }
+
+
         private void FormRegisterAppointment_Load(object sender, EventArgs e)
         {
-            if (appointment == null) return;
+            if (appointment != null && isEdit==false)
+            {
+                OnlyReadDoctorAndDateComboBox();
+                SelectDateInCombo();
+                SelectDoctorInComboBox();
+            }
 
-            OnlyReadControls();
-            SelectDataInCombo();
+            if (isEdit ==true)
+            {
+                LockDoctorAndPatientComboBox();
+                SelectPatientInComboBox();
+                SelectDoctorInComboBox();
+                AddAvailableTermsToComboForDoctor();
+                ChangeLabelWithNameOfForm();
+            }
+
 
         }
 
@@ -88,6 +118,7 @@ namespace GUI_Management_of_medical_clinic
             CalendarAppointmentService.GetAppointmentsData()
                 .Where(a => a.IdEmployee == selectedDoctorId && a.Status == EnumAppointmentStatus.Accepted && a.PatientId == null)
                 .ToList();
+            
             comboBoxDate.Items.Clear();
             foreach (DoctorsDayPlanModel appointment in appointments)
             {
@@ -163,6 +194,18 @@ namespace GUI_Management_of_medical_clinic
                 }
             }
 
+
+            if(isEdit == true)
+            {
+                DoctorsPlanService.RemovePatientFromPlan(appointment);
+
+                FormListAppointment form = new FormListAppointment(currentUser);
+                Hide();
+                form.ShowDialog();
+                Close();
+
+            }
+
             FormCalendarAppointment formCalendarAppointment = new FormCalendarAppointment(currentUser);
             formCalendarAppointment.ShowDialog();
         }
@@ -174,28 +217,93 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonBack_Click(object sender, EventArgs e)
         {
-            FormCalendarAppointment formCalendarAppointment = new FormCalendarAppointment(currentUser);
-            this.Hide();
-            formCalendarAppointment.ShowDialog();
-            this.Close();
+            if(isEdit == false)
+            {
+                FormCalendarAppointment formCalendarAppointment = new FormCalendarAppointment(currentUser);
+                this.Hide();
+                formCalendarAppointment.ShowDialog();
+                this.Close();
+            }
+            else
+            {
+                FormListAppointment form = new FormListAppointment(currentUser);
+                this.Hide();
+                form.ShowDialog();
+                this.Close();
+            }
+
+            
         }
 
         #region Function
-        private void OnlyReadControls()
+        private void OnlyReadDoctorAndDateComboBox()
         {
             comboBoxDate.Enabled = false;
             comboBoxDoctor.Enabled = false;
         }
 
-        private void SelectDataInCombo()
+        private void AddAvailableTermsToComboForDoctor()
+        {
+            EmployeeModel employee = new EmployeeModel();
+            employee = EmployeeService.GetEmployeeByID((int)appointment.IdEmployee);
+
+            List<DoctorsDayPlanModel> PlanList = new List<DoctorsDayPlanModel>();
+            PlanList = DoctorsPlanService.GetDoctorsPlanData();
+
+            DateTime today = DateTime.Now;
+
+            foreach (DoctorsDayPlanModel model in PlanList)
+            {
+                DateTime date = CalendarService.GetDateByIdCalendar((int)model.IdCalendar, model.IdDay);
+
+                if (model.PatientId == null && model.IdEmployee == employee.IdEmployee && date>today)
+                {
+                    comboBoxDate.Items.Add(model);
+                }
+            }
+
+            comboBoxDate.DisplayMember = PlanList.ToString(); 
+        }
+
+
+        private void ChangeLabelWithNameOfForm()
+        {
+            DateTime date = CalendarService.GetDateByIdCalendar((int)appointment.IdCalendar, appointment.IdDay);
+
+            labelTitle.Text = "Changing the date of the visit from: " + date.ToShortDateString();
+        }
+
+        private void LockDoctorAndPatientComboBox()
+        {
+            comboBoxDoctor.Enabled = false;
+            comboBoxPatient.Enabled = false;
+        }
+
+        private void SelectPatientInComboBox()
+        {
+            Patient patient = new Patient();
+            patient = PatientService.GetPatientById((int)appointment.PatientId);
+
+
+            comboBoxPatient.Items.Clear();
+            comboBoxPatient.Items.Add(patient);
+
+            comboBoxPatient.SelectedIndex = 0;
+        }
+
+        private void SelectDoctorInComboBox()
         {
             comboBoxDoctor.Items.Clear();
+            EmployeeModel employee = new EmployeeModel();
+            employee = EmployeeService.GetEmployeeByID((int)appointment.IdEmployee);
 
-            comboBoxDoctor.Items.Add(EmployeeService.GetEmployeeByID((int)appointment.IdEmployee));
+            comboBoxDoctor.Items.Add(employee);
             comboBoxDoctor.SelectedIndex = 0;
+        }
 
+        private void SelectDateInCombo()
+        {
             comboBoxDate.Items.Clear();
-
             comboBoxDate.Items.Add(appointment);
             comboBoxDate.SelectedItem = appointment;
         }

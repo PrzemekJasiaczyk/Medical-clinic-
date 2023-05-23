@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             buttonClearFilter = new Button();
             panel1 = new Panel();
+            buttonRescheduleAppointment = new Button();
             button_Clear = new Button();
             buttonRemove = new Button();
             buttonShowDetails = new Button();
@@ -78,6 +79,7 @@
             // panel1
             // 
             panel1.BackColor = Color.SteelBlue;
+            panel1.Controls.Add(buttonRescheduleAppointment);
             panel1.Controls.Add(button_Clear);
             panel1.Controls.Add(buttonRemove);
             panel1.Controls.Add(buttonShowDetails);
@@ -88,6 +90,21 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(357, 1080);
             panel1.TabIndex = 29;
+            // 
+            // buttonRescheduleAppointment
+            // 
+            buttonRescheduleAppointment.BackColor = Color.SteelBlue;
+            buttonRescheduleAppointment.FlatAppearance.BorderColor = Color.Black;
+            buttonRescheduleAppointment.FlatStyle = FlatStyle.Flat;
+            buttonRescheduleAppointment.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonRescheduleAppointment.Location = new Point(-2, 493);
+            buttonRescheduleAppointment.Margin = new Padding(3, 4, 3, 4);
+            buttonRescheduleAppointment.Name = "buttonRescheduleAppointment";
+            buttonRescheduleAppointment.Size = new Size(360, 65);
+            buttonRescheduleAppointment.TabIndex = 50;
+            buttonRescheduleAppointment.Text = "Reschedule appointment";
+            buttonRescheduleAppointment.UseVisualStyleBackColor = false;
+            buttonRescheduleAppointment.Click += buttonRescheduleAppointment_Click;
             // 
             // button_Clear
             // 
@@ -166,14 +183,14 @@
             dataGridViewAppointmentList.AllowUserToDeleteRows = false;
             dataGridViewAppointmentList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewAppointmentList.BackgroundColor = SystemColors.ButtonHighlight;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.SteelBlue;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = Color.SteelBlue;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridViewAppointmentList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.SteelBlue;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = Color.SteelBlue;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridViewAppointmentList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewAppointmentList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewAppointmentList.Columns.AddRange(new DataGridViewColumn[] { ColumnPatient, ColumnPESEL, ColumnDoctor, ColumnSpecialization, ColumnDate, ColumnOffice, ColumnCost });
             dataGridViewAppointmentList.Location = new Point(357, 84);
@@ -438,5 +455,6 @@
         private CheckBox checkBoxDateOfVisit;
         private CheckBox checkBoxName;
         private Button button_Clear;
+        private Button buttonRescheduleAppointment;
     }
 }
