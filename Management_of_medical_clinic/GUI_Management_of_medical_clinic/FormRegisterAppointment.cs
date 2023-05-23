@@ -69,7 +69,7 @@ namespace GUI_Management_of_medical_clinic
                 LockDoctorAndPatientComboBox();
                 SelectPatientInComboBox();
                 SelectDoctorInComboBox();
-                AddAvailableTermsToComboForDoctor();
+                //AddAvailableTermsToComboForDoctor();
                 ChangeLabelWithNameOfForm();
             }
 
@@ -240,29 +240,6 @@ namespace GUI_Management_of_medical_clinic
         {
             comboBoxDate.Enabled = false;
             comboBoxDoctor.Enabled = false;
-        }
-
-        private void AddAvailableTermsToComboForDoctor()
-        {
-            EmployeeModel employee = new EmployeeModel();
-            employee = EmployeeService.GetEmployeeByID((int)appointment.IdEmployee);
-
-            List<DoctorsDayPlanModel> PlanList = new List<DoctorsDayPlanModel>();
-            PlanList = DoctorsPlanService.GetDoctorsPlanData();
-
-            DateTime today = DateTime.Now;
-
-            foreach (DoctorsDayPlanModel model in PlanList)
-            {
-                DateTime date = CalendarService.GetDateByIdCalendar((int)model.IdCalendar, model.IdDay);
-
-                if (model.PatientId == null && model.IdEmployee == employee.IdEmployee && model.Status == EnumAppointmentStatus.Accepted)
-                {
-                    comboBoxDate.Items.Add(model);
-                }
-            }
-
-            comboBoxDate.DisplayMember = PlanList.ToString(); 
         }
 
 
