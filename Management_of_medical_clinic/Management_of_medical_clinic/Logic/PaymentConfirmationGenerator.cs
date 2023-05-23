@@ -8,6 +8,7 @@ using Console_Management_of_medical_clinic.Model;
 using iText.Kernel.Pdf.Canvas.Draw;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
+using iText.Kernel.Colors;
 
 namespace Console_Management_of_medical_clinic.Logic
 {
@@ -24,8 +25,8 @@ namespace Console_Management_of_medical_clinic.Logic
 
 			// TODO: Repair relative paths
 			// relative paths
-			string pdfFolder = @"C:\Users\micha\Documents\Projekty\CSharp\Klinika\TO_registration_gr3\Management_of_medical_clinic\Management_of_medical_clinic\Data\PDF\";
-			string logoFolder = @"C:\Users\micha\Documents\Projekty\CSharp\Klinika\TO_registration_gr3\Management_of_medical_clinic\GUI_Management_of_medical_clinic\Resources\MC_Logo.png";
+			string pdfFolder = @"C:\Users\swacz\Desktop\Workspace\MedicalClinic\Management_of_medical_clinic\Management_of_medical_clinic\Data\PDF\";
+			string logoFolder = @"C:\Users\swacz\Desktop\Workspace\MedicalClinic\Management_of_medical_clinic\GUI_Management_of_medical_clinic\Resources\MC_Logo.png";
 			string filename = $"Payment confirmation for {appointment.IdDoctorsDayPlan}-{appointment.IdCalendar}-{appointment.IdDay}-{appointment.IdOfTerm}.pdf";
 
 			// pdf destination
@@ -46,24 +47,27 @@ namespace Console_Management_of_medical_clinic.Logic
 				.SetTextAlignment(TextAlignment.LEFT);
 			document.Add(paymentConfirmationText);
 
-			// TODO: Appointment date and time - translate to actual date and actual hour
-			// Appointment details section
-			var detailsSection = new Paragraph()
-				.Add(new Text("Visit Details").SetBold())
-				.Add(new Paragraph($"Visit Date: {appointment.IdDay} "))
-				.Add(new Paragraph($"Visit Time: {appointment.IdOfTerm}"));
+            // TODO: Appointment date and time - translate to actual date and actual hour
+            // Appointment details section
+            string time = AppointmentService.GetTermByTermId((int)appointment.IdOfTerm);
+            DateTime date = CalendarService.GetDateByIdCalendar((int)appointment.IdCalendar, appointment.IdDay);
+
+            var detailsSection = new Paragraph()
+				.Add(new Text("Visit Details \n").SetBold())
+				.Add(new Paragraph($"Date: {date.ToShortDateString()} "))
+				.Add(new Paragraph($" Time: {time}"));
 			document.Add(detailsSection);
 
 			// Doctor details section
 			var doctorSection = new Paragraph()
-				.Add(new Text("Doctor").SetBold())
-				.Add(new Paragraph($"Name: {appointment.EmployeeModel.FirstName} {appointment.EmployeeModel.LastName}"));
+				.Add(new Text("Doctor Name").SetBold())
+				.Add(new Paragraph($": {appointment.EmployeeModel.FirstName} {appointment.EmployeeModel.LastName}"));
 			document.Add(doctorSection);
 
 			// Patient details section
 			var patientSection = new Paragraph()
-				.Add(new Text("Patient").SetBold())
-				.Add(new Paragraph($"Name: {appointment.Patient.FirstName} {appointment.Patient.LastName}"));
+				.Add(new Text("Patient Name").SetBold())
+				.Add(new Paragraph($": {appointment.Patient.FirstName} {appointment.Patient.LastName}"));
 			document.Add(patientSection);
 
 			// line separating cost from other data
@@ -71,13 +75,19 @@ namespace Console_Management_of_medical_clinic.Logic
 			document.Add(line);
 
 			// Cost at the bottom
-			var costText = new Paragraph($"Cost: {appointment.Cost}")
+			var costText = new Paragraph($"Cost: {appointment.Cost} ")
 				.SetFontSize(14)
 				.SetBold()
 				.SetTextAlignment(TextAlignment.RIGHT);
 			document.Add(costText);
 
-			document.Close();
+
+            var currentDate = DateTime.Now;
+            var generatedOnText = new Paragraph($"Generated on: {currentDate.ToString()}").SetFontColor(DeviceGray.BLACK).SetFontSize(10).SetTextAlignment(TextAlignment.RIGHT);
+            document.Add(generatedOnText);
+
+            document.Close();
+
 		}
 	}
 }
