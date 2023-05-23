@@ -139,6 +139,7 @@ namespace Console_Management_of_medical_clinic.Logic
                 if (foundPlan != null)
                 {
                     foundPlan.PatientId = null;
+                    foundPlan.Status = EnumAppointmentStatus.Accepted;
                     context.SaveChanges();
                 }
             }

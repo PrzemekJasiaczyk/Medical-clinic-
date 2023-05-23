@@ -128,7 +128,7 @@ namespace GUI_Management_of_medical_clinic
 
             foreach (DoctorsDayPlanModel appointment in selectedAppointments)
             {
-                if (appointment.PatientId == null && appointment.Status == EnumAppointmentStatus.Accepted)
+                if (appointment.PatientId == null  && appointment.Status == EnumAppointmentStatus.Accepted)
                 {
                     AddItemToDataGridView(appointment);
                     displayListInDataGridView.Add(appointment);

@@ -256,7 +256,7 @@ namespace GUI_Management_of_medical_clinic
             {
                 DateTime date = CalendarService.GetDateByIdCalendar((int)model.IdCalendar, model.IdDay);
 
-                if (model.PatientId == null && model.IdEmployee == employee.IdEmployee && date>today)
+                if (model.PatientId == null && model.IdEmployee == employee.IdEmployee && model.Status == EnumAppointmentStatus.Accepted)
                 {
                     comboBoxDate.Items.Add(model);
                 }
