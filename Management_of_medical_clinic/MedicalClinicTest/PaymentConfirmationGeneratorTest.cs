@@ -30,8 +30,7 @@ namespace MedicalClinicTest
 				}
 			};
 
-			// TODO: Repair relative paths
-			string pdfFolder = @"C:\Users\micha\Documents\Projekty\CSharp\Klinika\TO_registration_gr3\Management_of_medical_clinic\Management_of_medical_clinic\Data\PDF\";
+			string pdfFolder = @"..\..\..\..\Management_of_medical_clinic\Data\PDF\";
 			string filename = $"Payment confirmation for {appointment.IdDoctorsDayPlan}-{appointment.IdCalendar}-{appointment.IdDay}-{appointment.IdOfTerm}.pdf";
 			string pdfFilePath = Path.Combine(pdfFolder, filename);
 
