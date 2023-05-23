@@ -30,7 +30,9 @@ namespace Console_Management_of_medical_clinic.Logic
             int selectedTimeInMinutes = (hour * 60) + minute;
 
 
-            if (selectedTimeInMinutes < 420 || selectedTimeInMinutes >= 1200 || (selectedTimeInMinutes >= 660 && selectedTimeInMinutes < 680) || (selectedTimeInMinutes >= 980 && selectedTimeInMinutes < 1000))
+            if (selectedTimeInMinutes < 420 || selectedTimeInMinutes >= 1200 
+                || (selectedTimeInMinutes >= 660 && selectedTimeInMinutes < 680) 
+                || (selectedTimeInMinutes >= 980 && selectedTimeInMinutes < 1000))
             {
 
                 return -1;
@@ -44,7 +46,7 @@ namespace Console_Management_of_medical_clinic.Logic
 
         public static string GetTermByTermId(int IdOfTerm)
         {
-            int minutesFromOpening = (IdOfTerm - 1) * 20;
+            int minutesFromOpening = (IdOfTerm) * 20;
             int hour = minutesFromOpening / 60 + 7;
             int minute = minutesFromOpening % 60;
             return $"{hour:00}:{minute:00}";
