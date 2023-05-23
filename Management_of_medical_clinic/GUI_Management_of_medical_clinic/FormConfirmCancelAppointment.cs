@@ -107,7 +107,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void FormConfirmCancelAppointment_Load(object sender, EventArgs e)
         {
-            if (source == "clear")
+            if (source == "clear from calendar" || source == "clear from appointment")
             {
                 label1.Text = "Confirm calendar cleaning. Input password:";
             }
