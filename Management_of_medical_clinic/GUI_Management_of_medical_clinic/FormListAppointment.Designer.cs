@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             buttonClearFilter = new Button();
             panel1 = new Panel();
             buttonRescheduleAppointment = new Button();
@@ -38,13 +38,6 @@
             buttonExit = new Button();
             pictureBox1 = new PictureBox();
             dataGridViewAppointmentList = new DataGridView();
-            ColumnPatient = new DataGridViewTextBoxColumn();
-            ColumnPESEL = new DataGridViewTextBoxColumn();
-            ColumnDoctor = new DataGridViewTextBoxColumn();
-            ColumnSpecialization = new DataGridViewTextBoxColumn();
-            ColumnDate = new DataGridViewTextBoxColumn();
-            ColumnOffice = new DataGridViewTextBoxColumn();
-            ColumnCost = new DataGridViewTextBoxColumn();
             panel2 = new Panel();
             checkBoxDateOfVisit = new CheckBox();
             maskedTextBoxPESEL = new MaskedTextBox();
@@ -60,6 +53,14 @@
             textBoxLastName = new TextBox();
             label1 = new Label();
             textBoxName = new TextBox();
+            ColumnPatient = new DataGridViewTextBoxColumn();
+            ColumnPESEL = new DataGridViewTextBoxColumn();
+            ColumnDoctor = new DataGridViewTextBoxColumn();
+            ColumnSpecialization = new DataGridViewTextBoxColumn();
+            ColumnDate = new DataGridViewTextBoxColumn();
+            ColumnHour = new DataGridViewTextBoxColumn();
+            ColumnOffice = new DataGridViewTextBoxColumn();
+            ColumnCost = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAppointmentList).BeginInit();
@@ -183,16 +184,16 @@
             dataGridViewAppointmentList.AllowUserToDeleteRows = false;
             dataGridViewAppointmentList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewAppointmentList.BackgroundColor = SystemColors.ButtonHighlight;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.SteelBlue;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = Color.SteelBlue;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridViewAppointmentList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.SteelBlue;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = Color.SteelBlue;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewAppointmentList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewAppointmentList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewAppointmentList.Columns.AddRange(new DataGridViewColumn[] { ColumnPatient, ColumnPESEL, ColumnDoctor, ColumnSpecialization, ColumnDate, ColumnOffice, ColumnCost });
+            dataGridViewAppointmentList.Columns.AddRange(new DataGridViewColumn[] { ColumnPatient, ColumnPESEL, ColumnDoctor, ColumnSpecialization, ColumnDate, ColumnHour, ColumnOffice, ColumnCost });
             dataGridViewAppointmentList.Location = new Point(357, 84);
             dataGridViewAppointmentList.MultiSelect = false;
             dataGridViewAppointmentList.Name = "dataGridViewAppointmentList";
@@ -203,48 +204,6 @@
             dataGridViewAppointmentList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewAppointmentList.Size = new Size(1564, 1053);
             dataGridViewAppointmentList.TabIndex = 30;
-            // 
-            // ColumnPatient
-            // 
-            ColumnPatient.HeaderText = "Patient";
-            ColumnPatient.Name = "ColumnPatient";
-            ColumnPatient.ReadOnly = true;
-            // 
-            // ColumnPESEL
-            // 
-            ColumnPESEL.HeaderText = "PESEL";
-            ColumnPESEL.Name = "ColumnPESEL";
-            ColumnPESEL.ReadOnly = true;
-            // 
-            // ColumnDoctor
-            // 
-            ColumnDoctor.HeaderText = "Doctor";
-            ColumnDoctor.Name = "ColumnDoctor";
-            ColumnDoctor.ReadOnly = true;
-            // 
-            // ColumnSpecialization
-            // 
-            ColumnSpecialization.HeaderText = "Specialization";
-            ColumnSpecialization.Name = "ColumnSpecialization";
-            ColumnSpecialization.ReadOnly = true;
-            // 
-            // ColumnDate
-            // 
-            ColumnDate.HeaderText = "Date";
-            ColumnDate.Name = "ColumnDate";
-            ColumnDate.ReadOnly = true;
-            // 
-            // ColumnOffice
-            // 
-            ColumnOffice.HeaderText = "Office";
-            ColumnOffice.Name = "ColumnOffice";
-            ColumnOffice.ReadOnly = true;
-            // 
-            // ColumnCost
-            // 
-            ColumnCost.HeaderText = "Cost";
-            ColumnCost.Name = "ColumnCost";
-            ColumnCost.ReadOnly = true;
             // 
             // panel2
             // 
@@ -392,6 +351,54 @@
             textBoxName.Size = new Size(178, 23);
             textBoxName.TabIndex = 0;
             // 
+            // ColumnPatient
+            // 
+            ColumnPatient.HeaderText = "Patient";
+            ColumnPatient.Name = "ColumnPatient";
+            ColumnPatient.ReadOnly = true;
+            // 
+            // ColumnPESEL
+            // 
+            ColumnPESEL.HeaderText = "PESEL";
+            ColumnPESEL.Name = "ColumnPESEL";
+            ColumnPESEL.ReadOnly = true;
+            // 
+            // ColumnDoctor
+            // 
+            ColumnDoctor.HeaderText = "Doctor";
+            ColumnDoctor.Name = "ColumnDoctor";
+            ColumnDoctor.ReadOnly = true;
+            // 
+            // ColumnSpecialization
+            // 
+            ColumnSpecialization.HeaderText = "Specialization";
+            ColumnSpecialization.Name = "ColumnSpecialization";
+            ColumnSpecialization.ReadOnly = true;
+            // 
+            // ColumnDate
+            // 
+            ColumnDate.HeaderText = "Date";
+            ColumnDate.Name = "ColumnDate";
+            ColumnDate.ReadOnly = true;
+            // 
+            // ColumnHour
+            // 
+            ColumnHour.HeaderText = "Hour";
+            ColumnHour.Name = "ColumnHour";
+            ColumnHour.ReadOnly = true;
+            // 
+            // ColumnOffice
+            // 
+            ColumnOffice.HeaderText = "Office";
+            ColumnOffice.Name = "ColumnOffice";
+            ColumnOffice.ReadOnly = true;
+            // 
+            // ColumnCost
+            // 
+            ColumnCost.HeaderText = "Cost";
+            ColumnCost.Name = "ColumnCost";
+            ColumnCost.ReadOnly = true;
+            // 
             // FormListAppointment
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -432,13 +439,6 @@
         private Button buttonShowDetails;
         private Button buttonRemove;
         private Button buttonViewAppointments;
-        private DataGridViewTextBoxColumn ColumnPatient;
-        private DataGridViewTextBoxColumn ColumnPESEL;
-        private DataGridViewTextBoxColumn ColumnDoctor;
-        private DataGridViewTextBoxColumn ColumnSpecialization;
-        private DataGridViewTextBoxColumn ColumnDate;
-        private DataGridViewTextBoxColumn ColumnOffice;
-        private DataGridViewTextBoxColumn ColumnCost;
         private TextBox textBoxLastName;
         private TextBox textBoxName;
         private DateTimePicker dateTimePickerDateOfVisit;
@@ -456,5 +456,13 @@
         private CheckBox checkBoxName;
         private Button button_Clear;
         private Button buttonRescheduleAppointment;
+        private DataGridViewTextBoxColumn ColumnPatient;
+        private DataGridViewTextBoxColumn ColumnPESEL;
+        private DataGridViewTextBoxColumn ColumnDoctor;
+        private DataGridViewTextBoxColumn ColumnSpecialization;
+        private DataGridViewTextBoxColumn ColumnDate;
+        private DataGridViewTextBoxColumn ColumnHour;
+        private DataGridViewTextBoxColumn ColumnOffice;
+        private DataGridViewTextBoxColumn ColumnCost;
     }
 }

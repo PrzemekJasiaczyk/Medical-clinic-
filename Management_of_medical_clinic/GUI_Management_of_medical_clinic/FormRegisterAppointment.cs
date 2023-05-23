@@ -69,8 +69,7 @@ namespace GUI_Management_of_medical_clinic
                 LockDoctorAndPatientComboBox();
                 SelectPatientInComboBox();
                 SelectDoctorInComboBox();
-                //AddAvailableTermsToComboForDoctor();
-                ChangeLabelWithNameOfForm();
+                ChangeLabelWithNameOfFormAndButton();
             }
 
 
@@ -243,11 +242,14 @@ namespace GUI_Management_of_medical_clinic
         }
 
 
-        private void ChangeLabelWithNameOfForm()
+        private void ChangeLabelWithNameOfFormAndButton()
         {
             DateTime date = CalendarService.GetDateByIdCalendar((int)appointment.IdCalendar, appointment.IdDay);
 
-            labelTitle.Text = "Changing the date of the visit from: " + date.ToShortDateString();
+            String hour = DoctorsPlanService.GetTermDescription((EnumTerms)appointment.IdOfTerm);
+
+            labelTitle.Text = "Changing the date of the visit from: " + date.ToShortDateString() + " hour: " + hour;
+            buttonAddAppointment.Text = "Reschedule";
         }
 
         private void LockDoctorAndPatientComboBox()

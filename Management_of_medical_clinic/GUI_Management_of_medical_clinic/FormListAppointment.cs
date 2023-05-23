@@ -377,7 +377,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonRescheduleAppointment_Click(object sender, EventArgs e)
         {
-            if(dataGridViewAppointmentList.SelectedRows.Count == 0) return;
+            if (dataGridViewAppointmentList.SelectedRows.Count == 0) return;
 
             DoctorsDayPlanModel visit = new DoctorsDayPlanModel();
             visit = (DoctorsDayPlanModel)dataGridViewAppointmentList.SelectedRows[0].Tag;

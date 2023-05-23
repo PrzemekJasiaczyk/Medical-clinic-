@@ -83,6 +83,7 @@ namespace Console_Management_of_medical_clinic.Model
             EmployeeService.GetEmployeeByID((int)IdEmployee).ToString(),
             SpecializationService.GetSpecializationById((int)EmployeeService.GetEmployeeByID((int)IdEmployee).IdSpecialization).Name,
             CalendarService.GetDateByIdCalendar((int)IdCalendar,IdDay).ToShortDateString(),
+            DoctorsPlanService.GetTermDescription((EnumTerms)IdOfTerm),
             OfficeService.GetOfficeById((int)IdOffice).Number,
             Cost.ToString()
         };
