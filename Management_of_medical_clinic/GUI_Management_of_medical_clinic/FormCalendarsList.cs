@@ -119,7 +119,7 @@ namespace GUI_Management_of_medical_clinic
 
                 if (doctorsDayPlanModel.Status == EnumAppointmentStatus.Overdue || date < DateTime.Now.Date)
                 {
-                    FormConfirmCancelAppointment clear = new FormConfirmCancelAppointment("clear", currentUser, doctorsDayPlanModel);
+                    FormConfirmCancelAppointment clear = new FormConfirmCancelAppointment("clear from calendar", currentUser, doctorsDayPlanModel);
                     clear.ShowDialog();
                     return;
                 }

@@ -55,7 +55,7 @@ namespace GUI_Management_of_medical_clinic
                     FormMessage formMessage2 = new FormMessage(msg2);
                     formMessage2.ShowDialog();
                 }
-                else if (source == "clear")
+                else if (source == "clear from appointment" || source == "clear from calendar")
                 {
                     DoctorsDayPlanModel.RemoveDoctorsDayPlanModel(context);
 
@@ -72,12 +72,12 @@ namespace GUI_Management_of_medical_clinic
                 otwarteOkno.Hide();
             }
             
-            if (source == "cancel")
+            if (source == "cancel" || source == "clear from appointment")
             {
                 FormListAppointment formListAppointment = new FormListAppointment(currentUser);
                 formListAppointment.ShowDialog();
             }
-            else if (source == "clear")
+            else if (source == "clear from calendar")
             {
                 FormCalendarsList formCalendarsList = new(currentUser);
                 formCalendarsList.ShowDialog();
@@ -93,8 +93,16 @@ namespace GUI_Management_of_medical_clinic
                 otwarteOkno.Hide();
             }
 
-            FormListAppointment formListAppointment = new FormListAppointment(currentUser);
-            formListAppointment.ShowDialog();
+            if (source == "cancel" || source == "clear from appointment")
+            {
+                FormListAppointment formListAppointment = new FormListAppointment(currentUser);
+                formListAppointment.ShowDialog();
+            }
+            else if (source == "clear from calendar")
+            {
+                FormCalendarsList formCalendarsList = new(currentUser);
+                formCalendarsList.ShowDialog();
+            }
         }
 
         private void FormConfirmCancelAppointment_Load(object sender, EventArgs e)
