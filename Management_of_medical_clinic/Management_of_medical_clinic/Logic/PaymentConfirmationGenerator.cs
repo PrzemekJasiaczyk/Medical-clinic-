@@ -9,6 +9,9 @@ using iText.Kernel.Pdf.Canvas.Draw;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using iText.Kernel.Colors;
+using iText.IO.Font;
+using iText.Kernel.Font;
+using iText.IO.Font.Constants;
 
 namespace Console_Management_of_medical_clinic.Logic
 {
@@ -31,6 +34,10 @@ namespace Console_Management_of_medical_clinic.Logic
 			var pdfWriter = new PdfWriter($"{pdfFolder}{filename}");
 			var pdfDocument = new PdfDocument(pdfWriter);
 			var document = new Document(pdfDocument);
+
+			// Set fonts to enable Polish signs
+			PdfFont font = PdfFontFactory.CreateFont(StandardFonts.HELVETICA, "Cp1250");
+			document.SetFont(font);
 
 			// Logo section
 			var logo = new Image(ImageDataFactory.Create(logoFolder));
