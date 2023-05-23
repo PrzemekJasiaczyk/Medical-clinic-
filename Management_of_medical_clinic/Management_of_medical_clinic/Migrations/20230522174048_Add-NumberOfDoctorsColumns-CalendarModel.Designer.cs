@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Console_Management_of_medical_clinic.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230520212229_Add-Status-DoctorsDayPlanModel")]
-    partial class AddStatusDoctorsDayPlanModel
+    [Migration("20230522174048_Add-NumberOfDoctorsColumns-CalendarModel")]
+    partial class AddNumberOfDoctorsColumnsCalendarModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -77,6 +77,12 @@ namespace Console_Management_of_medical_clinic.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<int?>("NumberOfAcceptedDoctors")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("NumberOfDoctors")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("IdCalendar");
 
                     b.ToTable("DbCalendars");
@@ -106,9 +112,6 @@ namespace Console_Management_of_medical_clinic.Migrations
 
                     b.Property<int?>("IdOffice")
                         .IsRequired()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("IsActive")
                         .HasColumnType("INTEGER");
 
                     b.Property<int?>("PatientId")

@@ -31,6 +31,7 @@
             dataGridViewCalendars = new DataGridView();
             buttonLogOut = new Button();
             panel1 = new Panel();
+            button_Clear = new Button();
             buttonReviewCalendar = new Button();
             pictureBox1 = new PictureBox();
             buttonAddCalendar = new Button();
@@ -85,6 +86,7 @@
             // panel1
             // 
             panel1.BackColor = Color.SteelBlue;
+            panel1.Controls.Add(button_Clear);
             panel1.Controls.Add(buttonReviewCalendar);
             panel1.Controls.Add(buttonLogOut);
             panel1.Controls.Add(pictureBox1);
@@ -95,6 +97,21 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(312, 1081);
             panel1.TabIndex = 39;
+            // 
+            // button_Clear
+            // 
+            button_Clear.BackColor = Color.SteelBlue;
+            button_Clear.FlatAppearance.BorderColor = Color.Black;
+            button_Clear.FlatStyle = FlatStyle.Flat;
+            button_Clear.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button_Clear.Location = new Point(-17, 724);
+            button_Clear.Margin = new Padding(3, 4, 3, 4);
+            button_Clear.Name = "button_Clear";
+            button_Clear.Size = new Size(329, 87);
+            button_Clear.TabIndex = 50;
+            button_Clear.Text = "Clear the calendars";
+            button_Clear.UseVisualStyleBackColor = false;
+            button_Clear.Click += button_Clear_Click;
             // 
             // buttonReviewCalendar
             // 
@@ -294,5 +311,6 @@
         private Button buttonSortAscending;
         private Button button1;
         private Button buttonReviewCalendar;
+        private Button button_Clear;
     }
 }

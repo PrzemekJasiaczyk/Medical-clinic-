@@ -13,6 +13,7 @@ namespace Console_Management_of_medical_clinic.Logic
 {
     public static class DoctorsPlanService
     {
+
         public static List<DoctorsDayPlanModel> GetDoctorsPlanData()
         {
             List<DoctorsDayPlanModel> doctorsPlans = new List<DoctorsDayPlanModel>();
@@ -36,7 +37,7 @@ namespace Console_Management_of_medical_clinic.Logic
 
                 }
                 // TODO: Brak statusu przy tworzeniu
-                DoctorsDayPlanModel newPlan = new DoctorsDayPlanModel(i, idDay, idCalendar, idEmployee, idOffice);
+                DoctorsDayPlanModel newPlan = new DoctorsDayPlanModel(i, idDay, idCalendar, idEmployee, idOffice, EnumAppointmentStatus.New);
                 AddPlan(newPlan);
             }            
             return "Plan added successfully";
@@ -44,11 +45,41 @@ namespace Console_Management_of_medical_clinic.Logic
 
         public static void AddPlan(DoctorsDayPlanModel doctorsDayPlanModel)
         {
+            if (CheckIfDoctorIsUnique(doctorsDayPlanModel.IdCalendar, doctorsDayPlanModel.IdEmployee))
+            {
+                using (AppDbContext context = new AppDbContext())
+                {
+                    CalendarModel calendar = context.DbCalendars.FirstOrDefault(c => c.IdCalendar == doctorsDayPlanModel.IdCalendar);
+                    calendar.NumberOfDoctors += 1;
+                    context.SaveChanges();
+                }
+            }
             using (AppDbContext context = new AppDbContext())
             {
                 context.DbDoctorsDayPlan.Add(doctorsDayPlanModel);
                 context.SaveChanges();
             }
+        }
+
+        public static bool CheckIfDoctorIsUnique(int? idCalendar, int? idEmployee)
+        {
+            List<DoctorsDayPlanModel> doctorsDayPlanModels = new List<DoctorsDayPlanModel>();
+            doctorsDayPlanModels = DoctorsPlanService.GetDoctorsPlanData();
+
+            foreach(DoctorsDayPlanModel doctorsDayPlan in doctorsDayPlanModels)
+            {
+                if(doctorsDayPlan.IdCalendar == idCalendar && doctorsDayPlan.IdEmployee == idEmployee)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+
+            /*bool isUnique = doctorsDayPlanModels
+                .Count(e => e.IdCalendar == idCalendar && e.IdEmployee == idEmployee) < 1;
+
+            return isUnique;*/
         }
 
         public static void EditPlan(int idDoctorsDayPlan, int idsWorkingTerms, int idOffice)
@@ -127,5 +158,22 @@ namespace Console_Management_of_medical_clinic.Logic
                 return context.DbDoctorsDayPlan.Where(plan => plan.IdCalendar == calendarId).ToList();
             }
         }
+
+
+        public static void RemovePatientFromPlan(DoctorsDayPlanModel plan)
+        {
+            using (AppDbContext context = new AppDbContext())
+            {
+                DoctorsDayPlanModel foundPlan = context.DbDoctorsDayPlan.Find(plan.IdDoctorsDayPlan);
+
+                if (foundPlan != null)
+                {
+                    foundPlan.PatientId = null;
+                    foundPlan.Status = EnumAppointmentStatus.Accepted;
+                    context.SaveChanges();
+                }
+            }
+        }
+
     }
 }
