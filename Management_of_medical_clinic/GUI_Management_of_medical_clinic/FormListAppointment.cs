@@ -2,8 +2,10 @@
 using Console_Management_of_medical_clinic.Data.Enums;
 using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
+using iText.Commons.Actions.Contexts;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.DirectoryServices.ActiveDirectory;
 
 //The system allows to filter patients on: 
 
@@ -310,7 +312,16 @@ namespace GUI_Management_of_medical_clinic
 
             DoctorsDayPlanModel appointment = (DoctorsDayPlanModel)dataGridViewAppointmentList.SelectedRows[0].Tag;
 
-            FormShowDetailsAppointment formShowDetailsAppointment = new FormShowDetailsAppointment(currentUser, appointment);
+            using (AppDbContext context = new())
+            {
+                appointment = context
+                    .DbDoctorsDayPlan
+                    .Include(a => a.Patient)
+                    .Include(a => a.EmployeeModel)
+                    .FirstOrDefault(a => a.IdDoctorsDayPlan == appointment.IdDoctorsDayPlan)!;
+            }
+
+			FormShowDetailsAppointment formShowDetailsAppointment = new FormShowDetailsAppointment(currentUser, appointment);
             Hide();
             formShowDetailsAppointment.ShowDialog();
             Close();

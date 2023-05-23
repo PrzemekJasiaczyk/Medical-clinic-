@@ -68,7 +68,6 @@ namespace GUI_Management_of_medical_clinic
 		private void buttonGeneratePDF_Click(object sender, EventArgs e)
 		{
 			pdfGenerator.GeneratePDFConfirmation(appointment);
-			Process.Start($@"..\..\..\..\Management_of_medical_clinic\Data\PDF\Payment confirmation for {appointment.IdDoctorsDayPlan}-{appointment.IdCalendar}-{appointment.IdDay}-{appointment.IdOfTerm}.pdf");
 		}
 	}
 }
