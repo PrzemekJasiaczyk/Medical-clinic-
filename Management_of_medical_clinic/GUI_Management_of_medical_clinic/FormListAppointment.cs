@@ -1,8 +1,11 @@
 ﻿using Console_Management_of_medical_clinic.Data;
+using Console_Management_of_medical_clinic.Data.Enums;
 using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
+using iText.Commons.Actions.Contexts;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.DirectoryServices.ActiveDirectory;
 
 //The system allows to filter patients on: 
 
@@ -309,7 +312,16 @@ namespace GUI_Management_of_medical_clinic
 
             DoctorsDayPlanModel appointment = (DoctorsDayPlanModel)dataGridViewAppointmentList.SelectedRows[0].Tag;
 
-            FormShowDetailsAppointment formShowDetailsAppointment = new FormShowDetailsAppointment(currentUser, appointment);
+            using (AppDbContext context = new())
+            {
+                appointment = context
+                    .DbDoctorsDayPlan
+                    .Include(a => a.Patient)
+                    .Include(a => a.EmployeeModel)
+                    .FirstOrDefault(a => a.IdDoctorsDayPlan == appointment.IdDoctorsDayPlan)!;
+            }
+
+			FormShowDetailsAppointment formShowDetailsAppointment = new FormShowDetailsAppointment(currentUser, appointment);
             Hide();
             formShowDetailsAppointment.ShowDialog();
             Close();
@@ -339,8 +351,53 @@ namespace GUI_Management_of_medical_clinic
                 return;
             }
 
-            FormConfirmCancelAppointment cancel = new FormConfirmCancelAppointment(currentUser, appointment);
+            FormConfirmCancelAppointment cancel = new FormConfirmCancelAppointment("cancel", currentUser, appointment);
             cancel.ShowDialog();
+        }
+
+        private void button_Clear_Click(object sender, EventArgs e)
+        {
+            List<DoctorsDayPlanModel> doctorsDayPlanModels = CalendarAppointmentService.GetAppointmentsWithPatients();
+
+            int count = 0;
+
+            foreach (DoctorsDayPlanModel doctorsDayPlanModel in doctorsDayPlanModels)
+            {
+                DateTime date = CalendarService.GetDateByIdCalendar((int)doctorsDayPlanModel.IdCalendar, doctorsDayPlanModel.IdDay);
+
+                if ((doctorsDayPlanModel.Status == EnumAppointmentStatus.Overdue || date < DateTime.Now.Date))
+                {
+                    FormConfirmCancelAppointment clear = new FormConfirmCancelAppointment("clear from appointment", currentUser, doctorsDayPlanModel);
+                    clear.ShowDialog();
+                    return;
+                }
+                else
+                {
+                    count++;
+                }
+            }
+
+            if (count > 0)
+            {
+                string msg1 = "The calendars are already cleared.";
+                FormMessage FormMessage1 = new FormMessage(msg1);
+                FormMessage1.ShowDialog();
+                return;
+            }
+        }
+
+        private void buttonRescheduleAppointment_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewAppointmentList.SelectedRows.Count == 0) return;
+
+            DoctorsDayPlanModel visit = new DoctorsDayPlanModel();
+            visit = (DoctorsDayPlanModel)dataGridViewAppointmentList.SelectedRows[0].Tag;
+
+            FormRegisterAppointment form = new FormRegisterAppointment(currentUser, visit, true);
+            Hide();
+            form.ShowDialog();
+            Close();
+
         }
     }
 }

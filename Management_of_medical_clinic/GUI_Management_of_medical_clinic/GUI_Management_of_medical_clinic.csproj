@@ -24,6 +24,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="CalendarProperties\UserControlBlankSmall.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="CalendarProperties\UserControlDaySmall.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="FormCalendarAppointment.cs">
       <SubType>Form</SubType>
     </Compile>
