@@ -61,6 +61,7 @@
             dataGridViewYourAppointments = new DataGridView();
             label9 = new Label();
             buttonEditAppointment = new Button();
+            labelCalendarStatus = new Label();
             panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAppointments).BeginInit();
@@ -224,6 +225,7 @@
             // panel9
             // 
             panel9.BackColor = Color.White;
+            panel9.Controls.Add(labelCalendarStatus);
             panel9.Controls.Add(buttonNextMonth);
             panel9.Controls.Add(buttonPreviousMonth);
             panel9.Controls.Add(labelTitleCalendar_Year);
@@ -465,6 +467,18 @@
             buttonEditAppointment.UseVisualStyleBackColor = true;
             buttonEditAppointment.Click += buttonEditAppointment_Click;
             // 
+            // labelCalendarStatus
+            // 
+            labelCalendarStatus.AutoSize = true;
+            labelCalendarStatus.BackColor = Color.White;
+            labelCalendarStatus.Font = new Font("Segoe UI", 30F, FontStyle.Bold, GraphicsUnit.Point);
+            labelCalendarStatus.Location = new Point(655, 29);
+            labelCalendarStatus.Name = "labelCalendarStatus";
+            labelCalendarStatus.Size = new Size(140, 54);
+            labelCalendarStatus.TabIndex = 20;
+            labelCalendarStatus.Text = "Status";
+            labelCalendarStatus.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // FormDoctorCalendar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -491,7 +505,7 @@
             Name = "FormDoctorCalendar";
             Text = "Calendar";
             WindowState = FormWindowState.Maximized;
-            Load += FormDoctorCalendar_Load_1;
+            Load += FormDoctorCalendar_Load;
             panelMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAppointments).EndInit();
@@ -551,5 +565,6 @@
         private Button buttonEditAppointment;
         private Button buttonNextMonth;
         private Button buttonPreviousMonth;
+        private Label labelCalendarStatus;
     }
 }

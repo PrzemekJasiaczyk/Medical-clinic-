@@ -32,7 +32,8 @@ namespace GUI_Management_of_medical_clinic
         private void buttonCalendar_Click(object sender, EventArgs e)
         {
             bool isNewCalendar = true;
-            //bool isNewCalendar = false; roboczo dałem true
+            //roboczo dałem true
+            //bool isNewCalendar = false; 
             List<CalendarModel> calendars = CalendarService.GetCalendarData();
             
             foreach (CalendarModel calendar in calendars)
@@ -93,7 +94,7 @@ namespace GUI_Management_of_medical_clinic
             }
             else
             {
-                MessageBox.Show("Brak takich");
+                MessageBox.Show("Brak aktywnego kalendarza na obecny miesiąc");
             }
             
         }

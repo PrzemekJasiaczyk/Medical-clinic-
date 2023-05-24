@@ -16,9 +16,9 @@ namespace GUI_Management_of_medical_clinic
     public partial class FormDoctorCalendarModify : Form
     {
         EmployeeModel currentUser;
-        AppointmentModel appointment;
+        DoctorsDayPlanModel appointment;
 
-        public FormDoctorCalendarModify(AppointmentModel? appointment, EmployeeModel currentUser)
+        public FormDoctorCalendarModify(DoctorsDayPlanModel? appointment, EmployeeModel currentUser)
         {
             this.currentUser = currentUser;
             this.appointment = appointment;
@@ -41,7 +41,7 @@ namespace GUI_Management_of_medical_clinic
             {
                 dateTimePicker.Value = CalendarService.GetDateByIdCalendar((int)appointment.IdCalendar, appointment.IdDay);
                 comboBoxOfficeNumber.SelectedItem = appointment.IdOffice.ToString();
-                comboBoxTerm.SelectedItem = AppointmentService.GetTermByTermId(appointment.IdTerm);
+                comboBoxTerm.SelectedItem = AppointmentService.GetTermByTermId(appointment.IdOfTerm);
             }
             catch (Exception ex)
             {
@@ -63,13 +63,14 @@ namespace GUI_Management_of_medical_clinic
                 if (comboBoxOfficeNumber.SelectedIndex < 0)
                     return;
                 //ToDo available date
+                //ToDo correct office
 
 
                 string term = comboBoxTerm.SelectedItem.ToString();
                 int idTerm = AppointmentService.GetIdOfTerm(term);
 
-                AppointmentService.DoctorModifiesAppointment(appointment.IdAppointment, (int)comboBoxOfficeNumber.SelectedItem,
-                    idTerm, dateTimePicker.Value.Day);
+                //AppointmentService.DoctorModifiesAppointment(appointment.IdAppointment, (int)comboBoxOfficeNumber.SelectedItem,
+                   // idTerm, dateTimePicker.Value.Day);
 
                 MessageBox.Show("Successfully changed the data!");
 

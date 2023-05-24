@@ -16,12 +16,12 @@ namespace GUI_Management_of_medical_clinic
     public partial class FormDoctorCalendarDetails : Form
     {
         EmployeeModel currentUser;
-        AppointmentModel appointment;
+        DoctorsDayPlanModel appointment;
 
-        public FormDoctorCalendarDetails(AppointmentModel? appointment, EmployeeModel currentUser)
+        public FormDoctorCalendarDetails(DoctorsDayPlanModel? DoctorsDayPlanModel, EmployeeModel currentUser)
         {
             this.currentUser = currentUser;
-            this.appointment = appointment;
+            this.appointment = DoctorsDayPlanModel;
             InitializeComponent();
             LoadAppointmentData();
 
@@ -43,20 +43,17 @@ namespace GUI_Management_of_medical_clinic
 
         private void FormDoctorCalendarDetails_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void LoadAppointmentData()
         {
-            Patient patient = PatientService.GetPatientById((int)appointment.PatientId);
-
-            lblAppPatient.Text = "Patient: " + patient.FirstName + " " + patient.LastName;
-            lblApCost.Text = "Cost: " + appointment.Cost;
             DateTime date = CalendarService.GetDateByIdCalendar((int)appointment.IdCalendar, appointment.IdDay);
             lblAppDate.Text = "Date: " + date.ToString("dd.MM.yyyy");
-            lblTerm.Text = "Term: " + AppointmentService.GetTermByTermId(appointment.IdTerm);
+            lblTerm.Text = "Term: " + AppointmentService.GetTermByTermId(appointment.IdOfTerm).ToString();
             lblOfficeNumber.Text = "Office number: " + appointment.IdOffice.ToString();
         }
-        
+
+
     }
 }
