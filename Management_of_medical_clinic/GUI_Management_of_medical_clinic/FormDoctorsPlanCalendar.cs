@@ -5,6 +5,7 @@ using GUI_Management_of_medical_clinic;
 using Microsoft.VisualBasic.ApplicationServices;
 using System.Drawing.Text;
 using System.Globalization;
+using System.Numerics;
 using System.Windows.Forms;
 
 namespace GUI_Management_of_medical_clinic
@@ -249,7 +250,7 @@ namespace GUI_Management_of_medical_clinic
             dataGridViewAppointments.Rows.Clear();
 
             plans.ForEach(plan => {
-                dataGridViewAppointments.Rows.Add(plan.IdEmployee, plan.IdDay, DoctorsPlanService.GetTermDescription((EnumTerms)plan.IdOfTerm), PatientService.GetPatientById((int)(plan.PatientId == null ? 0 : plan.PatientId)));  //in database there is a null value at PatientId
+                dataGridViewAppointments.Rows.Add(EmployeeService.GetEmployeeByID((int)plan.IdEmployee).FullNameWithId(), plan.IdDay, DoctorsPlanService.GetTermDescription((EnumTerms)plan.IdOfTerm), PatientService.GetPatientById((int)(plan.PatientId == null ? 0 : plan.PatientId)));  //in database there is a null value at PatientId
             });
 
             //Changed as DbAppointment is not used anymore
