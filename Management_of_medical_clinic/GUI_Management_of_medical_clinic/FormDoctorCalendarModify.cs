@@ -1,4 +1,6 @@
-﻿using Console_Management_of_medical_clinic.Logic;
+﻿using Console_Management_of_medical_clinic.Data;
+using Console_Management_of_medical_clinic.Data.Enums;
+using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
 using System;
 using System.Collections.Generic;
@@ -66,11 +68,11 @@ namespace GUI_Management_of_medical_clinic
                 //ToDo correct office
 
 
-                string term = comboBoxTerm.SelectedItem.ToString();
-                int idTerm = AppointmentService.GetIdOfTerm(term);
 
-                //AppointmentService.DoctorModifiesAppointment(appointment.IdAppointment, (int)comboBoxOfficeNumber.SelectedItem,
-                   // idTerm, dateTimePicker.Value.Day);
+
+                //AppointmentService.DoctorModifiesAppointment(appointment.IdDoctorsDayPlan, (int)comboBoxOfficeNumber.SelectedItem,
+                //idTerm, dateTimePicker.Value.Day);
+                FindEditAppointemntInDataBase();
 
                 MessageBox.Show("Successfully changed the data!");
 
@@ -80,6 +82,25 @@ namespace GUI_Management_of_medical_clinic
             {
                 MessageBox.Show("Error: " + ex);
             }
+        }
+        
+        private void FindEditAppointemntInDataBase()
+        {
+            AppDbContext _context = new AppDbContext();
+            appointment = _context.DbDoctorsDayPlan.Find(appointment.IdDoctorsDayPlan);
+            ChangeOrAppointemntData();
+            _context.SaveChanges();
+        }
+
+        private void ChangeOrAppointemntData()
+        {
+            appointment.IdOffice = (int)comboBoxOfficeNumber.SelectedItem;
+
+            string term = comboBoxTerm.SelectedItem.ToString();
+            int idTerm = AppointmentService.GetIdOfTerm(term);
+
+            appointment.IdOfTerm = idTerm;
+            appointment.IdDay = dateTimePicker.Value.Day;
         }
 
         private void ToFormDetails()

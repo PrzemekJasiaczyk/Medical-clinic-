@@ -20,6 +20,7 @@ namespace Console_Management_of_medical_clinic.Logic
                 context.SaveChanges();
             }
         }
+        /*
         public static void DoctorModifiesAppointment(int idappointment, int office, int term, int day)
         {
             var context = new AppDbContext();
@@ -31,6 +32,7 @@ namespace Console_Management_of_medical_clinic.Logic
 
             context.SaveChanges();
         }
+           */
 
         public static int GetIdOfTerm(string selectedTime)
         {
