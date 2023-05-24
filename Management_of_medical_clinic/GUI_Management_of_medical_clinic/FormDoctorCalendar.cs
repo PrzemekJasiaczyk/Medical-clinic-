@@ -1,6 +1,7 @@
 using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
 using GUI_Management_of_medical_clinic;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using System.Diagnostics;
 using System.Drawing.Text;
 using System.Globalization;
@@ -18,21 +19,20 @@ namespace GUI_Management_of_medical_clinic
             this.currentUser = currentUser;
         }
 
+        //nie today tylko pierwszy do akceptacji 
         DateTime displayMonth = DateTime.Today;
 
-        List<DoctorsDayPlanModel> displayListInDataGridView = new List<DoctorsDayPlanModel>();
-        private void RemoveControlPanels()
-        {
-            flowLayoutPanelMonth.Controls.Clear();
-        }
 
-        private void FormDoctorCalendar_Load_1(object sender, EventArgs e)
+
+        List<DoctorsDayPlanModel> displayListInDataGridView = new List<DoctorsDayPlanModel>();
+
+        private void FormDoctorCalendar_Load(object sender, EventArgs e)
         {
             RemoveControlPanels();
             displayDays(displayMonth);
             ChangeTitle(displayMonth);
 
-
+            /*
             List<CalendarModel> calendars = CalendarService.GetCalendarData();
             foreach (CalendarModel calendar in calendars)
             {
@@ -42,18 +42,18 @@ namespace GUI_Management_of_medical_clinic
                     this.calendar = calendar;
                 }
             }
-
+            */
             dataGridViewAppointments.Rows.Clear();
-            dataGridViewAppointments.Columns.Add("Doctor", "Doctor");
             dataGridViewAppointments.Columns.Add("Room", "Room");
+            dataGridViewAppointments.Columns.Add("Term", "Term");
             dataGridViewAppointments.Columns.Add("Hour", "Hour");
-            dataGridViewAppointments.Columns.Add("Patient", "Patient");
 
             dataGridViewYourAppointments.Rows.Clear();
+            dataGridViewYourAppointments.Columns.Add("Doctor", "Doctor");
             dataGridViewYourAppointments.Columns.Add("Room", "Room");
             dataGridViewYourAppointments.Columns.Add("Hour", "Hour");
-            dataGridViewYourAppointments.Columns.Add("Patient", "Patient");
         }
+        #region Calendar
         private void ChangeTitle(DateTime date)
         {
             string year = date.Year.ToString();
@@ -80,7 +80,8 @@ namespace GUI_Management_of_medical_clinic
                 DateTime day = new DateTime(date.Year, date.Month, i);
 
                 UserControl userControl = createControls(day);
-                MarkPlannedDays(userControl, day);           
+                MarkPlannedDays(userControl, day);
+                MarkToday(userControl, day);
                 flowLayoutPanelMonth.Controls.Add(userControl);
             }
 
@@ -93,6 +94,11 @@ namespace GUI_Management_of_medical_clinic
             }
         }
 
+        private void RemoveControlPanels()
+        {
+            flowLayoutPanelMonth.Controls.Clear();
+        }
+        #endregion
         private void MarkToday(UserControl userControl, DateTime day)
         {
             if (day.Date == DateTime.Today.Date)
@@ -102,10 +108,11 @@ namespace GUI_Management_of_medical_clinic
         }
         private void MarkPlannedDays(UserControl userControl, DateTime day)
         {
-            List<DoctorsDayPlanModel> appointments = AppointmentService.CheckAppointmentsAndReturnList(day);
+            List<DoctorsDayPlanModel> appointments = CalendarAppointmentService.GetAppointmentsWithPatients();
+
             foreach (DoctorsDayPlanModel appointment in appointments)
             {
-                if (appointment.IdEmployee == currentUser.IdEmployee)
+                if (appointment.IdEmployee == currentUser.IdEmployee && appointment.IdDay == day.Day)
                 {
                     userControl.BackColor = Color.Orange;
                 }
@@ -132,33 +139,66 @@ namespace GUI_Management_of_medical_clinic
 
         private void UserControlDay_ControlClicked(object sender, DateTime selectedDate)
         {
-            UpdatelabelDate(selectedDate);
+            RemoveRowsInDataGridView();
+            UpdateDateInLabel(selectedDate);
+            displayListInDataGridView.Clear();
 
-            List<DoctorsDayPlanModel> appointments = AppointmentService.CheckAppointmentsAndReturnList(selectedDate);
+            int calendarId = CalendarService.GetIdFromDate(selectedDate);
 
-            dataGridViewAppointments.Rows.Clear();
-            dataGridViewYourAppointments.Rows.Clear();
+            List<DoctorsDayPlanModel> appointments = CalendarAppointmentService.GetAppointmentsWithPatients();//do poprawy
+            //List<DoctorsDayPlanModel> appointments = AppointmentService.CheckAppointmentsAndReturnList(selectedDate);
 
             foreach (DoctorsDayPlanModel appointment in appointments)
             {
-                string timeTerm = AppointmentService.GetTermByTermId(appointment.IdOfTerm);
-                //Patient patient = PatientService.GetPatientById((int)appointment.PatientId);
-
-                if (appointment.IdEmployee == currentUser.IdEmployee)
+                if (true)
                 {
-                    int index = dataGridViewYourAppointments.Rows.Add(appointment.IdOffice, timeTerm, /*patient.FirstName +*/" " /*+ patient.LastName*/);
-                    dataGridViewYourAppointments.Rows[index].Tag = appointment;
+                    DisplayDataInDataGridView(appointments, calendarId, selectedDate);
                 }
+            }
+            
+        }
+        #region DataGridView
+        private void DisplayDataInDataGridView(List<DoctorsDayPlanModel> appointments, int calendarId, DateTime selectedDate)
+        {
+            RemoveRowsInDataGridView();
 
-                dataGridViewAppointments.Rows.Add(appointment.IdEmployee, appointment.IdOffice, timeTerm, /*patient.FirstName +*/" " /*+ patient.LastName*/);
+            foreach (DoctorsDayPlanModel appointment in appointments)
+            {
+
+                if (appointment.IdDay == selectedDate.Day)
+                {
+                    if(appointment.IdEmployee == currentUser.IdEmployee)
+                    {
+                        int index = dataGridViewYourAppointments.Rows.Add(OfficeService.GetOfficeById((int)appointment.IdOffice).Number,
+                        AppointmentService.GetTermByTermId(appointment.IdOfTerm).ToString(),
+                        PatientService.GetPatientById((int)appointment.PatientId).ToString());
+                        dataGridViewYourAppointments.Rows[index].Tag = appointment;
+                    }
+                    else
+                    {
+                        int index = dataGridViewAppointments.Rows.Add(OfficeService.GetOfficeById((int)appointment.IdOffice).Number,
+                        AppointmentService.GetTermByTermId(appointment.IdOfTerm).ToString(),
+                        PatientService.GetPatientById((int)appointment.PatientId).ToString());
+                        dataGridViewAppointments.Rows[index].Tag = appointment;
+                    }
+
+                }
 
             }
         }
-
-        private void UpdatelabelDate(DateTime date)
+        private void RemoveRowsInDataGridView()
         {
-            labelDate.Text = date.ToString("d");
+            dataGridViewYourAppointments.Rows.Clear();
+            dataGridViewAppointments.Rows.Clear();
         }
+
+        #endregion
+        private void UpdateDateInLabel(DateTime date)
+        {
+            labelDate.Text = "Selected date: " + date.ToShortDateString();
+        }
+        
+
         private void buttonAccept_Click(object sender, EventArgs e) //accept calendar
         {
             FormCalendarAcceptConfirm formCalendarAcceptConfirm = new FormCalendarAcceptConfirm(calendar);
@@ -192,7 +232,7 @@ namespace GUI_Management_of_medical_clinic
             if (dataGridViewYourAppointments.SelectedRows.Count != 1)
                 return;
 
-            AppointmentModel appointment = (AppointmentModel)dataGridViewYourAppointments.SelectedRows[0].Tag;
+            DoctorsDayPlanModel appointment = (DoctorsDayPlanModel)dataGridViewYourAppointments.SelectedRows[0].Tag;
 
             FormDoctorCalendarDetails edit = new FormDoctorCalendarDetails(appointment, currentUser);
 

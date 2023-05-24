@@ -65,6 +65,12 @@
             Room = new DataGridViewTextBoxColumn();
             Term = new DataGridViewTextBoxColumn();
             Patient = new DataGridViewTextBoxColumn();
+            ColumnOffice = new DataGridViewTextBoxColumn();
+            ColumnTerm = new DataGridViewTextBoxColumn();
+            ColumnPatient = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
             panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -395,7 +401,7 @@
             dataGridViewAppointments.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewAppointments.ColumnHeadersHeight = 60;
             dataGridViewAppointments.ColumnHeadersVisible = false;
-            dataGridViewAppointments.Columns.AddRange(new DataGridViewColumn[] { Room, Term, Patient });
+            dataGridViewAppointments.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3 });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = SystemColors.Window;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
@@ -447,16 +453,14 @@
             // 
             // Room
             // 
+            Room.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             Room.HeaderText = "Room";
             Room.Name = "Room";
-            Room.ReadOnly = true;
-            Room.Width = 30;
             // 
             // Term
             // 
             Term.HeaderText = "Term";
             Term.Name = "Term";
-            Term.ReadOnly = true;
             Term.Width = 40;
             // 
             // Patient
@@ -464,7 +468,43 @@
             Patient.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Patient.HeaderText = "Patient";
             Patient.Name = "Patient";
-            Patient.ReadOnly = true;
+            // 
+            // ColumnOffice
+            // 
+            ColumnOffice.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            ColumnOffice.HeaderText = "Office";
+            ColumnOffice.Name = "ColumnOffice";
+            // 
+            // ColumnTerm
+            // 
+            ColumnTerm.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            ColumnTerm.HeaderText = "Term";
+            ColumnTerm.Name = "ColumnTerm";
+            // 
+            // ColumnPatient
+            // 
+            ColumnPatient.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            ColumnPatient.HeaderText = "Patient";
+            ColumnPatient.Name = "ColumnPatient";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewTextBoxColumn1.HeaderText = "Office";
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            dataGridViewTextBoxColumn2.HeaderText = "Term";
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            dataGridViewTextBoxColumn3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewTextBoxColumn3.HeaderText = "Patient";
+            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
             // FormDoctorCurrentCalendar
             // 
@@ -550,5 +590,11 @@
         private DataGridViewTextBoxColumn Room;
         private DataGridViewTextBoxColumn Term;
         private DataGridViewTextBoxColumn Patient;
+        private DataGridViewTextBoxColumn ColumnOffice;
+        private DataGridViewTextBoxColumn ColumnTerm;
+        private DataGridViewTextBoxColumn ColumnPatient;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
     }
 }

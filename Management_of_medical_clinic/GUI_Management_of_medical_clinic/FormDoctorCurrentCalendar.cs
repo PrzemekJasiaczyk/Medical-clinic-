@@ -34,9 +34,14 @@ namespace GUI_Management_of_medical_clinic
 
         private void ChangeTitle(DateTime date)
         {
+
             CultureInfo culture = new CultureInfo("en-US");
+
             string month = date.ToString("MMMM", culture);
+            string year = date.Year.ToString();
+
             labelTitleCalendarMonth.Text = month.ToUpper();
+            labelTitleCalendarYear.Text = year;
         }
 
         private void displayDays(DateTime date)
@@ -143,7 +148,7 @@ namespace GUI_Management_of_medical_clinic
 
             foreach (DoctorsDayPlanModel appointment in appointments)
             {
-                if (true)
+                if (true)//???
                 {
                     DisplayDataInDataGridView(appointments, calendarId, selectedDate);
                 }

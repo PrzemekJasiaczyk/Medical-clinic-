@@ -491,7 +491,7 @@
             Name = "FormDoctorCalendar";
             Text = "Calendar";
             WindowState = FormWindowState.Maximized;
-            Load += FormDoctorCalendar_Load_1;
+            Load += FormDoctorCalendar_Load;
             panelMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAppointments).EndInit();
