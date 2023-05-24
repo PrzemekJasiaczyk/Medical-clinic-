@@ -10,6 +10,7 @@ namespace Console_Management_of_medical_clinic.Logic
 {
     public class CalendarAppointmentService
     {
+        //public static Patient GetPatientDataByIdPatient(AppointmentModel appointment)?
         public static Patient GetPatientDataByIdPatient(DoctorsDayPlanModel appointment)
         {
             Patient? result = null;
@@ -37,7 +38,23 @@ namespace Console_Management_of_medical_clinic.Logic
 
             return result;
         }
+        /*
+        public static List<AppointmentModel> GetAppointmentsWithPatients()
+        {
+            List<AppointmentModel> appointments = GetAppointmentsData();
+            List<AppointmentModel> result = new List<AppointmentModel>();
 
+            foreach (AppointmentModel appointment in appointments)
+            {
+                if (appointment.PatientId != null && appointment.IsActive == false)
+                {
+                    result.Add(appointment);
+                }
+            }
+
+            return result;
+        }
+        */
         public static List<DoctorsDayPlanModel> GetAppointmentsWithPatients()
         {
             List<DoctorsDayPlanModel> appointments = GetAppointmentsData();

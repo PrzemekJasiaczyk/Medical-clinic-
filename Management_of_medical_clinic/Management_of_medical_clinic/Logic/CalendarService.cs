@@ -93,6 +93,16 @@ namespace Console_Management_of_medical_clinic.Logic
 			return GetCalendarData().FirstOrDefault(calendar => calendar.IdCalendar == id);
 		}
 
+		public static void ChangeStatusToActive(int id)//added by doctors
+        {
+            using (AppDbContext context = new AppDbContext())
+            {
+                CalendarModel calendar = context.DbCalendars.Find(id);
+				calendar.Active = true;
+                context.SaveChanges();
+            }
+        }
+
         public List<CalendarModel> Filter(string dateReference, string activityStatus)
 		{
 			List<CalendarModel> filteredCalendars = GetAll();
@@ -255,5 +265,24 @@ namespace Console_Management_of_medical_clinic.Logic
 				}
 			}
 		}
-	}
+
+		//Doctor merge with Rejestracja
+		//???
+        public static List<AppointmentModel> appointmentInSelectedDate(List<AppointmentModel> ListIn, DateTime selectedDate, int idCalendar)
+        {
+            List<AppointmentModel> result = new List<AppointmentModel>();
+
+            int idDay = selectedDate.Day;
+
+            foreach (AppointmentModel appointment in ListIn)
+            {
+                if (appointment.IdCalendar == idCalendar && appointment.IdDay == idDay)
+                {
+                    result.Add(appointment);
+                }
+            }
+
+            return result;
+        }
+    }
 }

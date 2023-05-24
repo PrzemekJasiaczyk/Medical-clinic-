@@ -16,6 +16,9 @@ namespace Console_Management_of_medical_clinic.Model
         public int? NumberOfDoctors { get; set; } = 0;
         public int? NumberOfAcceptedDoctors { get; set; } = 0;
         //Relationships
+
+        public int IdEmployee { get; set; } //added by doctors
+        public List<AppointmentModel>? AppointmentModels { get; set; }
         public List<DoctorsDayPlanModel>? DoctorsDayPlanModels { get; set; }
 
 
@@ -25,6 +28,13 @@ namespace Console_Management_of_medical_clinic.Model
         {
             DateReference = dateReference;
             Active = active;
+        }
+
+        public CalendarModel(string dateReference, bool active, int idemployee) //added by doctors
+        {
+            DateReference = dateReference;
+            Active = active;
+            IdEmployee = idemployee;
         }
     }
 }

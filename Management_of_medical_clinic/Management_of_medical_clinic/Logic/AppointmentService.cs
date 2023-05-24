@@ -73,6 +73,18 @@ namespace Console_Management_of_medical_clinic.Logic
             return appointments;
         }
 
+        public static void DoctorModifiesAppointment(int idappointment, int office, int term, int day)
+        {
+            var context = new AppDbContext();
+            var appontment = context.DbAppointments.Find(idappointment);
+
+            appontment.IdTerm = term;
+            appontment.IdOffice = office;
+            appontment.IdDay = day;
+
+            context.SaveChanges();
+        }
+
         // Validation when rescheduling
         public (bool, string) CanReschedule(DoctorsDayPlanModel appointmentRescheduled, DoctorsDayPlanModel termToReschedule)
         {
