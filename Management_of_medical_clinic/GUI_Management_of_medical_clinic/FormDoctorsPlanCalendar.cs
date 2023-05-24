@@ -7,6 +7,7 @@ using System.Drawing.Text;
 using System.Globalization;
 using System.Numerics;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace GUI_Management_of_medical_clinic
 {
@@ -15,7 +16,7 @@ namespace GUI_Management_of_medical_clinic
         EmployeeModel currentEmployee;
         bool previousMonth;
         CalendarModel duplicateCalendar;
-        string _selectedDate="";
+        string _selectedDate = "";
         DateTime displayMonth = DateTime.Today;
 
         public FormDoctorsPlanCalendar(EmployeeModel currentEmployee, bool previousMonth = false)
@@ -36,7 +37,7 @@ namespace GUI_Management_of_medical_clinic
             InitializeComponent();
             this.currentEmployee = currentEmployee;
             duplicateCalendar = calendarModel;
-            
+
             button2.Visible = false;
             button3.Visible = false;
 
@@ -69,7 +70,7 @@ namespace GUI_Management_of_medical_clinic
             throw new NotImplementedException();
         }
 
-        
+
         DateTime currentMonth = new DateTime();
 
         private void FormCalendar_Load(object sender, EventArgs e)
@@ -241,7 +242,7 @@ namespace GUI_Management_of_medical_clinic
         {
             CheckTheMonth();
             labelDate.Text = selectedDate.ToString("d");
-            _selectedDate= selectedDate.ToString("d");
+            _selectedDate = selectedDate.ToString("d");
 
             List<DoctorsDayPlanModel> plansDuplicated = DoctorsPlanService.CheckPlansAndReturnForADay(selectedDate, duplicateCalendar == null ? 0 : duplicateCalendar.IdCalendar);
             List<DoctorsDayPlanModel> plansOriginal = DoctorsPlanService.CheckPlansAndReturnForADay(selectedDate, CalendarService.GetCalendarIdByDate(displayMonth.ToString("d")));
@@ -249,7 +250,8 @@ namespace GUI_Management_of_medical_clinic
 
             dataGridViewAppointments.Rows.Clear();
 
-            plans.ForEach(plan => {
+            plans.ForEach(plan =>
+            {
                 dataGridViewAppointments.Rows.Add(EmployeeService.GetEmployeeByID((int)plan.IdEmployee).FullNameWithId(), plan.IdDay, DoctorsPlanService.GetTermDescription((EnumTerms)plan.IdOfTerm), PatientService.GetPatientById((int)(plan.PatientId == null ? 0 : plan.PatientId)));  //in database there is a null value at PatientId
             });
 
@@ -266,6 +268,21 @@ namespace GUI_Management_of_medical_clinic
             //}
         }
 
+        public static int ExtractIdFromDataGridView(string input)
+        {
+            string numberString = Regex.Match(input, @"\d+").Value;
+            int number;
+
+            if (int.TryParse(numberString, out number))
+            {
+                return number;
+            }
+            else
+            {
+                return -1; 
+            }
+        }
+
 
         #endregion
 
@@ -274,7 +291,7 @@ namespace GUI_Management_of_medical_clinic
         {
             if (_selectedDate.Length != 0)
             {
-                
+
                 if (CalendarService.checkIfCalendarExists(_selectedDate) == true)
                 {
                     FormDoctorsDayPlanAdd formAppointmentAdd = new FormDoctorsDayPlanAdd(DateTime.Parse(labelDate.Text), currentEmployee);
@@ -329,8 +346,9 @@ namespace GUI_Management_of_medical_clinic
             CalendarService.AddCalendar(new CalendarModel(monthAndYear, false));
 
             List<DoctorsDayPlanModel> plans = new List<DoctorsDayPlanModel>();
-            DoctorsPlanService.CheckPlansAndReturnForAMonth(duplicateCalendar.IdCalendar).ForEach(plan => {
-                if (!CheckTheHoliday(new DateTime(int.Parse(displayMonth.ToString("yyyy")), int.Parse(displayMonth.ToString("MM")), plan.IdDay))) 
+            DoctorsPlanService.CheckPlansAndReturnForAMonth(duplicateCalendar.IdCalendar).ForEach(plan =>
+            {
+                if (!CheckTheHoliday(new DateTime(int.Parse(displayMonth.ToString("yyyy")), int.Parse(displayMonth.ToString("MM")), plan.IdDay)))
                 {
                     plan.IdCalendar = CalendarService.GetCalendarIdByDate(displayMonth.ToString("d"));
                     plan.IdDoctorsDayPlan = 0;
@@ -347,7 +365,7 @@ namespace GUI_Management_of_medical_clinic
 
         }
 
-        private void editCalendar_Click(object sender, EventArgs e) 
+        private void editCalendar_Click(object sender, EventArgs e)
         {
             if (CalendarService.GetCalendarById(CalendarService.GetCalendarIdByDate(displayMonth.ToString("d"))).Active)
             {
@@ -371,7 +389,7 @@ namespace GUI_Management_of_medical_clinic
             previousMonth = false;
         }
 
-        private bool CheckTheHoliday(DateTime date) 
+        private bool CheckTheHoliday(DateTime date)
         {
             DateTime[] holidays = new DateTime[] {
                 new DateTime(displayMonth.Year, 1, 1),  // Nowy Rok
@@ -389,6 +407,38 @@ namespace GUI_Management_of_medical_clinic
             };
 
             return holidays.ToList().Contains(date);
+        }
+
+        private void buttonEditPlan_Click(object sender, EventArgs e)
+        {
+            string selectedDoctor = null;
+
+            if (dataGridViewAppointments.RowCount > 0)
+            {
+                if (dataGridViewAppointments.CurrentRow != null && dataGridViewAppointments.CurrentRow.Cells[0].Value != null)
+                {
+                    selectedDoctor = dataGridViewAppointments.CurrentRow.Cells[0].Value.ToString();
+                }
+            }
+
+            if (!string.IsNullOrEmpty(selectedDoctor))
+            {
+                int selectedDoctorId = ExtractIdFromDataGridView(selectedDoctor);
+
+                if (_selectedDate.Length != 0 && CalendarService.checkIfCalendarExists(_selectedDate) == true)
+                {
+                    FormDoctorsDayPlanEdit formAppointmentEdit = new FormDoctorsDayPlanEdit(DateTime.Parse(labelDate.Text), currentEmployee, selectedDoctorId);
+                    formAppointmentEdit.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("A calendar hasn't been started for the given month");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a doctor.");
+            }
         }
     }
 }
