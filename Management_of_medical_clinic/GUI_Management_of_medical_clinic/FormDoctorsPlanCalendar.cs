@@ -43,8 +43,8 @@ namespace GUI_Management_of_medical_clinic
 
             displayMonth = DateTime.Today.AddMonths(1);
 
-            createCalendarButton.Click -= createCalendarButton_Click;
-            createCalendarButton.Click += duplicateCalendar_Click;
+            buttonCreateCalendar.Click -= createCalendarButton_Click;
+            buttonCreateCalendar.Click += duplicateCalendar_Click;
 
         }
 
@@ -59,9 +59,9 @@ namespace GUI_Management_of_medical_clinic
             button2.Visible = false;
             button3.Visible = false;
 
-            createCalendarButton.Text = "Edit Calendar";
-            createCalendarButton.Click -= createCalendarButton_Click;
-            createCalendarButton.Click += editCalendar_Click;
+            buttonCreateCalendar.Text = "Edit Calendar";
+            buttonCreateCalendar.Click -= createCalendarButton_Click;
+            buttonCreateCalendar.Click += editCalendar_Click;
 
         }
 
@@ -75,6 +75,8 @@ namespace GUI_Management_of_medical_clinic
 
         private void FormCalendar_Load(object sender, EventArgs e)
         {
+            updateLabeCalendarExists();
+
             RemoveControlPanels();
             displayDays(displayMonth);
             ChangeTitle(displayMonth);
@@ -103,6 +105,8 @@ namespace GUI_Management_of_medical_clinic
 
             displayDays(displayMonth);
             ChangeTitle(displayMonth);
+
+            updateLabeCalendarExists();
         }
 
         private void buttonNextMonth_Click(object sender, EventArgs e)
@@ -113,6 +117,8 @@ namespace GUI_Management_of_medical_clinic
 
             displayDays(displayMonth);
             ChangeTitle(displayMonth);
+
+            updateLabeCalendarExists();
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
@@ -281,7 +287,7 @@ namespace GUI_Management_of_medical_clinic
             }
             else
             {
-                return -1; 
+                return -1;
             }
         }
 
@@ -389,6 +395,28 @@ namespace GUI_Management_of_medical_clinic
 
             }
             previousMonth = false;
+        }
+
+        private void updateLabeCalendarExists()
+        {
+            string month = displayMonth.ToString("MM");
+            string year = displayMonth.ToString("yyyy");
+            string monthAndYear = month + "-" + year;
+            if (CalendarService.checkIfCalendarExistsCalendarAdd(monthAndYear))
+            {
+                //MessageBox.Show(monthAndYear);
+                labelCalendarExists.Text = "Calendar created";
+                labelCalendarExists.ForeColor = Color.GreenYellow;
+                buttonAddAppointment.Enabled = true;
+                buttonCreateCalendar.Enabled = false;
+            }
+            else
+            {
+                labelCalendarExists.Text = "Calendar not created";
+                labelCalendarExists.ForeColor = Color.IndianRed;
+                buttonAddAppointment.Enabled = false;
+                buttonCreateCalendar.Enabled = true;
+            }
         }
 
         private bool CheckTheHoliday(DateTime date)
