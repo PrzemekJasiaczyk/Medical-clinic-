@@ -13,6 +13,7 @@ namespace GUI_Management_of_medical_clinic
     {
         EmployeeModel currentUser;
         CalendarModel calendar;
+        string _selectedDate = "";
         public FormDoctorCalendar(EmployeeModel currentUser)
         {
             InitializeComponent();
@@ -49,7 +50,7 @@ namespace GUI_Management_of_medical_clinic
             dataGridViewAppointments.Columns.Add("Hour", "Hour");
 
             dataGridViewYourAppointments.Rows.Clear();
-            dataGridViewYourAppointments.Columns.Add("x", "x");
+            dataGridViewYourAppointments.Columns.Add("Doctor", "Doctor");
             dataGridViewYourAppointments.Columns.Add("Room", "Room");
             dataGridViewYourAppointments.Columns.Add("Hour", "Hour");
         }
@@ -204,7 +205,8 @@ namespace GUI_Management_of_medical_clinic
         #endregion
         private void UpdateDateInLabel(DateTime date)
         {
-            labelDate.Text = "Selected date: " + date.ToShortDateString();
+            labelDate.Text = date.ToString("d");
+            _selectedDate = date.ToString("d");
         }
 
 
@@ -270,5 +272,21 @@ namespace GUI_Management_of_medical_clinic
             displayDays(displayMonth);
             ChangeTitle(displayMonth);
         }
+
+        private void buttonAddAppointment_Click(object sender, EventArgs e)
+        {
+            if (_selectedDate.Length != 0)
+            {
+                FormDoctorCalendarModify formDoctorCalendarModify = new FormDoctorCalendarModify(null, currentUser, true, DateTime.Parse(labelDate.Text));
+                this.Hide();
+                formDoctorCalendarModify.ShowDialog();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("A term needs to be selected");
+            }
+        }
+
     }
 }

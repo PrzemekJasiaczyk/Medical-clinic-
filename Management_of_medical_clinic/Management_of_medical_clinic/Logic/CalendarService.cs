@@ -266,8 +266,7 @@ namespace Console_Management_of_medical_clinic.Logic
 			}
 		}
 
-		//Doctor merge with Rejestracja
-		//???
+		
         public static List<AppointmentModel> appointmentInSelectedDate(List<AppointmentModel> ListIn, DateTime selectedDate, int idCalendar)
         {
             List<AppointmentModel> result = new List<AppointmentModel>();
