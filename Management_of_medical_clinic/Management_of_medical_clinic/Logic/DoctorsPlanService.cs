@@ -141,7 +141,7 @@ namespace Console_Management_of_medical_clinic.Logic
             {
                 if (!existingTerms.Contains(i))
                 {
-                    DoctorsDayPlanModel newPlan = new DoctorsDayPlanModel(i, idDay, idCalendar, idEmployee, idOffice);
+                    DoctorsDayPlanModel newPlan = new DoctorsDayPlanModel(i, idDay, idCalendar, idEmployee, idOffice, EnumAppointmentStatus.New);
                     AddPlan(newPlan);
                 }
             }
