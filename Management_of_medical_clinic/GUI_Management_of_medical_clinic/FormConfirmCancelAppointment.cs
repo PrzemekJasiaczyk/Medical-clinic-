@@ -1,4 +1,5 @@
 ﻿using Console_Management_of_medical_clinic.Data;
+using Console_Management_of_medical_clinic.Data.Enums;
 using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
 using Microsoft.EntityFrameworkCore;
@@ -18,12 +19,14 @@ namespace GUI_Management_of_medical_clinic
     {
         EmployeeModel currentUser;
         DoctorsDayPlanModel appointment;
+        private string source;
 
-        public FormConfirmCancelAppointment(EmployeeModel currentUser, DoctorsDayPlanModel appointment)
+        public FormConfirmCancelAppointment(string source, EmployeeModel currentUser, DoctorsDayPlanModel appointment)
         {
             InitializeComponent();
             this.currentUser = currentUser;
             this.appointment = appointment;
+            this.source = source;
         }
 
         private void buttonConfirm_Click(object sender, EventArgs e)
@@ -38,19 +41,29 @@ namespace GUI_Management_of_medical_clinic
                 return;
             }
 
-            using (AppDbContext _context = new AppDbContext())
+            using (AppDbContext context = new AppDbContext())
             {
-                appointment.PatientId = null;
-                // TODO: Naprawić IsActive
-                //appointment.IsActive = true;
+                if (source == "cancel")
+                {
+                    appointment.PatientId = null;
+                    appointment.Status = EnumAppointmentStatus.Cancelled;
 
-                _context.Entry(appointment).State = EntityState.Modified;
-                _context.SaveChanges();
+                    context.Entry(appointment).State = EntityState.Modified;
+                    context.SaveChanges();
+
+                    string msg2 = "Appointment cancelled.";
+                    FormMessage formMessage2 = new FormMessage(msg2);
+                    formMessage2.ShowDialog();
+                }
+                else if (source == "clear from appointment" || source == "clear from calendar")
+                {
+                    DoctorsDayPlanModel.RemoveDoctorsDayPlanModel(context);
+
+                    string msg3 = "The calendar has been cleared.";
+                    FormMessage formMessage3 = new FormMessage(msg3);
+                    formMessage3.ShowDialog();
+                }
             }
-
-            string msg2 = "Appointment cancelled.";
-            FormMessage formMessage2 = new FormMessage(msg2);
-            formMessage2.ShowDialog();
 
             List<Form> otwarteOkna = new List<Form>(Application.OpenForms.Cast<Form>());
 
@@ -58,9 +71,17 @@ namespace GUI_Management_of_medical_clinic
             {
                 otwarteOkno.Hide();
             }
-
-            FormListAppointment formListAppointment = new FormListAppointment(currentUser);
-            formListAppointment.ShowDialog();
+            
+            if (source == "cancel" || source == "clear from appointment")
+            {
+                FormListAppointment formListAppointment = new FormListAppointment(currentUser);
+                formListAppointment.ShowDialog();
+            }
+            else if (source == "clear from calendar")
+            {
+                FormCalendarsList formCalendarsList = new(currentUser);
+                formCalendarsList.ShowDialog();
+            }
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -72,8 +93,24 @@ namespace GUI_Management_of_medical_clinic
                 otwarteOkno.Hide();
             }
 
-            FormListAppointment formListAppointment = new FormListAppointment(currentUser);
-            formListAppointment.ShowDialog();
+            if (source == "cancel" || source == "clear from appointment")
+            {
+                FormListAppointment formListAppointment = new FormListAppointment(currentUser);
+                formListAppointment.ShowDialog();
+            }
+            else if (source == "clear from calendar")
+            {
+                FormCalendarsList formCalendarsList = new(currentUser);
+                formCalendarsList.ShowDialog();
+            }
+        }
+
+        private void FormConfirmCancelAppointment_Load(object sender, EventArgs e)
+        {
+            if (source == "clear from calendar" || source == "clear from appointment")
+            {
+                label1.Text = "Confirm calendar cleaning. Input password:";
+            }
         }
     }
 }
