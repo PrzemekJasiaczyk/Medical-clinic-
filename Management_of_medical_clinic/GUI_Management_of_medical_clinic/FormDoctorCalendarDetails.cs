@@ -28,7 +28,7 @@ namespace GUI_Management_of_medical_clinic
         }
         private void buttonBack_Click(object sender, EventArgs e)
         {
-            FormDoctorCalendar formDoctorCalendar = new FormDoctorCalendar(currentUser);
+            FormDoctorCalendar formDoctorCalendar = new FormDoctorCalendar(currentUser,appointment);
             this.Hide();
             formDoctorCalendar.ShowDialog();
             this.Close();

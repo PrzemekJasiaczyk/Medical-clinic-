@@ -1,6 +1,6 @@
 ﻿namespace GUI_Management_of_medical_clinic
 {
-    partial class FormCalendarRejectConfirm
+    partial class FormDoctorCalendarRejectConfirm
     {
         /// <summary>
         /// Required designer variable.
@@ -62,8 +62,9 @@
             this.buttonConfirm.TabIndex = 12;
             this.buttonConfirm.Text = "Confirm";
             this.buttonConfirm.UseVisualStyleBackColor = true;
+            this.buttonConfirm.Click += new System.EventHandler(this.buttonConfirm_Click);
             // 
-            // FormCalendarRejectConfirm
+            // FormDoctorCalendarRejectConfirm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -71,8 +72,8 @@
             this.Controls.Add(this.buttonConfirm);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.label1);
-            this.Name = "FormCalendarRejectConfirm";
-            this.Text = "FormCalendarRejectConfirm";
+            this.Name = "FormDoctorCalendarRejectConfirm";
+            this.Text = "FormDoctorCalendarRejectConfirm";
             this.ResumeLayout(false);
             this.PerformLayout();
 

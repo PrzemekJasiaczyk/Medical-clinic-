@@ -12,29 +12,28 @@ using System.Windows.Forms;
 
 namespace GUI_Management_of_medical_clinic
 {
-    public partial class FormCalendarRejectConfirm : Form
+    public partial class FormDoctorCalendarRejectConfirm : Form
     {
+        EmployeeModel currentUser;
         CalendarModel calendar;
-        public FormCalendarRejectConfirm()
+        public FormDoctorCalendarRejectConfirm(CalendarModel calendar, EmployeeModel currentUser)
         {
             InitializeComponent();
-        }
-
-        public FormCalendarRejectConfirm(CalendarModel calendar)
-        {
-            this.calendar=calendar;
-            InitializeComponent();
+            this.calendar = calendar;
+            this.currentUser = currentUser;
+           
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Cancelled calendar's rejecting");
             Hide();
             Close();
         }
 
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
-            //changing status in progress...
+            CalendarService.ChangeStatusToRejected(calendar.IdCalendar,currentUser);
             MessageBox.Show("Calendar is rejected");
             Hide();
             Close();

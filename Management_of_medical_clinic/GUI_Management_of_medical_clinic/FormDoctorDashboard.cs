@@ -1,4 +1,6 @@
-﻿using Console_Management_of_medical_clinic.Logic;
+﻿using Console_Management_of_medical_clinic.Data.Enums;
+using Console_Management_of_medical_clinic.Logic;
+using Console_Management_of_medical_clinic.Migrations;
 using Console_Management_of_medical_clinic.Model;
 using Microsoft.VisualBasic;
 using System;
@@ -16,11 +18,8 @@ namespace GUI_Management_of_medical_clinic
     public partial class FormDoctorDashboard : Form
     {
         EmployeeModel currentUser;
-
-        public FormDoctorDashboard()
-        {
-            InitializeComponent();
-        }
+        DoctorsDayPlanModel doctorDayPlanModel;
+        CalendarModel calendar;
 
         public FormDoctorDashboard(EmployeeModel currentUser)
         {
@@ -31,27 +30,29 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonCalendar_Click(object sender, EventArgs e)
         {
-            bool isNewCalendar = true;
-            //roboczo dałem true
-            //bool isNewCalendar = false; 
-            List<CalendarModel> calendars = CalendarService.GetCalendarData();
-            
-            foreach (CalendarModel calendar in calendars)
-            {                
-                if (calendar.IdEmployee == currentUser.IdEmployee && calendar.Active == false)
-                {
-                    isNewCalendar = true;        
+            bool isNewCalendar = false; 
+            List<DoctorsDayPlanModel> doctorsDayPlanModels = DoctorsPlanService.GetDoctorsPlanData();
+            int cal_id= CalendarService.GetCalendarIdByDate(DateTime.Today.ToString("d"));
+            calendar = CalendarService.GetCalendarById(cal_id);
+            foreach (DoctorsDayPlanModel doctorsDayPlanModel in doctorsDayPlanModels)
+            {
+                if (doctorsDayPlanModel.IdEmployee == currentUser.IdEmployee 
+                    && doctorsDayPlanModel.Status == EnumAppointmentStatus.Inactive 
+                    && doctorsDayPlanModel.IdCalendar==cal_id)
+                {      
+                    isNewCalendar = true;
+                    doctorDayPlanModel = doctorsDayPlanModel;                  
                 }
             }
             if (isNewCalendar == true)
             {
-                FormDoctorCalendar formDoctor = new FormDoctorCalendar(currentUser);
+                FormDoctorCalendar formDoctor = new FormDoctorCalendar(currentUser,calendar);
                 formDoctor.ShowDialog();
                 this.Close();
             }
             else
             {
-                MessageBox.Show("You don't have any new calendar to check", "Information", MessageBoxButtons.OK);
+                MessageBox.Show("You don't have any new calendar to accept", "Information", MessageBoxButtons.OK);
             }           
             
         }
@@ -76,7 +77,7 @@ namespace GUI_Management_of_medical_clinic
             string currentMonthYear = DateTime.Today.ToString("MM-yyyy");
 
 
-            List<CalendarModel> calendars = CalendarService.GetCalendarData();
+            /*List<CalendarModel> calendars = CalendarService.GetCalendarData();
             foreach (CalendarModel calendar in calendars)
             {
                 if (calendar.IdEmployee == currentUser.IdEmployee && 
@@ -86,7 +87,7 @@ namespace GUI_Management_of_medical_clinic
                     isCurrentCalendar = true;
                     break;
                 }
-            }
+            } narazie zakomentowalam bo naprawiam swoje XD*/
 
             if (isCurrentCalendar)
             {

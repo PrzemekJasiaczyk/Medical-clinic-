@@ -13,15 +13,23 @@ namespace GUI_Management_of_medical_clinic
     {
         EmployeeModel currentUser;
         CalendarModel calendar;
-        public FormDoctorCalendar(EmployeeModel currentUser)
+        DoctorsDayPlanModel appointment;
+        public FormDoctorCalendar(EmployeeModel currentUser, CalendarModel calendar)
         {
             InitializeComponent();
             this.currentUser = currentUser;
+            this.calendar=calendar;
+        }
+
+        public FormDoctorCalendar(EmployeeModel currentUser, DoctorsDayPlanModel appointment)
+        {
+            InitializeComponent();
+            this.currentUser = currentUser;
+            this.appointment = appointment;
         }
 
         //nie today tylko pierwszy do akceptacji 
         DateTime displayMonth = DateTime.Today;
-
 
 
         List<DoctorsDayPlanModel> displayListInDataGridView = new List<DoctorsDayPlanModel>();
@@ -135,8 +143,6 @@ namespace GUI_Management_of_medical_clinic
             }
         }
 
-
-
         private void UserControlDay_ControlClicked(object sender, DateTime selectedDate)
         {
             RemoveRowsInDataGridView();
@@ -201,7 +207,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonAccept_Click(object sender, EventArgs e) //accept calendar
         {
-            FormCalendarAcceptConfirm formCalendarAcceptConfirm = new FormCalendarAcceptConfirm(calendar);
+            FormDoctorCalendarAcceptConfirm formCalendarAcceptConfirm = new FormDoctorCalendarAcceptConfirm(calendar, currentUser);
             formCalendarAcceptConfirm.ShowDialog();
             this.Hide();
             FormDoctorDashboard formDoctorDashboard = new FormDoctorDashboard(currentUser);
@@ -212,8 +218,8 @@ namespace GUI_Management_of_medical_clinic
         private void buttonReject_Click(object sender, EventArgs e) //reject calendar
         {
             
-            FormCalendarRejectConfirm formCalendarRejectConfirm = new FormCalendarRejectConfirm(calendar);
-            formCalendarRejectConfirm.ShowDialog();
+            FormDoctorCalendarRejectConfirm formDoctorCalendarRejectConfirm = new FormDoctorCalendarRejectConfirm(calendar, currentUser);
+            formDoctorCalendarRejectConfirm.ShowDialog();
             this.Hide();
             FormDoctorDashboard formDoctorDashboard = new FormDoctorDashboard(currentUser);
             formDoctorDashboard.ShowDialog();
@@ -259,6 +265,11 @@ namespace GUI_Management_of_medical_clinic
 
             displayDays(displayMonth);
             ChangeTitle(displayMonth);
+        }
+
+        private void buttonModify_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

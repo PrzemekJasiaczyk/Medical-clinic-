@@ -12,28 +12,27 @@ using System.Windows.Forms;
 
 namespace GUI_Management_of_medical_clinic
 {
-    public partial class FormCalendarAcceptConfirm : Form
+    public partial class FormDoctorCalendarAcceptConfirm : Form
     {
         CalendarModel calendar;
-        public FormCalendarAcceptConfirm()
-        {
-            InitializeComponent();
-        }
+        EmployeeModel currentUser;
 
-        public FormCalendarAcceptConfirm(CalendarModel calendar)
+        public FormDoctorCalendarAcceptConfirm(CalendarModel calendar, EmployeeModel currentUser)
         {
             InitializeComponent();
             this.calendar = calendar;
+            this.currentUser = currentUser;
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Canceled calendar's accepting");
             Hide();
         }
 
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
-            CalendarService.ChangeStatusToActive(calendar.IdCalendar);
+            CalendarService.ChangeStatusToActive(calendar.IdCalendar,currentUser);
             MessageBox.Show("Calendar is accepted");
             Hide();
             Close();

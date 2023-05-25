@@ -93,13 +93,40 @@ namespace Console_Management_of_medical_clinic.Logic
 			return GetCalendarData().FirstOrDefault(calendar => calendar.IdCalendar == id);
 		}
 
-		public static void ChangeStatusToActive(int id)//added by doctors
+		public static void ChangeStatusToActive(int calendar_id, EmployeeModel employee)//added by doctors
         {
             using (AppDbContext context = new AppDbContext())
             {
-                CalendarModel calendar = context.DbCalendars.Find(id);
-				calendar.Active = true;
+                List<DoctorsDayPlanModel> ListdoctorsDayPlanModel = DoctorsPlanService.GetPlansByCalendarId(calendar_id);
+				foreach (DoctorsDayPlanModel ddpm in ListdoctorsDayPlanModel)
+				{
+					context.DbDoctorsDayPlan.Update(ddpm);
+					if (employee.IdEmployee == ddpm.IdEmployee)
+					{
+                        ddpm.Status = EnumAppointmentStatus.Accepted;
+                    }
+                    context.SaveChanges();
+                }
+				CalendarModel calendar = CalendarService.GetCalendarById(calendar_id);
+				context.DbCalendars.Update(calendar);
+				calendar.NumberOfAcceptedDoctors =+ 1;
                 context.SaveChanges();
+            }
+        }
+        public static void ChangeStatusToRejected(int calendar_id, EmployeeModel employee)//added by doctors
+        {
+            using (AppDbContext context = new AppDbContext())
+            {
+                List<DoctorsDayPlanModel> ListdoctorsDayPlanModel = DoctorsPlanService.GetPlansByCalendarId(calendar_id);
+                foreach (DoctorsDayPlanModel ddpm in ListdoctorsDayPlanModel)
+                {
+                    context.DbDoctorsDayPlan.Update(ddpm);
+                    if (employee.IdEmployee == ddpm.IdEmployee)
+                    {
+                        ddpm.Status = EnumAppointmentStatus.Cancelled; //not sure if it should work like this ~
+                    }
+                    context.SaveChanges();
+                }
             }
         }
 

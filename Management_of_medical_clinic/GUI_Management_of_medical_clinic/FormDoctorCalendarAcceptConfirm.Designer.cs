@@ -1,6 +1,6 @@
 ﻿namespace GUI_Management_of_medical_clinic
 {
-    partial class FormCalendarAcceptConfirm
+    partial class FormDoctorCalendarAcceptConfirm
     {
         /// <summary>
         /// Required designer variable.
