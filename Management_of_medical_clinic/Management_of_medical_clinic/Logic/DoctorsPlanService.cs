@@ -93,6 +93,62 @@ namespace Console_Management_of_medical_clinic.Logic
             context.SaveChanges();
         }
 
+        public static void DeletePlan(int idDoctorsDayPlan)
+        {
+            using (AppDbContext context = new AppDbContext())
+            {
+                DoctorsDayPlanModel plan = context.DbDoctorsDayPlan.Find(idDoctorsDayPlan);
+                context.DbDoctorsDayPlan.Remove(plan);
+                context.SaveChanges();
+            }
+        }
+
+        public static string EditPlans(List<int> checkedTerms, int idDay, int idCalendar, int idEmployee, int idOffice)
+        {
+            List<DoctorsDayPlanModel> doctorsPlans = GetDoctorsPlanData();
+            List<int> existingTerms = new List<int>();
+
+            if (checkedTerms.Count == 0)
+            {
+                foreach (DoctorsDayPlanModel plan in doctorsPlans)
+                {
+                    if (plan.IdEmployee == idEmployee && plan.IdDay == idDay && plan.IdCalendar == idCalendar)
+                    {
+                        DeletePlan(plan.IdDoctorsDayPlan);
+                    }
+                }
+
+                return "All plans for that day have been canceled for this doctor.";
+            }
+
+            foreach (DoctorsDayPlanModel plan in doctorsPlans)
+            {
+                if (plan.IdEmployee == idEmployee && plan.IdDay == idDay && plan.IdCalendar == idCalendar)
+                {
+                    if (checkedTerms.Contains(plan.IdOfTerm))
+                    {
+                        EditPlan(plan.IdDoctorsDayPlan, plan.IdOfTerm, idOffice);
+                        existingTerms.Add(plan.IdOfTerm);
+                    }
+                    else
+                    {
+                        DeletePlan(plan.IdDoctorsDayPlan);
+                    }
+                }
+            }
+
+            foreach (int i in checkedTerms)
+            {
+                if (!existingTerms.Contains(i))
+                {
+                    DoctorsDayPlanModel newPlan = new DoctorsDayPlanModel(i, idDay, idCalendar, idEmployee, idOffice);
+                    AddPlan(newPlan);
+                }
+            }
+
+            return "Plan edited successfully";
+        }
+
         public static string GetTermDescription(Enum value)
         {
             var field = value.GetType().GetField(value.ToString());

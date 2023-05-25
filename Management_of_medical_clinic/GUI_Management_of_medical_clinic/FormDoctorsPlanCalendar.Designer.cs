@@ -57,6 +57,7 @@
             label4 = new Label();
             panel8 = new Panel();
             label5 = new Label();
+            buttonEditPlan = new Button();
             panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAppointments).BeginInit();
@@ -139,7 +140,7 @@
             // 
             // buttonAddAppointment
             // 
-            buttonAddAppointment.Location = new Point(1628, 946);
+            buttonAddAppointment.Location = new Point(1628, 923);
             buttonAddAppointment.Name = "buttonAddAppointment";
             buttonAddAppointment.Size = new Size(225, 78);
             buttonAddAppointment.TabIndex = 15;
@@ -165,7 +166,7 @@
             dataGridViewAppointments.Name = "dataGridViewAppointments";
             dataGridViewAppointments.ReadOnly = true;
             dataGridViewAppointments.RowTemplate.Height = 25;
-            dataGridViewAppointments.SelectionMode = DataGridViewSelectionMode.CellSelect;
+            dataGridViewAppointments.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewAppointments.Size = new Size(345, 538);
             dataGridViewAppointments.TabIndex = 19;
             // 
@@ -206,7 +207,9 @@
             labelTitleCalendar_Month.AutoSize = true;
             labelTitleCalendar_Month.BackColor = Color.White;
             labelTitleCalendar_Month.Font = new Font("Segoe UI", 30F, FontStyle.Bold, GraphicsUnit.Point);
+
             labelTitleCalendar_Month.Location = new Point(482, 27);
+
             labelTitleCalendar_Month.Name = "labelTitleCalendar_Month";
             labelTitleCalendar_Month.Size = new Size(149, 54);
             labelTitleCalendar_Month.TabIndex = 10;
@@ -218,7 +221,9 @@
             labelTitleCalendar_Year.AutoSize = true;
             labelTitleCalendar_Year.BackColor = Color.White;
             labelTitleCalendar_Year.Font = new Font("Segoe UI", 40F, FontStyle.Bold, GraphicsUnit.Point);
+
             labelTitleCalendar_Year.Location = new Point(328, 12);
+
             labelTitleCalendar_Year.Name = "labelTitleCalendar_Year";
             labelTitleCalendar_Year.Size = new Size(154, 72);
             labelTitleCalendar_Year.TabIndex = 17;
@@ -240,6 +245,7 @@
             buttonToday.Click += buttonToday_Click;
             // 
             // panel9
+
             // 
             panel9.BackColor = Color.White;
             panel9.Controls.Add(buttonToday);
@@ -407,12 +413,14 @@
             label5.TabIndex = 7;
             label5.Text = "Sat";
             label5.TextAlign = ContentAlignment.MiddleCenter;
+
             // 
-            // FormCalendar
+            // FormDoctorsPlanCalendar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1920, 1080);
+            Controls.Add(buttonEditPlan);
             Controls.Add(panel2);
             Controls.Add(panel3);
             Controls.Add(panel4);
@@ -428,7 +436,7 @@
             Controls.Add(panelMenu);
             Controls.Add(panel9);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "FormCalendar";
+            Name = "FormDoctorsPlanCalendar";
             Text = "Calendar";
             WindowState = FormWindowState.Maximized;
             Load += FormCalendar_Load;
@@ -486,5 +494,6 @@
         private Label label5;
         private PictureBox pictureBox1;
         private Button buttonExit;
+        private Button buttonEditPlan;
     }
 }

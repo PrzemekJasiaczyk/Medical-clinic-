@@ -5,7 +5,9 @@ using GUI_Management_of_medical_clinic;
 using Microsoft.VisualBasic.ApplicationServices;
 using System.Drawing.Text;
 using System.Globalization;
+using System.Numerics;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace GUI_Management_of_medical_clinic
 {
@@ -206,17 +208,17 @@ namespace GUI_Management_of_medical_clinic
 
             DateTime[] holidays = new DateTime[] {
                 new DateTime(2023, 1, 1),  // Nowy Rok
-                new DateTime(2023, 1, 6),  // Œwiêto Trzech Króli
-                new DateTime(2023, 4, 17), // Poniedzia³ek Wielkanocny
-                new DateTime(2023, 5, 1),  // Œwiêto Pracy
-                new DateTime(2023, 5, 3),  // Œwiêto Konstytucji 3 Maja
-                new DateTime(2023, 6, 4),  // Zes³anie Ducha Œwiêtego
-                new DateTime(2023, 6, 15), // Bo¿e Cia³o
-                new DateTime(2023, 8, 15), // Wniebowziêcie Najœwiêtszej Maryi Panny
-                new DateTime(2023, 11, 1), // Wszystkich Œwiêtych
-                new DateTime(2023, 11, 11), // Œwiêto Niepodleg³oœci
-                new DateTime(2023, 12, 25), // Bo¿e Narodzenie (pierwszy dzieñ)
-                new DateTime(2023, 12, 26), // Bo¿e Narodzenie (drugi dzieñ)
+                new DateTime(2023, 1, 6),  // Å’wiÃªto Trzech KrÃ³li
+                new DateTime(2023, 4, 17), // PoniedziaÂ³ek Wielkanocny
+                new DateTime(2023, 5, 1),  // Å’wiÃªto Pracy
+                new DateTime(2023, 5, 3),  // Å’wiÃªto Konstytucji 3 Maja
+                new DateTime(2023, 6, 4),  // ZesÂ³anie Ducha Å’wiÃªtego
+                new DateTime(2023, 6, 15), // BoÂ¿e CiaÂ³o
+                new DateTime(2023, 8, 15), // WniebowziÃªcie NajÅ“wiÃªtszej Maryi Panny
+                new DateTime(2023, 11, 1), // Wszystkich Å’wiÃªtych
+                new DateTime(2023, 11, 11), // Å’wiÃªto NiepodlegÂ³oÅ“ci
+                new DateTime(2023, 12, 25), // BoÂ¿e Narodzenie (pierwszy dzieÃ±)
+                new DateTime(2023, 12, 26), // BoÂ¿e Narodzenie (drugi dzieÃ±)
             };
 
             //DateTime[] holidays = calendar.GetHolidays(year);
@@ -250,7 +252,9 @@ namespace GUI_Management_of_medical_clinic
 
             plans.ForEach(plan =>
             {
+
                 dataGridViewAppointments.Rows.Add(plan.IdEmployee, plan.IdDay, DoctorsPlanService.GetTermDescription((EnumTerms)plan.IdOfTerm), PatientService.GetPatientById((int)(plan.PatientId == null ? 0 : plan.PatientId)));  //in database there is a null value at PatientId
+
             });
 
             //Changed as DbAppointment is not used anymore
@@ -264,6 +268,21 @@ namespace GUI_Management_of_medical_clinic
             //    Patient patient = PatientService.GetPatientById((int)appointment.PatientId);
             //    dataGridViewAppointments.Rows.Add(appointment.IdEmployee, appointment.IdDay, timeTerm, patient.FirstName + " " + patient.LastName);
             //}
+        }
+
+        public static int ExtractIdFromDataGridView(string input)
+        {
+            string numberString = Regex.Match(input, @"\d+").Value;
+            int number;
+
+            if (int.TryParse(numberString, out number))
+            {
+                return number;
+            }
+            else
+            {
+                return -1; 
+            }
         }
 
 
@@ -376,20 +395,52 @@ namespace GUI_Management_of_medical_clinic
         {
             DateTime[] holidays = new DateTime[] {
                 new DateTime(displayMonth.Year, 1, 1),  // Nowy Rok
-                new DateTime(displayMonth.Year, 1, 6),  // Œwiêto Trzech Króli
-                new DateTime(displayMonth.Year, 4, 17), // Poniedzia³ek Wielkanocny
-                new DateTime(displayMonth.Year, 5, 1),  // Œwiêto Pracy
-                new DateTime(displayMonth.Year, 5, 3),  // Œwiêto Konstytucji 3 Maja
-                new DateTime(displayMonth.Year, 6, 4),  // Zes³anie Ducha Œwiêtego
-                new DateTime(displayMonth.Year, 6, 15), // Bo¿e Cia³o
-                new DateTime(displayMonth.Year, 8, 15), // Wniebowziêcie Najœwiêtszej Maryi Panny
-                new DateTime(displayMonth.Year, 11, 1), // Wszystkich Œwiêtych
-                new DateTime(displayMonth.Year, 11, 11), // Œwiêto Niepodleg³oœci
-                new DateTime(displayMonth.Year, 12, 25), // Bo¿e Narodzenie (pierwszy dzieñ)
-                new DateTime(displayMonth.Year, 12, 26), // Bo¿e Narodzenie (drugi dzieñ)
+                new DateTime(displayMonth.Year, 1, 6),  // Å’wiÃªto Trzech KrÃ³li
+                new DateTime(displayMonth.Year, 4, 17), // PoniedziaÂ³ek Wielkanocny
+                new DateTime(displayMonth.Year, 5, 1),  // Å’wiÃªto Pracy
+                new DateTime(displayMonth.Year, 5, 3),  // Å’wiÃªto Konstytucji 3 Maja
+                new DateTime(displayMonth.Year, 6, 4),  // ZesÂ³anie Ducha Å’wiÃªtego
+                new DateTime(displayMonth.Year, 6, 15), // BoÂ¿e CiaÂ³o
+                new DateTime(displayMonth.Year, 8, 15), // WniebowziÃªcie NajÅ“wiÃªtszej Maryi Panny
+                new DateTime(displayMonth.Year, 11, 1), // Wszystkich Å’wiÃªtych
+                new DateTime(displayMonth.Year, 11, 11), // Å’wiÃªto NiepodlegÂ³oÅ“ci
+                new DateTime(displayMonth.Year, 12, 25), // BoÂ¿e Narodzenie (pierwszy dzieÃ±)
+                new DateTime(displayMonth.Year, 12, 26), // BoÂ¿e Narodzenie (drugi dzieÃ±)
             };
 
             return holidays.ToList().Contains(date);
+        }
+
+        private void buttonEditPlan_Click(object sender, EventArgs e)
+        {
+            string selectedDoctor = null;
+
+            if (dataGridViewAppointments.RowCount > 0)
+            {
+                if (dataGridViewAppointments.CurrentRow != null && dataGridViewAppointments.CurrentRow.Cells[0].Value != null)
+                {
+                    selectedDoctor = dataGridViewAppointments.CurrentRow.Cells[0].Value.ToString();
+                }
+            }
+
+            if (!string.IsNullOrEmpty(selectedDoctor))
+            {
+                int selectedDoctorId = ExtractIdFromDataGridView(selectedDoctor);
+
+                if (_selectedDate.Length != 0 && CalendarService.checkIfCalendarExists(_selectedDate) == true)
+                {
+                    FormDoctorsDayPlanEdit formAppointmentEdit = new FormDoctorsDayPlanEdit(DateTime.Parse(labelDate.Text), currentEmployee, selectedDoctorId);
+                    formAppointmentEdit.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("A calendar hasn't been started for the given month");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a doctor.");
+            }
         }
     }
 }
