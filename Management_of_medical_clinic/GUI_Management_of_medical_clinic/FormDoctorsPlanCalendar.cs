@@ -83,7 +83,7 @@ namespace GUI_Management_of_medical_clinic
 
             dataGridViewAppointments.Rows.Clear();
             dataGridViewAppointments.Columns.Add("Doctor", "Doctor");
-            dataGridViewAppointments.Columns.Add("Day", "Day");
+            dataGridViewAppointments.Columns.Add("Office", "Office");
             dataGridViewAppointments.Columns.Add("Hour", "Hour");
             dataGridViewAppointments.Columns.Add("Patient", "Patient");
 
@@ -256,12 +256,21 @@ namespace GUI_Management_of_medical_clinic
 
             dataGridViewAppointments.Rows.Clear();
 
-            plans.ForEach(plan =>
+            try
             {
-
-                dataGridViewAppointments.Rows.Add(plan.IdEmployee, plan.IdDay, DoctorsPlanService.GetTermDescription((EnumTerms)plan.IdOfTerm), PatientService.GetPatientById((int)(plan.PatientId == null ? 0 : plan.PatientId)));  //in database there is a null value at PatientId
-
-            });
+                plans.ForEach(plan =>
+                {
+                    dataGridViewAppointments.Rows.Add(EmployeeService.GetEmployeeInfoById((int)plan.IdEmployee),
+                        OfficeService.GetOfficeInfoById((int)plan.IdOffice),
+                        DoctorsPlanService.GetTermDescription((EnumTerms)plan.IdOfTerm),
+                        PatientService.GetPatientById((int)(plan.PatientId == null ? 0 : plan.PatientId)));
+                });
+            }
+            catch
+            {
+                MessageBox.Show("Failed to load data");
+            }
+            
 
             //Changed as DbAppointment is not used anymore
 
