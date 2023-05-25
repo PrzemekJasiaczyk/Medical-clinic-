@@ -13,6 +13,7 @@ namespace Console_Management_of_medical_clinic.Logic
 {
     public static class DoctorsPlanService
     {
+
         public static List<DoctorsDayPlanModel> GetDoctorsPlanData()
         {
             List<DoctorsDayPlanModel> doctorsPlans = new List<DoctorsDayPlanModel>();
@@ -36,7 +37,7 @@ namespace Console_Management_of_medical_clinic.Logic
 
                 }
                 // TODO: Brak statusu przy tworzeniu
-                DoctorsDayPlanModel newPlan = new DoctorsDayPlanModel(i, idDay, idCalendar, idEmployee, idOffice);
+                DoctorsDayPlanModel newPlan = new DoctorsDayPlanModel(i, idDay, idCalendar, idEmployee, idOffice, EnumAppointmentStatus.New);
                 AddPlan(newPlan);
             }            
             return "Plan added successfully";
@@ -213,5 +214,22 @@ namespace Console_Management_of_medical_clinic.Logic
                 return context.DbDoctorsDayPlan.Where(plan => plan.IdCalendar == calendarId).ToList();
             }
         }
+
+
+        public static void RemovePatientFromPlan(DoctorsDayPlanModel plan)
+        {
+            using (AppDbContext context = new AppDbContext())
+            {
+                DoctorsDayPlanModel foundPlan = context.DbDoctorsDayPlan.Find(plan.IdDoctorsDayPlan);
+
+                if (foundPlan != null)
+                {
+                    foundPlan.PatientId = null;
+                    foundPlan.Status = EnumAppointmentStatus.Accepted;
+                    context.SaveChanges();
+                }
+            }
+        }
+
     }
 }
