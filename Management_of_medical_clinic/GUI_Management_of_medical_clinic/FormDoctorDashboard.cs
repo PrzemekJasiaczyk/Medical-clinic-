@@ -1,4 +1,5 @@
-﻿using Console_Management_of_medical_clinic.Logic;
+﻿using Console_Management_of_medical_clinic.Data;
+using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
 using Microsoft.VisualBasic;
 using System;
@@ -27,6 +28,8 @@ namespace GUI_Management_of_medical_clinic
             this.currentUser = currentUser;
             InitializeComponent();
             label1.Text = "Welcome, " + currentUser.FirstName;
+
+            dataGridView1.CellClick += dataGridView1_CellClick;
         }
 
         private void buttonCalendar_Click(object sender, EventArgs e)
@@ -35,12 +38,12 @@ namespace GUI_Management_of_medical_clinic
             //roboczo dałem true
             //bool isNewCalendar = false; 
             List<CalendarModel> calendars = CalendarService.GetCalendarData();
-            
+
             foreach (CalendarModel calendar in calendars)
-            {                
+            {
                 if (calendar.IdEmployee == currentUser.IdEmployee && calendar.Active == false)
                 {
-                    isNewCalendar = true;        
+                    isNewCalendar = true;
                 }
             }
             if (isNewCalendar == true)
@@ -52,8 +55,8 @@ namespace GUI_Management_of_medical_clinic
             else
             {
                 MessageBox.Show("You don't have any new calendar to check", "Information", MessageBoxButtons.OK);
-            }           
-            
+            }
+
         }
 
         private void buttonLogOut_Click(object sender, EventArgs e)
@@ -79,8 +82,8 @@ namespace GUI_Management_of_medical_clinic
             List<CalendarModel> calendars = CalendarService.GetCalendarData();
             foreach (CalendarModel calendar in calendars)
             {
-                if (calendar.IdEmployee == currentUser.IdEmployee && 
-                    calendar.Active == true && 
+                if (calendar.IdEmployee == currentUser.IdEmployee &&
+                    calendar.Active == true &&
                     calendar.DateReference == currentMonthYear)
                 {
                     isCurrentCalendar = true;
@@ -96,7 +99,7 @@ namespace GUI_Management_of_medical_clinic
             {
                 MessageBox.Show("Brak aktywnego kalendarza na obecny miesiąc");
             }
-            
+
         }
         private void ToFormCurrentCalendar()
         {
@@ -104,6 +107,55 @@ namespace GUI_Management_of_medical_clinic
             this.Hide();
             formCurrentCalendar.ShowDialog();
             this.Close();
+        }
+
+        private void FormDoctorDashboard_Load(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Clear();
+            dataGridView1.Columns.Add("Room", "Room");
+            dataGridView1.Columns.Add("Hour", "Hour");
+            dataGridView1.Columns.Add("Patient", "Patient");
+            dataGridView1.Columns.Add("Day", "Day");
+            dataGridView1.Columns.Add("PatientId", "PatientId");
+
+
+
+           
+            List<DoctorsDayPlanModel> appointments = DoctorsPlanService.GetDoctorsPlanData();
+            foreach (DoctorsDayPlanModel appointment in appointments)
+            {
+                if (appointment.IdEmployee == currentUser.IdEmployee && appointment.IdCalendar == 1 && appointment.IdDay == 10)//DateTime.Now.Day)
+                {
+                    string timeTerm = AppointmentService.GetTermByTermId(appointment.IdOfTerm);
+                    Patient? patient = PatientService.GetPatientsData().FirstOrDefault(p => p.PatientId == appointment.PatientId);
+
+                    if (patient != null)
+                    {
+                        dataGridView1.Rows.Add(appointment.IdOffice, timeTerm, patient.LastName, appointment.IdDay, patient.PatientId);
+                    }
+                }
+            }
+            
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                int patientName = (int)row.Cells[4].Value;
+
+                Patient patient = Patient.FindPatient(patientName);
+                labelFullName.Text = patient.FirstName + " " + patient.LastName;
+                labelPESEL.Text = patient.PESEL;
+                labelSex.Text = patient.Sex.ToString();
+                labelBirthday.Text = patient.BirthDate.ToString();
+
+
+            }
+
+
         }
     }
 }
