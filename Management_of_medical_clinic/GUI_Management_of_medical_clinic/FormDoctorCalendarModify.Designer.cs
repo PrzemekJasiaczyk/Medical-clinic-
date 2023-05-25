@@ -100,9 +100,9 @@
             labelModifyAppointment.Font = new Font("Segoe UI", 25F, FontStyle.Bold, GraphicsUnit.Point);
             labelModifyAppointment.Location = new Point(372, 12);
             labelModifyAppointment.Name = "labelModifyAppointment";
-            labelModifyAppointment.Size = new Size(360, 46);
+            labelModifyAppointment.Size = new Size(139, 46);
             labelModifyAppointment.TabIndex = 56;
-            labelModifyAppointment.Text = "Modify Appointment";
+            labelModifyAppointment.Text = "[Mode]";
             // 
             // labelOfficeNumber
             // 

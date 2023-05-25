@@ -41,6 +41,7 @@
             labelTitleCalendar_Month = new Label();
             labelTitleCalendar_Year = new Label();
             panel9 = new Panel();
+            labelCalendarStatus = new Label();
             buttonNextMonth = new Button();
             buttonPreviousMonth = new Button();
             panel2 = new Panel();
@@ -61,7 +62,7 @@
             dataGridViewYourAppointments = new DataGridView();
             label9 = new Label();
             buttonEditAppointment = new Button();
-            labelCalendarStatus = new Label();
+            buttonAddAppointment = new Button();
             panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAppointments).BeginInit();
@@ -234,6 +235,18 @@
             panel9.Name = "panel9";
             panel9.Size = new Size(1888, 99);
             panel9.TabIndex = 20;
+            // 
+            // labelCalendarStatus
+            // 
+            labelCalendarStatus.AutoSize = true;
+            labelCalendarStatus.BackColor = Color.White;
+            labelCalendarStatus.Font = new Font("Segoe UI", 30F, FontStyle.Bold, GraphicsUnit.Point);
+            labelCalendarStatus.Location = new Point(655, 29);
+            labelCalendarStatus.Name = "labelCalendarStatus";
+            labelCalendarStatus.Size = new Size(140, 54);
+            labelCalendarStatus.TabIndex = 20;
+            labelCalendarStatus.Text = "Status";
+            labelCalendarStatus.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // buttonNextMonth
             // 
@@ -426,7 +439,7 @@
             // 
             labelDate.AutoSize = true;
             labelDate.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            labelDate.Location = new Point(1671, 213);
+            labelDate.Location = new Point(1643, 217);
             labelDate.Name = "labelDate";
             labelDate.Size = new Size(122, 30);
             labelDate.TabIndex = 28;
@@ -459,7 +472,7 @@
             // 
             // buttonEditAppointment
             // 
-            buttonEditAppointment.Location = new Point(1657, 630);
+            buttonEditAppointment.Location = new Point(1752, 630);
             buttonEditAppointment.Name = "buttonEditAppointment";
             buttonEditAppointment.Size = new Size(156, 37);
             buttonEditAppointment.TabIndex = 31;
@@ -467,23 +480,22 @@
             buttonEditAppointment.UseVisualStyleBackColor = true;
             buttonEditAppointment.Click += buttonEditAppointment_Click;
             // 
-            // labelCalendarStatus
+            // buttonAddAppointment
             // 
-            labelCalendarStatus.AutoSize = true;
-            labelCalendarStatus.BackColor = Color.White;
-            labelCalendarStatus.Font = new Font("Segoe UI", 30F, FontStyle.Bold, GraphicsUnit.Point);
-            labelCalendarStatus.Location = new Point(655, 29);
-            labelCalendarStatus.Name = "labelCalendarStatus";
-            labelCalendarStatus.Size = new Size(140, 54);
-            labelCalendarStatus.TabIndex = 20;
-            labelCalendarStatus.Text = "Status";
-            labelCalendarStatus.TextAlign = ContentAlignment.MiddleCenter;
+            buttonAddAppointment.Location = new Point(1563, 630);
+            buttonAddAppointment.Name = "buttonAddAppointment";
+            buttonAddAppointment.Size = new Size(156, 37);
+            buttonAddAppointment.TabIndex = 51;
+            buttonAddAppointment.Text = "Add new";
+            buttonAddAppointment.UseVisualStyleBackColor = true;
+            buttonAddAppointment.Click += buttonAddAppointment_Click;
             // 
             // FormDoctorCalendar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1920, 1080);
+            Controls.Add(buttonAddAppointment);
             Controls.Add(buttonEditAppointment);
             Controls.Add(label9);
             Controls.Add(dataGridViewYourAppointments);
@@ -566,5 +578,6 @@
         private Button buttonNextMonth;
         private Button buttonPreviousMonth;
         private Label labelCalendarStatus;
+        private Button buttonAddAppointment;
     }
 }
