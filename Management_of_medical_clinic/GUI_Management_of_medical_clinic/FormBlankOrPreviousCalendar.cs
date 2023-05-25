@@ -36,7 +36,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonBlankForm_Click(object sender, EventArgs e)
         {
-            FormCalendar formCalendar = new(currentUser);
+            FormDoctorsPlanCalendar formCalendar = new(currentUser);
             Hide();
             formCalendar.ShowDialog();
             Close();
@@ -44,7 +44,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonPreviousForm_Click(object sender, EventArgs e)
         {
-            FormCalendar formCalendar = new(currentUser, true);
+            FormDoctorsPlanCalendar formCalendar = new(currentUser, true);
             Hide();
             formCalendar.ShowDialog();
             Close();

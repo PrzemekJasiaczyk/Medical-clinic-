@@ -1,6 +1,6 @@
 ﻿namespace GUI_Management_of_medical_clinic
 {
-    partial class FormCalendar
+    partial class FormDoctorsPlanCalendar
     {
         /// <summary>
         ///  Required designer variable.
@@ -33,8 +33,6 @@
             pictureBox1 = new PictureBox();
             createCalendarButton = new Button();
             flowLayoutPanelMonth = new FlowLayoutPanel();
-            panel1 = new Panel();
-            label7 = new Label();
             labelDate = new Label();
             buttonAddAppointment = new Button();
             label8 = new Label();
@@ -61,7 +59,6 @@
             label5 = new Label();
             panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAppointments).BeginInit();
             panel9.SuspendLayout();
             panel2.SuspendLayout();
@@ -125,28 +122,10 @@
             // flowLayoutPanelMonth
             // 
             flowLayoutPanelMonth.BackColor = SystemColors.Control;
-            flowLayoutPanelMonth.Location = new Point(309, 248);
+            flowLayoutPanelMonth.Location = new Point(312, 173);
             flowLayoutPanelMonth.Name = "flowLayoutPanelMonth";
-            flowLayoutPanelMonth.Size = new Size(1200, 820);
+            flowLayoutPanelMonth.Size = new Size(786, 895);
             flowLayoutPanelMonth.TabIndex = 1;
-            // 
-            // panel1
-            // 
-            panel1.BackColor = Color.SteelBlue;
-            panel1.Controls.Add(label7);
-            panel1.Location = new Point(307, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1888, 77);
-            panel1.TabIndex = 2;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(601, 19);
-            label7.Name = "label7";
-            label7.Size = new Size(181, 15);
-            label7.TabIndex = 0;
-            label7.Text = "Miejsce na elementy filtrujące itp";
             // 
             // labelDate
             // 
@@ -164,7 +143,7 @@
             buttonAddAppointment.Name = "buttonAddAppointment";
             buttonAddAppointment.Size = new Size(225, 78);
             buttonAddAppointment.TabIndex = 15;
-            buttonAddAppointment.Text = "Add appointment";
+            buttonAddAppointment.Text = "Add new Plan";
             buttonAddAppointment.UseVisualStyleBackColor = true;
             buttonAddAppointment.Click += buttonAddAppointment_Click;
             // 
@@ -172,11 +151,11 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(1651, 306);
+            label8.Location = new Point(1617, 307);
             label8.Name = "label8";
-            label8.Size = new Size(144, 30);
+            label8.Size = new Size(228, 30);
             label8.TabIndex = 18;
-            label8.Text = "Appointments";
+            label8.Text = "Doctor's Working Plans";
             // 
             // dataGridViewAppointments
             // 
@@ -189,7 +168,6 @@
             dataGridViewAppointments.SelectionMode = DataGridViewSelectionMode.CellSelect;
             dataGridViewAppointments.Size = new Size(345, 538);
             dataGridViewAppointments.TabIndex = 19;
-            //dataGridViewAppointments.CellContentClick += dataGridViewAppointments_CellContentClick;
             // 
             // button3
             // 
@@ -228,7 +206,7 @@
             labelTitleCalendar_Month.AutoSize = true;
             labelTitleCalendar_Month.BackColor = Color.White;
             labelTitleCalendar_Month.Font = new Font("Segoe UI", 30F, FontStyle.Bold, GraphicsUnit.Point);
-            labelTitleCalendar_Month.Location = new Point(337, 29);
+            labelTitleCalendar_Month.Location = new Point(482, 27);
             labelTitleCalendar_Month.Name = "labelTitleCalendar_Month";
             labelTitleCalendar_Month.Size = new Size(149, 54);
             labelTitleCalendar_Month.TabIndex = 10;
@@ -240,7 +218,7 @@
             labelTitleCalendar_Year.AutoSize = true;
             labelTitleCalendar_Year.BackColor = Color.White;
             labelTitleCalendar_Year.Font = new Font("Segoe UI", 40F, FontStyle.Bold, GraphicsUnit.Point);
-            labelTitleCalendar_Year.Location = new Point(1074, 15);
+            labelTitleCalendar_Year.Location = new Point(328, 12);
             labelTitleCalendar_Year.Name = "labelTitleCalendar_Year";
             labelTitleCalendar_Year.Size = new Size(154, 72);
             labelTitleCalendar_Year.TabIndex = 17;
@@ -270,7 +248,7 @@
             panel9.Controls.Add(button2);
             panel9.Controls.Add(button3);
             panel9.Controls.Add(createCalendarButton);
-            panel9.Location = new Point(296, 75);
+            panel9.Location = new Point(296, 0);
             panel9.Name = "panel9";
             panel9.Size = new Size(1888, 99);
             panel9.TabIndex = 20;
@@ -279,9 +257,9 @@
             // 
             panel2.BackColor = Color.Gainsboro;
             panel2.Controls.Add(label6);
-            panel2.Location = new Point(312, 181);
+            panel2.Location = new Point(315, 105);
             panel2.Name = "panel2";
-            panel2.Size = new Size(165, 62);
+            panel2.Size = new Size(105, 62);
             panel2.TabIndex = 21;
             // 
             // label6
@@ -290,20 +268,20 @@
             label6.BackColor = Color.Gainsboro;
             label6.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
             label6.ImageAlign = ContentAlignment.MiddleRight;
-            label6.Location = new Point(30, 11);
+            label6.Location = new Point(23, 11);
             label6.Name = "label6";
-            label6.Size = new Size(104, 37);
+            label6.Size = new Size(61, 37);
             label6.TabIndex = 9;
-            label6.Text = "Sunday";
+            label6.Text = "Sun";
             label6.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panel3
             // 
             panel3.BackColor = Color.White;
             panel3.Controls.Add(labelMonday);
-            panel3.Location = new Point(484, 181);
+            panel3.Location = new Point(426, 105);
             panel3.Name = "panel3";
-            panel3.Size = new Size(165, 62);
+            panel3.Size = new Size(105, 62);
             panel3.TabIndex = 22;
             // 
             // labelMonday
@@ -312,20 +290,20 @@
             labelMonday.BackColor = Color.White;
             labelMonday.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
             labelMonday.ImageAlign = ContentAlignment.MiddleRight;
-            labelMonday.Location = new Point(19, 13);
+            labelMonday.Location = new Point(18, 13);
             labelMonday.Name = "labelMonday";
-            labelMonday.Size = new Size(115, 37);
+            labelMonday.Size = new Size(72, 37);
             labelMonday.TabIndex = 3;
-            labelMonday.Text = "Monday";
+            labelMonday.Text = "Mon";
             labelMonday.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panel4
             // 
             panel4.BackColor = Color.White;
             panel4.Controls.Add(label1);
-            panel4.Location = new Point(655, 181);
+            panel4.Location = new Point(537, 105);
             panel4.Name = "panel4";
-            panel4.Size = new Size(165, 62);
+            panel4.Size = new Size(105, 62);
             panel4.TabIndex = 23;
             // 
             // label1
@@ -334,20 +312,20 @@
             label1.BackColor = Color.White;
             label1.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ImageAlign = ContentAlignment.MiddleRight;
-            label1.Location = new Point(23, 12);
+            label1.Location = new Point(21, 12);
             label1.Name = "label1";
-            label1.Size = new Size(114, 37);
+            label1.Size = new Size(60, 37);
             label1.TabIndex = 4;
-            label1.Text = "Tuesday";
+            label1.Text = "Tue";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panel5
             // 
             panel5.BackColor = Color.White;
             panel5.Controls.Add(label3);
-            panel5.Location = new Point(826, 181);
+            panel5.Location = new Point(648, 105);
             panel5.Name = "panel5";
-            panel5.Size = new Size(165, 62);
+            panel5.Size = new Size(105, 62);
             panel5.TabIndex = 24;
             // 
             // label3
@@ -356,12 +334,12 @@
             label3.BackColor = Color.White;
             label3.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
             label3.ImageAlign = ContentAlignment.MiddleRight;
-            label3.Location = new Point(5, 12);
+            label3.Location = new Point(17, 13);
             label3.Name = "label3";
             label3.RightToLeft = RightToLeft.No;
-            label3.Size = new Size(154, 37);
+            label3.Size = new Size(71, 37);
             label3.TabIndex = 5;
-            label3.Text = "Wednesday";
+            label3.Text = "Wed";
             label3.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label2
@@ -372,27 +350,27 @@
             label2.ImageAlign = ContentAlignment.MiddleRight;
             label2.Location = new Point(23, 12);
             label2.Name = "label2";
-            label2.Size = new Size(124, 37);
+            label2.Size = new Size(61, 37);
             label2.TabIndex = 6;
-            label2.Text = "Thursday";
+            label2.Text = "Thu";
             label2.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panel6
             // 
             panel6.BackColor = Color.White;
             panel6.Controls.Add(label2);
-            panel6.Location = new Point(997, 181);
+            panel6.Location = new Point(759, 105);
             panel6.Name = "panel6";
-            panel6.Size = new Size(165, 62);
+            panel6.Size = new Size(105, 62);
             panel6.TabIndex = 25;
             // 
             // panel7
             // 
             panel7.BackColor = Color.White;
             panel7.Controls.Add(label4);
-            panel7.Location = new Point(1168, 181);
+            panel7.Location = new Point(870, 105);
             panel7.Name = "panel7";
-            panel7.Size = new Size(165, 62);
+            panel7.Size = new Size(105, 62);
             panel7.TabIndex = 26;
             // 
             // label4
@@ -401,20 +379,20 @@
             label4.BackColor = Color.White;
             label4.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
             label4.ImageAlign = ContentAlignment.MiddleRight;
-            label4.Location = new Point(38, 12);
+            label4.Location = new Point(29, 11);
             label4.Name = "label4";
-            label4.Size = new Size(89, 37);
+            label4.Size = new Size(46, 37);
             label4.TabIndex = 8;
-            label4.Text = "Friday";
+            label4.Text = "Fri";
             label4.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panel8
             // 
             panel8.BackColor = Color.White;
             panel8.Controls.Add(label5);
-            panel8.Location = new Point(1339, 181);
+            panel8.Location = new Point(981, 105);
             panel8.Name = "panel8";
-            panel8.Size = new Size(165, 62);
+            panel8.Size = new Size(105, 62);
             panel8.TabIndex = 27;
             // 
             // label5
@@ -423,11 +401,11 @@
             label5.BackColor = Color.White;
             label5.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
             label5.ImageAlign = ContentAlignment.MiddleRight;
-            label5.Location = new Point(23, 12);
+            label5.Location = new Point(25, 11);
             label5.Name = "label5";
-            label5.Size = new Size(121, 37);
+            label5.Size = new Size(54, 37);
             label5.TabIndex = 7;
-            label5.Text = "Saturday";
+            label5.Text = "Sat";
             label5.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // FormCalendar
@@ -447,7 +425,6 @@
             Controls.Add(buttonAddAppointment);
             Controls.Add(labelDate);
             Controls.Add(flowLayoutPanelMonth);
-            Controls.Add(panel1);
             Controls.Add(panelMenu);
             Controls.Add(panel9);
             FormBorderStyle = FormBorderStyle.None;
@@ -457,8 +434,6 @@
             Load += FormCalendar_Load;
             panelMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAppointments).EndInit();
             panel9.ResumeLayout(false);
             panel9.PerformLayout();
@@ -484,8 +459,6 @@
 
         private Panel panelMenu;
         private FlowLayoutPanel flowLayoutPanelMonth;
-        private Panel panel1;
-        private Label label7;
         private Label labelDate;
         private Button buttonAddAppointment;
         private Button createCalendarButton;

@@ -15,10 +15,10 @@ namespace MedicalClinicTest
 
 			using AppDbContext context = new();
 
-			AppointmentModel appointment = context.DbAppointments.Find(18);
+			DoctorsDayPlanModel appointment = context.DbDoctorsDayPlan.Find(20);
 			appointment.IdDay = DateTime.Today.Day;
 
-			AppointmentModel term = context.DbAppointments.Find(19);
+			DoctorsDayPlanModel term = context.DbDoctorsDayPlan.Find(21);
 			term.IdDay = DateTime.Today.Day + 1;
 			term.PatientId = null;
 
@@ -36,8 +36,8 @@ namespace MedicalClinicTest
 			string errorMessage;
 
 			using AppDbContext context = new();
-			AppointmentModel appointment = context.DbAppointments.Find(18);
-			AppointmentModel term = context.DbAppointments.Find(27);
+			DoctorsDayPlanModel appointment = context.DbDoctorsDayPlan.Find(19);
+			DoctorsDayPlanModel term = context.DbDoctorsDayPlan.Find(20);
 
 			AppointmentService appointmentService = new();
 			(canReschedule, errorMessage) = appointmentService.CanReschedule(appointment, term);
@@ -53,8 +53,8 @@ namespace MedicalClinicTest
 			string errorMessage;
 
 			using AppDbContext context = new();
-			AppointmentModel appointment = context.DbAppointments.Find(18);
-			AppointmentModel term = context.DbAppointments.Find(17);
+			DoctorsDayPlanModel appointment = context.DbDoctorsDayPlan.Find(23);
+			DoctorsDayPlanModel term = context.DbDoctorsDayPlan.Find(21);
 
 			AppointmentService appointmentService = new();
 			(canReschedule, errorMessage) = appointmentService.CanReschedule(appointment, term);
@@ -63,6 +63,7 @@ namespace MedicalClinicTest
 			Assert.Equal("The appointment cannot be rescheduled to the past", errorMessage);
 		}
 
+		// TODO: Dodaj rekord, który pozwala to przetestować
 		[Fact]
 		public void CanRescheduleAppointment_PastHour()
 		{
@@ -70,8 +71,8 @@ namespace MedicalClinicTest
 			string errorMessage;
 
 			using AppDbContext context = new();
-			AppointmentModel appointment = context.DbAppointments.Find(15);
-			AppointmentModel term = context.DbAppointments.Find(17);
+			DoctorsDayPlanModel appointment = context.DbDoctorsDayPlan.Find(15);
+			DoctorsDayPlanModel term = context.DbDoctorsDayPlan.Find(17);
 
 			AppointmentService appointmentService = new();
 			(canReschedule, errorMessage) = appointmentService.CanReschedule(appointment, term);
