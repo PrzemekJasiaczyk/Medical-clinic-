@@ -34,10 +34,8 @@ namespace GUI_Management_of_medical_clinic
         {
             InitializeComponent();
             dataGridView_app_doctor.ClearSelection();
-
-
-
-            DisplayList();
+            DisplayDoctor();
+            DisplayPatient();
 
 
             this.appointment = appointment;
@@ -49,7 +47,9 @@ namespace GUI_Management_of_medical_clinic
             InitializeComponent();
             dataGridView_app_doctor.ClearSelection();
 
-            DisplayList();
+
+            DisplayDoctor();
+            DisplayPatient();
 
             this.appointment = appointment;
             this.currentUser = user;
@@ -57,29 +57,11 @@ namespace GUI_Management_of_medical_clinic
 
         }
 
-        public void DisplayList()
+        public void DisplayDoctor()
         {
-            List<Patient> patients = PatientService.GetPatientsData();
-            //dataGridView_app_Patient.DataSource = patientService.GetPatientData();
-            /*
-            foreach (Patient patient in patients)
-            {
-                dataGridView_app_Patient.Rows.Add(patient.FirstName, patient.LastName, patient.PESEL);
-            }
-            */
-            dataGridView_app_Patient.DataSource = patients;
-            dataGridView_app_Patient.Columns[0].Visible = false;
-            dataGridView_app_Patient.Columns[4].Visible = false;
-            dataGridView_app_Patient.Columns[5].Visible = false;
-            dataGridView_app_Patient.Columns[6].Visible = false;
-
-
-
-
-
             List<EmployeeModel> employees = EmployeeService.GetEmployeesData()
-            .Where(d => d.Role == EnumEmployeeRoles.MedicalDoctor)
-            .ToList();
+                .Where(d => d.Role == EnumEmployeeRoles.MedicalDoctor)
+                .ToList();
 
             dataGridView_app_doctor.DataSource = employees;
             dataGridView_app_doctor.Columns[0].Visible = false;
@@ -93,27 +75,24 @@ namespace GUI_Management_of_medical_clinic
             dataGridView_app_doctor.Columns[11].Visible = false;
             dataGridView_app_doctor.Columns[10].Visible = false;
             dataGridView_app_doctor.Columns[13].Visible = false;
+        }
+
+        public void DisplayPatient()
+        {
+            List<Patient> patients = PatientService.GetPatientsData();
+
+            dataGridView_app_Patient.DataSource = patients;
+            dataGridView_app_Patient.Columns[0].Visible = false;
+            dataGridView_app_Patient.Columns[4].Visible = false;
+            dataGridView_app_Patient.Columns[5].Visible = false;
+            dataGridView_app_Patient.Columns[6].Visible = false;
 
 
 
 
 
-            /*
-           foreach (EmployeeModel employee in employees)
-            {
-               dataGridView_app_doctor.Rows.Add(employee.FirstName, employee.LastName, employee.IdSpecialization);
 
-            }
-            
 
-            dataGridView_app_doctor.Rows.Clear();
-
-            foreach (EmployeeModel employee in employees)
-            {
-                int index = dataGridView_app_doctor.Rows.Add(employee.LastName, employee.FirstName, employee.IdSpecialization);
-                dataGridView_app_doctor.Rows[index].Tag = employee;
-            }
-            */
 
         }
 
@@ -139,32 +118,6 @@ namespace GUI_Management_of_medical_clinic
         }
 
 
-        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            comboBoxDate.SelectedIndex = -1;
-            comboBoxDate.Items.Clear();
-            int selectedDoctorId = -1;
-            if (dataGridView_app_doctor.SelectedRows.Count == 1)
-            {
-                DataGridViewRow selectedRow = dataGridView_app_doctor.SelectedRows[0];
-                EmployeeModel doc = (EmployeeModel)selectedRow.DataBoundItem;
-                //selectedAppointmentId = selectedAppointment.IdDoctorsDayPlan;
-                //EmployeeModel doc = (EmployeeModel)comboBoxDoctor.SelectedItem;
-                selectedDoctorId = doc.IdEmployee;
-            }
-            List<DoctorsDayPlanModel> appointments =
-            CalendarAppointmentService.GetAppointmentsData()
-                .Where(a => a.IdEmployee == selectedDoctorId && a.Status == EnumAppointmentStatus.Accepted && a.PatientId == null)
-                .ToList();
-
-            comboBoxDate.Items.Clear();
-            foreach (DoctorsDayPlanModel appointment in appointments)
-            {
-                comboBoxDate.Items.Add(appointment);
-            }
-            comboBoxDate.DisplayMember = appointments.ToString();
-
-        }
 
         private void comboBox3_SelectionChangeCommitted(object sender, EventArgs e)
         {
@@ -412,6 +365,16 @@ namespace GUI_Management_of_medical_clinic
         {
             List<EmployeeModel> FiltredDoctors = FilterDoctor(textBox1_doctor.Text);
             dataGridView_app_doctor.DataSource = FiltredDoctors;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DisplayPatient();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            DisplayDoctor();
         }
     }
 }

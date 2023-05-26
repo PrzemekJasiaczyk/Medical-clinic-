@@ -47,6 +47,8 @@
             button1 = new Button();
             label7 = new Label();
             textBox1_doctor = new TextBox();
+            button2 = new Button();
+            button3 = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView_app_Patient).BeginInit();
@@ -88,7 +90,7 @@
             // 
             labelPatient.AutoSize = true;
             labelPatient.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            labelPatient.Location = new Point(373, 73);
+            labelPatient.Location = new Point(373, 82);
             labelPatient.Name = "labelPatient";
             labelPatient.Size = new Size(76, 28);
             labelPatient.TabIndex = 60;
@@ -165,7 +167,7 @@
             dataGridView_app_Patient.Name = "dataGridView_app_Patient";
             dataGridView_app_Patient.RowHeadersWidth = 51;
             dataGridView_app_Patient.RowTemplate.Height = 29;
-            dataGridView_app_Patient.Size = new Size(674, 87);
+            dataGridView_app_Patient.Size = new Size(773, 87);
             dataGridView_app_Patient.TabIndex = 75;
             dataGridView_app_Patient.CellContentClick += dataGridView1_CellContentClick;
             dataGridView_app_Patient.CellValuePushed += dataGridView_app_Patient_CellValuePushed;
@@ -179,7 +181,7 @@
             dataGridView_app_doctor.RowHeadersWidth = 51;
             dataGridView_app_doctor.RowTemplate.Height = 25;
             dataGridView_app_doctor.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView_app_doctor.Size = new Size(453, 92);
+            dataGridView_app_doctor.Size = new Size(773, 92);
             dataGridView_app_doctor.TabIndex = 76;
             dataGridView_app_doctor.SelectionChanged += dataGridView_app_doctor_SelectionChanged;
             // 
@@ -216,7 +218,7 @@
             // 
             TextBox_PESEL.BackColor = SystemColors.ButtonFace;
             TextBox_PESEL.Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            TextBox_PESEL.Location = new Point(806, 126);
+            TextBox_PESEL.Location = new Point(806, 127);
             TextBox_PESEL.Name = "TextBox_PESEL";
             TextBox_PESEL.Size = new Size(129, 23);
             TextBox_PESEL.TabIndex = 88;
@@ -272,11 +274,45 @@
             textBox1_doctor.Size = new Size(129, 23);
             textBox1_doctor.TabIndex = 92;
             // 
+            // button2
+            // 
+            button2.BackColor = Color.Gainsboro;
+            button2.FlatAppearance.BorderColor = Color.White;
+            button2.FlatAppearance.BorderSize = 2;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Segoe UI Symbol", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            button2.Location = new Point(1053, 126);
+            button2.Margin = new Padding(3, 2, 3, 2);
+            button2.Name = "button2";
+            button2.Size = new Size(86, 26);
+            button2.TabIndex = 95;
+            button2.Text = "Clear";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
+            // 
+            // button3
+            // 
+            button3.BackColor = Color.Gainsboro;
+            button3.FlatAppearance.BorderColor = Color.White;
+            button3.FlatAppearance.BorderSize = 2;
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.Font = new Font("Segoe UI Symbol", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            button3.Location = new Point(760, 332);
+            button3.Margin = new Padding(3, 2, 3, 2);
+            button3.Name = "button3";
+            button3.Size = new Size(86, 26);
+            button3.TabIndex = 96;
+            button3.Text = "Clear";
+            button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
+            // 
             // FormRegisterAppointment
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1698, 825);
+            Controls.Add(button3);
+            Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(label7);
             Controls.Add(textBox1_doctor);
@@ -329,5 +365,7 @@
         private Button button1;
         private Label label7;
         private TextBox textBox1_doctor;
+        private Button button2;
+        private Button button3;
     }
 }
