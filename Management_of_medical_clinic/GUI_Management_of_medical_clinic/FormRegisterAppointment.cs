@@ -34,7 +34,7 @@ namespace GUI_Management_of_medical_clinic
         {
             InitializeComponent();
             dataGridView_app_doctor.ClearSelection();
-            
+
 
 
             DisplayList();
@@ -68,7 +68,7 @@ namespace GUI_Management_of_medical_clinic
             }
             */
             dataGridView_app_Patient.DataSource = patients;
-            dataGridView_app_Patient.Columns[0].Visible= false;
+            dataGridView_app_Patient.Columns[0].Visible = false;
             dataGridView_app_Patient.Columns[4].Visible = false;
             dataGridView_app_Patient.Columns[5].Visible = false;
             dataGridView_app_Patient.Columns[6].Visible = false;
@@ -79,7 +79,6 @@ namespace GUI_Management_of_medical_clinic
 
             List<EmployeeModel> employees = EmployeeService.GetEmployeesData()
             .Where(d => d.Role == EnumEmployeeRoles.MedicalDoctor)
-           //.Select(d => new EmployeeModel { FirstName = d.FirstName, LastName = d.LastName})
             .ToList();
 
             dataGridView_app_doctor.DataSource = employees;
@@ -138,7 +137,7 @@ namespace GUI_Management_of_medical_clinic
 
 
         }
-       
+
 
         private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -376,6 +375,43 @@ namespace GUI_Management_of_medical_clinic
                 comboBoxDate.Items.Add(appointment);
             }
             comboBoxDate.DisplayMember = appointments.ToString();
+        }
+
+        private void buttonShowFilters_Click(object sender, EventArgs e)
+        {
+            PatientService patientService = new PatientService();
+            List<Patient> FiltredPatients = patientService.FilterPatient(textBox1_Name.Text, TextBox_PESEL.Text);
+            dataGridView_app_Patient.DataSource = FiltredPatients;
+        }
+
+        public List<EmployeeModel> FilterDoctor(string searchedText)
+        {
+            List<EmployeeModel> filteredDoctors = EmployeeService.GetEmployeesData();
+
+            if (!string.IsNullOrEmpty(searchedText))
+            {
+                searchedText = searchedText.ToLower();
+
+                filteredDoctors =
+                    filteredDoctors
+                    .Where(
+                        p =>
+                        (p.FirstName + " " + p.LastName)
+                            .ToLower()
+                            .Contains(searchedText)
+                        )
+                    .ToList();
+            }
+
+
+
+            return filteredDoctors;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            List<EmployeeModel> FiltredDoctors = FilterDoctor(textBox1_doctor.Text);
+            dataGridView_app_doctor.DataSource = FiltredDoctors;
         }
     }
 }

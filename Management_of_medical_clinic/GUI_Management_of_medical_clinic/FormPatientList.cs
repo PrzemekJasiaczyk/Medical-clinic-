@@ -222,5 +222,10 @@ namespace GUI_Management_of_medical_clinic
         {
 
         }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

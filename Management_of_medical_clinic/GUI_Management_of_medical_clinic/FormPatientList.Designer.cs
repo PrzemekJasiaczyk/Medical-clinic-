@@ -230,7 +230,7 @@
             label4.Font = new Font("Bernard MT Condensed", 11.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             label4.Location = new Point(929, 16);
             label4.Name = "label4";
-            label4.Size = new Size(21, 22);
+            label4.Size = new Size(17, 18);
             label4.TabIndex = 42;
             label4.Text = "_";
             // 
@@ -241,7 +241,7 @@
             dateTimePicker2.Format = DateTimePickerFormat.Short;
             dateTimePicker2.Location = new Point(951, 19);
             dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(98, 29);
+            dateTimePicker2.Size = new Size(98, 25);
             dateTimePicker2.TabIndex = 41;
             // 
             // dateTimePicker1
@@ -251,7 +251,7 @@
             dateTimePicker1.Format = DateTimePickerFormat.Short;
             dateTimePicker1.Location = new Point(820, 19);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(98, 29);
+            dateTimePicker1.Size = new Size(98, 25);
             dateTimePicker1.TabIndex = 39;
             // 
             // TextBox_PESEL
@@ -260,7 +260,7 @@
             TextBox_PESEL.Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
             TextBox_PESEL.Location = new Point(474, 21);
             TextBox_PESEL.Name = "TextBox_PESEL";
-            TextBox_PESEL.Size = new Size(129, 27);
+            TextBox_PESEL.Size = new Size(129, 23);
             TextBox_PESEL.TabIndex = 38;
             // 
             // textBox1_Name
@@ -269,7 +269,7 @@
             textBox1_Name.Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
             textBox1_Name.Location = new Point(169, 24);
             textBox1_Name.Name = "textBox1_Name";
-            textBox1_Name.Size = new Size(129, 27);
+            textBox1_Name.Size = new Size(129, 23);
             textBox1_Name.TabIndex = 37;
             // 
             // dataGridViewPatientList
@@ -316,6 +316,7 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(1567, 77);
             panel2.TabIndex = 31;
+            panel2.Paint += panel2_Paint;
             // 
             // buttonClearFilters
             // 
@@ -376,7 +377,7 @@
             label7.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             label7.Location = new Point(646, 23);
             label7.Name = "label7";
-            label7.Size = new Size(202, 25);
+            label7.Size = new Size(164, 20);
             label7.TabIndex = 2;
             label7.Text = "Date of the latest visit";
             // 
@@ -386,7 +387,7 @@
             label6.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             label6.Location = new Point(345, 22);
             label6.Name = "label6";
-            label6.Size = new Size(141, 25);
+            label6.Size = new Size(109, 20);
             label6.TabIndex = 1;
             label6.Text = "PESEL number";
             // 
@@ -396,13 +397,13 @@
             label5.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             label5.Location = new Point(6, 25);
             label5.Name = "label5";
-            label5.Size = new Size(188, 25);
+            label5.Size = new Size(147, 20);
             label5.TabIndex = 0;
             label5.Text = "Name and Surname";
             // 
             // FormPatientList
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1920, 1055);
             Controls.Add(panel2);

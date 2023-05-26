@@ -39,6 +39,14 @@
             buttonAddAppointment = new Button();
             dataGridView_app_Patient = new DataGridView();
             dataGridView_app_doctor = new DataGridView();
+            label6 = new Label();
+            label3 = new Label();
+            textBox1_Name = new TextBox();
+            TextBox_PESEL = new MaskedTextBox();
+            buttonShowFilters = new Button();
+            button1 = new Button();
+            label7 = new Label();
+            textBox1_doctor = new TextBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView_app_Patient).BeginInit();
@@ -60,7 +68,7 @@
             // 
             labelAvailableDates.AutoSize = true;
             labelAvailableDates.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            labelAvailableDates.Location = new Point(373, 595);
+            labelAvailableDates.Location = new Point(373, 495);
             labelAvailableDates.Name = "labelAvailableDates";
             labelAvailableDates.Size = new Size(148, 28);
             labelAvailableDates.TabIndex = 63;
@@ -70,7 +78,7 @@
             // 
             labelDoctor.AutoSize = true;
             labelDoctor.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            labelDoctor.Location = new Point(373, 434);
+            labelDoctor.Location = new Point(372, 282);
             labelDoctor.Name = "labelDoctor";
             labelDoctor.Size = new Size(77, 28);
             labelDoctor.TabIndex = 62;
@@ -80,7 +88,7 @@
             // 
             labelPatient.AutoSize = true;
             labelPatient.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            labelPatient.Location = new Point(373, 100);
+            labelPatient.Location = new Point(373, 73);
             labelPatient.Name = "labelPatient";
             labelPatient.Size = new Size(76, 28);
             labelPatient.TabIndex = 60;
@@ -126,7 +134,7 @@
             // 
             comboBoxDate.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxDate.FormattingEnabled = true;
-            comboBoxDate.Location = new Point(373, 643);
+            comboBoxDate.Location = new Point(373, 543);
             comboBoxDate.Margin = new Padding(3, 2, 3, 2);
             comboBoxDate.Name = "comboBoxDate";
             comboBoxDate.Size = new Size(453, 36);
@@ -152,12 +160,12 @@
             // dataGridView_app_Patient
             // 
             dataGridView_app_Patient.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView_app_Patient.Location = new Point(373, 153);
+            dataGridView_app_Patient.Location = new Point(373, 154);
             dataGridView_app_Patient.Margin = new Padding(3, 2, 3, 2);
             dataGridView_app_Patient.Name = "dataGridView_app_Patient";
             dataGridView_app_Patient.RowHeadersWidth = 51;
             dataGridView_app_Patient.RowTemplate.Height = 29;
-            dataGridView_app_Patient.Size = new Size(1199, 87);
+            dataGridView_app_Patient.Size = new Size(674, 87);
             dataGridView_app_Patient.TabIndex = 75;
             dataGridView_app_Patient.CellContentClick += dataGridView1_CellContentClick;
             dataGridView_app_Patient.CellValuePushed += dataGridView_app_Patient_CellValuePushed;
@@ -166,20 +174,117 @@
             // dataGridView_app_doctor
             // 
             dataGridView_app_doctor.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView_app_doctor.Location = new Point(373, 477);
+            dataGridView_app_doctor.Location = new Point(373, 359);
             dataGridView_app_doctor.Name = "dataGridView_app_doctor";
             dataGridView_app_doctor.RowHeadersWidth = 51;
             dataGridView_app_doctor.RowTemplate.Height = 25;
             dataGridView_app_doctor.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView_app_doctor.Size = new Size(1199, 92);
+            dataGridView_app_doctor.Size = new Size(453, 92);
             dataGridView_app_doctor.TabIndex = 76;
             dataGridView_app_doctor.SelectionChanged += dataGridView_app_doctor_SelectionChanged;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label6.Location = new Point(677, 130);
+            label6.Name = "label6";
+            label6.Size = new Size(109, 20);
+            label6.TabIndex = 86;
+            label6.Text = "PESEL number";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Location = new Point(379, 130);
+            label3.Name = "label3";
+            label3.Size = new Size(147, 20);
+            label3.TabIndex = 85;
+            label3.Text = "Name and Surname";
+            // 
+            // textBox1_Name
+            // 
+            textBox1_Name.BackColor = SystemColors.ButtonFace;
+            textBox1_Name.Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox1_Name.Location = new Point(530, 128);
+            textBox1_Name.Name = "textBox1_Name";
+            textBox1_Name.Size = new Size(129, 23);
+            textBox1_Name.TabIndex = 87;
+            // 
+            // TextBox_PESEL
+            // 
+            TextBox_PESEL.BackColor = SystemColors.ButtonFace;
+            TextBox_PESEL.Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            TextBox_PESEL.Location = new Point(806, 126);
+            TextBox_PESEL.Name = "TextBox_PESEL";
+            TextBox_PESEL.Size = new Size(129, 23);
+            TextBox_PESEL.TabIndex = 88;
+            // 
+            // buttonShowFilters
+            // 
+            buttonShowFilters.BackColor = Color.Gainsboro;
+            buttonShowFilters.FlatAppearance.BorderColor = Color.White;
+            buttonShowFilters.FlatAppearance.BorderSize = 2;
+            buttonShowFilters.FlatStyle = FlatStyle.Flat;
+            buttonShowFilters.Font = new Font("Segoe UI Symbol", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonShowFilters.Location = new Point(961, 126);
+            buttonShowFilters.Margin = new Padding(3, 2, 3, 2);
+            buttonShowFilters.Name = "buttonShowFilters";
+            buttonShowFilters.Size = new Size(86, 26);
+            buttonShowFilters.TabIndex = 89;
+            buttonShowFilters.Text = "Show";
+            buttonShowFilters.UseVisualStyleBackColor = false;
+            buttonShowFilters.Click += buttonShowFilters_Click;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.Gainsboro;
+            button1.FlatAppearance.BorderColor = Color.White;
+            button1.FlatAppearance.BorderSize = 2;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI Symbol", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.Location = new Point(668, 332);
+            button1.Margin = new Padding(3, 2, 3, 2);
+            button1.Name = "button1";
+            button1.Size = new Size(86, 26);
+            button1.TabIndex = 94;
+            button1.Text = "Show";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label7.Location = new Point(373, 332);
+            label7.Name = "label7";
+            label7.Size = new Size(147, 20);
+            label7.TabIndex = 90;
+            label7.Text = "Name and Surname";
+            // 
+            // textBox1_doctor
+            // 
+            textBox1_doctor.BackColor = SystemColors.ButtonFace;
+            textBox1_doctor.Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox1_doctor.Location = new Point(524, 332);
+            textBox1_doctor.Name = "textBox1_doctor";
+            textBox1_doctor.Size = new Size(129, 23);
+            textBox1_doctor.TabIndex = 92;
             // 
             // FormRegisterAppointment
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1698, 825);
+            Controls.Add(button1);
+            Controls.Add(label7);
+            Controls.Add(textBox1_doctor);
+            Controls.Add(buttonShowFilters);
+            Controls.Add(label6);
+            Controls.Add(label3);
+            Controls.Add(textBox1_Name);
+            Controls.Add(TextBox_PESEL);
             Controls.Add(dataGridView_app_doctor);
             Controls.Add(dataGridView_app_Patient);
             Controls.Add(buttonAddAppointment);
@@ -216,5 +321,13 @@
         internal Button buttonAddAppointment;
         private DataGridView dataGridView_app_Patient;
         private DataGridView dataGridView_app_doctor;
+        private Label label6;
+        private Label label3;
+        private TextBox textBox1_Name;
+        private MaskedTextBox TextBox_PESEL;
+        private Button buttonShowFilters;
+        private Button button1;
+        private Label label7;
+        private TextBox textBox1_doctor;
     }
 }
