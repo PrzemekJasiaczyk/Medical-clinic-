@@ -35,12 +35,14 @@
             panel1 = new Panel();
             buttonBack = new Button();
             pictureBox1 = new PictureBox();
-            comboBoxPatient = new ComboBox();
             comboBoxDate = new ComboBox();
-            comboBoxDoctor = new ComboBox();
             buttonAddAppointment = new Button();
+            dataGridView_app_Patient = new DataGridView();
+            dataGridView_app_doctor = new DataGridView();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView_app_Patient).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView_app_doctor).BeginInit();
             SuspendLayout();
             // 
             // labelTitle
@@ -58,7 +60,7 @@
             // 
             labelAvailableDates.AutoSize = true;
             labelAvailableDates.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            labelAvailableDates.Location = new Point(373, 400);
+            labelAvailableDates.Location = new Point(373, 595);
             labelAvailableDates.Name = "labelAvailableDates";
             labelAvailableDates.Size = new Size(148, 28);
             labelAvailableDates.TabIndex = 63;
@@ -68,7 +70,7 @@
             // 
             labelDoctor.AutoSize = true;
             labelDoctor.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            labelDoctor.Location = new Point(373, 250);
+            labelDoctor.Location = new Point(373, 434);
             labelDoctor.Name = "labelDoctor";
             labelDoctor.Size = new Size(77, 28);
             labelDoctor.TabIndex = 62;
@@ -120,41 +122,17 @@
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
             // 
-            // comboBoxPatient
-            // 
-            comboBoxPatient.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBoxPatient.FormattingEnabled = true;
-            comboBoxPatient.Location = new Point(373, 148);
-            comboBoxPatient.Margin = new Padding(3, 2, 3, 2);
-            comboBoxPatient.Name = "comboBoxPatient";
-            comboBoxPatient.Size = new Size(453, 36);
-            comboBoxPatient.TabIndex = 71;
-            comboBoxPatient.SelectedIndexChanged += comboBoxPatient_SelectedIndexChanged;
-            comboBoxPatient.SelectionChangeCommitted += comboBoxPatient_SelectionChangeCommitted;
-            // 
             // comboBoxDate
             // 
             comboBoxDate.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxDate.FormattingEnabled = true;
-            comboBoxDate.Location = new Point(373, 448);
+            comboBoxDate.Location = new Point(373, 643);
             comboBoxDate.Margin = new Padding(3, 2, 3, 2);
             comboBoxDate.Name = "comboBoxDate";
             comboBoxDate.Size = new Size(453, 36);
             comboBoxDate.TabIndex = 72;
             comboBoxDate.SelectedIndexChanged += comboBoxDate_SelectedIndexChanged;
             comboBoxDate.SelectionChangeCommitted += comboBox3_SelectionChangeCommitted;
-            // 
-            // comboBoxDoctor
-            // 
-            comboBoxDoctor.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBoxDoctor.FormattingEnabled = true;
-            comboBoxDoctor.Location = new Point(373, 298);
-            comboBoxDoctor.Margin = new Padding(3, 2, 3, 2);
-            comboBoxDoctor.Name = "comboBoxDoctor";
-            comboBoxDoctor.Size = new Size(453, 36);
-            comboBoxDoctor.TabIndex = 73;
-            comboBoxDoctor.SelectedIndexChanged += comboBox4_SelectedIndexChanged;
-            comboBoxDoctor.SelectionChangeCommitted += comboBoxDoctor_SelectionChangeCommitted;
             // 
             // buttonAddAppointment
             // 
@@ -171,15 +149,41 @@
             buttonAddAppointment.UseVisualStyleBackColor = false;
             buttonAddAppointment.Click += buttonAddAppointment_Click;
             // 
+            // dataGridView_app_Patient
+            // 
+            dataGridView_app_Patient.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView_app_Patient.Location = new Point(373, 153);
+            dataGridView_app_Patient.Margin = new Padding(3, 2, 3, 2);
+            dataGridView_app_Patient.Name = "dataGridView_app_Patient";
+            dataGridView_app_Patient.RowHeadersWidth = 51;
+            dataGridView_app_Patient.RowTemplate.Height = 29;
+            dataGridView_app_Patient.Size = new Size(1199, 87);
+            dataGridView_app_Patient.TabIndex = 75;
+            dataGridView_app_Patient.CellContentClick += dataGridView1_CellContentClick;
+            dataGridView_app_Patient.CellValuePushed += dataGridView_app_Patient_CellValuePushed;
+            dataGridView_app_Patient.SelectionChanged += dataGridView_app_Patient_SelectionChanged;
+            // 
+            // dataGridView_app_doctor
+            // 
+            dataGridView_app_doctor.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView_app_doctor.Location = new Point(373, 477);
+            dataGridView_app_doctor.Name = "dataGridView_app_doctor";
+            dataGridView_app_doctor.RowHeadersWidth = 51;
+            dataGridView_app_doctor.RowTemplate.Height = 25;
+            dataGridView_app_doctor.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView_app_doctor.Size = new Size(1199, 92);
+            dataGridView_app_doctor.TabIndex = 76;
+            dataGridView_app_doctor.SelectionChanged += dataGridView_app_doctor_SelectionChanged;
+            // 
             // FormRegisterAppointment
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1904, 1041);
+            ClientSize = new Size(1698, 825);
+            Controls.Add(dataGridView_app_doctor);
+            Controls.Add(dataGridView_app_Patient);
             Controls.Add(buttonAddAppointment);
-            Controls.Add(comboBoxDoctor);
             Controls.Add(comboBoxDate);
-            Controls.Add(comboBoxPatient);
             Controls.Add(labelTitle);
             Controls.Add(labelAvailableDates);
             Controls.Add(labelDoctor);
@@ -193,6 +197,8 @@
             Load += FormRegisterAppointment_Load;
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView_app_Patient).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView_app_doctor).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -206,9 +212,9 @@
         private Panel panel1;
         private Button buttonBack;
         private PictureBox pictureBox1;
-        private ComboBox comboBoxPatient;
         private ComboBox comboBoxDate;
-        private ComboBox comboBoxDoctor;
         internal Button buttonAddAppointment;
+        private DataGridView dataGridView_app_Patient;
+        private DataGridView dataGridView_app_doctor;
     }
 }

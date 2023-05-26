@@ -321,7 +321,7 @@ namespace GUI_Management_of_medical_clinic
                     .FirstOrDefault(a => a.IdDoctorsDayPlan == appointment.IdDoctorsDayPlan)!;
             }
 
-			FormShowDetailsAppointment formShowDetailsAppointment = new FormShowDetailsAppointment(currentUser, appointment);
+            FormShowDetailsAppointment formShowDetailsAppointment = new FormShowDetailsAppointment(currentUser, appointment);
             Hide();
             formShowDetailsAppointment.ShowDialog();
             Close();
@@ -397,6 +397,16 @@ namespace GUI_Management_of_medical_clinic
             Hide();
             form.ShowDialog();
             Close();
+
+        }
+
+        private void dataGridViewAppointmentList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }

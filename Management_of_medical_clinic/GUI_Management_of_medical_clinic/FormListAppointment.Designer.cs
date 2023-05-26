@@ -38,6 +38,14 @@
             buttonExit = new Button();
             pictureBox1 = new PictureBox();
             dataGridViewAppointmentList = new DataGridView();
+            ColumnPatient = new DataGridViewTextBoxColumn();
+            ColumnPESEL = new DataGridViewTextBoxColumn();
+            ColumnDoctor = new DataGridViewTextBoxColumn();
+            ColumnSpecialization = new DataGridViewTextBoxColumn();
+            ColumnDate = new DataGridViewTextBoxColumn();
+            ColumnHour = new DataGridViewTextBoxColumn();
+            ColumnOffice = new DataGridViewTextBoxColumn();
+            ColumnCost = new DataGridViewTextBoxColumn();
             panel2 = new Panel();
             checkBoxDateOfVisit = new CheckBox();
             maskedTextBoxPESEL = new MaskedTextBox();
@@ -53,14 +61,6 @@
             textBoxLastName = new TextBox();
             label1 = new Label();
             textBoxName = new TextBox();
-            ColumnPatient = new DataGridViewTextBoxColumn();
-            ColumnPESEL = new DataGridViewTextBoxColumn();
-            ColumnDoctor = new DataGridViewTextBoxColumn();
-            ColumnSpecialization = new DataGridViewTextBoxColumn();
-            ColumnDate = new DataGridViewTextBoxColumn();
-            ColumnHour = new DataGridViewTextBoxColumn();
-            ColumnOffice = new DataGridViewTextBoxColumn();
-            ColumnCost = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAppointmentList).BeginInit();
@@ -204,6 +204,55 @@
             dataGridViewAppointmentList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewAppointmentList.Size = new Size(1564, 1053);
             dataGridViewAppointmentList.TabIndex = 30;
+            dataGridViewAppointmentList.CellContentClick += dataGridViewAppointmentList_CellContentClick;
+            // 
+            // ColumnPatient
+            // 
+            ColumnPatient.HeaderText = "Patient";
+            ColumnPatient.Name = "ColumnPatient";
+            ColumnPatient.ReadOnly = true;
+            // 
+            // ColumnPESEL
+            // 
+            ColumnPESEL.HeaderText = "PESEL";
+            ColumnPESEL.Name = "ColumnPESEL";
+            ColumnPESEL.ReadOnly = true;
+            // 
+            // ColumnDoctor
+            // 
+            ColumnDoctor.HeaderText = "Doctor";
+            ColumnDoctor.Name = "ColumnDoctor";
+            ColumnDoctor.ReadOnly = true;
+            // 
+            // ColumnSpecialization
+            // 
+            ColumnSpecialization.HeaderText = "Specialization";
+            ColumnSpecialization.Name = "ColumnSpecialization";
+            ColumnSpecialization.ReadOnly = true;
+            // 
+            // ColumnDate
+            // 
+            ColumnDate.HeaderText = "Date";
+            ColumnDate.Name = "ColumnDate";
+            ColumnDate.ReadOnly = true;
+            // 
+            // ColumnHour
+            // 
+            ColumnHour.HeaderText = "Hour";
+            ColumnHour.Name = "ColumnHour";
+            ColumnHour.ReadOnly = true;
+            // 
+            // ColumnOffice
+            // 
+            ColumnOffice.HeaderText = "Office";
+            ColumnOffice.Name = "ColumnOffice";
+            ColumnOffice.ReadOnly = true;
+            // 
+            // ColumnCost
+            // 
+            ColumnCost.HeaderText = "Cost";
+            ColumnCost.Name = "ColumnCost";
+            ColumnCost.ReadOnly = true;
             // 
             // panel2
             // 
@@ -226,6 +275,7 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(1567, 212);
             panel2.TabIndex = 31;
+            panel2.Paint += panel2_Paint;
             // 
             // checkBoxDateOfVisit
             // 
@@ -350,54 +400,6 @@
             textBoxName.Name = "textBoxName";
             textBoxName.Size = new Size(178, 23);
             textBoxName.TabIndex = 0;
-            // 
-            // ColumnPatient
-            // 
-            ColumnPatient.HeaderText = "Patient";
-            ColumnPatient.Name = "ColumnPatient";
-            ColumnPatient.ReadOnly = true;
-            // 
-            // ColumnPESEL
-            // 
-            ColumnPESEL.HeaderText = "PESEL";
-            ColumnPESEL.Name = "ColumnPESEL";
-            ColumnPESEL.ReadOnly = true;
-            // 
-            // ColumnDoctor
-            // 
-            ColumnDoctor.HeaderText = "Doctor";
-            ColumnDoctor.Name = "ColumnDoctor";
-            ColumnDoctor.ReadOnly = true;
-            // 
-            // ColumnSpecialization
-            // 
-            ColumnSpecialization.HeaderText = "Specialization";
-            ColumnSpecialization.Name = "ColumnSpecialization";
-            ColumnSpecialization.ReadOnly = true;
-            // 
-            // ColumnDate
-            // 
-            ColumnDate.HeaderText = "Date";
-            ColumnDate.Name = "ColumnDate";
-            ColumnDate.ReadOnly = true;
-            // 
-            // ColumnHour
-            // 
-            ColumnHour.HeaderText = "Hour";
-            ColumnHour.Name = "ColumnHour";
-            ColumnHour.ReadOnly = true;
-            // 
-            // ColumnOffice
-            // 
-            ColumnOffice.HeaderText = "Office";
-            ColumnOffice.Name = "ColumnOffice";
-            ColumnOffice.ReadOnly = true;
-            // 
-            // ColumnCost
-            // 
-            ColumnCost.HeaderText = "Cost";
-            ColumnCost.Name = "ColumnCost";
-            ColumnCost.ReadOnly = true;
             // 
             // FormListAppointment
             // 
