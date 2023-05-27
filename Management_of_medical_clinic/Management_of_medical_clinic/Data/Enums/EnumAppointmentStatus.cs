@@ -16,6 +16,7 @@ namespace Console_Management_of_medical_clinic.Data.Enums
 		Pending = 6,
 		Handled = 7,
 		Overdue = 8,
-		Cancelled = 9
+		Cancelled = 9,
+		Free = 10 //when doctor rejects term in calendar
 	};
 }
