@@ -60,6 +60,9 @@
             labelTitleCalendarMonth = new Label();
             labelTitleCalendarYear = new Label();
             dataGridViewAppointments = new DataGridView();
+            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
             label7 = new Label();
             label9 = new Label();
             Room = new DataGridViewTextBoxColumn();
@@ -68,9 +71,6 @@
             ColumnOffice = new DataGridViewTextBoxColumn();
             ColumnTerm = new DataGridViewTextBoxColumn();
             ColumnPatient = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
             panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -349,7 +349,7 @@
             // 
             labelDate.AutoSize = true;
             labelDate.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            labelDate.Location = new Point(1638, 80);
+            labelDate.Location = new Point(1612, 110);
             labelDate.Name = "labelDate";
             labelDate.Size = new Size(122, 30);
             labelDate.TabIndex = 28;
@@ -431,6 +431,25 @@
             dataGridViewAppointments.Size = new Size(398, 888);
             dataGridViewAppointments.TabIndex = 33;
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewTextBoxColumn1.HeaderText = "Office";
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            dataGridViewTextBoxColumn2.HeaderText = "Term";
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            dataGridViewTextBoxColumn3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewTextBoxColumn3.HeaderText = "Patient";
+            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
             // label7
             // 
             label7.AutoSize = true;
@@ -486,25 +505,6 @@
             ColumnPatient.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             ColumnPatient.HeaderText = "Patient";
             ColumnPatient.Name = "ColumnPatient";
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewTextBoxColumn1.HeaderText = "Office";
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewTextBoxColumn2.HeaderText = "Term";
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewTextBoxColumn3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewTextBoxColumn3.HeaderText = "Patient";
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
             // FormDoctorCurrentCalendar
             // 

@@ -36,8 +36,6 @@
             lblTerm = new Label();
             lblAppDate = new Label();
             buttonModify = new Button();
-            lblApCost = new Label();
-            lblAppPatient = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -92,7 +90,7 @@
             // 
             lblOfficeNumber.AutoSize = true;
             lblOfficeNumber.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            lblOfficeNumber.Location = new Point(382, 435);
+            lblOfficeNumber.Location = new Point(382, 283);
             lblOfficeNumber.Name = "lblOfficeNumber";
             lblOfficeNumber.Size = new Size(140, 28);
             lblOfficeNumber.TabIndex = 60;
@@ -102,7 +100,7 @@
             // 
             lblTerm.AutoSize = true;
             lblTerm.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            lblTerm.Location = new Point(382, 378);
+            lblTerm.Location = new Point(382, 220);
             lblTerm.Name = "lblTerm";
             lblTerm.Size = new Size(58, 28);
             lblTerm.TabIndex = 58;
@@ -112,7 +110,7 @@
             // 
             lblAppDate.AutoSize = true;
             lblAppDate.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            lblAppDate.Location = new Point(382, 321);
+            lblAppDate.Location = new Point(382, 161);
             lblAppDate.Name = "lblAppDate";
             lblAppDate.Size = new Size(57, 28);
             lblAppDate.TabIndex = 61;
@@ -132,34 +130,12 @@
             buttonModify.UseVisualStyleBackColor = false;
             buttonModify.Click += buttonConfirm_Click;
             // 
-            // lblApCost
-            // 
-            lblApCost.AutoSize = true;
-            lblApCost.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            lblApCost.Location = new Point(382, 260);
-            lblApCost.Name = "lblApCost";
-            lblApCost.Size = new Size(55, 28);
-            lblApCost.TabIndex = 67;
-            lblApCost.Text = "Cost:";
-            // 
-            // lblAppPatient
-            // 
-            lblAppPatient.AutoSize = true;
-            lblAppPatient.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            lblAppPatient.Location = new Point(382, 207);
-            lblAppPatient.Name = "lblAppPatient";
-            lblAppPatient.Size = new Size(76, 28);
-            lblAppPatient.TabIndex = 68;
-            lblAppPatient.Text = "Patient:";
-            // 
             // FormDoctorCalendarDetails
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
             ClientSize = new Size(1920, 1080);
-            Controls.Add(lblAppPatient);
-            Controls.Add(lblApCost);
             Controls.Add(buttonModify);
             Controls.Add(lblAppDate);
             Controls.Add(lblOfficeNumber);
@@ -186,8 +162,6 @@
         private Label lblTerm;
         private Label lblAppDate;
         internal Button buttonModify;
-        private Label lblApCost;
-        private Label lblAppPatient;
         private Button buttonBack;
     }
 }

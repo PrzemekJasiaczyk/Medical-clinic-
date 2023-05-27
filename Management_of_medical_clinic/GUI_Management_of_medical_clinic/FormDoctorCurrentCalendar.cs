@@ -18,6 +18,7 @@ namespace GUI_Management_of_medical_clinic
         }
 
         DateTime displayMonth = DateTime.Today;
+
         List<DoctorsDayPlanModel> displayListInDataGridView = new List<DoctorsDayPlanModel>();
 
         private void FormDoctorCalendar_Load(object sender, EventArgs e)
@@ -90,9 +91,11 @@ namespace GUI_Management_of_medical_clinic
         {
             List<DoctorsDayPlanModel> appointments = CalendarAppointmentService.GetAppointmentsWithPatients();
 
+            int calendarId = CalendarService.GetIdFromDate(day);
+
             foreach (DoctorsDayPlanModel appointment in appointments)
             {
-                if (appointment.IdEmployee == currentUser.IdEmployee && appointment.IdDay == day.Day)
+                if (appointment.IdEmployee == currentUser.IdEmployee && appointment.IdDay == day.Day && calendarId == appointment.IdCalendar)
                 {
                     userControl.BackColor = Color.Orange;
                 }
@@ -148,7 +151,7 @@ namespace GUI_Management_of_medical_clinic
 
             foreach (DoctorsDayPlanModel appointment in appointments)
             {
-                if (true)//???
+                if (calendarId == appointment.IdCalendar)
                 {
                     DisplayDataInDataGridView(appointments, calendarId, selectedDate);
                 }
@@ -164,7 +167,7 @@ namespace GUI_Management_of_medical_clinic
             foreach (DoctorsDayPlanModel appointment in appointments)
             {
 
-                if (appointment.IdEmployee == currentUser.IdEmployee && appointment.IdDay == selectedDate.Day)
+                if (appointment.IdEmployee == currentUser.IdEmployee && appointment.IdDay == selectedDate.Day && calendarId == appointment.IdCalendar)
                 {
                     int index = dataGridViewAppointments.Rows.Add(OfficeService.GetOfficeById((int)appointment.IdOffice).Number,
                         AppointmentService.GetTermByTermId(appointment.IdOfTerm).ToString(),

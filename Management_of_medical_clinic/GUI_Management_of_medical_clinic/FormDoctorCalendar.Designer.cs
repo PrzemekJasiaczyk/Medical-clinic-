@@ -208,6 +208,16 @@
             this.button_acceptAppointments.Text = "Accept";
             this.button_acceptAppointments.UseVisualStyleBackColor = true;
             // 
+            // buttonAddAppointment
+            // 
+            buttonAddAppointment.Location = new Point(1563, 630);
+            buttonAddAppointment.Name = "buttonAddAppointment";
+            buttonAddAppointment.Size = new Size(156, 37);
+            buttonAddAppointment.TabIndex = 51;
+            buttonAddAppointment.Text = "Add new";
+            buttonAddAppointment.UseVisualStyleBackColor = true;
+            buttonAddAppointment.Click += buttonAddAppointment_Click;
+            // 
             // FormDoctorCalendar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
