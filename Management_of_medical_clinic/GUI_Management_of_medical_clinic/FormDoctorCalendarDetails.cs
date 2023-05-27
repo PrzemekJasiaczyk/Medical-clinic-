@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -17,11 +18,20 @@ namespace GUI_Management_of_medical_clinic
     {
         EmployeeModel currentUser;
         DoctorsDayPlanModel appointment;
-
+        DateTime selectedDate;
+        string dateReference;
+        int selectedDay;
+        int calendarId;
         public FormDoctorCalendarDetails(DoctorsDayPlanModel? DoctorsDayPlanModel, EmployeeModel currentUser)
         {
             this.currentUser = currentUser;
-            this.appointment = appointment;
+            this.appointment = DoctorsDayPlanModel;
+            /*
+            selectedDate = date;
+            selectedDay = date.Day;
+            dateReference = selectedDate.ToString("d");
+            calendarId = CalendarService.GetCalendarIdByDate(dateReference);*/
+
             InitializeComponent();
             LoadAppointmentData();
 
@@ -35,28 +45,25 @@ namespace GUI_Management_of_medical_clinic
         }
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
-            //FormDoctorCalendarModify formDoctorCalendarModify = new FormDoctorCalendarModify(appointment, currentUser);
+            FormDoctorCalendarModify formDoctorCalendarModify = new FormDoctorCalendarModify(appointment, currentUser, false, selectedDate);
             this.Hide();
-            //formDoctorCalendarModify.ShowDialog();
+            formDoctorCalendarModify.ShowDialog();
             this.Close();
         }
 
         private void FormDoctorCalendarDetails_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void LoadAppointmentData()
         {
-            //Patient patient = PatientService.GetPatientById((int)appointment.PatientId);
-
-            //lblAppPatient.Text = "Patient: " + patient.FirstName + " " + patient.LastName;
-            lblApCost.Text = "Cost: " + appointment.Cost;
-            DateTime date = CalendarService.GetDateByIdCalendar((int)appointment.IdCalendar, appointment.IdDay);
-            lblAppDate.Text = "Date: " + date.ToString("dd.MM.yyyy");
-            //lblTerm.Text = "Term: " + DoctorsDayPlanModel.GetTermByTermId(appointment.IdTerm);
+            this.selectedDate = CalendarService.GetDateByIdCalendar((int)appointment.IdCalendar, appointment.IdDay);
+            lblAppDate.Text = "Date: " + selectedDate.ToString("dd.MM.yyyy");
+            lblTerm.Text = "Term: " + AppointmentService.GetTermByTermId(appointment.IdOfTerm).ToString();
             lblOfficeNumber.Text = "Office number: " + appointment.IdOffice.ToString();
         }
-        
+
+
     }
 }

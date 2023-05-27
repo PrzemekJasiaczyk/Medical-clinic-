@@ -1,12 +1,17 @@
-﻿using Console_Management_of_medical_clinic.Logic;
+﻿using Console_Management_of_medical_clinic.Data;
+using Console_Management_of_medical_clinic.Data.Enums;
+using Console_Management_of_medical_clinic.Logic;
+using Console_Management_of_medical_clinic.Migrations;
 using Console_Management_of_medical_clinic.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Numerics;
+using System.Security.Cryptography.Xml;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,37 +23,69 @@ namespace GUI_Management_of_medical_clinic
         EmployeeModel currentUser;
         DoctorsDayPlanModel appointment;
 
-        public FormDoctorCalendarModify(DoctorsDayPlanModel? appointment, EmployeeModel currentUser)
+        int selectedDay;
+        int calendarId;
+        bool creatingNew;
+
+
+        string dateReference;
+        DateTime selectedDate;
+
+        public FormDoctorCalendarModify(DoctorsDayPlanModel? appointment, EmployeeModel currentUser, bool creatingNew, DateTime date)
         {
             this.currentUser = currentUser;
             this.appointment = appointment;
+            this.creatingNew = creatingNew;
+            if(date!=null)
+            {
+                selectedDate = date;
+                selectedDay = date.Day;
+
+                dateReference = selectedDate.ToString("d");
+                calendarId = CalendarService.GetCalendarIdByDate(dateReference);
+            }
+            
+
             InitializeComponent();
         }
 
         private void FormDoctorCalendarModify_Load(object sender, EventArgs e)
         {
-            try
-            {
-                comboBoxOfficeNumber.DataSource = OfficeService.GetCalendarIds();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex);
-            }
+            labelModifyAppointment.Text = creatingNew ? "Creating new appointment" : "Modifying Appointment";
+            FillOfficesComboBox();
 
-            //Change selecteditem in combobox
+            if (!creatingNew)
+            {
+                //Change selecteditem in combobox
+                // dodać zaznaczenie wybranego dnia
+                try
+                {
+                    dateTimePicker.Value = CalendarService.GetDateByIdCalendar((int)appointment.IdCalendar, appointment.IdDay);
+                    comboBoxOfficeNumber.SelectedItem = appointment.IdOffice.ToString();
+                    comboBoxTerm.SelectedItem = AppointmentService.GetTermByTermId(appointment.IdOfTerm);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex);
+                }
+            }
+            
+        }
+        private void FillOfficesComboBox()
+        {
             try
             {
-                dateTimePicker.Value = CalendarService.GetDateByIdCalendar((int)appointment.IdCalendar, appointment.IdDay);
-                comboBoxOfficeNumber.SelectedItem = appointment.IdOffice.ToString();
-                comboBoxTerm.SelectedItem = AppointmentService.GetTermByTermId(appointment.IdOfTerm);
+                int currentUserSpecialization = currentUser.IdSpecialization.Value;
+                List<OfficeModel> offices = OfficeService.GetOfficesData();
+                List<OfficeModel> filteredOffices = offices.Where(o => o.IdSpecialization == currentUserSpecialization).ToList();
+                comboBoxOfficeNumber.DisplayMember = "Name";
+                comboBoxOfficeNumber.DataSource = filteredOffices;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex);
             }
         }
-
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             ToFormDetails();
@@ -59,19 +96,42 @@ namespace GUI_Management_of_medical_clinic
             try
             {
                 if (comboBoxTerm.SelectedIndex < 0)
+                {
+                    MessageBox.Show("You have to select a term");
                     return;
+                }
+
                 if (comboBoxOfficeNumber.SelectedIndex < 0)
+                {
+                    MessageBox.Show("You have to select an office");
                     return;
-                //ToDo available date
+                }
 
+                DateTime DateInDTP = dateTimePicker.Value;
+                dateReference = DateInDTP.ToString("d");
+                calendarId = CalendarService.GetCalendarIdByDate(dateReference);
+                OfficeModel selectedOffice = (OfficeModel)comboBoxOfficeNumber.SelectedItem;
 
-                string term = comboBoxTerm.SelectedItem.ToString();
-                int idTerm = AppointmentService.GetIdOfTerm(term);
+                if (DoctorsPlanService.CheckIfAppointmentExists(GetIdOfTermFromCombo(), 
+                    dateTimePicker.Value.Day, 
+                    calendarId, selectedOffice.IdOffice))
+                {
+                    MessageBox.Show("The office is already booked for this term");
+                    return;
+                }
 
-                /*AppointmentService.DoctorModifiesAppointment(appointment.IdAppointment, (int)comboBoxOfficeNumber.SelectedItem,
-                    idTerm, dateTimePicker.Value.Day);*/
+                
+                if (creatingNew)
+                {
+                    CreateAppointemntInDataBase();
+                }
+                else
+                {
+                    FindEditAppointemntInDataBase();
+                }
+                
 
-                MessageBox.Show("Successfully changed the data!");
+                
 
                 ToFormCalendar();
             }
@@ -81,12 +141,67 @@ namespace GUI_Management_of_medical_clinic
             }
         }
 
+        private int GetIdOfTermFromCombo()
+        {
+            string term = comboBoxTerm.SelectedItem.ToString();
+            int idTerm = AppointmentService.GetIdOfTerm(term);
+            return idTerm;
+        }
+
+        #region ChangingDataInDatabase
+        private void CreateAppointemntInDataBase()
+        {
+            int selectedDay = dateTimePicker.Value.Day;
+
+            selectedDate = dateTimePicker.Value;
+            dateReference = selectedDate.ToString("d");
+            calendarId = CalendarService.GetCalendarIdByDate(dateReference);
+
+            OfficeModel selectedOffice = (OfficeModel)comboBoxOfficeNumber.SelectedItem;
+
+            DoctorsDayPlanModel model = new DoctorsDayPlanModel(GetIdOfTermFromCombo(), 
+                dateTimePicker.Value.Day,
+                calendarId,
+                currentUser.IdEmployee,
+                selectedOffice.IdOffice,
+                true);
+            DoctorsPlanService.AddPlan(model);
+            MessageBox.Show("New plan was added successfully");
+        }
+
+
+        private void FindEditAppointemntInDataBase()
+        {
+            AppDbContext _context = new AppDbContext();
+            appointment = _context.DbDoctorsDayPlan.Find(appointment.IdDoctorsDayPlan);
+            ChangeOrAddAppointemntData();
+            _context.SaveChanges();
+            MessageBox.Show("Successfully changed the data!");
+        }
+
+        private void ChangeOrAddAppointemntData()
+        {
+            OfficeModel selectedOffice = (OfficeModel)comboBoxOfficeNumber.SelectedItem;
+
+            appointment.IdOffice = selectedOffice.IdOffice;
+            appointment.IdOfTerm = GetIdOfTermFromCombo();
+            appointment.IdDay = dateTimePicker.Value.Day;
+        }
+        #endregion
+        #region ChangingForms
         private void ToFormDetails()
         {
-            FormDoctorCalendarDetails formDoctorCalendarDetails = new FormDoctorCalendarDetails(appointment, currentUser);
-            this.Hide();
-            formDoctorCalendarDetails.ShowDialog();
-            this.Close();
+            if(creatingNew)
+            {
+                ToFormCalendar();
+            }
+            else
+            {
+                FormDoctorCalendarDetails formDoctorCalendarDetails = new FormDoctorCalendarDetails(appointment, currentUser);
+                this.Hide();
+                formDoctorCalendarDetails.ShowDialog();
+                this.Close();
+            }
         }
 
         private void ToFormCalendar()
@@ -96,5 +211,6 @@ namespace GUI_Management_of_medical_clinic
             formDoctorCalendar.ShowDialog();
             this.Close();
         }
+        #endregion
     }
 }

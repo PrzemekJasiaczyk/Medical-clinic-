@@ -209,5 +209,13 @@ namespace Console_Management_of_medical_clinic.Logic
             }
         }
 
+        public static bool CheckIfAppointmentExists(int idTerm, int idDay, int idCalendar, int idOffice)
+        {
+            using (AppDbContext context = new AppDbContext())
+            {
+                return context.DbDoctorsDayPlan.Any(plan => plan.IdOfTerm == idTerm && plan.IdDay == idDay && plan.IdCalendar == idCalendar && plan.IdOffice == idOffice);
+            }
+        }
+
     }
 }
