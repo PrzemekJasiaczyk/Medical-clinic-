@@ -150,7 +150,7 @@ namespace GUI_Management_of_medical_clinic
 
             int calendarId = CalendarService.GetIdFromDate(selectedDate);
 
-            List<DoctorsDayPlanModel> appointments = CalendarAppointmentService.GetAppointmentsWithPatients();//do poprawy
+            List<DoctorsDayPlanModel> appointments = CalendarAppointmentService.GetAppointmentsWithOUTPatients();//do poprawy
             //List<DoctorsDayPlanModel> appointments = AppointmentService.CheckAppointmentsAndReturnList(selectedDate);
 
             foreach (DoctorsDayPlanModel appointment in appointments)
@@ -239,20 +239,6 @@ namespace GUI_Management_of_medical_clinic
             this.Close();
         }
 
-        private void buttonEditAppointment_Click(object sender, EventArgs e)
-        {
-            if (dataGridViewYourAppointments.SelectedRows.Count != 1)
-                return;
-
-            DoctorsDayPlanModel appointment = (DoctorsDayPlanModel)dataGridViewYourAppointments.SelectedRows[0].Tag;
-
-            FormDoctorCalendarDetails edit = new FormDoctorCalendarDetails(appointment, currentUser);
-
-            this.Hide();
-            edit.ShowDialog();
-            this.Close();
-        }
-
         private void buttonNextMonth_Click(object sender, EventArgs e)
         {
             RemoveControlPanels();
@@ -286,6 +272,20 @@ namespace GUI_Management_of_medical_clinic
             {
                 MessageBox.Show("A term needs to be selected");
             }
+        }
+
+        private void buttonEditAppointment_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewYourAppointments.SelectedRows.Count != 1)
+                return;
+
+            DoctorsDayPlanModel appointment = (DoctorsDayPlanModel)dataGridViewYourAppointments.SelectedRows[0].Tag;
+
+            FormDoctorCalendarDetails edit = new FormDoctorCalendarDetails(appointment, currentUser);
+
+            this.Hide();
+            edit.ShowDialog();
+            this.Close();
         }
 
     }
