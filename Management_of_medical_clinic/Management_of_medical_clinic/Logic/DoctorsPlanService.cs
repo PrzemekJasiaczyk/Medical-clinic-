@@ -174,6 +174,40 @@ namespace Console_Management_of_medical_clinic.Logic
                 }
             }
         }
+       public static void ChangeAppointmentStatusToAccepted(int calendar_id, EmployeeModel employee)//added by doctors
+        {
+            using (AppDbContext context = new AppDbContext())
+            {
+                List<DoctorsDayPlanModel> ListdoctorsDayPlanModel = GetPlansByCalendarId(calendar_id);
+                foreach (DoctorsDayPlanModel ddpm in ListdoctorsDayPlanModel)
+                {
+                    context.DbDoctorsDayPlan.Update(ddpm);
+                    if (employee.IdEmployee == ddpm.IdEmployee)
+                    {
+                        ddpm.Status = EnumAppointmentStatus.Accepted;
+                    }
+                    context.SaveChanges();
+                }
+            }
+        }
+        
+        public static void ChangeAppointmentStatusToFree(int doctorday_id, EmployeeModel employee)//added by doctors
+        {
+            using (AppDbContext context = new AppDbContext())
+            {
+                List<DoctorsDayPlanModel> ListdoctorsDayPlanModel = AppointmentService.GetAllAppointments();
+                foreach (DoctorsDayPlanModel ddpm in ListdoctorsDayPlanModel)
+                {
+                    context.DbDoctorsDayPlan.Update(ddpm);
+                    if (ddpm.IdDoctorsDayPlan == doctorday_id)
+                    {
+                        ddpm.Status = EnumAppointmentStatus.Free; //not sure if it would be look like this
+                    }
+                    
+                }
+                context.SaveChanges();
+            }
+        }
 
     }
 }

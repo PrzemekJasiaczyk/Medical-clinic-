@@ -18,8 +18,6 @@ namespace GUI_Management_of_medical_clinic
     public partial class FormDoctorDashboard : Form
     {
         EmployeeModel currentUser;
-        DoctorsDayPlanModel doctorDayPlanModel;
-        CalendarModel calendar;
 
         public FormDoctorDashboard(EmployeeModel currentUser)
         {
@@ -30,31 +28,9 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonCalendar_Click(object sender, EventArgs e)
         {
-            bool isNewCalendar = false; 
-            List<DoctorsDayPlanModel> doctorsDayPlanModels = DoctorsPlanService.GetDoctorsPlanData();
-            int cal_id= CalendarService.GetCalendarIdByDate(DateTime.Today.ToString("d"));
-            calendar = CalendarService.GetCalendarById(cal_id);
-            foreach (DoctorsDayPlanModel doctorsDayPlanModel in doctorsDayPlanModels)
-            {
-                if (doctorsDayPlanModel.IdEmployee == currentUser.IdEmployee 
-                    && doctorsDayPlanModel.Status == EnumAppointmentStatus.Inactive 
-                    && doctorsDayPlanModel.IdCalendar==cal_id)
-                {      
-                    isNewCalendar = true;
-                    doctorDayPlanModel = doctorsDayPlanModel;                  
-                }
-            }
-            if (isNewCalendar == true)
-            {
-                FormDoctorCalendar formDoctor = new FormDoctorCalendar(currentUser,calendar);
-                formDoctor.ShowDialog();
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("You don't have any new calendar to accept", "Information", MessageBoxButtons.OK);
-            }           
-            
+            this.Hide();
+            FormDoctorCalendar formDoctor = new FormDoctorCalendar(currentUser);
+            formDoctor.ShowDialog();
         }
 
         private void buttonLogOut_Click(object sender, EventArgs e)

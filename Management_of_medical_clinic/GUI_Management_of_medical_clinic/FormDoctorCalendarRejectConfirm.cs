@@ -33,7 +33,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
-            CalendarService.ChangeStatusToRejected(calendar.IdCalendar,currentUser);
+            DoctorsPlanService.ChangeAppointmentStatusToFree(calendar.IdCalendar,currentUser); //need changes hier
             MessageBox.Show("Calendar is rejected");
             Hide();
             Close();

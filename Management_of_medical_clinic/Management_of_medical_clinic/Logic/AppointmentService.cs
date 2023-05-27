@@ -73,6 +73,30 @@ namespace Console_Management_of_medical_clinic.Logic
             return appointments;
         }
 
+        public static List<DoctorsDayPlanModel> GetAllAppointments()
+        {
+            using (AppDbContext context = new())
+            {
+                return context.DbDoctorsDayPlan.ToList();
+            }
+        }
+
+        public static List<DoctorsDayPlanModel> GetAppointmentsForDoctorInChosenMonth(DateTime date, EmployeeModel employee)
+        {
+            List<DoctorsDayPlanModel> list = new List<DoctorsDayPlanModel>();
+            int id_cal = CalendarService.GetCalendarIdByDate(date.ToString("d"));
+            List<DoctorsDayPlanModel> allAppointments = GetAllAppointments();
+            foreach (DoctorsDayPlanModel app in allAppointments)
+            {
+                if (id_cal == app.IdCalendar && employee.IdEmployee == app.IdEmployee)
+                { 
+                    list.Add(app);
+                }
+            }return list;
+
+            return list;
+        }
+
         public static void DoctorModifiesAppointment(int idappointment, int office, int term, int day)
         {
             var context = new AppDbContext();

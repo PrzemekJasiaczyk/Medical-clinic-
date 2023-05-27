@@ -14,13 +14,13 @@ namespace GUI_Management_of_medical_clinic
 {
     public partial class FormDoctorCalendarAcceptConfirm : Form
     {
-        CalendarModel calendar;
+        string selectedDate;
         EmployeeModel currentUser;
 
-        public FormDoctorCalendarAcceptConfirm(CalendarModel calendar, EmployeeModel currentUser)
+        public FormDoctorCalendarAcceptConfirm(string selectedDate, EmployeeModel currentUser)
         {
             InitializeComponent();
-            this.calendar = calendar;
+            this.selectedDate=selectedDate;
             this.currentUser = currentUser;
         }
 
@@ -28,14 +28,26 @@ namespace GUI_Management_of_medical_clinic
         {
             MessageBox.Show("Canceled calendar's accepting");
             Hide();
+            Close();
+            FormDoctorCalendar formDoctorCalendar = new FormDoctorCalendar(currentUser);
+            formDoctorCalendar.Show();          
         }
 
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
-            CalendarService.ChangeStatusToActive(calendar.IdCalendar,currentUser);
+            DateTime date = Convert.ToDateTime(selectedDate);
+            int cal_id = CalendarService.GetCalendarIdByDate(date.ToString("d"));
+            List<DoctorsDayPlanModel> list = DoctorsPlanService.GetPlansByCalendarId(cal_id);
+           foreach (DoctorsDayPlanModel appointments in list)
+            {
+                DoctorsPlanService.ChangeAppointmentStatusToAccepted(appointments.IdDoctorsDayPlan, currentUser);
+            }
+            CalendarService.ChangeCalendarStatusToAccepted(cal_id);
             MessageBox.Show("Calendar is accepted");
             Hide();
             Close();
+            FormDoctorCalendar formDoctorCalendar = new FormDoctorCalendar(currentUser);
+            formDoctorCalendar.Show();
         }
 
     }

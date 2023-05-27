@@ -152,5 +152,10 @@ namespace Console_Management_of_medical_clinic.Logic
         {
             return appointments.OrderBy(a => a.IdOfTerm).ToList();
         }
+
+        public static List<DoctorsDayPlanModel> SortByPatientLastName(List<DoctorsDayPlanModel> appointments) //finish
+        {
+            return appointments.OrderBy(a => PatientService.GetPatientById((int)a.PatientId).LastName).ToList();
+        }
     }
 }
