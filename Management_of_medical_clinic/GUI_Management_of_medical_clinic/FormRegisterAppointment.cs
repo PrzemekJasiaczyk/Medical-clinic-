@@ -59,42 +59,69 @@ namespace GUI_Management_of_medical_clinic
 
         public void DisplayDoctor()
         {
-            List<EmployeeModel> employees = EmployeeService.GetEmployeesData()
+            using AppDbContext context = new();
+            var doctors = context.DbEmployees
+                .Include(d => d.SpecializationModel)
                 .Where(d => d.Role == EnumEmployeeRoles.MedicalDoctor)
+                .Select(
+                    d => new
+                    {
+                        d.IdEmployee,
+                        d.FirstName,
+                        d.LastName,
+                        Specialization = d.SpecializationModel.Name
+                    }
+                        )
                 .ToList();
 
-            dataGridView_app_doctor.DataSource = employees;
-            dataGridView_app_doctor.Columns[0].Visible = false;
-            dataGridView_app_doctor.Columns[3].Visible = false;
-            dataGridView_app_doctor.Columns[4].Visible = false;
-            dataGridView_app_doctor.Columns[5].Visible = false;
-            dataGridView_app_doctor.Columns[6].Visible = false;
-            dataGridView_app_doctor.Columns[7].Visible = false;
-            dataGridView_app_doctor.Columns[8].Visible = false;
-            dataGridView_app_doctor.Columns[9].Visible = false;
-            dataGridView_app_doctor.Columns[11].Visible = false;
-            dataGridView_app_doctor.Columns[10].Visible = false;
-            dataGridView_app_doctor.Columns[13].Visible = false;
-        }
+			dataGridView_app_doctor.AutoGenerateColumns = false;
+			dataGridView_app_doctor.Columns.Add("IdEmployee", "ID");
+			dataGridView_app_doctor.Columns.Add("FirstName", "First Name");
+			dataGridView_app_doctor.Columns.Add("LastName", "Last Name");
+			dataGridView_app_doctor.Columns.Add("Specialization", "Specialization");
+
+			dataGridView_app_doctor.Columns["IdEmployee"].DataPropertyName = "IdEmployee";
+			dataGridView_app_doctor.Columns["FirstName"].DataPropertyName = "FirstName";
+			dataGridView_app_doctor.Columns["LastName"].DataPropertyName = "LastName";
+			dataGridView_app_doctor.Columns["Specialization"].DataPropertyName = "Specialization";
+
+            dataGridView_app_doctor.Columns["FirstName"].Width = 250;
+			dataGridView_app_doctor.Columns["LastName"].Width = 250;
+			dataGridView_app_doctor.Columns["Specialization"].Width = 250;
+
+			dataGridView_app_doctor.Columns["IdEmployee"].Visible = false;
+
+			dataGridView_app_doctor.DataSource = doctors;
+
+			dataGridView_app_doctor.Rows[0].Selected = true;
+		}
 
         public void DisplayPatient()
         {
             List<Patient> patients = PatientService.GetPatientsData();
 
-            dataGridView_app_Patient.DataSource = patients;
-            dataGridView_app_Patient.Columns[0].Visible = false;
-            dataGridView_app_Patient.Columns[4].Visible = false;
-            dataGridView_app_Patient.Columns[5].Visible = false;
-            dataGridView_app_Patient.Columns[6].Visible = false;
+			dataGridView_app_Patient.AutoGenerateColumns = false;
+			dataGridView_app_Patient.Columns.Add("PatientId", "ID");
+			dataGridView_app_Patient.Columns.Add("FirstName", "First Name");
+			dataGridView_app_Patient.Columns.Add("LastName", "Last Name");
+			dataGridView_app_Patient.Columns.Add("PESEL", "PESEL");
 
+			dataGridView_app_Patient.Columns["PatientId"].DataPropertyName = "PatientId";
+			dataGridView_app_Patient.Columns["FirstName"].DataPropertyName = "FirstName";
+			dataGridView_app_Patient.Columns["LastName"].DataPropertyName = "LastName";
+			dataGridView_app_Patient.Columns["PESEL"].DataPropertyName = "PESEL";
 
+			dataGridView_app_Patient.Columns["FirstName"].Width = 250;
+			dataGridView_app_Patient.Columns["LastName"].Width = 250;
+			dataGridView_app_Patient.Columns["PESEL"].Width = 250;
 
+			dataGridView_app_Patient.Columns["PatientId"].Visible = false;
 
+			dataGridView_app_Patient.DataSource = patients;
 
-
-
-
-        }
+			dataGridView_app_Patient.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+			dataGridView_app_Patient.Rows[0].Selected = true;
+		}
 
 
         private void FormRegisterAppointment_Load(object sender, EventArgs e)
@@ -313,9 +340,13 @@ namespace GUI_Management_of_medical_clinic
             if (dataGridView_app_doctor.SelectedRows.Count == 1)
             {
                 DataGridViewRow selectedRow = dataGridView_app_doctor.SelectedRows[0];
-                EmployeeModel id = (EmployeeModel)dataGridView_app_doctor.SelectedRows[0].DataBoundItem;
-                selectedDoctorId = id.IdEmployee;
-            }
+
+                int employeeId = Convert.ToInt32(selectedRow.Cells["IdEmployee"].Value);
+
+                //using AppDbContext context = new();
+                //EmployeeModel selectedEmployee = context.DbEmployees.Find(employeeId);
+                selectedDoctorId = employeeId;
+			}
 
             List<DoctorsDayPlanModel> appointments =
             CalendarAppointmentService.GetAppointmentsData()
