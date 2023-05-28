@@ -61,7 +61,7 @@ namespace GUI_Management_of_medical_clinic
 
         public void DisplayDoctor()
         {
-            
+
             using AppDbContext context = new();
             var doctors = context.DbEmployees
                 .Include(d => d.SpecializationModel)
@@ -89,9 +89,9 @@ namespace GUI_Management_of_medical_clinic
                 doctors = doctors.Where(
                         d =>
                         (d.FirstName + " " + d.LastName).ToLower().Contains(searchedDoctor)).ToList();
-                        
+
             }
-       
+
 
             dataGridView_app_doctor.AutoGenerateColumns = false;
             dataGridView_app_doctor.Columns.Add("IdEmployee", "ID");
@@ -356,16 +356,7 @@ namespace GUI_Management_of_medical_clinic
         private void dataGridView_app_doctor_SelectionChanged(object sender, EventArgs e)
         {
             int selectedDoctorId = 0;
-            /*
-            if (dataGridView_app_doctor.SelectedRows.Count == 1)
-            {
-                DataGridViewRow selectedRow = dataGridView_app_doctor.SelectedRows[0];
-                EmployeeModel doc = (EmployeeModel)selectedRow.DataBoundItem;
-                //selectedAppointmentId = selectedAppointment.IdDoctorsDayPlan;
-                //EmployeeModel doc = (EmployeeModel)comboBoxDoctor.SelectedItem;
-                selectedDoctorId = doc.IdEmployee;
-            }
-            */
+
 
             if (dataGridView_app_doctor.SelectedRows.Count == 1)
             {
@@ -404,7 +395,7 @@ namespace GUI_Management_of_medical_clinic
 
             dataGridView_app_doctor.DataSource = null;
             DisplayDoctor();
-            
+
         }
 
 

@@ -50,6 +50,7 @@
             button2 = new Button();
             button3 = new Button();
             comboBoxDoctorSpecialization = new ComboBox();
+            label1 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView_app_Patient).BeginInit();
@@ -162,6 +163,7 @@
             // 
             // dataGridView_app_Patient
             // 
+            dataGridView_app_Patient.AllowUserToAddRows = false;
             dataGridView_app_Patient.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView_app_Patient.Location = new Point(373, 154);
             dataGridView_app_Patient.Margin = new Padding(3, 2, 3, 2);
@@ -176,6 +178,7 @@
             // 
             // dataGridView_app_doctor
             // 
+            dataGridView_app_doctor.AllowUserToAddRows = false;
             dataGridView_app_doctor.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView_app_doctor.Location = new Point(373, 359);
             dataGridView_app_doctor.Name = "dataGridView_app_doctor";
@@ -316,11 +319,22 @@
             comboBoxDoctorSpecialization.TabIndex = 97;
             comboBoxDoctorSpecialization.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(661, 332);
+            label1.Name = "label1";
+            label1.Size = new Size(155, 20);
+            label1.TabIndex = 98;
+            label1.Text = "Doctor specialization";
+            // 
             // FormRegisterAppointment
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1698, 825);
+            Controls.Add(label1);
             Controls.Add(comboBoxDoctorSpecialization);
             Controls.Add(button3);
             Controls.Add(button2);
@@ -379,5 +393,6 @@
         private Button button2;
         private Button button3;
         private ComboBox comboBoxDoctorSpecialization;
+        private Label label1;
     }
 }
