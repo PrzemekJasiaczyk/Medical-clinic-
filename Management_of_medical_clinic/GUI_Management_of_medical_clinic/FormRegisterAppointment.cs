@@ -402,11 +402,16 @@ namespace GUI_Management_of_medical_clinic
         private void button2_Click(object sender, EventArgs e)
         {
             DisplayPatient();
+            textBox1_Name.Text = string.Empty;
+            TextBox_PESEL.Text = string.Empty;
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             DisplayDoctor();
+            textBox1_doctor.Text = string.Empty;
+            comboBoxDoctorSpecialization.SelectedIndex = -1;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
