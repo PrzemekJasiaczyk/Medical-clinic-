@@ -18,7 +18,7 @@ namespace GUI_Management_of_medical_clinic
         public FormDoctorCalendar(EmployeeModel currentUser)
         {
             InitializeComponent();
-            this.currentUser = currentUser;          
+            this.currentUser = currentUser;
         }
 
         public FormDoctorCalendar(EmployeeModel currentUser, DoctorsDayPlanModel appointment)
@@ -28,30 +28,15 @@ namespace GUI_Management_of_medical_clinic
             this.appointment = appointment;
         }
 
-        //nie today tylko pierwszy do akceptacji 
-        DateTime displayMonth = DateTime.Today;
-
-
-        List<DoctorsDayPlanModel> displayListInDataGridView = new List<DoctorsDayPlanModel>();
-
         private void FormDoctorCalendar_Load(object sender, EventArgs e)
         {
-            dataGridViewAppointments.Rows.Clear();
-            dataGridViewAppointments.Columns.Add("Room", "Room");
-            dataGridViewAppointments.Columns.Add("Term", "Term");
-            dataGridViewAppointments.Columns.Add("Hour", "Hour");
-
-            dataGridViewYourAppointments.Rows.Clear();
-            dataGridViewYourAppointments.Columns.Add("Doctor", "Doctor");
-            dataGridViewYourAppointments.Columns.Add("Room", "Room");
-            dataGridViewYourAppointments.Columns.Add("Hour", "Hour");
 
             List<DoctorsDayPlanModel> doctorsDayPlanModels = DoctorsPlanService.GetDoctorsPlanData();
             List<CalendarModel> listID = CalendarService.GetCalendarData();
             foreach (DoctorsDayPlanModel doctorsDayPlanModel in doctorsDayPlanModels)
             {
                 if (doctorsDayPlanModel.IdEmployee == currentUser.IdEmployee
-                    && doctorsDayPlanModel.Status == EnumAppointmentStatus.Inactive)
+                    && doctorsDayPlanModel.Status == EnumAppointmentStatus.New)
                 {
                     int idCalendar = (int)doctorsDayPlanModel.IdCalendar;
 
@@ -73,14 +58,14 @@ namespace GUI_Management_of_medical_clinic
                 string item = list_ofCalendars.Items[i].Text;
                 if (!uniqueItems.Contains(item))
                 {
-                    uniqueItems.Add(item);                  
+                    uniqueItems.Add(item);
                 }
                 else
                 {
                     list_ofCalendars.Items.RemoveAt(i);
                 }
             }
-        } 
+        }
 
         private void buttonExit_Click(object sender, EventArgs e)
         {
@@ -90,30 +75,12 @@ namespace GUI_Management_of_medical_clinic
             this.Close();
         }
 
-        private void buttonEditAppointment_Click(object sender, EventArgs e)
-        {
-            if (dataGridViewYourAppointments.SelectedRows.Count != 1)
-                return;
-
-            DoctorsDayPlanModel appointment = (DoctorsDayPlanModel)dataGridViewYourAppointments.SelectedRows[0].Tag;
-
-            FormDoctorCalendarDetails edit = new FormDoctorCalendarDetails(appointment, currentUser);
-
-            this.Hide();
-            edit.ShowDialog();
-            this.Close();
-        }
-
-        private void buttonModify_Click(object sender, EventArgs e)
-        {
-            //idk if it will be needed to do
-        }
 
         private void list_ofCalendars_SelectedIndexChanged(object sender, EventArgs e)
         {
             listofID.Clear();
             foreach (int selectedIndex in list_ofCalendars.SelectedIndices)
-            {             
+            {
                 string item = list_ofCalendars.Items[selectedIndex].Text;
                 string dateString = item.ToString();
 
@@ -130,10 +97,27 @@ namespace GUI_Management_of_medical_clinic
             {
                 string item = list_ofCalendars.Items[selectedIndex].Text;
                 string dateString = item.ToString();
-                FormDoctorCalendarInChosenMonth formDoctorCalendarInChosenMonth = new FormDoctorCalendarInChosenMonth(currentUser, dateString);
-                formDoctorCalendarInChosenMonth.Show();
-                
 
+                FormDoctorCalendarInChosenMonth formDoctorCalendarInChosenMonth = new FormDoctorCalendarInChosenMonth(currentUser, dateString);
+                //this.Hide();
+                formDoctorCalendarInChosenMonth.Show();
+            }
+
+        }
+
+        private void button_review_Click(object sender, EventArgs e)
+        {
+            if (list_ofCalendars.SelectedItems.Count > 0)
+            {
+                int selectedIndex = list_ofCalendars.SelectedIndices[0];
+                string item = list_ofCalendars.Items[selectedIndex].Text;
+                string dateString = item;
+
+                
+                FormDoctorCalendarInChosenMonth formDoctorCalendarInChosenMonth = new FormDoctorCalendarInChosenMonth(currentUser, dateString);
+                this.Hide();
+                formDoctorCalendarInChosenMonth.ShowDialog(this);
+                this.Show();
             }
             
         }
