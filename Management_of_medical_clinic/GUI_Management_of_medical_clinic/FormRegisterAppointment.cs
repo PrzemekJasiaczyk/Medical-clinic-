@@ -92,12 +92,16 @@ namespace GUI_Management_of_medical_clinic
 
             }
 
+            if (textBox1_doctor.Text == string.Empty && comboBoxDoctorSpecialization.SelectedIndex == -1)
+            {
 
-            dataGridView_app_doctor.AutoGenerateColumns = false;
-            dataGridView_app_doctor.Columns.Add("IdEmployee", "ID");
-            dataGridView_app_doctor.Columns.Add("FirstName", "First Name");
-            dataGridView_app_doctor.Columns.Add("LastName", "Last Name");
-            dataGridView_app_doctor.Columns.Add("Specialization", "Specialization");
+                dataGridView_app_doctor.AutoGenerateColumns = false;
+                dataGridView_app_doctor.Columns.Add("IdEmployee", "ID");
+                dataGridView_app_doctor.Columns.Add("FirstName", "First Name");
+                dataGridView_app_doctor.Columns.Add("LastName", "Last Name");
+                dataGridView_app_doctor.Columns.Add("Specialization", "Specialization");
+            }
+
 
             dataGridView_app_doctor.Columns["IdEmployee"].DataPropertyName = "IdEmployee";
             dataGridView_app_doctor.Columns["FirstName"].DataPropertyName = "FirstName";
@@ -384,34 +388,52 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonShowFilters_Click(object sender, EventArgs e)
         {
-            PatientService patientService = new PatientService();
-            List<Patient> FiltredPatients = patientService.FilterPatient(textBox1_Name.Text, TextBox_PESEL.Text);
-            dataGridView_app_Patient.DataSource = FiltredPatients;
+            if (!(textBox1_Name.Text == string.Empty) || !(TextBox_PESEL.Text == string.Empty))
+            {
+                PatientService patientService = new PatientService();
+                List<Patient> FiltredPatients = patientService.FilterPatient(textBox1_Name.Text, TextBox_PESEL.Text);
+                dataGridView_app_Patient.DataSource = FiltredPatients;
+            }
         }
 
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            dataGridView_app_doctor.DataSource = null;
-            DisplayDoctor();
+            if (!(textBox1_doctor.Text == string.Empty) || !(comboBoxDoctorSpecialization.SelectedIndex == -1))
+            {
+                DisplayDoctor();
+            }
+                
 
         }
 
 
         private void button2_Click(object sender, EventArgs e)
         {
-            DisplayPatient();
-            textBox1_Name.Text = string.Empty;
-            TextBox_PESEL.Text = string.Empty;
-            
+            if (!(textBox1_Name.Text == string.Empty) || !(TextBox_PESEL.Text == string.Empty))
+
+            {
+                DisplayPatient();
+                textBox1_Name.Text = string.Empty;
+                TextBox_PESEL.Text = string.Empty;
+                
+
+            }
+
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            DisplayDoctor();
-            textBox1_doctor.Text = string.Empty;
-            comboBoxDoctorSpecialization.SelectedIndex = -1;
+            if (!(textBox1_doctor.Text == string.Empty) || !(comboBoxDoctorSpecialization.SelectedIndex == -1))
+
+            {
+                textBox1_doctor.Text = string.Empty;
+                comboBoxDoctorSpecialization.SelectedIndex = -1;
+                DisplayDoctor();
+
+
+
+            }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
