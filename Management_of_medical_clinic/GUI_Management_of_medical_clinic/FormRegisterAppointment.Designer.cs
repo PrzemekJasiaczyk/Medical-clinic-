@@ -49,6 +49,7 @@
             textBox1_doctor = new TextBox();
             button2 = new Button();
             button3 = new Button();
+            comboBoxDoctorSpecialization = new ComboBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView_app_Patient).BeginInit();
@@ -246,7 +247,7 @@
             button1.FlatAppearance.BorderSize = 2;
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Segoe UI Symbol", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.Location = new Point(668, 332);
+            button1.Location = new Point(962, 332);
             button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
             button1.Size = new Size(86, 26);
@@ -297,7 +298,7 @@
             button3.FlatAppearance.BorderSize = 2;
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Segoe UI Symbol", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            button3.Location = new Point(760, 332);
+            button3.Location = new Point(1054, 332);
             button3.Margin = new Padding(3, 2, 3, 2);
             button3.Name = "button3";
             button3.Size = new Size(86, 26);
@@ -306,11 +307,21 @@
             button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
             // 
+            // comboBoxDoctorSpecialization
+            // 
+            comboBoxDoctorSpecialization.FormattingEnabled = true;
+            comboBoxDoctorSpecialization.Location = new Point(822, 331);
+            comboBoxDoctorSpecialization.Name = "comboBoxDoctorSpecialization";
+            comboBoxDoctorSpecialization.Size = new Size(121, 23);
+            comboBoxDoctorSpecialization.TabIndex = 97;
+            comboBoxDoctorSpecialization.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            // 
             // FormRegisterAppointment
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1698, 825);
+            Controls.Add(comboBoxDoctorSpecialization);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -367,5 +378,6 @@
         private TextBox textBox1_doctor;
         private Button button2;
         private Button button3;
+        private ComboBox comboBoxDoctorSpecialization;
     }
 }

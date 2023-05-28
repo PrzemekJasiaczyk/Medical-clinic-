@@ -400,14 +400,6 @@ namespace GUI_Management_of_medical_clinic
 
         }
 
-        private void dataGridViewAppointmentList_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+     
     }
 }

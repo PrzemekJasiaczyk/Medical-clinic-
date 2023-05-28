@@ -204,7 +204,6 @@
             dataGridViewAppointmentList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewAppointmentList.Size = new Size(1564, 1053);
             dataGridViewAppointmentList.TabIndex = 30;
-            dataGridViewAppointmentList.CellContentClick += dataGridViewAppointmentList_CellContentClick;
             // 
             // ColumnPatient
             // 
@@ -275,7 +274,6 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(1567, 212);
             panel2.TabIndex = 31;
-            panel2.Paint += panel2_Paint;
             // 
             // checkBoxDateOfVisit
             // 

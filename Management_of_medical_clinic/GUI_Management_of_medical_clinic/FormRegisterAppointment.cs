@@ -36,6 +36,7 @@ namespace GUI_Management_of_medical_clinic
             dataGridView_app_doctor.ClearSelection();
             DisplayDoctor();
             DisplayPatient();
+            AddSpecializationToCombobox();
 
 
             this.appointment = appointment;
@@ -50,6 +51,7 @@ namespace GUI_Management_of_medical_clinic
 
             DisplayDoctor();
             DisplayPatient();
+            AddSpecializationToCombobox();
 
             this.appointment = appointment;
             this.currentUser = user;
@@ -59,6 +61,7 @@ namespace GUI_Management_of_medical_clinic
 
         public void DisplayDoctor()
         {
+            
             using AppDbContext context = new();
             var doctors = context.DbEmployees
                 .Include(d => d.SpecializationModel)
@@ -73,56 +76,83 @@ namespace GUI_Management_of_medical_clinic
                     }
                         )
                 .ToList();
+            string searchedDoctor = textBox1_doctor.Text;
+            string searchedSpecializaton = comboBoxDoctorSpecialization.SelectedItem?.ToString();
 
-			dataGridView_app_doctor.AutoGenerateColumns = false;
-			dataGridView_app_doctor.Columns.Add("IdEmployee", "ID");
-			dataGridView_app_doctor.Columns.Add("FirstName", "First Name");
-			dataGridView_app_doctor.Columns.Add("LastName", "Last Name");
-			dataGridView_app_doctor.Columns.Add("Specialization", "Specialization");
+            if (!string.IsNullOrEmpty(searchedSpecializaton))
+            {
+                doctors = doctors.Where(d => d.Specialization == searchedSpecializaton).ToList();
+            }
+            if (!string.IsNullOrEmpty(searchedDoctor))
+            {
+                searchedDoctor = searchedDoctor.ToLower();
+                doctors = doctors.Where(
+                        d =>
+                        (d.FirstName + " " + d.LastName).ToLower().Contains(searchedDoctor)).ToList();
+                        
+            }
+       
 
-			dataGridView_app_doctor.Columns["IdEmployee"].DataPropertyName = "IdEmployee";
-			dataGridView_app_doctor.Columns["FirstName"].DataPropertyName = "FirstName";
-			dataGridView_app_doctor.Columns["LastName"].DataPropertyName = "LastName";
-			dataGridView_app_doctor.Columns["Specialization"].DataPropertyName = "Specialization";
+            dataGridView_app_doctor.AutoGenerateColumns = false;
+            dataGridView_app_doctor.Columns.Add("IdEmployee", "ID");
+            dataGridView_app_doctor.Columns.Add("FirstName", "First Name");
+            dataGridView_app_doctor.Columns.Add("LastName", "Last Name");
+            dataGridView_app_doctor.Columns.Add("Specialization", "Specialization");
+
+            dataGridView_app_doctor.Columns["IdEmployee"].DataPropertyName = "IdEmployee";
+            dataGridView_app_doctor.Columns["FirstName"].DataPropertyName = "FirstName";
+            dataGridView_app_doctor.Columns["LastName"].DataPropertyName = "LastName";
+            dataGridView_app_doctor.Columns["Specialization"].DataPropertyName = "Specialization";
 
             dataGridView_app_doctor.Columns["FirstName"].Width = 250;
-			dataGridView_app_doctor.Columns["LastName"].Width = 250;
-			dataGridView_app_doctor.Columns["Specialization"].Width = 250;
+            dataGridView_app_doctor.Columns["LastName"].Width = 250;
+            dataGridView_app_doctor.Columns["Specialization"].Width = 250;
 
-			dataGridView_app_doctor.Columns["IdEmployee"].Visible = false;
+            dataGridView_app_doctor.Columns["IdEmployee"].Visible = false;
 
-			dataGridView_app_doctor.DataSource = doctors;
+            dataGridView_app_doctor.DataSource = doctors;
 
-			dataGridView_app_doctor.Rows[0].Selected = true;
-		}
+            //dataGridView_app_doctor.Rows[0].Selected = true;
+        }
 
         public void DisplayPatient()
         {
             List<Patient> patients = PatientService.GetPatientsData();
 
-			dataGridView_app_Patient.AutoGenerateColumns = false;
-			dataGridView_app_Patient.Columns.Add("PatientId", "ID");
-			dataGridView_app_Patient.Columns.Add("FirstName", "First Name");
-			dataGridView_app_Patient.Columns.Add("LastName", "Last Name");
-			dataGridView_app_Patient.Columns.Add("PESEL", "PESEL");
+            dataGridView_app_Patient.AutoGenerateColumns = false;
+            dataGridView_app_Patient.Columns.Add("PatientId", "ID");
+            dataGridView_app_Patient.Columns.Add("FirstName", "First Name");
+            dataGridView_app_Patient.Columns.Add("LastName", "Last Name");
+            dataGridView_app_Patient.Columns.Add("PESEL", "PESEL");
 
-			dataGridView_app_Patient.Columns["PatientId"].DataPropertyName = "PatientId";
-			dataGridView_app_Patient.Columns["FirstName"].DataPropertyName = "FirstName";
-			dataGridView_app_Patient.Columns["LastName"].DataPropertyName = "LastName";
-			dataGridView_app_Patient.Columns["PESEL"].DataPropertyName = "PESEL";
+            dataGridView_app_Patient.Columns["PatientId"].DataPropertyName = "PatientId";
+            dataGridView_app_Patient.Columns["FirstName"].DataPropertyName = "FirstName";
+            dataGridView_app_Patient.Columns["LastName"].DataPropertyName = "LastName";
+            dataGridView_app_Patient.Columns["PESEL"].DataPropertyName = "PESEL";
 
-			dataGridView_app_Patient.Columns["FirstName"].Width = 250;
-			dataGridView_app_Patient.Columns["LastName"].Width = 250;
-			dataGridView_app_Patient.Columns["PESEL"].Width = 250;
+            dataGridView_app_Patient.Columns["FirstName"].Width = 250;
+            dataGridView_app_Patient.Columns["LastName"].Width = 250;
+            dataGridView_app_Patient.Columns["PESEL"].Width = 250;
 
-			dataGridView_app_Patient.Columns["PatientId"].Visible = false;
+            dataGridView_app_Patient.Columns["PatientId"].Visible = false;
 
-			dataGridView_app_Patient.DataSource = patients;
+            dataGridView_app_Patient.DataSource = patients;
 
-			dataGridView_app_Patient.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-			dataGridView_app_Patient.Rows[0].Selected = true;
-		}
+            dataGridView_app_Patient.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView_app_Patient.Rows[0].Selected = true;
+        }
 
+        private void AddSpecializationToCombobox()
+        {
+            List<SpecializationModel> specializations = SpecializationService.GetSpecializationsData();
+
+            foreach (SpecializationModel specialization in specializations)
+            {
+                int index = comboBoxDoctorSpecialization.Items.Add(specialization.ToString());
+                comboBoxDoctorSpecialization.Items[index] = specialization;
+            }
+
+        }
 
         private void FormRegisterAppointment_Load(object sender, EventArgs e)
         {
@@ -346,7 +376,7 @@ namespace GUI_Management_of_medical_clinic
                 //using AppDbContext context = new();
                 //EmployeeModel selectedEmployee = context.DbEmployees.Find(employeeId);
                 selectedDoctorId = employeeId;
-			}
+            }
 
             List<DoctorsDayPlanModel> appointments =
             CalendarAppointmentService.GetAppointmentsData()
@@ -368,35 +398,15 @@ namespace GUI_Management_of_medical_clinic
             dataGridView_app_Patient.DataSource = FiltredPatients;
         }
 
-        public List<EmployeeModel> FilterDoctor(string searchedText)
-        {
-            List<EmployeeModel> filteredDoctors = EmployeeService.GetEmployeesData();
-
-            if (!string.IsNullOrEmpty(searchedText))
-            {
-                searchedText = searchedText.ToLower();
-
-                filteredDoctors =
-                    filteredDoctors
-                    .Where(
-                        p =>
-                        (p.FirstName + " " + p.LastName)
-                            .ToLower()
-                            .Contains(searchedText)
-                        )
-                    .ToList();
-            }
-
-
-
-            return filteredDoctors;
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            List<EmployeeModel> FiltredDoctors = FilterDoctor(textBox1_doctor.Text);
-            dataGridView_app_doctor.DataSource = FiltredDoctors;
+
+            dataGridView_app_doctor.DataSource = null;
+            DisplayDoctor();
+            
         }
+
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -406,6 +416,11 @@ namespace GUI_Management_of_medical_clinic
         private void button3_Click(object sender, EventArgs e)
         {
             DisplayDoctor();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
