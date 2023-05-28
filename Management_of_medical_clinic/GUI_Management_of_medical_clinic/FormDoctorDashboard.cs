@@ -53,17 +53,16 @@ namespace GUI_Management_of_medical_clinic
             string currentMonthYear = DateTime.Today.ToString("MM-yyyy");
 
 
-            /*List<CalendarModel> calendars = CalendarService.GetCalendarData();
+            List<CalendarModel> calendars = CalendarService.GetCalendarData();
             foreach (CalendarModel calendar in calendars)
             {
-                if (calendar.IdEmployee == currentUser.IdEmployee && 
-                    calendar.Active == true && 
+                if (calendar.Active == true &&
                     calendar.DateReference == currentMonthYear)
                 {
                     isCurrentCalendar = true;
                     break;
                 }
-            } narazie zakomentowalam bo naprawiam swoje XD*/
+            }
 
             if (isCurrentCalendar)
             {
@@ -73,7 +72,7 @@ namespace GUI_Management_of_medical_clinic
             {
                 MessageBox.Show("Brak aktywnego kalendarza na obecny miesiąc");
             }
-            
+
         }
         private void ToFormCurrentCalendar()
         {

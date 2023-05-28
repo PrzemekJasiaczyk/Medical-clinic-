@@ -146,7 +146,9 @@ namespace GUI_Management_of_medical_clinic
 
             int calendarId = CalendarService.GetIdFromDate(selectedDate);
 
+            
             List<DoctorsDayPlanModel> appointments = CalendarAppointmentService.GetAppointmentsWithPatients();
+            //List<DoctorsDayPlanModel> appointments = CalendarAppointmentService.GetAppointmentsWithOUTPatients();
 
 
             foreach (DoctorsDayPlanModel appointment in appointments)
