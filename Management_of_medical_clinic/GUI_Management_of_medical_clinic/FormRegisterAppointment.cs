@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Numerics;
 using System.Runtime.CompilerServices;
@@ -374,10 +375,19 @@ namespace GUI_Management_of_medical_clinic
                 .Where(a => a.IdEmployee == selectedDoctorId && a.Status == EnumAppointmentStatus.Accepted && a.PatientId == null)
                 .ToList();
 
-            comboBoxDate.Items.Clear();
-            foreach (DoctorsDayPlanModel appointment in appointments)
+
+			comboBoxDate.Items.Clear();
+
+			using AppDbContext context = new();
+			foreach (DoctorsDayPlanModel appointment in appointments)
             {
-                comboBoxDate.Items.Add(appointment);
+                CalendarModel calendar = context.DbCalendars.FirstOrDefault(c => c.IdCalendar == appointment.IdCalendar)!;
+                DateTime calendarDateTime = DateTime.ParseExact(calendar.DateReference, "MM-yyyy", CultureInfo.InvariantCulture);
+
+                if ((calendar.Active == true && calendarDateTime.Year >= DateTime.Today.Year) && calendarDateTime.Month >= DateTime.Now.Month && appointment.IdDay > DateTime.Today.Day)
+                {
+					comboBoxDate.Items.Add(appointment);
+				}
             }
             comboBoxDate.DisplayMember = appointments.ToString();
         }
