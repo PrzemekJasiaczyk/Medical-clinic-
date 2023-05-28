@@ -384,9 +384,15 @@ namespace GUI_Management_of_medical_clinic
                 CalendarModel calendar = context.DbCalendars.FirstOrDefault(c => c.IdCalendar == appointment.IdCalendar)!;
                 DateTime calendarDateTime = DateTime.ParseExact(calendar.DateReference, "MM-yyyy", CultureInfo.InvariantCulture);
 
-                if ((calendar.Active == true && calendarDateTime.Year >= DateTime.Today.Year) && calendarDateTime.Month >= DateTime.Now.Month && appointment.IdDay > DateTime.Today.Day)
+                if ((calendar.Active == true && calendarDateTime.Year >= DateTime.Today.Year) && calendarDateTime.Month >= DateTime.Now.Month && appointment.IdDay >= DateTime.Today.Day)
                 {
-					comboBoxDate.Items.Add(appointment);
+                    string appointmentTime = AppointmentService.GetTermByTermId(appointment.IdOfTerm);
+                    DateTime appointmentDateTime = DateTime.ParseExact(appointmentTime, "HH:mm", CultureInfo.InvariantCulture);
+
+                    if (appointmentDateTime >= DateTime.Now)
+                    {
+                        comboBoxDate.Items.Add(appointment);
+                    }
 				}
             }
             comboBoxDate.DisplayMember = appointments.ToString();
