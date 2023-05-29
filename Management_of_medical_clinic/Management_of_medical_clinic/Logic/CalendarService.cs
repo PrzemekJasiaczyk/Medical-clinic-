@@ -2,6 +2,7 @@
 using Console_Management_of_medical_clinic.Data.Enums;
 using Console_Management_of_medical_clinic.Logic.Interfaces;
 using Console_Management_of_medical_clinic.Model;
+using Org.BouncyCastle.Asn1.X509;
 
 namespace Console_Management_of_medical_clinic.Logic
 {
@@ -285,8 +286,21 @@ namespace Console_Management_of_medical_clinic.Logic
 				context.DbCalendars.Update(calendar);
 				calendar.NumberOfAcceptedDoctors++;
 				context.SaveChanges();
-			}
+
+				CheckIfAllDoctorsAccepted(calendar_id);
+
+            }
 		}
+
+		public static void CheckIfAllDoctorsAccepted(int calendar_id) //doctors
+		{
+            using (AppDbContext context = new AppDbContext())
+            {
+                CalendarModel calendar = GetCalendarById(calendar_id);
+				if(calendar.NumberOfAcceptedDoctors >= calendar.NumberOfDoctors)
+					CalendarService.EditCalendar(calendar_id, true);
+            }
+        }
 
         public static void ChangeCalendarStatusToRejected(int calendar_id) //doctors
         {

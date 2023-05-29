@@ -199,6 +199,8 @@ namespace Console_Management_of_medical_clinic.Logic
                 {
                     return ("Phone number has to be 9 digits long", false);
                 }
+            
+
 
                 if (!long.TryParse(input, out long result))
                 {
@@ -207,7 +209,12 @@ namespace Console_Management_of_medical_clinic.Logic
             }
             return ("Success", true);
         }
-        
+
+        public static string GetEmployeeInfoById(int id)
+        {
+            EmployeeModel employee = GetEmployeeByID(id);
+            return employee.FirstName + employee.LastName;
+        }
     }
 
 }

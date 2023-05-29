@@ -1,4 +1,5 @@
-﻿using Console_Management_of_medical_clinic.Logic;
+﻿using Console_Management_of_medical_clinic.Data.Enums;
+using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
 using System;
 using System.Collections.Generic;
@@ -14,14 +15,16 @@ namespace GUI_Management_of_medical_clinic
 {
     public partial class FormDoctorCalendarAcceptConfirm : Form
     {
-        string selectedDate;
+        List<int> listID;
         EmployeeModel currentUser;
+        string selectedDate;
 
-        public FormDoctorCalendarAcceptConfirm(string selectedDate, EmployeeModel currentUser)
+        public FormDoctorCalendarAcceptConfirm(List<int> listID, EmployeeModel currentUser, string selectedDate)
         {
             InitializeComponent();
-            this.selectedDate=selectedDate;
+            this.listID = listID;
             this.currentUser = currentUser;
+            this.selectedDate=selectedDate;
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -35,15 +38,17 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
-            DateTime date = Convert.ToDateTime(selectedDate);
-            int cal_id = CalendarService.GetCalendarIdByDate(date.ToString("d"));
-            List<DoctorsDayPlanModel> list = DoctorsPlanService.GetPlansByCalendarId(cal_id);
-           foreach (DoctorsDayPlanModel appointments in list)
+            string date = Convert.ToDateTime(selectedDate).ToString("d");
+            int cal_id = CalendarService.GetCalendarIdByDate(date);
+            List<DoctorsDayPlanModel> list = DoctorsPlanService.GetAppointmentsDetailsByAppointmentID(listID);
+           foreach (DoctorsDayPlanModel terms in list)
             {
-                DoctorsPlanService.ChangeAppointmentStatusToAccepted(appointments.IdDoctorsDayPlan, currentUser);
+               DoctorsPlanService.ChangeAppointmentStatusToAccepted(listID, currentUser);
             }
             CalendarService.ChangeCalendarStatusToAccepted(cal_id);
             MessageBox.Show("Calendar is accepted");
+            
+
             Hide();
             Close();
             FormDoctorCalendar formDoctorCalendar = new FormDoctorCalendar(currentUser);

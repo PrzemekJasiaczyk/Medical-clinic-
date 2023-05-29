@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace GUI_Management_of_medical_clinic
 {
-    public partial class FormDoctorsDayPlanAdd : Form
+    public partial class FormDoctorsDayPlanEdit : Form
     {
         int parsedEmployeeId = -1;
         int parsedOfficeId = -1;
@@ -23,12 +23,13 @@ namespace GUI_Management_of_medical_clinic
         int selectedDay;
         int calendarId;
         EmployeeModel currentEmployee;
+        int idDoctor;
 
-        public FormDoctorsDayPlanAdd(DateTime date, EmployeeModel currentEmployee)
+        public FormDoctorsDayPlanEdit(DateTime date, EmployeeModel currentEmployee, int idDoctor)
         {
             selectedDate = date;
             selectedDay = date.Day;
-
+            this.idDoctor = idDoctor;
 
             dateReference = selectedDate.ToString("d");
             calendarId = CalendarService.GetCalendarIdByDate(dateReference);
@@ -45,10 +46,10 @@ namespace GUI_Management_of_medical_clinic
 
             try
             {
-                foreach (EmployeeModel employeeModel in EmployeeService.GetDoctors())
-                {
-                    comboBoxDoctor.Items.Add(employeeModel.IdEmployee + "-" + employeeModel.FirstName + " " + employeeModel.LastName);
-                }
+                EmployeeModel employeeModel = EmployeeService.GetEmployeeByID(idDoctor);
+                comboBoxDoctor.Items.Add(employeeModel.IdEmployee + "-" + employeeModel.FirstName + " " + employeeModel.LastName);
+                comboBoxDoctor.SelectedIndex = 0;
+                comboBoxDoctor.Enabled = false;
             }
             catch (Exception ex)
             {
@@ -68,7 +69,7 @@ namespace GUI_Management_of_medical_clinic
             if (int.TryParse(employeeIdString[0], out int resultEmployeeId))
             {
                 parsedEmployeeId = resultEmployeeId;
-                
+
             }
             else
             {
@@ -86,12 +87,6 @@ namespace GUI_Management_of_medical_clinic
             }
             return true;
         }
-
-        private void buttonCancel_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void FormAppointmentAdd_Load(object sender, EventArgs e)
         {
             labelDay.Text = "Selected Date: " + selectedDate.ToString("d");
@@ -100,7 +95,7 @@ namespace GUI_Management_of_medical_clinic
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             List<int> checkedTerms = new List<int>();
-            if (checkSelectedIds()==true)
+            if (checkSelectedIds() == true)
             {
                 for (int i = 0; i < checkedListBoxTerms.Items.Count; i++)
                 {
@@ -111,25 +106,11 @@ namespace GUI_Management_of_medical_clinic
                     }
                 }
 
-                if (checkedTerms.Count==0)
-                {
-                    MessageBox.Show("No terms have been selected");
-                    return;
-                }
-
                 if (calendarId != -1)
-                {                    
+                {
                     try
                     {
-                        string message;
-
-                        if(!OfficeService.CheckIfOfficeIsFree(parsedEmployeeId, calendarId, selectedDay, parsedOfficeId, checkedTerms, out message))
-                        {
-                            MessageBox.Show(message);
-                            return;
-                        }
-
-                        MessageBox.Show(DoctorsPlanService.AddPlans(checkedTerms, selectedDay, calendarId, parsedEmployeeId, parsedOfficeId));
+                        MessageBox.Show(DoctorsPlanService.EditPlans(checkedTerms, selectedDay, calendarId, idDoctor, parsedOfficeId));
 
                         FormDoctorsPlanCalendar formCalendar = new FormDoctorsPlanCalendar(currentEmployee);
                         this.Hide();
@@ -175,7 +156,7 @@ namespace GUI_Management_of_medical_clinic
                 {
                     checkedListBoxTerms.SetItemChecked(j, true);
                 }
-            }            
+            }
         }
 
         private void comboBoxOffice_SelectedIndexChanged(object sender, EventArgs e)
@@ -185,9 +166,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void comboBoxDoctor_SelectedIndexChanged(object sender, EventArgs e)
         {
-            updateCheckBoxes();
             comboBoxOffice.Items.Clear();
-            comboBoxOffice.Text = "";
 
             List<OfficeModel> offices = OfficeService.GetOfficesData();
             if (comboBoxDoctor.SelectedIndex < 0)
@@ -217,7 +196,7 @@ namespace GUI_Management_of_medical_clinic
                     comboBoxOffice.Items.Add(office.IdOffice + "-" + specalization.Name + " Room:" + office.Number);
 
                 }
-            }            
+            }
         }
     }
 }
