@@ -38,23 +38,7 @@ namespace Console_Management_of_medical_clinic.Logic
 
             return result;
         }
-        /*
-        public static List<AppointmentModel> GetAppointmentsWithPatients()
-        {
-            List<AppointmentModel> appointments = GetAppointmentsData();
-            List<AppointmentModel> result = new List<AppointmentModel>();
 
-            foreach (AppointmentModel appointment in appointments)
-            {
-                if (appointment.PatientId != null && appointment.IsActive == false)
-                {
-                    result.Add(appointment);
-                }
-            }
-
-            return result;
-        }
-        */
         public static List<DoctorsDayPlanModel> GetAppointmentsWithPatients()
         {
             List<DoctorsDayPlanModel> appointments = GetAppointmentsData();
@@ -71,14 +55,14 @@ namespace Console_Management_of_medical_clinic.Logic
             return result;
         }
 
-        public static List<DoctorsDayPlanModel> GetAppointmentsWithOUTPatients()
+        public static List<DoctorsDayPlanModel> GetScheduledAppointments()
         {
             List<DoctorsDayPlanModel> appointments = GetAppointmentsData();
             List<DoctorsDayPlanModel> result = new List<DoctorsDayPlanModel>();
 
             foreach (DoctorsDayPlanModel appointment in appointments)
             {
-                if (appointment.PatientId == null)
+                if (appointment.Status == Data.Enums.EnumAppointmentStatus.Scheduled)
                 {
                     result.Add(appointment);
                 }

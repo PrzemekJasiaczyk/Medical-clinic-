@@ -4,10 +4,12 @@ using Console_Management_of_medical_clinic.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace Console_Management_of_medical_clinic.Logic
 {
@@ -93,6 +95,62 @@ namespace Console_Management_of_medical_clinic.Logic
             context.SaveChanges();
         }
 
+        public static void DeletePlan(int idDoctorsDayPlan)
+        {
+            using (AppDbContext context = new AppDbContext())
+            {
+                DoctorsDayPlanModel plan = context.DbDoctorsDayPlan.Find(idDoctorsDayPlan);
+                context.DbDoctorsDayPlan.Remove(plan);
+                context.SaveChanges();
+            }
+        }
+
+        public static string EditPlans(List<int> checkedTerms, int idDay, int idCalendar, int idEmployee, int idOffice)
+        {
+            List<DoctorsDayPlanModel> doctorsPlans = GetDoctorsPlanData();
+            List<int> existingTerms = new List<int>();
+
+            if (checkedTerms.Count == 0)
+            {
+                foreach (DoctorsDayPlanModel plan in doctorsPlans)
+                {
+                    if (plan.IdEmployee == idEmployee && plan.IdDay == idDay && plan.IdCalendar == idCalendar)
+                    {
+                        DeletePlan(plan.IdDoctorsDayPlan);
+                    }
+                }
+
+                return "All plans for that day have been canceled for this doctor.";
+            }
+
+            foreach (DoctorsDayPlanModel plan in doctorsPlans)
+            {
+                if (plan.IdEmployee == idEmployee && plan.IdDay == idDay && plan.IdCalendar == idCalendar)
+                {
+                    if (checkedTerms.Contains(plan.IdOfTerm))
+                    {
+                        EditPlan(plan.IdDoctorsDayPlan, plan.IdOfTerm, idOffice);
+                        existingTerms.Add(plan.IdOfTerm);
+                    }
+                    else
+                    {
+                        DeletePlan(plan.IdDoctorsDayPlan);
+                    }
+                }
+            }
+
+            foreach (int i in checkedTerms)
+            {
+                if (!existingTerms.Contains(i))
+                {
+                    DoctorsDayPlanModel newPlan = new DoctorsDayPlanModel(i, idDay, idCalendar, idEmployee, idOffice, EnumAppointmentStatus.New);
+                    AddPlan(newPlan);
+                }
+            }
+
+            return "Plan edited successfully";
+        }
+
         public static string GetTermDescription(Enum value)
         {
             var field = value.GetType().GetField(value.ToString());
@@ -106,6 +164,12 @@ namespace Console_Management_of_medical_clinic.Logic
                 return (desc[0] as DescriptionAttribute).Description;
             }
         }
+
+        public static string GetStatusInfo(Enum value)
+        {
+            return value.ToString();
+        }
+
         public static int CheckIfDoctorHasPlanForCurrentDay(int idEmployee, int idDay, int idCalendar)
         {
             List<DoctorsDayPlanModel> doctorsPlans = GetDoctorsPlanData();
@@ -174,24 +238,52 @@ namespace Console_Management_of_medical_clinic.Logic
                 }
             }
         }
-       public static void ChangeAppointmentStatusToAccepted(int calendar_id, EmployeeModel employee)//added by doctors
+
+        public static List<DoctorsDayPlanModel> GetAppointmentsDetailsByAppointmentID(List<int> appointment_id)
         {
+            List<DoctorsDayPlanModel> doctorsDayPlans = GetDoctorsPlanData();
+
             using (AppDbContext context = new AppDbContext())
             {
-                List<DoctorsDayPlanModel> ListdoctorsDayPlanModel = GetPlansByCalendarId(calendar_id);
-                foreach (DoctorsDayPlanModel ddpm in ListdoctorsDayPlanModel)
+                return context.DbDoctorsDayPlan.Where(id => appointment_id.Contains(id.IdDoctorsDayPlan)).ToList();
+            }   
+
+        }
+
+       public static void ChangeAppointmentStatusToAccepted(List<int> appointments_id, EmployeeModel employee)//added by doctors
+        {
+            List<DoctorsDayPlanModel> terms = GetAppointmentsDetailsByAppointmentID(appointments_id);
+            using (AppDbContext context = new AppDbContext())
+            {
+                foreach (DoctorsDayPlanModel ddpm in terms)
                 {
                     context.DbDoctorsDayPlan.Update(ddpm);
-                    if (employee.IdEmployee == ddpm.IdEmployee)
-                    {
+                    if (employee.IdEmployee == ddpm.IdEmployee && ddpm.Status == EnumAppointmentStatus.New) //change new
+                    {    //there may be some edited terms or rejected, so accepting other terms are made
                         ddpm.Status = EnumAppointmentStatus.Accepted;
+                        context.SaveChanges();
                     }
-                    context.SaveChanges();
                 }
             }
         }
-        
-        public static void ChangeAppointmentStatusToFree(int doctorday_id, EmployeeModel employee)//added by doctors
+
+        public static void ChangeAppointmentStatusToRejected(List<int> appointments_id, EmployeeModel employee)
+        {
+            List<DoctorsDayPlanModel> terms = GetAppointmentsDetailsByAppointmentID(appointments_id);
+            using (AppDbContext context = new AppDbContext())
+            {
+                foreach (DoctorsDayPlanModel ddpm in terms)
+                {
+                    if (ddpm.Status == EnumAppointmentStatus.New && employee.IdEmployee == ddpm.IdEmployee)
+                    { 
+                        context.DbDoctorsDayPlan.Remove(ddpm);
+                        context.SaveChanges();
+                    }
+                }
+            }
+        }
+
+       /* public static void ChangeAppointmentStatusToFree(int doctorday_id, EmployeeModel employee)//added by doctors
         {
             using (AppDbContext context = new AppDbContext())
             {
@@ -199,7 +291,7 @@ namespace Console_Management_of_medical_clinic.Logic
                 foreach (DoctorsDayPlanModel ddpm in ListdoctorsDayPlanModel)
                 {
                     context.DbDoctorsDayPlan.Update(ddpm);
-                    if (ddpm.IdDoctorsDayPlan == doctorday_id)
+                    if (ddpm.IdDoctorsDayPlan == doctorday_id) //okay, need to delete this visit
                     {
                         ddpm.Status = EnumAppointmentStatus.Free; //not sure if it would be look like this
                     }
@@ -207,6 +299,31 @@ namespace Console_Management_of_medical_clinic.Logic
                 }
                 context.SaveChanges();
             }
+        } I'm leaving this function when there deleting data from db is not good idea*/
+
+        public static List<DoctorsDayPlanModel> GetAppointmentsByPatientId(int patient_id)
+        {
+            List<DoctorsDayPlanModel> list = AppointmentService.GetAllAppointments();
+            List<DoctorsDayPlanModel> listo = new List<DoctorsDayPlanModel>();
+            foreach (DoctorsDayPlanModel appointment in list)
+            {
+                if (patient_id == appointment.PatientId)
+                {
+                    listo.Add(appointment);
+                }
+            }
+            return listo;
+        }
+
+        public static List<int> GetIDDayDoctorByCalendarID(int calendar_id)
+        {
+            List<int> list = new List<int>();
+            List<DoctorsDayPlanModel> doctorsPlans = GetPlansByCalendarId(calendar_id);
+            foreach (DoctorsDayPlanModel id in doctorsPlans)
+            {
+                list.Add(id.IdDoctorsDayPlan);
+            }
+            return list;
         }
 
         public static bool CheckIfAppointmentExists(int idTerm, int idDay, int idCalendar, int idOffice)
@@ -216,6 +333,7 @@ namespace Console_Management_of_medical_clinic.Logic
                 return context.DbDoctorsDayPlan.Any(plan => plan.IdOfTerm == idTerm && plan.IdDay == idDay && plan.IdCalendar == idCalendar && plan.IdOffice == idOffice);
             }
         }
+
 
     }
 }

@@ -5,7 +5,9 @@ using GUI_Management_of_medical_clinic;
 using Microsoft.VisualBasic.ApplicationServices;
 using System.Drawing.Text;
 using System.Globalization;
+using System.Numerics;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace GUI_Management_of_medical_clinic
 {
@@ -16,6 +18,7 @@ namespace GUI_Management_of_medical_clinic
         CalendarModel duplicateCalendar;
         string _selectedDate = "";
         DateTime displayMonth = DateTime.Today;
+        DateTime currentMonth = new DateTime();
 
         public FormDoctorsPlanCalendar(EmployeeModel currentEmployee, bool previousMonth = false)
         {
@@ -41,8 +44,8 @@ namespace GUI_Management_of_medical_clinic
 
             displayMonth = DateTime.Today.AddMonths(1);
 
-            createCalendarButton.Click -= createCalendarButton_Click;
-            createCalendarButton.Click += duplicateCalendar_Click;
+            buttonCreateCalendar.Click -= createCalendarButton_Click;
+            buttonCreateCalendar.Click += duplicateCalendar_Click;
 
         }
 
@@ -57,9 +60,9 @@ namespace GUI_Management_of_medical_clinic
             button2.Visible = false;
             button3.Visible = false;
 
-            createCalendarButton.Text = "Edit Calendar";
-            createCalendarButton.Click -= createCalendarButton_Click;
-            createCalendarButton.Click += editCalendar_Click;
+            buttonCreateCalendar.Text = "Edit Calendar";
+            buttonCreateCalendar.Click -= createCalendarButton_Click;
+            buttonCreateCalendar.Click += editCalendar_Click;
 
         }
 
@@ -68,21 +71,65 @@ namespace GUI_Management_of_medical_clinic
             throw new NotImplementedException();
         }
 
+        private void UserControlDay_ControlClicked(object sender, DateTime selectedDate)   // Date From UserControlDay
+        {
+            CheckTheMonth();
+            labelDate.Text = selectedDate.ToString("d");
+            _selectedDate = selectedDate.ToString("d");
 
-        DateTime currentMonth = new DateTime();
+            List<DoctorsDayPlanModel> plansDuplicated = DoctorsPlanService.CheckPlansAndReturnForADay(selectedDate, duplicateCalendar == null ? 0 : duplicateCalendar.IdCalendar);
+            List<DoctorsDayPlanModel> plansOriginal = DoctorsPlanService.CheckPlansAndReturnForADay(selectedDate, CalendarService.GetCalendarIdByDate(displayMonth.ToString("d")));
+            List<DoctorsDayPlanModel> plans = plansDuplicated.Concat(plansOriginal).ToList();
+
+            dataGridViewAppointments.Rows.Clear();
+
+            try
+            {
+                //Load DataGridView Data
+                plans.ForEach(plan =>
+                {
+                    dataGridViewAppointments.Rows.Add(
+                        EmployeeService.GetEmployeeInfoById((int)plan.IdEmployee),
+                        OfficeService.GetOfficeInfoById((int)plan.IdOffice),
+                        DoctorsPlanService.GetTermDescription((EnumTerms)plan.IdOfTerm),
+                        PatientService.GetPatientInfoById((int)(plan.PatientId == null ? 0 : plan.PatientId)),
+                        DoctorsPlanService.GetStatusInfo((EnumAppointmentStatus)plan.Status)
+                        );
+                });
+            }
+            catch
+            {
+                MessageBox.Show("Failed to load data");
+            }
+
+
+            //Changed as DbAppointment is not used anymore
+
+            //List<AppointmentModel> appointments = AppointmentService.CheckAppointmentsAndReturnList(selectedDate, duplicateCalendar == null ? 0 : duplicateCalendar.IdCalendar);
+
+            //dataGridViewAppointments.Rows.Clear();
+            //foreach (AppointmentModel appointment in appointments)
+            //{
+            //    string timeTerm = AppointmentService.GetTermByTermId(appointment.IdTerm);
+            //    Patient patient = PatientService.GetPatientById((int)appointment.PatientId);
+            //    dataGridViewAppointments.Rows.Add(appointment.IdEmployee, appointment.IdDay, timeTerm, patient.FirstName + " " + patient.LastName);
+            //}
+        }
 
         private void FormCalendar_Load(object sender, EventArgs e)
         {
+            updateLabeCalendarExists();
+
             RemoveControlPanels();
             displayDays(displayMonth);
             ChangeTitle(displayMonth);
 
             dataGridViewAppointments.Rows.Clear();
             dataGridViewAppointments.Columns.Add("Doctor", "Doctor");
-            dataGridViewAppointments.Columns.Add("Day", "Day");
+            dataGridViewAppointments.Columns.Add("Office", "Office");
             dataGridViewAppointments.Columns.Add("Hour", "Hour");
             dataGridViewAppointments.Columns.Add("Patient", "Patient");
-
+            dataGridViewAppointments.Columns.Add("Status", "Status");
         }
 
         private void buttonToday_Click(object sender, EventArgs e)
@@ -101,6 +148,10 @@ namespace GUI_Management_of_medical_clinic
 
             displayDays(displayMonth);
             ChangeTitle(displayMonth);
+
+            updateLabeCalendarExists();
+            dataGridViewAppointments.Rows.Clear();
+            labelDate.Text = "Select Term";
         }
 
         private void buttonNextMonth_Click(object sender, EventArgs e)
@@ -111,6 +162,10 @@ namespace GUI_Management_of_medical_clinic
 
             displayDays(displayMonth);
             ChangeTitle(displayMonth);
+
+            updateLabeCalendarExists();
+            dataGridViewAppointments.Rows.Clear();
+            labelDate.Text = "Select Term";
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
@@ -124,6 +179,27 @@ namespace GUI_Management_of_medical_clinic
         }
 
         #region
+        private void updateLabeCalendarExists()
+        {
+            string month = displayMonth.ToString("MM");
+            string year = displayMonth.ToString("yyyy");
+            string monthAndYear = month + "-" + year;
+            if (CalendarService.checkIfCalendarExistsCalendarAdd(monthAndYear))
+            {
+                //MessageBox.Show(monthAndYear);
+                labelCalendarExists.Text = "Calendar created";
+                labelCalendarExists.ForeColor = Color.GreenYellow;
+                buttonAddAppointment.Enabled = true;
+                buttonCreateCalendar.Enabled = false;
+            }
+            else
+            {
+                labelCalendarExists.Text = "Calendar not created";
+                labelCalendarExists.ForeColor = Color.IndianRed;
+                buttonAddAppointment.Enabled = false;
+                buttonCreateCalendar.Enabled = true;
+            }
+        }
 
         private void RemoveControlPanels()
         {
@@ -206,17 +282,17 @@ namespace GUI_Management_of_medical_clinic
 
             DateTime[] holidays = new DateTime[] {
                 new DateTime(2023, 1, 1),  // Nowy Rok
-                new DateTime(2023, 1, 6),  // Œwiêto Trzech Króli
-                new DateTime(2023, 4, 17), // Poniedzia³ek Wielkanocny
-                new DateTime(2023, 5, 1),  // Œwiêto Pracy
-                new DateTime(2023, 5, 3),  // Œwiêto Konstytucji 3 Maja
-                new DateTime(2023, 6, 4),  // Zes³anie Ducha Œwiêtego
-                new DateTime(2023, 6, 15), // Bo¿e Cia³o
-                new DateTime(2023, 8, 15), // Wniebowziêcie Najœwiêtszej Maryi Panny
-                new DateTime(2023, 11, 1), // Wszystkich Œwiêtych
-                new DateTime(2023, 11, 11), // Œwiêto Niepodleg³oœci
-                new DateTime(2023, 12, 25), // Bo¿e Narodzenie (pierwszy dzieñ)
-                new DateTime(2023, 12, 26), // Bo¿e Narodzenie (drugi dzieñ)
+                new DateTime(2023, 1, 6),  // Å’wiÃªto Trzech KrÃ³li
+                new DateTime(2023, 4, 17), // PoniedziaÂ³ek Wielkanocny
+                new DateTime(2023, 5, 1),  // Å’wiÃªto Pracy
+                new DateTime(2023, 5, 3),  // Å’wiÃªto Konstytucji 3 Maja
+                new DateTime(2023, 6, 4),  // ZesÂ³anie Ducha Å’wiÃªtego
+                new DateTime(2023, 6, 15), // BoÂ¿e CiaÂ³o
+                new DateTime(2023, 8, 15), // WniebowziÃªcie NajÅ“wiÃªtszej Maryi Panny
+                new DateTime(2023, 11, 1), // Wszystkich Å’wiÃªtych
+                new DateTime(2023, 11, 11), // Å’wiÃªto NiepodlegÂ³oÅ“ci
+                new DateTime(2023, 12, 25), // BoÂ¿e Narodzenie (pierwszy dzieÃ±)
+                new DateTime(2023, 12, 26), // BoÂ¿e Narodzenie (drugi dzieÃ±)
             };
 
             //DateTime[] holidays = calendar.GetHolidays(year);
@@ -236,34 +312,21 @@ namespace GUI_Management_of_medical_clinic
             }
         }
 
-        private void UserControlDay_ControlClicked(object sender, DateTime selectedDate)   // Date From UserControlDay
+        
+
+        public static int ExtractIdFromDataGridView(string input)
         {
-            CheckTheMonth();
-            labelDate.Text = selectedDate.ToString("d");
-            _selectedDate = selectedDate.ToString("d");
+            string numberString = Regex.Match(input, @"\d+").Value;
+            int number;
 
-            List<DoctorsDayPlanModel> plansDuplicated = DoctorsPlanService.CheckPlansAndReturnForADay(selectedDate, duplicateCalendar == null ? 0 : duplicateCalendar.IdCalendar);
-            List<DoctorsDayPlanModel> plansOriginal = DoctorsPlanService.CheckPlansAndReturnForADay(selectedDate, CalendarService.GetCalendarIdByDate(displayMonth.ToString("d")));
-            List<DoctorsDayPlanModel> plans = plansDuplicated.Concat(plansOriginal).ToList();
-
-            dataGridViewAppointments.Rows.Clear();
-
-            plans.ForEach(plan =>
+            if (int.TryParse(numberString, out number))
             {
-                dataGridViewAppointments.Rows.Add(plan.IdEmployee, plan.IdDay, DoctorsPlanService.GetTermDescription((EnumTerms)plan.IdOfTerm), PatientService.GetPatientById((int)(plan.PatientId == null ? 0 : plan.PatientId)));  //in database there is a null value at PatientId
-            });
-
-            //Changed as DbAppointment is not used anymore
-
-            //List<AppointmentModel> appointments = AppointmentService.CheckAppointmentsAndReturnList(selectedDate, duplicateCalendar == null ? 0 : duplicateCalendar.IdCalendar);
-
-            //dataGridViewAppointments.Rows.Clear();
-            //foreach (AppointmentModel appointment in appointments)
-            //{
-            //    string timeTerm = AppointmentService.GetTermByTermId(appointment.IdTerm);
-            //    Patient patient = PatientService.GetPatientById((int)appointment.PatientId);
-            //    dataGridViewAppointments.Rows.Add(appointment.IdEmployee, appointment.IdDay, timeTerm, patient.FirstName + " " + patient.LastName);
-            //}
+                return number;
+            }
+            else
+            {
+                return -1;
+            }
         }
 
 
@@ -272,9 +335,8 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonAddAppointment_Click(object sender, EventArgs e)
         {
-            if (_selectedDate.Length != 0)
+            try
             {
-
                 if (CalendarService.checkIfCalendarExists(_selectedDate) == true)
                 {
                     FormDoctorsDayPlanAdd formAppointmentAdd = new FormDoctorsDayPlanAdd(DateTime.Parse(labelDate.Text), currentEmployee);
@@ -286,9 +348,8 @@ namespace GUI_Management_of_medical_clinic
                 {
                     MessageBox.Show("A calendar hasn't been started for the given month");
                 }
-
             }
-            else
+            catch
             {
                 MessageBox.Show("A term needs to be selected");
             }
@@ -372,24 +433,58 @@ namespace GUI_Management_of_medical_clinic
             previousMonth = false;
         }
 
+        
+
         private bool CheckTheHoliday(DateTime date)
         {
             DateTime[] holidays = new DateTime[] {
                 new DateTime(displayMonth.Year, 1, 1),  // Nowy Rok
-                new DateTime(displayMonth.Year, 1, 6),  // Œwiêto Trzech Króli
-                new DateTime(displayMonth.Year, 4, 17), // Poniedzia³ek Wielkanocny
-                new DateTime(displayMonth.Year, 5, 1),  // Œwiêto Pracy
-                new DateTime(displayMonth.Year, 5, 3),  // Œwiêto Konstytucji 3 Maja
-                new DateTime(displayMonth.Year, 6, 4),  // Zes³anie Ducha Œwiêtego
-                new DateTime(displayMonth.Year, 6, 15), // Bo¿e Cia³o
-                new DateTime(displayMonth.Year, 8, 15), // Wniebowziêcie Najœwiêtszej Maryi Panny
-                new DateTime(displayMonth.Year, 11, 1), // Wszystkich Œwiêtych
-                new DateTime(displayMonth.Year, 11, 11), // Œwiêto Niepodleg³oœci
-                new DateTime(displayMonth.Year, 12, 25), // Bo¿e Narodzenie (pierwszy dzieñ)
-                new DateTime(displayMonth.Year, 12, 26), // Bo¿e Narodzenie (drugi dzieñ)
+                new DateTime(displayMonth.Year, 1, 6),  // Å’wiÃªto Trzech KrÃ³li
+                new DateTime(displayMonth.Year, 4, 17), // PoniedziaÂ³ek Wielkanocny
+                new DateTime(displayMonth.Year, 5, 1),  // Å’wiÃªto Pracy
+                new DateTime(displayMonth.Year, 5, 3),  // Å’wiÃªto Konstytucji 3 Maja
+                new DateTime(displayMonth.Year, 6, 4),  // ZesÂ³anie Ducha Å’wiÃªtego
+                new DateTime(displayMonth.Year, 6, 15), // BoÂ¿e CiaÂ³o
+                new DateTime(displayMonth.Year, 8, 15), // WniebowziÃªcie NajÅ“wiÃªtszej Maryi Panny
+                new DateTime(displayMonth.Year, 11, 1), // Wszystkich Å’wiÃªtych
+                new DateTime(displayMonth.Year, 11, 11), // Å’wiÃªto NiepodlegÂ³oÅ“ci
+                new DateTime(displayMonth.Year, 12, 25), // BoÂ¿e Narodzenie (pierwszy dzieÃ±)
+                new DateTime(displayMonth.Year, 12, 26), // BoÂ¿e Narodzenie (drugi dzieÃ±)
             };
 
             return holidays.ToList().Contains(date);
+        }
+
+        private void buttonEditPlan_Click(object sender, EventArgs e)
+        {
+            string selectedDoctor = null;
+
+            if (dataGridViewAppointments.RowCount > 0)
+            {
+                if (dataGridViewAppointments.CurrentRow != null && dataGridViewAppointments.CurrentRow.Cells[0].Value != null)
+                {
+                    selectedDoctor = dataGridViewAppointments.CurrentRow.Cells[0].Value.ToString();
+                }
+            }
+
+            if (!string.IsNullOrEmpty(selectedDoctor))
+            {
+                int selectedDoctorId = ExtractIdFromDataGridView(selectedDoctor);
+
+                if (_selectedDate.Length != 0 && CalendarService.checkIfCalendarExists(_selectedDate) == true)
+                {
+                    FormDoctorsDayPlanEdit formAppointmentEdit = new FormDoctorsDayPlanEdit(DateTime.Parse(labelDate.Text), currentEmployee, selectedDoctorId);
+                    formAppointmentEdit.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("A calendar hasn't been started for the given month");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a doctor.");
+            }
         }
     }
 }

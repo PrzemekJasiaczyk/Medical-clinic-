@@ -53,6 +53,12 @@ namespace Console_Management_of_medical_clinic.Logic
             return GetOfficesData().FirstOrDefault(o => o.IdOffice == id);
         }
 
+        public static string GetOfficeInfoById(int id)
+        {
+            OfficeModel office = GetOfficeById(id);
+            return "Room: "+office.Number.ToString()+", "+office.Info;
+        }
+
         public static void EditOffice(int idOffice, int number, EnumOfficeStatuses status, string info, int idSpecialization)
         {
             using (AppDbContext context = new AppDbContext())
@@ -91,6 +97,40 @@ namespace Console_Management_of_medical_clinic.Logic
                 }
             }
             return false;
+        }
+
+        public static bool CheckIfOfficeIsFree(int idEmployee, int idCalendar, int selectedDay, int idOffice, List<int> idOfTerms, out string message)
+        {
+            List<DoctorsDayPlanModel> doctorsDayPlans;
+            using(AppDbContext context = new AppDbContext())
+            {
+                doctorsDayPlans = context.DbDoctorsDayPlan.ToList();
+            }
+
+
+            foreach(DoctorsDayPlanModel doctorsDayPlanModel in doctorsDayPlans)
+            {
+                if(doctorsDayPlanModel.IdEmployee == idEmployee && doctorsDayPlanModel.IdCalendar == idCalendar && doctorsDayPlanModel.IdDay == selectedDay)
+                {
+                    message = "A plan for this doctor on this day already exists. You have to edit it if you want to apply changes.";
+                    return false;
+                }
+
+                if(doctorsDayPlanModel.IdCalendar==idCalendar && doctorsDayPlanModel.IdOffice == idOffice && doctorsDayPlanModel.IdDay == selectedDay)
+                {
+                    foreach(int idTerm in idOfTerms)
+                    {
+                        if (idTerm == doctorsDayPlanModel.IdOfTerm)
+                        {
+                            message = "Office is busy at this term";
+                            return false;
+                        }
+                    }
+                }
+            }
+
+            message = "";
+            return true;
         }
     }
 }

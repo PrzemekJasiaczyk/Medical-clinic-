@@ -36,7 +36,6 @@
             list_ofCalendars = new ListView();
             column0 = new ColumnHeader();
             label1 = new Label();
-            button_review = new Button();
             panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -99,12 +98,12 @@
             list_ofCalendars.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             list_ofCalendars.HeaderStyle = ColumnHeaderStyle.None;
             list_ofCalendars.Location = new Point(419, 242);
+            list_ofCalendars.MultiSelect = false;
             list_ofCalendars.Name = "list_ofCalendars";
             list_ofCalendars.Size = new Size(312, 366);
             list_ofCalendars.TabIndex = 32;
             list_ofCalendars.UseCompatibleStateImageBehavior = false;
             list_ofCalendars.View = View.Details;
-            list_ofCalendars.SelectedIndexChanged += list_ofCalendars_SelectedIndexChanged;
             list_ofCalendars.DoubleClick += listofCalendars_DoubleClick;
             // 
             // column0
@@ -122,23 +121,11 @@
             label1.TabIndex = 33;
             label1.Text = "Calendars to accept";
             // 
-            // button_review
-            // 
-            button_review.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button_review.Location = new Point(737, 242);
-            button_review.Name = "button_review";
-            button_review.Size = new Size(238, 57);
-            button_review.TabIndex = 34;
-            button_review.Text = "Review";
-            button_review.UseVisualStyleBackColor = true;
-            button_review.Click += button_review_Click;
-            // 
             // FormDoctorCalendar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1920, 1080);
-            Controls.Add(button_review);
             Controls.Add(label1);
             Controls.Add(list_ofCalendars);
             Controls.Add(panelMenu);
@@ -165,6 +152,5 @@
         private ListView list_ofCalendars;
         private ColumnHeader column0;
         private Label label1;
-        private Button button_review;
     }
 }

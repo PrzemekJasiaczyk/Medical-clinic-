@@ -5,10 +5,10 @@ For now:
   - [x] Future calendar viewing
   - [x] Calendar acceptance
   - [ ] Calendar modification
-  - [ ] Terms rejection
+  - [x] Terms rejection
 - [ ] Calendar management
-  - [ ] Calendar viewing
-  - [ ] View daily visits
+  - [x] Calendar viewing
+  - [x] View daily visits
   - [ ] Sorting
   - [ ] Filtering
 - [ ] Canceling an appointment

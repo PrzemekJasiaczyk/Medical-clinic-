@@ -36,6 +36,7 @@
     <Compile Update="FormCalendarAppointment.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FormDoctorAppointmentList.cs" />
     <Compile Update="FormListAppointment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -46,10 +47,11 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FormDoctorCalendarRejectConfirm.cs" />
-    <Compile Update="FormDoctorCurrentCalendar.cs">
+    <Compile Update="FormDoctorCalendar.cs" />
+    <Compile Update="FormDoctorPatientList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FormDoctorCalendar.cs">
+    <Compile Update="FormDoctorPatientVisitDetails.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
