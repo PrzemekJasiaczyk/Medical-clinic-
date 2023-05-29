@@ -136,13 +136,13 @@ namespace GUI_Management_of_medical_clinic
             dateReference = selectedDate.ToString("d");
             calendarId = CalendarService.GetCalendarIdByDate(dateReference);
 
-            DoctorsDayPlanModel model = new DoctorsDayPlanModel(GetIdOfTermFromCombo(), 
-                dateTimePicker.Value.Day,
-                calendarId,
-                currentUser.IdEmployee,
-                (int)comboBoxOfficeNumber.SelectedItem, 
-                true);
-            DoctorsPlanService.AddPlan(model);
+            /* DoctorsDayPlanModel model = new DoctorsDayPlanModel(GetIdOfTermFromCombo(),
+                 dateTimePicker.Value.Day,
+                 calendarId,
+                 currentUser.IdEmployee,
+                 (int)comboBoxOfficeNumber.SelectedItem, 
+                 true);
+            DoctorsPlanService.AddPlan(model);*/
             MessageBox.Show("New plan added successfully");
         }
         private void FindEditAppointemntInDataBase()

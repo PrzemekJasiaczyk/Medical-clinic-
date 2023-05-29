@@ -13,12 +13,16 @@ namespace GUI_Management_of_medical_clinic
     {
         EmployeeModel employee;
         string selectedDate;
+        List<int> listID;
 
         public FormDoctorCalendarInChosenMonth(EmployeeModel employee, string selectedDate)
         {
             InitializeComponent();
             this.employee = employee;
             this.selectedDate = selectedDate;
+            string date = Convert.ToDateTime(selectedDate).ToString("d");
+            int data = CalendarService.GetCalendarIdByDate(date);
+            listID = DoctorsPlanService.GetIDDayDoctorByCalendarID(data);
             
         }
         
@@ -47,37 +51,28 @@ namespace GUI_Management_of_medical_clinic
             this.Close();
         }
 
-        private void dataGridViewAppointment_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            /*DoctorsDayPlanModel appointment = (DoctorsDayPlanModel)dataGridViewAppointment.SelectedRows[0].Tag;
-            FormRegisterAppointment formRegisterAppointment = new FormRegisterAppointment(employee, appointment);
-            this.Hide();
-            formRegisterAppointment.ShowDialog();
-            this.Close();*/
-        }
-
         private void panelPatient_Click(object sender, EventArgs e)
            {
-               SortByPatient(dataGridViewAppointment);
+               SortByPatient(dataGridViewTerms);
            }
 
            private void labelPatient_Click(object sender, EventArgs e)
            {
-               SortByPatient(dataGridViewAppointment);
+               SortByPatient(dataGridViewTerms);
            }
 
            private void panelTime_Click(object sender, EventArgs e)
            {
-               SortByTime(dataGridViewAppointment);
+               SortByTime(dataGridViewTerms);
            }
 
            private void labelTime_Click(object sender, EventArgs e)
            {
-               SortByTime(dataGridViewAppointment);
+               SortByTime(dataGridViewTerms);
            }
         private void UserControlDay_ControlClicked(object sender, DateTime date)   // Date From UserControlDay
         {
-            RemoveRowsInDataGridView(dataGridViewAppointment);
+            RemoveRowsInDataGridView(dataGridViewTerms);
             RemoveRowsInDataGridView(dataGridViewOtherAppointments);
             UpdateDateInLabel(date);
             displayListInDataGridView.Clear();
@@ -88,14 +83,14 @@ namespace GUI_Management_of_medical_clinic
             List<DoctorsDayPlanModel> appointments = CalendarAppointmentService.GetAppointmentsData();
             List<DoctorsDayPlanModel> selectedAppointments = CalendarAppointmentService.appointmentInSelectedDate(appointments, date, calendarId);
 
-            foreach (DoctorsDayPlanModel appointment in selectedAppointments)
+            foreach (DoctorsDayPlanModel appointment in selectedAppointments) //change new
             {
-                if (appointment.PatientId == null  && appointment.Status == EnumAppointmentStatus.Inactive && employee.IdEmployee==appointment.IdEmployee)
+                if (appointment.PatientId == null && appointment.Status == EnumAppointmentStatus.Inactive && employee.IdEmployee==appointment.IdEmployee)
                 {
-                    AddItemToDataGridView(appointment, dataGridViewAppointment);
+                    AddItemToDataGridView(appointment, dataGridViewTerms);
                     displayListInDataGridView.Add(appointment);
                 }
-                if (employee.IdEmployee != appointment.IdEmployee && appointment.Status==EnumAppointmentStatus.Free)
+                if (employee.IdEmployee != appointment.IdEmployee) //tho idk if there should be accepted terms visible
                 {
                     AddItemToDataGridView(appointment, dataGridViewOtherAppointments);
                     displayAllDoctorsAppointments.Add(appointment);
@@ -169,7 +164,7 @@ namespace GUI_Management_of_medical_clinic
             foreach (DoctorsDayPlanModel appointment in appointments)
             {
                 if (appointment.IdEmployee == employee.IdEmployee && appointment.IdDay == day.Day 
-                    && appointment.IdCalendar == calendarId && appointment.Status==EnumAppointmentStatus.Inactive
+                    && appointment.IdCalendar == calendarId && appointment.Status==EnumAppointmentStatus.Inactive //new
                     && appointment.PatientId == null)
                 {
                     userControl.BackColor = Color.Orange;
@@ -221,14 +216,15 @@ namespace GUI_Management_of_medical_clinic
             room = OfficeService.GetOfficeById(Convert.ToInt32(appointment.IdOffice));
             int idDoctorsDayPlan = (int)appointment.IdDoctorsDayPlan;
             EmployeeModel employee = EmployeeModel.FindEmployee((int)appointment.IdEmployee);
+
             int index;
 
-            if (dataGrid == dataGridViewAppointment)
+            if (dataGrid == dataGridViewTerms) //doctor's terms
             {
             index = dataGrid.Rows.Add(timeTerm, room.Number, idDoctorsDayPlan);
-            dataGrid.Rows[index].Tag = appointment;
+            dataGrid.Rows[index].Tag = appointment;            
             }
-            else
+            else //other doctors' duties in chosen day
             {
                index = dataGrid.Rows.Add(employee.FirstName+" "+employee.LastName, timeTerm, room.Number, idDoctorsDayPlan);
                 dataGrid.Rows[index].Tag = appointment;
@@ -247,7 +243,7 @@ namespace GUI_Management_of_medical_clinic
         void SortByTime(DataGridView dataGrid)
         {
             List<DoctorsDayPlanModel> result = CalendarAppointmentService.SortByTerm(displayListInDataGridView);
-            dataGridViewAppointment.Rows.Clear();
+            dataGridViewTerms.Rows.Clear();
 
             foreach (DoctorsDayPlanModel appointment in result)
             {
@@ -258,7 +254,7 @@ namespace GUI_Management_of_medical_clinic
         void SortByDoctor(DataGridView dataGrid)
         {
             List<DoctorsDayPlanModel> result = CalendarAppointmentService.SortByDoctorLastName(displayListInDataGridView);
-            dataGridViewAppointment.Rows.Clear();
+            dataGridViewTerms.Rows.Clear();
 
             foreach (DoctorsDayPlanModel appointment in result)
             {
@@ -269,7 +265,7 @@ namespace GUI_Management_of_medical_clinic
         void SortByPatient(DataGridView dataGrid)
         {
             List<DoctorsDayPlanModel> result = CalendarAppointmentService.SortByPatientLastName(displayListInDataGridView);
-            dataGridViewAppointment.Rows.Clear();
+            dataGridViewTerms.Rows.Clear();
 
             foreach (DoctorsDayPlanModel appointment in result)
             {
@@ -279,12 +275,18 @@ namespace GUI_Management_of_medical_clinic
         #endregion
 
         private void buttonAcceptCalendar_Click(object sender, EventArgs e)
-        {
-            FormDoctorCalendarAcceptConfirm formCalendarAcceptConfirm = new FormDoctorCalendarAcceptConfirm(selectedDate.ToString(), employee);
+        {         
+            FormDoctorCalendarAcceptConfirm formCalendarAcceptConfirm = new FormDoctorCalendarAcceptConfirm(listID, employee, selectedDate);
             formCalendarAcceptConfirm.ShowDialog();
             Hide();
-            Close();
+            
 
+        }
+        private void buttonRejectCalendar_Click(object sender, EventArgs e)
+        {
+            FormDoctorCalendarRejectConfirm formCalendarRejectConfirm = new FormDoctorCalendarRejectConfirm(selectedDate, employee, listID);
+            formCalendarRejectConfirm.ShowDialog();
+            Hide();
         }
 
         private void buttonModifyCalendar_Click(object sender, EventArgs e)
@@ -323,7 +325,7 @@ namespace GUI_Management_of_medical_clinic
 
         private void dataGridViewAppointment_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (button_acceptAppointments.Visible == true && dataGridViewAppointment.SelectedRows.Count>0)
+            if (button_acceptAppointments.Visible == true && dataGridViewTerms.SelectedRows.Count>0)
             {
                 button_acceptAppointments.Enabled = true;
                 button_cancelAppointment.Enabled = true;
@@ -337,11 +339,11 @@ namespace GUI_Management_of_medical_clinic
                 button_modifyAppointment.Enabled = false;
                 
             }
-            if (dataGridViewAppointment.SelectedRows.Count > 1)
+            if (dataGridViewTerms.SelectedRows.Count > 1)
             {
                 button_modifyAppointment.Enabled = false;
             }
-            if (dataGridViewAppointment.SelectedRows.Count == 0)
+            if (dataGridViewTerms.SelectedRows.Count == 0)
             {
                 button_acceptAppointments.Enabled = false;
                 button_cancelAppointment.Enabled = false;
@@ -353,7 +355,7 @@ namespace GUI_Management_of_medical_clinic
         {
             List<int> selectedColumnData = new List<int>();
 
-            foreach (DataGridViewCell selectedCell in dataGridViewAppointment.SelectedCells)
+            foreach (DataGridViewCell selectedCell in dataGridViewTerms.SelectedCells)
             {
                 if (selectedCell.ColumnIndex == columnIndex)
                 {
@@ -398,14 +400,21 @@ namespace GUI_Management_of_medical_clinic
 
         private void button_cancelAppointment_Click(object sender, EventArgs e)
         {
-            List<int> idDoctor = GetSelectedColumnData(2);
-            foreach (int id in idDoctor)
+            //when rejecting, term is deleted from database
+            List<int> idDoctor = GetSelectedColumnData(2); //hidden column with idDoctorDayPlan
+            DialogResult result = MessageBox.Show("Do you want to reject chosen term(s)?", "Confirm rejection", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
             {
-                DoctorsPlanService.ChangeAppointmentStatusToFree(id, employee); //when rejecting, then status is changed to free
+                DoctorsPlanService.ChangeAppointmentStatusToRejected(idDoctor, employee);
+                MessageBox.Show("Chosen term(s) are now rejected.");
+               /* DateTime month = Convert.ToDateTime(selectedDate);
+                int id_cal = CalendarService.GetIdFromDate(month);*/
+
             }
-            MessageBox.Show("Chosen term(s) are now rejected.");
-            DateTime month = Convert.ToDateTime(selectedDate);
-            int id_cal = CalendarService.GetIdFromDate(month);
+            if (result == DialogResult.No)
+            {
+                MessageBox.Show("Canceled rejecting terms");
+            }
 
             /*bool isCalStatusChanged = CalendarService.AreAllTermsRejected(id_cal, employee);
 
@@ -414,15 +423,14 @@ namespace GUI_Management_of_medical_clinic
                 CalendarService.ChangeCalendarStatusToRejected(id_cal);
                 MessageBox.Show("All appointments are rejected, so automatically changed calendar's status to 'rejected')");
             }*/
-            dataGridViewAppointment.ClearSelection();
-            dataGridViewAppointment.Rows.Clear();
-            dataGridViewAppointment.Refresh();
+            dataGridViewTerms.ClearSelection();
+            dataGridViewTerms.Rows.Clear();
+            dataGridViewTerms.Refresh();
             dataGridViewOtherAppointments.ClearSelection();
             dataGridViewOtherAppointments.Rows.Clear();
             dataGridViewOtherAppointments.Refresh();
             ReloadActiveForm();
-            
-
+           
         }
     }
 }

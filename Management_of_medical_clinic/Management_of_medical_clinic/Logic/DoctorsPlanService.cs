@@ -4,10 +4,12 @@ using Console_Management_of_medical_clinic.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace Console_Management_of_medical_clinic.Logic
 {
@@ -236,24 +238,52 @@ namespace Console_Management_of_medical_clinic.Logic
                 }
             }
         }
-       public static void ChangeAppointmentStatusToAccepted(int calendar_id, EmployeeModel employee)//added by doctors
+
+        public static List<DoctorsDayPlanModel> GetAppointmentsDetailsByAppointmentID(List<int> appointment_id)
         {
+            List<DoctorsDayPlanModel> doctorsDayPlans = GetDoctorsPlanData();
+
             using (AppDbContext context = new AppDbContext())
             {
-                List<DoctorsDayPlanModel> ListdoctorsDayPlanModel = GetPlansByCalendarId(calendar_id);
-                foreach (DoctorsDayPlanModel ddpm in ListdoctorsDayPlanModel)
+                return context.DbDoctorsDayPlan.Where(id => appointment_id.Contains(id.IdDoctorsDayPlan)).ToList();
+            }   
+
+        }
+
+       public static void ChangeAppointmentStatusToAccepted(List<int> appointments_id, EmployeeModel employee)//added by doctors
+        {
+            List<DoctorsDayPlanModel> terms = GetAppointmentsDetailsByAppointmentID(appointments_id);
+            using (AppDbContext context = new AppDbContext())
+            {
+                foreach (DoctorsDayPlanModel ddpm in terms)
                 {
                     context.DbDoctorsDayPlan.Update(ddpm);
-                    if (employee.IdEmployee == ddpm.IdEmployee)
-                    {
+                    if (employee.IdEmployee == ddpm.IdEmployee && ddpm.Status == EnumAppointmentStatus.Inactive) //change new
+                    {    //there may be some edited terms or rejected, so accepting other terms are made
                         ddpm.Status = EnumAppointmentStatus.Accepted;
+                        context.SaveChanges();
                     }
-                    context.SaveChanges();
                 }
             }
         }
-        
-        public static void ChangeAppointmentStatusToFree(int doctorday_id, EmployeeModel employee)//added by doctors
+
+        public static void ChangeAppointmentStatusToRejected(List<int> appointments_id, EmployeeModel employee)
+        {
+            List<DoctorsDayPlanModel> terms = GetAppointmentsDetailsByAppointmentID(appointments_id);
+            using (AppDbContext context = new AppDbContext())
+            {
+                foreach (DoctorsDayPlanModel ddpm in terms)
+                {
+                    if (ddpm.Status == EnumAppointmentStatus.Inactive && employee.IdEmployee == ddpm.IdEmployee) //change new
+                    { 
+                        context.DbDoctorsDayPlan.Remove(ddpm);
+                        context.SaveChanges();
+                    }
+                }
+            }
+        }
+
+       /* public static void ChangeAppointmentStatusToFree(int doctorday_id, EmployeeModel employee)//added by doctors
         {
             using (AppDbContext context = new AppDbContext())
             {
@@ -261,7 +291,7 @@ namespace Console_Management_of_medical_clinic.Logic
                 foreach (DoctorsDayPlanModel ddpm in ListdoctorsDayPlanModel)
                 {
                     context.DbDoctorsDayPlan.Update(ddpm);
-                    if (ddpm.IdDoctorsDayPlan == doctorday_id)
+                    if (ddpm.IdDoctorsDayPlan == doctorday_id) //okay, need to delete this visit
                     {
                         ddpm.Status = EnumAppointmentStatus.Free; //not sure if it would be look like this
                     }
@@ -269,6 +299,31 @@ namespace Console_Management_of_medical_clinic.Logic
                 }
                 context.SaveChanges();
             }
+        } I'm leaving this function when there deleting data from db is not good idea*/
+
+        public static List<DoctorsDayPlanModel> GetAppointmentsByPatientId(int patient_id)
+        {
+            List<DoctorsDayPlanModel> list = AppointmentService.GetAllAppointments();
+            List<DoctorsDayPlanModel> listo = new List<DoctorsDayPlanModel>();
+            foreach (DoctorsDayPlanModel appointment in list)
+            {
+                if (patient_id == appointment.PatientId)
+                {
+                    listo.Add(appointment);
+                }
+            }
+            return listo;
+        }
+
+        public static List<int> GetIDDayDoctorByCalendarID(int calendar_id)
+        {
+            List<int> list = new List<int>();
+            List<DoctorsDayPlanModel> doctorsPlans = GetPlansByCalendarId(calendar_id);
+            foreach (DoctorsDayPlanModel id in doctorsPlans)
+            {
+                list.Add(id.IdDoctorsDayPlan);
+            }
+            return list;
         }
 
     }

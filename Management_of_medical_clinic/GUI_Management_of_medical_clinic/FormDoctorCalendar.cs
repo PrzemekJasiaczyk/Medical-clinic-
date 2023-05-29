@@ -14,7 +14,6 @@ namespace GUI_Management_of_medical_clinic
     {
         EmployeeModel currentUser;
         DoctorsDayPlanModel appointment;
-        List<int> listofID = new List<int>();
         public FormDoctorCalendar(EmployeeModel currentUser)
         {
             InitializeComponent();
@@ -36,6 +35,8 @@ namespace GUI_Management_of_medical_clinic
 
         private void FormDoctorCalendar_Load(object sender, EventArgs e)
         {
+            list_ofCalendars.Items.Clear();
+            list_ofCalendars.Refresh();
             dataGridViewAppointments.Rows.Clear();
             dataGridViewAppointments.Columns.Add("Room", "Room");
             dataGridViewAppointments.Columns.Add("Term", "Term");
@@ -50,22 +51,18 @@ namespace GUI_Management_of_medical_clinic
             List<CalendarModel> listID = CalendarService.GetCalendarData();
             foreach (DoctorsDayPlanModel doctorsDayPlanModel in doctorsDayPlanModels)
             {
-                if (doctorsDayPlanModel.IdEmployee == currentUser.IdEmployee
-                    && doctorsDayPlanModel.Status == EnumAppointmentStatus.Inactive)
+                int idCalendar = (int)doctorsDayPlanModel.IdCalendar;
+
+                CalendarModel calendar = listID.FirstOrDefault(x => x.IdCalendar == idCalendar);
+                int month = Convert.ToDateTime(calendar.DateReference).Month;
+
+                //calendar for present or future months                  
+                if (month >= DateTime.Today.Month && doctorsDayPlanModel.IdEmployee == currentUser.IdEmployee
+                && doctorsDayPlanModel.Status == EnumAppointmentStatus.Inactive && listID.Count >0) //change new
                 {
-                    int idCalendar = (int)doctorsDayPlanModel.IdCalendar;
-
-                    //CalendarModel o pasuj¹cym ID kalendarza
-                    CalendarModel calendar = listID.FirstOrDefault(x => x.IdCalendar == idCalendar);
-                    int month = Convert.ToDateTime(calendar.DateReference).Month;
-
-
-                    if (month >= DateTime.Today.Month) //calendar for present or future months
-                    {
-                        DateTime date = Convert.ToDateTime(calendar.DateReference);
-                        list_ofCalendars.Items.Add(date.ToString("MM-yyyy"));
-                    }
-                }
+                DateTime date = Convert.ToDateTime(calendar.DateReference);
+                list_ofCalendars.Items.Add(date.ToString("MM-yyyy"));
+                }                
             }
             HashSet<string> uniqueItems = new HashSet<string>();
             for (int i = list_ofCalendars.Items.Count - 1; i >= 0; i--) //deleting duplicated datas
@@ -109,21 +106,6 @@ namespace GUI_Management_of_medical_clinic
             //idk if it will be needed to do
         }
 
-        private void list_ofCalendars_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            listofID.Clear();
-            foreach (int selectedIndex in list_ofCalendars.SelectedIndices)
-            {
-                string item = list_ofCalendars.Items[selectedIndex].Text;
-                string dateString = item.ToString();
-
-                DateTime date = Convert.ToDateTime(dateString);
-
-                int calendarId = CalendarService.GetCalendarIdByDate(date.ToString("d"));
-                listofID.Add(calendarId);
-            }
-        }
-
         private void listofCalendars_DoubleClick(object sender, EventArgs e)
         {
             foreach (int selectedIndex in list_ofCalendars.SelectedIndices)
@@ -132,8 +114,6 @@ namespace GUI_Management_of_medical_clinic
                 string dateString = item.ToString();
                 FormDoctorCalendarInChosenMonth formDoctorCalendarInChosenMonth = new FormDoctorCalendarInChosenMonth(currentUser, dateString);
                 formDoctorCalendarInChosenMonth.Show();
-
-
             }
 
         }

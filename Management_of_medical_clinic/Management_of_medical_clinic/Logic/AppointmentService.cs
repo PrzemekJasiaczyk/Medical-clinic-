@@ -101,13 +101,11 @@ namespace Console_Management_of_medical_clinic.Logic
             List<DoctorsDayPlanModel> allAppointments = GetAllAppointments();
             foreach (DoctorsDayPlanModel app in allAppointments)
             {
-                if (id_cal == app.IdCalendar && employee.IdEmployee == app.IdEmployee)
+                if (id_cal == app.IdCalendar && employee.IdEmployee == app.IdEmployee && app.PatientId != null)
                 { 
                     list.Add(app);
                 }
             }return list;
-
-            return list;
         }
 
         public static void DoctorModifiesAppointment(int idappointment, int office, int term, int day)

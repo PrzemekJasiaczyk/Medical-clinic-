@@ -25,33 +25,14 @@ namespace GUI_Management_of_medical_clinic
             InitializeComponent();
             label1.Text = "Welcome, " + currentUser.FirstName;
 
-            dataGridView1.CellClick += dataGridView1_CellClick;
+            //dataGridView1.CellClick += dataGridView1_CellClick;
         }
 
         private void buttonCalendar_Click(object sender, EventArgs e)
         {
-            bool isNewCalendar = true;
-            //roboczo dałem true
-            //bool isNewCalendar = false; 
-            List<CalendarModel> calendars = CalendarService.GetCalendarData();
-
-            foreach (CalendarModel calendar in calendars)
-            {
-                if (calendar.IdEmployee == currentUser.IdEmployee && calendar.Active == false)
-                {
-                    isNewCalendar = true;
-                }
-            }
-            if (isNewCalendar == true)
-            {
-                FormDoctorCalendar formDoctor = new FormDoctorCalendar(currentUser);
-                formDoctor.ShowDialog();
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("You don't have any new calendar to check", "Information", MessageBoxButtons.OK);
-            }
+            this.Hide();
+            FormDoctorCalendar formDoctor = new FormDoctorCalendar(currentUser);
+            formDoctor.ShowDialog();
 
         }
 
@@ -65,12 +46,15 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonCurrentCalendar_Click(object sender, EventArgs e)
         {
-            IsCalendarActiveForCurrentMonth();
+            FormDoctorAppointmentList formDoctorAppointmentList = new FormDoctorAppointmentList(currentUser,DateTime.Today);
+            formDoctorAppointmentList.Show();
+            //IsCalendarActiveForCurrentMonth();
         }
 
 
         private void IsCalendarActiveForCurrentMonth()
         {
+            ToFormCurrentCalendar();
             bool isCurrentCalendar = false;
             string currentMonthYear = DateTime.Today.ToString("MM-yyyy");
 
@@ -87,14 +71,14 @@ namespace GUI_Management_of_medical_clinic
                 }
             } narazie zakomentowalam bo naprawiam swoje XD*/
 
-            if (isCurrentCalendar)
+         /*   if (isCurrentCalendar)
             {
                 ToFormCurrentCalendar();
             }
             else
             {
                 MessageBox.Show("Brak aktywnego kalendarza na obecny miesiąc");
-            }
+            }*/
 
         }
         private void ToFormCurrentCalendar()
@@ -113,8 +97,6 @@ namespace GUI_Management_of_medical_clinic
             dataGridView1.Columns.Add("Patient", "Patient");
             dataGridView1.Columns.Add("Day", "Day");
             dataGridView1.Columns.Add("PatientId", "PatientId");
-
-
 
            
             List<DoctorsDayPlanModel> appointments = DoctorsPlanService.GetDoctorsPlanData();
@@ -148,10 +130,15 @@ namespace GUI_Management_of_medical_clinic
                 labelSex.Text = patient.Sex.ToString();
                 labelBirthday.Text = patient.BirthDate.ToString();
 
-
             }
 
+        }
 
+        private void button_patients_Click(object sender, EventArgs e)
+        {
+            FormDoctorPatientList formDocPatientList = new FormDoctorPatientList(currentUser);          
+            formDocPatientList.Show();
+            
         }
     }
 }

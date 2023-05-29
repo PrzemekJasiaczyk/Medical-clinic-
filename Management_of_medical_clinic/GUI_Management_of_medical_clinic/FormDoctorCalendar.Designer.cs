@@ -176,12 +176,12 @@
             this.list_ofCalendars.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.list_ofCalendars.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.list_ofCalendars.Location = new System.Drawing.Point(419, 242);
+            this.list_ofCalendars.MultiSelect = false;
             this.list_ofCalendars.Name = "list_ofCalendars";
             this.list_ofCalendars.Size = new System.Drawing.Size(312, 366);
             this.list_ofCalendars.TabIndex = 32;
             this.list_ofCalendars.UseCompatibleStateImageBehavior = false;
             this.list_ofCalendars.View = System.Windows.Forms.View.Details;
-            this.list_ofCalendars.SelectedIndexChanged += new System.EventHandler(this.list_ofCalendars_SelectedIndexChanged);
             this.list_ofCalendars.DoubleClick += new System.EventHandler(this.listofCalendars_DoubleClick);
             // 
             // column0
@@ -207,16 +207,6 @@
             this.button_acceptAppointments.TabIndex = 36;
             this.button_acceptAppointments.Text = "Accept";
             this.button_acceptAppointments.UseVisualStyleBackColor = true;
-            // 
-            // buttonAddAppointment
-            // 
-            buttonAddAppointment.Location = new Point(1563, 630);
-            buttonAddAppointment.Name = "buttonAddAppointment";
-            buttonAddAppointment.Size = new Size(156, 37);
-            buttonAddAppointment.TabIndex = 51;
-            buttonAddAppointment.Text = "Add new";
-            buttonAddAppointment.UseVisualStyleBackColor = true;
-            buttonAddAppointment.Click += buttonAddAppointment_Click;
             // 
             // FormDoctorCalendar
             // 

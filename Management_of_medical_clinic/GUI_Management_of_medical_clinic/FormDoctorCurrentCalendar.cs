@@ -203,5 +203,13 @@ namespace GUI_Management_of_medical_clinic
             this.Close();
         }
 
+        private void button_ShowVisits_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FormDoctorAppointmentList formDoctorAppointmentList = new FormDoctorAppointmentList(currentUser, displayMonth);
+            formDoctorAppointmentList.Show();
+            this.Close();
+        }
+
     }
 }

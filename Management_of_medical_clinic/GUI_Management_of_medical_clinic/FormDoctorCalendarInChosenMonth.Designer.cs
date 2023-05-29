@@ -64,7 +64,10 @@
             this.flowLayoutPanelMonth = new System.Windows.Forms.FlowLayoutPanel();
             this.panelTime = new System.Windows.Forms.Panel();
             this.labelTime = new System.Windows.Forms.Label();
-            this.dataGridViewAppointment = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTerms = new System.Windows.Forms.DataGridView();
+            this.ColumnTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RoomNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdDoctorPlanDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelRoom = new System.Windows.Forms.Label();
             this.button_acceptAppointments = new System.Windows.Forms.Button();
@@ -82,9 +85,6 @@
             this.panelDoctor = new System.Windows.Forms.Panel();
             this.labelDoctor = new System.Windows.Forms.Label();
             this.labelDuty = new System.Windows.Forms.Label();
-            this.ColumnTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RoomNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdDoctorPlanDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -96,7 +96,7 @@
             this.panel8.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panelTime.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAppointment)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTerms)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOtherAppointments)).BeginInit();
             this.panelRoom2.SuspendLayout();
@@ -129,6 +129,7 @@
             this.buttonRejectCalendar.TabIndex = 48;
             this.buttonRejectCalendar.Text = "Reject calendar";
             this.buttonRejectCalendar.UseVisualStyleBackColor = false;
+            this.buttonRejectCalendar.Click += new System.EventHandler(this.buttonRejectCalendar_Click);
             // 
             // buttonModifyCalendar
             // 
@@ -431,18 +432,18 @@
             this.labelTime.Text = "Time";
             this.labelTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // dataGridViewAppointment
+            // dataGridViewTerms
             // 
-            this.dataGridViewAppointment.AllowUserToAddRows = false;
-            this.dataGridViewAppointment.AllowUserToDeleteRows = false;
-            this.dataGridViewAppointment.AllowUserToResizeColumns = false;
-            this.dataGridViewAppointment.AllowUserToResizeRows = false;
+            this.dataGridViewTerms.AllowUserToAddRows = false;
+            this.dataGridViewTerms.AllowUserToDeleteRows = false;
+            this.dataGridViewTerms.AllowUserToResizeColumns = false;
+            this.dataGridViewTerms.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(3);
-            this.dataGridViewAppointment.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewAppointment.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dataGridViewAppointment.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridViewAppointment.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dataGridViewTerms.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewTerms.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dataGridViewTerms.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewTerms.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -450,10 +451,10 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewAppointment.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewAppointment.ColumnHeadersHeight = 60;
-            this.dataGridViewAppointment.ColumnHeadersVisible = false;
-            this.dataGridViewAppointment.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTerms.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewTerms.ColumnHeadersHeight = 60;
+            this.dataGridViewTerms.ColumnHeadersVisible = false;
+            this.dataGridViewTerms.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnTime,
             this.RoomNumber,
             this.IdDoctorPlanDay});
@@ -464,10 +465,10 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewAppointment.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridViewAppointment.Location = new System.Drawing.Point(1101, 171);
-            this.dataGridViewAppointment.Name = "dataGridViewAppointment";
-            this.dataGridViewAppointment.ReadOnly = true;
+            this.dataGridViewTerms.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewTerms.Location = new System.Drawing.Point(1101, 171);
+            this.dataGridViewTerms.Name = "dataGridViewTerms";
+            this.dataGridViewTerms.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -475,16 +476,41 @@
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewAppointment.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridViewAppointment.RowHeadersVisible = false;
-            this.dataGridViewAppointment.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridViewAppointment.RowTemplate.Height = 40;
-            this.dataGridViewAppointment.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewAppointment.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridViewAppointment.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewAppointment.Size = new System.Drawing.Size(522, 374);
-            this.dataGridViewAppointment.TabIndex = 16;
-            this.dataGridViewAppointment.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAppointment_CellContentClick);
+            this.dataGridViewTerms.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridViewTerms.RowHeadersVisible = false;
+            this.dataGridViewTerms.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.dataGridViewTerms.RowTemplate.Height = 40;
+            this.dataGridViewTerms.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTerms.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridViewTerms.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewTerms.Size = new System.Drawing.Size(522, 374);
+            this.dataGridViewTerms.TabIndex = 16;
+            this.dataGridViewTerms.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAppointment_CellContentClick);
+            // 
+            // ColumnTime
+            // 
+            this.ColumnTime.HeaderText = "Time";
+            this.ColumnTime.MinimumWidth = 6;
+            this.ColumnTime.Name = "ColumnTime";
+            this.ColumnTime.ReadOnly = true;
+            this.ColumnTime.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.ColumnTime.Width = 220;
+            // 
+            // RoomNumber
+            // 
+            this.RoomNumber.HeaderText = "Room Number";
+            this.RoomNumber.MinimumWidth = 6;
+            this.RoomNumber.Name = "RoomNumber";
+            this.RoomNumber.ReadOnly = true;
+            this.RoomNumber.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.RoomNumber.Width = 220;
+            // 
+            // IdDoctorPlanDay
+            // 
+            this.IdDoctorPlanDay.HeaderText = "IdDoctor";
+            this.IdDoctorPlanDay.Name = "IdDoctorPlanDay";
+            this.IdDoctorPlanDay.ReadOnly = true;
+            this.IdDoctorPlanDay.Visible = false;
             // 
             // panel1
             // 
@@ -493,7 +519,7 @@
             this.panel1.Cursor = System.Windows.Forms.Cursors.PanSouth;
             this.panel1.Location = new System.Drawing.Point(1389, 105);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(225, 62);
+            this.panel1.Size = new System.Drawing.Size(234, 62);
             this.panel1.TabIndex = 18;
             // 
             // labelRoom
@@ -502,7 +528,7 @@
             this.labelRoom.BackColor = System.Drawing.Color.White;
             this.labelRoom.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelRoom.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.labelRoom.Location = new System.Drawing.Point(17, 12);
+            this.labelRoom.Location = new System.Drawing.Point(21, 12);
             this.labelRoom.Name = "labelRoom";
             this.labelRoom.Size = new System.Drawing.Size(186, 37);
             this.labelRoom.TabIndex = 7;
@@ -722,31 +748,6 @@
             this.labelDuty.Text = "Other doctor\'s duties in chosen day";
             this.labelDuty.Visible = false;
             // 
-            // ColumnTime
-            // 
-            this.ColumnTime.HeaderText = "Time";
-            this.ColumnTime.MinimumWidth = 6;
-            this.ColumnTime.Name = "ColumnTime";
-            this.ColumnTime.ReadOnly = true;
-            this.ColumnTime.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.ColumnTime.Width = 220;
-            // 
-            // RoomNumber
-            // 
-            this.RoomNumber.HeaderText = "Room Number";
-            this.RoomNumber.MinimumWidth = 6;
-            this.RoomNumber.Name = "RoomNumber";
-            this.RoomNumber.ReadOnly = true;
-            this.RoomNumber.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.RoomNumber.Width = 220;
-            // 
-            // IdDoctorPlanDay
-            // 
-            this.IdDoctorPlanDay.HeaderText = "IdDoctor";
-            this.IdDoctorPlanDay.Name = "IdDoctorPlanDay";
-            this.IdDoctorPlanDay.ReadOnly = true;
-            this.IdDoctorPlanDay.Visible = false;
-            // 
             // FormDoctorCalendarInChosenMonth
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -772,7 +773,7 @@
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel9);
-            this.Controls.Add(this.dataGridViewAppointment);
+            this.Controls.Add(this.dataGridViewTerms);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormDoctorCalendarInChosenMonth";
             this.Text = "Calendar";
@@ -798,7 +799,7 @@
             this.panel9.PerformLayout();
             this.panelTime.ResumeLayout(false);
             this.panelTime.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAppointment)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTerms)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOtherAppointments)).EndInit();
@@ -843,7 +844,7 @@
         private Button buttonModifyCalendar;
         private Panel panelTime;
         private Label labelTime;
-        private DataGridView dataGridViewAppointment;
+        private DataGridView dataGridViewTerms;
         private Panel panel1;
         private Label labelRoom;
         private Button buttonRejectCalendar;
