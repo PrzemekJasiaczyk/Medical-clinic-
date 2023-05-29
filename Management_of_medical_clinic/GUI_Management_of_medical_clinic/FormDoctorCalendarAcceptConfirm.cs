@@ -47,6 +47,8 @@ namespace GUI_Management_of_medical_clinic
             }
             CalendarService.ChangeCalendarStatusToAccepted(cal_id);
             MessageBox.Show("Calendar is accepted");
+            
+
             Hide();
             Close();
             FormDoctorCalendar formDoctorCalendar = new FormDoctorCalendar(currentUser);

@@ -147,7 +147,6 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormOfficeList";
             WindowState = FormWindowState.Maximized;
-            Load += FormDoctorCalendarDetails_Load;
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);

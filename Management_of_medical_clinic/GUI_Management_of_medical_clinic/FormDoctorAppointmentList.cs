@@ -154,7 +154,7 @@ namespace GUI_Management_of_medical_clinic
 
             foreach (DoctorsDayPlanModel appointment in appointments)
             {
-                result = CalendarAppointmentService.appointmentInSelectedDate(appointments, checkedValue, (int)appointment.IdCalendar);          
+                result = CalendarAppointmentService.appointmentInSelectedDate(appointments, checkedValue, (int)appointment.IdCalendar);
             }
 
             return result;
@@ -190,7 +190,9 @@ namespace GUI_Management_of_medical_clinic
             checkBoxDateOfVisit.Checked = false;
         }
 
-        private void buttonShowDetails_Click(object sender, EventArgs e) //will it be needed?
+        //will it be needed?
+        /*//will it be needed?
+        private void buttonShowDetails_Click(object sender, EventArgs e) 
         {
             if (dataGridViewAppointmentList.Rows.Count == 0)
             {
@@ -217,6 +219,7 @@ namespace GUI_Management_of_medical_clinic
             Close();
         }
 
+        */
         private void buttonRemove_Click(object sender, EventArgs e) //cancel appointment
         {
             if (dataGridViewAppointmentList.Rows.Count == 0)
@@ -252,7 +255,7 @@ namespace GUI_Management_of_medical_clinic
         {
             List<DoctorsDayPlanModel> appointments = AppointmentService.GetAppointmentsForDoctorInChosenMonth(currentMonth, currentUser);
             List<DoctorsDayPlanModel> sortedAppointments = appointments.OrderByDescending(a => PatientService.GetPatientById((int)a.PatientId).LastName).ToList();
-            return sortedAppointments;           
+            return sortedAppointments;
         }
 
         private void DisplaySortedByLastName()
@@ -271,8 +274,8 @@ namespace GUI_Management_of_medical_clinic
                 int office = OfficeService.GetOfficeById((int)appointment.IdOffice).Number;
                 decimal cost = (decimal)appointment.Cost;
 
-                int index = dataGridViewAppointmentList.Rows.Add(patient_id,lastName,firstName,pesel,date,term,office,cost);
-                dataGridViewAppointmentList.Rows[index].Tag = patient;                
+                int index = dataGridViewAppointmentList.Rows.Add(patient_id, lastName, firstName, pesel, date, term, office, cost);
+                dataGridViewAppointmentList.Rows[index].Tag = patient;
             }
             dataGridViewAppointmentList.Refresh();
         }
@@ -307,6 +310,10 @@ namespace GUI_Management_of_medical_clinic
         {
             DisplaySortedByLastNameDSC();
         }
-        
+
+        private void buttonShowDetails_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

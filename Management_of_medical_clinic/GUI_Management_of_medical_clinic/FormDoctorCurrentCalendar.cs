@@ -1,3 +1,4 @@
+using Console_Management_of_medical_clinic.Data.Enums;
 using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
 using GUI_Management_of_medical_clinic;
@@ -95,7 +96,10 @@ namespace GUI_Management_of_medical_clinic
 
             foreach (DoctorsDayPlanModel appointment in appointments)
             {
-                if (appointment.IdEmployee == currentUser.IdEmployee && appointment.IdDay == day.Day && calendarId == appointment.IdCalendar)
+                if (appointment.IdEmployee == currentUser.IdEmployee
+                    && appointment.IdDay == day.Day
+                    && calendarId == appointment.IdCalendar
+                    && appointment.Status == EnumAppointmentStatus.Accepted)
                 {
                     userControl.BackColor = Color.Orange;
                 }
@@ -146,6 +150,8 @@ namespace GUI_Management_of_medical_clinic
 
             int calendarId = CalendarService.GetIdFromDate(selectedDate);
 
+
+            //List<DoctorsDayPlanModel> appointments = CalendarAppointmentService.GetScheduledAppointments();
             List<DoctorsDayPlanModel> appointments = CalendarAppointmentService.GetAppointmentsWithPatients();
 
 
@@ -171,6 +177,7 @@ namespace GUI_Management_of_medical_clinic
                 {
                     int index = dataGridViewAppointments.Rows.Add(OfficeService.GetOfficeById((int)appointment.IdOffice).Number,
                         AppointmentService.GetTermByTermId(appointment.IdOfTerm).ToString(),
+                        appointment.Status,
                         PatientService.GetPatientById((int)appointment.PatientId).ToString());
 
 
@@ -178,6 +185,8 @@ namespace GUI_Management_of_medical_clinic
                 }
 
             }
+
+            dataGridViewAppointments.ClearSelection();
         }
         private void RemoveRowsInDataGridView()
         {
@@ -205,11 +214,11 @@ namespace GUI_Management_of_medical_clinic
 
         private void button_ShowVisits_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            FormDoctorAppointmentList formDoctorAppointmentList = new FormDoctorAppointmentList(currentUser, displayMonth);
-            formDoctorAppointmentList.Show();
-            this.Close();
-        }
 
+            FormDoctorAppointmentList formDoctorAppointmentList = new FormDoctorAppointmentList(currentUser, displayMonth);
+            this.Hide();
+            formDoctorAppointmentList.ShowDialog(this);
+            this.Show();
+        }
     }
 }

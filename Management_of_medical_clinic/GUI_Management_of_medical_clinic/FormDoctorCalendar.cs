@@ -27,25 +27,12 @@ namespace GUI_Management_of_medical_clinic
             this.appointment = appointment;
         }
 
-        //nie today tylko pierwszy do akceptacji 
-        DateTime displayMonth = DateTime.Today;
-
-
         List<DoctorsDayPlanModel> displayListInDataGridView = new List<DoctorsDayPlanModel>();
 
         private void FormDoctorCalendar_Load(object sender, EventArgs e)
         {
             list_ofCalendars.Items.Clear();
             list_ofCalendars.Refresh();
-            dataGridViewAppointments.Rows.Clear();
-            dataGridViewAppointments.Columns.Add("Room", "Room");
-            dataGridViewAppointments.Columns.Add("Term", "Term");
-            dataGridViewAppointments.Columns.Add("Hour", "Hour");
-
-            dataGridViewYourAppointments.Rows.Clear();
-            dataGridViewYourAppointments.Columns.Add("Doctor", "Doctor");
-            dataGridViewYourAppointments.Columns.Add("Room", "Room");
-            dataGridViewYourAppointments.Columns.Add("Hour", "Hour");
 
             List<DoctorsDayPlanModel> doctorsDayPlanModels = DoctorsPlanService.GetDoctorsPlanData();
             List<CalendarModel> listID = CalendarService.GetCalendarData();
@@ -58,11 +45,11 @@ namespace GUI_Management_of_medical_clinic
 
                 //calendar for present or future months                  
                 if (month >= DateTime.Today.Month && doctorsDayPlanModel.IdEmployee == currentUser.IdEmployee
-                && doctorsDayPlanModel.Status == EnumAppointmentStatus.Inactive && listID.Count >0) //change new
+                && doctorsDayPlanModel.Status == EnumAppointmentStatus.New && listID.Count > 0)
                 {
-                DateTime date = Convert.ToDateTime(calendar.DateReference);
-                list_ofCalendars.Items.Add(date.ToString("MM-yyyy"));
-                }                
+                    DateTime date = Convert.ToDateTime(calendar.DateReference);
+                    list_ofCalendars.Items.Add(date.ToString("MM-yyyy"));
+                }
             }
             HashSet<string> uniqueItems = new HashSet<string>();
             for (int i = list_ofCalendars.Items.Count - 1; i >= 0; i--) //deleting duplicated datas
@@ -85,25 +72,6 @@ namespace GUI_Management_of_medical_clinic
             FormDoctorDashboard formDoctorDashboard = new FormDoctorDashboard(currentUser);
             formDoctorDashboard.ShowDialog();
             this.Close();
-        }
-
-        private void buttonEditAppointment_Click(object sender, EventArgs e)
-        {
-            if (dataGridViewYourAppointments.SelectedRows.Count != 1)
-                return;
-
-            DoctorsDayPlanModel appointment = (DoctorsDayPlanModel)dataGridViewYourAppointments.SelectedRows[0].Tag;
-
-            FormDoctorCalendarDetails edit = new FormDoctorCalendarDetails(appointment, currentUser);
-
-            this.Hide();
-            edit.ShowDialog();
-            this.Close();
-        }
-
-        private void buttonModify_Click(object sender, EventArgs e)
-        {
-            //idk if it will be needed to do
         }
 
         private void listofCalendars_DoubleClick(object sender, EventArgs e)

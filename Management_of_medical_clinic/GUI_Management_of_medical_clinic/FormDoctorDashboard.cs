@@ -24,69 +24,6 @@ namespace GUI_Management_of_medical_clinic
             this.currentUser = currentUser;
             InitializeComponent();
             label1.Text = "Welcome, " + currentUser.FirstName;
-
-            //dataGridView1.CellClick += dataGridView1_CellClick;
-        }
-
-        private void buttonCalendar_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            FormDoctorCalendar formDoctor = new FormDoctorCalendar(currentUser);
-            formDoctor.ShowDialog();
-
-        }
-
-        private void buttonLogOut_Click(object sender, EventArgs e)
-        {
-            FormMenu menu = new FormMenu();
-            this.Hide();
-            menu.ShowDialog();
-            this.Close();
-        }
-
-        private void buttonCurrentCalendar_Click(object sender, EventArgs e)
-        {
-            FormDoctorAppointmentList formDoctorAppointmentList = new FormDoctorAppointmentList(currentUser,DateTime.Today);
-            formDoctorAppointmentList.Show();
-            //IsCalendarActiveForCurrentMonth();
-        }
-
-
-        private void IsCalendarActiveForCurrentMonth()
-        {
-            ToFormCurrentCalendar();
-            bool isCurrentCalendar = false;
-            string currentMonthYear = DateTime.Today.ToString("MM-yyyy");
-
-
-            /*List<CalendarModel> calendars = CalendarService.GetCalendarData();
-            foreach (CalendarModel calendar in calendars)
-            {
-                if (calendar.IdEmployee == currentUser.IdEmployee &&
-                    calendar.Active == true &&
-                    calendar.DateReference == currentMonthYear)
-                {
-                    isCurrentCalendar = true;
-                    break;
-                }
-            } narazie zakomentowalam bo naprawiam swoje XD*/
-
-         /*   if (isCurrentCalendar)
-            {
-                ToFormCurrentCalendar();
-            }
-            else
-            {
-                MessageBox.Show("Brak aktywnego kalendarza na obecny miesiąc");
-            }*/
-
-        }
-        private void ToFormCurrentCalendar()
-        {
-            FormDoctorCurrentCalendar formCurrentCalendar = new FormDoctorCurrentCalendar(currentUser);
-            this.Hide();
-            formCurrentCalendar.ShowDialog();
-            this.Close();
         }
 
         private void FormDoctorDashboard_Load(object sender, EventArgs e)
@@ -98,7 +35,7 @@ namespace GUI_Management_of_medical_clinic
             dataGridView1.Columns.Add("Day", "Day");
             dataGridView1.Columns.Add("PatientId", "PatientId");
 
-           
+
             List<DoctorsDayPlanModel> appointments = DoctorsPlanService.GetDoctorsPlanData();
             foreach (DoctorsDayPlanModel appointment in appointments)
             {
@@ -113,9 +50,8 @@ namespace GUI_Management_of_medical_clinic
                     }
                 }
             }
-            
-        }
 
+        }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -134,11 +70,73 @@ namespace GUI_Management_of_medical_clinic
 
         }
 
+        #region Buttons
         private void button_patients_Click(object sender, EventArgs e)
         {
-            FormDoctorPatientList formDocPatientList = new FormDoctorPatientList(currentUser);          
+            FormDoctorPatientList formDocPatientList = new FormDoctorPatientList(currentUser);
+            this.Hide();
             formDocPatientList.Show();
-            
+            this.Close();
         }
+
+        private void buttonCalendar_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FormDoctorCalendar formDoctor = new FormDoctorCalendar(currentUser);
+            formDoctor.ShowDialog();
+            this.Close();
+
+        }
+
+        private void buttonLogOut_Click(object sender, EventArgs e)
+        {
+            FormMenu menu = new FormMenu();
+            this.Hide();
+            menu.ShowDialog();
+            this.Close();
+        }
+
+        private void buttonCurrentCalendar_Click(object sender, EventArgs e)
+        {
+            IsCalendarActiveForCurrentMonth();
+        }
+
+
+        private void IsCalendarActiveForCurrentMonth()
+        {
+            ToFormCurrentCalendar();
+            bool isCurrentCalendar = false;
+            string currentMonthYear = DateTime.Today.ToString("MM-yyyy");
+
+
+            List<CalendarModel> calendars = CalendarService.GetCalendarData();
+            foreach (CalendarModel calendar in calendars)
+            {
+                if (calendar.Active == true &&
+                    calendar.DateReference == currentMonthYear) //Comparison with the current year and mont
+                {
+                    isCurrentCalendar = true;
+                    break;
+                }
+            }
+
+            if (isCurrentCalendar)
+            {
+                ToFormCurrentCalendar();
+            }
+            else
+            {
+                MessageBox.Show("No active calendar for the current month");
+            }
+
+        }
+        private void ToFormCurrentCalendar()
+        {
+            FormDoctorCurrentCalendar formCurrentCalendar = new FormDoctorCurrentCalendar(currentUser);
+            this.Hide();
+            formCurrentCalendar.ShowDialog();
+            this.Close();
+        }
+        #endregion
     }
 }

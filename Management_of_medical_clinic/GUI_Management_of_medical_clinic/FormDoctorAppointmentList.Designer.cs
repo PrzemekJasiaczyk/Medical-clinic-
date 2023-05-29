@@ -28,362 +28,353 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.buttonClearFilter = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.buttonRemove = new System.Windows.Forms.Button();
-            this.buttonShowDetails = new System.Windows.Forms.Button();
-            this.buttonExit = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.dataGridViewAppointmentList = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPatient = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Columnfirstname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPESEL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnHour = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnOffice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.checkBoxDateOfVisit = new System.Windows.Forms.CheckBox();
-            this.maskedTextBoxPESEL = new System.Windows.Forms.MaskedTextBox();
-            this.buttonClearFiltr = new System.Windows.Forms.Button();
-            this.buttonAddFiltr = new System.Windows.Forms.Button();
-            this.dateTimePickerDateOfVisit = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBoxLastName = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBoxName = new System.Windows.Forms.TextBox();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAppointmentList)).BeginInit();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            this.SuspendLayout();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            buttonClearFilter = new Button();
+            panel1 = new Panel();
+            buttonRemove = new Button();
+            buttonShowDetails = new Button();
+            buttonExit = new Button();
+            pictureBox1 = new PictureBox();
+            dataGridViewAppointmentList = new DataGridView();
+            Column1 = new DataGridViewTextBoxColumn();
+            ColumnPatient = new DataGridViewTextBoxColumn();
+            Columnfirstname = new DataGridViewTextBoxColumn();
+            ColumnPESEL = new DataGridViewTextBoxColumn();
+            ColumnDate = new DataGridViewTextBoxColumn();
+            ColumnHour = new DataGridViewTextBoxColumn();
+            ColumnOffice = new DataGridViewTextBoxColumn();
+            ColumnCost = new DataGridViewTextBoxColumn();
+            panel2 = new Panel();
+            pictureBox5 = new PictureBox();
+            pictureBox4 = new PictureBox();
+            checkBoxDateOfVisit = new CheckBox();
+            maskedTextBoxPESEL = new MaskedTextBox();
+            buttonClearFiltr = new Button();
+            buttonAddFiltr = new Button();
+            dateTimePickerDateOfVisit = new DateTimePicker();
+            label3 = new Label();
+            label2 = new Label();
+            textBoxLastName = new TextBox();
+            label1 = new Label();
+            textBoxName = new TextBox();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewAppointmentList).BeginInit();
+            panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+            SuspendLayout();
             // 
             // buttonClearFilter
             // 
-            this.buttonClearFilter.Location = new System.Drawing.Point(482, 1311);
-            this.buttonClearFilter.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.buttonClearFilter.Name = "buttonClearFilter";
-            this.buttonClearFilter.Size = new System.Drawing.Size(138, 31);
-            this.buttonClearFilter.TabIndex = 28;
-            this.buttonClearFilter.Text = "Clear filter";
-            this.buttonClearFilter.UseVisualStyleBackColor = true;
+            buttonClearFilter.Location = new Point(482, 1311);
+            buttonClearFilter.Margin = new Padding(3, 4, 3, 4);
+            buttonClearFilter.Name = "buttonClearFilter";
+            buttonClearFilter.Size = new Size(138, 31);
+            buttonClearFilter.TabIndex = 28;
+            buttonClearFilter.Text = "Clear filter";
+            buttonClearFilter.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.SteelBlue;
-            this.panel1.Controls.Add(this.buttonRemove);
-            this.panel1.Controls.Add(this.buttonShowDetails);
-            this.panel1.Controls.Add(this.buttonExit);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(357, 1080);
-            this.panel1.TabIndex = 29;
+            panel1.BackColor = Color.SteelBlue;
+            panel1.Controls.Add(buttonRemove);
+            panel1.Controls.Add(buttonShowDetails);
+            panel1.Controls.Add(buttonExit);
+            panel1.Controls.Add(pictureBox1);
+            panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(3, 4, 3, 4);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(357, 1080);
+            panel1.TabIndex = 29;
             // 
             // buttonRemove
             // 
-            this.buttonRemove.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonRemove.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.buttonRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonRemove.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonRemove.Location = new System.Drawing.Point(-1, 346);
-            this.buttonRemove.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.buttonRemove.Name = "buttonRemove";
-            this.buttonRemove.Size = new System.Drawing.Size(360, 65);
-            this.buttonRemove.TabIndex = 48;
-            this.buttonRemove.Text = "Cancel appointment";
-            this.buttonRemove.UseVisualStyleBackColor = false;
-            this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
+            buttonRemove.BackColor = Color.SteelBlue;
+            buttonRemove.FlatAppearance.BorderColor = Color.Black;
+            buttonRemove.FlatStyle = FlatStyle.Flat;
+            buttonRemove.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonRemove.Location = new Point(-1, 346);
+            buttonRemove.Margin = new Padding(3, 4, 3, 4);
+            buttonRemove.Name = "buttonRemove";
+            buttonRemove.Size = new Size(360, 65);
+            buttonRemove.TabIndex = 48;
+            buttonRemove.Text = "Cancel appointment";
+            buttonRemove.UseVisualStyleBackColor = false;
+            buttonRemove.Click += buttonRemove_Click;
             // 
             // buttonShowDetails
             // 
-            this.buttonShowDetails.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonShowDetails.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.buttonShowDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonShowDetails.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonShowDetails.Location = new System.Drawing.Point(-1, 273);
-            this.buttonShowDetails.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.buttonShowDetails.Name = "buttonShowDetails";
-            this.buttonShowDetails.Size = new System.Drawing.Size(360, 65);
-            this.buttonShowDetails.TabIndex = 47;
-            this.buttonShowDetails.Text = "[Show details]";
-            this.buttonShowDetails.UseVisualStyleBackColor = false;
-            this.buttonShowDetails.Click += new System.EventHandler(this.buttonShowDetails_Click);
+            buttonShowDetails.BackColor = Color.SteelBlue;
+            buttonShowDetails.FlatAppearance.BorderColor = Color.Black;
+            buttonShowDetails.FlatStyle = FlatStyle.Flat;
+            buttonShowDetails.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonShowDetails.Location = new Point(-1, 273);
+            buttonShowDetails.Margin = new Padding(3, 4, 3, 4);
+            buttonShowDetails.Name = "buttonShowDetails";
+            buttonShowDetails.Size = new Size(360, 65);
+            buttonShowDetails.TabIndex = 47;
+            buttonShowDetails.Text = "[Show details]";
+            buttonShowDetails.UseVisualStyleBackColor = false;
+            buttonShowDetails.Click += buttonShowDetails_Click;
             // 
             // buttonExit
             // 
-            this.buttonExit.BackColor = System.Drawing.Color.Gainsboro;
-            this.buttonExit.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.buttonExit.FlatAppearance.BorderSize = 2;
-            this.buttonExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonExit.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonExit.Location = new System.Drawing.Point(50, 983);
-            this.buttonExit.Name = "buttonExit";
-            this.buttonExit.Size = new System.Drawing.Size(252, 66);
-            this.buttonExit.TabIndex = 46;
-            this.buttonExit.Text = "Cancel";
-            this.buttonExit.UseVisualStyleBackColor = false;
-            this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
+            buttonExit.BackColor = Color.Gainsboro;
+            buttonExit.FlatAppearance.BorderColor = Color.White;
+            buttonExit.FlatAppearance.BorderSize = 2;
+            buttonExit.FlatStyle = FlatStyle.Flat;
+            buttonExit.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonExit.Location = new Point(50, 983);
+            buttonExit.Name = "buttonExit";
+            buttonExit.Size = new Size(252, 66);
+            buttonExit.TabIndex = 46;
+            buttonExit.Text = "Cancel";
+            buttonExit.UseVisualStyleBackColor = false;
+            buttonExit.Click += buttonExit_Click;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackgroundImage = global::GUI_Management_of_medical_clinic.Properties.Resources.MC_Logo;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(90, 12);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(176, 168);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            pictureBox1.BackgroundImage = Properties.Resources.MC_Logo;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox1.Location = new Point(90, 12);
+            pictureBox1.Margin = new Padding(3, 4, 3, 4);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(176, 168);
+            pictureBox1.TabIndex = 1;
+            pictureBox1.TabStop = false;
             // 
             // dataGridViewAppointmentList
             // 
-            this.dataGridViewAppointmentList.AllowUserToAddRows = false;
-            this.dataGridViewAppointmentList.AllowUserToDeleteRows = false;
-            this.dataGridViewAppointmentList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewAppointmentList.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewAppointmentList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewAppointmentList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewAppointmentList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.ColumnPatient,
-            this.Columnfirstname,
-            this.ColumnPESEL,
-            this.ColumnDate,
-            this.ColumnHour,
-            this.ColumnOffice,
-            this.ColumnCost});
-            this.dataGridViewAppointmentList.Location = new System.Drawing.Point(357, 84);
-            this.dataGridViewAppointmentList.MultiSelect = false;
-            this.dataGridViewAppointmentList.Name = "dataGridViewAppointmentList";
-            this.dataGridViewAppointmentList.ReadOnly = true;
-            this.dataGridViewAppointmentList.RowHeadersVisible = false;
-            this.dataGridViewAppointmentList.RowHeadersWidth = 51;
-            this.dataGridViewAppointmentList.RowTemplate.Height = 29;
-            this.dataGridViewAppointmentList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewAppointmentList.Size = new System.Drawing.Size(1564, 1053);
-            this.dataGridViewAppointmentList.TabIndex = 30;
+            dataGridViewAppointmentList.AllowUserToAddRows = false;
+            dataGridViewAppointmentList.AllowUserToDeleteRows = false;
+            dataGridViewAppointmentList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewAppointmentList.BackgroundColor = SystemColors.ButtonHighlight;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.SteelBlue;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = Color.SteelBlue;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewAppointmentList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewAppointmentList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewAppointmentList.Columns.AddRange(new DataGridViewColumn[] { Column1, ColumnPatient, Columnfirstname, ColumnPESEL, ColumnDate, ColumnHour, ColumnOffice, ColumnCost });
+            dataGridViewAppointmentList.Location = new Point(357, 84);
+            dataGridViewAppointmentList.MultiSelect = false;
+            dataGridViewAppointmentList.Name = "dataGridViewAppointmentList";
+            dataGridViewAppointmentList.ReadOnly = true;
+            dataGridViewAppointmentList.RowHeadersVisible = false;
+            dataGridViewAppointmentList.RowHeadersWidth = 51;
+            dataGridViewAppointmentList.RowTemplate.Height = 29;
+            dataGridViewAppointmentList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewAppointmentList.Size = new Size(1564, 1053);
+            dataGridViewAppointmentList.TabIndex = 30;
             // 
             // Column1
             // 
-            this.Column1.HeaderText = "IdVisit";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Visible = false;
+            Column1.HeaderText = "IdVisit";
+            Column1.Name = "Column1";
+            Column1.ReadOnly = true;
+            Column1.Visible = false;
             // 
             // ColumnPatient
             // 
-            this.ColumnPatient.HeaderText = "Last name";
-            this.ColumnPatient.Name = "ColumnPatient";
-            this.ColumnPatient.ReadOnly = true;
+            ColumnPatient.HeaderText = "Last name";
+            ColumnPatient.Name = "ColumnPatient";
+            ColumnPatient.ReadOnly = true;
             // 
             // Columnfirstname
             // 
-            this.Columnfirstname.HeaderText = "First Name";
-            this.Columnfirstname.Name = "Columnfirstname";
-            this.Columnfirstname.ReadOnly = true;
+            Columnfirstname.HeaderText = "First Name";
+            Columnfirstname.Name = "Columnfirstname";
+            Columnfirstname.ReadOnly = true;
             // 
             // ColumnPESEL
             // 
-            this.ColumnPESEL.HeaderText = "PESEL";
-            this.ColumnPESEL.Name = "ColumnPESEL";
-            this.ColumnPESEL.ReadOnly = true;
+            ColumnPESEL.HeaderText = "PESEL";
+            ColumnPESEL.Name = "ColumnPESEL";
+            ColumnPESEL.ReadOnly = true;
             // 
             // ColumnDate
             // 
-            this.ColumnDate.HeaderText = "Date";
-            this.ColumnDate.Name = "ColumnDate";
-            this.ColumnDate.ReadOnly = true;
+            ColumnDate.HeaderText = "Date";
+            ColumnDate.Name = "ColumnDate";
+            ColumnDate.ReadOnly = true;
             // 
             // ColumnHour
             // 
-            this.ColumnHour.HeaderText = "Hour";
-            this.ColumnHour.Name = "ColumnHour";
-            this.ColumnHour.ReadOnly = true;
+            ColumnHour.HeaderText = "Hour";
+            ColumnHour.Name = "ColumnHour";
+            ColumnHour.ReadOnly = true;
             // 
             // ColumnOffice
             // 
-            this.ColumnOffice.HeaderText = "Office";
-            this.ColumnOffice.Name = "ColumnOffice";
-            this.ColumnOffice.ReadOnly = true;
+            ColumnOffice.HeaderText = "Office";
+            ColumnOffice.Name = "ColumnOffice";
+            ColumnOffice.ReadOnly = true;
             // 
             // ColumnCost
             // 
-            this.ColumnCost.HeaderText = "Cost";
-            this.ColumnCost.Name = "ColumnCost";
-            this.ColumnCost.ReadOnly = true;
+            ColumnCost.HeaderText = "Cost";
+            ColumnCost.Name = "ColumnCost";
+            ColumnCost.ReadOnly = true;
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.SteelBlue;
-            this.panel2.Controls.Add(this.pictureBox5);
-            this.panel2.Controls.Add(this.pictureBox4);
-            this.panel2.Controls.Add(this.checkBoxDateOfVisit);
-            this.panel2.Controls.Add(this.maskedTextBoxPESEL);
-            this.panel2.Controls.Add(this.buttonClearFiltr);
-            this.panel2.Controls.Add(this.buttonAddFiltr);
-            this.panel2.Controls.Add(this.dateTimePickerDateOfVisit);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.textBoxLastName);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.textBoxName);
-            this.panel2.Location = new System.Drawing.Point(357, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1567, 212);
-            this.panel2.TabIndex = 31;
+            panel2.BackColor = Color.SteelBlue;
+            panel2.Controls.Add(pictureBox5);
+            panel2.Controls.Add(pictureBox4);
+            panel2.Controls.Add(checkBoxDateOfVisit);
+            panel2.Controls.Add(maskedTextBoxPESEL);
+            panel2.Controls.Add(buttonClearFiltr);
+            panel2.Controls.Add(buttonAddFiltr);
+            panel2.Controls.Add(dateTimePickerDateOfVisit);
+            panel2.Controls.Add(label3);
+            panel2.Controls.Add(label2);
+            panel2.Controls.Add(textBoxLastName);
+            panel2.Controls.Add(label1);
+            panel2.Controls.Add(textBoxName);
+            panel2.Location = new Point(357, 0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(1567, 212);
+            panel2.TabIndex = 31;
             // 
             // pictureBox5
             // 
-            this.pictureBox5.Image = global::GUI_Management_of_medical_clinic.Properties.Resources.sort;
-            this.pictureBox5.Location = new System.Drawing.Point(249, 21);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(38, 35);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 47;
-            this.pictureBox5.TabStop = false;
-            this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
+            pictureBox5.Image = Properties.Resources.sort;
+            pictureBox5.Location = new Point(249, 21);
+            pictureBox5.Name = "pictureBox5";
+            pictureBox5.Size = new Size(38, 35);
+            pictureBox5.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox5.TabIndex = 47;
+            pictureBox5.TabStop = false;
+            pictureBox5.Click += pictureBox5_Click;
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Image = global::GUI_Management_of_medical_clinic.Properties.Resources.sort__1_;
-            this.pictureBox4.Location = new System.Drawing.Point(202, 20);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(41, 36);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 46;
-            this.pictureBox4.TabStop = false;
-            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
+            pictureBox4.Image = Properties.Resources.sort__1_;
+            pictureBox4.Location = new Point(202, 20);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(41, 36);
+            pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox4.TabIndex = 46;
+            pictureBox4.TabStop = false;
+            pictureBox4.Click += pictureBox4_Click;
             // 
             // checkBoxDateOfVisit
             // 
-            this.checkBoxDateOfVisit.AutoSize = true;
-            this.checkBoxDateOfVisit.Location = new System.Drawing.Point(710, 8);
-            this.checkBoxDateOfVisit.Name = "checkBoxDateOfVisit";
-            this.checkBoxDateOfVisit.Size = new System.Drawing.Size(88, 19);
-            this.checkBoxDateOfVisit.TabIndex = 15;
-            this.checkBoxDateOfVisit.Text = "Date of visit";
-            this.checkBoxDateOfVisit.UseVisualStyleBackColor = true;
+            checkBoxDateOfVisit.AutoSize = true;
+            checkBoxDateOfVisit.Location = new Point(710, 8);
+            checkBoxDateOfVisit.Name = "checkBoxDateOfVisit";
+            checkBoxDateOfVisit.Size = new Size(88, 19);
+            checkBoxDateOfVisit.TabIndex = 15;
+            checkBoxDateOfVisit.Text = "Date of visit";
+            checkBoxDateOfVisit.UseVisualStyleBackColor = true;
             // 
             // maskedTextBoxPESEL
             // 
-            this.maskedTextBoxPESEL.Location = new System.Drawing.Point(508, 31);
-            this.maskedTextBoxPESEL.Mask = "00000000000";
-            this.maskedTextBoxPESEL.Name = "maskedTextBoxPESEL";
-            this.maskedTextBoxPESEL.Size = new System.Drawing.Size(178, 23);
-            this.maskedTextBoxPESEL.TabIndex = 14;
-            this.maskedTextBoxPESEL.ValidatingType = typeof(System.DateTime);
+            maskedTextBoxPESEL.Location = new Point(508, 31);
+            maskedTextBoxPESEL.Mask = "00000000000";
+            maskedTextBoxPESEL.Name = "maskedTextBoxPESEL";
+            maskedTextBoxPESEL.Size = new Size(178, 23);
+            maskedTextBoxPESEL.TabIndex = 14;
+            maskedTextBoxPESEL.ValidatingType = typeof(DateTime);
             // 
             // buttonClearFiltr
             // 
-            this.buttonClearFiltr.Location = new System.Drawing.Point(1153, 30);
-            this.buttonClearFiltr.Name = "buttonClearFiltr";
-            this.buttonClearFiltr.Size = new System.Drawing.Size(117, 23);
-            this.buttonClearFiltr.TabIndex = 13;
-            this.buttonClearFiltr.Text = "Clear";
-            this.buttonClearFiltr.UseVisualStyleBackColor = true;
-            this.buttonClearFiltr.Click += new System.EventHandler(this.buttonClearFiltr_Click);
+            buttonClearFiltr.Location = new Point(1153, 30);
+            buttonClearFiltr.Name = "buttonClearFiltr";
+            buttonClearFiltr.Size = new Size(117, 23);
+            buttonClearFiltr.TabIndex = 13;
+            buttonClearFiltr.Text = "Clear";
+            buttonClearFiltr.UseVisualStyleBackColor = true;
+            buttonClearFiltr.Click += buttonClearFiltr_Click;
             // 
             // buttonAddFiltr
             // 
-            this.buttonAddFiltr.Location = new System.Drawing.Point(1044, 30);
-            this.buttonAddFiltr.Name = "buttonAddFiltr";
-            this.buttonAddFiltr.Size = new System.Drawing.Size(103, 23);
-            this.buttonAddFiltr.TabIndex = 12;
-            this.buttonAddFiltr.Text = "Set filters";
-            this.buttonAddFiltr.UseVisualStyleBackColor = true;
-            this.buttonAddFiltr.Click += new System.EventHandler(this.buttonAddFiltr_Click);
+            buttonAddFiltr.Location = new Point(1044, 30);
+            buttonAddFiltr.Name = "buttonAddFiltr";
+            buttonAddFiltr.Size = new Size(103, 23);
+            buttonAddFiltr.TabIndex = 12;
+            buttonAddFiltr.Text = "Set filters";
+            buttonAddFiltr.UseVisualStyleBackColor = true;
+            buttonAddFiltr.Click += buttonAddFiltr_Click;
             // 
             // dateTimePickerDateOfVisit
             // 
-            this.dateTimePickerDateOfVisit.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerDateOfVisit.Location = new System.Drawing.Point(710, 30);
-            this.dateTimePickerDateOfVisit.Name = "dateTimePickerDateOfVisit";
-            this.dateTimePickerDateOfVisit.Size = new System.Drawing.Size(178, 23);
-            this.dateTimePickerDateOfVisit.TabIndex = 6;
-            this.dateTimePickerDateOfVisit.Value = new System.DateTime(2023, 5, 2, 0, 0, 0, 0);
+            dateTimePickerDateOfVisit.Format = DateTimePickerFormat.Short;
+            dateTimePickerDateOfVisit.Location = new Point(710, 30);
+            dateTimePickerDateOfVisit.Name = "dateTimePickerDateOfVisit";
+            dateTimePickerDateOfVisit.Size = new Size(178, 23);
+            dateTimePickerDateOfVisit.TabIndex = 6;
+            dateTimePickerDateOfVisit.Value = new DateTime(2023, 5, 2, 0, 0, 0, 0);
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(508, 9);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 15);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "PESEL";
+            label3.AutoSize = true;
+            label3.Location = new Point(508, 9);
+            label3.Name = "label3";
+            label3.Size = new Size(38, 15);
+            label3.TabIndex = 5;
+            label3.Text = "PESEL";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 12);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 15);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Last name";
+            label2.AutoSize = true;
+            label2.Location = new Point(15, 12);
+            label2.Name = "label2";
+            label2.Size = new Size(61, 15);
+            label2.TabIndex = 3;
+            label2.Text = "Last name";
             // 
             // textBoxLastName
             // 
-            this.textBoxLastName.Location = new System.Drawing.Point(15, 33);
-            this.textBoxLastName.Name = "textBoxLastName";
-            this.textBoxLastName.Size = new System.Drawing.Size(178, 23);
-            this.textBoxLastName.TabIndex = 2;
+            textBoxLastName.Location = new Point(15, 33);
+            textBoxLastName.Name = "textBoxLastName";
+            textBoxLastName.Size = new Size(178, 23);
+            textBoxLastName.TabIndex = 2;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(304, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(39, 15);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Name";
+            label1.AutoSize = true;
+            label1.Location = new Point(304, 10);
+            label1.Name = "label1";
+            label1.Size = new Size(39, 15);
+            label1.TabIndex = 1;
+            label1.Text = "Name";
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(304, 31);
-            this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(178, 23);
-            this.textBoxName.TabIndex = 0;
+            textBoxName.Location = new Point(304, 31);
+            textBoxName.Name = "textBoxName";
+            textBoxName.Size = new Size(178, 23);
+            textBoxName.TabIndex = 0;
             // 
             // FormDoctorAppointmentList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1920, 1055);
-            this.Controls.Add(this.dataGridViewAppointmentList);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.buttonClearFilter);
-            this.Controls.Add(this.panel1);
-            this.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FormDoctorAppointmentList";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormPatientList";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.FormDoctorAppointmentList_Load);
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAppointmentList)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1920, 1055);
+            Controls.Add(dataGridViewAppointmentList);
+            Controls.Add(panel2);
+            Controls.Add(buttonClearFilter);
+            Controls.Add(panel1);
+            Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "FormDoctorAppointmentList";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "FormPatientList";
+            WindowState = FormWindowState.Maximized;
+            Load += FormDoctorAppointmentList_Load;
+            panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewAppointmentList).EndInit();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion

@@ -18,14 +18,15 @@ namespace GUI_Management_of_medical_clinic
     {
         EmployeeModel currentUser;
         DoctorsDayPlanModel appointment;
+
         DateTime selectedDate;
-        string dateReference;
-        int selectedDay;
-        int calendarId;
-        public FormDoctorCalendarDetails(DoctorsDayPlanModel? DoctorsDayPlanModel, EmployeeModel currentUser)
+        string calendar;
+
+        public FormDoctorCalendarDetails(DoctorsDayPlanModel? DoctorsDayPlanModel, EmployeeModel currentUser, String calendar)
         {
             this.currentUser = currentUser;
             this.appointment = DoctorsDayPlanModel;
+            this.calendar = calendar;
             /*
             selectedDate = date;
             selectedDay = date.Day;
@@ -38,22 +39,17 @@ namespace GUI_Management_of_medical_clinic
         }
         private void buttonBack_Click(object sender, EventArgs e)
         {
-            FormDoctorCalendar formDoctorCalendar = new FormDoctorCalendar(currentUser,appointment);
+            FormDoctorCalendarInChosenMonth formDoctorCalendarInChosenMonth = new FormDoctorCalendarInChosenMonth(currentUser, calendar);
             this.Hide();
-            formDoctorCalendar.ShowDialog();
+            formDoctorCalendarInChosenMonth.Show();
             this.Close();
         }
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
-            FormDoctorCalendarModify formDoctorCalendarModify = new FormDoctorCalendarModify(appointment, currentUser, false, selectedDate);
+            FormDoctorCalendarModify formDoctorCalendarModify = new FormDoctorCalendarModify(appointment, currentUser, false, calendar);
             this.Hide();
             formDoctorCalendarModify.ShowDialog();
             this.Close();
-        }
-
-        private void FormDoctorCalendarDetails_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void LoadAppointmentData()
