@@ -258,7 +258,7 @@ namespace Console_Management_of_medical_clinic.Logic
                 foreach (DoctorsDayPlanModel ddpm in terms)
                 {
                     context.DbDoctorsDayPlan.Update(ddpm);
-                    if (employee.IdEmployee == ddpm.IdEmployee && ddpm.Status == EnumAppointmentStatus.Inactive) //change new
+                    if (employee.IdEmployee == ddpm.IdEmployee && ddpm.Status == EnumAppointmentStatus.New) //change new
                     {    //there may be some edited terms or rejected, so accepting other terms are made
                         ddpm.Status = EnumAppointmentStatus.Accepted;
                         context.SaveChanges();
@@ -274,7 +274,7 @@ namespace Console_Management_of_medical_clinic.Logic
             {
                 foreach (DoctorsDayPlanModel ddpm in terms)
                 {
-                    if (ddpm.Status == EnumAppointmentStatus.Inactive && employee.IdEmployee == ddpm.IdEmployee) //change new
+                    if (ddpm.Status == EnumAppointmentStatus.New && employee.IdEmployee == ddpm.IdEmployee)
                     { 
                         context.DbDoctorsDayPlan.Remove(ddpm);
                         context.SaveChanges();
@@ -324,6 +324,14 @@ namespace Console_Management_of_medical_clinic.Logic
                 list.Add(id.IdDoctorsDayPlan);
             }
             return list;
+        }
+
+        public static bool CheckIfAppointmentExists(int idTerm, int idDay, int idCalendar, int idOffice)
+        {
+            using (AppDbContext context = new AppDbContext())
+            {
+                return context.DbDoctorsDayPlan.Any(plan => plan.IdOfTerm == idTerm && plan.IdDay == idDay && plan.IdCalendar == idCalendar && plan.IdOffice == idOffice);
+            }
         }
 
     }
