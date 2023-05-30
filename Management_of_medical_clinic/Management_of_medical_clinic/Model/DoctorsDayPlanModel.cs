@@ -87,21 +87,5 @@ namespace Console_Management_of_medical_clinic.Model
             OfficeService.GetOfficeById((int)IdOffice).Number,
             Cost.ToString()
         };
-
-        public static void RemoveDoctorsDayPlanModel(AppDbContext context)
-        {
-            List<DoctorsDayPlanModel> doctorsDayPlanModels = CalendarAppointmentService.GetAppointmentsWithPatients();
-
-            foreach (DoctorsDayPlanModel doctorsDayPlanModel in doctorsDayPlanModels)
-            {
-                DateTime date = CalendarService.GetDateByIdCalendar((int)doctorsDayPlanModel.IdCalendar, doctorsDayPlanModel.IdDay);
-
-                if (doctorsDayPlanModel.Status == EnumAppointmentStatus.Overdue || date < DateTime.Now.Date)
-                {
-                    context.DbDoctorsDayPlan.Remove(doctorsDayPlanModel);
-                    context.SaveChanges();
-                }
-            }
-        }
     }
 }
