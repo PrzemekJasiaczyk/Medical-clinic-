@@ -43,12 +43,12 @@
             label3 = new Label();
             textBox1_Name = new TextBox();
             TextBox_PESEL = new MaskedTextBox();
-            buttonShowFilters = new Button();
-            button1 = new Button();
+            buttonShowPatient = new Button();
+            buttonShowDoctor = new Button();
             label7 = new Label();
             textBox1_doctor = new TextBox();
-            button2 = new Button();
-            button3 = new Button();
+            buttonClearPatient = new Button();
+            buttonClearDoctor = new Button();
             comboBoxDoctorSpecialization = new ComboBox();
             label1 = new Label();
             panel1.SuspendLayout();
@@ -227,37 +227,37 @@
             TextBox_PESEL.Size = new Size(129, 23);
             TextBox_PESEL.TabIndex = 88;
             // 
-            // buttonShowFilters
+            // buttonShowPatient
             // 
-            buttonShowFilters.BackColor = Color.Gainsboro;
-            buttonShowFilters.FlatAppearance.BorderColor = Color.White;
-            buttonShowFilters.FlatAppearance.BorderSize = 2;
-            buttonShowFilters.FlatStyle = FlatStyle.Flat;
-            buttonShowFilters.Font = new Font("Segoe UI Symbol", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonShowFilters.Location = new Point(961, 126);
-            buttonShowFilters.Margin = new Padding(3, 2, 3, 2);
-            buttonShowFilters.Name = "buttonShowFilters";
-            buttonShowFilters.Size = new Size(86, 26);
-            buttonShowFilters.TabIndex = 89;
-            buttonShowFilters.Text = "Show";
-            buttonShowFilters.UseVisualStyleBackColor = false;
-            buttonShowFilters.Click += buttonShowFilters_Click;
+            buttonShowPatient.BackColor = Color.Gainsboro;
+            buttonShowPatient.FlatAppearance.BorderColor = Color.White;
+            buttonShowPatient.FlatAppearance.BorderSize = 2;
+            buttonShowPatient.FlatStyle = FlatStyle.Flat;
+            buttonShowPatient.Font = new Font("Segoe UI Symbol", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonShowPatient.Location = new Point(961, 126);
+            buttonShowPatient.Margin = new Padding(3, 2, 3, 2);
+            buttonShowPatient.Name = "buttonShowPatient";
+            buttonShowPatient.Size = new Size(86, 26);
+            buttonShowPatient.TabIndex = 89;
+            buttonShowPatient.Text = "Show";
+            buttonShowPatient.UseVisualStyleBackColor = false;
+            buttonShowPatient.Click += buttonShowFilters_Click;
             // 
-            // button1
+            // buttonShowDoctor
             // 
-            button1.BackColor = Color.Gainsboro;
-            button1.FlatAppearance.BorderColor = Color.White;
-            button1.FlatAppearance.BorderSize = 2;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI Symbol", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.Location = new Point(962, 332);
-            button1.Margin = new Padding(3, 2, 3, 2);
-            button1.Name = "button1";
-            button1.Size = new Size(86, 26);
-            button1.TabIndex = 94;
-            button1.Text = "Show";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            buttonShowDoctor.BackColor = Color.Gainsboro;
+            buttonShowDoctor.FlatAppearance.BorderColor = Color.White;
+            buttonShowDoctor.FlatAppearance.BorderSize = 2;
+            buttonShowDoctor.FlatStyle = FlatStyle.Flat;
+            buttonShowDoctor.Font = new Font("Segoe UI Symbol", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonShowDoctor.Location = new Point(962, 332);
+            buttonShowDoctor.Margin = new Padding(3, 2, 3, 2);
+            buttonShowDoctor.Name = "buttonShowDoctor";
+            buttonShowDoctor.Size = new Size(86, 26);
+            buttonShowDoctor.TabIndex = 94;
+            buttonShowDoctor.Text = "Show";
+            buttonShowDoctor.UseVisualStyleBackColor = false;
+            buttonShowDoctor.Click += button1_Click;
             // 
             // label7
             // 
@@ -278,37 +278,37 @@
             textBox1_doctor.Size = new Size(129, 23);
             textBox1_doctor.TabIndex = 92;
             // 
-            // button2
+            // buttonClearPatient
             // 
-            button2.BackColor = Color.Gainsboro;
-            button2.FlatAppearance.BorderColor = Color.White;
-            button2.FlatAppearance.BorderSize = 2;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Segoe UI Symbol", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            button2.Location = new Point(1053, 126);
-            button2.Margin = new Padding(3, 2, 3, 2);
-            button2.Name = "button2";
-            button2.Size = new Size(86, 26);
-            button2.TabIndex = 95;
-            button2.Text = "Clear";
-            button2.UseVisualStyleBackColor = false;
-            button2.Click += button2_Click;
+            buttonClearPatient.BackColor = Color.Gainsboro;
+            buttonClearPatient.FlatAppearance.BorderColor = Color.White;
+            buttonClearPatient.FlatAppearance.BorderSize = 2;
+            buttonClearPatient.FlatStyle = FlatStyle.Flat;
+            buttonClearPatient.Font = new Font("Segoe UI Symbol", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonClearPatient.Location = new Point(1053, 126);
+            buttonClearPatient.Margin = new Padding(3, 2, 3, 2);
+            buttonClearPatient.Name = "buttonClearPatient";
+            buttonClearPatient.Size = new Size(86, 26);
+            buttonClearPatient.TabIndex = 95;
+            buttonClearPatient.Text = "Clear";
+            buttonClearPatient.UseVisualStyleBackColor = false;
+            buttonClearPatient.Click += button2_Click;
             // 
-            // button3
+            // buttonClearDoctor
             // 
-            button3.BackColor = Color.Gainsboro;
-            button3.FlatAppearance.BorderColor = Color.White;
-            button3.FlatAppearance.BorderSize = 2;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Segoe UI Symbol", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            button3.Location = new Point(1054, 332);
-            button3.Margin = new Padding(3, 2, 3, 2);
-            button3.Name = "button3";
-            button3.Size = new Size(86, 26);
-            button3.TabIndex = 96;
-            button3.Text = "Clear";
-            button3.UseVisualStyleBackColor = false;
-            button3.Click += button3_Click;
+            buttonClearDoctor.BackColor = Color.Gainsboro;
+            buttonClearDoctor.FlatAppearance.BorderColor = Color.White;
+            buttonClearDoctor.FlatAppearance.BorderSize = 2;
+            buttonClearDoctor.FlatStyle = FlatStyle.Flat;
+            buttonClearDoctor.Font = new Font("Segoe UI Symbol", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonClearDoctor.Location = new Point(1054, 332);
+            buttonClearDoctor.Margin = new Padding(3, 2, 3, 2);
+            buttonClearDoctor.Name = "buttonClearDoctor";
+            buttonClearDoctor.Size = new Size(86, 26);
+            buttonClearDoctor.TabIndex = 96;
+            buttonClearDoctor.Text = "Clear";
+            buttonClearDoctor.UseVisualStyleBackColor = false;
+            buttonClearDoctor.Click += button3_Click;
             // 
             // comboBoxDoctorSpecialization
             // 
@@ -336,12 +336,12 @@
             ClientSize = new Size(1698, 825);
             Controls.Add(label1);
             Controls.Add(comboBoxDoctorSpecialization);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(buttonClearDoctor);
+            Controls.Add(buttonClearPatient);
+            Controls.Add(buttonShowDoctor);
             Controls.Add(label7);
             Controls.Add(textBox1_doctor);
-            Controls.Add(buttonShowFilters);
+            Controls.Add(buttonShowPatient);
             Controls.Add(label6);
             Controls.Add(label3);
             Controls.Add(textBox1_Name);
@@ -386,12 +386,12 @@
         private Label label3;
         private TextBox textBox1_Name;
         private MaskedTextBox TextBox_PESEL;
-        private Button buttonShowFilters;
-        private Button button1;
+        private Button buttonShowPatient;
+        private Button buttonShowDoctor;
         private Label label7;
         private TextBox textBox1_doctor;
-        private Button button2;
-        private Button button3;
+        private Button buttonClearPatient;
+        private Button buttonClearDoctor;
         private ComboBox comboBoxDoctorSpecialization;
         private Label label1;
     }
