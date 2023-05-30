@@ -28,14 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             panelMenu = new Panel();
             buttonExit = new Button();
             pictureBox1 = new PictureBox();
-            createCalendarButton = new Button();
+            buttonCreateCalendar = new Button();
             flowLayoutPanelMonth = new FlowLayoutPanel();
             labelDate = new Label();
             buttonAddAppointment = new Button();
-            label8 = new Label();
             dataGridViewAppointments = new DataGridView();
             button3 = new Button();
             button2 = new Button();
@@ -43,6 +44,7 @@
             labelTitleCalendar_Year = new Label();
             buttonToday = new Button();
             panel9 = new Panel();
+            labelCalendarExists = new Label();
             panel2 = new Panel();
             label6 = new Label();
             panel3 = new Panel();
@@ -57,6 +59,7 @@
             label4 = new Label();
             panel8 = new Panel();
             label5 = new Label();
+            buttonEditPlan = new Button();
             panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAppointments).BeginInit();
@@ -106,18 +109,18 @@
             pictureBox1.TabIndex = 47;
             pictureBox1.TabStop = false;
             // 
-            // createCalendarButton
+            // buttonCreateCalendar
             // 
-            createCalendarButton.BackColor = SystemColors.GradientActiveCaption;
-            createCalendarButton.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            createCalendarButton.ForeColor = SystemColors.ControlText;
-            createCalendarButton.Location = new Point(1321, 2);
-            createCalendarButton.Name = "createCalendarButton";
-            createCalendarButton.Size = new Size(252, 94);
-            createCalendarButton.TabIndex = 17;
-            createCalendarButton.Text = "Create Calendar for Selected Month";
-            createCalendarButton.UseVisualStyleBackColor = false;
-            createCalendarButton.Click += createCalendarButton_Click;
+            buttonCreateCalendar.BackColor = Color.SteelBlue;
+            buttonCreateCalendar.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonCreateCalendar.ForeColor = SystemColors.ControlLightLight;
+            buttonCreateCalendar.Location = new Point(1195, 2);
+            buttonCreateCalendar.Name = "buttonCreateCalendar";
+            buttonCreateCalendar.Size = new Size(417, 94);
+            buttonCreateCalendar.TabIndex = 17;
+            buttonCreateCalendar.Text = "Create Calendar for Selected Month";
+            buttonCreateCalendar.UseVisualStyleBackColor = false;
+            buttonCreateCalendar.Click += createCalendarButton_Click;
             // 
             // flowLayoutPanelMonth
             // 
@@ -131,7 +134,7 @@
             // 
             labelDate.AutoSize = true;
             labelDate.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
-            labelDate.Location = new Point(1628, 248);
+            labelDate.Location = new Point(1104, 122);
             labelDate.Name = "labelDate";
             labelDate.Size = new Size(188, 45);
             labelDate.TabIndex = 1;
@@ -139,34 +142,47 @@
             // 
             // buttonAddAppointment
             // 
-            buttonAddAppointment.Location = new Point(1628, 946);
+            buttonAddAppointment.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonAddAppointment.Location = new Point(1491, 102);
             buttonAddAppointment.Name = "buttonAddAppointment";
-            buttonAddAppointment.Size = new Size(225, 78);
+            buttonAddAppointment.Size = new Size(417, 65);
             buttonAddAppointment.TabIndex = 15;
             buttonAddAppointment.Text = "Add new Plan";
             buttonAddAppointment.UseVisualStyleBackColor = true;
             buttonAddAppointment.Click += buttonAddAppointment_Click;
             // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(1617, 307);
-            label8.Name = "label8";
-            label8.Size = new Size(228, 30);
-            label8.TabIndex = 18;
-            label8.Text = "Doctor's Working Plans";
-            // 
             // dataGridViewAppointments
             // 
+            dataGridViewAppointments.AllowUserToAddRows = false;
+            dataGridViewAppointments.AllowUserToDeleteRows = false;
+            dataGridViewAppointments.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewAppointments.BackgroundColor = SystemColors.Info;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Control;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewAppointments.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewAppointments.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewAppointments.Location = new Point(1563, 349);
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.ControlLightLight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.Desktop;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridViewAppointments.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewAppointments.Enabled = false;
+            dataGridViewAppointments.Location = new Point(1104, 173);
+            dataGridViewAppointments.MultiSelect = false;
             dataGridViewAppointments.Name = "dataGridViewAppointments";
             dataGridViewAppointments.ReadOnly = true;
+            dataGridViewAppointments.RowHeadersVisible = false;
             dataGridViewAppointments.RowTemplate.Height = 25;
-            dataGridViewAppointments.SelectionMode = DataGridViewSelectionMode.CellSelect;
-            dataGridViewAppointments.Size = new Size(345, 538);
+            dataGridViewAppointments.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewAppointments.Size = new Size(804, 895);
             dataGridViewAppointments.TabIndex = 19;
             // 
             // button3
@@ -242,16 +258,29 @@
             // panel9
             // 
             panel9.BackColor = Color.White;
+            panel9.Controls.Add(labelCalendarExists);
             panel9.Controls.Add(buttonToday);
             panel9.Controls.Add(labelTitleCalendar_Year);
             panel9.Controls.Add(labelTitleCalendar_Month);
             panel9.Controls.Add(button2);
             panel9.Controls.Add(button3);
-            panel9.Controls.Add(createCalendarButton);
+            panel9.Controls.Add(buttonCreateCalendar);
             panel9.Location = new Point(296, 0);
             panel9.Name = "panel9";
             panel9.Size = new Size(1888, 99);
             panel9.TabIndex = 20;
+            // 
+            // labelCalendarExists
+            // 
+            labelCalendarExists.AutoSize = true;
+            labelCalendarExists.BackColor = Color.Transparent;
+            labelCalendarExists.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
+            labelCalendarExists.ForeColor = Color.IndianRed;
+            labelCalendarExists.Location = new Point(808, 25);
+            labelCalendarExists.Name = "labelCalendarExists";
+            labelCalendarExists.Size = new Size(332, 45);
+            labelCalendarExists.TabIndex = 28;
+            labelCalendarExists.Text = "Calendar not created";
             // 
             // panel2
             // 
@@ -408,11 +437,19 @@
             label5.Text = "Sat";
             label5.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // FormCalendar
+            // buttonEditPlan
+            // 
+            buttonEditPlan.Location = new Point(0, 0);
+            buttonEditPlan.Name = "buttonEditPlan";
+            buttonEditPlan.Size = new Size(75, 23);
+            buttonEditPlan.TabIndex = 0;
+            // 
+            // FormDoctorsPlanCalendar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1920, 1080);
+            Controls.Add(buttonEditPlan);
             Controls.Add(panel2);
             Controls.Add(panel3);
             Controls.Add(panel4);
@@ -421,14 +458,13 @@
             Controls.Add(panel7);
             Controls.Add(panel8);
             Controls.Add(dataGridViewAppointments);
-            Controls.Add(label8);
             Controls.Add(buttonAddAppointment);
             Controls.Add(labelDate);
             Controls.Add(flowLayoutPanelMonth);
             Controls.Add(panelMenu);
             Controls.Add(panel9);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "FormCalendar";
+            Name = "FormDoctorsPlanCalendar";
             Text = "Calendar";
             WindowState = FormWindowState.Maximized;
             Load += FormCalendar_Load;
@@ -461,8 +497,7 @@
         private FlowLayoutPanel flowLayoutPanelMonth;
         private Label labelDate;
         private Button buttonAddAppointment;
-        private Button createCalendarButton;
-        private Label label8;
+        private Button buttonCreateCalendar;
         private DataGridView dataGridViewAppointments;
         private Button button3;
         private Button button2;
@@ -486,5 +521,7 @@
         private Label label5;
         private PictureBox pictureBox1;
         private Button buttonExit;
+        private Button buttonEditPlan;
+        private Label labelCalendarExists;
     }
 }
