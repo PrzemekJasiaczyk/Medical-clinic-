@@ -388,18 +388,41 @@ namespace GUI_Management_of_medical_clinic
                 CalendarModel calendar = context.DbCalendars.FirstOrDefault(c => c.IdCalendar == appointment.IdCalendar)!;
                 DateTime calendarDateTime = DateTime.ParseExact(calendar.DateReference, "MM-yyyy", CultureInfo.InvariantCulture);
 
-                if ((calendar.Active == true && calendarDateTime.Year >= DateTime.Today.Year) && calendarDateTime.Month >= DateTime.Now.Month && appointment.IdDay >= DateTime.Today.Day)
+                if (calendar.Active == true)
                 {
-                    string appointmentTime = AppointmentService.GetTermByTermId(appointment.IdOfTerm);
-                    DateTime appointmentDateTime = DateTime.ParseExact(appointmentTime, "HH:mm", CultureInfo.InvariantCulture);
-
-                    if (appointmentDateTime >= DateTime.Now)
+                    if (calendarDateTime.Year > DateTime.Today.Year)
                     {
-                        comboBoxDate.Items.Add(appointment);
+						comboBoxDate.Items.Add(appointment);
+					}
+                    else if ((calendarDateTime.Year == DateTime.Today.Year))
+                    {
+                        if (calendarDateTime.Month > DateTime.Today.Month)
+                        {
+							comboBoxDate.Items.Add(appointment);
+						}
+                        else if (calendarDateTime.Month == DateTime.Today.Month)
+                        {
+                            if (appointment.IdDay >  DateTime.Today.Day)
+                            {
+								comboBoxDate.Items.Add(appointment);
+							}
+                            else if (appointment.IdDay == DateTime.Today.Day)
+                            {
+								// Sprawdź godzinę
+								string appointmentTime = AppointmentService.GetTermByTermId(appointment.IdOfTerm);
+								DateTime appointmentDateTime = DateTime.ParseExact(appointmentTime, "HH:mm", CultureInfo.InvariantCulture);
+
+								if (appointmentDateTime >= DateTime.Now)
+								{
+									comboBoxDate.Items.Add(appointment);
+								}
+							}
+                        }
                     }
-				}
+                }
+				comboBoxDate.DisplayMember = appointments.ToString();
+
             }
-            comboBoxDate.DisplayMember = appointments.ToString();
         }
 
         private void buttonShowFilters_Click(object sender, EventArgs e)
