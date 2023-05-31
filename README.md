@@ -5,12 +5,17 @@
 ### Team
 
 Analyst - Natalia Heleniak
+
 Tester - Przemysław Jasiaczyk
 
 Programmers:
+
 Natalia Hańczka
+
 Paulina Swaczyna
+
 Kamila Zych
+
 Michł Browarski
 
 ### Functionality implemented
