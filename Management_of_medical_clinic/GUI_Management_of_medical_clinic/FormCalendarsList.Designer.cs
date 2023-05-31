@@ -178,7 +178,7 @@
             // buttonSortDescending
             // 
             buttonSortDescending.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonSortDescending.Location = new Point(392, 154);
+            buttonSortDescending.Location = new Point(765, 104);
             buttonSortDescending.Name = "buttonSortDescending";
             buttonSortDescending.Size = new Size(280, 56);
             buttonSortDescending.TabIndex = 21;
@@ -189,7 +189,7 @@
             // buttonSortAscending
             // 
             buttonSortAscending.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonSortAscending.Location = new Point(392, 92);
+            buttonSortAscending.Location = new Point(765, 42);
             buttonSortAscending.Name = "buttonSortAscending";
             buttonSortAscending.Size = new Size(280, 56);
             buttonSortAscending.TabIndex = 20;
@@ -208,7 +208,7 @@
             // buttonClearFilter
             // 
             buttonClearFilter.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonClearFilter.Location = new Point(54, 154);
+            buttonClearFilter.Location = new Point(409, 104);
             buttonClearFilter.Name = "buttonClearFilter";
             buttonClearFilter.Size = new Size(271, 56);
             buttonClearFilter.TabIndex = 18;
@@ -223,7 +223,7 @@
             comboBoxStatus.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxStatus.FormattingEnabled = true;
             comboBoxStatus.Items.AddRange(new object[] { "MedicalDoctor", "Nurse", "Janitor", "Technitian" });
-            comboBoxStatus.Location = new Point(392, 42);
+            comboBoxStatus.Location = new Point(409, 42);
             comboBoxStatus.Name = "comboBoxStatus";
             comboBoxStatus.Size = new Size(271, 36);
             comboBoxStatus.TabIndex = 13;
@@ -231,7 +231,7 @@
             // buttonFilterCalendars
             // 
             buttonFilterCalendars.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonFilterCalendars.Location = new Point(54, 92);
+            buttonFilterCalendars.Location = new Point(54, 104);
             buttonFilterCalendars.Name = "buttonFilterCalendars";
             buttonFilterCalendars.Size = new Size(271, 56);
             buttonFilterCalendars.TabIndex = 14;
