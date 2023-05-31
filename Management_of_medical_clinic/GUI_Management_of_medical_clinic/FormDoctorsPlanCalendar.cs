@@ -312,7 +312,7 @@ namespace GUI_Management_of_medical_clinic
             }
         }
 
-        
+
 
         public static int ExtractIdFromDataGridView(string input)
         {
@@ -433,7 +433,7 @@ namespace GUI_Management_of_medical_clinic
             previousMonth = false;
         }
 
-        
+
 
         private bool CheckTheHoliday(DateTime date)
         {

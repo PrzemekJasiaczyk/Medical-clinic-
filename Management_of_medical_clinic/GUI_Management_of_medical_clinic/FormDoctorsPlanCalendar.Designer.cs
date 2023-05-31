@@ -155,6 +155,7 @@
             // 
             dataGridViewAppointments.AllowUserToAddRows = false;
             dataGridViewAppointments.AllowUserToDeleteRows = false;
+            dataGridViewAppointments.AllowUserToOrderColumns = true;
             dataGridViewAppointments.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewAppointments.BackgroundColor = SystemColors.Info;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -168,7 +169,7 @@
             dataGridViewAppointments.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.ControlLightLight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.Desktop;
