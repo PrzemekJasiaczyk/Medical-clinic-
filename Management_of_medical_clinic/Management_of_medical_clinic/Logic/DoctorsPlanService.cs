@@ -180,6 +180,12 @@ namespace Console_Management_of_medical_clinic.Logic
             }
 
             return term;
+
+        }
+
+        public static string GetStatusInfo(Enum value)
+        {
+            return value.ToString();
         }
 
         public static int CheckIfDoctorHasPlanForCurrentDay(int idEmployee, int idDay, int idCalendar)

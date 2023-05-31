@@ -111,9 +111,9 @@
             // 
             // buttonCreateCalendar
             // 
-            buttonCreateCalendar.BackColor = SystemColors.GradientActiveCaption;
+            buttonCreateCalendar.BackColor = Color.SteelBlue;
             buttonCreateCalendar.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonCreateCalendar.ForeColor = SystemColors.ControlText;
+            buttonCreateCalendar.ForeColor = SystemColors.ControlLightLight;
             buttonCreateCalendar.Location = new Point(1195, 2);
             buttonCreateCalendar.Name = "buttonCreateCalendar";
             buttonCreateCalendar.Size = new Size(417, 94);
@@ -174,6 +174,8 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.Desktop;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dataGridViewAppointments.DefaultCellStyle = dataGridViewCellStyle2;
+
+            //dataGridViewAppointments.Enabled = false;
             dataGridViewAppointments.Location = new Point(1104, 173);
             dataGridViewAppointments.Name = "dataGridViewAppointments";
             dataGridViewAppointments.ReadOnly = true;
