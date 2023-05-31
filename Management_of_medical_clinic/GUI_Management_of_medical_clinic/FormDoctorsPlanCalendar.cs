@@ -60,9 +60,11 @@ namespace GUI_Management_of_medical_clinic
             button2.Visible = false;
             button3.Visible = false;
 
-            buttonCreateCalendar.Text = "Edit Calendar";
+            buttonCreateCalendar.Text = "Edit selected doctors plan";
+            buttonCreateCalendar.Enabled = true;
             buttonCreateCalendar.Click -= createCalendarButton_Click;
-            buttonCreateCalendar.Click += editCalendar_Click;
+            buttonCreateCalendar.Click += buttonEditPlan_Click;
+            //buttonCreateCalendar.Click += editCalendar_Click;
 
         }
 
@@ -311,7 +313,7 @@ namespace GUI_Management_of_medical_clinic
                 return userControlBlank;
             }
         }
-        
+
 
         public static int ExtractIdFromDataGridView(string input)
         {
@@ -338,10 +340,19 @@ namespace GUI_Management_of_medical_clinic
             {
                 if (CalendarService.checkIfCalendarExists(_selectedDate) == true)
                 {
-                    FormDoctorsDayPlanAdd formAppointmentAdd = new FormDoctorsDayPlanAdd(DateTime.Parse(labelDate.Text), currentEmployee);
-                    //this.Hide();
-                    formAppointmentAdd.ShowDialog();
-                    //this.Close();
+                    if (CalendarService.GetCalendarById(CalendarService.GetCalendarIdByDate(displayMonth.ToString("d"))).Active)
+                    {
+                        MessageBox.Show("It is not possible to change active calendars. Check if the selected calendar is right.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    FormDoctorsDayPlanEdit formDoctorsEdit = new FormDoctorsDayPlanEdit(DateTime.Parse(labelDate.Text), currentEmployee);
+                    formDoctorsEdit.ShowDialog();
+
+                    //FormDoctorsDayPlanAdd formAppointmentAdd = new FormDoctorsDayPlanAdd(DateTime.Parse(labelDate.Text), currentEmployee);
+                    ////this.Hide();
+                    //formAppointmentAdd.ShowDialog();
+                    ////this.Close();
                 }
                 else
                 {
@@ -408,19 +419,6 @@ namespace GUI_Management_of_medical_clinic
 
         }
 
-        private void editCalendar_Click(object sender, EventArgs e)
-        {
-            if (CalendarService.GetCalendarById(CalendarService.GetCalendarIdByDate(displayMonth.ToString("d"))).Active)
-            {
-                MessageBox.Show("It is not possible to change active calendars. Check if the selected calendar is right.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            FormCalendarEdit formCalendarEdit = new FormCalendarEdit(currentEmployee, CalendarService.GetCalendarById(CalendarService.GetCalendarIdByDate(displayMonth.ToString("d"))), new FormDoctorsPlanCalendar(currentEmployee, CalendarService.GetCalendarIdByDate(displayMonth.ToString("d"))));
-            formCalendarEdit.ShowDialog();
-            Close();
-        }
-
         private void CheckTheMonth()
         {
             if (displayMonth.Month == currentMonth.Month)
@@ -432,7 +430,7 @@ namespace GUI_Management_of_medical_clinic
             previousMonth = false;
         }
 
-        
+
 
         private bool CheckTheHoliday(DateTime date)
         {
