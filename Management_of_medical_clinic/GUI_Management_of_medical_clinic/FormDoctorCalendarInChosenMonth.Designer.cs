@@ -126,6 +126,7 @@
             buttonRejectCalendar.TabIndex = 48;
             buttonRejectCalendar.Text = "Reject calendar";
             buttonRejectCalendar.UseVisualStyleBackColor = false;
+            buttonRejectCalendar.Visible = false;
             buttonRejectCalendar.Click += buttonRejectCalendar_Click;
             // 
             // buttonAcceptCalendar
@@ -387,6 +388,7 @@
             panelTime.Name = "panelTime";
             panelTime.Size = new Size(282, 62);
             panelTime.TabIndex = 17;
+            panelTime.Click += panelTime_Click;
             // 
             // labelTime
             // 
@@ -487,6 +489,7 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(234, 62);
             panel1.TabIndex = 18;
+            panel1.Click += panel1_Click;
             // 
             // labelRoom
             // 
@@ -616,6 +619,7 @@
             panelRoom2.Name = "panelRoom2";
             panelRoom2.Size = new Size(113, 62);
             panelRoom2.TabIndex = 21;
+            panelRoom2.Click += panelRoom2_Click;
             // 
             // labelRoom1
             // 
@@ -639,6 +643,7 @@
             panelTime2.Name = "panelTime2";
             panelTime2.Size = new Size(116, 62);
             panelTime2.TabIndex = 20;
+            panelTime2.Click += panelTime2_Click;
             // 
             // labelTime1
             // 
@@ -662,6 +667,7 @@
             panelDoctor.Name = "panelDoctor";
             panelDoctor.Size = new Size(285, 62);
             panelDoctor.TabIndex = 19;
+            panelDoctor.Click += panelDoctor_Click;
             // 
             // labelDoctor
             // 

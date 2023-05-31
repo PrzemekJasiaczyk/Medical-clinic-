@@ -56,6 +56,7 @@ namespace GUI_Management_of_medical_clinic
                 int index = dataGridViewAppointmentList.Rows.Add(appointment.appointmentDoctorData);
                 dataGridViewAppointmentList.Rows[index].Tag = appointment;
             }
+
         }
 
         #endregion
@@ -191,7 +192,7 @@ namespace GUI_Management_of_medical_clinic
         }
 
         //will it be needed?
-        /*//will it be needed?
+
         private void buttonShowDetails_Click(object sender, EventArgs e) 
         {
             if (dataGridViewAppointmentList.Rows.Count == 0)
@@ -219,7 +220,7 @@ namespace GUI_Management_of_medical_clinic
             Close();
         }
 
-        */
+        
         private void buttonRemove_Click(object sender, EventArgs e) //cancel appointment
         {
             if (dataGridViewAppointmentList.Rows.Count == 0)
@@ -311,9 +312,5 @@ namespace GUI_Management_of_medical_clinic
             DisplaySortedByLastNameDSC();
         }
 
-        private void buttonShowDetails_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
