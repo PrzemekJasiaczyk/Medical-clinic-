@@ -1,54 +1,39 @@
-# Doctor's portal handling module
-## TODO List
-For now:
-- [ ] The future calendar management
-  - [x] Future calendar viewing
-  - [x] Calendar acceptance
-  - [ ] Calendar modification
-  - [x] Terms rejection
-- [ ] Calendar management
-  - [x] Calendar viewing
-  - [x] View daily visits
-  - [ ] Sorting
-  - [ ] Filtering
-- [ ] Canceling an appointment
-  - [ ] Mass canceling from calendar
-  - [ ] Single cancelation from calendar's view
-  - [ ] Single cancelation from appointment's detail view
+# Medical Clinic
 
-  
-Soon:
-- [ ] List of appointments
-  - [ ] View of appointments list
-  - [ ] Filtering 
-  - [ ] Sorting
-- [ ] Appointments management
-  - [ ] View appointment's details
-  - [ ] Adding results of appointment
-  - [ ] Registration of appointment
-  - [ ] List of appointments
-- [ ] Patients management
-  - [ ] View a patient visit history from a list of patients 
-  - [ ] View a patient visit history from the patient's details
+## Registration
 
----
-Done:
-- [X] 
+### Team
 
+Analyst - Natalia Heleniak
+Tester - Przemysław Jasiaczyk
 
-## About
+Programmers:
+Natalia Hańczka
+Paulina Swaczyna
+Kamila Zych
+Michł Browarski
 
-Doctor's portal handling
-
-This module is responsible for doctors' activities.
-
-System supports following processes:
-- Doctors' visits in chosen day
-- Doctors' work schedule in chosen month
-  
-List of actors using the system:
-- Doctor
-
-Privileges:
-[]
+### Functionality implemented
  
+#### Patient handling
+
+* Viewing list of patients
+* Filtering list of patients
+* Sorting list of patients
+* Adding new patient
+* Removing existing patient
+* Editing patient's data
+* Dispalying patient's details
+* Activation/Deactivation of the patient
+
+#### Appointment management
+
+* Viewing list of appointments
+* Filtering list of appointments
+* Sorting list of appointments
+* Registering an appointment
+* Rescheduling an appointment
+* Cancelling an appointment
+* Dispalying an appointment details
+* Issuing payment confirmation in PDF
+* Cleaning calendars from outdated and past visits
