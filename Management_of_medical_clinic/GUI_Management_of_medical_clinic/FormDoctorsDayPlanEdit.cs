@@ -23,13 +23,14 @@ namespace GUI_Management_of_medical_clinic
         int selectedDay;
         int calendarId;
         EmployeeModel currentEmployee;
-        int idDoctor;
+        DoctorsDayPlanModel plan;
 
-        public FormDoctorsDayPlanEdit(DateTime date, EmployeeModel currentEmployee, int idDoctor)
+        public FormDoctorsDayPlanEdit(DateTime date, EmployeeModel currentEmployee, DoctorsDayPlanModel planToEdit)
         {
             selectedDate = date;
             selectedDay = date.Day;
-            this.idDoctor = idDoctor;
+            plan = planToEdit;
+
 
             dateReference = selectedDate.ToString("d");
             calendarId = CalendarService.GetCalendarIdByDate(dateReference);
@@ -46,10 +47,13 @@ namespace GUI_Management_of_medical_clinic
 
             try
             {
-                EmployeeModel employeeModel = EmployeeService.GetEmployeeByID(idDoctor);
+                EmployeeModel employeeModel = EmployeeService.GetEmployeeByID((int)plan.IdEmployee);
                 comboBoxDoctor.Items.Add(employeeModel.IdEmployee + "-" + employeeModel.FirstName + " " + employeeModel.LastName);
                 comboBoxDoctor.SelectedIndex = 0;
-                comboBoxDoctor.Enabled = false;
+
+                OfficeModel officeModel = OfficeService.GetOfficeById((int)plan.IdOffice);
+                comboBoxOffice.Items.Add(officeModel.IdOffice + "-" + SpecializationService.GetSpecializationNameById(officeModel.IdSpecialization) + " Room:" + officeModel.Number);
+                comboBoxOffice.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
@@ -110,7 +114,7 @@ namespace GUI_Management_of_medical_clinic
                 {
                     try
                     {
-                        MessageBox.Show(DoctorsPlanService.EditPlans(checkedTerms, selectedDay, calendarId, idDoctor, parsedOfficeId));
+                        //MessageBox.Show(DoctorsPlanService.EditPlans(checkedTerms, selectedDay, calendarId, idDoctor, parsedOfficeId));
 
                         FormDoctorsPlanCalendar formCalendar = new FormDoctorsPlanCalendar(currentEmployee);
                         this.Hide();

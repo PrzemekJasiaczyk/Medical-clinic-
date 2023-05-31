@@ -4,6 +4,7 @@ using Console_Management_of_medical_clinic.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -162,6 +163,25 @@ namespace Console_Management_of_medical_clinic.Logic
                 return (desc[0] as DescriptionAttribute).Description;
             }
         }
+
+        public static EnumTerms GetTermByDescription(string description)
+        {
+            EnumTerms term = new EnumTerms();
+
+            foreach (var enumValue in Enum.GetValues(typeof(EnumTerms)))
+            {
+                var fieldInfo = typeof(EnumTerms).GetField(enumValue.ToString());
+                var attribute = fieldInfo.GetCustomAttributes(typeof(DescriptionAttribute), false)[0] as DescriptionAttribute;
+
+                if (attribute != null && attribute.Description.Equals(description))
+                {
+                    term = (EnumTerms)enumValue;
+                }
+            }
+
+            return term;
+        }
+
         public static int CheckIfDoctorHasPlanForCurrentDay(int idEmployee, int idDay, int idCalendar)
         {
             List<DoctorsDayPlanModel> doctorsPlans = GetDoctorsPlanData();
@@ -212,6 +232,14 @@ namespace Console_Management_of_medical_clinic.Logic
             using (AppDbContext context = new AppDbContext())
             {
                 return context.DbDoctorsDayPlan.Where(plan => plan.IdCalendar == calendarId).ToList();
+            }
+        }
+
+        public static DoctorsDayPlanModel GetPlanByDayDoctorOfficeAndTermId(int calendarId, DateTime selectedDate, int employeeId, int officeId, int termId)
+        {
+            using (AppDbContext context = new AppDbContext()) 
+            {
+                return CheckPlansAndReturnForADay(selectedDate, calendarId).FirstOrDefault(plan => plan.IdEmployee == employeeId && plan.IdOffice == officeId && plan.IdOfTerm == termId);
             }
         }
 

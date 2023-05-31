@@ -59,6 +59,11 @@ namespace Console_Management_of_medical_clinic.Logic
             return "Room: "+office.Number.ToString()+", "+office.Info;
         }
 
+        public static OfficeModel GetOfficeByInfo(string info)
+        {
+            return GetOfficesData().FirstOrDefault(office => ("Room: " + office.Number.ToString() + ", " + office.Info).Equals(info));
+        }
+
         public static void EditOffice(int idOffice, int number, EnumOfficeStatuses status, string info, int idSpecialization)
         {
             using (AppDbContext context = new AppDbContext())
