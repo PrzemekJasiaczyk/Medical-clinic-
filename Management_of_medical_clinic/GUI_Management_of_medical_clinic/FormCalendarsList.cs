@@ -141,5 +141,15 @@ namespace GUI_Management_of_medical_clinic
                 return;
             }
         }
+
+        private void buttonActivate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonActivateCalendar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
