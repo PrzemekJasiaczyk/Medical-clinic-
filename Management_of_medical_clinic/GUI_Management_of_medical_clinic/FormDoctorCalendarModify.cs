@@ -115,19 +115,62 @@ namespace GUI_Management_of_medical_clinic
             Exit();
         }
 
+        private bool CheckTheHoliday(DateTime date)
+        {
+            DateTime[] holidays = new DateTime[] {
+            new DateTime(date.Year, 1, 1),  // Nowy Rok
+            new DateTime(date.Year, 1, 6),  // Święto Trzech Króli
+            new DateTime(date.Year, 4, 17), // Poniedziałek Wielkanocny
+            new DateTime(date.Year, 5, 1),  // Święto Pracy
+            new DateTime(date.Year, 5, 3),  // Święto Konstytucji 3 Maja
+            new DateTime(date.Year, 6, 4),  // Zesłanie Ducha Świętego
+            new DateTime(date.Year, 6, 15), // Boże Ciało
+            new DateTime(date.Year, 8, 15), // Wniebowzięcie Najświętszej Maryi Panny
+            new DateTime(date.Year, 11, 1), // Wszystkich Świętych
+            new DateTime(date.Year, 11, 11), // Święto Niepodległości
+            new DateTime(date.Year, 12, 25), // Boże Narodzenie (pierwszy dzień)
+            new DateTime(date.Year, 12, 26), // Boże Narodzenie (drugi dzień)
+            };
+
+            return holidays.Contains(date);
+        }
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
             try
             {
                 if (comboBoxTerm.SelectedIndex < 0)
                 {
-                    MessageBox.Show("You have to select a term");
-                    return;
+                    if(comboBoxOfficeNumber.SelectedIndex < 0)
+                    {
+                        MessageBox.Show("You have to select a term and an office");
+                        return;
+                    }
+                    else
+                    {
+                        MessageBox.Show("You have to select a term");
+                        return;
+                    }
+
                 }
 
                 if (comboBoxOfficeNumber.SelectedIndex < 0)
                 {
                     MessageBox.Show("You have to select an office");
+                    return;
+                }
+
+                DateTime selectedDate = dateTimePicker.Value;
+                DayOfWeek dayOfWeek = selectedDate.DayOfWeek;
+
+                if (dayOfWeek == DayOfWeek.Sunday)
+                {
+                    MessageBox.Show("We're closed on Sunday. Please choose other date");
+                    return;
+                }
+
+                if(CheckTheHoliday(selectedDate))
+                {
+                    MessageBox.Show("Selected date is a holiday. Please choose another date");
                     return;
                 }
 
