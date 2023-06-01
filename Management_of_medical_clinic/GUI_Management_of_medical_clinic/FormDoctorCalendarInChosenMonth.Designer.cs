@@ -126,7 +126,6 @@
             buttonRejectCalendar.TabIndex = 48;
             buttonRejectCalendar.Text = "Reject calendar";
             buttonRejectCalendar.UseVisualStyleBackColor = false;
-            buttonRejectCalendar.Visible = false;
             buttonRejectCalendar.Click += buttonRejectCalendar_Click;
             // 
             // buttonAcceptCalendar

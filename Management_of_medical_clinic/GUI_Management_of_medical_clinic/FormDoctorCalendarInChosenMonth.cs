@@ -208,7 +208,7 @@ namespace GUI_Management_of_medical_clinic
                 index = dataGrid.Rows.Add(employee.FirstName + " " + employee.LastName, timeTerm, room.Number, idDoctorsDayPlan);
                 dataGrid.Rows[index].Tag = appointment;
             }
-           
+
         }
 
         private void RemoveRowsInDataGridView(DataGridView dataGrid)
