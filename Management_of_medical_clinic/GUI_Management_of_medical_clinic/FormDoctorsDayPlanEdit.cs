@@ -65,7 +65,7 @@ namespace GUI_Management_of_medical_clinic
 
             insertTermDataIntoForm();
 
-            foreach(EmployeeModel doctor in EmployeeService.GetDoctors())
+            foreach(EmployeeModel doctor in EmployeeService.GetDoctors().OrderBy(doctor => doctor.FirstName).ThenBy(doctor => doctor.LastName).ToList())
             {
                 comboBoxDoctor.Items.Add(doctor.IdEmployee + "-" + doctor.FirstName + " " + doctor.LastName);
             }
