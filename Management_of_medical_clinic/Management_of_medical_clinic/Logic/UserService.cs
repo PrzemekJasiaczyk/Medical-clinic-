@@ -23,6 +23,11 @@ namespace Console_Management_of_medical_clinic.Logic
             return users;
         }
 
+        private void checkIfAdmin()
+        {
+
+        }
+
         public static void AddUser(string username, string password, EnumUserRoles role, bool isActive, int employeeId)
         {
             //a method to add new User to Database

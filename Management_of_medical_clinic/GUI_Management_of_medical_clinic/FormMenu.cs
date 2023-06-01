@@ -1,4 +1,5 @@
 //using Calendar;
+using Console_Management_of_medical_clinic.Data.Enums;
 using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
 
@@ -16,6 +17,8 @@ namespace GUI_Management_of_medical_clinic
             panelLogIn.BackColor = Color.FromArgb(150, Color.Gray);
         }
 
+
+
         private void buttonOpenEmployeeList_Click(object sender, EventArgs e)
         {
             string login = textBoxLogin.Text;
@@ -27,10 +30,18 @@ namespace GUI_Management_of_medical_clinic
             {
                 if (user.Username == login && user.Password == password)
                 {
+                    
+
                     EmployeeModel employee = EmployeeService.GetEmployeeByUserId(user);
 
                     if (employee != null)
                     {
+                        if (user.Role != EnumUserRoles.Administrator)
+                        {
+                            MessageBox.Show("User must be an admin to access this section");
+                            return;
+                        }
+
                         FormEmployeeList employeeList = new FormEmployeeList(employee);
                         Hide();
                         employeeList.ShowDialog();
@@ -67,6 +78,11 @@ namespace GUI_Management_of_medical_clinic
 
                     if (employee != null)
                     {
+                        if (user.Role != EnumUserRoles.Administrator)
+                        {
+                            MessageBox.Show("User must be an admin to access this section");
+                            return;
+                        }
                         FormUserList userList = new FormUserList(employee);
                         Hide();
                         userList.ShowDialog();
@@ -133,6 +149,11 @@ namespace GUI_Management_of_medical_clinic
 
                 if (employee != null)
                 {
+                    if (user.Role != EnumUserRoles.Administrator)
+                    {
+                        MessageBox.Show("User must be an admin to access this section");
+                        return;
+                    }
                     FormOfficeList officeList = new FormOfficeList();
                     Hide();
                     officeList.ShowDialog();
@@ -154,6 +175,11 @@ namespace GUI_Management_of_medical_clinic
 
             if (user != null)
             {
+                if (user.Role != EnumUserRoles.Employee)
+                {
+                    MessageBox.Show("User must be an employee to access this section");
+                    return;
+                }
                 EmployeeModel employee = EmployeeService.GetEmployeeByUserId(user);
                 FormPatientList formPatientList = new(employee);
                 Hide();
@@ -175,8 +201,12 @@ namespace GUI_Management_of_medical_clinic
 
             if (user != null)
             {
+                if (EmployeeService.GetEmployeeByUserId(user).Role!=EnumEmployeeRoles.MedicalDoctor)
+                {
+                    MessageBox.Show("User must be a doctor access this section");
+                    return;
+                }
                 this.Hide();
-
                 EmployeeModel employee = EmployeeService.GetEmployeeByUserId(user);
                 FormDoctorDashboard formDoctorDashboard = new(employee);
 
@@ -202,6 +232,11 @@ namespace GUI_Management_of_medical_clinic
 
             if (user != null)
             {
+                if (user.Role != EnumUserRoles.Administrator)
+                {
+                    MessageBox.Show("User must be an admin to access this section");
+                    return;
+                }
                 EmployeeModel employee = EmployeeService.GetEmployeeByUserId(user);
                 FormCalendarsList formCalendarsList = new(employee);
                 Hide();
@@ -210,6 +245,16 @@ namespace GUI_Management_of_medical_clinic
             }
 
             MessageBox.Show("Incorrect login or password");
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormMenu_Load_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
