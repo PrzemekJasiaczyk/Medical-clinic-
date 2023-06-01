@@ -158,5 +158,6 @@ namespace GUI_Management_of_medical_clinic
             this.Close();
         }
         #endregion
+
     }
 }

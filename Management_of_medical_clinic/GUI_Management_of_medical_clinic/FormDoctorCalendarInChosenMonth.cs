@@ -389,9 +389,15 @@ namespace GUI_Management_of_medical_clinic
 
         private void button_modifyAppointment_Click(object sender, EventArgs e)
         {
-            if (dataGridViewTerms.SelectedRows.Count != 1)
+            if (dataGridViewTerms.SelectedRows.Count == 0)
             {
                 MessageBox.Show("A term needs to be selected");
+                return;
+            }
+
+            if (dataGridViewTerms.SelectedRows.Count > 1)
+            {
+                MessageBox.Show("You can edit only one term");
                 return;
             }
 

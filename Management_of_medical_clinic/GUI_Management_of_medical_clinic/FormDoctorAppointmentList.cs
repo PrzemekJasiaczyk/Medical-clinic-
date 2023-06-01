@@ -24,12 +24,19 @@ namespace GUI_Management_of_medical_clinic
     {
         EmployeeModel currentUser;
         DateTime currentMonth;
-
+        bool CM;
         public FormDoctorAppointmentList(EmployeeModel employee, DateTime currentMonth)
         {
             InitializeComponent();
             currentUser = employee;
             this.currentMonth = currentMonth;
+        }
+
+        public FormDoctorAppointmentList(EmployeeModel employee, bool CM)
+        {
+            InitializeComponent();
+            currentUser = employee;
+            this.CM = CM;
         }
 
         private void FormDoctorAppointmentList_Load(object sender, EventArgs e)
@@ -193,7 +200,7 @@ namespace GUI_Management_of_medical_clinic
 
         //will it be needed?
 
-        private void buttonShowDetails_Click(object sender, EventArgs e) 
+        private void buttonShowDetails_Click(object sender, EventArgs e)
         {
             if (dataGridViewAppointmentList.Rows.Count == 0)
             {
@@ -214,13 +221,13 @@ namespace GUI_Management_of_medical_clinic
                     .FirstOrDefault(a => a.IdDoctorsDayPlan == appointment.IdDoctorsDayPlan)!;
             }
 
-			FormShowDetailsAppointment formShowDetailsAppointment = new FormShowDetailsAppointment(currentUser, appointment);
+            FormDoctorPatientVisitDetails formShowDetailsAppointment = new FormDoctorPatientVisitDetails(currentUser, appointment, currentMonth);
             Hide();
             formShowDetailsAppointment.ShowDialog();
             Close();
         }
 
-        
+
         private void buttonRemove_Click(object sender, EventArgs e) //cancel appointment
         {
             if (dataGridViewAppointmentList.Rows.Count == 0)
