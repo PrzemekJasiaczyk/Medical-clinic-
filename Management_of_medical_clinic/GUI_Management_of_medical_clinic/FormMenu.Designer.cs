@@ -62,6 +62,7 @@
             buttonOpenEmployeeList.TabIndex = 2;
             buttonOpenEmployeeList.Text = "EMPLOYEE LIST";
             buttonOpenEmployeeList.UseVisualStyleBackColor = false;
+            buttonOpenEmployeeList.Click += buttonOpenEmployeeList_Click;
             // 
             // textBoxLogin
             // 

@@ -211,6 +211,5 @@ namespace GUI_Management_of_medical_clinic
 
             MessageBox.Show("Incorrect login or password");
         }
-
     }
 }
