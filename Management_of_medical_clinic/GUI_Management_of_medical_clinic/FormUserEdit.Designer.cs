@@ -144,11 +144,11 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 18.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(1178, 334);
+            label6.Location = new Point(1249, 328);
             label6.Name = "label6";
-            label6.Size = new Size(471, 35);
+            label6.Size = new Size(327, 35);
             label6.TabIndex = 72;
-            label6.Text = "Choose an employee to create an user:";
+            label6.Text = "Assign different employee";
             // 
             // listBoxEmployees
             // 
