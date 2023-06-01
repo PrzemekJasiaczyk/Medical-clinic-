@@ -40,16 +40,6 @@ namespace GUI_Management_of_medical_clinic
             this.calendar = calendar;
 
             DateTime.TryParse(calendar, out selectedDate);
-            /*
-            if (date != null)
-            {
-                selectedDate = date;
-                selectedDay = date.Day;
-
-                dateReference = selectedDate.ToString("d");
-                calendarId = CalendarService.GetCalendarIdByDate(dateReference);
-            }
-            */
 
             InitializeComponent();
         }
@@ -59,11 +49,12 @@ namespace GUI_Management_of_medical_clinic
             labelModifyAppointment.Text = creatingNew ? "Creating new appointment" : "Modifying Appointment";
             FillOfficesComboBox();
 
+            BlockDateTimePicker();
+
             dateTimePicker.Value = selectedDate;
             if (!creatingNew)
             {
-                //Change selecteditem in combobox
-                // dodać zaznaczenie wybranego dnia
+
                 try
                 {
                     dateTimePicker.Value = CalendarService.GetDateByIdCalendar((int)appointment.IdCalendar, appointment.IdDay);
@@ -75,11 +66,34 @@ namespace GUI_Management_of_medical_clinic
                     MessageBox.Show("Error: " + ex);
                 }
             }
+
+        }
+
+        private void BlockDateTimePicker()
+        {
+            dateTimePicker.ShowUpDown = true; // Enable the up and down buttons for value adjustment
+
+            // Disable the increase and decrease buttons for the month and year
+            foreach (Control ctl in dateTimePicker.Controls)
+            {
+                if (ctl.GetType().Name == "DateTimePicker.DateTimePickerAccessibleObject")
+                {
+                    dynamic dtpAccessibleObject = ctl;
+                    dtpAccessibleObject.UpButtonEnabled = false; // Disable the increase button
+                    dtpAccessibleObject.DownButtonEnabled = false; // Disable the decrease button
+                }
+            }
+        }
+        private void dateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            if (dateTimePicker.Value.Month != selectedDate.Month || dateTimePicker.Value.Year != selectedDate.Year)
+            {
+                dateTimePicker.Value = selectedDate; // Przywrócenie poprzedniej wartości miesiąca i roku
+            }
             else
             {
-
+                selectedDate = dateTimePicker.Value; // Zaktualizowanie poprzedniej wartości
             }
-
         }
         private void FillOfficesComboBox()
         {
