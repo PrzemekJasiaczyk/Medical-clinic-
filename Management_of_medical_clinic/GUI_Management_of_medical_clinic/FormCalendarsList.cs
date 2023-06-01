@@ -1,6 +1,7 @@
 ﻿using Console_Management_of_medical_clinic.Data.Enums;
 using Console_Management_of_medical_clinic.Logic;
 using Console_Management_of_medical_clinic.Model;
+using System.Globalization;
 
 namespace GUI_Management_of_medical_clinic
 {
@@ -15,6 +16,12 @@ namespace GUI_Management_of_medical_clinic
         {
             this.currentUser = currentUser;
             InitializeComponent();
+            loadDataGridView();
+        }
+
+        public void loadDataGridView()
+        {
+            //dataGridViewCalendars.Rows.Clear();
             dataGridViewCalendars.DataSource = _calendarService.GetAll();
             dataGridViewCalendars.Columns["NumberOfDoctors"].HeaderText = "Number of doctors";
             dataGridViewCalendars.Columns["NumberOfAcceptedDoctors"].HeaderText = "Number of accepted doctors";
@@ -118,12 +125,14 @@ namespace GUI_Management_of_medical_clinic
             foreach (DoctorsDayPlanModel doctorsDayPlanModel in doctorsDayPlanModels)
             {
                 DateTime date = CalendarService.GetDateByIdCalendar((int)doctorsDayPlanModel.IdCalendar, doctorsDayPlanModel.IdDay);
+                string term = AppointmentService.GetTermByTermId((int)doctorsDayPlanModel.IdOfTerm);
+                TimeSpan time = TimeSpan.ParseExact(term, "hh\\:mm", null);
 
-                if (doctorsDayPlanModel.Status == EnumAppointmentStatus.Overdue || date < DateTime.Now.Date)
+                if (date <= DateTime.Now.Date && time <= DateTime.Now.TimeOfDay && (doctorsDayPlanModel.Status == EnumAppointmentStatus.Accepted ||
+                    doctorsDayPlanModel.Status == EnumAppointmentStatus.Scheduled || doctorsDayPlanModel.Status == EnumAppointmentStatus.Confirmed))
                 {
-                    FormConfirmCancelAppointment clear = new FormConfirmCancelAppointment("clear from calendar", currentUser, doctorsDayPlanModel);
+                    FormConfirmCancelAppointment clear = new FormConfirmCancelAppointment("clear from appointment", currentUser, doctorsDayPlanModel);
                     clear.ShowDialog();
-                    return;
                 }
                 else
                 {
@@ -131,7 +140,7 @@ namespace GUI_Management_of_medical_clinic
                 }
             }
 
-            if (count > 0)
+            if (count == doctorsDayPlanModels.Count)
             {
                 string msg1 = "The calendars are already cleared.";
                 FormMessage FormMessage1 = new FormMessage(msg1);
@@ -147,7 +156,22 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonActivateCalendar_Click(object sender, EventArgs e)
         {
+            CalendarModel selectedCalendar = CalendarService.GetCalendarById((int)dataGridViewCalendars.CurrentRow.Cells[0].Value);
+            if (selectedCalendar.Active==true)
+            {
+                MessageBox.Show("Calendar is already active");
+                return;
+            }
+            
 
+            if (selectedCalendar.NumberOfAcceptedDoctors >= selectedCalendar.NumberOfDoctors)
+            {
+                CalendarService.ActivateCalendar(selectedCalendar.IdCalendar);
+                MessageBox.Show("Success, data is saved.");
+                loadDataGridView();
+                return;
+            }
+            MessageBox.Show("All doctors must approve their plans to activte calendar.");
         }
     }
 }
