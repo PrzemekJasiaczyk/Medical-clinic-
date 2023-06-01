@@ -145,9 +145,9 @@
             buttonAddAppointment.Name = "buttonAddAppointment";
             buttonAddAppointment.Size = new Size(417, 65);
             buttonAddAppointment.TabIndex = 15;
-            buttonAddAppointment.Text = "Add new Plan";
+            buttonAddAppointment.Text = "Edit Plan";
             buttonAddAppointment.UseVisualStyleBackColor = true;
-            buttonAddAppointment.Click += buttonAddAppointment_Click;
+            buttonAddAppointment.Click += buttonEditPlan_Click;
             // 
             // button3
             // 

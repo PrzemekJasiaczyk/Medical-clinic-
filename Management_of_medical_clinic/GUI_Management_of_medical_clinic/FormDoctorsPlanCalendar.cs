@@ -41,6 +41,7 @@ namespace GUI_Management_of_medical_clinic
 
             button2.Visible = false;
             button3.Visible = false;
+            buttonToday.Visible = false;
 
             displayMonth = DateTime.Today.AddMonths(1);
 
@@ -59,9 +60,9 @@ namespace GUI_Management_of_medical_clinic
 
             button2.Visible = false;
             button3.Visible = false;
+            buttonCreateCalendar.Visible = false;
+            buttonToday.Visible = false;
 
-            buttonCreateCalendar.Text = "Edit selected doctors plan";
-            buttonCreateCalendar.Enabled = true;
             buttonCreateCalendar.Click -= createCalendarButton_Click;
             buttonCreateCalendar.Click += buttonEditPlan_Click;
             //buttonCreateCalendar.Click += editCalendar_Click;
@@ -97,6 +98,8 @@ namespace GUI_Management_of_medical_clinic
                         DoctorsPlanService.GetStatusInfo((EnumAppointmentStatus)plan.Status)
                         );
                 });
+
+                dataGridViewAppointments.ClearSelection();
             }
             catch
             {
@@ -190,7 +193,7 @@ namespace GUI_Management_of_medical_clinic
                 labelCalendarExists.Text = "Calendar created";
                 labelCalendarExists.ForeColor = Color.GreenYellow;
                 buttonAddAppointment.Enabled = true;
-                //buttonCreateCalendar.Enabled = false;
+                buttonCreateCalendar.Enabled = false;
             }
             else
             {
@@ -347,10 +350,6 @@ namespace GUI_Management_of_medical_clinic
                     FormDoctorsDayPlanEdit formDoctorsEdit = new FormDoctorsDayPlanEdit(DateTime.Parse(labelDate.Text), currentEmployee);
                     formDoctorsEdit.ShowDialog();
 
-                    //FormDoctorsDayPlanAdd formAppointmentAdd = new FormDoctorsDayPlanAdd(DateTime.Parse(labelDate.Text), currentEmployee);
-                    ////this.Hide();
-                    //formAppointmentAdd.ShowDialog();
-                    ////this.Close();
                 }
                 else
                 {
@@ -452,42 +451,49 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonEditPlan_Click(object sender, EventArgs e)
         {
-            if (CalendarService.GetCalendarById(CalendarService.GetCalendarIdByDate(displayMonth.ToString("d"))).Active)
+            if (dataGridViewAppointments.SelectedRows.Count == 0)
             {
-                MessageBox.Show("It is not possible to change active calendars. Check if the selected calendar is right.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                buttonAddAppointment_Click(sender, e);
             }
-
-            if (dataGridViewAppointments.RowCount > 0)
+            else
             {
-                if (dataGridViewAppointments.CurrentRow != null)
+                if (CalendarService.GetCalendarById(CalendarService.GetCalendarIdByDate(displayMonth.ToString("d"))).Active)
                 {
-                    int selectedDoctorId = EmployeeService.GetEmployeeByFullName(dataGridViewAppointments.CurrentRow.Cells[0].Value.ToString()).IdEmployee;
-                    int selectedOfficeId = OfficeService.GetOfficeByInfo(dataGridViewAppointments.CurrentRow.Cells[1].Value.ToString()).IdOffice;
-                    int selectedTermId = (int)DoctorsPlanService.GetTermByDescription(dataGridViewAppointments.CurrentRow.Cells[2].Value.ToString());
+                    MessageBox.Show("It is not possible to change active calendars. Check if the selected calendar is right.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-                    string[] dateParts = _selectedDate.Split(".");
-
-                    DoctorsDayPlanModel plan = DoctorsPlanService.GetPlanByDayDoctorOfficeAndTermId(CalendarService.GetCalendarIdByDate(displayMonth.ToString("d")), new DateTime(int.Parse(dateParts[2]), int.Parse(dateParts[1]), int.Parse(dateParts[0])), selectedDoctorId, selectedOfficeId, selectedTermId);
-
-                    if (_selectedDate.Length != 0 && CalendarService.checkIfCalendarExists(_selectedDate))
+                if (dataGridViewAppointments.RowCount > 0)
+                {
+                    if (dataGridViewAppointments.CurrentRow != null)
                     {
-                        FormDoctorsDayPlanEdit formAppointmentEdit = new FormDoctorsDayPlanEdit(DateTime.Parse(labelDate.Text), currentEmployee, plan);
-                        formAppointmentEdit.ShowDialog();
+                        int selectedDoctorId = EmployeeService.GetEmployeeByFullName(dataGridViewAppointments.CurrentRow.Cells[0].Value.ToString()).IdEmployee;
+                        int selectedOfficeId = OfficeService.GetOfficeByInfo(dataGridViewAppointments.CurrentRow.Cells[1].Value.ToString()).IdOffice;
+                        int selectedTermId = (int)DoctorsPlanService.GetTermByDescription(dataGridViewAppointments.CurrentRow.Cells[2].Value.ToString());
+
+                        string[] dateParts = _selectedDate.Split(".");
+
+                        DoctorsDayPlanModel plan = DoctorsPlanService.GetPlanByDayDoctorOfficeAndTermId(CalendarService.GetCalendarIdByDate(displayMonth.ToString("d")), new DateTime(int.Parse(dateParts[2]), int.Parse(dateParts[1]), int.Parse(dateParts[0])), selectedDoctorId, selectedOfficeId, selectedTermId);
+
+                        if (_selectedDate.Length != 0 && CalendarService.checkIfCalendarExists(_selectedDate))
+                        {
+                            FormDoctorsDayPlanEdit formAppointmentEdit = new FormDoctorsDayPlanEdit(DateTime.Parse(labelDate.Text), currentEmployee, plan);
+                            formAppointmentEdit.ShowDialog();
+                        }
+                        else
+                        {
+                            MessageBox.Show("A calendar hasn't been started for the given month");
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("A calendar hasn't been started for the given month");
+                        MessageBox.Show("Select the plan from the list.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Select the plan from the list.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("There is no plans for the current day, nothing to edit.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-            }
-            else
-            {
-                MessageBox.Show("There is no plans for the current day, nothing to edit.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }
