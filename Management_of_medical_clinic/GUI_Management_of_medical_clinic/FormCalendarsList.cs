@@ -157,12 +157,12 @@ namespace GUI_Management_of_medical_clinic
         private void buttonActivateCalendar_Click(object sender, EventArgs e)
         {
             CalendarModel selectedCalendar = CalendarService.GetCalendarById((int)dataGridViewCalendars.CurrentRow.Cells[0].Value);
-            if (selectedCalendar.Active==true)
+            if (selectedCalendar.Active == true)
             {
                 MessageBox.Show("Calendar is already active");
                 return;
             }
-            
+
 
             if (selectedCalendar.NumberOfAcceptedDoctors >= selectedCalendar.NumberOfDoctors)
             {
@@ -172,6 +172,11 @@ namespace GUI_Management_of_medical_clinic
                 return;
             }
             MessageBox.Show("All doctors must approve their plans to activte calendar.");
+        }
+
+        private void textBoxDateReference_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

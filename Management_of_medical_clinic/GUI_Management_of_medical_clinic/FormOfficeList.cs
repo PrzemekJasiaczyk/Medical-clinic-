@@ -29,7 +29,7 @@ namespace GUI_Management_of_medical_clinic
 
         public void LoadOfficeData()
         {
-            
+
             dataGridViewOffices.DataSource = null;
 
             dataGridViewOffices.Rows.Clear();

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             dataGridViewCalendars = new DataGridView();
             buttonLogOut = new Button();
             panel1 = new Panel();
@@ -56,16 +57,23 @@
             dataGridViewCalendars.AllowUserToAddRows = false;
             dataGridViewCalendars.AllowUserToDeleteRows = false;
             dataGridViewCalendars.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCalendars.BackgroundColor = SystemColors.Info;
+            dataGridViewCalendars.BackgroundColor = SystemColors.ButtonHighlight;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewCalendars.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewCalendars.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCalendars.GridColor = SystemColors.Info;
-            dataGridViewCalendars.Location = new Point(641, 96);
+            dataGridViewCalendars.Location = new Point(309, 76);
             dataGridViewCalendars.Name = "dataGridViewCalendars";
             dataGridViewCalendars.ReadOnly = true;
             dataGridViewCalendars.RowHeadersVisible = false;
             dataGridViewCalendars.RowTemplate.Height = 25;
             dataGridViewCalendars.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewCalendars.Size = new Size(1077, 680);
+            dataGridViewCalendars.Size = new Size(1611, 1005);
             dataGridViewCalendars.TabIndex = 23;
             // 
             // buttonLogOut
@@ -185,47 +193,52 @@
             panel2.Controls.Add(buttonClearFilter);
             panel2.Controls.Add(comboBoxStatus);
             panel2.Controls.Add(buttonFilterCalendars);
-            panel2.Location = new Point(641, 782);
+            panel2.Location = new Point(309, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1077, 237);
+            panel2.Size = new Size(1611, 77);
             panel2.TabIndex = 40;
             // 
             // buttonSortDescending
             // 
-            buttonSortDescending.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonSortDescending.Location = new Point(765, 104);
+            buttonSortDescending.BackgroundImage = Properties.Resources.sort;
+            buttonSortDescending.BackgroundImageLayout = ImageLayout.Stretch;
+            buttonSortDescending.Font = new Font("Segoe UI Symbol", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonSortDescending.Location = new Point(1523, 17);
             buttonSortDescending.Name = "buttonSortDescending";
-            buttonSortDescending.Size = new Size(280, 56);
+            buttonSortDescending.Size = new Size(41, 36);
             buttonSortDescending.TabIndex = 21;
-            buttonSortDescending.Text = "SortDescending";
             buttonSortDescending.UseVisualStyleBackColor = true;
             buttonSortDescending.Click += buttonSortDescending_Click;
             // 
             // buttonSortAscending
             // 
-            buttonSortAscending.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonSortAscending.Location = new Point(765, 42);
+            buttonSortAscending.BackgroundImage = Properties.Resources.sort__1_;
+            buttonSortAscending.BackgroundImageLayout = ImageLayout.Stretch;
+            buttonSortAscending.Font = new Font("Segoe UI Symbol", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonSortAscending.Location = new Point(1451, 17);
             buttonSortAscending.Name = "buttonSortAscending";
-            buttonSortAscending.Size = new Size(280, 56);
+            buttonSortAscending.Size = new Size(41, 36);
             buttonSortAscending.TabIndex = 20;
-            buttonSortAscending.Text = "Sort Ascending";
             buttonSortAscending.UseVisualStyleBackColor = true;
             buttonSortAscending.Click += buttonSortAscending_Click;
             // 
             // textBoxDateReference
             // 
-            textBoxDateReference.Location = new Point(54, 42);
+            textBoxDateReference.Font = new Font("Segoe UI Symbol", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            textBoxDateReference.Location = new Point(101, 24);
             textBoxDateReference.MaximumSize = new Size(271, 36);
             textBoxDateReference.Name = "textBoxDateReference";
-            textBoxDateReference.Size = new Size(271, 23);
+            textBoxDateReference.Size = new Size(271, 25);
             textBoxDateReference.TabIndex = 19;
+            textBoxDateReference.Visible = false;
+            textBoxDateReference.TextChanged += textBoxDateReference_TextChanged;
             // 
             // buttonClearFilter
             // 
-            buttonClearFilter.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonClearFilter.Location = new Point(409, 104);
+            buttonClearFilter.Font = new Font("Segoe UI Symbol", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonClearFilter.Location = new Point(851, 22);
             buttonClearFilter.Name = "buttonClearFilter";
-            buttonClearFilter.Size = new Size(271, 56);
+            buttonClearFilter.Size = new Size(103, 26);
             buttonClearFilter.TabIndex = 18;
             buttonClearFilter.Text = "Clear filter";
             buttonClearFilter.UseVisualStyleBackColor = true;
@@ -235,20 +248,20 @@
             // 
             comboBoxStatus.BackColor = Color.Gainsboro;
             comboBoxStatus.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxStatus.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            comboBoxStatus.Font = new Font("Segoe UI Symbol", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             comboBoxStatus.FormattingEnabled = true;
             comboBoxStatus.Items.AddRange(new object[] { "MedicalDoctor", "Nurse", "Janitor", "Technitian" });
-            comboBoxStatus.Location = new Point(409, 42);
+            comboBoxStatus.Location = new Point(405, 24);
             comboBoxStatus.Name = "comboBoxStatus";
-            comboBoxStatus.Size = new Size(271, 36);
+            comboBoxStatus.Size = new Size(271, 25);
             comboBoxStatus.TabIndex = 13;
             // 
             // buttonFilterCalendars
             // 
-            buttonFilterCalendars.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonFilterCalendars.Location = new Point(54, 104);
+            buttonFilterCalendars.Font = new Font("Segoe UI Symbol", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonFilterCalendars.Location = new Point(723, 22);
             buttonFilterCalendars.Name = "buttonFilterCalendars";
-            buttonFilterCalendars.Size = new Size(271, 56);
+            buttonFilterCalendars.Size = new Size(92, 26);
             buttonFilterCalendars.TabIndex = 14;
             buttonFilterCalendars.Text = "Filter";
             buttonFilterCalendars.UseVisualStyleBackColor = true;
@@ -302,7 +315,6 @@
         private Button buttonAddCalendar;
         private Button buttonRemoveCalendar;
         private Panel panel2;
-        private TextBox textBoxDateReference;
         private Button buttonClearFilter;
         private ComboBox comboBoxStatus;
         private Button buttonFilterCalendars;
@@ -312,5 +324,6 @@
         private Button button_Clear;
         private Button buttonActivateCalendar;
         private Button buttonReviewCalendar;
+        private TextBox textBoxDateReference;
     }
 }
