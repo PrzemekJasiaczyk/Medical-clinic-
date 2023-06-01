@@ -190,7 +190,7 @@ namespace GUI_Management_of_medical_clinic
                 labelCalendarExists.Text = "Calendar created";
                 labelCalendarExists.ForeColor = Color.GreenYellow;
                 buttonAddAppointment.Enabled = true;
-                buttonCreateCalendar.Enabled = false;
+                //buttonCreateCalendar.Enabled = false;
             }
             else
             {
@@ -452,6 +452,11 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonEditPlan_Click(object sender, EventArgs e)
         {
+            if (CalendarService.GetCalendarById(CalendarService.GetCalendarIdByDate(displayMonth.ToString("d"))).Active)
+            {
+                MessageBox.Show("It is not possible to change active calendars. Check if the selected calendar is right.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             if (dataGridViewAppointments.RowCount > 0)
             {
