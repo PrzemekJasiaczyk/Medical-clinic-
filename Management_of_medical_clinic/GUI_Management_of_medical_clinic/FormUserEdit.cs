@@ -41,7 +41,7 @@ namespace GUI_Management_of_medical_clinic
 
             foreach (EmployeeModel employee in EmployeeService.GetEmployeesData())
             {
-                if (!UserService.CheckIfIdIsAlreadyUsed(employee.IdEmployee) || employee.IdEmployee == user.IdEmployee)
+                if (!UserService.CheckIfIdIsAlreadyUsedByEmployeeId(employee.IdEmployee) || employee.IdEmployee == user.IdEmployee)
                 {
                     listBoxEmployees.Items.Add(employee.IdEmployee + " " + employee.FirstName + " " + employee.LastName);
                 }

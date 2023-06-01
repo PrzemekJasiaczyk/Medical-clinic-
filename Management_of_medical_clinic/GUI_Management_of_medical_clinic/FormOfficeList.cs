@@ -69,6 +69,12 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonEditOffice_Click(object sender, EventArgs e)
         {
+            if (dataGridViewOffices.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("You can edit only one office at a time. Please select one office from the list.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             FormOfficeEdit officeEdit = new FormOfficeEdit(currentUser, OfficeService.GetOfficeByInfo("Room: " + dataGridViewOffices.CurrentRow.Cells[0].Value + ", " + dataGridViewOffices.CurrentRow.Cells[2].Value));  //"Room: " + office.Number.ToString() + ", " + office.Info
             Hide();
             officeEdit.ShowDialog();
@@ -77,6 +83,12 @@ namespace GUI_Management_of_medical_clinic
 
         private void buttonRemoveOffice_Click(object sender, EventArgs e)
         {
+            if (dataGridViewOffices.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("You can remove only one office at a time. Please select one office from the list.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             OfficeModel officeToRemove = OfficeService.GetOfficeByInfo("Room: " + dataGridViewOffices.CurrentRow.Cells[0].Value + ", " + dataGridViewOffices.CurrentRow.Cells[2].Value);
 
             if (!OfficeService.CheckIfOfficeIsAppointed(officeToRemove.IdOffice))
