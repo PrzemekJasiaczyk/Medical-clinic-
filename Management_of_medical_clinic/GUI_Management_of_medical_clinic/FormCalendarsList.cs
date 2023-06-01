@@ -103,19 +103,6 @@ namespace GUI_Management_of_medical_clinic
 
         }
 
-        private void buttonEditCalendar_Click(object sender, EventArgs e)
-        {
-            if ((bool)dataGridViewCalendars.CurrentRow.Cells[2].Value)
-            {
-                MessageBox.Show("It is not possible to change active calendars. Check if the selected calendar is right.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            FormCalendarEdit formCalendar = new FormCalendarEdit(currentUser, CalendarService.GetCalendarById((int)dataGridViewCalendars.CurrentRow.Cells[0].Value), new FormCalendarsList(currentUser));
-            formCalendar.ShowDialog();
-            Close();
-        }
-
         private void button_Clear_Click(object sender, EventArgs e)
         {
             List<DoctorsDayPlanModel> doctorsDayPlanModels = CalendarAppointmentService.GetAppointmentsWithPatients();
@@ -157,12 +144,12 @@ namespace GUI_Management_of_medical_clinic
         private void buttonActivateCalendar_Click(object sender, EventArgs e)
         {
             CalendarModel selectedCalendar = CalendarService.GetCalendarById((int)dataGridViewCalendars.CurrentRow.Cells[0].Value);
-            if (selectedCalendar.Active==true)
+            if (selectedCalendar.Active == true)
             {
                 MessageBox.Show("Calendar is already active");
                 return;
             }
-            
+
 
             if (selectedCalendar.NumberOfAcceptedDoctors >= selectedCalendar.NumberOfDoctors)
             {
@@ -172,6 +159,11 @@ namespace GUI_Management_of_medical_clinic
                 return;
             }
             MessageBox.Show("All doctors must approve their plans to activte calendar.");
+        }
+
+        private void textBoxDateReference_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
