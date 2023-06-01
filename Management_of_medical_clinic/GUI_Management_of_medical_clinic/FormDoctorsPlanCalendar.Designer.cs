@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             panelMenu = new Panel();
             buttonExit = new Button();
             pictureBox1 = new PictureBox();
@@ -37,7 +35,6 @@
             flowLayoutPanelMonth = new FlowLayoutPanel();
             labelDate = new Label();
             buttonAddAppointment = new Button();
-            dataGridViewAppointments = new DataGridView();
             button3 = new Button();
             button2 = new Button();
             labelTitleCalendar_Month = new Label();
@@ -59,9 +56,9 @@
             label4 = new Label();
             panel8 = new Panel();
             label5 = new Label();
+            dataGridViewAppointments = new DataGridView();
             panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewAppointments).BeginInit();
             panel9.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -70,6 +67,7 @@
             panel6.SuspendLayout();
             panel7.SuspendLayout();
             panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewAppointments).BeginInit();
             SuspendLayout();
             // 
             // panelMenu
@@ -150,39 +148,6 @@
             buttonAddAppointment.Text = "Add new Plan";
             buttonAddAppointment.UseVisualStyleBackColor = true;
             buttonAddAppointment.Click += buttonAddAppointment_Click;
-            // 
-            // dataGridViewAppointments
-            // 
-            dataGridViewAppointments.AllowUserToAddRows = false;
-            dataGridViewAppointments.AllowUserToDeleteRows = false;
-            dataGridViewAppointments.AllowUserToOrderColumns = true;
-            dataGridViewAppointments.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewAppointments.BackgroundColor = SystemColors.Info;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Control;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridViewAppointments.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewAppointments.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.ControlLightLight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.Desktop;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dataGridViewAppointments.DefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewAppointments.Location = new Point(1104, 173);
-            dataGridViewAppointments.Name = "dataGridViewAppointments";
-            dataGridViewAppointments.ReadOnly = true;
-            dataGridViewAppointments.RowHeadersVisible = false;
-            dataGridViewAppointments.RowTemplate.Height = 25;
-            dataGridViewAppointments.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewAppointments.Size = new Size(804, 895);
-            dataGridViewAppointments.TabIndex = 19;
             // 
             // button3
             // 
@@ -436,11 +401,29 @@
             label5.Text = "Sat";
             label5.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // dataGridViewAppointments
+            // 
+            dataGridViewAppointments.AllowUserToAddRows = false;
+            dataGridViewAppointments.AllowUserToDeleteRows = false;
+            dataGridViewAppointments.AllowUserToOrderColumns = true;
+            dataGridViewAppointments.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewAppointments.BackgroundColor = SystemColors.Info;
+            dataGridViewAppointments.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewAppointments.Location = new Point(1104, 173);
+            dataGridViewAppointments.Name = "dataGridViewAppointments";
+            dataGridViewAppointments.ReadOnly = true;
+            dataGridViewAppointments.RowHeadersVisible = false;
+            dataGridViewAppointments.RowTemplate.Height = 25;
+            dataGridViewAppointments.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewAppointments.Size = new Size(804, 895);
+            dataGridViewAppointments.TabIndex = 28;
+            // 
             // FormDoctorsPlanCalendar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1920, 1080);
+            Controls.Add(dataGridViewAppointments);
             Controls.Add(panel2);
             Controls.Add(panel3);
             Controls.Add(panel4);
@@ -448,7 +431,6 @@
             Controls.Add(panel6);
             Controls.Add(panel7);
             Controls.Add(panel8);
-            Controls.Add(dataGridViewAppointments);
             Controls.Add(buttonAddAppointment);
             Controls.Add(labelDate);
             Controls.Add(flowLayoutPanelMonth);
@@ -461,7 +443,6 @@
             Load += FormCalendar_Load;
             panelMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewAppointments).EndInit();
             panel9.ResumeLayout(false);
             panel9.PerformLayout();
             panel2.ResumeLayout(false);
@@ -478,6 +459,7 @@
             panel7.PerformLayout();
             panel8.ResumeLayout(false);
             panel8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewAppointments).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -489,7 +471,6 @@
         private Label labelDate;
         private Button buttonAddAppointment;
         private Button buttonCreateCalendar;
-        private DataGridView dataGridViewAppointments;
         private Button button3;
         private Button button2;
         private Label labelTitleCalendar_Month;
@@ -513,5 +494,6 @@
         private PictureBox pictureBox1;
         private Button buttonExit;
         private Label labelCalendarExists;
+        private DataGridView dataGridViewAppointments;
     }
 }

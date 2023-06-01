@@ -63,6 +63,8 @@ namespace GUI_Management_of_medical_clinic
 
             InitializeComponent();
 
+            buttonAdd.Text = "Add";
+
             insertTermDataIntoForm();
 
             foreach(EmployeeModel doctor in EmployeeService.GetDoctors().OrderBy(doctor => doctor.FirstName).ThenBy(doctor => doctor.LastName).ToList())
