@@ -37,6 +37,7 @@
             buttonOpenUserList = new Button();
             label1 = new Label();
             panelLogIn = new Panel();
+            label2 = new Label();
             buttonOpenDoctorDashboard = new Button();
             buttonOpenCalendarsList = new Button();
             buttonOpenPatientsList = new Button();
@@ -56,9 +57,9 @@
             buttonOpenEmployeeList.FlatAppearance.BorderSize = 5;
             buttonOpenEmployeeList.FlatStyle = FlatStyle.Flat;
             buttonOpenEmployeeList.Font = new Font("Microsoft Sans Serif", 19F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonOpenEmployeeList.Location = new Point(147, 202);
+            buttonOpenEmployeeList.Location = new Point(147, 291);
             buttonOpenEmployeeList.Name = "buttonOpenEmployeeList";
-            buttonOpenEmployeeList.Size = new Size(325, 125);
+            buttonOpenEmployeeList.Size = new Size(325, 61);
             buttonOpenEmployeeList.TabIndex = 2;
             buttonOpenEmployeeList.Text = "EMPLOYEE LIST";
             buttonOpenEmployeeList.UseVisualStyleBackColor = false;
@@ -138,9 +139,9 @@
             buttonOpenUserList.FlatAppearance.BorderSize = 5;
             buttonOpenUserList.FlatStyle = FlatStyle.Flat;
             buttonOpenUserList.Font = new Font("Microsoft Sans Serif", 19F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonOpenUserList.Location = new Point(147, 329);
+            buttonOpenUserList.Location = new Point(147, 224);
             buttonOpenUserList.Name = "buttonOpenUserList";
-            buttonOpenUserList.Size = new Size(325, 125);
+            buttonOpenUserList.Size = new Size(325, 61);
             buttonOpenUserList.TabIndex = 8;
             buttonOpenUserList.Text = "USER LIST";
             buttonOpenUserList.UseVisualStyleBackColor = false;
@@ -150,30 +151,43 @@
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(208, 171);
+            label1.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(154, 190);
             label1.Name = "label1";
-            label1.Size = new Size(194, 24);
+            label1.Size = new Size(318, 31);
             label1.TabIndex = 9;
-            label1.Text = "Choose Log In Option";
+            label1.Text = "Log In As Administrator";
+            label1.Click += label1_Click;
             // 
             // panelLogIn
             // 
             panelLogIn.BackColor = SystemColors.ControlLight;
             panelLogIn.BorderStyle = BorderStyle.FixedSingle;
+            panelLogIn.Controls.Add(label2);
             panelLogIn.Controls.Add(buttonOpenDoctorDashboard);
             panelLogIn.Controls.Add(buttonOpenCalendarsList);
             panelLogIn.Controls.Add(buttonOpenPatientsList);
+            panelLogIn.Controls.Add(buttonOpenUserList);
             panelLogIn.Controls.Add(buttonOfficeList);
             panelLogIn.Controls.Add(buttonOpenEmployeeList);
             panelLogIn.Controls.Add(label1);
             panelLogIn.Controls.Add(textBoxPassword);
-            panelLogIn.Controls.Add(buttonOpenUserList);
             panelLogIn.Controls.Add(textBoxLogin);
             panelLogIn.Location = new Point(748, 223);
             panelLogIn.Name = "panelLogIn";
             panelLogIn.Size = new Size(598, 725);
             panelLogIn.TabIndex = 10;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = Color.Transparent;
+            label2.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(176, 518);
+            label2.Name = "label2";
+            label2.Size = new Size(273, 31);
+            label2.TabIndex = 14;
+            label2.Text = "Log In As Employee";
             // 
             // buttonOpenDoctorDashboard
             // 
@@ -185,7 +199,7 @@
             buttonOpenDoctorDashboard.FlatAppearance.BorderSize = 5;
             buttonOpenDoctorDashboard.FlatStyle = FlatStyle.Flat;
             buttonOpenDoctorDashboard.Font = new Font("Microsoft Sans Serif", 19F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonOpenDoctorDashboard.Location = new Point(147, 654);
+            buttonOpenDoctorDashboard.Location = new Point(147, 619);
             buttonOpenDoctorDashboard.Name = "buttonOpenDoctorDashboard";
             buttonOpenDoctorDashboard.Size = new Size(325, 61);
             buttonOpenDoctorDashboard.TabIndex = 13;
@@ -203,7 +217,7 @@
             buttonOpenCalendarsList.FlatAppearance.BorderSize = 5;
             buttonOpenCalendarsList.FlatStyle = FlatStyle.Flat;
             buttonOpenCalendarsList.Font = new Font("Microsoft Sans Serif", 19F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonOpenCalendarsList.Location = new Point(147, 590);
+            buttonOpenCalendarsList.Location = new Point(147, 425);
             buttonOpenCalendarsList.Name = "buttonOpenCalendarsList";
             buttonOpenCalendarsList.Size = new Size(325, 61);
             buttonOpenCalendarsList.TabIndex = 12;
@@ -221,7 +235,7 @@
             buttonOpenPatientsList.FlatAppearance.BorderSize = 5;
             buttonOpenPatientsList.FlatStyle = FlatStyle.Flat;
             buttonOpenPatientsList.Font = new Font("Microsoft Sans Serif", 19F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonOpenPatientsList.Location = new Point(147, 524);
+            buttonOpenPatientsList.Location = new Point(147, 552);
             buttonOpenPatientsList.Name = "buttonOpenPatientsList";
             buttonOpenPatientsList.Size = new Size(325, 61);
             buttonOpenPatientsList.TabIndex = 11;
@@ -239,7 +253,7 @@
             buttonOfficeList.FlatAppearance.BorderSize = 5;
             buttonOfficeList.FlatStyle = FlatStyle.Flat;
             buttonOfficeList.Font = new Font("Microsoft Sans Serif", 19F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonOfficeList.Location = new Point(147, 459);
+            buttonOfficeList.Location = new Point(147, 358);
             buttonOfficeList.Name = "buttonOfficeList";
             buttonOfficeList.Size = new Size(325, 61);
             buttonOfficeList.TabIndex = 10;
@@ -262,6 +276,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             WindowState = FormWindowState.Maximized;
+            Load += FormMenu_Load_1;
             panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panelLogIn.ResumeLayout(false);
@@ -284,5 +299,6 @@
         private Button buttonOpenPatientsList;
         private Button buttonOpenCalendarsList;
         private Button buttonOpenDoctorDashboard;
+        private Label label2;
     }
 }
