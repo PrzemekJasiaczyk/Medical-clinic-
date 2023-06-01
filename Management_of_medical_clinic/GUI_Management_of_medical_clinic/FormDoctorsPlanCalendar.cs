@@ -92,8 +92,7 @@ namespace GUI_Management_of_medical_clinic
                         EmployeeService.GetEmployeeInfoById((int)plan.IdEmployee),
                         OfficeService.GetOfficeInfoById((int)plan.IdOffice),
                         DoctorsPlanService.GetTermDescription((EnumTerms)plan.IdOfTerm),
-                        PatientService.GetPatientInfoById((int)(plan.PatientId == null ? 0 : plan.PatientId)),
-                        DoctorsPlanService.GetStatusInfo((EnumAppointmentStatus)plan.Status)
+                        DoctorsPlanService.GetStatusInfoBool((EnumAppointmentStatus)plan.Status)
                         );
                 });
             }
@@ -128,7 +127,6 @@ namespace GUI_Management_of_medical_clinic
             dataGridViewAppointments.Columns.Add("Doctor", "Doctor");
             dataGridViewAppointments.Columns.Add("Office", "Office");
             dataGridViewAppointments.Columns.Add("Hour", "Hour");
-            dataGridViewAppointments.Columns.Add("Patient", "Patient");
             dataGridViewAppointments.Columns.Add("Status", "Status");
         }
 

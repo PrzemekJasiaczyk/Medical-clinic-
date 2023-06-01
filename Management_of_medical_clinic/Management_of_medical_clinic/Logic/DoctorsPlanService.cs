@@ -165,9 +165,13 @@ namespace Console_Management_of_medical_clinic.Logic
             }
         }
 
-        public static string GetStatusInfo(Enum value)
+        public static string GetStatusInfoBool(Enum value)
         {
-            return value.ToString();
+            if (value.ToString()=="Inactive" || value.ToString() == "New")
+            {
+                return "Not accepted";
+            }
+            return "Accepted";
         }
 
         public static int CheckIfDoctorHasPlanForCurrentDay(int idEmployee, int idDay, int idCalendar)

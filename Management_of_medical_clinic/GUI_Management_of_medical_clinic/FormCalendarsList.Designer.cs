@@ -31,6 +31,7 @@
             dataGridViewCalendars = new DataGridView();
             buttonLogOut = new Button();
             panel1 = new Panel();
+            buttonReviewCalendar = new Button();
             buttonActivateCalendar = new Button();
             button_Clear = new Button();
             pictureBox1 = new PictureBox();
@@ -85,6 +86,7 @@
             // panel1
             // 
             panel1.BackColor = Color.SteelBlue;
+            panel1.Controls.Add(buttonReviewCalendar);
             panel1.Controls.Add(buttonActivateCalendar);
             panel1.Controls.Add(button_Clear);
             panel1.Controls.Add(buttonLogOut);
@@ -96,16 +98,29 @@
             panel1.Size = new Size(312, 1081);
             panel1.TabIndex = 39;
             // 
+            // buttonReviewCalendar
+            // 
+            buttonReviewCalendar.BackColor = Color.SteelBlue;
+            buttonReviewCalendar.FlatStyle = FlatStyle.Flat;
+            buttonReviewCalendar.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonReviewCalendar.Location = new Point(-17, 444);
+            buttonReviewCalendar.Name = "buttonReviewCalendar";
+            buttonReviewCalendar.Size = new Size(329, 87);
+            buttonReviewCalendar.TabIndex = 52;
+            buttonReviewCalendar.Text = "Review Selected";
+            buttonReviewCalendar.UseVisualStyleBackColor = false;
+            buttonReviewCalendar.Click += buttonReviewCalendar_Click;
+            // 
             // buttonActivateCalendar
             // 
             buttonActivateCalendar.BackColor = Color.SteelBlue;
             buttonActivateCalendar.FlatStyle = FlatStyle.Flat;
             buttonActivateCalendar.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonActivateCalendar.Location = new Point(-17, 445);
+            buttonActivateCalendar.Location = new Point(-17, 537);
             buttonActivateCalendar.Name = "buttonActivateCalendar";
             buttonActivateCalendar.Size = new Size(329, 87);
             buttonActivateCalendar.TabIndex = 51;
-            buttonActivateCalendar.Text = "Activate Selected Calendar";
+            buttonActivateCalendar.Text = "Activate Selected";
             buttonActivateCalendar.UseVisualStyleBackColor = false;
             buttonActivateCalendar.Click += buttonActivateCalendar_Click;
             // 
@@ -153,11 +168,11 @@
             buttonRemoveCalendar.BackColor = Color.SteelBlue;
             buttonRemoveCalendar.FlatStyle = FlatStyle.Flat;
             buttonRemoveCalendar.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonRemoveCalendar.Location = new Point(-17, 538);
+            buttonRemoveCalendar.Location = new Point(-17, 630);
             buttonRemoveCalendar.Name = "buttonRemoveCalendar";
             buttonRemoveCalendar.Size = new Size(329, 87);
             buttonRemoveCalendar.TabIndex = 28;
-            buttonRemoveCalendar.Text = "Delete Selected Calendar";
+            buttonRemoveCalendar.Text = "Delete Selected";
             buttonRemoveCalendar.UseVisualStyleBackColor = false;
             buttonRemoveCalendar.Click += buttonRemoveCalendar_Click;
             // 
@@ -296,5 +311,6 @@
         private Button button1;
         private Button button_Clear;
         private Button buttonActivateCalendar;
+        private Button buttonReviewCalendar;
     }
 }

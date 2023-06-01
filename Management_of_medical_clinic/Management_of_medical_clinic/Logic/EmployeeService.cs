@@ -213,7 +213,7 @@ namespace Console_Management_of_medical_clinic.Logic
         public static string GetEmployeeInfoById(int id)
         {
             EmployeeModel employee = GetEmployeeByID(id);
-            return employee.FirstName + employee.LastName;
+            return employee.FirstName + " " + employee.LastName;
         }
     }
 
